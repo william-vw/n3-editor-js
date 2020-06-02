@@ -21,7 +21,7 @@
     "url": "git+https://github.com/william-vw/serve-reason.git"
   },
   "author": "wvw",
-  "license": "ISC",
+  "license" : "see license in LICENSE",
   "bugs": {
     "url": "https://github.com/william-vw/serve-reason/issues"
   },
