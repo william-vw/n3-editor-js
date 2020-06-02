@@ -7,14 +7,14 @@ var eye = require('./lib/eye.js')
 var cwm = require('./lib/cwm.js')
 
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = 3002;
 
 var app = express()
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/serve-reason', express.static('client'));
+app.use('/serve-reason/editor', express.static('editor'));
 
 app.get('/serve-reason', (request, response) => {
 	console.log('GET /')
