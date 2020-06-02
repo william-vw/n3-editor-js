@@ -125,7 +125,6 @@
 				if (stream.eatSpace())
 					return null;
 				var style = state.tokenize(stream, state);
-				console.log("style", style)
 
 				if (style != "comment" && state.context
 						&& state.context.align == null
@@ -157,7 +156,6 @@
 					}
 				}
 
-				// console.log("style? " + style);
 				return style;
 			},
 

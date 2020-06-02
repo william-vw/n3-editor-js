@@ -1,3 +1,13 @@
+config = {
+	// hostname: '127.0.0.1',
+	hostname: 'ppr.cs.dal.ca',
+	port: 3002,
+
+	eyePath: "/opt/eye/bin/eye.sh",
+	cwmPath: "/home/woensel/cwm-1.2.1/swap/cwm.py"
+}
+
+
 var express = require('express')
 var bodyParser = require('body-parser')
 var cors = require('cors')
@@ -5,9 +15,6 @@ var cors = require('cors')
 var tmp = require('./lib/tmp.js')
 var eye = require('./lib/eye.js')
 var cwm = require('./lib/cwm.js')
-
-const hostname = '127.0.0.1';
-const port = 3002;
 
 var app = express()
 app.use(cors())
@@ -59,5 +66,5 @@ app.post('/serve-reason', (request, response) => {
 	})
 })
 
-app.listen(port)
-console.log(`Listening at http://localhost:${port}`)
+app.listen(config.port)
+console.log(`Listening at http://${config.hostname}:${config.port}`)
