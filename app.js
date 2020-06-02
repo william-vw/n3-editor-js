@@ -14,9 +14,9 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/', express.static('client'));
+app.use('/serve-reason', express.static('client'));
 
-app.get('/', (request, response) => {
+app.get('/serve-reason', (request, response) => {
 	console.log('GET /')
 
 	var html = 
@@ -31,7 +31,7 @@ app.get('/', (request, response) => {
 	response.end(html)
 })
 
-app.post('/', (request, response) => {
+app.post('/serve-reason', (request, response) => {
 	console.log("POST /")	
 
 	var data = request.body
