@@ -1,0 +1,29 @@
+{
+  "name": "serve-reason",
+  "version": "0.1",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "antlr4": "^4.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/william-vw/serve-reason.git"
+  },
+  "author": "wvw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/william-vw/serve-reason/issues"
+  },
+  "homepage": "https://github.com/william-vw/serve-reason#readme"
+}
