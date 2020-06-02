@@ -7,7 +7,7 @@ var eye = require('./lib/eye.js')
 var cwm = require('./lib/cwm.js')
 
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = 3002;
 
 var app = express()
 app.use(cors())
