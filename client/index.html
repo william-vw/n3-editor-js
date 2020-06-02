@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Notation3 Editor</title>
+
+<script src="dist/main.js"></script>
+
+<script src="lib/jquery-3.5.1.min.js"></script>
+<script src="lib/shortcut.js"></script>
+
+<script src="codemirror-5.54.0/lib/codemirror.js"></script>
+<link rel="stylesheet" href="codemirror-5.54.0/lib/codemirror.css">
+<link rel="stylesheet" href="codemirror-5.54.0/addon/lint/lint.css">
+<script src="codemirror-5.54.0/addon/lint/lint.js"></script>
+<script src="codemirror-5.54.0/addon/edit/matchbrackets.js"></script>
+
+<style>
+	#loading { display: none; margin-left: 10px }
+	#dc, #ast, #error { display: none }
+	.box {
+		white-space: pre-wrap; 
+		box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+		padding: 15px;
+		padding-left: 25px;
+		width: auto;
+		background: #fcfaee;
+		padding: .5em;
+		border-left-width: .5em;
+		border-left-style: solid;
+		border-color: #e0cb52;
+		width: 50%;
+	}
+	#error > .box {
+		border-color: #e00000;
+		background: #ffa8a8;
+	}
+	.system { display: inline }
+	div.CodeMirror { height: 60px }
+	.separator { display: inline-block; margin: 0 25px 0 20px }
+	.separator:after { content: "|" }
+	h3 { margin-bottom: 5px }
+</style>
+
+<script>
+	n3.helpers = {}
+</script>
+<script src="lib/codemirror-5.54.0/n3-lint.js"></script>
+<script src="lib/codemirror-5.54.0/n3-mode.js"></script>
+<script src="lib/n3-ast.js"></script>
+
+<script>
+	const url = "http://127.0.0.1:3000"
+		
+	function exec() {
+		var formula = editor.getDoc().getValue().trim()
+		if (formula.length == 0)
+			return
+	
+		var system = $("input[name=system]:checked").val()
+		if (!system)
+			return
+	
+		const data = {
+			task: "deductive_closure", 
+			system: system, 
+			formula: formula
+		}			
+		
+		$("#dc, #ast, #error").hide()
+		
+		$.post(url, data, (data, status) => {
+			console.log(status, data)
+			
+			if (data.success !== undefined) {
+				$("#dc").show()
+				$("#dc > #output").html(data.success)
+			} else {
+				$("#error").show()
+				$("#error > #output").html(data.error)
+			}
+		})
+	}
+	
+	function ast() {
+		$("#dc, #error").hide()
+		
+		$("#ast_output").text("")
+		$("#ast").show()
+		n3.helpers.ast(editor.getDoc().getValue(), 
+			(astLine) => {
+				$("#ast_output").append(astLine)
+			
+			}, (error) => {
+				$("#error").show().find("#output").html(error)
+			})
+	}
+	
+	function loaded() {
+		editor = CodeMirror.fromTextArea($("#input").get(0), {
+			gutters : [ "CodeMirror-lint-markers" ],
+			mode : "n3",
+			// TODO this should follow code-mirrors idiom
+			// (registering a helper) but not getting that to work
+			lint : n3.helpers.lint,
+			matchBrackets: true
+		})
+		
+		$(document).ajaxStart(() => {
+			$('#loading').css("display", "inline-block");
+		}).ajaxStop(() => {
+			$('#loading').hide();
+		});
+
+		$("#execute").click(exec)
+		$("#show_ast").click(ast)
+		shortcut.add("Alt+X", exec)
+		shortcut.add("Alt+A", ast)
+	}
+</script>
+</head>
+<body onload="loaded()">
+
+	<h2>Notation3 Editor</h2>
+	
+	<textarea rows=5 cols=50 id="input"></textarea>
+	<br />
+	
+	<button id="execute">e<u>x</u>ecute</button>
+	<input class="system" name="system" type="radio" value="eye" checked>eye</input> 
+	<input class="system" name="system" type="radio" value="cwm">cwm</input> 
+	
+	<div class="separator"></div>
+	<button id="show_ast">show <u>a</u>st</button>
+	
+	<div id="loading">
+		<img src="img/ajax-loader.gif" />
+	</div>
+	
+	<div id="error">
+		<h3>Error:</h3>
+		<div id="output" class="box"></div>
+	</div>
+	
+	<div id="dc">
+		<h3>Deductive closure:</h3>
+		<div id="output" class="box"></div>
+	</div>
+	
+	<div id="ast">
+		<h3>Abstract Syntax Tree:</h3>
+		<div id="ast_output" class="box"></div>
+	</div>
+
+</body>
+</html>

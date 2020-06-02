@@ -1,19 +1,20 @@
-const hostname = '127.0.0.1';
-const port = 3000;
-
 var express = require('express')
 var bodyParser = require('body-parser')
 var cors = require('cors')
 
 var tmp = require('./lib/tmp.js')
 var eye = require('./lib/eye.js')
+var cwm = require('./lib/cwm.js')
+
+const hostname = '127.0.0.1';
+const port = 3000;
 
 var app = express()
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/', express.static('ex_client'));
+app.use('/', express.static('client'));
 
 app.get('/', (request, response) => {
 	console.log('GET /')
@@ -37,17 +38,22 @@ app.post('/', (request, response) => {
 	console.log("data:", data)
 
 	tmp.save(data.formula, (file) => {
-		// only deductive_closure & eye are currently supported
+		function end(ret) {
+			tmp.del(file)
+			response.send(ret)
+		}
+		
 		switch (data.system) {
 			case "eye":
-				eye.exec(file, (ret) => {
-					tmp.del(file)	
-					response.send(ret)
-				})
+				eye.exec(file, end)
+			break
+			
+			case "cwm":
+				cwm.exec(file, end)
 			break
 			
 			default:
-				response.send({ error: `unknown system: ${data.system}` })
+				end({ error: `unknown system: "${data.system}"` })
 			break
 		}
 	})
@@ -55,14 +61,3 @@ app.post('/', (request, response) => {
 
 app.listen(port)
 console.log(`Listening at http://localhost:${port}`)
-
-/*const http = require('http');
-const server = http.createServer((req, res) => {
-res.statusCode = 200;
-res.setHeader('Content-Type', 'text/plain');
-res.end('Hello World');
-});
-
-server.listen(port, hostname, () => {
-console.log(`Server running at http://${hostname}:${port}/`);
-});*/
