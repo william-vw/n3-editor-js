@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <title>Notation3 Editor</title>
 
 <script src="lib/jquery-3.5.1.min.js"></script>
@@ -132,17 +132,17 @@
 	<h2>Notation3 Editor</h2>
 	
 	<textarea rows=5 cols=50 id="input"></textarea>
-	<br />
+	<br>
 	
 	<button id="execute">e<u>x</u>ecute</button>
-	<input class="system" name="system" type="radio" value="eye" checked>eye</input> 
-	<input class="system" name="system" type="radio" value="cwm">cwm</input> 
+	<input class="system" name="system" type="radio" value="eye" id="eye" checked><label for="eye">eye</label> 
+	<input class="system" name="system" type="radio" value="cwm" id="cwm"><label for="cwm">cwm</label> 
 	
 	<div class="separator"></div>
 	<button id="show_ast">show <u>a</u>st</button>
 	
 	<div id="loading">
-		<img src="img/ajax-loader.gif" />
+		<img src="img/ajax-loader.gif" alt="loader">
 	</div>
 	
 	<div id="error">
