@@ -49,8 +49,8 @@
 <script src="lib/n3-ast.js"></script>
 
 <script>
-	// const url = "http://127.0.0.1:3002/serve-reason"
-	const url = "http://ppr.cs.dal.ca:3002/serve-reason"	
+	const url = "http://127.0.0.1:3002/n3"
+	// const url = "http://ppr.cs.dal.ca:3002/n3"	
 	
 	function exec() {
 		var formula = editor.getDoc().getValue().trim()
@@ -90,7 +90,7 @@
 			})
 	}
 	
-	function loaded() {
+	function loaded() {	
 		editor = CodeMirror.fromTextArea($("#input").get(0), {
 			gutters : [ "CodeMirror-lint-markers" ],
 			mode : "n3",
@@ -110,6 +110,11 @@
 		$("#show_ast").click(ast)
 		shortcut.add("Alt+X", exec)
 		shortcut.add("Alt+A", ast)
+		
+		var params = new URLSearchParams(window.location.search)
+		var formula = params.get("formula")
+		if (formula)
+			editor.getDoc().setValue(formula)
 	}
 </script>
 </head>

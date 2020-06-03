@@ -1,6 +1,6 @@
 config = {
-	// hostname: '127.0.0.1',
-	hostname: 'ppr.cs.dal.ca',
+	hostname: '127.0.0.1',
+	// hostname: 'ppr.cs.dal.ca',
 	port: 3002,
 
 	eyePath: "/opt/eye/bin/eye.sh",
@@ -21,9 +21,9 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/serve-reason/editor', express.static('editor'));
+app.use('/n3/editor', express.static('editor'));
 
-app.get('/serve-reason', (request, response) => {
+app.get('/n3', (request, response) => {
 	console.log('GET /')
 
 	var html = 
@@ -38,7 +38,7 @@ app.get('/serve-reason', (request, response) => {
 	response.end(html)
 })
 
-app.post('/serve-reason', (request, response) => {
+app.post('/n3', (request, response) => {
 	console.log("POST /")	
 
 	var data = request.body
