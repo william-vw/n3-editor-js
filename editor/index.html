@@ -67,9 +67,11 @@
 			task: "deductive_closure", 
 			system: system, 
 			formula: formula
+			
 		}, (success) => {
 			$("#dc").show()
-			$("#dc > #output").html(success)
+			$("#dc > #output").text(success)
+		
 		}, (error) => {
 			$("#error").show()
 			$("#error > #output").html(error)
@@ -102,6 +104,7 @@
 		
 		$(document).ajaxStart(() => {
 			$('#loading').css("display", "inline-block");
+		
 		}).ajaxStop(() => {
 			$('#loading').hide();
 		});

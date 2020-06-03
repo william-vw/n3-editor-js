@@ -3,8 +3,8 @@ config = {
 	// hostname: 'ppr.cs.dal.ca',
 	port: 3002,
 
-	eyePath: "/opt/eye/bin/eye.sh",
-	cwmPath: "/home/woensel/cwm-1.2.1/swap/cwm.py"
+	eyePath: "C:/eye/eye.cmd", // "/opt/eye/bin/eye.sh",
+	cwmPath: "C:/cwm/cwm-1.2.1/cwm" // "/home/woensel/cwm-1.2.1/swap/cwm.py"
 }
 
 
