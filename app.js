@@ -1,6 +1,6 @@
 config = {
-	hostname: '127.0.0.1',
-	// hostname: 'ppr.cs.dal.ca',
+	// hostname: '127.0.0.1',
+	hostname: 'ppr.cs.dal.ca',
 	port: 3002,
 
 	eyePath: "C:/eye/eye.cmd", // "/opt/eye/bin/eye.sh",
@@ -29,8 +29,8 @@ app.get('/n3', (request, response) => {
 	var html = 
 	`<html>
 		<body>
-			<h1>Welcome to Serve-Reason!</h1>
-			<h3>Serving reason since 1st June 2020</h3>
+			<h1>Welcome to the N3 server!</h1>
+			<h3>Serving N3 since 2nd June 2020</h3>
 		</body>
 	</html>`
 
