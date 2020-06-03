@@ -114,10 +114,16 @@
 		shortcut.add("Alt+X", exec)
 		shortcut.add("Alt+A", ast)
 		
-		var params = new URLSearchParams(window.location.search)
-		var formula = params.get("formula")
-		if (formula)
-			editor.getDoc().setValue(formula)
+		// url-encode hash symbol so we can work with url search params	
+		var url = window.location.toString().replace(/#/g, "%23")
+		if (url.includes("?")) {
+			console.log("url", url)
+			var params = new URLSearchParams(url.substring(url.indexOf("?")))
+			var formula = params.get("formula")
+			console.log(formula)
+			if (formula)
+				editor.getDoc().setValue(formula)
+		}
 	}
 </script>
 </head>
