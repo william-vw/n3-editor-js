@@ -1,5 +1,4 @@
-# n3-editor-js
-A Notation3 Editor in JavaScript
+# Notation3 Editor in JavaScript
 
 You can find an online demo here: [http://ppr.cs.dal.ca:3002/n3/editor](http://ppr.cs.dal.ca:3002/n3/editor)
 
