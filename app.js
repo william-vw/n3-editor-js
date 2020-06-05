@@ -1,17 +1,8 @@
-config = {
-	// hostname: '127.0.0.1',
-	hostname: 'ppr.cs.dal.ca',
-	port: 3002,
-
-	eyePath: "/opt/eye/bin/eye.sh",
-	cwmPath: "/home/woensel/cwm-1.2.1/swap/cwm.py"
-}
-
-
 var express = require('express')
 var bodyParser = require('body-parser')
 var cors = require('cors')
 
+var config = require('./config.js')
 var tmp = require('./lib/tmp.js')
 var eye = require('./lib/eye.js')
 var cwm = require('./lib/cwm.js')
@@ -66,5 +57,5 @@ app.post('/n3', (request, response) => {
 	})
 })
 
-app.listen(config.port)
-console.log(`Listening at http://${config.hostname}:${config.port}`)
+app.listen(config.http.port)
+console.log(`Listening at http://${config.http.hostname}:${config.http.port}`)
