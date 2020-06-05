@@ -30,6 +30,6 @@ The server will be accessible at `http://<hostname>:<port>/n3`, and the editor a
 To test the server, goto the server URL (e.g., `http://127.0.0.1:3002/n3`).
 
 Update the `./config.js` file with your hostname, port number and locations of Eye and Cwm executables.
-If you simply want to try the editor locally, you can keep the http config (as long as the port number isn't in use).
+If you simply want to try the editor locally, you can keep the localhost http config (as long as the port number isn't in use).
 
 Similarly, update the `./editor/index.html` file with the URL of the NodeJs server. If you're following the regular usage, this should simply be the editor's URL minus the `editor` part (e.g., `http://127.0.0.1:3002/n3` for `http://127.0.0.1:3002/n3/editor`.
