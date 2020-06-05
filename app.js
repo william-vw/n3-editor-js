@@ -21,7 +21,9 @@ app.get('/n3', (request, response) => {
 	`<html>
 		<body>
 			<h1>Welcome to the N3 server!</h1>
-			<h3>Serving N3 since 2nd June 2020</h3>
+			<h3>Serving N3 since 2nd June 2020.</h3>
+			config:
+			<pre>${JSON.stringify(config, null, 4)}</pre>			</p>
 		</body>
 	</html>`
 
