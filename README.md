@@ -22,7 +22,7 @@ It can easily be configured with additional systems, when they become available.
 
 ## Usage
 
-Clone the repository and run `npm install` in the main folder to install the required NodeJs packages.
+Clone the repository and run `npm install` in the main folder to install the NodeJs packages.
 
 Run `./node app.js` (`./sudo node app.js` in Linux) to start the server. 
 The server will be accessible at `http://<hostname>:<port>/n3`, and the editor at `http://<hostname>:<port>/n3/editor`.
