@@ -36,10 +36,13 @@ Similarly, update the `./editor/index.html` file with the URL of the NodeJs serv
 
 ## Usage
 
-You can of course use the editor manually but you can also pass URL parameters to initialize parts of the editor. This could be useful to show (the output of) examples, for instance. Note that the size of the formula will be limited by the max. length of a URL, which is around 2000 characters.
+You can of course use the editor manually. You can use shortcuts "alt-x" and "alt-a" to execute the current formula or show its AST, respectively.
+
+You can also pass URL parameters to initialize parts of the editor. This could be useful to show (the output of) examples, for instance. Note that the size of the formula will be limited by the max. length of a URL, which is around 2000 characters.
 
 E.g. (copy URL in address bar):
 - Pass a formula and get its deductive closure from Cwm:  
 ht<span>tp://</span>ppr.cs.dal.ca:3002/n3/editor/?formula=:i :am :cool . :you :know :i . { :you :know ?a . ?a :is :cool } => { :you :is :cool } .&exec=eye
+
 - Pass a formula and print its AST:  
 ht<span>tp://</span>ppr.cs.dal.ca:3002/n3/editor/?formula=:i :am :cool .&ast=true
