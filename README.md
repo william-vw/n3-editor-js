@@ -26,15 +26,13 @@ This system requires [NodeJS](https://nodejs.org/en/).
 
 Clone the repository and run `npm install` in the main folder to install the NodeJs packages.
 
-Run `./node app.js` (`./sudo node app.js` in Linux) to start the server. 
-The server will be accessible at `http://<hostname>:<port>/n3`, and the editor at `http://<hostname>:<port>/n3/editor`.
-
-To test the server, goto the server URL (e.g., `http://127.0.0.1:3002/n3`).
-
 Update the `./config.js` file with your hostname, port number and locations of Eye and Cwm executables.
-If you simply want to try the editor locally, you can keep the localhost http config (as long as the port number isn't in use).
+If you simply want to try the editor locally, you can keep the localhost http config (as long as the port number isn't in use). Update the `./editor/index.html` file with the URL of the NodeJs server. If you're following the regular usage, this should simply be the editor's URL minus the `editor` part (e.g., `http://127.0.0.1:3002/n3` for `http://127.0.0.1:3002/n3/editor`.
 
-Similarly, update the `./editor/index.html` file with the URL of the NodeJs server. If you're following the regular usage, this should simply be the editor's URL minus the `editor` part (e.g., `http://127.0.0.1:3002/n3` for `http://127.0.0.1:3002/n3/editor`.
+Run `./node app.js` to start the server. 
+The server will be accessible at `http://<hostname>:<port>/n3`, and the editor at `http://<hostname>:<port>/n3/editor`. 
+
+If you're using localhost and port 3002, you will find the server at [http://127.0.0.1:3002/n3](http://127.0.0.1:3002/n3), and the editor at [http://127.0.0.1:3002/n3/editor](http://127.0.0.1:3002/n3/editor).
 
 ## Usage
 
