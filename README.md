@@ -22,6 +22,8 @@ It can easily be configured with additional systems, when they become available.
 
 ## Installation
 
+This system requires [NodeJS](https://nodejs.org/en/).
+
 Clone the repository and run `npm install` in the main folder to install the NodeJs packages.
 
 Run `./node app.js` (`./sudo node app.js` in Linux) to start the server. 
