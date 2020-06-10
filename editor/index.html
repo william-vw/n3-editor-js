@@ -60,6 +60,7 @@
 
 <script>
 	const url = "http://127.0.0.1:3002/n3"
+	const systems = ( "eye", "cwm" )
 	
 	function exec() {
 		var formula = editor.getDoc().getValue().trim()
@@ -128,10 +129,26 @@
 		if (url.includes("?")) {
 			console.log("url", url)
 			var params = new URLSearchParams(url.substring(url.indexOf("?")))
-			var formula = params.get("formula")
-			console.log(formula)
-			if (formula)
-				editor.getDoc().setValue(formula)
+			var formulaParam = params.get("formula")
+			if (formulaParam) {
+				console.log("initializing formula from URL")
+				editor.getDoc().setValue(formulaParam)
+			}
+			var execParam = params.get("exec")
+			if (execParam) {
+				if (!systems.includes(execParam))
+					alert("Unknown system: " + execParam)
+				else {
+					console.log("initializing system from URL")
+					$("input[name='system']").filter("[value='" + execParam + "']").attr('checked', true)
+					exec()
+				}
+			}
+			var astParam = params.get("ast")
+			if (astParam) {
+				console.log("initializing AST from URL")
+				ast()
+			}
 		}
 	}
 </script>
