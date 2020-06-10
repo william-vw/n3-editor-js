@@ -1,6 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var cors = require('cors')
+var path = require('path')
 
 var config = require('./config.js')
 var tmp = require('./lib/tmp.js')
@@ -12,7 +13,7 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/n3/editor', express.static('editor'));
+app.use('/n3/editor', express.static(path.join(__dirname, 'editor')));
 
 app.get('/n3', (request, response) => {
 	console.log('GET /')
