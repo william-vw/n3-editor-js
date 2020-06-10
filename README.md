@@ -20,7 +20,7 @@ that is called by the editor whenever "execute" is clicked. The server will exec
 either the [Eye](https://github.com/josd/eye) or [Cwm](https://www.w3.org/2000/10/swap/doc/cwm.html) system. 
 It can easily be configured with additional systems, when they become available.
 
-## Usage
+## Installation
 
 Clone the repository and run `npm install` in the main folder to install the NodeJs packages.
 
@@ -33,3 +33,13 @@ Update the `./config.js` file with your hostname, port number and locations of E
 If you simply want to try the editor locally, you can keep the localhost http config (as long as the port number isn't in use).
 
 Similarly, update the `./editor/index.html` file with the URL of the NodeJs server. If you're following the regular usage, this should simply be the editor's URL minus the `editor` part (e.g., `http://127.0.0.1:3002/n3` for `http://127.0.0.1:3002/n3/editor`.
+
+## Usage
+
+You can of course use the editor manually but you can also pass URL parameters to initialize parts of the editor. This could be useful to show (the output of) examples, for instance. Note that the size of the formula will be limited by the max. length of a URL, which is around 2000 characters.
+
+E.g. (copy URL in address bar):
+- Pass a formula and get its deductive closure from Cwm:  
+ht<span>tp://</span>ppr.cs.dal.ca:3002/n3/editor/?formula=:i :am :cool . :you :know :i . { :you :know ?a . ?a :is :cool } => { :you :is :cool } .&exec=eye
+- Pass a formula and print its AST:  
+ht<span>tp://</span>ppr.cs.dal.ca:3002/n3/editor/?formula=:i :am :cool .&ast=true
