@@ -107,7 +107,7 @@
 	function createLink() {
 		var formula = editor.getDoc().getValue()
 		if (formula) {
-			var uri = window.location.href + "?formula=" + encodeURIComponent(formula)
+			var uri = window.location.href.split("?")[0] + "?formula=" + encodeURIComponent(formula)
 			$("#linkPlaceholder").html(": <a href='" + uri + "'>Link</a>")
 		}
 		
