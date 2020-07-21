@@ -34,6 +34,15 @@ The server will be accessible at `http://<hostname>:<port>/n3`, and the editor a
 
 If you're using localhost and port 3002, you will find the server at [http://127.0.0.1:3002/n3](http://127.0.0.1:3002/n3), and the editor at [http://127.0.0.1:3002/n3/editor](http://127.0.0.1:3002/n3/editor).
 
+## Development
+
+After editing anything inside `editor/` folder (aside from the `lib/` folder), run `npx webpack` (requires (webpack)[https://webpack.js.org/guides/installation/]) to generate `dist\main.js\`. You'll see that `index.html` directly references `dist\main.js\` as well as the files from the `lib/` folder.
+
+**Notes**:
+- You can turn off minimization in `webpack.config.js`. Enabling it will drastically reduce the size of `main.js` but also make it much harder to debug.
+- `n3Parser.js` requires a manual edit to make `symbolicNames` available outside of the module. Under `var symbolicNames ..` put `n3Parser.symbolicNames = symbolicNames;`.
+
+
 ## Usage
 
 You can of course use the editor manually. You can use shortcuts "alt-x" and "alt-a" to execute the current formula or show its AST, respectively.

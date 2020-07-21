@@ -183,6 +183,7 @@ var literalNames = [ null, "'.'", "'@prefix'", "'@base'", "';'", "','",
                      "'@of'", "'='", "'<='", "'=>'", "'^'", "'!'", "'['", 
                      "']'", "'('", "')'", "'{'", "'}'", "'^^'", "'@forSome'", 
                      "'@forAll'" ];
+n3Parser.literalNames = literalNames;
 
 var symbolicNames = [ null, null, null, null, null, null, null, null, null, 
                       null, null, null, null, null, null, null, null, null, 
@@ -195,6 +196,7 @@ var symbolicNames = [ null, null, null, null, null, null, null, null, null,
                       "ANON", "QuickVarName", "PN_CHARS_U", "PN_CHARS_BASE", 
                       "PN_CHARS", "BASE", "PREFIX", "PN_PREFIX", "PN_LOCAL", 
                       "PLX", "PERCENT", "HEX", "PN_LOCAL_ESC" ];
+n3Parser.symbolicNames = symbolicNames;
 
 var ruleNames =  [ "n3Doc", "n3Statement", "n3Directive", "sparqlDirective", 
                    "sparqlBase", "sparqlPrefix", "prefixID", "base", "triples", 

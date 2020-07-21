@@ -373,6 +373,7 @@ n3PrintListener.prototype.decrLvl = function() {
 }
 
 n3PrintListener.prototype.print = function(el) {	
+	console.log("el? " + el);
 	var ws = new Array(this.lvl + 1).join(" ");
 	var out = ws + el + "\n";
 	

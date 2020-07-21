@@ -1,5 +1,17100 @@
-var n3=function(t){var e={};function n(r){if(e[r])return e[r].exports;var i=e[r]={i:r,l:!1,exports:{}};return t[r].call(i.exports,i,i.exports,n),i.l=!0,i.exports}return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var i in t)n.d(r,i,function(e){return t[e]}.bind(null,i));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=32)}([function(t,e){function n(t){return"["+t.join(", ")+"]"}function r(t,e){return t.equals(e)}function i(t){return t.hashCode()}function o(t,e){return this.data={},this.hashFunction=t||i,this.equalsFunction=e||r,this}function s(){return this.data=[],this}function a(t,e){return this.data={},this.hashFunction=t||i,this.equalsFunction=e||r,this}function c(){return this.data={},this}function u(t){return this.defaultMapCtor=t||a,this.cacheMap=new this.defaultMapCtor,this}function l(){return this.count=0,this.hash=0,this}String.prototype.seed=String.prototype.seed||Math.round(Math.random()*Math.pow(2,32)),String.prototype.hashCode=function(){var t,e,n,r,i,o,s,a,c=this.toString();for(t=3&c.length,e=c.length-t,n=String.prototype.seed,i=3432918353,o=461845907,a=0;a<e;)s=255&c.charCodeAt(a)|(255&c.charCodeAt(++a))<<8|(255&c.charCodeAt(++a))<<16|(255&c.charCodeAt(++a))<<24,++a,n=27492+(65535&(r=5*(65535&(n=(n^=s=(65535&(s=(s=(65535&s)*i+(((s>>>16)*i&65535)<<16)&4294967295)<<15|s>>>17))*o+(((s>>>16)*o&65535)<<16)&4294967295)<<13|n>>>19))+((5*(n>>>16)&65535)<<16)&4294967295))+((58964+(r>>>16)&65535)<<16);switch(s=0,t){case 3:s^=(255&c.charCodeAt(a+2))<<16;case 2:s^=(255&c.charCodeAt(a+1))<<8;case 1:n^=s=(65535&(s=(s=(65535&(s^=255&c.charCodeAt(a)))*i+(((s>>>16)*i&65535)<<16)&4294967295)<<15|s>>>17))*o+(((s>>>16)*o&65535)<<16)&4294967295}return n^=c.length,n=2246822507*(65535&(n^=n>>>16))+((2246822507*(n>>>16)&65535)<<16)&4294967295,n=3266489909*(65535&(n^=n>>>13))+((3266489909*(n>>>16)&65535)<<16)&4294967295,(n^=n>>>16)>>>0},Object.defineProperty(o.prototype,"length",{get:function(){var t=0;for(var e in this.data)0===e.indexOf("hash_")&&(t+=this.data[e].length);return t}}),o.prototype.add=function(t){var e="hash_"+this.hashFunction(t);if(e in this.data){for(var n=this.data[e],r=0;r<n.length;r++)if(this.equalsFunction(t,n[r]))return n[r];return n.push(t),t}return this.data[e]=[t],t},o.prototype.contains=function(t){return null!=this.get(t)},o.prototype.get=function(t){var e="hash_"+this.hashFunction(t);if(e in this.data)for(var n=this.data[e],r=0;r<n.length;r++)if(this.equalsFunction(t,n[r]))return n[r];return null},o.prototype.values=function(){var t=[];for(var e in this.data)0===e.indexOf("hash_")&&(t=t.concat(this.data[e]));return t},o.prototype.toString=function(){return n(this.values())},s.prototype.add=function(t){this.data[t]=!0},s.prototype.or=function(t){var e=this;Object.keys(t.data).map(function(t){e.add(t)})},s.prototype.remove=function(t){delete this.data[t]},s.prototype.contains=function(t){return!0===this.data[t]},s.prototype.values=function(){return Object.keys(this.data)},s.prototype.minValue=function(){return Math.min.apply(null,this.values())},s.prototype.hashCode=function(){var t=new l;return t.update(this.values()),t.finish()},s.prototype.equals=function(t){return t instanceof s&&this.hashCode()===t.hashCode()},Object.defineProperty(s.prototype,"length",{get:function(){return this.values().length}}),s.prototype.toString=function(){return"{"+this.values().join(", ")+"}"},Object.defineProperty(a.prototype,"length",{get:function(){var t=0;for(var e in this.data)0===e.indexOf("hash_")&&(t+=this.data[e].length);return t}}),a.prototype.put=function(t,e){var n="hash_"+this.hashFunction(t);if(n in this.data){for(var r=this.data[n],i=0;i<r.length;i++){var o=r[i];if(this.equalsFunction(t,o.key)){var s=o.value;return o.value=e,s}}return r.push({key:t,value:e}),e}return this.data[n]=[{key:t,value:e}],e},a.prototype.containsKey=function(t){var e="hash_"+this.hashFunction(t);if(e in this.data)for(var n=this.data[e],r=0;r<n.length;r++){var i=n[r];if(this.equalsFunction(t,i.key))return!0}return!1},a.prototype.get=function(t){var e="hash_"+this.hashFunction(t);if(e in this.data)for(var n=this.data[e],r=0;r<n.length;r++){var i=n[r];if(this.equalsFunction(t,i.key))return i.value}return null},a.prototype.entries=function(){var t=[];for(var e in this.data)0===e.indexOf("hash_")&&(t=t.concat(this.data[e]));return t},a.prototype.getKeys=function(){return this.entries().map(function(t){return t.key})},a.prototype.getValues=function(){return this.entries().map(function(t){return t.value})},a.prototype.toString=function(){return"["+this.entries().map(function(t){return"{"+t.key+":"+t.value+"}"}).join(", ")+"]"},c.prototype.get=function(t){return(t="k-"+t)in this.data?this.data[t]:null},c.prototype.put=function(t,e){t="k-"+t,this.data[t]=e},c.prototype.values=function(){var t=this.data;return Object.keys(this.data).map(function(e){return t[e]})},l.prototype.update=function(){for(var t=0;t<arguments.length;t++){var e=arguments[t];if(null!=e)if(Array.isArray(e))this.update.apply(this,e);else{var n=0;switch(typeof e){case"undefined":case"function":continue;case"number":case"boolean":n=e;break;case"string":n=e.hashCode();break;default:e.updateHashCode?e.updateHashCode(this):console.log("No updateHashCode for "+e.toString());continue}n=(n*=3432918353)<<15|n>>>17,n*=461845907,this.count=this.count+1;var r=this.hash^n;r=5*(r=r<<13|r>>>19)+3864292196,this.hash=r}}},l.prototype.finish=function(){var t=this.hash^4*this.count;return t^=t>>>16,t*=2246822507,t^=t>>>13,t*=3266489909,t^=t>>>16},u.prototype.get=function(t,e){var n=this.cacheMap.get(t)||null;return null===n?null:n.get(e)||null},u.prototype.set=function(t,e,n){var r=this.cacheMap.get(t)||null;null===r&&(r=new this.defaultMapCtor,this.cacheMap.put(t,r)),r.put(e,n)},e.Hash=l,e.Set=o,e.Map=a,e.BitSet=s,e.AltDict=c,e.DoubleDict=u,e.hashStuff=function(){var t=new l;return t.update.apply(t,arguments),t.finish()},e.escapeWhitespace=function(t,e){return t=t.replace(/\t/g,"\\t").replace(/\n/g,"\\n").replace(/\r/g,"\\r"),e&&(t=t.replace(/ /g,"·")),t},e.arrayToString=n,e.titleCase=function(t){return t.replace(/\w\S*/g,function(t){return t.charAt(0).toUpperCase()+t.substr(1)})},e.equalArrays=function(t,e){if(!Array.isArray(t)||!Array.isArray(e))return!1;if(t==e)return!0;if(t.length!=e.length)return!1;for(var n=0;n<t.length;n++)if(t[n]!=e[n]&&!t[n].equals(e[n]))return!1;return!0}},function(t,e){function n(){return this.source=null,this.type=null,this.channel=null,this.start=null,this.stop=null,this.tokenIndex=null,this.line=null,this.column=null,this._text=null,this}function r(t,e,i,o,s){return n.call(this),this.source=void 0!==t?t:r.EMPTY_SOURCE,this.type=void 0!==e?e:null,this.channel=void 0!==i?i:n.DEFAULT_CHANNEL,this.start=void 0!==o?o:-1,this.stop=void 0!==s?s:-1,this.tokenIndex=-1,null!==this.source[0]?(this.line=t[0].line,this.column=t[0].column):this.column=-1,this}n.INVALID_TYPE=0,n.EPSILON=-2,n.MIN_USER_TOKEN_TYPE=1,n.EOF=-1,n.DEFAULT_CHANNEL=0,n.HIDDEN_CHANNEL=1,Object.defineProperty(n.prototype,"text",{get:function(){return this._text},set:function(t){this._text=t}}),n.prototype.getTokenSource=function(){return this.source[0]},n.prototype.getInputStream=function(){return this.source[1]},r.prototype=Object.create(n.prototype),r.prototype.constructor=r,r.EMPTY_SOURCE=[null,null],r.prototype.clone=function(){var t=new r(this.source,this.type,this.channel,this.start,this.stop);return t.tokenIndex=this.tokenIndex,t.line=this.line,t.column=this.column,t.text=this.text,t},Object.defineProperty(r.prototype,"text",{get:function(){if(null!==this._text)return this._text;var t=this.getInputStream();if(null===t)return null;var e=t.size;return this.start<e&&this.stop<e?t.getText(this.start,this.stop):"<EOF>"},set:function(t){this._text=t}}),r.prototype.toString=function(){var t=this.text;return t=null!==t?t.replace(/\n/g,"\\n").replace(/\r/g,"\\r").replace(/\t/g,"\\t"):"<no text>","[@"+this.tokenIndex+","+this.start+":"+this.stop+"='"+t+"',<"+this.type+">"+(this.channel>0?",channel="+this.channel:"")+","+this.line+":"+this.column+"]"},e.Token=n,e.CommonToken=r},function(t,e,n){var r=n(1).Token;function i(t,e){return this.start=t,this.stop=e,this}function o(){this.intervals=null,this.readOnly=!1}i.prototype.contains=function(t){return t>=this.start&&t<this.stop},i.prototype.toString=function(){return this.start===this.stop-1?this.start.toString():this.start.toString()+".."+(this.stop-1).toString()},Object.defineProperty(i.prototype,"length",{get:function(){return this.stop-this.start}}),o.prototype.first=function(t){return null===this.intervals||0===this.intervals.length?r.INVALID_TYPE:this.intervals[0].start},o.prototype.addOne=function(t){this.addInterval(new i(t,t+1))},o.prototype.addRange=function(t,e){this.addInterval(new i(t,e+1))},o.prototype.addInterval=function(t){if(null===this.intervals)this.intervals=[],this.intervals.push(t);else{for(var e=0;e<this.intervals.length;e++){var n=this.intervals[e];if(t.stop<n.start)return void this.intervals.splice(e,0,t);if(t.stop===n.start)return void(this.intervals[e].start=t.start);if(t.start<=n.stop)return this.intervals[e]=new i(Math.min(n.start,t.start),Math.max(n.stop,t.stop)),void this.reduce(e)}this.intervals.push(t)}},o.prototype.addSet=function(t){if(null!==t.intervals)for(var e=0;e<t.intervals.length;e++){var n=t.intervals[e];this.addInterval(new i(n.start,n.stop))}return this},o.prototype.reduce=function(t){if(t<this.intervalslength-1){var e=this.intervals[t],n=this.intervals[t+1];e.stop>=n.stop?(this.intervals.pop(t+1),this.reduce(t)):e.stop>=n.start&&(this.intervals[t]=new i(e.start,n.stop),this.intervals.pop(t+1))}},o.prototype.complement=function(t,e){var n=new o;n.addInterval(new i(t,e+1));for(var r=0;r<this.intervals.length;r++)n.removeRange(this.intervals[r]);return n},o.prototype.contains=function(t){if(null===this.intervals)return!1;for(var e=0;e<this.intervals.length;e++)if(this.intervals[e].contains(t))return!0;return!1},Object.defineProperty(o.prototype,"length",{get:function(){var t=0;return this.intervals.map(function(e){t+=e.length}),t}}),o.prototype.removeRange=function(t){if(t.start===t.stop-1)this.removeOne(t.start);else if(null!==this.intervals)for(var e=0,n=0;n<this.intervals.length;n++){var r=this.intervals[e];if(t.stop<=r.start)return;if(t.start>r.start&&t.stop<r.stop){this.intervals[e]=new i(r.start,t.start);var o=new i(t.stop,r.stop);return void this.intervals.splice(e,0,o)}t.start<=r.start&&t.stop>=r.stop?(this.intervals.splice(e,1),e-=1):t.start<r.stop?this.intervals[e]=new i(r.start,t.start):t.stop<r.stop&&(this.intervals[e]=new i(t.stop,r.stop)),e+=1}},o.prototype.removeOne=function(t){if(null!==this.intervals)for(var e=0;e<this.intervals.length;e++){var n=this.intervals[e];if(t<n.start)return;if(t===n.start&&t===n.stop-1)return void this.intervals.splice(e,1);if(t===n.start)return void(this.intervals[e]=new i(n.start+1,n.stop));if(t===n.stop-1)return void(this.intervals[e]=new i(n.start,n.stop-1));if(t<n.stop-1){var r=new i(n.start,t);return n.start=t+1,void this.intervals.splice(e,0,r)}}},o.prototype.toString=function(t,e,n){return t=t||null,e=e||null,n=n||!1,null===this.intervals?"{}":null!==t||null!==e?this.toTokenString(t,e):n?this.toCharString():this.toIndexString()},o.prototype.toCharString=function(){for(var t=[],e=0;e<this.intervals.length;e++){var n=this.intervals[e];n.stop===n.start+1?n.start===r.EOF?t.push("<EOF>"):t.push("'"+String.fromCharCode(n.start)+"'"):t.push("'"+String.fromCharCode(n.start)+"'..'"+String.fromCharCode(n.stop-1)+"'")}return t.length>1?"{"+t.join(", ")+"}":t[0]},o.prototype.toIndexString=function(){for(var t=[],e=0;e<this.intervals.length;e++){var n=this.intervals[e];n.stop===n.start+1?n.start===r.EOF?t.push("<EOF>"):t.push(n.start.toString()):t.push(n.start.toString()+".."+(n.stop-1).toString())}return t.length>1?"{"+t.join(", ")+"}":t[0]},o.prototype.toTokenString=function(t,e){for(var n=[],r=0;r<this.intervals.length;r++)for(var i=this.intervals[r],o=i.start;o<i.stop;o++)n.push(this.elementName(t,e,o));return n.length>1?"{"+n.join(", ")+"}":n[0]},o.prototype.elementName=function(t,e,n){return n===r.EOF?"<EOF>":n===r.EPSILON?"<EPSILON>":t[n]||e[n]},e.Interval=i,e.IntervalSet=o},function(t,e){function n(){return this.atn=null,this.stateNumber=n.INVALID_STATE_NUMBER,this.stateType=null,this.ruleIndex=0,this.epsilonOnlyTransitions=!1,this.transitions=[],this.nextTokenWithinRule=null,this}function r(){return n.call(this),this.stateType=n.BASIC,this}function i(){return n.call(this),this.decision=-1,this.nonGreedy=!1,this}function o(){return i.call(this),this.endState=null,this}function s(){return o.call(this),this.stateType=n.BLOCK_START,this}function a(){return n.call(this),this.stateType=n.BLOCK_END,this.startState=null,this}function c(){return n.call(this),this.stateType=n.RULE_STOP,this}function u(){return n.call(this),this.stateType=n.RULE_START,this.stopState=null,this.isPrecedenceRule=!1,this}function l(){return i.call(this),this.stateType=n.PLUS_LOOP_BACK,this}function p(){return o.call(this),this.stateType=n.PLUS_BLOCK_START,this.loopBackState=null,this}function h(){return o.call(this),this.stateType=n.STAR_BLOCK_START,this}function f(){return n.call(this),this.stateType=n.STAR_LOOP_BACK,this}function d(){return i.call(this),this.stateType=n.STAR_LOOP_ENTRY,this.loopBackState=null,this.isPrecedenceDecision=null,this}function y(){return n.call(this),this.stateType=n.LOOP_END,this.loopBackState=null,this}function _(){return i.call(this),this.stateType=n.TOKEN_START,this}n.INVALID_TYPE=0,n.BASIC=1,n.RULE_START=2,n.BLOCK_START=3,n.PLUS_BLOCK_START=4,n.STAR_BLOCK_START=5,n.TOKEN_START=6,n.RULE_STOP=7,n.BLOCK_END=8,n.STAR_LOOP_BACK=9,n.STAR_LOOP_ENTRY=10,n.PLUS_LOOP_BACK=11,n.LOOP_END=12,n.serializationNames=["INVALID","BASIC","RULE_START","BLOCK_START","PLUS_BLOCK_START","STAR_BLOCK_START","TOKEN_START","RULE_STOP","BLOCK_END","STAR_LOOP_BACK","STAR_LOOP_ENTRY","PLUS_LOOP_BACK","LOOP_END"],n.INVALID_STATE_NUMBER=-1,n.prototype.toString=function(){return this.stateNumber},n.prototype.equals=function(t){return t instanceof n&&this.stateNumber===t.stateNumber},n.prototype.isNonGreedyExitState=function(){return!1},n.prototype.addTransition=function(t,e){void 0===e&&(e=-1),0===this.transitions.length?this.epsilonOnlyTransitions=t.isEpsilon:this.epsilonOnlyTransitions!==t.isEpsilon&&(this.epsilonOnlyTransitions=!1),-1===e?this.transitions.push(t):this.transitions.splice(e,1,t)},r.prototype=Object.create(n.prototype),r.prototype.constructor=r,i.prototype=Object.create(n.prototype),i.prototype.constructor=i,o.prototype=Object.create(i.prototype),o.prototype.constructor=o,s.prototype=Object.create(o.prototype),s.prototype.constructor=s,a.prototype=Object.create(n.prototype),a.prototype.constructor=a,c.prototype=Object.create(n.prototype),c.prototype.constructor=c,u.prototype=Object.create(n.prototype),u.prototype.constructor=u,l.prototype=Object.create(i.prototype),l.prototype.constructor=l,p.prototype=Object.create(o.prototype),p.prototype.constructor=p,h.prototype=Object.create(o.prototype),h.prototype.constructor=h,f.prototype=Object.create(n.prototype),f.prototype.constructor=f,d.prototype=Object.create(i.prototype),d.prototype.constructor=d,y.prototype=Object.create(n.prototype),y.prototype.constructor=y,_.prototype=Object.create(i.prototype),_.prototype.constructor=_,e.ATNState=n,e.BasicState=r,e.DecisionState=i,e.BlockStartState=o,e.BlockEndState=a,e.LoopEndState=y,e.RuleStartState=u,e.RuleStopState=c,e.TokensStartState=_,e.PlusLoopbackState=l,e.StarLoopbackState=f,e.StarLoopEntryState=d,e.PlusBlockStartState=p,e.StarBlockStartState=h,e.BasicBlockStartState=s},function(t,e,n){var r=n(1).Token,i=n(2).Interval,o=new i(-1,-2);n(0);function s(){return this}function a(){return s.call(this),this}function c(){return a.call(this),this}function u(){return c.call(this),this}function l(){return c.call(this),this}function p(){return l.call(this),this}function h(){return this}function f(){return this}function d(t){return l.call(this),this.parentCtx=null,this.symbol=t,this}function y(t){return d.call(this,t),this}function _(){return this}a.prototype=Object.create(s.prototype),a.prototype.constructor=a,c.prototype=Object.create(a.prototype),c.prototype.constructor=c,u.prototype=Object.create(c.prototype),u.prototype.constructor=u,l.prototype=Object.create(c.prototype),l.prototype.constructor=l,p.prototype=Object.create(l.prototype),p.prototype.constructor=p,h.prototype.visit=function(t){return Array.isArray(t)?t.map(function(t){return t.accept(this)},this):t.accept(this)},h.prototype.visitChildren=function(t){return t.children?this.visit(t.children):null},h.prototype.visitTerminal=function(t){},h.prototype.visitErrorNode=function(t){},f.prototype.visitTerminal=function(t){},f.prototype.visitErrorNode=function(t){},f.prototype.enterEveryRule=function(t){},f.prototype.exitEveryRule=function(t){},d.prototype=Object.create(l.prototype),d.prototype.constructor=d,d.prototype.getChild=function(t){return null},d.prototype.getSymbol=function(){return this.symbol},d.prototype.getParent=function(){return this.parentCtx},d.prototype.getPayload=function(){return this.symbol},d.prototype.getSourceInterval=function(){if(null===this.symbol)return o;var t=this.symbol.tokenIndex;return new i(t,t)},d.prototype.getChildCount=function(){return 0},d.prototype.accept=function(t){return t.visitTerminal(this)},d.prototype.getText=function(){return this.symbol.text},d.prototype.toString=function(){return this.symbol.type===r.EOF?"<EOF>":this.symbol.text},y.prototype=Object.create(d.prototype),y.prototype.constructor=y,y.prototype.isErrorNode=function(){return!0},y.prototype.accept=function(t){return t.visitErrorNode(this)},_.prototype.walk=function(t,e){if(e instanceof p||void 0!==e.isErrorNode&&e.isErrorNode())t.visitErrorNode(e);else if(e instanceof l)t.visitTerminal(e);else{this.enterRule(t,e);for(var n=0;n<e.getChildCount();n++){var r=e.getChild(n);this.walk(t,r)}this.exitRule(t,e)}},_.prototype.enterRule=function(t,e){var n=e.getRuleContext();t.enterEveryRule(n),n.enterRule(t)},_.prototype.exitRule=function(t,e){var n=e.getRuleContext();n.exitRule(t),t.exitEveryRule(n)},_.DEFAULT=new _,e.RuleNode=u,e.ErrorNode=p,e.TerminalNode=l,e.ErrorNodeImpl=y,e.TerminalNodeImpl=d,e.ParseTreeListener=f,e.ParseTreeVisitor=h,e.ParseTreeWalker=_,e.INVALID_INTERVAL=o},function(t,e,n){var r=n(8).PredicateTransition;function i(t){if(Error.call(this),Error.captureStackTrace)Error.captureStackTrace(this,i);else(new Error).stack;return this.message=t.message,this.recognizer=t.recognizer,this.input=t.input,this.ctx=t.ctx,this.offendingToken=null,this.offendingState=-1,null!==this.recognizer&&(this.offendingState=this.recognizer.state),this}function o(t,e,n,r){return i.call(this,{message:"",recognizer:t,input:e,ctx:null}),this.startIndex=n,this.deadEndConfigs=r,this}function s(t,e,n,r,o,s){s=s||t._ctx,r=r||t.getCurrentToken(),n=n||t.getCurrentToken(),e=e||t.getInputStream(),i.call(this,{message:"",recognizer:t,input:e,ctx:s}),this.deadEndConfigs=o,this.startToken=n,this.offendingToken=r}function a(t){i.call(this,{message:"",recognizer:t,input:t.getInputStream(),ctx:t._ctx}),this.offendingToken=t.getCurrentToken()}function c(t,e,n){i.call(this,{message:this.formatMessage(e,n||null),recognizer:t,input:t.getInputStream(),ctx:t._ctx});var o=t._interp.atn.states[t.state].transitions[0];return o instanceof r?(this.ruleIndex=o.ruleIndex,this.predicateIndex=o.predIndex):(this.ruleIndex=0,this.predicateIndex=0),this.predicate=e,this.offendingToken=t.getCurrentToken(),this}function u(){return Error.call(this),Error.captureStackTrace(this,u),this}i.prototype=Object.create(Error.prototype),i.prototype.constructor=i,i.prototype.getExpectedTokens=function(){return null!==this.recognizer?this.recognizer.atn.getExpectedTokens(this.offendingState,this.ctx):null},i.prototype.toString=function(){return this.message},o.prototype=Object.create(i.prototype),o.prototype.constructor=o,o.prototype.toString=function(){var t="";return this.startIndex>=0&&this.startIndex<this.input.size&&(t=this.input.getText((this.startIndex,this.startIndex))),"LexerNoViableAltException"+t},s.prototype=Object.create(i.prototype),s.prototype.constructor=s,a.prototype=Object.create(i.prototype),a.prototype.constructor=a,c.prototype=Object.create(i.prototype),c.prototype.constructor=c,c.prototype.formatMessage=function(t,e){return null!==e?e:"failed predicate: {"+t+"}?"},u.prototype=Object.create(Error.prototype),u.prototype.constructor=u,e.RecognitionException=i,e.NoViableAltException=s,e.LexerNoViableAltException=o,e.InputMismatchException=a,e.FailedPredicateException=c,e.ParseCancellationException=u},function(t,e,n){var r=n(14).RuleContext,i=n(0).Hash,o=n(0).Map;function s(t){this.cachedHashCode=t}function a(){return this.cache=new o,this}function c(t,e){var n,r=new i;null!==t?r.update(t,e):r.update(1),n=r.finish(),s.call(this,n),this.parentCtx=t,this.returnState=e}function u(){return c.call(this,null,s.EMPTY_RETURN_STATE),this}function l(t,e){var n=new i;n.update(t,e);var r=n.finish();return s.call(this,r),this.parents=t,this.returnStates=e,this}function p(t,e,n,r){if(t===e)return t;if(t instanceof c&&e instanceof c)return function(t,e,n,r){if(null!==r){var i=r.get(t,e);if(null!==i)return i;if(null!==(i=r.get(e,t)))return i}var o=function(t,e,n){if(n){if(t===s.EMPTY)return s.EMPTY;if(e===s.EMPTY)return s.EMPTY}else{if(t===s.EMPTY&&e===s.EMPTY)return s.EMPTY;if(t===s.EMPTY){var r=[e.returnState,s.EMPTY_RETURN_STATE],i=[e.parentCtx,null];return new l(i,r)}if(e===s.EMPTY){var r=[t.returnState,s.EMPTY_RETURN_STATE],i=[t.parentCtx,null];return new l(i,r)}}return null}(t,e,n);if(null!==o)return null!==r&&r.set(t,e,o),o;if(t.returnState===e.returnState){var a=p(t.parentCtx,e.parentCtx,n,r);if(a===t.parentCtx)return t;if(a===e.parentCtx)return e;var u=c.create(a,t.returnState);return null!==r&&r.set(t,e,u),u}var h=null;if((t===e||null!==t.parentCtx&&t.parentCtx===e.parentCtx)&&(h=t.parentCtx),null!==h){var f=[t.returnState,e.returnState];t.returnState>e.returnState&&(f[0]=e.returnState,f[1]=t.returnState);var d=[h,h],y=new l(d,f);return null!==r&&r.set(t,e,y),y}var f=[t.returnState,e.returnState],d=[t.parentCtx,e.parentCtx];t.returnState>e.returnState&&(f[0]=e.returnState,f[1]=t.returnState,d=[e.parentCtx,t.parentCtx]);var _=new l(d,f);return null!==r&&r.set(t,e,_),_}(t,e,n,r);if(n){if(t instanceof u)return t;if(e instanceof u)return e}return t instanceof c&&(t=new l([t.getParent()],[t.returnState])),e instanceof c&&(e=new l([e.getParent()],[e.returnState])),function(t,e,n,r){if(null!==r){var i=r.get(t,e);if(null!==i)return i;if(null!==(i=r.get(e,t)))return i}var a=0,u=0,h=0,f=[],d=[];for(;a<t.returnStates.length&&u<e.returnStates.length;){var y=t.parents[a],_=e.parents[u];if(t.returnStates[a]===e.returnStates[u]){var x=t.returnStates[a],g=x===s.EMPTY_RETURN_STATE&&null===y&&null===_,T=null!==y&&null!==_&&y===_;if(g||T)d[h]=y,f[h]=x;else{var E=p(y,_,n,r);d[h]=E,f[h]=x}a+=1,u+=1}else t.returnStates[a]<e.returnStates[u]?(d[h]=y,f[h]=t.returnStates[a],a+=1):(d[h]=_,f[h]=e.returnStates[u],u+=1);h+=1}if(a<t.returnStates.length)for(var v=a;v<t.returnStates.length;v++)d[h]=t.parents[v],f[h]=t.returnStates[v],h+=1;else for(var v=u;v<e.returnStates.length;v++)d[h]=e.parents[v],f[h]=e.returnStates[v],h+=1;if(h<d.length){if(1===h){var S=c.create(d[0],f[0]);return null!==r&&r.set(t,e,S),S}d=d.slice(0,h),f=f.slice(0,h)}var L=new l(d,f);if(L===t)return null!==r&&r.set(t,e,t),t;if(L===e)return null!==r&&r.set(t,e,e),e;(function(t){for(var e=new o,n=0;n<t.length;n++){var r=t[n];e.containsKey(r)||e.put(r,r)}for(var i=0;i<t.length;i++)t[i]=e.get(t[i])})(d),null!==r&&r.set(t,e,L);return L}(t,e,n,r)}s.EMPTY=null,s.EMPTY_RETURN_STATE=2147483647,s.globalNodeCount=1,s.id=s.globalNodeCount,s.prototype.isEmpty=function(){return this===s.EMPTY},s.prototype.hasEmptyPath=function(){return this.getReturnState(this.length-1)===s.EMPTY_RETURN_STATE},s.prototype.hashCode=function(){return this.cachedHashCode},s.prototype.updateHashCode=function(t){t.update(this.cachedHashCode)},a.prototype.add=function(t){if(t===s.EMPTY)return s.EMPTY;var e=this.cache.get(t)||null;return null!==e?e:(this.cache.put(t,t),t)},a.prototype.get=function(t){return this.cache.get(t)||null},Object.defineProperty(a.prototype,"length",{get:function(){return this.cache.length}}),c.prototype=Object.create(s.prototype),c.prototype.contructor=c,c.create=function(t,e){return e===s.EMPTY_RETURN_STATE&&null===t?s.EMPTY:new c(t,e)},Object.defineProperty(c.prototype,"length",{get:function(){return 1}}),c.prototype.getParent=function(t){return this.parentCtx},c.prototype.getReturnState=function(t){return this.returnState},c.prototype.equals=function(t){return this===t||t instanceof c&&(this.hashCode()===t.hashCode()&&(this.returnState===t.returnState&&(null==this.parentCtx?null==t.parentCtx:this.parentCtx.equals(t.parentCtx))))},c.prototype.toString=function(){var t=null===this.parentCtx?"":this.parentCtx.toString();return 0===t.length?this.returnState===s.EMPTY_RETURN_STATE?"$":""+this.returnState:this.returnState+" "+t},u.prototype=Object.create(c.prototype),u.prototype.constructor=u,u.prototype.isEmpty=function(){return!0},u.prototype.getParent=function(t){return null},u.prototype.getReturnState=function(t){return this.returnState},u.prototype.equals=function(t){return this===t},u.prototype.toString=function(){return"$"},s.EMPTY=new u,l.prototype=Object.create(s.prototype),l.prototype.constructor=l,l.prototype.isEmpty=function(){return this.returnStates[0]===s.EMPTY_RETURN_STATE},Object.defineProperty(l.prototype,"length",{get:function(){return this.returnStates.length}}),l.prototype.getParent=function(t){return this.parents[t]},l.prototype.getReturnState=function(t){return this.returnStates[t]},l.prototype.equals=function(t){return this===t||t instanceof l&&(this.hashCode()===t.hashCode()&&(this.returnStates===t.returnStates&&this.parents===t.parents))},l.prototype.toString=function(){if(this.isEmpty())return"[]";for(var t="[",e=0;e<this.returnStates.length;e++)e>0&&(t+=", "),this.returnStates[e]!==s.EMPTY_RETURN_STATE?(t+=this.returnStates[e],null!==this.parents[e]?t=t+" "+this.parents[e]:t+="null"):t+="$";return t+"]"},e.merge=p,e.PredictionContext=s,e.PredictionContextCache=a,e.SingletonPredictionContext=c,e.predictionContextFromRuleContext=function t(e,n){if(null==n&&(n=r.EMPTY),null===n.parentCtx||n===r.EMPTY)return s.EMPTY;var i=t(e,n.parentCtx),o=e.states[n.invokingState].transitions[0];return c.create(i,o.followState.stateNumber)},e.getCachedPredictionContext=function t(e,n,r){if(e.isEmpty())return e;var i=r.get(e)||null;if(null!==i)return i;if(null!==(i=n.get(e)))return r.put(e,i),i;for(var o=!1,a=[],u=0;u<a.length;u++){var p=t(e.getParent(u),n,r);if(o||p!==e.getParent(u)){if(!o){a=[];for(var h=0;h<e.length;h++)a[h]=e.getParent(h);o=!0}a[u]=p}}if(!o)return n.add(e),r.put(e,e),e;var f=null;return f=0===a.length?s.EMPTY:1===a.length?c.create(a[0],e.getReturnState(0)):new l(a,e.returnStates),n.add(f),r.put(f,f),r.put(e,f),f}},function(t,e,n){var r=n(34).LL1Analyzer,i=n(2).IntervalSet;function o(t,e){return this.grammarType=t,this.maxTokenType=e,this.states=[],this.decisionToState=[],this.ruleToStartState=[],this.ruleToStopState=null,this.modeNameToStartState={},this.ruleToTokenType=null,this.lexerActions=null,this.modeToStartState=[],this}o.prototype.nextTokensInContext=function(t,e){return new r(this).LOOK(t,null,e)},o.prototype.nextTokensNoContext=function(t){return null!==t.nextTokenWithinRule?t.nextTokenWithinRule:(t.nextTokenWithinRule=this.nextTokensInContext(t,null),t.nextTokenWithinRule.readOnly=!0,t.nextTokenWithinRule)},o.prototype.nextTokens=function(t,e){return void 0===e?this.nextTokensNoContext(t):this.nextTokensInContext(t,e)},o.prototype.addState=function(t){null!==t&&(t.atn=this,t.stateNumber=this.states.length),this.states.push(t)},o.prototype.removeState=function(t){this.states[t.stateNumber]=null},o.prototype.defineDecisionState=function(t){return this.decisionToState.push(t),t.decision=this.decisionToState.length-1,t.decision},o.prototype.getDecisionState=function(t){return 0===this.decisionToState.length?null:this.decisionToState[t]};var s=n(1).Token;o.prototype.getExpectedTokens=function(t,e){if(t<0||t>=this.states.length)throw"Invalid state number.";var n=this.states[t],r=this.nextTokens(n);if(!r.contains(s.EPSILON))return r;var o=new i;for(o.addSet(r),o.removeOne(s.EPSILON);null!==e&&e.invokingState>=0&&r.contains(s.EPSILON);){var a=this.states[e.invokingState].transitions[0];r=this.nextTokens(a.followState),o.addSet(r),o.removeOne(s.EPSILON),e=e.parentCtx}return r.contains(s.EPSILON)&&o.addOne(s.EOF),o},o.INVALID_ALT_NUMBER=0,e.ATN=o},function(t,e,n){var r=n(1).Token,i=(n(2).Interval,n(2).IntervalSet),o=n(10).Predicate,s=n(10).PrecedencePredicate;function a(t){if(null==t)throw"target cannot be null.";return this.target=t,this.isEpsilon=!1,this.label=null,this}function c(t,e){return a.call(this,t),this.label_=e,this.label=this.makeLabel(),this.serializationType=a.ATOM,this}function u(t,e,n,r){return a.call(this,t),this.ruleIndex=e,this.precedence=n,this.followState=r,this.serializationType=a.RULE,this.isEpsilon=!0,this}function l(t,e){return a.call(this,t),this.serializationType=a.EPSILON,this.isEpsilon=!0,this.outermostPrecedenceReturn=e,this}function p(t,e,n){return a.call(this,t),this.serializationType=a.RANGE,this.start=e,this.stop=n,this.label=this.makeLabel(),this}function h(t){return a.call(this,t),this}function f(t,e,n,r){return h.call(this,t),this.serializationType=a.PREDICATE,this.ruleIndex=e,this.predIndex=n,this.isCtxDependent=r,this.isEpsilon=!0,this}function d(t,e,n,r){return a.call(this,t),this.serializationType=a.ACTION,this.ruleIndex=e,this.actionIndex=void 0===n?-1:n,this.isCtxDependent=void 0!==r&&r,this.isEpsilon=!0,this}function y(t,e){return a.call(this,t),this.serializationType=a.SET,null!=e?this.label=e:(this.label=new i,this.label.addOne(r.INVALID_TYPE)),this}function _(t,e){return y.call(this,t,e),this.serializationType=a.NOT_SET,this}function x(t){return a.call(this,t),this.serializationType=a.WILDCARD,this}function g(t,e){return h.call(this,t),this.serializationType=a.PRECEDENCE,this.precedence=e,this.isEpsilon=!0,this}a.EPSILON=1,a.RANGE=2,a.RULE=3,a.PREDICATE=4,a.ATOM=5,a.ACTION=6,a.SET=7,a.NOT_SET=8,a.WILDCARD=9,a.PRECEDENCE=10,a.serializationNames=["INVALID","EPSILON","RANGE","RULE","PREDICATE","ATOM","ACTION","SET","NOT_SET","WILDCARD","PRECEDENCE"],a.serializationTypes={EpsilonTransition:a.EPSILON,RangeTransition:a.RANGE,RuleTransition:a.RULE,PredicateTransition:a.PREDICATE,AtomTransition:a.ATOM,ActionTransition:a.ACTION,SetTransition:a.SET,NotSetTransition:a.NOT_SET,WildcardTransition:a.WILDCARD,PrecedencePredicateTransition:a.PRECEDENCE},c.prototype=Object.create(a.prototype),c.prototype.constructor=c,c.prototype.makeLabel=function(){var t=new i;return t.addOne(this.label_),t},c.prototype.matches=function(t,e,n){return this.label_===t},c.prototype.toString=function(){return this.label_},u.prototype=Object.create(a.prototype),u.prototype.constructor=u,u.prototype.matches=function(t,e,n){return!1},l.prototype=Object.create(a.prototype),l.prototype.constructor=l,l.prototype.matches=function(t,e,n){return!1},l.prototype.toString=function(){return"epsilon"},p.prototype=Object.create(a.prototype),p.prototype.constructor=p,p.prototype.makeLabel=function(){var t=new i;return t.addRange(this.start,this.stop),t},p.prototype.matches=function(t,e,n){return t>=this.start&&t<=this.stop},p.prototype.toString=function(){return"'"+String.fromCharCode(this.start)+"'..'"+String.fromCharCode(this.stop)+"'"},h.prototype=Object.create(a.prototype),h.prototype.constructor=h,f.prototype=Object.create(h.prototype),f.prototype.constructor=f,f.prototype.matches=function(t,e,n){return!1},f.prototype.getPredicate=function(){return new o(this.ruleIndex,this.predIndex,this.isCtxDependent)},f.prototype.toString=function(){return"pred_"+this.ruleIndex+":"+this.predIndex},d.prototype=Object.create(a.prototype),d.prototype.constructor=d,d.prototype.matches=function(t,e,n){return!1},d.prototype.toString=function(){return"action_"+this.ruleIndex+":"+this.actionIndex},y.prototype=Object.create(a.prototype),y.prototype.constructor=y,y.prototype.matches=function(t,e,n){return this.label.contains(t)},y.prototype.toString=function(){return this.label.toString()},_.prototype=Object.create(y.prototype),_.prototype.constructor=_,_.prototype.matches=function(t,e,n){return t>=e&&t<=n&&!y.prototype.matches.call(this,t,e,n)},_.prototype.toString=function(){return"~"+y.prototype.toString.call(this)},x.prototype=Object.create(a.prototype),x.prototype.constructor=x,x.prototype.matches=function(t,e,n){return t>=e&&t<=n},x.prototype.toString=function(){return"."},g.prototype=Object.create(h.prototype),g.prototype.constructor=g,g.prototype.matches=function(t,e,n){return!1},g.prototype.getPredicate=function(){return new s(this.precedence)},g.prototype.toString=function(){return this.precedence+" >= _p"},e.Transition=a,e.AtomTransition=c,e.SetTransition=y,e.NotSetTransition=_,e.RuleTransition=u,e.ActionTransition=d,e.EpsilonTransition=l,e.RangeTransition=p,e.WildcardTransition=x,e.PredicateTransition=f,e.PrecedencePredicateTransition=g,e.AbstractPredicateTransition=h},function(t,e,n){var r=n(7).ATN,i=n(0),o=i.Hash,s=i.Set,a=n(10).SemanticContext,c=n(6).merge;function u(t){return t.hashCodeForConfigSet()}function l(t,e){return t===e||null!==t&&null!==e&&t.equalsForConfigSet(e)}function p(t){return this.configLookup=new s(u,l),this.fullCtx=void 0===t||t,this.readOnly=!1,this.configs=[],this.uniqueAlt=0,this.conflictingAlts=null,this.hasSemanticContext=!1,this.dipsIntoOuterContext=!1,this.cachedHashCode=-1,this}function h(){return p.call(this),this.configLookup=new s,this}p.prototype.add=function(t,e){if(void 0===e&&(e=null),this.readOnly)throw"This set is readonly";t.semanticContext!==a.NONE&&(this.hasSemanticContext=!0),t.reachesIntoOuterContext>0&&(this.dipsIntoOuterContext=!0);var n=this.configLookup.add(t);if(n===t)return this.cachedHashCode=-1,this.configs.push(t),!0;var r=!this.fullCtx,i=c(n.context,t.context,r,e);return n.reachesIntoOuterContext=Math.max(n.reachesIntoOuterContext,t.reachesIntoOuterContext),t.precedenceFilterSuppressed&&(n.precedenceFilterSuppressed=!0),n.context=i,!0},p.prototype.getStates=function(){for(var t=new s,e=0;e<this.configs.length;e++)t.add(this.configs[e].state);return t},p.prototype.getPredicates=function(){for(var t=[],e=0;e<this.configs.length;e++){var n=this.configs[e].semanticContext;n!==a.NONE&&t.push(n.semanticContext)}return t},Object.defineProperty(p.prototype,"items",{get:function(){return this.configs}}),p.prototype.optimizeConfigs=function(t){if(this.readOnly)throw"This set is readonly";if(0!==this.configLookup.length)for(var e=0;e<this.configs.length;e++){var n=this.configs[e];n.context=t.getCachedContext(n.context)}},p.prototype.addAll=function(t){for(var e=0;e<t.length;e++)this.add(t[e]);return!1},p.prototype.equals=function(t){return this===t||t instanceof p&&i.equalArrays(this.configs,t.configs)&&this.fullCtx===t.fullCtx&&this.uniqueAlt===t.uniqueAlt&&this.conflictingAlts===t.conflictingAlts&&this.hasSemanticContext===t.hasSemanticContext&&this.dipsIntoOuterContext===t.dipsIntoOuterContext},p.prototype.hashCode=function(){var t=new o;return t.update(this.configs),t.finish()},p.prototype.updateHashCode=function(t){this.readOnly?(-1===this.cachedHashCode&&(this.cachedHashCode=this.hashCode()),t.update(this.cachedHashCode)):t.update(this.hashCode())},Object.defineProperty(p.prototype,"length",{get:function(){return this.configs.length}}),p.prototype.isEmpty=function(){return 0===this.configs.length},p.prototype.contains=function(t){if(null===this.configLookup)throw"This method is not implemented for readonly sets.";return this.configLookup.contains(t)},p.prototype.containsFast=function(t){if(null===this.configLookup)throw"This method is not implemented for readonly sets.";return this.configLookup.containsFast(t)},p.prototype.clear=function(){if(this.readOnly)throw"This set is readonly";this.configs=[],this.cachedHashCode=-1,this.configLookup=new s},p.prototype.setReadonly=function(t){this.readOnly=t,t&&(this.configLookup=null)},p.prototype.toString=function(){return i.arrayToString(this.configs)+(this.hasSemanticContext?",hasSemanticContext="+this.hasSemanticContext:"")+(this.uniqueAlt!==r.INVALID_ALT_NUMBER?",uniqueAlt="+this.uniqueAlt:"")+(null!==this.conflictingAlts?",conflictingAlts="+this.conflictingAlts:"")+(this.dipsIntoOuterContext?",dipsIntoOuterContext":"")},h.prototype=Object.create(p.prototype),h.prototype.constructor=h,e.ATNConfigSet=p,e.OrderedATNConfigSet=h},function(t,e,n){var r=n(0).Set,i=n(0).Hash;function o(){return this}function s(t,e,n){return o.call(this),this.ruleIndex=void 0===t?-1:t,this.predIndex=void 0===e?-1:e,this.isCtxDependent=void 0!==n&&n,this}function a(t){o.call(this),this.precedence=void 0===t?0:t}function c(t,e){o.call(this);var n=new r;t instanceof c?t.opnds.map(function(t){n.add(t)}):n.add(t),e instanceof c?e.opnds.map(function(t){n.add(t)}):n.add(e);var i=a.filterPrecedencePredicates(n);if(i.length>0){var s=null;i.map(function(t){(null===s||t.precedence<s.precedence)&&(s=t)}),n.add(s)}return this.opnds=n.values(),this}function u(t,e){o.call(this);var n=new r;t instanceof u?t.opnds.map(function(t){n.add(t)}):n.add(t),e instanceof u?e.opnds.map(function(t){n.add(t)}):n.add(e);var i=a.filterPrecedencePredicates(n);if(i.length>0){var s=i.sort(function(t,e){return t.compareTo(e)}),c=s[s.length-1];n.add(c)}return this.opnds=n.values(),this}o.prototype.hashCode=function(){var t=new i;return this.updateHashCode(t),t.finish()},o.prototype.evaluate=function(t,e){},o.prototype.evalPrecedence=function(t,e){return this},o.andContext=function(t,e){if(null===t||t===o.NONE)return e;if(null===e||e===o.NONE)return t;var n=new c(t,e);return 1===n.opnds.length?n.opnds[0]:n},o.orContext=function(t,e){if(null===t)return e;if(null===e)return t;if(t===o.NONE||e===o.NONE)return o.NONE;var n=new u(t,e);return 1===n.opnds.length?n.opnds[0]:n},s.prototype=Object.create(o.prototype),s.prototype.constructor=s,o.NONE=new s,s.prototype.evaluate=function(t,e){var n=this.isCtxDependent?e:null;return t.sempred(n,this.ruleIndex,this.predIndex)},s.prototype.updateHashCode=function(t){t.update(this.ruleIndex,this.predIndex,this.isCtxDependent)},s.prototype.equals=function(t){return this===t||t instanceof s&&(this.ruleIndex===t.ruleIndex&&this.predIndex===t.predIndex&&this.isCtxDependent===t.isCtxDependent)},s.prototype.toString=function(){return"{"+this.ruleIndex+":"+this.predIndex+"}?"},a.prototype=Object.create(o.prototype),a.prototype.constructor=a,a.prototype.evaluate=function(t,e){return t.precpred(e,this.precedence)},a.prototype.evalPrecedence=function(t,e){return t.precpred(e,this.precedence)?o.NONE:null},a.prototype.compareTo=function(t){return this.precedence-t.precedence},a.prototype.updateHashCode=function(t){t.update(31)},a.prototype.equals=function(t){return this===t||t instanceof a&&this.precedence===t.precedence},a.prototype.toString=function(){return"{"+this.precedence+">=prec}?"},a.filterPrecedencePredicates=function(t){var e=[];return t.values().map(function(t){t instanceof a&&e.push(t)}),e},c.prototype=Object.create(o.prototype),c.prototype.constructor=c,c.prototype.equals=function(t){return this===t||t instanceof c&&this.opnds===t.opnds},c.prototype.updateHashCode=function(t){t.update(this.opnds,"AND")},c.prototype.evaluate=function(t,e){for(var n=0;n<this.opnds.length;n++)if(!this.opnds[n].evaluate(t,e))return!1;return!0},c.prototype.evalPrecedence=function(t,e){for(var n=!1,r=[],i=0;i<this.opnds.length;i++){var s=this.opnds[i],a=s.evalPrecedence(t,e);if(n|=a!==s,null===a)return null;a!==o.NONE&&r.push(a)}if(!n)return this;if(0===r.length)return o.NONE;var c=null;return r.map(function(t){c=null===c?t:o.andContext(c,t)}),c},c.prototype.toString=function(){var t="";return this.opnds.map(function(e){t+="&& "+e.toString()}),t.length>3?t.slice(3):t},u.prototype=Object.create(o.prototype),u.prototype.constructor=u,u.prototype.constructor=function(t){return this===t||t instanceof u&&this.opnds===t.opnds},u.prototype.updateHashCode=function(t){t.update(this.opnds,"OR")},u.prototype.evaluate=function(t,e){for(var n=0;n<this.opnds.length;n++)if(this.opnds[n].evaluate(t,e))return!0;return!1},u.prototype.evalPrecedence=function(t,e){for(var n=!1,r=[],i=0;i<this.opnds.length;i++){var s=this.opnds[i],a=s.evalPrecedence(t,e);if(n|=a!==s,a===o.NONE)return o.NONE;null!==a&&r.push(a)}if(!n)return this;if(0===r.length)return null;return r.map(function(t){return t}),null},u.prototype.toString=function(){var t="";return this.opnds.map(function(e){t+="|| "+e.toString()}),t.length>3?t.slice(3):t},e.SemanticContext=o,e.PrecedencePredicate=a,e.Predicate=s},function(t,e,n){var r=n(9).ATNConfigSet,i=n(0),o=i.Hash,s=i.Set;function a(t,e){return this.alt=e,this.pred=t,this}function c(t,e){return null===t&&(t=-1),null===e&&(e=new r),this.stateNumber=t,this.configs=e,this.edges=null,this.isAcceptState=!1,this.prediction=0,this.lexerActionExecutor=null,this.requiresFullContext=!1,this.predicates=null,this}a.prototype.toString=function(){return"("+this.pred+", "+this.alt+")"},c.prototype.getAltSet=function(){var t=new s;if(null!==this.configs)for(var e=0;e<this.configs.length;e++){var n=this.configs[e];t.add(n.alt)}return 0===t.length?null:t},c.prototype.equals=function(t){return this===t||t instanceof c&&this.configs.equals(t.configs)},c.prototype.toString=function(){var t=this.stateNumber+":"+this.configs;return this.isAcceptState&&(t+="=>",null!==this.predicates?t+=this.predicates:t+=this.prediction),t},c.prototype.hashCode=function(){var t=new o;return t.update(this.configs),t.finish()},e.DFAState=c,e.PredPrediction=a},function(t,e,n){e.atn=n(33),e.codepointat=n(28),e.dfa=n(40),e.fromcodepoint=n(29),e.tree=n(42),e.error=n(43),e.Token=n(1).Token,e.CharStreams=n(45).CharStreams,e.CommonToken=n(1).CommonToken,e.InputStream=n(19).InputStream,e.FileStream=n(46).FileStream,e.CommonTokenStream=n(47).CommonTokenStream,e.Lexer=n(15).Lexer,e.Parser=n(49).Parser;var r=n(6);e.PredictionContextCache=r.PredictionContextCache,e.ParserRuleContext=n(18).ParserRuleContext,e.Interval=n(2).Interval,e.Utils=n(0)},function(t,e,n){var r=n(3).DecisionState,i=n(10).SemanticContext,o=n(0).Hash;function s(t,e){if(null===t){var n={state:null,alt:null,context:null,semanticContext:null};return e&&(n.reachesIntoOuterContext=0),n}var r={};return r.state=t.state||null,r.alt=void 0===t.alt?null:t.alt,r.context=t.context||null,r.semanticContext=t.semanticContext||null,e&&(r.reachesIntoOuterContext=t.reachesIntoOuterContext||0,r.precedenceFilterSuppressed=t.precedenceFilterSuppressed||!1),r}function a(t,e){return this.checkContext(t,e),t=s(t),e=s(e,!0),this.state=null!==t.state?t.state:e.state,this.alt=null!==t.alt?t.alt:e.alt,this.context=null!==t.context?t.context:e.context,this.semanticContext=null!==t.semanticContext?t.semanticContext:null!==e.semanticContext?e.semanticContext:i.NONE,this.reachesIntoOuterContext=e.reachesIntoOuterContext,this.precedenceFilterSuppressed=e.precedenceFilterSuppressed,this}function c(t,e){a.call(this,t,e);var n=t.lexerActionExecutor||null;return this.lexerActionExecutor=n||(null!==e?e.lexerActionExecutor:null),this.passedThroughNonGreedyDecision=null!==e&&this.checkNonGreedyDecision(e,this.state),this}a.prototype.checkContext=function(t,e){null!==t.context&&void 0!==t.context||null!==e&&null!==e.context&&void 0!==e.context||(this.context=null)},a.prototype.hashCode=function(){var t=new o;return this.updateHashCode(t),t.finish()},a.prototype.updateHashCode=function(t){t.update(this.state.stateNumber,this.alt,this.context,this.semanticContext)},a.prototype.equals=function(t){return this===t||t instanceof a&&(this.state.stateNumber===t.state.stateNumber&&this.alt===t.alt&&(null===this.context?null===t.context:this.context.equals(t.context))&&this.semanticContext.equals(t.semanticContext)&&this.precedenceFilterSuppressed===t.precedenceFilterSuppressed)},a.prototype.hashCodeForConfigSet=function(){var t=new o;return t.update(this.state.stateNumber,this.alt,this.semanticContext),t.finish()},a.prototype.equalsForConfigSet=function(t){return this===t||t instanceof a&&(this.state.stateNumber===t.state.stateNumber&&this.alt===t.alt&&this.semanticContext.equals(t.semanticContext))},a.prototype.toString=function(){return"("+this.state+","+this.alt+(null!==this.context?",["+this.context.toString()+"]":"")+(this.semanticContext!==i.NONE?","+this.semanticContext.toString():"")+(this.reachesIntoOuterContext>0?",up="+this.reachesIntoOuterContext:"")+")"},c.prototype=Object.create(a.prototype),c.prototype.constructor=c,c.prototype.updateHashCode=function(t){t.update(this.state.stateNumber,this.alt,this.context,this.semanticContext,this.passedThroughNonGreedyDecision,this.lexerActionExecutor)},c.prototype.equals=function(t){return this===t||t instanceof c&&this.passedThroughNonGreedyDecision==t.passedThroughNonGreedyDecision&&(this.lexerActionExecutor?this.lexerActionExecutor.equals(t.lexerActionExecutor):!t.lexerActionExecutor)&&a.prototype.equals.call(this,t)},c.prototype.hashCodeForConfigSet=c.prototype.hashCode,c.prototype.equalsForConfigSet=c.prototype.equals,c.prototype.checkNonGreedyDecision=function(t,e){return t.passedThroughNonGreedyDecision||e instanceof r&&e.nonGreedy},e.ATNConfig=a,e.LexerATNConfig=c},function(t,e,n){var r=n(4).RuleNode,i=n(4).INVALID_INTERVAL,o=n(7).INVALID_ALT_NUMBER;function s(t,e){return r.call(this),this.parentCtx=t||null,this.invokingState=e||-1,this}s.prototype=Object.create(r.prototype),s.prototype.constructor=s,s.prototype.depth=function(){for(var t=0,e=this;null!==e;)e=e.parentCtx,t+=1;return t},s.prototype.isEmpty=function(){return-1===this.invokingState},s.prototype.getSourceInterval=function(){return i},s.prototype.getRuleContext=function(){return this},s.prototype.getPayload=function(){return this},s.prototype.getText=function(){return 0===this.getChildCount()?"":this.children.map(function(t){return t.getText()}).join("")},s.prototype.getAltNumber=function(){return o},s.prototype.setAltNumber=function(t){},s.prototype.getChild=function(t){return null},s.prototype.getChildCount=function(){return 0},s.prototype.accept=function(t){return t.visitChildren(this)},e.RuleContext=s;var a=n(21).Trees;s.prototype.toStringTree=function(t,e){return a.toStringTree(this,t,e)},s.prototype.toString=function(t,e){t=t||null,e=e||null;for(var n=this,r="[";null!==n&&n!==e;){if(null===t)n.isEmpty()||(r+=n.invokingState);else{var i=n.ruleIndex;r+=i>=0&&i<t.length?t[i]:""+i}null===n.parentCtx||null===t&&n.parentCtx.isEmpty()||(r+=" "),n=n.parentCtx}return r+="]"}},function(t,e,n){var r=n(1).Token,i=n(25).Recognizer,o=n(37).CommonTokenFactory,s=n(5).RecognitionException,a=n(5).LexerNoViableAltException;function c(t){return i.call(this),this._input=t,this._factory=o.DEFAULT,this._tokenFactorySourcePair=[this,t],this._interp=null,this._token=null,this._tokenStartCharIndex=-1,this._tokenStartLine=-1,this._tokenStartColumn=-1,this._hitEOF=!1,this._channel=r.DEFAULT_CHANNEL,this._type=r.INVALID_TYPE,this._modeStack=[],this._mode=c.DEFAULT_MODE,this._text=null,this}c.prototype=Object.create(i.prototype),c.prototype.constructor=c,c.DEFAULT_MODE=0,c.MORE=-2,c.SKIP=-3,c.DEFAULT_TOKEN_CHANNEL=r.DEFAULT_CHANNEL,c.HIDDEN=r.HIDDEN_CHANNEL,c.MIN_CHAR_VALUE=0,c.MAX_CHAR_VALUE=1114111,c.prototype.reset=function(){null!==this._input&&this._input.seek(0),this._token=null,this._type=r.INVALID_TYPE,this._channel=r.DEFAULT_CHANNEL,this._tokenStartCharIndex=-1,this._tokenStartColumn=-1,this._tokenStartLine=-1,this._text=null,this._hitEOF=!1,this._mode=c.DEFAULT_MODE,this._modeStack=[],this._interp.reset()},c.prototype.nextToken=function(){if(null===this._input)throw"nextToken requires a non-null input stream.";var t=this._input.mark();try{for(;;){if(this._hitEOF)return this.emitEOF(),this._token;this._token=null,this._channel=r.DEFAULT_CHANNEL,this._tokenStartCharIndex=this._input.index,this._tokenStartColumn=this._interp.column,this._tokenStartLine=this._interp.line,this._text=null;for(var e=!1;;){this._type=r.INVALID_TYPE;var n=c.SKIP;try{n=this._interp.match(this._input,this._mode)}catch(t){if(!(t instanceof s))throw console.log(t.stack),t;this.notifyListeners(t),this.recover(t)}if(this._input.LA(1)===r.EOF&&(this._hitEOF=!0),this._type===r.INVALID_TYPE&&(this._type=n),this._type===c.SKIP){e=!0;break}if(this._type!==c.MORE)break}if(!e)return null===this._token&&this.emit(),this._token}}finally{this._input.release(t)}},c.prototype.skip=function(){this._type=c.SKIP},c.prototype.more=function(){this._type=c.MORE},c.prototype.mode=function(t){this._mode=t},c.prototype.pushMode=function(t){this._interp.debug&&console.log("pushMode "+t),this._modeStack.push(this._mode),this.mode(t)},c.prototype.popMode=function(){if(0===this._modeStack.length)throw"Empty Stack";return this._interp.debug&&console.log("popMode back to "+this._modeStack.slice(0,-1)),this.mode(this._modeStack.pop()),this._mode},Object.defineProperty(c.prototype,"inputStream",{get:function(){return this._input},set:function(t){this._input=null,this._tokenFactorySourcePair=[this,this._input],this.reset(),this._input=t,this._tokenFactorySourcePair=[this,this._input]}}),Object.defineProperty(c.prototype,"sourceName",{get:function(){return this._input.sourceName}}),c.prototype.emitToken=function(t){this._token=t},c.prototype.emit=function(){var t=this._factory.create(this._tokenFactorySourcePair,this._type,this._text,this._channel,this._tokenStartCharIndex,this.getCharIndex()-1,this._tokenStartLine,this._tokenStartColumn);return this.emitToken(t),t},c.prototype.emitEOF=function(){var t=this.column,e=this.line,n=this._factory.create(this._tokenFactorySourcePair,r.EOF,null,r.DEFAULT_CHANNEL,this._input.index,this._input.index-1,e,t);return this.emitToken(n),n},Object.defineProperty(c.prototype,"type",{get:function(){return this.type},set:function(t){this._type=t}}),Object.defineProperty(c.prototype,"line",{get:function(){return this._interp.line},set:function(t){this._interp.line=t}}),Object.defineProperty(c.prototype,"column",{get:function(){return this._interp.column},set:function(t){this._interp.column=t}}),c.prototype.getCharIndex=function(){return this._input.index},Object.defineProperty(c.prototype,"text",{get:function(){return null!==this._text?this._text:this._interp.getText(this._input)},set:function(t){this._text=t}}),c.prototype.getAllTokens=function(){for(var t=[],e=this.nextToken();e.type!==r.EOF;)t.push(e),e=this.nextToken();return t},c.prototype.notifyListeners=function(t){var e=this._tokenStartCharIndex,n=this._input.index,r=this._input.getText(e,n),i="token recognition error at: '"+this.getErrorDisplay(r)+"'";this.getErrorListenerDispatch().syntaxError(this,null,this._tokenStartLine,this._tokenStartColumn,i,t)},c.prototype.getErrorDisplay=function(t){for(var e=[],n=0;n<t.length;n++)e.push(t[n]);return e.join("")},c.prototype.getErrorDisplayForChar=function(t){return t.charCodeAt(0)===r.EOF?"<EOF>":"\n"===t?"\\n":"\t"===t?"\\t":"\r"===t?"\\r":t},c.prototype.getCharErrorDisplay=function(t){return"'"+this.getErrorDisplayForChar(t)+"'"},c.prototype.recover=function(t){this._input.LA(1)!==r.EOF&&(t instanceof a?this._interp.consume(this._input):this._input.consume())},e.Lexer=c},function(t,e){function n(){return this}function r(){return n.call(this),this}function i(t){if(n.call(this),null===t)throw"delegates";return this.delegates=t,this}n.prototype.syntaxError=function(t,e,n,r,i,o){},n.prototype.reportAmbiguity=function(t,e,n,r,i,o,s){},n.prototype.reportAttemptingFullContext=function(t,e,n,r,i,o){},n.prototype.reportContextSensitivity=function(t,e,n,r,i,o){},r.prototype=Object.create(n.prototype),r.prototype.constructor=r,r.INSTANCE=new r,r.prototype.syntaxError=function(t,e,n,r,i,o){console.error("line "+n+":"+r+" "+i)},i.prototype=Object.create(n.prototype),i.prototype.constructor=i,i.prototype.syntaxError=function(t,e,n,r,i,o){this.delegates.map(function(s){s.syntaxError(t,e,n,r,i,o)})},i.prototype.reportAmbiguity=function(t,e,n,r,i,o,s){this.delegates.map(function(a){a.reportAmbiguity(t,e,n,r,i,o,s)})},i.prototype.reportAttemptingFullContext=function(t,e,n,r,i,o){this.delegates.map(function(s){s.reportAttemptingFullContext(t,e,n,r,i,o)})},i.prototype.reportContextSensitivity=function(t,e,n,r,i,o){this.delegates.map(function(s){s.reportContextSensitivity(t,e,n,r,i,o)})},e.ErrorListener=n,e.ConsoleErrorListener=r,e.ProxyErrorListener=i},function(t,e){function n(t,e,n){return this.dfa=t,this.literalNames=e||[],this.symbolicNames=n||[],this}function r(t){return n.call(this,t,null),this}n.prototype.toString=function(){if(null===this.dfa.s0)return null;for(var t="",e=this.dfa.sortedStates(),n=0;n<e.length;n++){var r=e[n];if(null!==r.edges)for(var i=r.edges.length,o=0;o<i;o++){var s=r.edges[o]||null;null!==s&&2147483647!==s.stateNumber&&(t=(t=(t=(t=(t=(t=t.concat(this.getStateString(r))).concat("-")).concat(this.getEdgeLabel(o))).concat("->")).concat(this.getStateString(s))).concat("\n"))}}return 0===t.length?null:t},n.prototype.getEdgeLabel=function(t){return 0===t?"EOF":null!==this.literalNames||null!==this.symbolicNames?this.literalNames[t-1]||this.symbolicNames[t-1]:String.fromCharCode(t-1)},n.prototype.getStateString=function(t){var e=(t.isAcceptState?":":"")+"s"+t.stateNumber+(t.requiresFullContext?"^":"");return t.isAcceptState?null!==t.predicates?e+"=>"+t.predicates.toString():e+"=>"+t.prediction.toString():e},r.prototype=Object.create(n.prototype),r.prototype.constructor=r,r.prototype.getEdgeLabel=function(t){return"'"+String.fromCharCode(t)+"'"},e.DFASerializer=n,e.LexerDFASerializer=r},function(t,e,n){var r=n(14).RuleContext,i=n(4),o=i.INVALID_INTERVAL,s=i.TerminalNode,a=i.TerminalNodeImpl,c=i.ErrorNodeImpl,u=n(2).Interval;function l(t,e){t=t||null,e=e||null,r.call(this,t,e),this.ruleIndex=-1,this.children=null,this.start=null,this.stop=null,this.exception=null}function p(t,e,n){return l.call(t,e),this.ruleIndex=n,this}l.prototype=Object.create(r.prototype),l.prototype.constructor=l,l.prototype.copyFrom=function(t){this.parentCtx=t.parentCtx,this.invokingState=t.invokingState,this.children=null,this.start=t.start,this.stop=t.stop,t.children&&(this.children=[],t.children.map(function(t){t instanceof c&&(this.children.push(t),t.parentCtx=this)},this))},l.prototype.enterRule=function(t){},l.prototype.exitRule=function(t){},l.prototype.addChild=function(t){return null===this.children&&(this.children=[]),this.children.push(t),t},l.prototype.removeLastChild=function(){null!==this.children&&this.children.pop()},l.prototype.addTokenNode=function(t){var e=new a(t);return this.addChild(e),e.parentCtx=this,e},l.prototype.addErrorNode=function(t){var e=new c(t);return this.addChild(e),e.parentCtx=this,e},l.prototype.getChild=function(t,e){if(e=e||null,null===this.children||t<0||t>=this.children.length)return null;if(null===e)return this.children[t];for(var n=0;n<this.children.length;n++){var r=this.children[n];if(r instanceof e){if(0===t)return r;t-=1}}return null},l.prototype.getToken=function(t,e){if(null===this.children||e<0||e>=this.children.length)return null;for(var n=0;n<this.children.length;n++){var r=this.children[n];if(r instanceof s&&r.symbol.type===t){if(0===e)return r;e-=1}}return null},l.prototype.getTokens=function(t){if(null===this.children)return[];for(var e=[],n=0;n<this.children.length;n++){var r=this.children[n];r instanceof s&&r.symbol.type===t&&e.push(r)}return e},l.prototype.getTypedRuleContext=function(t,e){return this.getChild(e,t)},l.prototype.getTypedRuleContexts=function(t){if(null===this.children)return[];for(var e=[],n=0;n<this.children.length;n++){var r=this.children[n];r instanceof t&&e.push(r)}return e},l.prototype.getChildCount=function(){return null===this.children?0:this.children.length},l.prototype.getSourceInterval=function(){return null===this.start||null===this.stop?o:new u(this.start.tokenIndex,this.stop.tokenIndex)},r.EMPTY=new l,p.prototype=Object.create(l.prototype),p.prototype.constructor=p,e.ParserRuleContext=l},function(t,e,n){var r=n(1).Token;function i(t,e){return this.name="<empty>",this.strdata=t,this.decodeToUnicodeCodePoints=e||!1,function(t){if(t._index=0,t.data=[],t.decodeToUnicodeCodePoints)for(var e=0;e<t.strdata.length;){var n=t.strdata.codePointAt(e);t.data.push(n),e+=n<=65535?1:2}else for(e=0;e<t.strdata.length;e++){var r=t.strdata.charCodeAt(e);t.data.push(r)}t._size=t.data.length}(this),this}n(28),n(29),Object.defineProperty(i.prototype,"index",{get:function(){return this._index}}),Object.defineProperty(i.prototype,"size",{get:function(){return this._size}}),i.prototype.reset=function(){this._index=0},i.prototype.consume=function(){if(this._index>=this._size)throw"cannot consume EOF";this._index+=1},i.prototype.LA=function(t){if(0===t)return 0;t<0&&(t+=1);var e=this._index+t-1;return e<0||e>=this._size?r.EOF:this.data[e]},i.prototype.LT=function(t){return this.LA(t)},i.prototype.mark=function(){return-1},i.prototype.release=function(t){},i.prototype.seek=function(t){t<=this._index?this._index=t:this._index=Math.min(t,this._size)},i.prototype.getText=function(t,e){if(e>=this._size&&(e=this._size-1),t>=this._size)return"";if(this.decodeToUnicodeCodePoints){for(var n="",r=t;r<=e;r++)n+=String.fromCodePoint(this.data[r]);return n}return this.strdata.slice(t,e+1)},i.prototype.toString=function(){return this.strdata},e.InputStream=i},function(t,e,n){var r=n(12);function i(){return r.tree.ParseTreeListener.call(this),this}i.prototype=Object.create(r.tree.ParseTreeListener.prototype),i.prototype.constructor=i,i.prototype.enterN3Doc=function(t){},i.prototype.exitN3Doc=function(t){},i.prototype.enterN3Statement=function(t){},i.prototype.exitN3Statement=function(t){},i.prototype.enterN3Directive=function(t){},i.prototype.exitN3Directive=function(t){},i.prototype.enterSparqlDirective=function(t){},i.prototype.exitSparqlDirective=function(t){},i.prototype.enterSparqlBase=function(t){},i.prototype.exitSparqlBase=function(t){},i.prototype.enterSparqlPrefix=function(t){},i.prototype.exitSparqlPrefix=function(t){},i.prototype.enterPrefixID=function(t){},i.prototype.exitPrefixID=function(t){},i.prototype.enterBase=function(t){},i.prototype.exitBase=function(t){},i.prototype.enterTriples=function(t){},i.prototype.exitTriples=function(t){},i.prototype.enterPredicateObjectList=function(t){},i.prototype.exitPredicateObjectList=function(t){},i.prototype.enterObjectList=function(t){},i.prototype.exitObjectList=function(t){},i.prototype.enterVerb=function(t){},i.prototype.exitVerb=function(t){},i.prototype.enterSubject=function(t){},i.prototype.exitSubject=function(t){},i.prototype.enterPredicate=function(t){},i.prototype.exitPredicate=function(t){},i.prototype.enterObject=function(t){},i.prototype.exitObject=function(t){},i.prototype.enterExpression=function(t){},i.prototype.exitExpression=function(t){},i.prototype.enterPath=function(t){},i.prototype.exitPath=function(t){},i.prototype.enterPathItem=function(t){},i.prototype.exitPathItem=function(t){},i.prototype.enterLiteral=function(t){},i.prototype.exitLiteral=function(t){},i.prototype.enterBlankNodePropertyList=function(t){},i.prototype.exitBlankNodePropertyList=function(t){},i.prototype.enterCollection=function(t){},i.prototype.exitCollection=function(t){},i.prototype.enterFormula=function(t){},i.prototype.exitFormula=function(t){},i.prototype.enterFormulaContent=function(t){},i.prototype.exitFormulaContent=function(t){},i.prototype.enterNumericLiteral=function(t){},i.prototype.exitNumericLiteral=function(t){},i.prototype.enterRdfLiteral=function(t){},i.prototype.exitRdfLiteral=function(t){},i.prototype.enterIri=function(t){},i.prototype.exitIri=function(t){},i.prototype.enterIriList=function(t){},i.prototype.exitIriList=function(t){},i.prototype.enterPrefixedName=function(t){},i.prototype.exitPrefixedName=function(t){},i.prototype.enterBlankNode=function(t){},i.prototype.exitBlankNode=function(t){},i.prototype.enterQuickVar=function(t){},i.prototype.exitQuickVar=function(t){},i.prototype.enterExistential=function(t){},i.prototype.exitExistential=function(t){},i.prototype.enterUniversal=function(t){},i.prototype.exitUniversal=function(t){},e.n3Listener=i},function(t,e,n){var r=n(0),i=n(1).Token,o=(n(4).RuleNode,n(4).ErrorNode),s=n(4).TerminalNode,a=n(18).ParserRuleContext,c=n(14).RuleContext,u=n(7).INVALID_ALT_NUMBER;function l(){}l.toStringTree=function(t,e,n){e=e||null,null!==(n=n||null)&&(e=n.ruleNames);var i=l.getNodeText(t,e);i=r.escapeWhitespace(i,!1);var o=t.getChildCount();if(0===o)return i;var s="("+i+" ";o>0&&(i=l.toStringTree(t.getChild(0),e),s=s.concat(i));for(var a=1;a<o;a++)i=l.toStringTree(t.getChild(a),e),s=s.concat(" "+i);return s=s.concat(")")},l.getNodeText=function(t,e,n){if(e=e||null,null!==(n=n||null)&&(e=n.ruleNames),null!==e){if(t instanceof c){var r=t.getAltNumber();return r!=u?e[t.ruleIndex]+":"+r:e[t.ruleIndex]}if(t instanceof o)return t.toString();if(t instanceof s&&null!==t.symbol)return t.symbol.text}var a=t.getPayload();return a instanceof i?a.text:t.getPayload().toString()},l.getChildren=function(t){for(var e=[],n=0;n<t.getChildCount();n++)e.push(t.getChild(n));return e},l.getAncestors=function(t){var e=[];for(t=t.getParent();null!==t;)e=[t].concat(e),t=t.getParent();return e},l.findAllTokenNodes=function(t,e){return l.findAllNodes(t,e,!0)},l.findAllRuleNodes=function(t,e){return l.findAllNodes(t,e,!1)},l.findAllNodes=function(t,e,n){var r=[];return l._findAllNodes(t,e,n,r),r},l._findAllNodes=function(t,e,n,r){n&&t instanceof s?t.symbol.type===e&&r.push(t):!n&&t instanceof a&&t.ruleIndex===e&&r.push(t);for(var i=0;i<t.getChildCount();i++)l._findAllNodes(t.getChild(i),e,n,r)},l.descendants=function(t){for(var e=[t],n=0;n<t.getChildCount();n++)e=e.concat(l.descendants(t.getChild(n)));return e},e.Trees=l},function(t,e,n){var r=n(1).Token,i=n(7).ATN,o=n(35).ATNType,s=n(3),a=s.ATNState,c=s.BasicState,u=s.DecisionState,l=s.BlockStartState,p=s.BlockEndState,h=s.LoopEndState,f=s.RuleStartState,d=s.RuleStopState,y=s.TokensStartState,_=s.PlusLoopbackState,x=s.StarLoopbackState,g=s.StarLoopEntryState,T=s.PlusBlockStartState,E=s.StarBlockStartState,v=s.BasicBlockStartState,S=n(8),L=S.Transition,A=S.AtomTransition,C=S.SetTransition,N=S.NotSetTransition,R=S.RuleTransition,m=S.RangeTransition,I=S.ActionTransition,O=S.EpsilonTransition,P=S.WildcardTransition,b=S.PredicateTransition,k=S.PrecedencePredicateTransition,D=n(2).IntervalSet,w=(n(2).Interval,n(23).ATNDeserializationOptions),F=n(24),M=F.LexerActionType,U=F.LexerSkipAction,B=F.LexerChannelAction,j=F.LexerCustomAction,H=F.LexerMoreAction,V=F.LexerTypeAction,q=F.LexerPushModeAction,G=F.LexerPopModeAction,z=F.LexerModeAction,K="59627784-3BE5-417A-B9EB-8131A7286089",Y=["AADB8D7E-AEEF-4415-AD2B-8204D6CF042E",K];function Q(t,e){var n=[];return n[t-1]=e,n.map(function(t){return e})}function X(t){return null==t&&(t=w.defaultOptions),this.deserializationOptions=t,this.stateFactories=null,this.actionFactories=null,this}X.prototype.isFeatureSupported=function(t,e){var n=Y.indexOf(t);return!(n<0)&&Y.indexOf(e)>=n},X.prototype.deserialize=function(t){this.reset(t),this.checkVersion(),this.checkUUID();var e=this.readATN();this.readStates(e),this.readRules(e),this.readModes(e);var n=[];return this.readSets(e,n,this.readInt.bind(this)),this.isFeatureSupported(K,this.uuid)&&this.readSets(e,n,this.readInt32.bind(this)),this.readEdges(e,n),this.readDecisions(e),this.readLexerActions(e),this.markPrecedenceDecisions(e),this.verifyATN(e),this.deserializationOptions.generateRuleBypassTransitions&&e.grammarType===o.PARSER&&(this.generateRuleBypassTransitions(e),this.verifyATN(e)),e},X.prototype.reset=function(t){var e=t.split("").map(function(t){var e=t.charCodeAt(0);return e>1?e-2:e+65534});e[0]=t.charCodeAt(0),this.data=e,this.pos=0},X.prototype.checkVersion=function(){var t=this.readInt();if(3!==t)throw"Could not deserialize ATN with version "+t+" (expected 3)."},X.prototype.checkUUID=function(){var t=this.readUUID();if(Y.indexOf(t)<0)throw"59627784-3BE5-417A-B9EB-8131A7286089";this.uuid=t},X.prototype.readATN=function(){var t=this.readInt(),e=this.readInt();return new i(t,e)},X.prototype.readStates=function(t){for(var e,n,r,i=[],o=[],s=this.readInt(),c=0;c<s;c++){var u=this.readInt();if(u!==a.INVALID_TYPE){var p=this.readInt();65535===p&&(p=-1);var h=this.stateFactory(u,p);if(u===a.LOOP_END){var f=this.readInt();i.push([h,f])}else if(h instanceof l){var d=this.readInt();o.push([h,d])}t.addState(h)}else t.addState(null)}for(e=0;e<i.length;e++)(n=i[e])[0].loopBackState=t.states[n[1]];for(e=0;e<o.length;e++)(n=o[e])[0].endState=t.states[n[1]];var y=this.readInt();for(e=0;e<y;e++)r=this.readInt(),t.states[r].nonGreedy=!0;var _=this.readInt();for(e=0;e<_;e++)r=this.readInt(),t.states[r].isPrecedenceRule=!0},X.prototype.readRules=function(t){var e,n=this.readInt();for(t.grammarType===o.LEXER&&(t.ruleToTokenType=Q(n,0)),t.ruleToStartState=Q(n,0),e=0;e<n;e++){var i=this.readInt(),s=t.states[i];if(t.ruleToStartState[e]=s,t.grammarType===o.LEXER){var a=this.readInt();65535===a&&(a=r.EOF),t.ruleToTokenType[e]=a}}for(t.ruleToStopState=Q(n,0),e=0;e<t.states.length;e++){var c=t.states[e];c instanceof d&&(t.ruleToStopState[c.ruleIndex]=c,t.ruleToStartState[c.ruleIndex].stopState=c)}},X.prototype.readModes=function(t){for(var e=this.readInt(),n=0;n<e;n++){var r=this.readInt();t.modeToStartState.push(t.states[r])}},X.prototype.readSets=function(t,e,n){for(var r=this.readInt(),i=0;i<r;i++){var o=new D;e.push(o);var s=this.readInt();0!==this.readInt()&&o.addOne(-1);for(var a=0;a<s;a++){var c=n(),u=n();o.addRange(c,u)}}},X.prototype.readEdges=function(t,e){var n,r,i,o,s,a=this.readInt();for(n=0;n<a;n++){var c=this.readInt(),u=this.readInt(),p=this.readInt(),h=this.readInt(),f=this.readInt(),d=this.readInt();o=this.edgeFactory(t,p,c,u,h,f,d,e),t.states[c].addTransition(o)}for(n=0;n<t.states.length;n++)for(i=t.states[n],r=0;r<i.transitions.length;r++){var y=i.transitions[r];if(y instanceof R){var E=-1;t.ruleToStartState[y.target.ruleIndex].isPrecedenceRule&&0===y.precedence&&(E=y.target.ruleIndex),o=new O(y.followState,E),t.ruleToStopState[y.target.ruleIndex].addTransition(o)}}for(n=0;n<t.states.length;n++){if((i=t.states[n])instanceof l){if(null===i.endState)throw"IllegalState";if(null!==i.endState.startState)throw"IllegalState";i.endState.startState=i}if(i instanceof _)for(r=0;r<i.transitions.length;r++)(s=i.transitions[r].target)instanceof T&&(s.loopBackState=i);else if(i instanceof x)for(r=0;r<i.transitions.length;r++)(s=i.transitions[r].target)instanceof g&&(s.loopBackState=i)}},X.prototype.readDecisions=function(t){for(var e=this.readInt(),n=0;n<e;n++){var r=this.readInt(),i=t.states[r];t.decisionToState.push(i),i.decision=n}},X.prototype.readLexerActions=function(t){if(t.grammarType===o.LEXER){var e=this.readInt();t.lexerActions=Q(e,null);for(var n=0;n<e;n++){var r=this.readInt(),i=this.readInt();65535===i&&(i=-1);var s=this.readInt();65535===s&&(s=-1);var a=this.lexerActionFactory(r,i,s);t.lexerActions[n]=a}}},X.prototype.generateRuleBypassTransitions=function(t){var e,n=t.ruleToStartState.length;for(e=0;e<n;e++)t.ruleToTokenType[e]=t.maxTokenType+e+1;for(e=0;e<n;e++)this.generateRuleBypassTransition(t,e)},X.prototype.generateRuleBypassTransition=function(t,e){var n,r,i=new v;i.ruleIndex=e,t.addState(i);var o=new p;o.ruleIndex=e,t.addState(o),i.endState=o,t.defineDecisionState(i),o.startState=i;var s=null,a=null;if(t.ruleToStartState[e].isPrecedenceRule){for(a=null,n=0;n<t.states.length;n++)if(r=t.states[n],this.stateIsEndStateFor(r,e)){a=r,s=r.loopBackState.transitions[0];break}if(null===s)throw"Couldn't identify final state of the precedence rule prefix section."}else a=t.ruleToStopState[e];for(n=0;n<t.states.length;n++){r=t.states[n];for(var u=0;u<r.transitions.length;u++){var l=r.transitions[u];l!==s&&(l.target===a&&(l.target=o))}}for(var h=t.ruleToStartState[e],f=h.transitions.length;f>0;)i.addTransition(h.transitions[f-1]),h.transitions=h.transitions.slice(-1);t.ruleToStartState[e].addTransition(new O(i)),o.addTransition(new O(a));var d=new c;t.addState(d),d.addTransition(new A(o,t.ruleToTokenType[e])),i.addTransition(new O(d))},X.prototype.stateIsEndStateFor=function(t,e){if(t.ruleIndex!==e)return null;if(!(t instanceof g))return null;var n=t.transitions[t.transitions.length-1].target;return n instanceof h&&n.epsilonOnlyTransitions&&n.transitions[0].target instanceof d?t:null},X.prototype.markPrecedenceDecisions=function(t){for(var e=0;e<t.states.length;e++){var n=t.states[e];if(n instanceof g&&t.ruleToStartState[n.ruleIndex].isPrecedenceRule){var r=n.transitions[n.transitions.length-1].target;r instanceof h&&r.epsilonOnlyTransitions&&r.transitions[0].target instanceof d&&(n.isPrecedenceDecision=!0)}}},X.prototype.verifyATN=function(t){if(this.deserializationOptions.verifyATN)for(var e=0;e<t.states.length;e++){var n=t.states[e];if(null!==n)if(this.checkCondition(n.epsilonOnlyTransitions||n.transitions.length<=1),n instanceof T)this.checkCondition(null!==n.loopBackState);else if(n instanceof g)if(this.checkCondition(null!==n.loopBackState),this.checkCondition(2===n.transitions.length),n.transitions[0].target instanceof E)this.checkCondition(n.transitions[1].target instanceof h),this.checkCondition(!n.nonGreedy);else{if(!(n.transitions[0].target instanceof h))throw"IllegalState";this.checkCondition(n.transitions[1].target instanceof E),this.checkCondition(n.nonGreedy)}else n instanceof x?(this.checkCondition(1===n.transitions.length),this.checkCondition(n.transitions[0].target instanceof g)):n instanceof h?this.checkCondition(null!==n.loopBackState):n instanceof f?this.checkCondition(null!==n.stopState):n instanceof l?this.checkCondition(null!==n.endState):n instanceof p?this.checkCondition(null!==n.startState):n instanceof u?this.checkCondition(n.transitions.length<=1||n.decision>=0):this.checkCondition(n.transitions.length<=1||n instanceof d)}},X.prototype.checkCondition=function(t,e){if(!t)throw null==e&&(e="IllegalState"),e},X.prototype.readInt=function(){return this.data[this.pos++]},X.prototype.readInt32=function(){return this.readInt()|this.readInt()<<16},X.prototype.readLong=function(){return 4294967295&this.readInt32()|this.readInt32()<<32};var $=function(){for(var t=[],e=0;e<256;e++)t[e]=(e+256).toString(16).substr(1).toUpperCase();return t}();X.prototype.readUUID=function(){for(var t=[],e=7;e>=0;e--){var n=this.readInt();t[2*e+1]=255&n,t[2*e]=n>>8&255}return $[t[0]]+$[t[1]]+$[t[2]]+$[t[3]]+"-"+$[t[4]]+$[t[5]]+"-"+$[t[6]]+$[t[7]]+"-"+$[t[8]]+$[t[9]]+"-"+$[t[10]]+$[t[11]]+$[t[12]]+$[t[13]]+$[t[14]]+$[t[15]]},X.prototype.edgeFactory=function(t,e,n,i,o,s,a,c){var u=t.states[i];switch(e){case L.EPSILON:return new O(u);case L.RANGE:return new m(u,0!==a?r.EOF:o,s);case L.RULE:return new R(t.states[o],s,a,u);case L.PREDICATE:return new b(u,o,s,0!==a);case L.PRECEDENCE:return new k(u,o);case L.ATOM:return new A(u,0!==a?r.EOF:o);case L.ACTION:return new I(u,o,s,0!==a);case L.SET:return new C(u,c[o]);case L.NOT_SET:return new N(u,c[o]);case L.WILDCARD:return new P(u);default:throw"The specified transition type: "+e+" is not valid."}},X.prototype.stateFactory=function(t,e){if(null===this.stateFactories){var n=[];n[a.INVALID_TYPE]=null,n[a.BASIC]=function(){return new c},n[a.RULE_START]=function(){return new f},n[a.BLOCK_START]=function(){return new v},n[a.PLUS_BLOCK_START]=function(){return new T},n[a.STAR_BLOCK_START]=function(){return new E},n[a.TOKEN_START]=function(){return new y},n[a.RULE_STOP]=function(){return new d},n[a.BLOCK_END]=function(){return new p},n[a.STAR_LOOP_BACK]=function(){return new x},n[a.STAR_LOOP_ENTRY]=function(){return new g},n[a.PLUS_LOOP_BACK]=function(){return new _},n[a.LOOP_END]=function(){return new h},this.stateFactories=n}if(t>this.stateFactories.length||null===this.stateFactories[t])throw"The specified state type "+t+" is not valid.";var r=this.stateFactories[t]();if(null!==r)return r.ruleIndex=e,r},X.prototype.lexerActionFactory=function(t,e,n){if(null===this.actionFactories){var r=[];r[M.CHANNEL]=function(t,e){return new B(t)},r[M.CUSTOM]=function(t,e){return new j(t,e)},r[M.MODE]=function(t,e){return new z(t)},r[M.MORE]=function(t,e){return H.INSTANCE},r[M.POP_MODE]=function(t,e){return G.INSTANCE},r[M.PUSH_MODE]=function(t,e){return new q(t)},r[M.SKIP]=function(t,e){return U.INSTANCE},r[M.TYPE]=function(t,e){return new V(t)},this.actionFactories=r}if(t>this.actionFactories.length||null===this.actionFactories[t])throw"The specified lexer action type "+t+" is not valid.";return this.actionFactories[t](e,n)},e.ATNDeserializer=X},function(t,e){function n(t){return void 0===t&&(t=null),this.readOnly=!1,this.verifyATN=null===t||t.verifyATN,this.generateRuleBypassTransitions=null!==t&&t.generateRuleBypassTransitions,this}n.defaultOptions=new n,n.defaultOptions.readOnly=!0,e.ATNDeserializationOptions=n},function(t,e){function n(){}function r(t){return this.actionType=t,this.isPositionDependent=!1,this}function i(){return r.call(this,n.SKIP),this}function o(t){return r.call(this,n.TYPE),this.type=t,this}function s(t){return r.call(this,n.PUSH_MODE),this.mode=t,this}function a(){return r.call(this,n.POP_MODE),this}function c(){return r.call(this,n.MORE),this}function u(t){return r.call(this,n.MODE),this.mode=t,this}function l(t,e){return r.call(this,n.CUSTOM),this.ruleIndex=t,this.actionIndex=e,this.isPositionDependent=!0,this}function p(t){return r.call(this,n.CHANNEL),this.channel=t,this}function h(t,e){return r.call(this,e.actionType),this.offset=t,this.action=e,this.isPositionDependent=!0,this}n.CHANNEL=0,n.CUSTOM=1,n.MODE=2,n.MORE=3,n.POP_MODE=4,n.PUSH_MODE=5,n.SKIP=6,n.TYPE=7,r.prototype.hashCode=function(){var t=new Hash;return this.updateHashCode(t),t.finish()},r.prototype.updateHashCode=function(t){t.update(this.actionType)},r.prototype.equals=function(t){return this===t},i.prototype=Object.create(r.prototype),i.prototype.constructor=i,i.INSTANCE=new i,i.prototype.execute=function(t){t.skip()},i.prototype.toString=function(){return"skip"},o.prototype=Object.create(r.prototype),o.prototype.constructor=o,o.prototype.execute=function(t){t.type=this.type},o.prototype.updateHashCode=function(t){t.update(this.actionType,this.type)},o.prototype.equals=function(t){return this===t||t instanceof o&&this.type===t.type},o.prototype.toString=function(){return"type("+this.type+")"},s.prototype=Object.create(r.prototype),s.prototype.constructor=s,s.prototype.execute=function(t){t.pushMode(this.mode)},s.prototype.updateHashCode=function(t){t.update(this.actionType,this.mode)},s.prototype.equals=function(t){return this===t||t instanceof s&&this.mode===t.mode},s.prototype.toString=function(){return"pushMode("+this.mode+")"},a.prototype=Object.create(r.prototype),a.prototype.constructor=a,a.INSTANCE=new a,a.prototype.execute=function(t){t.popMode()},a.prototype.toString=function(){return"popMode"},c.prototype=Object.create(r.prototype),c.prototype.constructor=c,c.INSTANCE=new c,c.prototype.execute=function(t){t.more()},c.prototype.toString=function(){return"more"},u.prototype=Object.create(r.prototype),u.prototype.constructor=u,u.prototype.execute=function(t){t.mode(this.mode)},u.prototype.updateHashCode=function(t){t.update(this.actionType,this.mode)},u.prototype.equals=function(t){return this===t||t instanceof u&&this.mode===t.mode},u.prototype.toString=function(){return"mode("+this.mode+")"},l.prototype=Object.create(r.prototype),l.prototype.constructor=l,l.prototype.execute=function(t){t.action(null,this.ruleIndex,this.actionIndex)},l.prototype.updateHashCode=function(t){t.update(this.actionType,this.ruleIndex,this.actionIndex)},l.prototype.equals=function(t){return this===t||t instanceof l&&(this.ruleIndex===t.ruleIndex&&this.actionIndex===t.actionIndex)},p.prototype=Object.create(r.prototype),p.prototype.constructor=p,p.prototype.execute=function(t){t._channel=this.channel},p.prototype.updateHashCode=function(t){t.update(this.actionType,this.channel)},p.prototype.equals=function(t){return this===t||t instanceof p&&this.channel===t.channel},p.prototype.toString=function(){return"channel("+this.channel+")"},h.prototype=Object.create(r.prototype),h.prototype.constructor=h,h.prototype.execute=function(t){this.action.execute(t)},h.prototype.updateHashCode=function(t){t.update(this.actionType,this.offset,this.action)},h.prototype.equals=function(t){return this===t||t instanceof h&&(this.offset===t.offset&&this.action===t.action)},e.LexerActionType=n,e.LexerSkipAction=i,e.LexerChannelAction=p,e.LexerCustomAction=l,e.LexerIndexedCustomAction=h,e.LexerMoreAction=c,e.LexerTypeAction=o,e.LexerPushModeAction=s,e.LexerPopModeAction=a,e.LexerModeAction=u},function(t,e,n){var r=n(1).Token,i=n(16).ConsoleErrorListener,o=n(16).ProxyErrorListener;function s(){return this._listeners=[i.INSTANCE],this._interp=null,this._stateNumber=-1,this}s.tokenTypeMapCache={},s.ruleIndexMapCache={},s.prototype.checkVersion=function(t){"4.8"!==t&&console.log("ANTLR runtime and generated code versions disagree: 4.8!="+t)},s.prototype.addErrorListener=function(t){this._listeners.push(t)},s.prototype.removeErrorListeners=function(){this._listeners=[]},s.prototype.getTokenTypeMap=function(){var t=this.getTokenNames();if(null===t)throw"The current recognizer does not provide a list of token names.";var e=this.tokenTypeMapCache[t];return void 0===e&&((e=t.reduce(function(t,e,n){t[e]=n})).EOF=r.EOF,this.tokenTypeMapCache[t]=e),e},s.prototype.getRuleIndexMap=function(){var t=this.ruleNames;if(null===t)throw"The current recognizer does not provide a list of rule names.";var e=this.ruleIndexMapCache[t];return void 0===e&&(e=t.reduce(function(t,e,n){t[e]=n}),this.ruleIndexMapCache[t]=e),e},s.prototype.getTokenType=function(t){var e=this.getTokenTypeMap()[t];return void 0!==e?e:r.INVALID_TYPE},s.prototype.getErrorHeader=function(t){return"line "+t.getOffendingToken().line+":"+t.getOffendingToken().column},s.prototype.getTokenErrorDisplay=function(t){if(null===t)return"<no token>";var e=t.text;return null===e&&(e=t.type===r.EOF?"<EOF>":"<"+t.type+">"),"'"+(e=e.replace("\n","\\n").replace("\r","\\r").replace("\t","\\t"))+"'"},s.prototype.getErrorListenerDispatch=function(){return new o(this._listeners)},s.prototype.sempred=function(t,e,n){return!0},s.prototype.precpred=function(t,e){return!0},Object.defineProperty(s.prototype,"state",{get:function(){return this._stateNumber},set:function(t){this._stateNumber=t}}),e.Recognizer=s},function(t,e,n){var r=n(11).DFAState,i=n(9).ATNConfigSet,o=n(6).getCachedPredictionContext,s=n(0).Map;function a(t,e){return this.atn=t,this.sharedContextCache=e,this}a.ERROR=new r(2147483647,new i),a.prototype.getCachedContext=function(t){if(null===this.sharedContextCache)return t;var e=new s;return o(t,this.sharedContextCache,e)},e.ATNSimulator=a},function(t,e,n){n(0).Set;var r=n(0).Map,i=n(0).BitSet,o=n(0).AltDict,s=n(7).ATN,a=n(3).RuleStopState,c=n(9).ATNConfigSet,u=n(13).ATNConfig,l=n(10).SemanticContext,p=(n(0).Hash,n(0).hashStuff);n(0).equalArrays;function h(){return this}h.SLL=0,h.LL=1,h.LL_EXACT_AMBIG_DETECTION=2,h.hasSLLConflictTerminatingPrediction=function(t,e){if(h.allConfigsInRuleStopStates(e))return!0;if(t===h.SLL&&e.hasSemanticContext){for(var n=new c,r=0;r<e.items.length;r++){var i=e.items[r];i=new u({semanticContext:l.NONE},i),n.add(i)}e=n}var o=h.getConflictingAltSubsets(e);return h.hasConflictingAltSet(o)&&!h.hasStateAssociatedWithOneAlt(e)},h.hasConfigInRuleStopState=function(t){for(var e=0;e<t.items.length;e++){if(t.items[e].state instanceof a)return!0}return!1},h.allConfigsInRuleStopStates=function(t){for(var e=0;e<t.items.length;e++){if(!(t.items[e].state instanceof a))return!1}return!0},h.resolvesToJustOneViableAlt=function(t){return h.getSingleViableAlt(t)},h.allSubsetsConflict=function(t){return!h.hasNonConflictingAltSet(t)},h.hasNonConflictingAltSet=function(t){for(var e=0;e<t.length;e++){if(1===t[e].length)return!0}return!1},h.hasConflictingAltSet=function(t){for(var e=0;e<t.length;e++){if(t[e].length>1)return!0}return!1},h.allSubsetsEqual=function(t){for(var e=null,n=0;n<t.length;n++){var r=t[n];if(null===e)e=r;else if(r!==e)return!1}return!0},h.getUniqueAlt=function(t){var e=h.getAlts(t);return 1===e.length?e.minValue():s.INVALID_ALT_NUMBER},h.getAlts=function(t){var e=new i;return t.map(function(t){e.or(t)}),e},h.getConflictingAltSubsets=function(t){var e=new r;return e.hashFunction=function(t){p(t.state.stateNumber,t.context)},e.equalsFunction=function(t,e){return t.state.stateNumber==e.state.stateNumber&&t.context.equals(e.context)},t.items.map(function(t){var n=e.get(t);null===n&&(n=new i,e.put(t,n)),n.add(t.alt)}),e.getValues()},h.getStateToAltMap=function(t){var e=new o;return t.items.map(function(t){var n=e.get(t.state);null===n&&(n=new i,e.put(t.state,n)),n.add(t.alt)}),e},h.hasStateAssociatedWithOneAlt=function(t){for(var e=h.getStateToAltMap(t).values(),n=0;n<e.length;n++)if(1===e[n].length)return!0;return!1},h.getSingleViableAlt=function(t){for(var e=null,n=0;n<t.length;n++){var r=t[n].minValue();if(null===e)e=r;else if(e!==r)return s.INVALID_ALT_NUMBER}return e},e.PredictionMode=h},function(t,e){
+var n3 =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 34);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+function arrayToString(a) {
+    return "[" + a.join(", ") + "]";
+}
+
+String.prototype.seed = String.prototype.seed || Math.round(Math.random() * Math.pow(2, 32));
+
+String.prototype.hashCode = function () {
+    var remainder, bytes, h1, h1b, c1, c1b, c2, c2b, k1, i,
+        key = this.toString();
+
+    remainder = key.length & 3; // key.length % 4
+    bytes = key.length - remainder;
+    h1 = String.prototype.seed;
+    c1 = 0xcc9e2d51;
+    c2 = 0x1b873593;
+    i = 0;
+
+    while (i < bytes) {
+        k1 =
+            ((key.charCodeAt(i) & 0xff)) |
+            ((key.charCodeAt(++i) & 0xff) << 8) |
+            ((key.charCodeAt(++i) & 0xff) << 16) |
+            ((key.charCodeAt(++i) & 0xff) << 24);
+        ++i;
+
+        k1 = ((((k1 & 0xffff) * c1) + ((((k1 >>> 16) * c1) & 0xffff) << 16))) & 0xffffffff;
+        k1 = (k1 << 15) | (k1 >>> 17);
+        k1 = ((((k1 & 0xffff) * c2) + ((((k1 >>> 16) * c2) & 0xffff) << 16))) & 0xffffffff;
+
+        h1 ^= k1;
+        h1 = (h1 << 13) | (h1 >>> 19);
+        h1b = ((((h1 & 0xffff) * 5) + ((((h1 >>> 16) * 5) & 0xffff) << 16))) & 0xffffffff;
+        h1 = (((h1b & 0xffff) + 0x6b64) + ((((h1b >>> 16) + 0xe654) & 0xffff) << 16));
+    }
+
+    k1 = 0;
+
+    switch (remainder) {
+        case 3:
+            k1 ^= (key.charCodeAt(i + 2) & 0xff) << 16;
+        case 2:
+            k1 ^= (key.charCodeAt(i + 1) & 0xff) << 8;
+        case 1:
+            k1 ^= (key.charCodeAt(i) & 0xff);
+
+            k1 = (((k1 & 0xffff) * c1) + ((((k1 >>> 16) * c1) & 0xffff) << 16)) & 0xffffffff;
+            k1 = (k1 << 15) | (k1 >>> 17);
+            k1 = (((k1 & 0xffff) * c2) + ((((k1 >>> 16) * c2) & 0xffff) << 16)) & 0xffffffff;
+            h1 ^= k1;
+    }
+
+    h1 ^= key.length;
+
+    h1 ^= h1 >>> 16;
+    h1 = (((h1 & 0xffff) * 0x85ebca6b) + ((((h1 >>> 16) * 0x85ebca6b) & 0xffff) << 16)) & 0xffffffff;
+    h1 ^= h1 >>> 13;
+    h1 = ((((h1 & 0xffff) * 0xc2b2ae35) + ((((h1 >>> 16) * 0xc2b2ae35) & 0xffff) << 16))) & 0xffffffff;
+    h1 ^= h1 >>> 16;
+
+    return h1 >>> 0;
+};
+
+function standardEqualsFunction(a, b) {
+    return a.equals(b);
+}
+
+function standardHashCodeFunction(a) {
+    return a.hashCode();
+}
+
+function Set(hashFunction, equalsFunction) {
+    this.data = {};
+    this.hashFunction = hashFunction || standardHashCodeFunction;
+    this.equalsFunction = equalsFunction || standardEqualsFunction;
+    return this;
+}
+
+Object.defineProperty(Set.prototype, "length", {
+    get: function () {
+        var l = 0;
+        for (var key in this.data) {
+            if (key.indexOf("hash_") === 0) {
+                l = l + this.data[key].length;
+            }
+        }
+        return l;
+    }
+});
+
+Set.prototype.add = function (value) {
+    var hash = this.hashFunction(value);
+    var key = "hash_" + hash;
+    if (key in this.data) {
+        var values = this.data[key];
+        for (var i = 0; i < values.length; i++) {
+            if (this.equalsFunction(value, values[i])) {
+                return values[i];
+            }
+        }
+        values.push(value);
+        return value;
+    } else {
+        this.data[key] = [value];
+        return value;
+    }
+};
+
+Set.prototype.contains = function (value) {
+    return this.get(value) != null;
+};
+
+Set.prototype.get = function (value) {
+    var hash = this.hashFunction(value);
+    var key = "hash_" + hash;
+    if (key in this.data) {
+        var values = this.data[key];
+        for (var i = 0; i < values.length; i++) {
+            if (this.equalsFunction(value, values[i])) {
+                return values[i];
+            }
+        }
+    }
+    return null;
+};
+
+Set.prototype.values = function () {
+    var l = [];
+    for (var key in this.data) {
+        if (key.indexOf("hash_") === 0) {
+            l = l.concat(this.data[key]);
+        }
+    }
+    return l;
+};
+
+Set.prototype.toString = function () {
+    return arrayToString(this.values());
+};
+
+function BitSet() {
+    this.data = [];
+    return this;
+}
+
+BitSet.prototype.add = function (value) {
+    this.data[value] = true;
+};
+
+BitSet.prototype.or = function (set) {
+    var bits = this;
+    Object.keys(set.data).map(function (alt) {
+        bits.add(alt);
+    });
+};
+
+BitSet.prototype.remove = function (value) {
+    delete this.data[value];
+};
+
+BitSet.prototype.contains = function (value) {
+    return this.data[value] === true;
+};
+
+BitSet.prototype.values = function () {
+    return Object.keys(this.data);
+};
+
+BitSet.prototype.minValue = function () {
+    return Math.min.apply(null, this.values());
+};
+
+BitSet.prototype.hashCode = function () {
+    var hash = new Hash();
+    hash.update(this.values());
+    return hash.finish();
+};
+
+BitSet.prototype.equals = function (other) {
+    if (!(other instanceof BitSet)) {
+        return false;
+    }
+    return this.hashCode() === other.hashCode();
+};
+
+Object.defineProperty(BitSet.prototype, "length", {
+    get: function () {
+        return this.values().length;
+    }
+});
+
+BitSet.prototype.toString = function () {
+    return "{" + this.values().join(", ") + "}";
+};
+
+function Map(hashFunction, equalsFunction) {
+    this.data = {};
+    this.hashFunction = hashFunction || standardHashCodeFunction;
+    this.equalsFunction = equalsFunction || standardEqualsFunction;
+    return this;
+}
+
+Object.defineProperty(Map.prototype, "length", {
+    get: function () {
+        var l = 0;
+        for (var hashKey in this.data) {
+            if (hashKey.indexOf("hash_") === 0) {
+                l = l + this.data[hashKey].length;
+            }
+        }
+        return l;
+    }
+});
+
+Map.prototype.put = function (key, value) {
+    var hashKey = "hash_" + this.hashFunction(key);
+    if (hashKey in this.data) {
+        var entries = this.data[hashKey];
+        for (var i = 0; i < entries.length; i++) {
+            var entry = entries[i];
+            if (this.equalsFunction(key, entry.key)) {
+                var oldValue = entry.value;
+                entry.value = value;
+                return oldValue;
+            }
+        }
+        entries.push({key:key, value:value});
+        return value;
+    } else {
+        this.data[hashKey] = [{key:key, value:value}];
+        return value;
+    }
+};
+
+Map.prototype.containsKey = function (key) {
+    var hashKey = "hash_" + this.hashFunction(key);
+    if(hashKey in this.data) {
+        var entries = this.data[hashKey];
+        for (var i = 0; i < entries.length; i++) {
+            var entry = entries[i];
+            if (this.equalsFunction(key, entry.key))
+                return true;
+        }
+    }
+    return false;
+};
+
+Map.prototype.get = function (key) {
+    var hashKey = "hash_" + this.hashFunction(key);
+    if(hashKey in this.data) {
+        var entries = this.data[hashKey];
+        for (var i = 0; i < entries.length; i++) {
+            var entry = entries[i];
+            if (this.equalsFunction(key, entry.key))
+                return entry.value;
+        }
+    }
+    return null;
+};
+
+Map.prototype.entries = function () {
+    var l = [];
+    for (var key in this.data) {
+        if (key.indexOf("hash_") === 0) {
+            l = l.concat(this.data[key]);
+        }
+    }
+    return l;
+};
+
+
+Map.prototype.getKeys = function () {
+    return this.entries().map(function(e) {
+        return e.key;
+    });
+};
+
+
+Map.prototype.getValues = function () {
+    return this.entries().map(function(e) {
+            return e.value;
+    });
+};
+
+
+Map.prototype.toString = function () {
+    var ss = this.entries().map(function(entry) {
+        return '{' + entry.key + ':' + entry.value + '}';
+    });
+    return '[' + ss.join(", ") + ']';
+};
+
+
+function AltDict() {
+    this.data = {};
+    return this;
+}
+
+
+AltDict.prototype.get = function (key) {
+    key = "k-" + key;
+    if (key in this.data) {
+        return this.data[key];
+    } else {
+        return null;
+    }
+};
+
+AltDict.prototype.put = function (key, value) {
+    key = "k-" + key;
+    this.data[key] = value;
+};
+
+AltDict.prototype.values = function () {
+    var data = this.data;
+    var keys = Object.keys(this.data);
+    return keys.map(function (key) {
+        return data[key];
+    });
+};
+
+function DoubleDict(defaultMapCtor) {
+    this.defaultMapCtor = defaultMapCtor || Map;
+    this.cacheMap = new this.defaultMapCtor();
+    return this;
+}
+
+function Hash() {
+    this.count = 0;
+    this.hash = 0;
+    return this;
+}
+
+Hash.prototype.update = function () {
+    for(var i=0;i<arguments.length;i++) {
+        var value = arguments[i];
+        if (value == null)
+            continue;
+        if(Array.isArray(value))
+            this.update.apply(this, value);
+        else {
+            var k = 0;
+            switch (typeof(value)) {
+                case 'undefined':
+                case 'function':
+                    continue;
+                case 'number':
+                case 'boolean':
+                    k = value;
+                    break;
+                case 'string':
+                    k = value.hashCode();
+                    break;
+                default:
+                    if(value.updateHashCode)
+                        value.updateHashCode(this);
+                    else
+                        console.log("No updateHashCode for " + value.toString())
+                    continue;
+            }
+            k = k * 0xCC9E2D51;
+            k = (k << 15) | (k >>> (32 - 15));
+            k = k * 0x1B873593;
+            this.count = this.count + 1;
+            var hash = this.hash ^ k;
+            hash = (hash << 13) | (hash >>> (32 - 13));
+            hash = hash * 5 + 0xE6546B64;
+            this.hash = hash;
+        }
+    }
+};
+
+Hash.prototype.finish = function () {
+    var hash = this.hash ^ (this.count * 4);
+    hash = hash ^ (hash >>> 16);
+    hash = hash * 0x85EBCA6B;
+    hash = hash ^ (hash >>> 13);
+    hash = hash * 0xC2B2AE35;
+    hash = hash ^ (hash >>> 16);
+    return hash;
+};
+
+function hashStuff() {
+    var hash = new Hash();
+    hash.update.apply(hash, arguments);
+    return hash.finish();
+}
+
+DoubleDict.prototype.get = function (a, b) {
+    var d = this.cacheMap.get(a) || null;
+    return d === null ? null : (d.get(b) || null);
+};
+
+DoubleDict.prototype.set = function (a, b, o) {
+    var d = this.cacheMap.get(a) || null;
+    if (d === null) {
+        d = new this.defaultMapCtor();
+        this.cacheMap.put(a, d);
+    }
+    d.put(b, o);
+};
+
+
+function escapeWhitespace(s, escapeSpaces) {
+    s = s.replace(/\t/g, "\\t")
+         .replace(/\n/g, "\\n")
+         .replace(/\r/g, "\\r");
+    if (escapeSpaces) {
+        s = s.replace(/ /g, "\u00B7");
+    }
+    return s;
+}
+
+function titleCase(str) {
+    return str.replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1);
+    });
+};
+
+function equalArrays(a, b)
+{
+    if (!Array.isArray(a) || !Array.isArray(b))
+        return false;
+    if (a == b)
+        return true;
+    if (a.length != b.length)
+        return false;
+    for (var i = 0; i < a.length; i++) {
+        if (a[i] == b[i])
+            continue;
+        if (!a[i].equals(b[i]))
+            return false;
+    }
+    return true;
+};
+
+exports.Hash = Hash;
+exports.Set = Set;
+exports.Map = Map;
+exports.BitSet = BitSet;
+exports.AltDict = AltDict;
+exports.DoubleDict = DoubleDict;
+exports.hashStuff = hashStuff;
+exports.escapeWhitespace = escapeWhitespace;
+exports.arrayToString = arrayToString;
+exports.titleCase = titleCase;
+exports.equalArrays = equalArrays;
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+//
+
+// A token has properties: text, type, line, character position in the line
+// (so we can ignore tabs), token channel, index, and source from which
+// we obtained this token.
+
+function Token() {
+	this.source = null;
+	this.type = null; // token type of the token
+	this.channel = null; // The parser ignores everything not on DEFAULT_CHANNEL
+	this.start = null; // optional; return -1 if not implemented.
+	this.stop = null; // optional; return -1 if not implemented.
+	this.tokenIndex = null; // from 0..n-1 of the token object in the input stream
+	this.line = null; // line=1..n of the 1st character
+	this.column = null; // beginning of the line at which it occurs, 0..n-1
+	this._text = null; // text of the token.
+	return this;
+}
+
+Token.INVALID_TYPE = 0;
+
+// During lookahead operations, this "token" signifies we hit rule end ATN state
+// and did not follow it despite needing to.
+Token.EPSILON = -2;
+
+Token.MIN_USER_TOKEN_TYPE = 1;
+
+Token.EOF = -1;
+
+// All tokens go to the parser (unless skip() is called in that rule)
+// on a particular "channel". The parser tunes to a particular channel
+// so that whitespace etc... can go to the parser on a "hidden" channel.
+
+Token.DEFAULT_CHANNEL = 0;
+
+// Anything on different channel than DEFAULT_CHANNEL is not parsed
+// by parser.
+
+Token.HIDDEN_CHANNEL = 1;
+
+// Explicitly set the text for this token. If {code text} is not
+// {@code null}, then {@link //getText} will return this value rather than
+// extracting the text from the input.
+//
+// @param text The explicit text of the token, or {@code null} if the text
+// should be obtained from the input along with the start and stop indexes
+// of the token.
+
+Object.defineProperty(Token.prototype, "text", {
+	get : function() {
+		return this._text;
+	},
+	set : function(text) {
+		this._text = text;
+	}
+});
+
+Token.prototype.getTokenSource = function() {
+	return this.source[0];
+};
+
+Token.prototype.getInputStream = function() {
+	return this.source[1];
+};
+
+function CommonToken(source, type, channel, start, stop) {
+	Token.call(this);
+	this.source = source !== undefined ? source : CommonToken.EMPTY_SOURCE;
+	this.type = type !== undefined ? type : null;
+	this.channel = channel !== undefined ? channel : Token.DEFAULT_CHANNEL;
+	this.start = start !== undefined ? start : -1;
+	this.stop = stop !== undefined ? stop : -1;
+	this.tokenIndex = -1;
+	if (this.source[0] !== null) {
+		this.line = source[0].line;
+		this.column = source[0].column;
+	} else {
+		this.column = -1;
+	}
+	return this;
+}
+
+CommonToken.prototype = Object.create(Token.prototype);
+CommonToken.prototype.constructor = CommonToken;
+
+// An empty {@link Pair} which is used as the default value of
+// {@link //source} for tokens that do not have a source.
+CommonToken.EMPTY_SOURCE = [ null, null ];
+
+// Constructs a new {@link CommonToken} as a copy of another {@link Token}.
+//
+// <p>
+// If {@code oldToken} is also a {@link CommonToken} instance, the newly
+// constructed token will share a reference to the {@link //text} field and
+// the {@link Pair} stored in {@link //source}. Otherwise, {@link //text} will
+// be assigned the result of calling {@link //getText}, and {@link //source}
+// will be constructed from the result of {@link Token//getTokenSource} and
+// {@link Token//getInputStream}.</p>
+//
+// @param oldToken The token to copy.
+//
+CommonToken.prototype.clone = function() {
+	var t = new CommonToken(this.source, this.type, this.channel, this.start,
+			this.stop);
+	t.tokenIndex = this.tokenIndex;
+	t.line = this.line;
+	t.column = this.column;
+	t.text = this.text;
+	return t;
+};
+
+Object.defineProperty(CommonToken.prototype, "text", {
+	get : function() {
+		if (this._text !== null) {
+			return this._text;
+		}
+		var input = this.getInputStream();
+		if (input === null) {
+			return null;
+		}
+		var n = input.size;
+		if (this.start < n && this.stop < n) {
+			return input.getText(this.start, this.stop);
+		} else {
+			return "<EOF>";
+		}
+	},
+	set : function(text) {
+		this._text = text;
+	}
+});
+
+CommonToken.prototype.toString = function() {
+	var txt = this.text;
+	if (txt !== null) {
+		txt = txt.replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/\t/g, "\\t");
+	} else {
+		txt = "<no text>";
+	}
+	return "[@" + this.tokenIndex + "," + this.start + ":" + this.stop + "='" +
+			txt + "',<" + this.type + ">" +
+			(this.channel > 0 ? ",channel=" + this.channel : "") + "," +
+			this.line + ":" + this.column + "]";
+};
+
+exports.Token = Token;
+exports.CommonToken = CommonToken;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+/*jslint smarttabs:true */
+
+var Token = __webpack_require__(1).Token;
+
+/* stop is not included! */
+function Interval(start, stop) {
+	this.start = start;
+	this.stop = stop;
+	return this;
+}
+
+Interval.prototype.contains = function(item) {
+	return item >= this.start && item < this.stop;
+};
+
+Interval.prototype.toString = function() {
+	if(this.start===this.stop-1) {
+		return this.start.toString();
+	} else {
+		return this.start.toString() + ".." + (this.stop-1).toString();
+	}
+};
+
+
+Object.defineProperty(Interval.prototype, "length", {
+	get : function() {
+		return this.stop - this.start;
+	}
+});
+
+function IntervalSet() {
+	this.intervals = null;
+	this.readOnly = false;
+}
+
+IntervalSet.prototype.first = function(v) {
+	if (this.intervals === null || this.intervals.length===0) {
+		return Token.INVALID_TYPE;
+	} else {
+		return this.intervals[0].start;
+	}
+};
+
+IntervalSet.prototype.addOne = function(v) {
+	this.addInterval(new Interval(v, v + 1));
+};
+
+IntervalSet.prototype.addRange = function(l, h) {
+	this.addInterval(new Interval(l, h + 1));
+};
+
+IntervalSet.prototype.addInterval = function(v) {
+	if (this.intervals === null) {
+		this.intervals = [];
+		this.intervals.push(v);
+	} else {
+		// find insert pos
+		for (var k = 0; k < this.intervals.length; k++) {
+			var i = this.intervals[k];
+			// distinct range -> insert
+			if (v.stop < i.start) {
+				this.intervals.splice(k, 0, v);
+				return;
+			}
+			// contiguous range -> adjust
+			else if (v.stop === i.start) {
+				this.intervals[k].start = v.start;
+				return;
+			}
+			// overlapping range -> adjust and reduce
+			else if (v.start <= i.stop) {
+				this.intervals[k] = new Interval(Math.min(i.start, v.start), Math.max(i.stop, v.stop));
+				this.reduce(k);
+				return;
+			}
+		}
+		// greater than any existing
+		this.intervals.push(v);
+	}
+};
+
+IntervalSet.prototype.addSet = function(other) {
+	if (other.intervals !== null) {
+		for (var k = 0; k < other.intervals.length; k++) {
+			var i = other.intervals[k];
+			this.addInterval(new Interval(i.start, i.stop));
+		}
+	}
+	return this;
+};
+
+IntervalSet.prototype.reduce = function(k) {
+	// only need to reduce if k is not the last
+	if (k < this.intervalslength - 1) {
+		var l = this.intervals[k];
+		var r = this.intervals[k + 1];
+		// if r contained in l
+		if (l.stop >= r.stop) {
+			this.intervals.pop(k + 1);
+			this.reduce(k);
+		} else if (l.stop >= r.start) {
+			this.intervals[k] = new Interval(l.start, r.stop);
+			this.intervals.pop(k + 1);
+		}
+	}
+};
+
+IntervalSet.prototype.complement = function(start, stop) {
+    var result = new IntervalSet();
+    result.addInterval(new Interval(start,stop+1));
+    for(var i=0; i<this.intervals.length; i++) {
+        result.removeRange(this.intervals[i]);
+    }
+    return result;
+};
+
+IntervalSet.prototype.contains = function(item) {
+	if (this.intervals === null) {
+		return false;
+	} else {
+		for (var k = 0; k < this.intervals.length; k++) {
+			if(this.intervals[k].contains(item)) {
+				return true;
+			}
+		}
+		return false;
+	}
+};
+
+Object.defineProperty(IntervalSet.prototype, "length", {
+	get : function() {
+		var len = 0;
+		this.intervals.map(function(i) {len += i.length;});
+		return len;
+	}
+});
+
+IntervalSet.prototype.removeRange = function(v) {
+    if(v.start===v.stop-1) {
+        this.removeOne(v.start);
+    } else if (this.intervals!==null) {
+        var k = 0;
+        for(var n=0; n<this.intervals.length; n++) {
+            var i = this.intervals[k];
+            // intervals are ordered
+            if (v.stop<=i.start) {
+                return;
+            }
+            // check for including range, split it
+            else if(v.start>i.start && v.stop<i.stop) {
+                this.intervals[k] = new Interval(i.start, v.start);
+                var x = new Interval(v.stop, i.stop);
+                this.intervals.splice(k, 0, x);
+                return;
+            }
+            // check for included range, remove it
+            else if(v.start<=i.start && v.stop>=i.stop) {
+                this.intervals.splice(k, 1);
+                k = k - 1; // need another pass
+            }
+            // check for lower boundary
+            else if(v.start<i.stop) {
+                this.intervals[k] = new Interval(i.start, v.start);
+            }
+            // check for upper boundary
+            else if(v.stop<i.stop) {
+                this.intervals[k] = new Interval(v.stop, i.stop);
+            }
+            k += 1;
+        }
+    }
+};
+
+IntervalSet.prototype.removeOne = function(v) {
+	if (this.intervals !== null) {
+		for (var k = 0; k < this.intervals.length; k++) {
+			var i = this.intervals[k];
+			// intervals is ordered
+			if (v < i.start) {
+				return;
+			}
+			// check for single value range
+			else if (v === i.start && v === i.stop - 1) {
+				this.intervals.splice(k, 1);
+				return;
+			}
+			// check for lower boundary
+			else if (v === i.start) {
+				this.intervals[k] = new Interval(i.start + 1, i.stop);
+				return;
+			}
+			// check for upper boundary
+			else if (v === i.stop - 1) {
+				this.intervals[k] = new Interval(i.start, i.stop - 1);
+				return;
+			}
+			// split existing range
+			else if (v < i.stop - 1) {
+				var x = new Interval(i.start, v);
+				i.start = v + 1;
+				this.intervals.splice(k, 0, x);
+				return;
+			}
+		}
+	}
+};
+
+IntervalSet.prototype.toString = function(literalNames, symbolicNames, elemsAreChar) {
+	literalNames = literalNames || null;
+	symbolicNames = symbolicNames || null;
+	elemsAreChar = elemsAreChar || false;
+	if (this.intervals === null) {
+		return "{}";
+	} else if(literalNames!==null || symbolicNames!==null) {
+		return this.toTokenString(literalNames, symbolicNames);
+	} else if(elemsAreChar) {
+		return this.toCharString();
+	} else {
+		return this.toIndexString();
+	}
+};
+
+IntervalSet.prototype.toCharString = function() {
+	var names = [];
+	for (var i = 0; i < this.intervals.length; i++) {
+		var v = this.intervals[i];
+		if(v.stop===v.start+1) {
+			if ( v.start===Token.EOF ) {
+				names.push("<EOF>");
+			} else {
+				names.push("'" + String.fromCharCode(v.start) + "'");
+			}
+		} else {
+			names.push("'" + String.fromCharCode(v.start) + "'..'" + String.fromCharCode(v.stop-1) + "'");
+		}
+	}
+	if (names.length > 1) {
+		return "{" + names.join(", ") + "}";
+	} else {
+		return names[0];
+	}
+};
+
+
+IntervalSet.prototype.toIndexString = function() {
+	var names = [];
+	for (var i = 0; i < this.intervals.length; i++) {
+		var v = this.intervals[i];
+		if(v.stop===v.start+1) {
+			if ( v.start===Token.EOF ) {
+				names.push("<EOF>");
+			} else {
+				names.push(v.start.toString());
+			}
+		} else {
+			names.push(v.start.toString() + ".." + (v.stop-1).toString());
+		}
+	}
+	if (names.length > 1) {
+		return "{" + names.join(", ") + "}";
+	} else {
+		return names[0];
+	}
+};
+
+
+IntervalSet.prototype.toTokenString = function(literalNames, symbolicNames) {
+	var names = [];
+	for (var i = 0; i < this.intervals.length; i++) {
+		var v = this.intervals[i];
+		for (var j = v.start; j < v.stop; j++) {
+			names.push(this.elementName(literalNames, symbolicNames, j));
+		}
+	}
+	if (names.length > 1) {
+		return "{" + names.join(", ") + "}";
+	} else {
+		return names[0];
+	}
+};
+
+IntervalSet.prototype.elementName = function(literalNames, symbolicNames, a) {
+	if (a === Token.EOF) {
+		return "<EOF>";
+	} else if (a === Token.EPSILON) {
+		return "<EPSILON>";
+	} else {
+		return literalNames[a] || symbolicNames[a];
+	}
+};
+
+exports.Interval = Interval;
+exports.IntervalSet = IntervalSet;
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+//
+
+// The following images show the relation of states and
+// {@link ATNState//transitions} for various grammar constructs.
+//
+// <ul>
+//
+// <li>Solid edges marked with an &//0949; indicate a required
+// {@link EpsilonTransition}.</li>
+//
+// <li>Dashed edges indicate locations where any transition derived from
+// {@link Transition} might appear.</li>
+//
+// <li>Dashed nodes are place holders for either a sequence of linked
+// {@link BasicState} states or the inclusion of a block representing a nested
+// construct in one of the forms below.</li>
+//
+// <li>Nodes showing multiple outgoing alternatives with a {@code ...} support
+// any number of alternatives (one or more). Nodes without the {@code ...} only
+// support the exact number of alternatives shown in the diagram.</li>
+//
+// </ul>
+//
+// <h2>Basic Blocks</h2>
+//
+// <h3>Rule</h3>
+//
+// <embed src="images/Rule.svg" type="image/svg+xml"/>
+//
+// <h3>Block of 1 or more alternatives</h3>
+//
+// <embed src="images/Block.svg" type="image/svg+xml"/>
+//
+// <h2>Greedy Loops</h2>
+//
+// <h3>Greedy Closure: {@code (...)*}</h3>
+//
+// <embed src="images/ClosureGreedy.svg" type="image/svg+xml"/>
+//
+// <h3>Greedy Positive Closure: {@code (...)+}</h3>
+//
+// <embed src="images/PositiveClosureGreedy.svg" type="image/svg+xml"/>
+//
+// <h3>Greedy Optional: {@code (...)?}</h3>
+//
+// <embed src="images/OptionalGreedy.svg" type="image/svg+xml"/>
+//
+// <h2>Non-Greedy Loops</h2>
+//
+// <h3>Non-Greedy Closure: {@code (...)*?}</h3>
+//
+// <embed src="images/ClosureNonGreedy.svg" type="image/svg+xml"/>
+//
+// <h3>Non-Greedy Positive Closure: {@code (...)+?}</h3>
+//
+// <embed src="images/PositiveClosureNonGreedy.svg" type="image/svg+xml"/>
+//
+// <h3>Non-Greedy Optional: {@code (...)??}</h3>
+//
+// <embed src="images/OptionalNonGreedy.svg" type="image/svg+xml"/>
+//
+
+var INITIAL_NUM_TRANSITIONS = 4;
+
+function ATNState() {
+    // Which ATN are we in?
+    this.atn = null;
+    this.stateNumber = ATNState.INVALID_STATE_NUMBER;
+    this.stateType = null;
+    this.ruleIndex = 0; // at runtime, we don't have Rule objects
+    this.epsilonOnlyTransitions = false;
+    // Track the transitions emanating from this ATN state.
+    this.transitions = [];
+    // Used to cache lookahead during parsing, not used during construction
+    this.nextTokenWithinRule = null;
+    return this;
+}
+
+// constants for serialization
+ATNState.INVALID_TYPE = 0;
+ATNState.BASIC = 1;
+ATNState.RULE_START = 2;
+ATNState.BLOCK_START = 3;
+ATNState.PLUS_BLOCK_START = 4;
+ATNState.STAR_BLOCK_START = 5;
+ATNState.TOKEN_START = 6;
+ATNState.RULE_STOP = 7;
+ATNState.BLOCK_END = 8;
+ATNState.STAR_LOOP_BACK = 9;
+ATNState.STAR_LOOP_ENTRY = 10;
+ATNState.PLUS_LOOP_BACK = 11;
+ATNState.LOOP_END = 12;
+
+ATNState.serializationNames = [
+            "INVALID",
+            "BASIC",
+            "RULE_START",
+            "BLOCK_START",
+            "PLUS_BLOCK_START",
+            "STAR_BLOCK_START",
+            "TOKEN_START",
+            "RULE_STOP",
+            "BLOCK_END",
+            "STAR_LOOP_BACK",
+            "STAR_LOOP_ENTRY",
+            "PLUS_LOOP_BACK",
+            "LOOP_END" ];
+
+ATNState.INVALID_STATE_NUMBER = -1;
+
+ATNState.prototype.toString = function() {
+	return this.stateNumber;
+};
+
+ATNState.prototype.equals = function(other) {
+    if (other instanceof ATNState) {
+        return this.stateNumber===other.stateNumber;
+    } else {
+        return false;
+    }
+};
+
+ATNState.prototype.isNonGreedyExitState = function() {
+    return false;
+};
+
+
+ATNState.prototype.addTransition = function(trans, index) {
+	if(index===undefined) {
+		index = -1;
+	}
+    if (this.transitions.length===0) {
+        this.epsilonOnlyTransitions = trans.isEpsilon;
+    } else if(this.epsilonOnlyTransitions !== trans.isEpsilon) {
+        this.epsilonOnlyTransitions = false;
+    }
+    if (index===-1) {
+        this.transitions.push(trans);
+    } else {
+        this.transitions.splice(index, 1, trans);
+    }
+};
+
+function BasicState() {
+	ATNState.call(this);
+    this.stateType = ATNState.BASIC;
+    return this;
+}
+
+BasicState.prototype = Object.create(ATNState.prototype);
+BasicState.prototype.constructor = BasicState;
+
+
+function DecisionState() {
+	ATNState.call(this);
+    this.decision = -1;
+    this.nonGreedy = false;
+    return this;
+}
+
+DecisionState.prototype = Object.create(ATNState.prototype);
+DecisionState.prototype.constructor = DecisionState;
+
+
+//  The start of a regular {@code (...)} block.
+function BlockStartState() {
+	DecisionState.call(this);
+	this.endState = null;
+	return this;
+}
+
+BlockStartState.prototype = Object.create(DecisionState.prototype);
+BlockStartState.prototype.constructor = BlockStartState;
+
+
+function BasicBlockStartState() {
+	BlockStartState.call(this);
+	this.stateType = ATNState.BLOCK_START;
+	return this;
+}
+
+BasicBlockStartState.prototype = Object.create(BlockStartState.prototype);
+BasicBlockStartState.prototype.constructor = BasicBlockStartState;
+
+
+// Terminal node of a simple {@code (a|b|c)} block.
+function BlockEndState() {
+	ATNState.call(this);
+	this.stateType = ATNState.BLOCK_END;
+    this.startState = null;
+    return this;
+}
+
+BlockEndState.prototype = Object.create(ATNState.prototype);
+BlockEndState.prototype.constructor = BlockEndState;
+
+
+// The last node in the ATN for a rule, unless that rule is the start symbol.
+//  In that case, there is one transition to EOF. Later, we might encode
+//  references to all calls to this rule to compute FOLLOW sets for
+//  error handling.
+//
+function RuleStopState() {
+	ATNState.call(this);
+    this.stateType = ATNState.RULE_STOP;
+    return this;
+}
+
+RuleStopState.prototype = Object.create(ATNState.prototype);
+RuleStopState.prototype.constructor = RuleStopState;
+
+function RuleStartState() {
+	ATNState.call(this);
+	this.stateType = ATNState.RULE_START;
+	this.stopState = null;
+	this.isPrecedenceRule = false;
+	return this;
+}
+
+RuleStartState.prototype = Object.create(ATNState.prototype);
+RuleStartState.prototype.constructor = RuleStartState;
+
+// Decision state for {@code A+} and {@code (A|B)+}.  It has two transitions:
+//  one to the loop back to start of the block and one to exit.
+//
+function PlusLoopbackState() {
+	DecisionState.call(this);
+	this.stateType = ATNState.PLUS_LOOP_BACK;
+	return this;
+}
+
+PlusLoopbackState.prototype = Object.create(DecisionState.prototype);
+PlusLoopbackState.prototype.constructor = PlusLoopbackState;
+
+
+// Start of {@code (A|B|...)+} loop. Technically a decision state, but
+//  we don't use for code generation; somebody might need it, so I'm defining
+//  it for completeness. In reality, the {@link PlusLoopbackState} node is the
+//  real decision-making note for {@code A+}.
+//
+function PlusBlockStartState() {
+	BlockStartState.call(this);
+	this.stateType = ATNState.PLUS_BLOCK_START;
+    this.loopBackState = null;
+    return this;
+}
+
+PlusBlockStartState.prototype = Object.create(BlockStartState.prototype);
+PlusBlockStartState.prototype.constructor = PlusBlockStartState;
+
+// The block that begins a closure loop.
+function StarBlockStartState() {
+	BlockStartState.call(this);
+	this.stateType = ATNState.STAR_BLOCK_START;
+	return this;
+}
+
+StarBlockStartState.prototype = Object.create(BlockStartState.prototype);
+StarBlockStartState.prototype.constructor = StarBlockStartState;
+
+
+function StarLoopbackState() {
+	ATNState.call(this);
+	this.stateType = ATNState.STAR_LOOP_BACK;
+	return this;
+}
+
+StarLoopbackState.prototype = Object.create(ATNState.prototype);
+StarLoopbackState.prototype.constructor = StarLoopbackState;
+
+
+function StarLoopEntryState() {
+	DecisionState.call(this);
+	this.stateType = ATNState.STAR_LOOP_ENTRY;
+    this.loopBackState = null;
+    // Indicates whether this state can benefit from a precedence DFA during SLL decision making.
+    this.isPrecedenceDecision = null;
+    return this;
+}
+
+StarLoopEntryState.prototype = Object.create(DecisionState.prototype);
+StarLoopEntryState.prototype.constructor = StarLoopEntryState;
+
+
+// Mark the end of a * or + loop.
+function LoopEndState() {
+	ATNState.call(this);
+	this.stateType = ATNState.LOOP_END;
+	this.loopBackState = null;
+	return this;
+}
+
+LoopEndState.prototype = Object.create(ATNState.prototype);
+LoopEndState.prototype.constructor = LoopEndState;
+
+
+// The Tokens rule start state linking to each lexer rule start state */
+function TokensStartState() {
+	DecisionState.call(this);
+	this.stateType = ATNState.TOKEN_START;
+	return this;
+}
+
+TokensStartState.prototype = Object.create(DecisionState.prototype);
+TokensStartState.prototype.constructor = TokensStartState;
+
+exports.ATNState = ATNState;
+exports.BasicState = BasicState;
+exports.DecisionState = DecisionState;
+exports.BlockStartState = BlockStartState;
+exports.BlockEndState = BlockEndState;
+exports.LoopEndState = LoopEndState;
+exports.RuleStartState = RuleStartState;
+exports.RuleStopState = RuleStopState;
+exports.TokensStartState = TokensStartState;
+exports.PlusLoopbackState = PlusLoopbackState;
+exports.StarLoopbackState = StarLoopbackState;
+exports.StarLoopEntryState = StarLoopEntryState;
+exports.PlusBlockStartState = PlusBlockStartState;
+exports.StarBlockStartState = StarBlockStartState;
+exports.BasicBlockStartState = BasicBlockStartState;
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+///
+
+// The basic notion of a tree has a parent, a payload, and a list of children.
+//  It is the most abstract interface for all the trees used by ANTLR.
+///
+
+var Token = __webpack_require__(1).Token;
+var Interval = __webpack_require__(2).Interval;
+var INVALID_INTERVAL = new Interval(-1, -2);
+var Utils = __webpack_require__(0);
+
+
+function Tree() {
+	return this;
+}
+
+function SyntaxTree() {
+	Tree.call(this);
+	return this;
+}
+
+SyntaxTree.prototype = Object.create(Tree.prototype);
+SyntaxTree.prototype.constructor = SyntaxTree;
+
+function ParseTree() {
+	SyntaxTree.call(this);
+	return this;
+}
+
+ParseTree.prototype = Object.create(SyntaxTree.prototype);
+ParseTree.prototype.constructor = ParseTree;
+
+function RuleNode() {
+	ParseTree.call(this);
+	return this;
+}
+
+RuleNode.prototype = Object.create(ParseTree.prototype);
+RuleNode.prototype.constructor = RuleNode;
+
+function TerminalNode() {
+	ParseTree.call(this);
+	return this;
+}
+
+TerminalNode.prototype = Object.create(ParseTree.prototype);
+TerminalNode.prototype.constructor = TerminalNode;
+
+function ErrorNode() {
+	TerminalNode.call(this);
+	return this;
+}
+
+ErrorNode.prototype = Object.create(TerminalNode.prototype);
+ErrorNode.prototype.constructor = ErrorNode;
+
+function ParseTreeVisitor() {
+	return this;
+}
+
+ParseTreeVisitor.prototype.visit = function(ctx) {
+ 	if (Array.isArray(ctx)) {
+		return ctx.map(function(child) {
+            return child.accept(this);
+        }, this);
+	} else {
+		return ctx.accept(this);
+	}
+};
+
+ParseTreeVisitor.prototype.visitChildren = function(ctx) {
+	if (ctx.children) {
+		return this.visit(ctx.children);
+	} else {
+		return null;
+	}
+}
+
+ParseTreeVisitor.prototype.visitTerminal = function(node) {
+};
+
+ParseTreeVisitor.prototype.visitErrorNode = function(node) {
+};
+
+
+function ParseTreeListener() {
+	return this;
+}
+
+ParseTreeListener.prototype.visitTerminal = function(node) {
+};
+
+ParseTreeListener.prototype.visitErrorNode = function(node) {
+};
+
+ParseTreeListener.prototype.enterEveryRule = function(node) {
+};
+
+ParseTreeListener.prototype.exitEveryRule = function(node) {
+};
+
+function TerminalNodeImpl(symbol) {
+	TerminalNode.call(this);
+	this.parentCtx = null;
+	this.symbol = symbol;
+	return this;
+}
+
+TerminalNodeImpl.prototype = Object.create(TerminalNode.prototype);
+TerminalNodeImpl.prototype.constructor = TerminalNodeImpl;
+
+TerminalNodeImpl.prototype.getChild = function(i) {
+	return null;
+};
+
+TerminalNodeImpl.prototype.getSymbol = function() {
+	return this.symbol;
+};
+
+TerminalNodeImpl.prototype.getParent = function() {
+	return this.parentCtx;
+};
+
+TerminalNodeImpl.prototype.getPayload = function() {
+	return this.symbol;
+};
+
+TerminalNodeImpl.prototype.getSourceInterval = function() {
+	if (this.symbol === null) {
+		return INVALID_INTERVAL;
+	}
+	var tokenIndex = this.symbol.tokenIndex;
+	return new Interval(tokenIndex, tokenIndex);
+};
+
+TerminalNodeImpl.prototype.getChildCount = function() {
+	return 0;
+};
+
+TerminalNodeImpl.prototype.accept = function(visitor) {
+	return visitor.visitTerminal(this);
+};
+
+TerminalNodeImpl.prototype.getText = function() {
+	return this.symbol.text;
+};
+
+TerminalNodeImpl.prototype.toString = function() {
+	if (this.symbol.type === Token.EOF) {
+		return "<EOF>";
+	} else {
+		return this.symbol.text;
+	}
+};
+
+// Represents a token that was consumed during resynchronization
+// rather than during a valid match operation. For example,
+// we will create this kind of a node during single token insertion
+// and deletion as well as during "consume until error recovery set"
+// upon no viable alternative exceptions.
+
+function ErrorNodeImpl(token) {
+	TerminalNodeImpl.call(this, token);
+	return this;
+}
+
+ErrorNodeImpl.prototype = Object.create(TerminalNodeImpl.prototype);
+ErrorNodeImpl.prototype.constructor = ErrorNodeImpl;
+
+ErrorNodeImpl.prototype.isErrorNode = function() {
+	return true;
+};
+
+ErrorNodeImpl.prototype.accept = function(visitor) {
+	return visitor.visitErrorNode(this);
+};
+
+function ParseTreeWalker() {
+	return this;
+}
+
+ParseTreeWalker.prototype.walk = function(listener, t) {
+	var errorNode = t instanceof ErrorNode ||
+			(t.isErrorNode !== undefined && t.isErrorNode());
+	if (errorNode) {
+		listener.visitErrorNode(t);
+	} else if (t instanceof TerminalNode) {
+		listener.visitTerminal(t);
+	} else {
+		this.enterRule(listener, t);
+		for (var i = 0; i < t.getChildCount(); i++) {
+			var child = t.getChild(i);
+			this.walk(listener, child);
+		}
+		this.exitRule(listener, t);
+	}
+};
+//
+// The discovery of a rule node, involves sending two events: the generic
+// {@link ParseTreeListener//enterEveryRule} and a
+// {@link RuleContext}-specific event. First we trigger the generic and then
+// the rule specific. We to them in reverse order upon finishing the node.
+//
+ParseTreeWalker.prototype.enterRule = function(listener, r) {
+	var ctx = r.getRuleContext();
+	listener.enterEveryRule(ctx);
+	ctx.enterRule(listener);
+};
+
+ParseTreeWalker.prototype.exitRule = function(listener, r) {
+	var ctx = r.getRuleContext();
+	ctx.exitRule(listener);
+	listener.exitEveryRule(ctx);
+};
+
+ParseTreeWalker.DEFAULT = new ParseTreeWalker();
+
+exports.RuleNode = RuleNode;
+exports.ErrorNode = ErrorNode;
+exports.TerminalNode = TerminalNode;
+exports.ErrorNodeImpl = ErrorNodeImpl;
+exports.TerminalNodeImpl = TerminalNodeImpl;
+exports.ParseTreeListener = ParseTreeListener;
+exports.ParseTreeVisitor = ParseTreeVisitor;
+exports.ParseTreeWalker = ParseTreeWalker;
+exports.INVALID_INTERVAL = INVALID_INTERVAL;
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+// The root of the ANTLR exception hierarchy. In general, ANTLR tracks just
+//  3 kinds of errors: prediction errors, failed predicate errors, and
+//  mismatched input errors. In each case, the parser knows where it is
+//  in the input, where it is in the ATN, the rule invocation stack,
+//  and what kind of problem occurred.
+
+var PredicateTransition = __webpack_require__(8).PredicateTransition;
+
+function RecognitionException(params) {
+	Error.call(this);
+	if (!!Error.captureStackTrace) {
+        Error.captureStackTrace(this, RecognitionException);
+	} else {
+		var stack = new Error().stack;
+	}
+	this.message = params.message;
+    this.recognizer = params.recognizer;
+    this.input = params.input;
+    this.ctx = params.ctx;
+    // The current {@link Token} when an error occurred. Since not all streams
+    // support accessing symbols by index, we have to track the {@link Token}
+    // instance itself.
+    this.offendingToken = null;
+    // Get the ATN state number the parser was in at the time the error
+    // occurred. For {@link NoViableAltException} and
+    // {@link LexerNoViableAltException} exceptions, this is the
+    // {@link DecisionState} number. For others, it is the state whose outgoing
+    // edge we couldn't match.
+    this.offendingState = -1;
+    if (this.recognizer!==null) {
+        this.offendingState = this.recognizer.state;
+    }
+    return this;
+}
+
+RecognitionException.prototype = Object.create(Error.prototype);
+RecognitionException.prototype.constructor = RecognitionException;
+
+// <p>If the state number is not known, this method returns -1.</p>
+
+//
+// Gets the set of input symbols which could potentially follow the
+// previously matched symbol at the time this exception was thrown.
+//
+// <p>If the set of expected tokens is not known and could not be computed,
+// this method returns {@code null}.</p>
+//
+// @return The set of token types that could potentially follow the current
+// state in the ATN, or {@code null} if the information is not available.
+// /
+RecognitionException.prototype.getExpectedTokens = function() {
+    if (this.recognizer!==null) {
+        return this.recognizer.atn.getExpectedTokens(this.offendingState, this.ctx);
+    } else {
+        return null;
+    }
+};
+
+RecognitionException.prototype.toString = function() {
+    return this.message;
+};
+
+function LexerNoViableAltException(lexer, input, startIndex, deadEndConfigs) {
+	RecognitionException.call(this, {message:"", recognizer:lexer, input:input, ctx:null});
+    this.startIndex = startIndex;
+    this.deadEndConfigs = deadEndConfigs;
+    return this;
+}
+
+LexerNoViableAltException.prototype = Object.create(RecognitionException.prototype);
+LexerNoViableAltException.prototype.constructor = LexerNoViableAltException;
+
+LexerNoViableAltException.prototype.toString = function() {
+    var symbol = "";
+    if (this.startIndex >= 0 && this.startIndex < this.input.size) {
+        symbol = this.input.getText((this.startIndex,this.startIndex));
+    }
+    return "LexerNoViableAltException" + symbol;
+};
+
+// Indicates that the parser could not decide which of two or more paths
+// to take based upon the remaining input. It tracks the starting token
+// of the offending input and also knows where the parser was
+// in the various paths when the error. Reported by reportNoViableAlternative()
+//
+function NoViableAltException(recognizer, input, startToken, offendingToken, deadEndConfigs, ctx) {
+	ctx = ctx || recognizer._ctx;
+	offendingToken = offendingToken || recognizer.getCurrentToken();
+	startToken = startToken || recognizer.getCurrentToken();
+	input = input || recognizer.getInputStream();
+	RecognitionException.call(this, {message:"", recognizer:recognizer, input:input, ctx:ctx});
+    // Which configurations did we try at input.index() that couldn't match
+	// input.LT(1)?//
+    this.deadEndConfigs = deadEndConfigs;
+    // The token object at the start index; the input stream might
+    // not be buffering tokens so get a reference to it. (At the
+    // time the error occurred, of course the stream needs to keep a
+    // buffer all of the tokens but later we might not have access to those.)
+    this.startToken = startToken;
+    this.offendingToken = offendingToken;
+}
+
+NoViableAltException.prototype = Object.create(RecognitionException.prototype);
+NoViableAltException.prototype.constructor = NoViableAltException;
+
+// This signifies any kind of mismatched input exceptions such as
+// when the current input does not match the expected token.
+//
+function InputMismatchException(recognizer) {
+	RecognitionException.call(this, {message:"", recognizer:recognizer, input:recognizer.getInputStream(), ctx:recognizer._ctx});
+    this.offendingToken = recognizer.getCurrentToken();
+}
+
+InputMismatchException.prototype = Object.create(RecognitionException.prototype);
+InputMismatchException.prototype.constructor = InputMismatchException;
+
+// A semantic predicate failed during validation. Validation of predicates
+// occurs when normally parsing the alternative just like matching a token.
+// Disambiguating predicate evaluation occurs when we test a predicate during
+// prediction.
+
+function FailedPredicateException(recognizer, predicate, message) {
+	RecognitionException.call(this, {message:this.formatMessage(predicate,message || null), recognizer:recognizer,
+                         input:recognizer.getInputStream(), ctx:recognizer._ctx});
+    var s = recognizer._interp.atn.states[recognizer.state];
+    var trans = s.transitions[0];
+    if (trans instanceof PredicateTransition) {
+        this.ruleIndex = trans.ruleIndex;
+        this.predicateIndex = trans.predIndex;
+    } else {
+        this.ruleIndex = 0;
+        this.predicateIndex = 0;
+    }
+    this.predicate = predicate;
+    this.offendingToken = recognizer.getCurrentToken();
+    return this;
+}
+
+FailedPredicateException.prototype = Object.create(RecognitionException.prototype);
+FailedPredicateException.prototype.constructor = FailedPredicateException;
+
+FailedPredicateException.prototype.formatMessage = function(predicate, message) {
+    if (message !==null) {
+        return message;
+    } else {
+        return "failed predicate: {" + predicate + "}?";
+    }
+};
+
+function ParseCancellationException() {
+	Error.call(this);
+	Error.captureStackTrace(this, ParseCancellationException);
+	return this;
+}
+
+ParseCancellationException.prototype = Object.create(Error.prototype);
+ParseCancellationException.prototype.constructor = ParseCancellationException;
+
+exports.RecognitionException = RecognitionException;
+exports.NoViableAltException = NoViableAltException;
+exports.LexerNoViableAltException = LexerNoViableAltException;
+exports.InputMismatchException = InputMismatchException;
+exports.FailedPredicateException = FailedPredicateException;
+exports.ParseCancellationException = ParseCancellationException;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+///
+
+var RuleContext = __webpack_require__(14).RuleContext;
+var Hash = __webpack_require__(0).Hash;
+var Map = __webpack_require__(0).Map;
+
+function PredictionContext(cachedHashCode) {
+	this.cachedHashCode = cachedHashCode;
+}
+
+// Represents {@code $} in local context prediction, which means wildcard.
+// {@code//+x =//}.
+// /
+PredictionContext.EMPTY = null;
+
+// Represents {@code $} in an array in full context mode, when {@code $}
+// doesn't mean wildcard: {@code $ + x = [$,x]}. Here,
+// {@code $} = {@link //EMPTY_RETURN_STATE}.
+// /
+PredictionContext.EMPTY_RETURN_STATE = 0x7FFFFFFF;
+
+PredictionContext.globalNodeCount = 1;
+PredictionContext.id = PredictionContext.globalNodeCount;
+
+// Stores the computed hash code of this {@link PredictionContext}. The hash
+// code is computed in parts to match the following reference algorithm.
+//
+// <pre>
+// private int referenceHashCode() {
+// int hash = {@link MurmurHash//initialize MurmurHash.initialize}({@link
+// //INITIAL_HASH});
+//
+// for (int i = 0; i &lt; {@link //size()}; i++) {
+// hash = {@link MurmurHash//update MurmurHash.update}(hash, {@link //getParent
+// getParent}(i));
+// }
+//
+// for (int i = 0; i &lt; {@link //size()}; i++) {
+// hash = {@link MurmurHash//update MurmurHash.update}(hash, {@link
+// //getReturnState getReturnState}(i));
+// }
+//
+// hash = {@link MurmurHash//finish MurmurHash.finish}(hash, 2// {@link
+// //size()});
+// return hash;
+// }
+// </pre>
+// /
+
+// This means only the {@link //EMPTY} context is in set.
+PredictionContext.prototype.isEmpty = function() {
+	return this === PredictionContext.EMPTY;
+};
+
+PredictionContext.prototype.hasEmptyPath = function() {
+	return this.getReturnState(this.length - 1) === PredictionContext.EMPTY_RETURN_STATE;
+};
+
+PredictionContext.prototype.hashCode = function() {
+	return this.cachedHashCode;
+};
+
+
+PredictionContext.prototype.updateHashCode = function(hash) {
+    hash.update(this.cachedHashCode);
+};
+/*
+function calculateHashString(parent, returnState) {
+	return "" + parent + returnState;
+}
+*/
+
+// Used to cache {@link PredictionContext} objects. Its used for the shared
+// context cash associated with contexts in DFA states. This cache
+// can be used for both lexers and parsers.
+
+function PredictionContextCache() {
+	this.cache = new Map();
+	return this;
+}
+
+// Add a context to the cache and return it. If the context already exists,
+// return that one instead and do not add a new context to the cache.
+// Protect shared cache from unsafe thread access.
+//
+PredictionContextCache.prototype.add = function(ctx) {
+	if (ctx === PredictionContext.EMPTY) {
+		return PredictionContext.EMPTY;
+	}
+	var existing = this.cache.get(ctx) || null;
+	if (existing !== null) {
+		return existing;
+	}
+	this.cache.put(ctx, ctx);
+	return ctx;
+};
+
+PredictionContextCache.prototype.get = function(ctx) {
+	return this.cache.get(ctx) || null;
+};
+
+Object.defineProperty(PredictionContextCache.prototype, "length", {
+	get : function() {
+		return this.cache.length;
+	}
+});
+
+function SingletonPredictionContext(parent, returnState) {
+	var hashCode = 0;
+	var hash = new Hash();
+	if(parent !== null) {
+		hash.update(parent, returnState);
+	} else {
+		hash.update(1);
+	}
+	hashCode = hash.finish();
+	PredictionContext.call(this, hashCode);
+	this.parentCtx = parent;
+	this.returnState = returnState;
+}
+
+SingletonPredictionContext.prototype = Object.create(PredictionContext.prototype);
+SingletonPredictionContext.prototype.contructor = SingletonPredictionContext;
+
+SingletonPredictionContext.create = function(parent, returnState) {
+	if (returnState === PredictionContext.EMPTY_RETURN_STATE && parent === null) {
+		// someone can pass in the bits of an array ctx that mean $
+		return PredictionContext.EMPTY;
+	} else {
+		return new SingletonPredictionContext(parent, returnState);
+	}
+};
+
+Object.defineProperty(SingletonPredictionContext.prototype, "length", {
+	get : function() {
+		return 1;
+	}
+});
+
+SingletonPredictionContext.prototype.getParent = function(index) {
+	return this.parentCtx;
+};
+
+SingletonPredictionContext.prototype.getReturnState = function(index) {
+	return this.returnState;
+};
+
+SingletonPredictionContext.prototype.equals = function(other) {
+	if (this === other) {
+		return true;
+	} else if (!(other instanceof SingletonPredictionContext)) {
+		return false;
+	} else if (this.hashCode() !== other.hashCode()) {
+		return false; // can't be same if hash is different
+	} else {
+		if(this.returnState !== other.returnState)
+            return false;
+        else if(this.parentCtx==null)
+            return other.parentCtx==null
+		else
+            return this.parentCtx.equals(other.parentCtx);
+	}
+};
+
+SingletonPredictionContext.prototype.toString = function() {
+	var up = this.parentCtx === null ? "" : this.parentCtx.toString();
+	if (up.length === 0) {
+		if (this.returnState === PredictionContext.EMPTY_RETURN_STATE) {
+			return "$";
+		} else {
+			return "" + this.returnState;
+		}
+	} else {
+		return "" + this.returnState + " " + up;
+	}
+};
+
+function EmptyPredictionContext() {
+	SingletonPredictionContext.call(this, null, PredictionContext.EMPTY_RETURN_STATE);
+	return this;
+}
+
+EmptyPredictionContext.prototype = Object.create(SingletonPredictionContext.prototype);
+EmptyPredictionContext.prototype.constructor = EmptyPredictionContext;
+
+EmptyPredictionContext.prototype.isEmpty = function() {
+	return true;
+};
+
+EmptyPredictionContext.prototype.getParent = function(index) {
+	return null;
+};
+
+EmptyPredictionContext.prototype.getReturnState = function(index) {
+	return this.returnState;
+};
+
+EmptyPredictionContext.prototype.equals = function(other) {
+	return this === other;
+};
+
+EmptyPredictionContext.prototype.toString = function() {
+	return "$";
+};
+
+PredictionContext.EMPTY = new EmptyPredictionContext();
+
+function ArrayPredictionContext(parents, returnStates) {
+	// Parent can be null only if full ctx mode and we make an array
+	// from {@link //EMPTY} and non-empty. We merge {@link //EMPTY} by using
+	// null parent and
+	// returnState == {@link //EMPTY_RETURN_STATE}.
+	var h = new Hash();
+	h.update(parents, returnStates);
+	var hashCode = h.finish();
+	PredictionContext.call(this, hashCode);
+	this.parents = parents;
+	this.returnStates = returnStates;
+	return this;
+}
+
+ArrayPredictionContext.prototype = Object.create(PredictionContext.prototype);
+ArrayPredictionContext.prototype.constructor = ArrayPredictionContext;
+
+ArrayPredictionContext.prototype.isEmpty = function() {
+	// since EMPTY_RETURN_STATE can only appear in the last position, we
+	// don't need to verify that size==1
+	return this.returnStates[0] === PredictionContext.EMPTY_RETURN_STATE;
+};
+
+Object.defineProperty(ArrayPredictionContext.prototype, "length", {
+	get : function() {
+		return this.returnStates.length;
+	}
+});
+
+ArrayPredictionContext.prototype.getParent = function(index) {
+	return this.parents[index];
+};
+
+ArrayPredictionContext.prototype.getReturnState = function(index) {
+	return this.returnStates[index];
+};
+
+ArrayPredictionContext.prototype.equals = function(other) {
+	if (this === other) {
+		return true;
+	} else if (!(other instanceof ArrayPredictionContext)) {
+		return false;
+	} else if (this.hashCode() !== other.hashCode()) {
+		return false; // can't be same if hash is different
+	} else {
+		return this.returnStates === other.returnStates &&
+				this.parents === other.parents;
+	}
+};
+
+ArrayPredictionContext.prototype.toString = function() {
+	if (this.isEmpty()) {
+		return "[]";
+	} else {
+		var s = "[";
+		for (var i = 0; i < this.returnStates.length; i++) {
+			if (i > 0) {
+				s = s + ", ";
+			}
+			if (this.returnStates[i] === PredictionContext.EMPTY_RETURN_STATE) {
+				s = s + "$";
+				continue;
+			}
+			s = s + this.returnStates[i];
+			if (this.parents[i] !== null) {
+				s = s + " " + this.parents[i];
+			} else {
+				s = s + "null";
+			}
+		}
+		return s + "]";
+	}
+};
+
+// Convert a {@link RuleContext} tree to a {@link PredictionContext} graph.
+// Return {@link //EMPTY} if {@code outerContext} is empty or null.
+// /
+function predictionContextFromRuleContext(atn, outerContext) {
+	if (outerContext === undefined || outerContext === null) {
+		outerContext = RuleContext.EMPTY;
+	}
+	// if we are in RuleContext of start rule, s, then PredictionContext
+	// is EMPTY. Nobody called us. (if we are empty, return empty)
+	if (outerContext.parentCtx === null || outerContext === RuleContext.EMPTY) {
+		return PredictionContext.EMPTY;
+	}
+	// If we have a parent, convert it to a PredictionContext graph
+	var parent = predictionContextFromRuleContext(atn, outerContext.parentCtx);
+	var state = atn.states[outerContext.invokingState];
+	var transition = state.transitions[0];
+	return SingletonPredictionContext.create(parent, transition.followState.stateNumber);
+}
+/*
+function calculateListsHashString(parents, returnStates) {
+	var s = "";
+	parents.map(function(p) {
+		s = s + p;
+	});
+	returnStates.map(function(r) {
+		s = s + r;
+	});
+	return s;
+}
+*/
+function merge(a, b, rootIsWildcard, mergeCache) {
+	// share same graph if both same
+	if (a === b) {
+		return a;
+	}
+	if (a instanceof SingletonPredictionContext && b instanceof SingletonPredictionContext) {
+		return mergeSingletons(a, b, rootIsWildcard, mergeCache);
+	}
+	// At least one of a or b is array
+	// If one is $ and rootIsWildcard, return $ as// wildcard
+	if (rootIsWildcard) {
+		if (a instanceof EmptyPredictionContext) {
+			return a;
+		}
+		if (b instanceof EmptyPredictionContext) {
+			return b;
+		}
+	}
+	// convert singleton so both are arrays to normalize
+	if (a instanceof SingletonPredictionContext) {
+		a = new ArrayPredictionContext([a.getParent()], [a.returnState]);
+	}
+	if (b instanceof SingletonPredictionContext) {
+		b = new ArrayPredictionContext([b.getParent()], [b.returnState]);
+	}
+	return mergeArrays(a, b, rootIsWildcard, mergeCache);
+}
+
+//
+// Merge two {@link SingletonPredictionContext} instances.
+//
+// <p>Stack tops equal, parents merge is same; return left graph.<br>
+// <embed src="images/SingletonMerge_SameRootSamePar.svg"
+// type="image/svg+xml"/></p>
+//
+// <p>Same stack top, parents differ; merge parents giving array node, then
+// remainders of those graphs. A new root node is created to point to the
+// merged parents.<br>
+// <embed src="images/SingletonMerge_SameRootDiffPar.svg"
+// type="image/svg+xml"/></p>
+//
+// <p>Different stack tops pointing to same parent. Make array node for the
+// root where both element in the root point to the same (original)
+// parent.<br>
+// <embed src="images/SingletonMerge_DiffRootSamePar.svg"
+// type="image/svg+xml"/></p>
+//
+// <p>Different stack tops pointing to different parents. Make array node for
+// the root where each element points to the corresponding original
+// parent.<br>
+// <embed src="images/SingletonMerge_DiffRootDiffPar.svg"
+// type="image/svg+xml"/></p>
+//
+// @param a the first {@link SingletonPredictionContext}
+// @param b the second {@link SingletonPredictionContext}
+// @param rootIsWildcard {@code true} if this is a local-context merge,
+// otherwise false to indicate a full-context merge
+// @param mergeCache
+// /
+function mergeSingletons(a, b, rootIsWildcard, mergeCache) {
+	if (mergeCache !== null) {
+		var previous = mergeCache.get(a, b);
+		if (previous !== null) {
+			return previous;
+		}
+		previous = mergeCache.get(b, a);
+		if (previous !== null) {
+			return previous;
+		}
+	}
+
+	var rootMerge = mergeRoot(a, b, rootIsWildcard);
+	if (rootMerge !== null) {
+		if (mergeCache !== null) {
+			mergeCache.set(a, b, rootMerge);
+		}
+		return rootMerge;
+	}
+	if (a.returnState === b.returnState) {
+		var parent = merge(a.parentCtx, b.parentCtx, rootIsWildcard, mergeCache);
+		// if parent is same as existing a or b parent or reduced to a parent,
+		// return it
+		if (parent === a.parentCtx) {
+			return a; // ax + bx = ax, if a=b
+		}
+		if (parent === b.parentCtx) {
+			return b; // ax + bx = bx, if a=b
+		}
+		// else: ax + ay = a'[x,y]
+		// merge parents x and y, giving array node with x,y then remainders
+		// of those graphs. dup a, a' points at merged array
+		// new joined parent so create new singleton pointing to it, a'
+		var spc = SingletonPredictionContext.create(parent, a.returnState);
+		if (mergeCache !== null) {
+			mergeCache.set(a, b, spc);
+		}
+		return spc;
+	} else { // a != b payloads differ
+		// see if we can collapse parents due to $+x parents if local ctx
+		var singleParent = null;
+		if (a === b || (a.parentCtx !== null && a.parentCtx === b.parentCtx)) { // ax +
+																				// bx =
+																				// [a,b]x
+			singleParent = a.parentCtx;
+		}
+		if (singleParent !== null) { // parents are same
+			// sort payloads and use same parent
+			var payloads = [ a.returnState, b.returnState ];
+			if (a.returnState > b.returnState) {
+				payloads[0] = b.returnState;
+				payloads[1] = a.returnState;
+			}
+			var parents = [ singleParent, singleParent ];
+			var apc = new ArrayPredictionContext(parents, payloads);
+			if (mergeCache !== null) {
+				mergeCache.set(a, b, apc);
+			}
+			return apc;
+		}
+		// parents differ and can't merge them. Just pack together
+		// into array; can't merge.
+		// ax + by = [ax,by]
+		var payloads = [ a.returnState, b.returnState ];
+		var parents = [ a.parentCtx, b.parentCtx ];
+		if (a.returnState > b.returnState) { // sort by payload
+			payloads[0] = b.returnState;
+			payloads[1] = a.returnState;
+			parents = [ b.parentCtx, a.parentCtx ];
+		}
+		var a_ = new ArrayPredictionContext(parents, payloads);
+		if (mergeCache !== null) {
+			mergeCache.set(a, b, a_);
+		}
+		return a_;
+	}
+}
+
+//
+// Handle case where at least one of {@code a} or {@code b} is
+// {@link //EMPTY}. In the following diagrams, the symbol {@code $} is used
+// to represent {@link //EMPTY}.
+//
+// <h2>Local-Context Merges</h2>
+//
+// <p>These local-context merge operations are used when {@code rootIsWildcard}
+// is true.</p>
+//
+// <p>{@link //EMPTY} is superset of any graph; return {@link //EMPTY}.<br>
+// <embed src="images/LocalMerge_EmptyRoot.svg" type="image/svg+xml"/></p>
+//
+// <p>{@link //EMPTY} and anything is {@code //EMPTY}, so merged parent is
+// {@code //EMPTY}; return left graph.<br>
+// <embed src="images/LocalMerge_EmptyParent.svg" type="image/svg+xml"/></p>
+//
+// <p>Special case of last merge if local context.<br>
+// <embed src="images/LocalMerge_DiffRoots.svg" type="image/svg+xml"/></p>
+//
+// <h2>Full-Context Merges</h2>
+//
+// <p>These full-context merge operations are used when {@code rootIsWildcard}
+// is false.</p>
+//
+// <p><embed src="images/FullMerge_EmptyRoots.svg" type="image/svg+xml"/></p>
+//
+// <p>Must keep all contexts; {@link //EMPTY} in array is a special value (and
+// null parent).<br>
+// <embed src="images/FullMerge_EmptyRoot.svg" type="image/svg+xml"/></p>
+//
+// <p><embed src="images/FullMerge_SameRoot.svg" type="image/svg+xml"/></p>
+//
+// @param a the first {@link SingletonPredictionContext}
+// @param b the second {@link SingletonPredictionContext}
+// @param rootIsWildcard {@code true} if this is a local-context merge,
+// otherwise false to indicate a full-context merge
+// /
+function mergeRoot(a, b, rootIsWildcard) {
+	if (rootIsWildcard) {
+		if (a === PredictionContext.EMPTY) {
+			return PredictionContext.EMPTY; // // + b =//
+		}
+		if (b === PredictionContext.EMPTY) {
+			return PredictionContext.EMPTY; // a +// =//
+		}
+	} else {
+		if (a === PredictionContext.EMPTY && b === PredictionContext.EMPTY) {
+			return PredictionContext.EMPTY; // $ + $ = $
+		} else if (a === PredictionContext.EMPTY) { // $ + x = [$,x]
+			var payloads = [ b.returnState,
+					PredictionContext.EMPTY_RETURN_STATE ];
+			var parents = [ b.parentCtx, null ];
+			return new ArrayPredictionContext(parents, payloads);
+		} else if (b === PredictionContext.EMPTY) { // x + $ = [$,x] ($ is always first if present)
+			var payloads = [ a.returnState, PredictionContext.EMPTY_RETURN_STATE ];
+			var parents = [ a.parentCtx, null ];
+			return new ArrayPredictionContext(parents, payloads);
+		}
+	}
+	return null;
+}
+
+//
+// Merge two {@link ArrayPredictionContext} instances.
+//
+// <p>Different tops, different parents.<br>
+// <embed src="images/ArrayMerge_DiffTopDiffPar.svg" type="image/svg+xml"/></p>
+//
+// <p>Shared top, same parents.<br>
+// <embed src="images/ArrayMerge_ShareTopSamePar.svg" type="image/svg+xml"/></p>
+//
+// <p>Shared top, different parents.<br>
+// <embed src="images/ArrayMerge_ShareTopDiffPar.svg" type="image/svg+xml"/></p>
+//
+// <p>Shared top, all shared parents.<br>
+// <embed src="images/ArrayMerge_ShareTopSharePar.svg"
+// type="image/svg+xml"/></p>
+//
+// <p>Equal tops, merge parents and reduce top to
+// {@link SingletonPredictionContext}.<br>
+// <embed src="images/ArrayMerge_EqualTop.svg" type="image/svg+xml"/></p>
+// /
+function mergeArrays(a, b, rootIsWildcard, mergeCache) {
+	if (mergeCache !== null) {
+		var previous = mergeCache.get(a, b);
+		if (previous !== null) {
+			return previous;
+		}
+		previous = mergeCache.get(b, a);
+		if (previous !== null) {
+			return previous;
+		}
+	}
+	// merge sorted payloads a + b => M
+	var i = 0; // walks a
+	var j = 0; // walks b
+	var k = 0; // walks target M array
+
+	var mergedReturnStates = [];
+	var mergedParents = [];
+	// walk and merge to yield mergedParents, mergedReturnStates
+	while (i < a.returnStates.length && j < b.returnStates.length) {
+		var a_parent = a.parents[i];
+		var b_parent = b.parents[j];
+		if (a.returnStates[i] === b.returnStates[j]) {
+			// same payload (stack tops are equal), must yield merged singleton
+			var payload = a.returnStates[i];
+			// $+$ = $
+			var bothDollars = payload === PredictionContext.EMPTY_RETURN_STATE &&
+					a_parent === null && b_parent === null;
+			var ax_ax = (a_parent !== null && b_parent !== null && a_parent === b_parent); // ax+ax
+																							// ->
+																							// ax
+			if (bothDollars || ax_ax) {
+				mergedParents[k] = a_parent; // choose left
+				mergedReturnStates[k] = payload;
+			} else { // ax+ay -> a'[x,y]
+				var mergedParent = merge(a_parent, b_parent, rootIsWildcard, mergeCache);
+				mergedParents[k] = mergedParent;
+				mergedReturnStates[k] = payload;
+			}
+			i += 1; // hop over left one as usual
+			j += 1; // but also skip one in right side since we merge
+		} else if (a.returnStates[i] < b.returnStates[j]) { // copy a[i] to M
+			mergedParents[k] = a_parent;
+			mergedReturnStates[k] = a.returnStates[i];
+			i += 1;
+		} else { // b > a, copy b[j] to M
+			mergedParents[k] = b_parent;
+			mergedReturnStates[k] = b.returnStates[j];
+			j += 1;
+		}
+		k += 1;
+	}
+	// copy over any payloads remaining in either array
+	if (i < a.returnStates.length) {
+		for (var p = i; p < a.returnStates.length; p++) {
+			mergedParents[k] = a.parents[p];
+			mergedReturnStates[k] = a.returnStates[p];
+			k += 1;
+		}
+	} else {
+		for (var p = j; p < b.returnStates.length; p++) {
+			mergedParents[k] = b.parents[p];
+			mergedReturnStates[k] = b.returnStates[p];
+			k += 1;
+		}
+	}
+	// trim merged if we combined a few that had same stack tops
+	if (k < mergedParents.length) { // write index < last position; trim
+		if (k === 1) { // for just one merged element, return singleton top
+			var a_ = SingletonPredictionContext.create(mergedParents[0],
+					mergedReturnStates[0]);
+			if (mergeCache !== null) {
+				mergeCache.set(a, b, a_);
+			}
+			return a_;
+		}
+		mergedParents = mergedParents.slice(0, k);
+		mergedReturnStates = mergedReturnStates.slice(0, k);
+	}
+
+	var M = new ArrayPredictionContext(mergedParents, mergedReturnStates);
+
+	// if we created same array as a or b, return that instead
+	// TODO: track whether this is possible above during merge sort for speed
+	if (M === a) {
+		if (mergeCache !== null) {
+			mergeCache.set(a, b, a);
+		}
+		return a;
+	}
+	if (M === b) {
+		if (mergeCache !== null) {
+			mergeCache.set(a, b, b);
+		}
+		return b;
+	}
+	combineCommonParents(mergedParents);
+
+	if (mergeCache !== null) {
+		mergeCache.set(a, b, M);
+	}
+	return M;
+}
+
+//
+// Make pass over all <em>M</em> {@code parents}; merge any {@code equals()}
+// ones.
+// /
+function combineCommonParents(parents) {
+	var uniqueParents = new Map();
+
+	for (var p = 0; p < parents.length; p++) {
+		var parent = parents[p];
+		if (!(uniqueParents.containsKey(parent))) {
+			uniqueParents.put(parent, parent);
+		}
+	}
+	for (var q = 0; q < parents.length; q++) {
+		parents[q] = uniqueParents.get(parents[q]);
+	}
+}
+
+function getCachedPredictionContext(context, contextCache, visited) {
+	if (context.isEmpty()) {
+		return context;
+	}
+	var existing = visited.get(context) || null;
+	if (existing !== null) {
+		return existing;
+	}
+	existing = contextCache.get(context);
+	if (existing !== null) {
+		visited.put(context, existing);
+		return existing;
+	}
+	var changed = false;
+	var parents = [];
+	for (var i = 0; i < parents.length; i++) {
+		var parent = getCachedPredictionContext(context.getParent(i), contextCache, visited);
+		if (changed || parent !== context.getParent(i)) {
+			if (!changed) {
+				parents = [];
+				for (var j = 0; j < context.length; j++) {
+					parents[j] = context.getParent(j);
+				}
+				changed = true;
+			}
+			parents[i] = parent;
+		}
+	}
+	if (!changed) {
+		contextCache.add(context);
+		visited.put(context, context);
+		return context;
+	}
+	var updated = null;
+	if (parents.length === 0) {
+		updated = PredictionContext.EMPTY;
+	} else if (parents.length === 1) {
+		updated = SingletonPredictionContext.create(parents[0], context
+				.getReturnState(0));
+	} else {
+		updated = new ArrayPredictionContext(parents, context.returnStates);
+	}
+	contextCache.add(updated);
+	visited.put(updated, updated);
+	visited.put(context, updated);
+
+	return updated;
+}
+
+// ter's recursive version of Sam's getAllNodes()
+function getAllContextNodes(context, nodes, visited) {
+	if (nodes === null) {
+		nodes = [];
+		return getAllContextNodes(context, nodes, visited);
+	} else if (visited === null) {
+		visited = new Map();
+		return getAllContextNodes(context, nodes, visited);
+	} else {
+		if (context === null || visited.containsKey(context)) {
+			return nodes;
+		}
+		visited.put(context, context);
+		nodes.push(context);
+		for (var i = 0; i < context.length; i++) {
+			getAllContextNodes(context.getParent(i), nodes, visited);
+		}
+		return nodes;
+	}
+}
+
+exports.merge = merge;
+exports.PredictionContext = PredictionContext;
+exports.PredictionContextCache = PredictionContextCache;
+exports.SingletonPredictionContext = SingletonPredictionContext;
+exports.predictionContextFromRuleContext = predictionContextFromRuleContext;
+exports.getCachedPredictionContext = getCachedPredictionContext;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+var LL1Analyzer = __webpack_require__(36).LL1Analyzer;
+var IntervalSet = __webpack_require__(2).IntervalSet;
+
+function ATN(grammarType , maxTokenType) {
+
+    // Used for runtime deserialization of ATNs from strings///
+    // The type of the ATN.
+    this.grammarType = grammarType;
+    // The maximum value for any symbol recognized by a transition in the ATN.
+    this.maxTokenType = maxTokenType;
+    this.states = [];
+    // Each subrule/rule is a decision point and we must track them so we
+    //  can go back later and build DFA predictors for them.  This includes
+    //  all the rules, subrules, optional blocks, ()+, ()* etc...
+    this.decisionToState = [];
+    // Maps from rule index to starting state number.
+    this.ruleToStartState = [];
+    // Maps from rule index to stop state number.
+    this.ruleToStopState = null;
+    this.modeNameToStartState = {};
+    // For lexer ATNs, this maps the rule index to the resulting token type.
+    // For parser ATNs, this maps the rule index to the generated bypass token
+    // type if the
+    // {@link ATNDeserializationOptions//isGenerateRuleBypassTransitions}
+    // deserialization option was specified; otherwise, this is {@code null}.
+    this.ruleToTokenType = null;
+    // For lexer ATNs, this is an array of {@link LexerAction} objects which may
+    // be referenced by action transitions in the ATN.
+    this.lexerActions = null;
+    this.modeToStartState = [];
+
+    return this;
+}
+
+// Compute the set of valid tokens that can occur starting in state {@code s}.
+//  If {@code ctx} is null, the set of tokens will not include what can follow
+//  the rule surrounding {@code s}. In other words, the set will be
+//  restricted to tokens reachable staying within {@code s}'s rule.
+ATN.prototype.nextTokensInContext = function(s, ctx) {
+    var anal = new LL1Analyzer(this);
+    return anal.LOOK(s, null, ctx);
+};
+
+// Compute the set of valid tokens that can occur starting in {@code s} and
+// staying in same rule. {@link Token//EPSILON} is in set if we reach end of
+// rule.
+ATN.prototype.nextTokensNoContext = function(s) {
+    if (s.nextTokenWithinRule !== null ) {
+        return s.nextTokenWithinRule;
+    }
+    s.nextTokenWithinRule = this.nextTokensInContext(s, null);
+    s.nextTokenWithinRule.readOnly = true;
+    return s.nextTokenWithinRule;
+};
+
+ATN.prototype.nextTokens = function(s, ctx) {
+    if ( ctx===undefined ) {
+        return this.nextTokensNoContext(s);
+    } else {
+        return this.nextTokensInContext(s, ctx);
+    }
+};
+
+ATN.prototype.addState = function( state) {
+    if ( state !== null ) {
+        state.atn = this;
+        state.stateNumber = this.states.length;
+    }
+    this.states.push(state);
+};
+
+ATN.prototype.removeState = function( state) {
+    this.states[state.stateNumber] = null; // just free mem, don't shift states in list
+};
+
+ATN.prototype.defineDecisionState = function( s) {
+    this.decisionToState.push(s);
+    s.decision = this.decisionToState.length-1;
+    return s.decision;
+};
+
+ATN.prototype.getDecisionState = function( decision) {
+    if (this.decisionToState.length===0) {
+        return null;
+    } else {
+        return this.decisionToState[decision];
+    }
+};
+
+// Computes the set of input symbols which could follow ATN state number
+// {@code stateNumber} in the specified full {@code context}. This method
+// considers the complete parser context, but does not evaluate semantic
+// predicates (i.e. all predicates encountered during the calculation are
+// assumed true). If a path in the ATN exists from the starting state to the
+// {@link RuleStopState} of the outermost context without matching any
+// symbols, {@link Token//EOF} is added to the returned set.
+//
+// <p>If {@code context} is {@code null}, it is treated as
+// {@link ParserRuleContext//EMPTY}.</p>
+//
+// @param stateNumber the ATN state number
+// @param context the full parse context
+// @return The set of potentially valid input symbols which could follow the
+// specified state in the specified context.
+// @throws IllegalArgumentException if the ATN does not contain a state with
+// number {@code stateNumber}
+var Token = __webpack_require__(1).Token;
+
+ATN.prototype.getExpectedTokens = function( stateNumber, ctx ) {
+    if ( stateNumber < 0 || stateNumber >= this.states.length ) {
+        throw("Invalid state number.");
+    }
+    var s = this.states[stateNumber];
+    var following = this.nextTokens(s);
+    if (!following.contains(Token.EPSILON)) {
+        return following;
+    }
+    var expected = new IntervalSet();
+    expected.addSet(following);
+    expected.removeOne(Token.EPSILON);
+    while (ctx !== null && ctx.invokingState >= 0 && following.contains(Token.EPSILON)) {
+        var invokingState = this.states[ctx.invokingState];
+        var rt = invokingState.transitions[0];
+        following = this.nextTokens(rt.followState);
+        expected.addSet(following);
+        expected.removeOne(Token.EPSILON);
+        ctx = ctx.parentCtx;
+    }
+    if (following.contains(Token.EPSILON)) {
+        expected.addOne(Token.EOF);
+    }
+    return expected;
+};
+
+ATN.INVALID_ALT_NUMBER = 0;
+
+exports.ATN = ATN;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+//
+
+//  An ATN transition between any two ATN states.  Subclasses define
+//  atom, set, epsilon, action, predicate, rule transitions.
+//
+//  <p>This is a one way link.  It emanates from a state (usually via a list of
+//  transitions) and has a target state.</p>
+//
+//  <p>Since we never have to change the ATN transitions once we construct it,
+//  we can fix these transitions as specific classes. The DFA transitions
+//  on the other hand need to update the labels as it adds transitions to
+//  the states. We'll use the term Edge for the DFA to distinguish them from
+//  ATN transitions.</p>
+
+var Token = __webpack_require__(1).Token;
+var Interval = __webpack_require__(2).Interval;
+var IntervalSet = __webpack_require__(2).IntervalSet;
+var Predicate = __webpack_require__(10).Predicate;
+var PrecedencePredicate = __webpack_require__(10).PrecedencePredicate;
+
+function Transition (target) {
+    // The target of this transition.
+    if (target===undefined || target===null) {
+        throw "target cannot be null.";
+    }
+    this.target = target;
+    // Are we epsilon, action, sempred?
+    this.isEpsilon = false;
+    this.label = null;
+    return this;
+}
+    // constants for serialization
+Transition.EPSILON = 1;
+Transition.RANGE = 2;
+Transition.RULE = 3;
+Transition.PREDICATE = 4; // e.g., {isType(input.LT(1))}?
+Transition.ATOM = 5;
+Transition.ACTION = 6;
+Transition.SET = 7; // ~(A|B) or ~atom, wildcard, which convert to next 2
+Transition.NOT_SET = 8;
+Transition.WILDCARD = 9;
+Transition.PRECEDENCE = 10;
+
+Transition.serializationNames = [
+            "INVALID",
+            "EPSILON",
+            "RANGE",
+            "RULE",
+            "PREDICATE",
+            "ATOM",
+            "ACTION",
+            "SET",
+            "NOT_SET",
+            "WILDCARD",
+            "PRECEDENCE"
+        ];
+
+Transition.serializationTypes = {
+        EpsilonTransition: Transition.EPSILON,
+        RangeTransition: Transition.RANGE,
+        RuleTransition: Transition.RULE,
+        PredicateTransition: Transition.PREDICATE,
+        AtomTransition: Transition.ATOM,
+        ActionTransition: Transition.ACTION,
+        SetTransition: Transition.SET,
+        NotSetTransition: Transition.NOT_SET,
+        WildcardTransition: Transition.WILDCARD,
+        PrecedencePredicateTransition: Transition.PRECEDENCE
+    };
+
+
+// TODO: make all transitions sets? no, should remove set edges
+function AtomTransition(target, label) {
+	Transition.call(this, target);
+	this.label_ = label; // The token type or character value; or, signifies special label.
+    this.label = this.makeLabel();
+    this.serializationType = Transition.ATOM;
+    return this;
+}
+
+AtomTransition.prototype = Object.create(Transition.prototype);
+AtomTransition.prototype.constructor = AtomTransition;
+
+AtomTransition.prototype.makeLabel = function() {
+	var s = new IntervalSet();
+    s.addOne(this.label_);
+    return s;
+};
+
+AtomTransition.prototype.matches = function( symbol, minVocabSymbol,  maxVocabSymbol) {
+    return this.label_ === symbol;
+};
+
+AtomTransition.prototype.toString = function() {
+	return this.label_;
+};
+
+function RuleTransition(ruleStart, ruleIndex, precedence, followState) {
+	Transition.call(this, ruleStart);
+    this.ruleIndex = ruleIndex; // ptr to the rule definition object for this rule ref
+    this.precedence = precedence;
+    this.followState = followState; // what node to begin computations following ref to rule
+    this.serializationType = Transition.RULE;
+    this.isEpsilon = true;
+    return this;
+}
+
+RuleTransition.prototype = Object.create(Transition.prototype);
+RuleTransition.prototype.constructor = RuleTransition;
+
+RuleTransition.prototype.matches = function(symbol, minVocabSymbol,  maxVocabSymbol) {
+	return false;
+};
+
+
+function EpsilonTransition(target, outermostPrecedenceReturn) {
+	Transition.call(this, target);
+    this.serializationType = Transition.EPSILON;
+    this.isEpsilon = true;
+    this.outermostPrecedenceReturn = outermostPrecedenceReturn;
+    return this;
+}
+
+EpsilonTransition.prototype = Object.create(Transition.prototype);
+EpsilonTransition.prototype.constructor = EpsilonTransition;
+
+EpsilonTransition.prototype.matches = function( symbol, minVocabSymbol,  maxVocabSymbol) {
+	return false;
+};
+
+EpsilonTransition.prototype.toString = function() {
+	return "epsilon";
+};
+
+function RangeTransition(target, start, stop) {
+	Transition.call(this, target);
+	this.serializationType = Transition.RANGE;
+    this.start = start;
+    this.stop = stop;
+    this.label = this.makeLabel();
+    return this;
+}
+
+RangeTransition.prototype = Object.create(Transition.prototype);
+RangeTransition.prototype.constructor = RangeTransition;
+
+RangeTransition.prototype.makeLabel = function() {
+    var s = new IntervalSet();
+    s.addRange(this.start, this.stop);
+    return s;
+};
+
+RangeTransition.prototype.matches = function(symbol, minVocabSymbol,  maxVocabSymbol) {
+	return symbol >= this.start && symbol <= this.stop;
+};
+
+RangeTransition.prototype.toString = function() {
+	return "'" + String.fromCharCode(this.start) + "'..'" + String.fromCharCode(this.stop) + "'";
+};
+
+function AbstractPredicateTransition(target) {
+	Transition.call(this, target);
+	return this;
+}
+
+AbstractPredicateTransition.prototype = Object.create(Transition.prototype);
+AbstractPredicateTransition.prototype.constructor = AbstractPredicateTransition;
+
+function PredicateTransition(target, ruleIndex, predIndex, isCtxDependent) {
+	AbstractPredicateTransition.call(this, target);
+    this.serializationType = Transition.PREDICATE;
+    this.ruleIndex = ruleIndex;
+    this.predIndex = predIndex;
+    this.isCtxDependent = isCtxDependent; // e.g., $i ref in pred
+    this.isEpsilon = true;
+    return this;
+}
+
+PredicateTransition.prototype = Object.create(AbstractPredicateTransition.prototype);
+PredicateTransition.prototype.constructor = PredicateTransition;
+
+PredicateTransition.prototype.matches = function(symbol, minVocabSymbol,  maxVocabSymbol) {
+	return false;
+};
+
+PredicateTransition.prototype.getPredicate = function() {
+	return new Predicate(this.ruleIndex, this.predIndex, this.isCtxDependent);
+};
+
+PredicateTransition.prototype.toString = function() {
+	return "pred_" + this.ruleIndex + ":" + this.predIndex;
+};
+
+function ActionTransition(target, ruleIndex, actionIndex, isCtxDependent) {
+	Transition.call(this, target);
+    this.serializationType = Transition.ACTION;
+    this.ruleIndex = ruleIndex;
+    this.actionIndex = actionIndex===undefined ? -1 : actionIndex;
+    this.isCtxDependent = isCtxDependent===undefined ? false : isCtxDependent; // e.g., $i ref in pred
+    this.isEpsilon = true;
+    return this;
+}
+
+ActionTransition.prototype = Object.create(Transition.prototype);
+ActionTransition.prototype.constructor = ActionTransition;
+
+
+ActionTransition.prototype.matches = function(symbol, minVocabSymbol,  maxVocabSymbol) {
+	return false;
+};
+
+ActionTransition.prototype.toString = function() {
+	return "action_" + this.ruleIndex + ":" + this.actionIndex;
+};
+
+
+// A transition containing a set of values.
+function SetTransition(target, set) {
+	Transition.call(this, target);
+	this.serializationType = Transition.SET;
+    if (set !==undefined && set !==null) {
+        this.label = set;
+    } else {
+        this.label = new IntervalSet();
+        this.label.addOne(Token.INVALID_TYPE);
+    }
+    return this;
+}
+
+SetTransition.prototype = Object.create(Transition.prototype);
+SetTransition.prototype.constructor = SetTransition;
+
+SetTransition.prototype.matches = function(symbol, minVocabSymbol,  maxVocabSymbol) {
+	return this.label.contains(symbol);
+};
+
+
+SetTransition.prototype.toString = function() {
+	return this.label.toString();
+};
+
+function NotSetTransition(target, set) {
+	SetTransition.call(this, target, set);
+	this.serializationType = Transition.NOT_SET;
+	return this;
+}
+
+NotSetTransition.prototype = Object.create(SetTransition.prototype);
+NotSetTransition.prototype.constructor = NotSetTransition;
+
+NotSetTransition.prototype.matches = function(symbol, minVocabSymbol,  maxVocabSymbol) {
+	return symbol >= minVocabSymbol && symbol <= maxVocabSymbol &&
+			!SetTransition.prototype.matches.call(this, symbol, minVocabSymbol, maxVocabSymbol);
+};
+
+NotSetTransition.prototype.toString = function() {
+	return '~' + SetTransition.prototype.toString.call(this);
+};
+
+function WildcardTransition(target) {
+	Transition.call(this, target);
+	this.serializationType = Transition.WILDCARD;
+	return this;
+}
+
+WildcardTransition.prototype = Object.create(Transition.prototype);
+WildcardTransition.prototype.constructor = WildcardTransition;
+
+
+WildcardTransition.prototype.matches = function(symbol, minVocabSymbol,  maxVocabSymbol) {
+	return symbol >= minVocabSymbol && symbol <= maxVocabSymbol;
+};
+
+WildcardTransition.prototype.toString = function() {
+	return ".";
+};
+
+function PrecedencePredicateTransition(target, precedence) {
+	AbstractPredicateTransition.call(this, target);
+    this.serializationType = Transition.PRECEDENCE;
+    this.precedence = precedence;
+    this.isEpsilon = true;
+    return this;
+}
+
+PrecedencePredicateTransition.prototype = Object.create(AbstractPredicateTransition.prototype);
+PrecedencePredicateTransition.prototype.constructor = PrecedencePredicateTransition;
+
+PrecedencePredicateTransition.prototype.matches = function(symbol, minVocabSymbol,  maxVocabSymbol) {
+	return false;
+};
+
+PrecedencePredicateTransition.prototype.getPredicate = function() {
+	return new PrecedencePredicate(this.precedence);
+};
+
+PrecedencePredicateTransition.prototype.toString = function() {
+	return this.precedence + " >= _p";
+};
+
+exports.Transition = Transition;
+exports.AtomTransition = AtomTransition;
+exports.SetTransition = SetTransition;
+exports.NotSetTransition = NotSetTransition;
+exports.RuleTransition = RuleTransition;
+exports.ActionTransition = ActionTransition;
+exports.EpsilonTransition = EpsilonTransition;
+exports.RangeTransition = RangeTransition;
+exports.WildcardTransition = WildcardTransition;
+exports.PredicateTransition = PredicateTransition;
+exports.PrecedencePredicateTransition = PrecedencePredicateTransition;
+exports.AbstractPredicateTransition = AbstractPredicateTransition;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+//
+// Specialized {@link Set}{@code <}{@link ATNConfig}{@code >} that can track
+// info about the set, with support for combining similar configurations using a
+// graph-structured stack.
+///
+
+var ATN = __webpack_require__(7).ATN;
+var Utils = __webpack_require__(0);
+var Hash = Utils.Hash;
+var Set = Utils.Set;
+var SemanticContext = __webpack_require__(10).SemanticContext;
+var merge = __webpack_require__(6).merge;
+
+function hashATNConfig(c) {
+	return c.hashCodeForConfigSet();
+}
+
+function equalATNConfigs(a, b) {
+	if ( a===b ) {
+		return true;
+	} else if ( a===null || b===null ) {
+		return false;
+	} else
+       return a.equalsForConfigSet(b);
+ }
+
+
+function ATNConfigSet(fullCtx) {
+	//
+	// The reason that we need this is because we don't want the hash map to use
+	// the standard hash code and equals. We need all configurations with the
+	// same
+	// {@code (s,i,_,semctx)} to be equal. Unfortunately, this key effectively
+	// doubles
+	// the number of objects associated with ATNConfigs. The other solution is
+	// to
+	// use a hash table that lets us specify the equals/hashcode operation.
+	// All configs but hashed by (s, i, _, pi) not including context. Wiped out
+	// when we go readonly as this set becomes a DFA state.
+	this.configLookup = new Set(hashATNConfig, equalATNConfigs);
+	// Indicates that this configuration set is part of a full context
+	// LL prediction. It will be used to determine how to merge $. With SLL
+	// it's a wildcard whereas it is not for LL context merge.
+	this.fullCtx = fullCtx === undefined ? true : fullCtx;
+	// Indicates that the set of configurations is read-only. Do not
+	// allow any code to manipulate the set; DFA states will point at
+	// the sets and they must not change. This does not protect the other
+	// fields; in particular, conflictingAlts is set after
+	// we've made this readonly.
+	this.readOnly = false;
+	// Track the elements as they are added to the set; supports get(i)///
+	this.configs = [];
+
+	// TODO: these fields make me pretty uncomfortable but nice to pack up info
+	// together, saves recomputation
+	// TODO: can we track conflicts as they are added to save scanning configs
+	// later?
+	this.uniqueAlt = 0;
+	this.conflictingAlts = null;
+
+	// Used in parser and lexer. In lexer, it indicates we hit a pred
+	// while computing a closure operation. Don't make a DFA state from this.
+	this.hasSemanticContext = false;
+	this.dipsIntoOuterContext = false;
+
+	this.cachedHashCode = -1;
+
+	return this;
+}
+
+// Adding a new config means merging contexts with existing configs for
+// {@code (s, i, pi, _)}, where {@code s} is the
+// {@link ATNConfig//state}, {@code i} is the {@link ATNConfig//alt}, and
+// {@code pi} is the {@link ATNConfig//semanticContext}. We use
+// {@code (s,i,pi)} as key.
+//
+// <p>This method updates {@link //dipsIntoOuterContext} and
+// {@link //hasSemanticContext} when necessary.</p>
+// /
+ATNConfigSet.prototype.add = function(config, mergeCache) {
+	if (mergeCache === undefined) {
+		mergeCache = null;
+	}
+	if (this.readOnly) {
+		throw "This set is readonly";
+	}
+	if (config.semanticContext !== SemanticContext.NONE) {
+		this.hasSemanticContext = true;
+	}
+	if (config.reachesIntoOuterContext > 0) {
+		this.dipsIntoOuterContext = true;
+	}
+	var existing = this.configLookup.add(config);
+	if (existing === config) {
+		this.cachedHashCode = -1;
+		this.configs.push(config); // track order here
+		return true;
+	}
+	// a previous (s,i,pi,_), merge with it and save result
+	var rootIsWildcard = !this.fullCtx;
+	var merged = merge(existing.context, config.context, rootIsWildcard, mergeCache);
+	// no need to check for existing.context, config.context in cache
+	// since only way to create new graphs is "call rule" and here. We
+	// cache at both places.
+	existing.reachesIntoOuterContext = Math.max( existing.reachesIntoOuterContext, config.reachesIntoOuterContext);
+	// make sure to preserve the precedence filter suppression during the merge
+	if (config.precedenceFilterSuppressed) {
+		existing.precedenceFilterSuppressed = true;
+	}
+	existing.context = merged; // replace context; no need to alt mapping
+	return true;
+};
+
+ATNConfigSet.prototype.getStates = function() {
+	var states = new Set();
+	for (var i = 0; i < this.configs.length; i++) {
+		states.add(this.configs[i].state);
+	}
+	return states;
+};
+
+ATNConfigSet.prototype.getPredicates = function() {
+	var preds = [];
+	for (var i = 0; i < this.configs.length; i++) {
+		var c = this.configs[i].semanticContext;
+		if (c !== SemanticContext.NONE) {
+			preds.push(c.semanticContext);
+		}
+	}
+	return preds;
+};
+
+Object.defineProperty(ATNConfigSet.prototype, "items", {
+	get : function() {
+		return this.configs;
+	}
+});
+
+ATNConfigSet.prototype.optimizeConfigs = function(interpreter) {
+	if (this.readOnly) {
+		throw "This set is readonly";
+	}
+	if (this.configLookup.length === 0) {
+		return;
+	}
+	for (var i = 0; i < this.configs.length; i++) {
+		var config = this.configs[i];
+		config.context = interpreter.getCachedContext(config.context);
+	}
+};
+
+ATNConfigSet.prototype.addAll = function(coll) {
+	for (var i = 0; i < coll.length; i++) {
+		this.add(coll[i]);
+	}
+	return false;
+};
+
+ATNConfigSet.prototype.equals = function(other) {
+	return this === other ||
+		(other instanceof ATNConfigSet &&
+		Utils.equalArrays(this.configs, other.configs) &&
+		this.fullCtx === other.fullCtx &&
+		this.uniqueAlt === other.uniqueAlt &&
+		this.conflictingAlts === other.conflictingAlts &&
+		this.hasSemanticContext === other.hasSemanticContext &&
+		this.dipsIntoOuterContext === other.dipsIntoOuterContext);
+};
+
+ATNConfigSet.prototype.hashCode = function() {
+    var hash = new Hash();
+	hash.update(this.configs);
+    return hash.finish();
+};
+
+
+ATNConfigSet.prototype.updateHashCode = function(hash) {
+	if (this.readOnly) {
+		if (this.cachedHashCode === -1) {
+            this.cachedHashCode = this.hashCode();
+		}
+        hash.update(this.cachedHashCode);
+	} else {
+        hash.update(this.hashCode());
+	}
+};
+
+
+Object.defineProperty(ATNConfigSet.prototype, "length", {
+	get : function() {
+		return this.configs.length;
+	}
+});
+
+ATNConfigSet.prototype.isEmpty = function() {
+	return this.configs.length === 0;
+};
+
+ATNConfigSet.prototype.contains = function(item) {
+	if (this.configLookup === null) {
+		throw "This method is not implemented for readonly sets.";
+	}
+	return this.configLookup.contains(item);
+};
+
+ATNConfigSet.prototype.containsFast = function(item) {
+	if (this.configLookup === null) {
+		throw "This method is not implemented for readonly sets.";
+	}
+	return this.configLookup.containsFast(item);
+};
+
+ATNConfigSet.prototype.clear = function() {
+	if (this.readOnly) {
+		throw "This set is readonly";
+	}
+	this.configs = [];
+	this.cachedHashCode = -1;
+	this.configLookup = new Set();
+};
+
+ATNConfigSet.prototype.setReadonly = function(readOnly) {
+	this.readOnly = readOnly;
+	if (readOnly) {
+		this.configLookup = null; // can't mod, no need for lookup cache
+	}
+};
+
+ATNConfigSet.prototype.toString = function() {
+	return Utils.arrayToString(this.configs) +
+		(this.hasSemanticContext ? ",hasSemanticContext=" + this.hasSemanticContext : "") +
+		(this.uniqueAlt !== ATN.INVALID_ALT_NUMBER ? ",uniqueAlt=" + this.uniqueAlt : "") +
+		(this.conflictingAlts !== null ? ",conflictingAlts=" + this.conflictingAlts : "") +
+		(this.dipsIntoOuterContext ? ",dipsIntoOuterContext" : "");
+};
+
+function OrderedATNConfigSet() {
+	ATNConfigSet.call(this);
+	this.configLookup = new Set();
+	return this;
+}
+
+OrderedATNConfigSet.prototype = Object.create(ATNConfigSet.prototype);
+OrderedATNConfigSet.prototype.constructor = OrderedATNConfigSet;
+
+exports.ATNConfigSet = ATNConfigSet;
+exports.OrderedATNConfigSet = OrderedATNConfigSet;
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+//
+
+// A tree structure used to record the semantic context in which
+//  an ATN configuration is valid.  It's either a single predicate,
+//  a conjunction {@code p1&&p2}, or a sum of products {@code p1||p2}.
+//
+//  <p>I have scoped the {@link AND}, {@link OR}, and {@link Predicate} subclasses of
+//  {@link SemanticContext} within the scope of this outer class.</p>
+//
+
+var Set = __webpack_require__(0).Set;
+var Hash = __webpack_require__(0).Hash;
+
+function SemanticContext() {
+	return this;
+}
+
+SemanticContext.prototype.hashCode = function() {
+    var hash = new Hash();
+    this.updateHashCode(hash);
+    return hash.finish();
+};
+
+// For context independent predicates, we evaluate them without a local
+// context (i.e., null context). That way, we can evaluate them without
+// having to create proper rule-specific context during prediction (as
+// opposed to the parser, which creates them naturally). In a practical
+// sense, this avoids a cast exception from RuleContext to myruleContext.
+//
+// <p>For context dependent predicates, we must pass in a local context so that
+// references such as $arg evaluate properly as _localctx.arg. We only
+// capture context dependent predicates in the context in which we begin
+// prediction, so we passed in the outer context here in case of context
+// dependent predicate evaluation.</p>
+//
+SemanticContext.prototype.evaluate = function(parser, outerContext) {
+};
+
+//
+// Evaluate the precedence predicates for the context and reduce the result.
+//
+// @param parser The parser instance.
+// @param outerContext The current parser context object.
+// @return The simplified semantic context after precedence predicates are
+// evaluated, which will be one of the following values.
+// <ul>
+// <li>{@link //NONE}: if the predicate simplifies to {@code true} after
+// precedence predicates are evaluated.</li>
+// <li>{@code null}: if the predicate simplifies to {@code false} after
+// precedence predicates are evaluated.</li>
+// <li>{@code this}: if the semantic context is not changed as a result of
+// precedence predicate evaluation.</li>
+// <li>A non-{@code null} {@link SemanticContext}: the new simplified
+// semantic context after precedence predicates are evaluated.</li>
+// </ul>
+//
+SemanticContext.prototype.evalPrecedence = function(parser, outerContext) {
+	return this;
+};
+
+SemanticContext.andContext = function(a, b) {
+	if (a === null || a === SemanticContext.NONE) {
+		return b;
+	}
+	if (b === null || b === SemanticContext.NONE) {
+		return a;
+	}
+	var result = new AND(a, b);
+	if (result.opnds.length === 1) {
+		return result.opnds[0];
+	} else {
+		return result;
+	}
+};
+
+SemanticContext.orContext = function(a, b) {
+	if (a === null) {
+		return b;
+	}
+	if (b === null) {
+		return a;
+	}
+	if (a === SemanticContext.NONE || b === SemanticContext.NONE) {
+		return SemanticContext.NONE;
+	}
+	var result = new OR(a, b);
+	if (result.opnds.length === 1) {
+		return result.opnds[0];
+	} else {
+		return result;
+	}
+};
+
+function Predicate(ruleIndex, predIndex, isCtxDependent) {
+	SemanticContext.call(this);
+	this.ruleIndex = ruleIndex === undefined ? -1 : ruleIndex;
+	this.predIndex = predIndex === undefined ? -1 : predIndex;
+	this.isCtxDependent = isCtxDependent === undefined ? false : isCtxDependent; // e.g., $i ref in pred
+	return this;
+}
+
+Predicate.prototype = Object.create(SemanticContext.prototype);
+Predicate.prototype.constructor = Predicate;
+
+//The default {@link SemanticContext}, which is semantically equivalent to
+//a predicate of the form {@code {true}?}.
+//
+SemanticContext.NONE = new Predicate();
+
+
+Predicate.prototype.evaluate = function(parser, outerContext) {
+	var localctx = this.isCtxDependent ? outerContext : null;
+	return parser.sempred(localctx, this.ruleIndex, this.predIndex);
+};
+
+Predicate.prototype.updateHashCode = function(hash) {
+	hash.update(this.ruleIndex, this.predIndex, this.isCtxDependent);
+};
+
+Predicate.prototype.equals = function(other) {
+	if (this === other) {
+		return true;
+	} else if (!(other instanceof Predicate)) {
+		return false;
+	} else {
+		return this.ruleIndex === other.ruleIndex &&
+				this.predIndex === other.predIndex &&
+				this.isCtxDependent === other.isCtxDependent;
+	}
+};
+
+Predicate.prototype.toString = function() {
+	return "{" + this.ruleIndex + ":" + this.predIndex + "}?";
+};
+
+function PrecedencePredicate(precedence) {
+	SemanticContext.call(this);
+	this.precedence = precedence === undefined ? 0 : precedence;
+}
+
+PrecedencePredicate.prototype = Object.create(SemanticContext.prototype);
+PrecedencePredicate.prototype.constructor = PrecedencePredicate;
+
+PrecedencePredicate.prototype.evaluate = function(parser, outerContext) {
+	return parser.precpred(outerContext, this.precedence);
+};
+
+PrecedencePredicate.prototype.evalPrecedence = function(parser, outerContext) {
+	if (parser.precpred(outerContext, this.precedence)) {
+		return SemanticContext.NONE;
+	} else {
+		return null;
+	}
+};
+
+PrecedencePredicate.prototype.compareTo = function(other) {
+	return this.precedence - other.precedence;
+};
+
+PrecedencePredicate.prototype.updateHashCode = function(hash) {
+    hash.update(31);
+};
+
+PrecedencePredicate.prototype.equals = function(other) {
+	if (this === other) {
+		return true;
+	} else if (!(other instanceof PrecedencePredicate)) {
+		return false;
+	} else {
+		return this.precedence === other.precedence;
+	}
+};
+
+PrecedencePredicate.prototype.toString = function() {
+	return "{"+this.precedence+">=prec}?";
+};
+
+
+
+PrecedencePredicate.filterPrecedencePredicates = function(set) {
+	var result = [];
+	set.values().map( function(context) {
+		if (context instanceof PrecedencePredicate) {
+			result.push(context);
+		}
+	});
+	return result;
+};
+
+
+// A semantic context which is true whenever none of the contained contexts
+// is false.
+//
+function AND(a, b) {
+	SemanticContext.call(this);
+	var operands = new Set();
+	if (a instanceof AND) {
+		a.opnds.map(function(o) {
+			operands.add(o);
+		});
+	} else {
+		operands.add(a);
+	}
+	if (b instanceof AND) {
+		b.opnds.map(function(o) {
+			operands.add(o);
+		});
+	} else {
+		operands.add(b);
+	}
+	var precedencePredicates = PrecedencePredicate.filterPrecedencePredicates(operands);
+	if (precedencePredicates.length > 0) {
+		// interested in the transition with the lowest precedence
+		var reduced = null;
+		precedencePredicates.map( function(p) {
+			if(reduced===null || p.precedence<reduced.precedence) {
+				reduced = p;
+			}
+		});
+		operands.add(reduced);
+	}
+	this.opnds = operands.values();
+	return this;
+}
+
+AND.prototype = Object.create(SemanticContext.prototype);
+AND.prototype.constructor = AND;
+
+AND.prototype.equals = function(other) {
+	if (this === other) {
+		return true;
+	} else if (!(other instanceof AND)) {
+		return false;
+	} else {
+		return this.opnds === other.opnds;
+	}
+};
+
+AND.prototype.updateHashCode = function(hash) {
+    hash.update(this.opnds, "AND");
+};
+//
+// {@inheritDoc}
+//
+// <p>
+// The evaluation of predicates by this context is short-circuiting, but
+// unordered.</p>
+//
+AND.prototype.evaluate = function(parser, outerContext) {
+	for (var i = 0; i < this.opnds.length; i++) {
+		if (!this.opnds[i].evaluate(parser, outerContext)) {
+			return false;
+		}
+	}
+	return true;
+};
+
+AND.prototype.evalPrecedence = function(parser, outerContext) {
+	var differs = false;
+	var operands = [];
+	for (var i = 0; i < this.opnds.length; i++) {
+		var context = this.opnds[i];
+		var evaluated = context.evalPrecedence(parser, outerContext);
+		differs |= (evaluated !== context);
+		if (evaluated === null) {
+			// The AND context is false if any element is false
+			return null;
+		} else if (evaluated !== SemanticContext.NONE) {
+			// Reduce the result by skipping true elements
+			operands.push(evaluated);
+		}
+	}
+	if (!differs) {
+		return this;
+	}
+	if (operands.length === 0) {
+		// all elements were true, so the AND context is true
+		return SemanticContext.NONE;
+	}
+	var result = null;
+	operands.map(function(o) {
+		result = result === null ? o : SemanticContext.andContext(result, o);
+	});
+	return result;
+};
+
+AND.prototype.toString = function() {
+	var s = "";
+	this.opnds.map(function(o) {
+		s += "&& " + o.toString();
+	});
+	return s.length > 3 ? s.slice(3) : s;
+};
+
+//
+// A semantic context which is true whenever at least one of the contained
+// contexts is true.
+//
+function OR(a, b) {
+	SemanticContext.call(this);
+	var operands = new Set();
+	if (a instanceof OR) {
+		a.opnds.map(function(o) {
+			operands.add(o);
+		});
+	} else {
+		operands.add(a);
+	}
+	if (b instanceof OR) {
+		b.opnds.map(function(o) {
+			operands.add(o);
+		});
+	} else {
+		operands.add(b);
+	}
+
+	var precedencePredicates = PrecedencePredicate.filterPrecedencePredicates(operands);
+	if (precedencePredicates.length > 0) {
+		// interested in the transition with the highest precedence
+		var s = precedencePredicates.sort(function(a, b) {
+			return a.compareTo(b);
+		});
+		var reduced = s[s.length-1];
+		operands.add(reduced);
+	}
+	this.opnds = operands.values();
+	return this;
+}
+
+OR.prototype = Object.create(SemanticContext.prototype);
+OR.prototype.constructor = OR;
+
+OR.prototype.constructor = function(other) {
+	if (this === other) {
+		return true;
+	} else if (!(other instanceof OR)) {
+		return false;
+	} else {
+		return this.opnds === other.opnds;
+	}
+};
+
+OR.prototype.updateHashCode = function(hash) {
+    hash.update(this.opnds, "OR");
+};
+
+// <p>
+// The evaluation of predicates by this context is short-circuiting, but
+// unordered.</p>
+//
+OR.prototype.evaluate = function(parser, outerContext) {
+	for (var i = 0; i < this.opnds.length; i++) {
+		if (this.opnds[i].evaluate(parser, outerContext)) {
+			return true;
+		}
+	}
+	return false;
+};
+
+OR.prototype.evalPrecedence = function(parser, outerContext) {
+	var differs = false;
+	var operands = [];
+	for (var i = 0; i < this.opnds.length; i++) {
+		var context = this.opnds[i];
+		var evaluated = context.evalPrecedence(parser, outerContext);
+		differs |= (evaluated !== context);
+		if (evaluated === SemanticContext.NONE) {
+			// The OR context is true if any element is true
+			return SemanticContext.NONE;
+		} else if (evaluated !== null) {
+			// Reduce the result by skipping false elements
+			operands.push(evaluated);
+		}
+	}
+	if (!differs) {
+		return this;
+	}
+	if (operands.length === 0) {
+		// all elements were false, so the OR context is false
+		return null;
+	}
+	var result = null;
+	operands.map(function(o) {
+		return result === null ? o : SemanticContext.orContext(result, o);
+	});
+	return result;
+};
+
+OR.prototype.toString = function() {
+	var s = "";
+	this.opnds.map(function(o) {
+		s += "|| " + o.toString();
+	});
+	return s.length > 3 ? s.slice(3) : s;
+};
+
+exports.SemanticContext = SemanticContext;
+exports.PrecedencePredicate = PrecedencePredicate;
+exports.Predicate = Predicate;
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+///
+
+var ATNConfigSet = __webpack_require__(9).ATNConfigSet;
+var Utils = __webpack_require__(0);
+var Hash = Utils.Hash;
+var Set = Utils.Set;
+
+// Map a predicate to a predicted alternative.///
+
+function PredPrediction(pred, alt) {
+	this.alt = alt;
+	this.pred = pred;
+	return this;
+}
+
+PredPrediction.prototype.toString = function() {
+	return "(" + this.pred + ", " + this.alt + ")";
+};
+
+// A DFA state represents a set of possible ATN configurations.
+// As Aho, Sethi, Ullman p. 117 says "The DFA uses its state
+// to keep track of all possible states the ATN can be in after
+// reading each input symbol. That is to say, after reading
+// input a1a2..an, the DFA is in a state that represents the
+// subset T of the states of the ATN that are reachable from the
+// ATN's start state along some path labeled a1a2..an."
+// In conventional NFA&rarr;DFA conversion, therefore, the subset T
+// would be a bitset representing the set of states the
+// ATN could be in. We need to track the alt predicted by each
+// state as well, however. More importantly, we need to maintain
+// a stack of states, tracking the closure operations as they
+// jump from rule to rule, emulating rule invocations (method calls).
+// I have to add a stack to simulate the proper lookahead sequences for
+// the underlying LL grammar from which the ATN was derived.
+//
+// <p>I use a set of ATNConfig objects not simple states. An ATNConfig
+// is both a state (ala normal conversion) and a RuleContext describing
+// the chain of rules (if any) followed to arrive at that state.</p>
+//
+// <p>A DFA state may have multiple references to a particular state,
+// but with different ATN contexts (with same or different alts)
+// meaning that state was reached via a different set of rule invocations.</p>
+// /
+
+function DFAState(stateNumber, configs) {
+	if (stateNumber === null) {
+		stateNumber = -1;
+	}
+	if (configs === null) {
+		configs = new ATNConfigSet();
+	}
+	this.stateNumber = stateNumber;
+	this.configs = configs;
+	// {@code edges[symbol]} points to target of symbol. Shift up by 1 so (-1)
+	// {@link Token//EOF} maps to {@code edges[0]}.
+	this.edges = null;
+	this.isAcceptState = false;
+	// if accept state, what ttype do we match or alt do we predict?
+	// This is set to {@link ATN//INVALID_ALT_NUMBER} when {@link
+	// //predicates}{@code !=null} or
+	// {@link //requiresFullContext}.
+	this.prediction = 0;
+	this.lexerActionExecutor = null;
+	// Indicates that this state was created during SLL prediction that
+	// discovered a conflict between the configurations in the state. Future
+	// {@link ParserATNSimulator//execATN} invocations immediately jumped doing
+	// full context prediction if this field is true.
+	this.requiresFullContext = false;
+	// During SLL parsing, this is a list of predicates associated with the
+	// ATN configurations of the DFA state. When we have predicates,
+	// {@link //requiresFullContext} is {@code false} since full context
+	// prediction evaluates predicates
+	// on-the-fly. If this is not null, then {@link //prediction} is
+	// {@link ATN//INVALID_ALT_NUMBER}.
+	//
+	// <p>We only use these for non-{@link //requiresFullContext} but
+	// conflicting states. That
+	// means we know from the context (it's $ or we don't dip into outer
+	// context) that it's an ambiguity not a conflict.</p>
+	//
+	// <p>This list is computed by {@link
+	// ParserATNSimulator//predicateDFAState}.</p>
+	this.predicates = null;
+	return this;
+}
+
+// Get the set of all alts mentioned by all ATN configurations in this
+// DFA state.
+DFAState.prototype.getAltSet = function() {
+	var alts = new Set();
+	if (this.configs !== null) {
+		for (var i = 0; i < this.configs.length; i++) {
+			var c = this.configs[i];
+			alts.add(c.alt);
+		}
+	}
+	if (alts.length === 0) {
+		return null;
+	} else {
+		return alts;
+	}
+};
+
+// Two {@link DFAState} instances are equal if their ATN configuration sets
+// are the same. This method is used to see if a state already exists.
+//
+// <p>Because the number of alternatives and number of ATN configurations are
+// finite, there is a finite number of DFA states that can be processed.
+// This is necessary to show that the algorithm terminates.</p>
+//
+// <p>Cannot test the DFA state numbers here because in
+// {@link ParserATNSimulator//addDFAState} we need to know if any other state
+// exists that has this exact set of ATN configurations. The
+// {@link //stateNumber} is irrelevant.</p>
+DFAState.prototype.equals = function(other) {
+	// compare set of ATN configurations in this set with other
+	return this === other ||
+			(other instanceof DFAState &&
+				this.configs.equals(other.configs));
+};
+
+DFAState.prototype.toString = function() {
+	var s = "" + this.stateNumber + ":" + this.configs;
+	if(this.isAcceptState) {
+        s = s + "=>";
+        if (this.predicates !== null)
+            s = s + this.predicates;
+        else
+            s = s + this.prediction;
+    }
+	return s;
+};
+
+DFAState.prototype.hashCode = function() {
+	var hash = new Hash();
+	hash.update(this.configs);
+    return hash.finish();
+};
+
+exports.DFAState = DFAState;
+exports.PredPrediction = PredPrediction;
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+exports.atn = __webpack_require__(35);
+exports.codepointat = __webpack_require__(27);
+exports.dfa = __webpack_require__(42);
+exports.fromcodepoint = __webpack_require__(28);
+exports.tree = __webpack_require__(44);
+exports.error = __webpack_require__(45);
+exports.Token = __webpack_require__(1).Token;
+exports.CharStreams = __webpack_require__(47).CharStreams;
+exports.CommonToken = __webpack_require__(1).CommonToken;
+exports.InputStream = __webpack_require__(19).InputStream;
+exports.FileStream = __webpack_require__(48).FileStream;
+exports.CommonTokenStream = __webpack_require__(49).CommonTokenStream;
+exports.Lexer = __webpack_require__(15).Lexer;
+exports.Parser = __webpack_require__(51).Parser;
+var pc = __webpack_require__(6);
+exports.PredictionContextCache = pc.PredictionContextCache;
+exports.ParserRuleContext = __webpack_require__(18).ParserRuleContext;
+exports.Interval = __webpack_require__(2).Interval;
+exports.Utils = __webpack_require__(0);
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+///
+
+// A tuple: (ATN state, predicted alt, syntactic, semantic context).
+//  The syntactic context is a graph-structured stack node whose
+//  path(s) to the root is the rule invocation(s)
+//  chain used to arrive at the state.  The semantic context is
+//  the tree of semantic predicates encountered before reaching
+//  an ATN state.
+///
+
+var DecisionState = __webpack_require__(3).DecisionState;
+var SemanticContext = __webpack_require__(10).SemanticContext;
+var Hash = __webpack_require__(0).Hash;
+
+
+function checkParams(params, isCfg) {
+	if(params===null) {
+		var result = { state:null, alt:null, context:null, semanticContext:null };
+		if(isCfg) {
+			result.reachesIntoOuterContext = 0;
+		}
+		return result;
+	} else {
+		var props = {};
+		props.state = params.state || null;
+		props.alt = (params.alt === undefined) ? null : params.alt;
+		props.context = params.context || null;
+		props.semanticContext = params.semanticContext || null;
+		if(isCfg) {
+			props.reachesIntoOuterContext = params.reachesIntoOuterContext || 0;
+			props.precedenceFilterSuppressed = params.precedenceFilterSuppressed || false;
+		}
+		return props;
+	}
+}
+
+function ATNConfig(params, config) {
+	this.checkContext(params, config);
+	params = checkParams(params);
+	config = checkParams(config, true);
+    // The ATN state associated with this configuration///
+    this.state = params.state!==null ? params.state : config.state;
+    // What alt (or lexer rule) is predicted by this configuration///
+    this.alt = params.alt!==null ? params.alt : config.alt;
+    // The stack of invoking states leading to the rule/states associated
+    //  with this config.  We track only those contexts pushed during
+    //  execution of the ATN simulator.
+    this.context = params.context!==null ? params.context : config.context;
+    this.semanticContext = params.semanticContext!==null ? params.semanticContext :
+        (config.semanticContext!==null ? config.semanticContext : SemanticContext.NONE);
+    // We cannot execute predicates dependent upon local context unless
+    // we know for sure we are in the correct context. Because there is
+    // no way to do this efficiently, we simply cannot evaluate
+    // dependent predicates unless we are in the rule that initially
+    // invokes the ATN simulator.
+    //
+    // closure() tracks the depth of how far we dip into the
+    // outer context: depth &gt; 0.  Note that it may not be totally
+    // accurate depth since I don't ever decrement. TODO: make it a boolean then
+    this.reachesIntoOuterContext = config.reachesIntoOuterContext;
+    this.precedenceFilterSuppressed = config.precedenceFilterSuppressed;
+    return this;
+}
+
+ATNConfig.prototype.checkContext = function(params, config) {
+	if((params.context===null || params.context===undefined) &&
+			(config===null || config.context===null || config.context===undefined)) {
+		this.context = null;
+	}
+};
+
+
+ATNConfig.prototype.hashCode = function() {
+    var hash = new Hash();
+    this.updateHashCode(hash);
+    return hash.finish();
+};
+
+
+ATNConfig.prototype.updateHashCode = function(hash) {
+    hash.update(this.state.stateNumber, this.alt, this.context, this.semanticContext);
+};
+
+// An ATN configuration is equal to another if both have
+//  the same state, they predict the same alternative, and
+//  syntactic/semantic contexts are the same.
+
+ATNConfig.prototype.equals = function(other) {
+    if (this === other) {
+        return true;
+    } else if (! (other instanceof ATNConfig)) {
+        return false;
+    } else {
+        return this.state.stateNumber===other.state.stateNumber &&
+            this.alt===other.alt &&
+            (this.context===null ? other.context===null : this.context.equals(other.context)) &&
+            this.semanticContext.equals(other.semanticContext) &&
+            this.precedenceFilterSuppressed===other.precedenceFilterSuppressed;
+    }
+};
+
+
+ATNConfig.prototype.hashCodeForConfigSet = function() {
+    var hash = new Hash();
+    hash.update(this.state.stateNumber, this.alt, this.semanticContext);
+    return hash.finish();
+};
+
+
+ATNConfig.prototype.equalsForConfigSet = function(other) {
+    if (this === other) {
+        return true;
+    } else if (! (other instanceof ATNConfig)) {
+        return false;
+    } else {
+        return this.state.stateNumber===other.state.stateNumber &&
+            this.alt===other.alt &&
+            this.semanticContext.equals(other.semanticContext);
+    }
+};
+
+
+ATNConfig.prototype.toString = function() {
+    return "(" + this.state + "," + this.alt +
+        (this.context!==null ? ",[" + this.context.toString() + "]" : "") +
+        (this.semanticContext !== SemanticContext.NONE ?
+                ("," + this.semanticContext.toString())
+                : "") +
+        (this.reachesIntoOuterContext>0 ?
+                (",up=" + this.reachesIntoOuterContext)
+                : "") + ")";
+};
+
+
+function LexerATNConfig(params, config) {
+	ATNConfig.call(this, params, config);
+
+    // This is the backing field for {@link //getLexerActionExecutor}.
+	var lexerActionExecutor = params.lexerActionExecutor || null;
+    this.lexerActionExecutor = lexerActionExecutor || (config!==null ? config.lexerActionExecutor : null);
+    this.passedThroughNonGreedyDecision = config!==null ? this.checkNonGreedyDecision(config, this.state) : false;
+    return this;
+}
+
+LexerATNConfig.prototype = Object.create(ATNConfig.prototype);
+LexerATNConfig.prototype.constructor = LexerATNConfig;
+
+LexerATNConfig.prototype.updateHashCode = function(hash) {
+    hash.update(this.state.stateNumber, this.alt, this.context, this.semanticContext, this.passedThroughNonGreedyDecision, this.lexerActionExecutor);
+};
+
+LexerATNConfig.prototype.equals = function(other) {
+    return this === other ||
+            (other instanceof LexerATNConfig &&
+            this.passedThroughNonGreedyDecision == other.passedThroughNonGreedyDecision &&
+            (this.lexerActionExecutor ? this.lexerActionExecutor.equals(other.lexerActionExecutor) : !other.lexerActionExecutor) &&
+            ATNConfig.prototype.equals.call(this, other));
+};
+
+LexerATNConfig.prototype.hashCodeForConfigSet = LexerATNConfig.prototype.hashCode;
+
+LexerATNConfig.prototype.equalsForConfigSet = LexerATNConfig.prototype.equals;
+
+
+LexerATNConfig.prototype.checkNonGreedyDecision = function(source, target) {
+    return source.passedThroughNonGreedyDecision ||
+        (target instanceof DecisionState) && target.nonGreedy;
+};
+
+exports.ATNConfig = ATNConfig;
+exports.LexerATNConfig = LexerATNConfig;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+///
+
+//  A rule context is a record of a single rule invocation. It knows
+//  which context invoked it, if any. If there is no parent context, then
+//  naturally the invoking state is not valid.  The parent link
+//  provides a chain upwards from the current rule invocation to the root
+//  of the invocation tree, forming a stack. We actually carry no
+//  information about the rule associated with this context (except
+//  when parsing). We keep only the state number of the invoking state from
+//  the ATN submachine that invoked this. Contrast this with the s
+//  pointer inside ParserRuleContext that tracks the current state
+//  being "executed" for the current rule.
+//
+//  The parent contexts are useful for computing lookahead sets and
+//  getting error information.
+//
+//  These objects are used during parsing and prediction.
+//  For the special case of parsers, we use the subclass
+//  ParserRuleContext.
+//
+//  @see ParserRuleContext
+///
+
+var RuleNode = __webpack_require__(4).RuleNode;
+var INVALID_INTERVAL = __webpack_require__(4).INVALID_INTERVAL;
+var INVALID_ALT_NUMBER = __webpack_require__(7).INVALID_ALT_NUMBER;
+
+function RuleContext(parent, invokingState) {
+	RuleNode.call(this);
+	// What context invoked this rule?
+	this.parentCtx = parent || null;
+	// What state invoked the rule associated with this context?
+	// The "return address" is the followState of invokingState
+	// If parent is null, this should be -1.
+	this.invokingState = invokingState || -1;
+	return this;
+}
+
+RuleContext.prototype = Object.create(RuleNode.prototype);
+RuleContext.prototype.constructor = RuleContext;
+
+RuleContext.prototype.depth = function() {
+	var n = 0;
+	var p = this;
+	while (p !== null) {
+		p = p.parentCtx;
+		n += 1;
+	}
+	return n;
+};
+
+// A context is empty if there is no invoking state; meaning nobody call
+// current context.
+RuleContext.prototype.isEmpty = function() {
+	return this.invokingState === -1;
+};
+
+// satisfy the ParseTree / SyntaxTree interface
+
+RuleContext.prototype.getSourceInterval = function() {
+	return INVALID_INTERVAL;
+};
+
+RuleContext.prototype.getRuleContext = function() {
+	return this;
+};
+
+RuleContext.prototype.getPayload = function() {
+	return this;
+};
+
+// Return the combined text of all child nodes. This method only considers
+// tokens which have been added to the parse tree.
+// <p>
+// Since tokens on hidden channels (e.g. whitespace or comments) are not
+// added to the parse trees, they will not appear in the output of this
+// method.
+// /
+RuleContext.prototype.getText = function() {
+	if (this.getChildCount() === 0) {
+		return "";
+	} else {
+		return this.children.map(function(child) {
+			return child.getText();
+		}).join("");
+	}
+};
+
+// For rule associated with this parse tree internal node, return
+// the outer alternative number used to match the input. Default
+// implementation does not compute nor store this alt num. Create
+// a subclass of ParserRuleContext with backing field and set
+// option contextSuperClass.
+// to set it.
+RuleContext.prototype.getAltNumber = function() { return INVALID_ALT_NUMBER; }
+
+// Set the outer alternative number for this context node. Default
+// implementation does nothing to avoid backing field overhead for
+// trees that don't need it.  Create
+// a subclass of ParserRuleContext with backing field and set
+// option contextSuperClass.
+RuleContext.prototype.setAltNumber = function(altNumber) { }
+
+RuleContext.prototype.getChild = function(i) {
+	return null;
+};
+
+RuleContext.prototype.getChildCount = function() {
+	return 0;
+};
+
+RuleContext.prototype.accept = function(visitor) {
+	return visitor.visitChildren(this);
+};
+
+//need to manage circular dependencies, so export now
+exports.RuleContext = RuleContext;
+var Trees = __webpack_require__(20).Trees;
+
+
+// Print out a whole tree, not just a node, in LISP format
+// (root child1 .. childN). Print just a node if this is a leaf.
+//
+
+RuleContext.prototype.toStringTree = function(ruleNames, recog) {
+	return Trees.toStringTree(this, ruleNames, recog);
+};
+
+RuleContext.prototype.toString = function(ruleNames, stop) {
+	ruleNames = ruleNames || null;
+	stop = stop || null;
+	var p = this;
+	var s = "[";
+	while (p !== null && p !== stop) {
+		if (ruleNames === null) {
+			if (!p.isEmpty()) {
+				s += p.invokingState;
+			}
+		} else {
+			var ri = p.ruleIndex;
+			var ruleName = (ri >= 0 && ri < ruleNames.length) ? ruleNames[ri]
+					: "" + ri;
+			s += ruleName;
+		}
+		if (p.parentCtx !== null && (ruleNames !== null || !p.parentCtx.isEmpty())) {
+			s += " ";
+		}
+		p = p.parentCtx;
+	}
+	s += "]";
+	return s;
+};
+
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+///
+
+// A lexer is recognizer that draws input symbols from a character stream.
+//  lexer grammars result in a subclass of this object. A Lexer object
+//  uses simplified match() and error recovery mechanisms in the interest of speed.
+
+var Token = __webpack_require__(1).Token;
+var Recognizer = __webpack_require__(24).Recognizer;
+var CommonTokenFactory = __webpack_require__(39).CommonTokenFactory;
+var RecognitionException  = __webpack_require__(5).RecognitionException;
+var LexerNoViableAltException = __webpack_require__(5).LexerNoViableAltException;
+
+function TokenSource() {
+	return this;
+}
+
+function Lexer(input) {
+	Recognizer.call(this);
+	this._input = input;
+	this._factory = CommonTokenFactory.DEFAULT;
+	this._tokenFactorySourcePair = [ this, input ];
+
+	this._interp = null; // child classes must populate this
+
+	// The goal of all lexer rules/methods is to create a token object.
+	// this is an instance variable as multiple rules may collaborate to
+	// create a single token. nextToken will return this object after
+	// matching lexer rule(s). If you subclass to allow multiple token
+	// emissions, then set this to the last token to be matched or
+	// something nonnull so that the auto token emit mechanism will not
+	// emit another token.
+	this._token = null;
+
+	// What character index in the stream did the current token start at?
+	// Needed, for example, to get the text for current token. Set at
+	// the start of nextToken.
+	this._tokenStartCharIndex = -1;
+
+	// The line on which the first character of the token resides///
+	this._tokenStartLine = -1;
+
+	// The character position of first character within the line///
+	this._tokenStartColumn = -1;
+
+	// Once we see EOF on char stream, next token will be EOF.
+	// If you have DONE : EOF ; then you see DONE EOF.
+	this._hitEOF = false;
+
+	// The channel number for the current token///
+	this._channel = Token.DEFAULT_CHANNEL;
+
+	// The token type for the current token///
+	this._type = Token.INVALID_TYPE;
+
+	this._modeStack = [];
+	this._mode = Lexer.DEFAULT_MODE;
+
+	// You can set the text for the current token to override what is in
+	// the input char buffer. Use setText() or can set this instance var.
+	// /
+	this._text = null;
+
+	return this;
+}
+
+Lexer.prototype = Object.create(Recognizer.prototype);
+Lexer.prototype.constructor = Lexer;
+
+Lexer.DEFAULT_MODE = 0;
+Lexer.MORE = -2;
+Lexer.SKIP = -3;
+
+Lexer.DEFAULT_TOKEN_CHANNEL = Token.DEFAULT_CHANNEL;
+Lexer.HIDDEN = Token.HIDDEN_CHANNEL;
+Lexer.MIN_CHAR_VALUE = 0x0000;
+Lexer.MAX_CHAR_VALUE = 0x10FFFF;
+
+Lexer.prototype.reset = function() {
+	// wack Lexer state variables
+	if (this._input !== null) {
+		this._input.seek(0); // rewind the input
+	}
+	this._token = null;
+	this._type = Token.INVALID_TYPE;
+	this._channel = Token.DEFAULT_CHANNEL;
+	this._tokenStartCharIndex = -1;
+	this._tokenStartColumn = -1;
+	this._tokenStartLine = -1;
+	this._text = null;
+
+	this._hitEOF = false;
+	this._mode = Lexer.DEFAULT_MODE;
+	this._modeStack = [];
+
+	this._interp.reset();
+};
+
+// Return a token from this source; i.e., match a token on the char stream.
+Lexer.prototype.nextToken = function() {
+	if (this._input === null) {
+		throw "nextToken requires a non-null input stream.";
+	}
+
+	// Mark start location in char stream so unbuffered streams are
+	// guaranteed at least have text of current token
+	var tokenStartMarker = this._input.mark();
+	try {
+		while (true) {
+			if (this._hitEOF) {
+				this.emitEOF();
+				return this._token;
+			}
+			this._token = null;
+			this._channel = Token.DEFAULT_CHANNEL;
+			this._tokenStartCharIndex = this._input.index;
+			this._tokenStartColumn = this._interp.column;
+			this._tokenStartLine = this._interp.line;
+			this._text = null;
+			var continueOuter = false;
+			while (true) {
+				this._type = Token.INVALID_TYPE;
+				var ttype = Lexer.SKIP;
+				try {
+					ttype = this._interp.match(this._input, this._mode);
+				} catch (e) {
+				    if(e instanceof RecognitionException) {
+                        this.notifyListeners(e); // report error
+                        this.recover(e);
+                    } else {
+                        console.log(e.stack);
+                        throw e;
+                    }
+				}
+				if (this._input.LA(1) === Token.EOF) {
+					this._hitEOF = true;
+				}
+				if (this._type === Token.INVALID_TYPE) {
+					this._type = ttype;
+				}
+				if (this._type === Lexer.SKIP) {
+					continueOuter = true;
+					break;
+				}
+				if (this._type !== Lexer.MORE) {
+					break;
+				}
+			}
+			if (continueOuter) {
+				continue;
+			}
+			if (this._token === null) {
+				this.emit();
+			}
+			return this._token;
+		}
+	} finally {
+		// make sure we release marker after match or
+		// unbuffered char stream will keep buffering
+		this._input.release(tokenStartMarker);
+	}
+};
+
+// Instruct the lexer to skip creating a token for current lexer rule
+// and look for another token. nextToken() knows to keep looking when
+// a lexer rule finishes with token set to SKIP_TOKEN. Recall that
+// if token==null at end of any token rule, it creates one for you
+// and emits it.
+// /
+Lexer.prototype.skip = function() {
+	this._type = Lexer.SKIP;
+};
+
+Lexer.prototype.more = function() {
+	this._type = Lexer.MORE;
+};
+
+Lexer.prototype.mode = function(m) {
+	this._mode = m;
+};
+
+Lexer.prototype.pushMode = function(m) {
+	if (this._interp.debug) {
+		console.log("pushMode " + m);
+	}
+	this._modeStack.push(this._mode);
+	this.mode(m);
+};
+
+Lexer.prototype.popMode = function() {
+	if (this._modeStack.length === 0) {
+		throw "Empty Stack";
+	}
+	if (this._interp.debug) {
+		console.log("popMode back to " + this._modeStack.slice(0, -1));
+	}
+	this.mode(this._modeStack.pop());
+	return this._mode;
+};
+
+// Set the char stream and reset the lexer
+Object.defineProperty(Lexer.prototype, "inputStream", {
+	get : function() {
+		return this._input;
+	},
+	set : function(input) {
+		this._input = null;
+		this._tokenFactorySourcePair = [ this, this._input ];
+		this.reset();
+		this._input = input;
+		this._tokenFactorySourcePair = [ this, this._input ];
+	}
+});
+
+Object.defineProperty(Lexer.prototype, "sourceName", {
+	get : function sourceName() {
+		return this._input.sourceName;
+	}
+});
+
+// By default does not support multiple emits per nextToken invocation
+// for efficiency reasons. Subclass and override this method, nextToken,
+// and getToken (to push tokens into a list and pull from that list
+// rather than a single variable as this implementation does).
+// /
+Lexer.prototype.emitToken = function(token) {
+	this._token = token;
+};
+
+// The standard method called to automatically emit a token at the
+// outermost lexical rule. The token object should point into the
+// char buffer start..stop. If there is a text override in 'text',
+// use that to set the token's text. Override this method to emit
+// custom Token objects or provide a new factory.
+// /
+Lexer.prototype.emit = function() {
+	var t = this._factory.create(this._tokenFactorySourcePair, this._type,
+			this._text, this._channel, this._tokenStartCharIndex, this
+					.getCharIndex() - 1, this._tokenStartLine,
+			this._tokenStartColumn);
+	this.emitToken(t);
+	return t;
+};
+
+Lexer.prototype.emitEOF = function() {
+	var cpos = this.column;
+	var lpos = this.line;
+	var eof = this._factory.create(this._tokenFactorySourcePair, Token.EOF,
+			null, Token.DEFAULT_CHANNEL, this._input.index,
+			this._input.index - 1, lpos, cpos);
+	this.emitToken(eof);
+	return eof;
+};
+
+Object.defineProperty(Lexer.prototype, "type", {
+	get : function() {
+		return this.type;
+	},
+	set : function(type) {
+		this._type = type;
+	}
+});
+
+Object.defineProperty(Lexer.prototype, "line", {
+	get : function() {
+		return this._interp.line;
+	},
+	set : function(line) {
+		this._interp.line = line;
+	}
+});
+
+Object.defineProperty(Lexer.prototype, "column", {
+	get : function() {
+		return this._interp.column;
+	},
+	set : function(column) {
+		this._interp.column = column;
+	}
+});
+
+
+// What is the index of the current character of lookahead?///
+Lexer.prototype.getCharIndex = function() {
+	return this._input.index;
+};
+
+// Return the text matched so far for the current token or any text override.
+//Set the complete text of this token; it wipes any previous changes to the text.
+Object.defineProperty(Lexer.prototype, "text", {
+	get : function() {
+		if (this._text !== null) {
+			return this._text;
+		} else {
+			return this._interp.getText(this._input);
+		}
+	},
+	set : function(text) {
+		this._text = text;
+	}
+});
+// Return a list of all Token objects in input char stream.
+// Forces load of all tokens. Does not include EOF token.
+// /
+Lexer.prototype.getAllTokens = function() {
+	var tokens = [];
+	var t = this.nextToken();
+	while (t.type !== Token.EOF) {
+		tokens.push(t);
+		t = this.nextToken();
+	}
+	return tokens;
+};
+
+Lexer.prototype.notifyListeners = function(e) {
+	var start = this._tokenStartCharIndex;
+	var stop = this._input.index;
+	var text = this._input.getText(start, stop);
+	var msg = "token recognition error at: '" + this.getErrorDisplay(text) + "'";
+	var listener = this.getErrorListenerDispatch();
+	listener.syntaxError(this, null, this._tokenStartLine,
+			this._tokenStartColumn, msg, e);
+};
+
+Lexer.prototype.getErrorDisplay = function(s) {
+	var d = [];
+	for (var i = 0; i < s.length; i++) {
+		d.push(s[i]);
+	}
+	return d.join('');
+};
+
+Lexer.prototype.getErrorDisplayForChar = function(c) {
+	if (c.charCodeAt(0) === Token.EOF) {
+		return "<EOF>";
+	} else if (c === '\n') {
+		return "\\n";
+	} else if (c === '\t') {
+		return "\\t";
+	} else if (c === '\r') {
+		return "\\r";
+	} else {
+		return c;
+	}
+};
+
+Lexer.prototype.getCharErrorDisplay = function(c) {
+	return "'" + this.getErrorDisplayForChar(c) + "'";
+};
+
+// Lexers can normally match any char in it's vocabulary after matching
+// a token, so do the easy thing and just kill a character and hope
+// it all works out. You can instead use the rule invocation stack
+// to do sophisticated error recovery if you are in a fragment rule.
+// /
+Lexer.prototype.recover = function(re) {
+	if (this._input.LA(1) !== Token.EOF) {
+		if (re instanceof LexerNoViableAltException) {
+			// skip a char and try again
+			this._interp.consume(this._input);
+		} else {
+			// TODO: Do we lose character or line position information?
+			this._input.consume();
+		}
+	}
+};
+
+exports.Lexer = Lexer;
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+// Provides an empty default implementation of {@link ANTLRErrorListener}. The
+// default implementation of each method does nothing, but can be overridden as
+// necessary.
+
+function ErrorListener() {
+	return this;
+}
+
+ErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {
+};
+
+ErrorListener.prototype.reportAmbiguity = function(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs) {
+};
+
+ErrorListener.prototype.reportAttemptingFullContext = function(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs) {
+};
+
+ErrorListener.prototype.reportContextSensitivity = function(recognizer, dfa, startIndex, stopIndex, prediction, configs) {
+};
+
+function ConsoleErrorListener() {
+	ErrorListener.call(this);
+	return this;
+}
+
+ConsoleErrorListener.prototype = Object.create(ErrorListener.prototype);
+ConsoleErrorListener.prototype.constructor = ConsoleErrorListener;
+
+//
+// Provides a default instance of {@link ConsoleErrorListener}.
+//
+ConsoleErrorListener.INSTANCE = new ConsoleErrorListener();
+
+//
+// {@inheritDoc}
+//
+// <p>
+// This implementation prints messages to {@link System//err} containing the
+// values of {@code line}, {@code charPositionInLine}, and {@code msg} using
+// the following format.</p>
+//
+// <pre>
+// line <em>line</em>:<em>charPositionInLine</em> <em>msg</em>
+// </pre>
+//
+ConsoleErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {
+    console.error("line " + line + ":" + column + " " + msg);
+};
+
+function ProxyErrorListener(delegates) {
+	ErrorListener.call(this);
+    if (delegates===null) {
+        throw "delegates";
+    }
+    this.delegates = delegates;
+	return this;
+}
+
+ProxyErrorListener.prototype = Object.create(ErrorListener.prototype);
+ProxyErrorListener.prototype.constructor = ProxyErrorListener;
+
+ProxyErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {
+    this.delegates.map(function(d) { d.syntaxError(recognizer, offendingSymbol, line, column, msg, e); });
+};
+
+ProxyErrorListener.prototype.reportAmbiguity = function(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs) {
+    this.delegates.map(function(d) { d.reportAmbiguity(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs); });
+};
+
+ProxyErrorListener.prototype.reportAttemptingFullContext = function(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs) {
+	this.delegates.map(function(d) { d.reportAttemptingFullContext(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs); });
+};
+
+ProxyErrorListener.prototype.reportContextSensitivity = function(recognizer, dfa, startIndex, stopIndex, prediction, configs) {
+	this.delegates.map(function(d) { d.reportContextSensitivity(recognizer, dfa, startIndex, stopIndex, prediction, configs); });
+};
+
+exports.ErrorListener = ErrorListener;
+exports.ConsoleErrorListener = ConsoleErrorListener;
+exports.ProxyErrorListener = ProxyErrorListener;
+
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+// A DFA walker that knows how to dump them to serialized strings.#/
+
+
+function DFASerializer(dfa, literalNames, symbolicNames) {
+	this.dfa = dfa;
+	this.literalNames = literalNames || [];
+	this.symbolicNames = symbolicNames || [];
+	return this;
+}
+
+DFASerializer.prototype.toString = function() {
+   if(this.dfa.s0 === null) {
+       return null;
+   }
+   var buf = "";
+   var states = this.dfa.sortedStates();
+   for(var i=0;i<states.length;i++) {
+       var s = states[i];
+       if(s.edges!==null) {
+            var n = s.edges.length;
+            for(var j=0;j<n;j++) {
+                var t = s.edges[j] || null;
+                if(t!==null && t.stateNumber !== 0x7FFFFFFF) {
+                    buf = buf.concat(this.getStateString(s));
+                    buf = buf.concat("-");
+                    buf = buf.concat(this.getEdgeLabel(j));
+                    buf = buf.concat("->");
+                    buf = buf.concat(this.getStateString(t));
+                    buf = buf.concat('\n');
+                }
+            }
+       }
+   }
+   return buf.length===0 ? null : buf;
+};
+
+DFASerializer.prototype.getEdgeLabel = function(i) {
+    if (i===0) {
+        return "EOF";
+    } else if(this.literalNames !==null || this.symbolicNames!==null) {
+        return this.literalNames[i-1] || this.symbolicNames[i-1];
+    } else {
+        return String.fromCharCode(i-1);
+    }
+};
+
+DFASerializer.prototype.getStateString = function(s) {
+    var baseStateStr = ( s.isAcceptState ? ":" : "") + "s" + s.stateNumber + ( s.requiresFullContext ? "^" : "");
+    if(s.isAcceptState) {
+        if (s.predicates !== null) {
+            return baseStateStr + "=>" + s.predicates.toString();
+        } else {
+            return baseStateStr + "=>" + s.prediction.toString();
+        }
+    } else {
+        return baseStateStr;
+    }
+};
+
+function LexerDFASerializer(dfa) {
+	DFASerializer.call(this, dfa, null);
+	return this;
+}
+
+LexerDFASerializer.prototype = Object.create(DFASerializer.prototype);
+LexerDFASerializer.prototype.constructor = LexerDFASerializer;
+
+LexerDFASerializer.prototype.getEdgeLabel = function(i) {
+	return "'" + String.fromCharCode(i) + "'";
+};
+
+exports.DFASerializer = DFASerializer;
+exports.LexerDFASerializer = LexerDFASerializer;
+
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+//* A rule invocation record for parsing.
+//
+//  Contains all of the information about the current rule not stored in the
+//  RuleContext. It handles parse tree children list, Any ATN state
+//  tracing, and the default values available for rule indications:
+//  start, stop, rule index, current alt number, current
+//  ATN state.
+//
+//  Subclasses made for each rule and grammar track the parameters,
+//  return values, locals, and labels specific to that rule. These
+//  are the objects that are returned from rules.
+//
+//  Note text is not an actual field of a rule return value; it is computed
+//  from start and stop using the input stream's toString() method.  I
+//  could add a ctor to this so that we can pass in and store the input
+//  stream, but I'm not sure we want to do that.  It would seem to be undefined
+//  to get the .text property anyway if the rule matches tokens from multiple
+//  input streams.
+//
+//  I do not use getters for fields of objects that are used simply to
+//  group values such as this aggregate.  The getters/setters are there to
+//  satisfy the superclass interface.
+
+var RuleContext = __webpack_require__(14).RuleContext;
+var Tree = __webpack_require__(4);
+var INVALID_INTERVAL = Tree.INVALID_INTERVAL;
+var TerminalNode = Tree.TerminalNode;
+var TerminalNodeImpl = Tree.TerminalNodeImpl;
+var ErrorNodeImpl = Tree.ErrorNodeImpl;
+var Interval = __webpack_require__(2).Interval;
+
+function ParserRuleContext(parent, invokingStateNumber) {
+	parent = parent || null;
+	invokingStateNumber = invokingStateNumber || null;
+	RuleContext.call(this, parent, invokingStateNumber);
+	this.ruleIndex = -1;
+    // * If we are debugging or building a parse tree for a visitor,
+    // we need to track all of the tokens and rule invocations associated
+    // with this rule's context. This is empty for parsing w/o tree constr.
+    // operation because we don't the need to track the details about
+    // how we parse this rule.
+    // /
+    this.children = null;
+    this.start = null;
+    this.stop = null;
+    // The exception that forced this rule to return. If the rule successfully
+    // completed, this is {@code null}.
+    this.exception = null;
+}
+
+ParserRuleContext.prototype = Object.create(RuleContext.prototype);
+ParserRuleContext.prototype.constructor = ParserRuleContext;
+
+// * COPY a ctx (I'm deliberately not using copy constructor)///
+ParserRuleContext.prototype.copyFrom = function(ctx) {
+    // from RuleContext
+    this.parentCtx = ctx.parentCtx;
+    this.invokingState = ctx.invokingState;
+    this.children = null;
+    this.start = ctx.start;
+    this.stop = ctx.stop;
+    // copy any error nodes to alt label node
+    if(ctx.children) {
+        this.children = [];
+        // reset parent pointer for any error nodes
+    	ctx.children.map(function(child) {
+    		if (child instanceof ErrorNodeImpl) {
+                this.children.push(child);
+                child.parentCtx = this;
+            }
+		}, this);
+	}
+};
+
+// Double dispatch methods for listeners
+ParserRuleContext.prototype.enterRule = function(listener) {
+};
+
+ParserRuleContext.prototype.exitRule = function(listener) {
+};
+
+// * Does not set parent link; other add methods do that///
+ParserRuleContext.prototype.addChild = function(child) {
+    if (this.children === null) {
+        this.children = [];
+    }
+    this.children.push(child);
+    return child;
+};
+
+// * Used by enterOuterAlt to toss out a RuleContext previously added as
+// we entered a rule. If we have // label, we will need to remove
+// generic ruleContext object.
+// /
+ParserRuleContext.prototype.removeLastChild = function() {
+    if (this.children !== null) {
+        this.children.pop();
+    }
+};
+
+ParserRuleContext.prototype.addTokenNode = function(token) {
+    var node = new TerminalNodeImpl(token);
+    this.addChild(node);
+    node.parentCtx = this;
+    return node;
+};
+
+ParserRuleContext.prototype.addErrorNode = function(badToken) {
+    var node = new ErrorNodeImpl(badToken);
+    this.addChild(node);
+    node.parentCtx = this;
+    return node;
+};
+
+ParserRuleContext.prototype.getChild = function(i, type) {
+	type = type || null;
+	if (this.children === null || i < 0 || i >= this.children.length) {
+		return null;
+	}
+	if (type === null) {
+		return this.children[i];
+	} else {
+		for(var j=0; j<this.children.length; j++) {
+			var child = this.children[j];
+			if(child instanceof type) {
+				if(i===0) {
+					return child;
+				} else {
+					i -= 1;
+				}
+			}
+		}
+		return null;
+    }
+};
+
+
+ParserRuleContext.prototype.getToken = function(ttype, i) {
+	if (this.children === null || i < 0 || i >= this.children.length) {
+		return null;
+	}
+	for(var j=0; j<this.children.length; j++) {
+		var child = this.children[j];
+		if (child instanceof TerminalNode) {
+			if (child.symbol.type === ttype) {
+				if(i===0) {
+					return child;
+				} else {
+					i -= 1;
+				}
+			}
+        }
+	}
+    return null;
+};
+
+ParserRuleContext.prototype.getTokens = function(ttype ) {
+    if (this.children=== null) {
+        return [];
+    } else {
+		var tokens = [];
+		for(var j=0; j<this.children.length; j++) {
+			var child = this.children[j];
+			if (child instanceof TerminalNode) {
+				if (child.symbol.type === ttype) {
+					tokens.push(child);
+				}
+			}
+		}
+		return tokens;
+    }
+};
+
+ParserRuleContext.prototype.getTypedRuleContext = function(ctxType, i) {
+    return this.getChild(i, ctxType);
+};
+
+ParserRuleContext.prototype.getTypedRuleContexts = function(ctxType) {
+    if (this.children=== null) {
+        return [];
+    } else {
+		var contexts = [];
+		for(var j=0; j<this.children.length; j++) {
+			var child = this.children[j];
+			if (child instanceof ctxType) {
+				contexts.push(child);
+			}
+		}
+		return contexts;
+	}
+};
+
+ParserRuleContext.prototype.getChildCount = function() {
+	if (this.children=== null) {
+		return 0;
+	} else {
+		return this.children.length;
+	}
+};
+
+ParserRuleContext.prototype.getSourceInterval = function() {
+    if( this.start === null || this.stop === null) {
+        return INVALID_INTERVAL;
+    } else {
+        return new Interval(this.start.tokenIndex, this.stop.tokenIndex);
+    }
+};
+
+RuleContext.EMPTY = new ParserRuleContext();
+
+function InterpreterRuleContext(parent, invokingStateNumber, ruleIndex) {
+	ParserRuleContext.call(parent, invokingStateNumber);
+    this.ruleIndex = ruleIndex;
+    return this;
+}
+
+InterpreterRuleContext.prototype = Object.create(ParserRuleContext.prototype);
+InterpreterRuleContext.prototype.constructor = InterpreterRuleContext;
+
+exports.ParserRuleContext = ParserRuleContext;
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+//
+
+var Token = __webpack_require__(1).Token;
+__webpack_require__(27);
+__webpack_require__(28);
+
+// Vacuum all input from a string and then treat it like a buffer.
+
+function _loadString(stream) {
+	stream._index = 0;
+	stream.data = [];
+	if (stream.decodeToUnicodeCodePoints) {
+		for (var i = 0; i < stream.strdata.length; ) {
+			var codePoint = stream.strdata.codePointAt(i);
+			stream.data.push(codePoint);
+			i += codePoint <= 0xFFFF ? 1 : 2;
+		}
+	} else {
+		for (var i = 0; i < stream.strdata.length; i++) {
+			var codeUnit = stream.strdata.charCodeAt(i);
+			stream.data.push(codeUnit);
+		}
+	}
+	stream._size = stream.data.length;
+}
+
+// If decodeToUnicodeCodePoints is true, the input is treated
+// as a series of Unicode code points.
+//
+// Otherwise, the input is treated as a series of 16-bit UTF-16 code
+// units.
+function InputStream(data, decodeToUnicodeCodePoints) {
+	this.name = "<empty>";
+	this.strdata = data;
+	this.decodeToUnicodeCodePoints = decodeToUnicodeCodePoints || false;
+	_loadString(this);
+	return this;
+}
+
+Object.defineProperty(InputStream.prototype, "index", {
+	get : function() {
+		return this._index;
+	}
+});
+
+Object.defineProperty(InputStream.prototype, "size", {
+	get : function() {
+		return this._size;
+	}
+});
+
+// Reset the stream so that it's in the same state it was
+// when the object was created *except* the data array is not
+// touched.
+//
+InputStream.prototype.reset = function() {
+	this._index = 0;
+};
+
+InputStream.prototype.consume = function() {
+	if (this._index >= this._size) {
+		// assert this.LA(1) == Token.EOF
+		throw ("cannot consume EOF");
+	}
+	this._index += 1;
+};
+
+InputStream.prototype.LA = function(offset) {
+	if (offset === 0) {
+		return 0; // undefined
+	}
+	if (offset < 0) {
+		offset += 1; // e.g., translate LA(-1) to use offset=0
+	}
+	var pos = this._index + offset - 1;
+	if (pos < 0 || pos >= this._size) { // invalid
+		return Token.EOF;
+	}
+	return this.data[pos];
+};
+
+InputStream.prototype.LT = function(offset) {
+	return this.LA(offset);
+};
+
+// mark/release do nothing; we have entire buffer
+InputStream.prototype.mark = function() {
+	return -1;
+};
+
+InputStream.prototype.release = function(marker) {
+};
+
+// consume() ahead until p==_index; can't just set p=_index as we must
+// update line and column. If we seek backwards, just set p
+//
+InputStream.prototype.seek = function(_index) {
+	if (_index <= this._index) {
+		this._index = _index; // just jump; don't update stream state (line,
+								// ...)
+		return;
+	}
+	// seek forward
+	this._index = Math.min(_index, this._size);
+};
+
+InputStream.prototype.getText = function(start, stop) {
+	if (stop >= this._size) {
+		stop = this._size - 1;
+	}
+	if (start >= this._size) {
+		return "";
+	} else {
+		if (this.decodeToUnicodeCodePoints) {
+			var result = "";
+			for (var i = start; i <= stop; i++) {
+				result += String.fromCodePoint(this.data[i]);
+			}
+			return result;
+		} else {
+			return this.strdata.slice(start, stop + 1);
+		}
+	}
+};
+
+InputStream.prototype.toString = function() {
+	return this.strdata;
+};
+
+exports.InputStream = InputStream;
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+var Utils = __webpack_require__(0);
+var Token = __webpack_require__(1).Token;
+var RuleNode = __webpack_require__(4).RuleNode;
+var ErrorNode = __webpack_require__(4).ErrorNode;
+var TerminalNode = __webpack_require__(4).TerminalNode;
+var ParserRuleContext = __webpack_require__(18).ParserRuleContext;
+var RuleContext = __webpack_require__(14).RuleContext;
+var INVALID_ALT_NUMBER = __webpack_require__(7).INVALID_ALT_NUMBER;
+
+
+/** A set of utility routines useful for all kinds of ANTLR trees. */
+function Trees() {
+}
+
+// Print out a whole tree in LISP form. {@link //getNodeText} is used on the
+//  node payloads to get the text for the nodes.  Detect
+//  parse trees and extract data appropriately.
+Trees.toStringTree = function(tree, ruleNames, recog) {
+	ruleNames = ruleNames || null;
+	recog = recog || null;
+    if(recog!==null) {
+       ruleNames = recog.ruleNames;
+    }
+    var s = Trees.getNodeText(tree, ruleNames);
+    s = Utils.escapeWhitespace(s, false);
+    var c = tree.getChildCount();
+    if(c===0) {
+        return s;
+    }
+    var res = "(" + s + ' ';
+    if(c>0) {
+        s = Trees.toStringTree(tree.getChild(0), ruleNames);
+        res = res.concat(s);
+    }
+    for(var i=1;i<c;i++) {
+        s = Trees.toStringTree(tree.getChild(i), ruleNames);
+        res = res.concat(' ' + s);
+    }
+    res = res.concat(")");
+    return res;
+};
+
+Trees.getNodeText = function(t, ruleNames, recog) {
+	ruleNames = ruleNames || null;
+	recog = recog || null;
+    if(recog!==null) {
+        ruleNames = recog.ruleNames;
+    }
+    if(ruleNames!==null) {
+       if (t instanceof RuleContext) {
+           var altNumber = t.getAltNumber();
+           if ( altNumber!=INVALID_ALT_NUMBER ) {
+               return ruleNames[t.ruleIndex]+":"+altNumber;
+           }
+           return ruleNames[t.ruleIndex];
+       } else if ( t instanceof ErrorNode) {
+           return t.toString();
+       } else if(t instanceof TerminalNode) {
+           if(t.symbol!==null) {
+               return t.symbol.text;
+           }
+       }
+    }
+    // no recog for rule names
+    var payload = t.getPayload();
+    if (payload instanceof Token ) {
+       return payload.text;
+    }
+    return t.getPayload().toString();
+};
+
+
+// Return ordered list of all children of this node
+Trees.getChildren = function(t) {
+	var list = [];
+	for(var i=0;i<t.getChildCount();i++) {
+		list.push(t.getChild(i));
+	}
+	return list;
+};
+
+// Return a list of all ancestors of this node.  The first node of
+//  list is the root and the last is the parent of this node.
+//
+Trees.getAncestors = function(t) {
+    var ancestors = [];
+    t = t.getParent();
+    while(t!==null) {
+        ancestors = [t].concat(ancestors);
+        t = t.getParent();
+    }
+    return ancestors;
+};
+
+Trees.findAllTokenNodes = function(t, ttype) {
+    return Trees.findAllNodes(t, ttype, true);
+};
+
+Trees.findAllRuleNodes = function(t, ruleIndex) {
+	return Trees.findAllNodes(t, ruleIndex, false);
+};
+
+Trees.findAllNodes = function(t, index, findTokens) {
+	var nodes = [];
+	Trees._findAllNodes(t, index, findTokens, nodes);
+	return nodes;
+};
+
+Trees._findAllNodes = function(t, index, findTokens, nodes) {
+	// check this node (the root) first
+	if(findTokens && (t instanceof TerminalNode)) {
+		if(t.symbol.type===index) {
+			nodes.push(t);
+		}
+	} else if(!findTokens && (t instanceof ParserRuleContext)) {
+		if(t.ruleIndex===index) {
+			nodes.push(t);
+		}
+	}
+	// check children
+	for(var i=0;i<t.getChildCount();i++) {
+		Trees._findAllNodes(t.getChild(i), index, findTokens, nodes);
+	}
+};
+
+Trees.descendants = function(t) {
+	var nodes = [t];
+    for(var i=0;i<t.getChildCount();i++) {
+        nodes = nodes.concat(Trees.descendants(t.getChild(i)));
+    }
+    return nodes;
+};
+
+
+exports.Trees = Trees;
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+var Token = __webpack_require__(1).Token;
+var ATN = __webpack_require__(7).ATN;
+var ATNType = __webpack_require__(37).ATNType;
+var ATNStates = __webpack_require__(3);
+var ATNState = ATNStates.ATNState;
+var BasicState = ATNStates.BasicState;
+var DecisionState = ATNStates.DecisionState;
+var BlockStartState = ATNStates.BlockStartState;
+var BlockEndState = ATNStates.BlockEndState;
+var LoopEndState = ATNStates.LoopEndState;
+var RuleStartState = ATNStates.RuleStartState;
+var RuleStopState = ATNStates.RuleStopState;
+var TokensStartState = ATNStates.TokensStartState;
+var PlusLoopbackState = ATNStates.PlusLoopbackState;
+var StarLoopbackState = ATNStates.StarLoopbackState;
+var StarLoopEntryState = ATNStates.StarLoopEntryState;
+var PlusBlockStartState = ATNStates.PlusBlockStartState;
+var StarBlockStartState = ATNStates.StarBlockStartState;
+var BasicBlockStartState = ATNStates.BasicBlockStartState;
+var Transitions = __webpack_require__(8);
+var Transition = Transitions.Transition;
+var AtomTransition = Transitions.AtomTransition;
+var SetTransition = Transitions.SetTransition;
+var NotSetTransition = Transitions.NotSetTransition;
+var RuleTransition = Transitions.RuleTransition;
+var RangeTransition = Transitions.RangeTransition;
+var ActionTransition = Transitions.ActionTransition;
+var EpsilonTransition = Transitions.EpsilonTransition;
+var WildcardTransition = Transitions.WildcardTransition;
+var PredicateTransition = Transitions.PredicateTransition;
+var PrecedencePredicateTransition = Transitions.PrecedencePredicateTransition;
+var IntervalSet = __webpack_require__(2).IntervalSet;
+var Interval = __webpack_require__(2).Interval;
+var ATNDeserializationOptions = __webpack_require__(22).ATNDeserializationOptions;
+var LexerActions = __webpack_require__(23);
+var LexerActionType = LexerActions.LexerActionType;
+var LexerSkipAction = LexerActions.LexerSkipAction;
+var LexerChannelAction = LexerActions.LexerChannelAction;
+var LexerCustomAction = LexerActions.LexerCustomAction;
+var LexerMoreAction = LexerActions.LexerMoreAction;
+var LexerTypeAction = LexerActions.LexerTypeAction;
+var LexerPushModeAction = LexerActions.LexerPushModeAction;
+var LexerPopModeAction = LexerActions.LexerPopModeAction;
+var LexerModeAction = LexerActions.LexerModeAction;
+// This is the earliest supported serialized UUID.
+// stick to serialized version for now, we don't need a UUID instance
+var BASE_SERIALIZED_UUID = "AADB8D7E-AEEF-4415-AD2B-8204D6CF042E";
+
+//
+// This UUID indicates the serialized ATN contains two sets of
+// IntervalSets, where the second set's values are encoded as
+// 32-bit integers to support the full Unicode SMP range up to U+10FFFF.
+//
+var ADDED_UNICODE_SMP = "59627784-3BE5-417A-B9EB-8131A7286089";
+
+// This list contains all of the currently supported UUIDs, ordered by when
+// the feature first appeared in this branch.
+var SUPPORTED_UUIDS = [ BASE_SERIALIZED_UUID, ADDED_UNICODE_SMP ];
+
+var SERIALIZED_VERSION = 3;
+
+// This is the current serialized UUID.
+var SERIALIZED_UUID = ADDED_UNICODE_SMP;
+
+function initArray( length, value) {
+	var tmp = [];
+	tmp[length-1] = value;
+	return tmp.map(function(i) {return value;});
+}
+
+function ATNDeserializer (options) {
+
+    if ( options=== undefined || options === null ) {
+        options = ATNDeserializationOptions.defaultOptions;
+    }
+    this.deserializationOptions = options;
+    this.stateFactories = null;
+    this.actionFactories = null;
+
+    return this;
+}
+
+// Determines if a particular serialized representation of an ATN supports
+// a particular feature, identified by the {@link UUID} used for serializing
+// the ATN at the time the feature was first introduced.
+//
+// @param feature The {@link UUID} marking the first time the feature was
+// supported in the serialized ATN.
+// @param actualUuid The {@link UUID} of the actual serialized ATN which is
+// currently being deserialized.
+// @return {@code true} if the {@code actualUuid} value represents a
+// serialized ATN at or after the feature identified by {@code feature} was
+// introduced; otherwise, {@code false}.
+
+ATNDeserializer.prototype.isFeatureSupported = function(feature, actualUuid) {
+    var idx1 = SUPPORTED_UUIDS.indexOf(feature);
+    if (idx1<0) {
+        return false;
+    }
+    var idx2 = SUPPORTED_UUIDS.indexOf(actualUuid);
+    return idx2 >= idx1;
+};
+
+ATNDeserializer.prototype.deserialize = function(data) {
+    this.reset(data);
+    this.checkVersion();
+    this.checkUUID();
+    var atn = this.readATN();
+    this.readStates(atn);
+    this.readRules(atn);
+    this.readModes(atn);
+    var sets = [];
+    // First, deserialize sets with 16-bit arguments <= U+FFFF.
+    this.readSets(atn, sets, this.readInt.bind(this));
+    // Next, if the ATN was serialized with the Unicode SMP feature,
+    // deserialize sets with 32-bit arguments <= U+10FFFF.
+    if (this.isFeatureSupported(ADDED_UNICODE_SMP, this.uuid)) {
+        this.readSets(atn, sets, this.readInt32.bind(this));
+    }
+    this.readEdges(atn, sets);
+    this.readDecisions(atn);
+    this.readLexerActions(atn);
+    this.markPrecedenceDecisions(atn);
+    this.verifyATN(atn);
+    if (this.deserializationOptions.generateRuleBypassTransitions && atn.grammarType === ATNType.PARSER ) {
+        this.generateRuleBypassTransitions(atn);
+        // re-verify after modification
+        this.verifyATN(atn);
+    }
+    return atn;
+};
+
+ATNDeserializer.prototype.reset = function(data) {
+	var adjust = function(c) {
+        var v = c.charCodeAt(0);
+        return v>1  ? v-2 : v + 65534;
+	};
+    var temp = data.split("").map(adjust);
+    // don't adjust the first value since that's the version number
+    temp[0] = data.charCodeAt(0);
+    this.data = temp;
+    this.pos = 0;
+};
+
+ATNDeserializer.prototype.checkVersion = function() {
+    var version = this.readInt();
+    if ( version !== SERIALIZED_VERSION ) {
+        throw ("Could not deserialize ATN with version " + version + " (expected " + SERIALIZED_VERSION + ").");
+    }
+};
+
+ATNDeserializer.prototype.checkUUID = function() {
+    var uuid = this.readUUID();
+    if (SUPPORTED_UUIDS.indexOf(uuid)<0) {
+        throw ("Could not deserialize ATN with UUID: " + uuid +
+                        " (expected " + SERIALIZED_UUID + " or a legacy UUID).", uuid, SERIALIZED_UUID);
+    }
+    this.uuid = uuid;
+};
+
+ATNDeserializer.prototype.readATN = function() {
+    var grammarType = this.readInt();
+    var maxTokenType = this.readInt();
+    return new ATN(grammarType, maxTokenType);
+};
+
+ATNDeserializer.prototype.readStates = function(atn) {
+	var j, pair, stateNumber;
+    var loopBackStateNumbers = [];
+    var endStateNumbers = [];
+    var nstates = this.readInt();
+    for(var i=0; i<nstates; i++) {
+        var stype = this.readInt();
+        // ignore bad type of states
+        if (stype===ATNState.INVALID_TYPE) {
+            atn.addState(null);
+            continue;
+        }
+        var ruleIndex = this.readInt();
+        if (ruleIndex === 0xFFFF) {
+            ruleIndex = -1;
+        }
+        var s = this.stateFactory(stype, ruleIndex);
+        if (stype === ATNState.LOOP_END) { // special case
+            var loopBackStateNumber = this.readInt();
+            loopBackStateNumbers.push([s, loopBackStateNumber]);
+        } else if(s instanceof BlockStartState) {
+            var endStateNumber = this.readInt();
+            endStateNumbers.push([s, endStateNumber]);
+        }
+        atn.addState(s);
+    }
+    // delay the assignment of loop back and end states until we know all the
+	// state instances have been initialized
+    for (j=0; j<loopBackStateNumbers.length; j++) {
+        pair = loopBackStateNumbers[j];
+        pair[0].loopBackState = atn.states[pair[1]];
+    }
+
+    for (j=0; j<endStateNumbers.length; j++) {
+        pair = endStateNumbers[j];
+        pair[0].endState = atn.states[pair[1]];
+    }
+
+    var numNonGreedyStates = this.readInt();
+    for (j=0; j<numNonGreedyStates; j++) {
+        stateNumber = this.readInt();
+        atn.states[stateNumber].nonGreedy = true;
+    }
+
+    var numPrecedenceStates = this.readInt();
+    for (j=0; j<numPrecedenceStates; j++) {
+        stateNumber = this.readInt();
+        atn.states[stateNumber].isPrecedenceRule = true;
+    }
+};
+
+ATNDeserializer.prototype.readRules = function(atn) {
+    var i;
+    var nrules = this.readInt();
+    if (atn.grammarType === ATNType.LEXER ) {
+        atn.ruleToTokenType = initArray(nrules, 0);
+    }
+    atn.ruleToStartState = initArray(nrules, 0);
+    for (i=0; i<nrules; i++) {
+        var s = this.readInt();
+        var startState = atn.states[s];
+        atn.ruleToStartState[i] = startState;
+        if ( atn.grammarType === ATNType.LEXER ) {
+            var tokenType = this.readInt();
+            if (tokenType === 0xFFFF) {
+                tokenType = Token.EOF;
+            }
+            atn.ruleToTokenType[i] = tokenType;
+        }
+    }
+    atn.ruleToStopState = initArray(nrules, 0);
+    for (i=0; i<atn.states.length; i++) {
+        var state = atn.states[i];
+        if (!(state instanceof RuleStopState)) {
+            continue;
+        }
+        atn.ruleToStopState[state.ruleIndex] = state;
+        atn.ruleToStartState[state.ruleIndex].stopState = state;
+    }
+};
+
+ATNDeserializer.prototype.readModes = function(atn) {
+    var nmodes = this.readInt();
+    for (var i=0; i<nmodes; i++) {
+        var s = this.readInt();
+        atn.modeToStartState.push(atn.states[s]);
+    }
+};
+
+ATNDeserializer.prototype.readSets = function(atn, sets, readUnicode) {
+    var m = this.readInt();
+    for (var i=0; i<m; i++) {
+        var iset = new IntervalSet();
+        sets.push(iset);
+        var n = this.readInt();
+        var containsEof = this.readInt();
+        if (containsEof!==0) {
+            iset.addOne(-1);
+        }
+        for (var j=0; j<n; j++) {
+            var i1 = readUnicode();
+            var i2 = readUnicode();
+            iset.addRange(i1, i2);
+        }
+    }
+};
+
+ATNDeserializer.prototype.readEdges = function(atn, sets) {
+	var i, j, state, trans, target;
+    var nedges = this.readInt();
+    for (i=0; i<nedges; i++) {
+        var src = this.readInt();
+        var trg = this.readInt();
+        var ttype = this.readInt();
+        var arg1 = this.readInt();
+        var arg2 = this.readInt();
+        var arg3 = this.readInt();
+        trans = this.edgeFactory(atn, ttype, src, trg, arg1, arg2, arg3, sets);
+        var srcState = atn.states[src];
+        srcState.addTransition(trans);
+    }
+    // edges for rule stop states can be derived, so they aren't serialized
+    for (i=0; i<atn.states.length; i++) {
+        state = atn.states[i];
+        for (j=0; j<state.transitions.length; j++) {
+            var t = state.transitions[j];
+            if (!(t instanceof RuleTransition)) {
+                continue;
+            }
+			var outermostPrecedenceReturn = -1;
+			if (atn.ruleToStartState[t.target.ruleIndex].isPrecedenceRule) {
+				if (t.precedence === 0) {
+					outermostPrecedenceReturn = t.target.ruleIndex;
+				}
+			}
+
+			trans = new EpsilonTransition(t.followState, outermostPrecedenceReturn);
+            atn.ruleToStopState[t.target.ruleIndex].addTransition(trans);
+        }
+    }
+
+    for (i=0; i<atn.states.length; i++) {
+        state = atn.states[i];
+        if (state instanceof BlockStartState) {
+            // we need to know the end state to set its start state
+            if (state.endState === null) {
+                throw ("IllegalState");
+            }
+            // block end states can only be associated to a single block start
+			// state
+            if ( state.endState.startState !== null) {
+                throw ("IllegalState");
+            }
+            state.endState.startState = state;
+        }
+        if (state instanceof PlusLoopbackState) {
+            for (j=0; j<state.transitions.length; j++) {
+                target = state.transitions[j].target;
+                if (target instanceof PlusBlockStartState) {
+                    target.loopBackState = state;
+                }
+            }
+        } else if (state instanceof StarLoopbackState) {
+            for (j=0; j<state.transitions.length; j++) {
+                target = state.transitions[j].target;
+                if (target instanceof StarLoopEntryState) {
+                    target.loopBackState = state;
+                }
+            }
+        }
+    }
+};
+
+ATNDeserializer.prototype.readDecisions = function(atn) {
+    var ndecisions = this.readInt();
+    for (var i=0; i<ndecisions; i++) {
+        var s = this.readInt();
+        var decState = atn.states[s];
+        atn.decisionToState.push(decState);
+        decState.decision = i;
+    }
+};
+
+ATNDeserializer.prototype.readLexerActions = function(atn) {
+    if (atn.grammarType === ATNType.LEXER) {
+        var count = this.readInt();
+        atn.lexerActions = initArray(count, null);
+        for (var i=0; i<count; i++) {
+            var actionType = this.readInt();
+            var data1 = this.readInt();
+            if (data1 === 0xFFFF) {
+                data1 = -1;
+            }
+            var data2 = this.readInt();
+            if (data2 === 0xFFFF) {
+                data2 = -1;
+            }
+            var lexerAction = this.lexerActionFactory(actionType, data1, data2);
+            atn.lexerActions[i] = lexerAction;
+        }
+    }
+};
+
+ATNDeserializer.prototype.generateRuleBypassTransitions = function(atn) {
+	var i;
+    var count = atn.ruleToStartState.length;
+    for(i=0; i<count; i++) {
+        atn.ruleToTokenType[i] = atn.maxTokenType + i + 1;
+    }
+    for(i=0; i<count; i++) {
+        this.generateRuleBypassTransition(atn, i);
+    }
+};
+
+ATNDeserializer.prototype.generateRuleBypassTransition = function(atn, idx) {
+	var i, state;
+    var bypassStart = new BasicBlockStartState();
+    bypassStart.ruleIndex = idx;
+    atn.addState(bypassStart);
+
+    var bypassStop = new BlockEndState();
+    bypassStop.ruleIndex = idx;
+    atn.addState(bypassStop);
+
+    bypassStart.endState = bypassStop;
+    atn.defineDecisionState(bypassStart);
+
+    bypassStop.startState = bypassStart;
+
+    var excludeTransition = null;
+    var endState = null;
+
+    if (atn.ruleToStartState[idx].isPrecedenceRule) {
+        // wrap from the beginning of the rule to the StarLoopEntryState
+        endState = null;
+        for(i=0; i<atn.states.length; i++) {
+            state = atn.states[i];
+            if (this.stateIsEndStateFor(state, idx)) {
+                endState = state;
+                excludeTransition = state.loopBackState.transitions[0];
+                break;
+            }
+        }
+        if (excludeTransition === null) {
+            throw ("Couldn't identify final state of the precedence rule prefix section.");
+        }
+    } else {
+        endState = atn.ruleToStopState[idx];
+    }
+
+    // all non-excluded transitions that currently target end state need to
+	// target blockEnd instead
+    for(i=0; i<atn.states.length; i++) {
+        state = atn.states[i];
+        for(var j=0; j<state.transitions.length; j++) {
+            var transition = state.transitions[j];
+            if (transition === excludeTransition) {
+                continue;
+            }
+            if (transition.target === endState) {
+                transition.target = bypassStop;
+            }
+        }
+    }
+
+    // all transitions leaving the rule start state need to leave blockStart
+	// instead
+    var ruleToStartState = atn.ruleToStartState[idx];
+    var count = ruleToStartState.transitions.length;
+    while ( count > 0) {
+        bypassStart.addTransition(ruleToStartState.transitions[count-1]);
+        ruleToStartState.transitions = ruleToStartState.transitions.slice(-1);
+    }
+    // link the new states
+    atn.ruleToStartState[idx].addTransition(new EpsilonTransition(bypassStart));
+    bypassStop.addTransition(new EpsilonTransition(endState));
+
+    var matchState = new BasicState();
+    atn.addState(matchState);
+    matchState.addTransition(new AtomTransition(bypassStop, atn.ruleToTokenType[idx]));
+    bypassStart.addTransition(new EpsilonTransition(matchState));
+};
+
+ATNDeserializer.prototype.stateIsEndStateFor = function(state, idx) {
+    if ( state.ruleIndex !== idx) {
+        return null;
+    }
+    if (!( state instanceof StarLoopEntryState)) {
+        return null;
+    }
+    var maybeLoopEndState = state.transitions[state.transitions.length - 1].target;
+    if (!( maybeLoopEndState instanceof LoopEndState)) {
+        return null;
+    }
+    if (maybeLoopEndState.epsilonOnlyTransitions &&
+        (maybeLoopEndState.transitions[0].target instanceof RuleStopState)) {
+        return state;
+    } else {
+        return null;
+    }
+};
+
+//
+// Analyze the {@link StarLoopEntryState} states in the specified ATN to set
+// the {@link StarLoopEntryState//isPrecedenceDecision} field to the
+// correct value.
+//
+// @param atn The ATN.
+//
+ATNDeserializer.prototype.markPrecedenceDecisions = function(atn) {
+	for(var i=0; i<atn.states.length; i++) {
+		var state = atn.states[i];
+		if (!( state instanceof StarLoopEntryState)) {
+            continue;
+        }
+        // We analyze the ATN to determine if this ATN decision state is the
+        // decision for the closure block that determines whether a
+        // precedence rule should continue or complete.
+        //
+        if ( atn.ruleToStartState[state.ruleIndex].isPrecedenceRule) {
+            var maybeLoopEndState = state.transitions[state.transitions.length - 1].target;
+            if (maybeLoopEndState instanceof LoopEndState) {
+                if ( maybeLoopEndState.epsilonOnlyTransitions &&
+                        (maybeLoopEndState.transitions[0].target instanceof RuleStopState)) {
+                    state.isPrecedenceDecision = true;
+                }
+            }
+        }
+	}
+};
+
+ATNDeserializer.prototype.verifyATN = function(atn) {
+    if (!this.deserializationOptions.verifyATN) {
+        return;
+    }
+    // verify assumptions
+	for(var i=0; i<atn.states.length; i++) {
+        var state = atn.states[i];
+        if (state === null) {
+            continue;
+        }
+        this.checkCondition(state.epsilonOnlyTransitions || state.transitions.length <= 1);
+        if (state instanceof PlusBlockStartState) {
+            this.checkCondition(state.loopBackState !== null);
+        } else  if (state instanceof StarLoopEntryState) {
+            this.checkCondition(state.loopBackState !== null);
+            this.checkCondition(state.transitions.length === 2);
+            if (state.transitions[0].target instanceof StarBlockStartState) {
+                this.checkCondition(state.transitions[1].target instanceof LoopEndState);
+                this.checkCondition(!state.nonGreedy);
+            } else if (state.transitions[0].target instanceof LoopEndState) {
+                this.checkCondition(state.transitions[1].target instanceof StarBlockStartState);
+                this.checkCondition(state.nonGreedy);
+            } else {
+                throw("IllegalState");
+            }
+        } else if (state instanceof StarLoopbackState) {
+            this.checkCondition(state.transitions.length === 1);
+            this.checkCondition(state.transitions[0].target instanceof StarLoopEntryState);
+        } else if (state instanceof LoopEndState) {
+            this.checkCondition(state.loopBackState !== null);
+        } else if (state instanceof RuleStartState) {
+            this.checkCondition(state.stopState !== null);
+        } else if (state instanceof BlockStartState) {
+            this.checkCondition(state.endState !== null);
+        } else if (state instanceof BlockEndState) {
+            this.checkCondition(state.startState !== null);
+        } else if (state instanceof DecisionState) {
+            this.checkCondition(state.transitions.length <= 1 || state.decision >= 0);
+        } else {
+            this.checkCondition(state.transitions.length <= 1 || (state instanceof RuleStopState));
+        }
+	}
+};
+
+ATNDeserializer.prototype.checkCondition = function(condition, message) {
+    if (!condition) {
+        if (message === undefined || message===null) {
+            message = "IllegalState";
+        }
+        throw (message);
+    }
+};
+
+ATNDeserializer.prototype.readInt = function() {
+    return this.data[this.pos++];
+};
+
+ATNDeserializer.prototype.readInt32 = function() {
+    var low = this.readInt();
+    var high = this.readInt();
+    return low | (high << 16);
+};
+
+ATNDeserializer.prototype.readLong = function() {
+    var low = this.readInt32();
+    var high = this.readInt32();
+    return (low & 0x00000000FFFFFFFF) | (high << 32);
+};
+
+function createByteToHex() {
+	var bth = [];
+	for (var i = 0; i < 256; i++) {
+		bth[i] = (i + 0x100).toString(16).substr(1).toUpperCase();
+	}
+	return bth;
+}
+
+var byteToHex = createByteToHex();
+
+ATNDeserializer.prototype.readUUID = function() {
+	var bb = [];
+	for(var i=7;i>=0;i--) {
+		var int = this.readInt();
+		/* jshint bitwise: false */
+		bb[(2*i)+1] = int & 0xFF;
+		bb[2*i] = (int >> 8) & 0xFF;
+	}
+    return byteToHex[bb[0]] + byteToHex[bb[1]] +
+    byteToHex[bb[2]] + byteToHex[bb[3]] + '-' +
+    byteToHex[bb[4]] + byteToHex[bb[5]] + '-' +
+    byteToHex[bb[6]] + byteToHex[bb[7]] + '-' +
+    byteToHex[bb[8]] + byteToHex[bb[9]] + '-' +
+    byteToHex[bb[10]] + byteToHex[bb[11]] +
+    byteToHex[bb[12]] + byteToHex[bb[13]] +
+    byteToHex[bb[14]] + byteToHex[bb[15]];
+};
+
+ATNDeserializer.prototype.edgeFactory = function(atn, type, src, trg, arg1, arg2, arg3, sets) {
+    var target = atn.states[trg];
+    switch(type) {
+    case Transition.EPSILON:
+        return new EpsilonTransition(target);
+    case Transition.RANGE:
+        return arg3 !== 0 ? new RangeTransition(target, Token.EOF, arg2) : new RangeTransition(target, arg1, arg2);
+    case Transition.RULE:
+        return new RuleTransition(atn.states[arg1], arg2, arg3, target);
+    case Transition.PREDICATE:
+        return new PredicateTransition(target, arg1, arg2, arg3 !== 0);
+    case Transition.PRECEDENCE:
+        return new PrecedencePredicateTransition(target, arg1);
+    case Transition.ATOM:
+        return arg3 !== 0 ? new AtomTransition(target, Token.EOF) : new AtomTransition(target, arg1);
+    case Transition.ACTION:
+        return new ActionTransition(target, arg1, arg2, arg3 !== 0);
+    case Transition.SET:
+        return new SetTransition(target, sets[arg1]);
+    case Transition.NOT_SET:
+        return new NotSetTransition(target, sets[arg1]);
+    case Transition.WILDCARD:
+        return new WildcardTransition(target);
+    default:
+        throw "The specified transition type: " + type + " is not valid.";
+    }
+};
+
+ATNDeserializer.prototype.stateFactory = function(type, ruleIndex) {
+    if (this.stateFactories === null) {
+        var sf = [];
+        sf[ATNState.INVALID_TYPE] = null;
+        sf[ATNState.BASIC] = function() { return new BasicState(); };
+        sf[ATNState.RULE_START] = function() { return new RuleStartState(); };
+        sf[ATNState.BLOCK_START] = function() { return new BasicBlockStartState(); };
+        sf[ATNState.PLUS_BLOCK_START] = function() { return new PlusBlockStartState(); };
+        sf[ATNState.STAR_BLOCK_START] = function() { return new StarBlockStartState(); };
+        sf[ATNState.TOKEN_START] = function() { return new TokensStartState(); };
+        sf[ATNState.RULE_STOP] = function() { return new RuleStopState(); };
+        sf[ATNState.BLOCK_END] = function() { return new BlockEndState(); };
+        sf[ATNState.STAR_LOOP_BACK] = function() { return new StarLoopbackState(); };
+        sf[ATNState.STAR_LOOP_ENTRY] = function() { return new StarLoopEntryState(); };
+        sf[ATNState.PLUS_LOOP_BACK] = function() { return new PlusLoopbackState(); };
+        sf[ATNState.LOOP_END] = function() { return new LoopEndState(); };
+        this.stateFactories = sf;
+    }
+    if (type>this.stateFactories.length || this.stateFactories[type] === null) {
+        throw("The specified state type " + type + " is not valid.");
+    } else {
+        var s = this.stateFactories[type]();
+        if (s!==null) {
+            s.ruleIndex = ruleIndex;
+            return s;
+        }
+    }
+};
+
+ATNDeserializer.prototype.lexerActionFactory = function(type, data1, data2) {
+    if (this.actionFactories === null) {
+        var af = [];
+        af[LexerActionType.CHANNEL] = function(data1, data2) { return new LexerChannelAction(data1); };
+        af[LexerActionType.CUSTOM] = function(data1, data2) { return new LexerCustomAction(data1, data2); };
+        af[LexerActionType.MODE] = function(data1, data2) { return new LexerModeAction(data1); };
+        af[LexerActionType.MORE] = function(data1, data2) { return LexerMoreAction.INSTANCE; };
+        af[LexerActionType.POP_MODE] = function(data1, data2) { return LexerPopModeAction.INSTANCE; };
+        af[LexerActionType.PUSH_MODE] = function(data1, data2) { return new LexerPushModeAction(data1); };
+        af[LexerActionType.SKIP] = function(data1, data2) { return LexerSkipAction.INSTANCE; };
+        af[LexerActionType.TYPE] = function(data1, data2) { return new LexerTypeAction(data1); };
+        this.actionFactories = af;
+    }
+    if (type>this.actionFactories.length || this.actionFactories[type] === null) {
+        throw("The specified lexer action type " + type + " is not valid.");
+    } else {
+        return this.actionFactories[type](data1, data2);
+    }
+};
+
+
+exports.ATNDeserializer = ATNDeserializer;
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+function ATNDeserializationOptions(copyFrom) {
+	if(copyFrom===undefined) {
+		copyFrom = null;
+	}
+	this.readOnly = false;
+    this.verifyATN = copyFrom===null ? true : copyFrom.verifyATN;
+    this.generateRuleBypassTransitions = copyFrom===null ? false : copyFrom.generateRuleBypassTransitions;
+
+    return this;
+}
+
+ATNDeserializationOptions.defaultOptions = new ATNDeserializationOptions();
+ATNDeserializationOptions.defaultOptions.readOnly = true;
+
+//    def __setattr__(self, key, value):
+//        if key!="readOnly" and self.readOnly:
+//            raise Exception("The object is read only.")
+//        super(type(self), self).__setattr__(key,value)
+
+exports.ATNDeserializationOptions = ATNDeserializationOptions;
+
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+ //
+
+function LexerActionType() {
+}
+
+LexerActionType.CHANNEL = 0;     //The type of a {@link LexerChannelAction} action.
+LexerActionType.CUSTOM = 1;      //The type of a {@link LexerCustomAction} action.
+LexerActionType.MODE = 2;        //The type of a {@link LexerModeAction} action.
+LexerActionType.MORE = 3;        //The type of a {@link LexerMoreAction} action.
+LexerActionType.POP_MODE = 4;    //The type of a {@link LexerPopModeAction} action.
+LexerActionType.PUSH_MODE = 5;   //The type of a {@link LexerPushModeAction} action.
+LexerActionType.SKIP = 6;        //The type of a {@link LexerSkipAction} action.
+LexerActionType.TYPE = 7;        //The type of a {@link LexerTypeAction} action.
+
+function LexerAction(action) {
+    this.actionType = action;
+    this.isPositionDependent = false;
+    return this;
+}
+
+LexerAction.prototype.hashCode = function() {
+    var hash = new Hash();
+    this.updateHashCode(hash);
+    return hash.finish()
+};
+
+LexerAction.prototype.updateHashCode = function(hash) {
+    hash.update(this.actionType);
+};
+
+LexerAction.prototype.equals = function(other) {
+    return this === other;
+};
+
+
+
+//
+// Implements the {@code skip} lexer action by calling {@link Lexer//skip}.
+//
+// <p>The {@code skip} command does not have any parameters, so this action is
+// implemented as a singleton instance exposed by {@link //INSTANCE}.</p>
+function LexerSkipAction() {
+	LexerAction.call(this, LexerActionType.SKIP);
+	return this;
+}
+
+LexerSkipAction.prototype = Object.create(LexerAction.prototype);
+LexerSkipAction.prototype.constructor = LexerSkipAction;
+
+// Provides a singleton instance of this parameterless lexer action.
+LexerSkipAction.INSTANCE = new LexerSkipAction();
+
+LexerSkipAction.prototype.execute = function(lexer) {
+    lexer.skip();
+};
+
+LexerSkipAction.prototype.toString = function() {
+	return "skip";
+};
+
+//  Implements the {@code type} lexer action by calling {@link Lexer//setType}
+// with the assigned type.
+function LexerTypeAction(type) {
+	LexerAction.call(this, LexerActionType.TYPE);
+	this.type = type;
+	return this;
+}
+
+LexerTypeAction.prototype = Object.create(LexerAction.prototype);
+LexerTypeAction.prototype.constructor = LexerTypeAction;
+
+LexerTypeAction.prototype.execute = function(lexer) {
+    lexer.type = this.type;
+};
+
+LexerTypeAction.prototype.updateHashCode = function(hash) {
+    hash.update(this.actionType, this.type);
+};
+
+
+LexerTypeAction.prototype.equals = function(other) {
+    if(this === other) {
+        return true;
+    } else if (! (other instanceof LexerTypeAction)) {
+        return false;
+    } else {
+        return this.type === other.type;
+    }
+};
+
+LexerTypeAction.prototype.toString = function() {
+    return "type(" + this.type + ")";
+};
+
+// Implements the {@code pushMode} lexer action by calling
+// {@link Lexer//pushMode} with the assigned mode.
+function LexerPushModeAction(mode) {
+	LexerAction.call(this, LexerActionType.PUSH_MODE);
+    this.mode = mode;
+    return this;
+}
+
+LexerPushModeAction.prototype = Object.create(LexerAction.prototype);
+LexerPushModeAction.prototype.constructor = LexerPushModeAction;
+
+// <p>This action is implemented by calling {@link Lexer//pushMode} with the
+// value provided by {@link //getMode}.</p>
+LexerPushModeAction.prototype.execute = function(lexer) {
+    lexer.pushMode(this.mode);
+};
+
+LexerPushModeAction.prototype.updateHashCode = function(hash) {
+    hash.update(this.actionType, this.mode);
+};
+
+LexerPushModeAction.prototype.equals = function(other) {
+    if (this === other) {
+        return true;
+    } else if (! (other instanceof LexerPushModeAction)) {
+        return false;
+    } else {
+        return this.mode === other.mode;
+    }
+};
+
+LexerPushModeAction.prototype.toString = function() {
+	return "pushMode(" + this.mode + ")";
+};
+
+
+// Implements the {@code popMode} lexer action by calling {@link Lexer//popMode}.
+//
+// <p>The {@code popMode} command does not have any parameters, so this action is
+// implemented as a singleton instance exposed by {@link //INSTANCE}.</p>
+function LexerPopModeAction() {
+	LexerAction.call(this,LexerActionType.POP_MODE);
+	return this;
+}
+
+LexerPopModeAction.prototype = Object.create(LexerAction.prototype);
+LexerPopModeAction.prototype.constructor = LexerPopModeAction;
+
+LexerPopModeAction.INSTANCE = new LexerPopModeAction();
+
+// <p>This action is implemented by calling {@link Lexer//popMode}.</p>
+LexerPopModeAction.prototype.execute = function(lexer) {
+    lexer.popMode();
+};
+
+LexerPopModeAction.prototype.toString = function() {
+	return "popMode";
+};
+
+// Implements the {@code more} lexer action by calling {@link Lexer//more}.
+//
+// <p>The {@code more} command does not have any parameters, so this action is
+// implemented as a singleton instance exposed by {@link //INSTANCE}.</p>
+function LexerMoreAction() {
+	LexerAction.call(this, LexerActionType.MORE);
+	return this;
+}
+
+LexerMoreAction.prototype = Object.create(LexerAction.prototype);
+LexerMoreAction.prototype.constructor = LexerMoreAction;
+
+LexerMoreAction.INSTANCE = new LexerMoreAction();
+
+// <p>This action is implemented by calling {@link Lexer//popMode}.</p>
+LexerMoreAction.prototype.execute = function(lexer) {
+    lexer.more();
+};
+
+LexerMoreAction.prototype.toString = function() {
+    return "more";
+};
+
+
+// Implements the {@code mode} lexer action by calling {@link Lexer//mode} with
+// the assigned mode.
+function LexerModeAction(mode) {
+	LexerAction.call(this, LexerActionType.MODE);
+    this.mode = mode;
+    return this;
+}
+
+LexerModeAction.prototype = Object.create(LexerAction.prototype);
+LexerModeAction.prototype.constructor = LexerModeAction;
+
+// <p>This action is implemented by calling {@link Lexer//mode} with the
+// value provided by {@link //getMode}.</p>
+LexerModeAction.prototype.execute = function(lexer) {
+    lexer.mode(this.mode);
+};
+
+LexerModeAction.prototype.updateHashCode = function(hash) {
+    hash.update(this.actionType, this.mode);
+};
+
+LexerModeAction.prototype.equals = function(other) {
+    if (this === other) {
+        return true;
+    } else if (! (other instanceof LexerModeAction)) {
+        return false;
+    } else {
+        return this.mode === other.mode;
+    }
+};
+
+LexerModeAction.prototype.toString = function() {
+    return "mode(" + this.mode + ")";
+};
+
+// Executes a custom lexer action by calling {@link Recognizer//action} with the
+// rule and action indexes assigned to the custom action. The implementation of
+// a custom action is added to the generated code for the lexer in an override
+// of {@link Recognizer//action} when the grammar is compiled.
+//
+// <p>This class may represent embedded actions created with the <code>{...}</code>
+// syntax in ANTLR 4, as well as actions created for lexer commands where the
+// command argument could not be evaluated when the grammar was compiled.</p>
+
+
+    // Constructs a custom lexer action with the specified rule and action
+    // indexes.
+    //
+    // @param ruleIndex The rule index to use for calls to
+    // {@link Recognizer//action}.
+    // @param actionIndex The action index to use for calls to
+    // {@link Recognizer//action}.
+
+function LexerCustomAction(ruleIndex, actionIndex) {
+	LexerAction.call(this, LexerActionType.CUSTOM);
+    this.ruleIndex = ruleIndex;
+    this.actionIndex = actionIndex;
+    this.isPositionDependent = true;
+    return this;
+}
+
+LexerCustomAction.prototype = Object.create(LexerAction.prototype);
+LexerCustomAction.prototype.constructor = LexerCustomAction;
+
+// <p>Custom actions are implemented by calling {@link Lexer//action} with the
+// appropriate rule and action indexes.</p>
+LexerCustomAction.prototype.execute = function(lexer) {
+    lexer.action(null, this.ruleIndex, this.actionIndex);
+};
+
+LexerCustomAction.prototype.updateHashCode = function(hash) {
+    hash.update(this.actionType, this.ruleIndex, this.actionIndex);
+};
+
+LexerCustomAction.prototype.equals = function(other) {
+    if (this === other) {
+        return true;
+    } else if (! (other instanceof LexerCustomAction)) {
+        return false;
+    } else {
+        return this.ruleIndex === other.ruleIndex && this.actionIndex === other.actionIndex;
+    }
+};
+
+// Implements the {@code channel} lexer action by calling
+// {@link Lexer//setChannel} with the assigned channel.
+// Constructs a new {@code channel} action with the specified channel value.
+// @param channel The channel value to pass to {@link Lexer//setChannel}.
+function LexerChannelAction(channel) {
+	LexerAction.call(this, LexerActionType.CHANNEL);
+    this.channel = channel;
+    return this;
+}
+
+LexerChannelAction.prototype = Object.create(LexerAction.prototype);
+LexerChannelAction.prototype.constructor = LexerChannelAction;
+
+// <p>This action is implemented by calling {@link Lexer//setChannel} with the
+// value provided by {@link //getChannel}.</p>
+LexerChannelAction.prototype.execute = function(lexer) {
+    lexer._channel = this.channel;
+};
+
+LexerChannelAction.prototype.updateHashCode = function(hash) {
+    hash.update(this.actionType, this.channel);
+};
+
+LexerChannelAction.prototype.equals = function(other) {
+    if (this === other) {
+        return true;
+    } else if (! (other instanceof LexerChannelAction)) {
+        return false;
+    } else {
+        return this.channel === other.channel;
+    }
+};
+
+LexerChannelAction.prototype.toString = function() {
+    return "channel(" + this.channel + ")";
+};
+
+// This implementation of {@link LexerAction} is used for tracking input offsets
+// for position-dependent actions within a {@link LexerActionExecutor}.
+//
+// <p>This action is not serialized as part of the ATN, and is only required for
+// position-dependent lexer actions which appear at a location other than the
+// end of a rule. For more information about DFA optimizations employed for
+// lexer actions, see {@link LexerActionExecutor//append} and
+// {@link LexerActionExecutor//fixOffsetBeforeMatch}.</p>
+
+// Constructs a new indexed custom action by associating a character offset
+// with a {@link LexerAction}.
+//
+// <p>Note: This class is only required for lexer actions for which
+// {@link LexerAction//isPositionDependent} returns {@code true}.</p>
+//
+// @param offset The offset into the input {@link CharStream}, relative to
+// the token start index, at which the specified lexer action should be
+// executed.
+// @param action The lexer action to execute at a particular offset in the
+// input {@link CharStream}.
+function LexerIndexedCustomAction(offset, action) {
+	LexerAction.call(this, action.actionType);
+    this.offset = offset;
+    this.action = action;
+    this.isPositionDependent = true;
+    return this;
+}
+
+LexerIndexedCustomAction.prototype = Object.create(LexerAction.prototype);
+LexerIndexedCustomAction.prototype.constructor = LexerIndexedCustomAction;
+
+// <p>This method calls {@link //execute} on the result of {@link //getAction}
+// using the provided {@code lexer}.</p>
+LexerIndexedCustomAction.prototype.execute = function(lexer) {
+    // assume the input stream position was properly set by the calling code
+    this.action.execute(lexer);
+};
+
+LexerIndexedCustomAction.prototype.updateHashCode = function(hash) {
+    hash.update(this.actionType, this.offset, this.action);
+};
+
+LexerIndexedCustomAction.prototype.equals = function(other) {
+    if (this === other) {
+        return true;
+    } else if (! (other instanceof LexerIndexedCustomAction)) {
+        return false;
+    } else {
+        return this.offset === other.offset && this.action === other.action;
+    }
+};
+
+
+exports.LexerActionType = LexerActionType;
+exports.LexerSkipAction = LexerSkipAction;
+exports.LexerChannelAction = LexerChannelAction;
+exports.LexerCustomAction = LexerCustomAction;
+exports.LexerIndexedCustomAction = LexerIndexedCustomAction;
+exports.LexerMoreAction = LexerMoreAction;
+exports.LexerTypeAction = LexerTypeAction;
+exports.LexerPushModeAction = LexerPushModeAction;
+exports.LexerPopModeAction = LexerPopModeAction;
+exports.LexerModeAction = LexerModeAction;
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+//
+
+var Token = __webpack_require__(1).Token;
+var ConsoleErrorListener = __webpack_require__(16).ConsoleErrorListener;
+var ProxyErrorListener = __webpack_require__(16).ProxyErrorListener;
+
+function Recognizer() {
+    this._listeners = [ ConsoleErrorListener.INSTANCE ];
+    this._interp = null;
+    this._stateNumber = -1;
+    return this;
+}
+
+Recognizer.tokenTypeMapCache = {};
+Recognizer.ruleIndexMapCache = {};
+
+
+Recognizer.prototype.checkVersion = function(toolVersion) {
+    var runtimeVersion = "4.8";
+    if (runtimeVersion!==toolVersion) {
+        console.log("ANTLR runtime and generated code versions disagree: "+runtimeVersion+"!="+toolVersion);
+    }
+};
+
+Recognizer.prototype.addErrorListener = function(listener) {
+    this._listeners.push(listener);
+};
+
+Recognizer.prototype.removeErrorListeners = function() {
+    this._listeners = [];
+};
+
+Recognizer.prototype.getTokenTypeMap = function() {
+    var tokenNames = this.getTokenNames();
+    if (tokenNames===null) {
+        throw("The current recognizer does not provide a list of token names.");
+    }
+    var result = this.tokenTypeMapCache[tokenNames];
+    if(result===undefined) {
+        result = tokenNames.reduce(function(o, k, i) { o[k] = i; });
+        result.EOF = Token.EOF;
+        this.tokenTypeMapCache[tokenNames] = result;
+    }
+    return result;
+};
+
+// Get a map from rule names to rule indexes.
+//
+// <p>Used for XPath and tree pattern compilation.</p>
+//
+Recognizer.prototype.getRuleIndexMap = function() {
+    var ruleNames = this.ruleNames;
+    if (ruleNames===null) {
+        throw("The current recognizer does not provide a list of rule names.");
+    }
+    var result = this.ruleIndexMapCache[ruleNames];
+    if(result===undefined) {
+        result = ruleNames.reduce(function(o, k, i) { o[k] = i; });
+        this.ruleIndexMapCache[ruleNames] = result;
+    }
+    return result;
+};
+
+Recognizer.prototype.getTokenType = function(tokenName) {
+    var ttype = this.getTokenTypeMap()[tokenName];
+    if (ttype !==undefined) {
+        return ttype;
+    } else {
+        return Token.INVALID_TYPE;
+    }
+};
+
+
+// What is the error header, normally line/character position information?//
+Recognizer.prototype.getErrorHeader = function(e) {
+    var line = e.getOffendingToken().line;
+    var column = e.getOffendingToken().column;
+    return "line " + line + ":" + column;
+};
+
+
+// How should a token be displayed in an error message? The default
+//  is to display just the text, but during development you might
+//  want to have a lot of information spit out.  Override in that case
+//  to use t.toString() (which, for CommonToken, dumps everything about
+//  the token). This is better than forcing you to override a method in
+//  your token objects because you don't have to go modify your lexer
+//  so that it creates a new Java type.
+//
+// @deprecated This method is not called by the ANTLR 4 Runtime. Specific
+// implementations of {@link ANTLRErrorStrategy} may provide a similar
+// feature when necessary. For example, see
+// {@link DefaultErrorStrategy//getTokenErrorDisplay}.
+//
+Recognizer.prototype.getTokenErrorDisplay = function(t) {
+    if (t===null) {
+        return "<no token>";
+    }
+    var s = t.text;
+    if (s===null) {
+        if (t.type===Token.EOF) {
+            s = "<EOF>";
+        } else {
+            s = "<" + t.type + ">";
+        }
+    }
+    s = s.replace("\n","\\n").replace("\r","\\r").replace("\t","\\t");
+    return "'" + s + "'";
+};
+
+Recognizer.prototype.getErrorListenerDispatch = function() {
+    return new ProxyErrorListener(this._listeners);
+};
+
+// subclass needs to override these if there are sempreds or actions
+// that the ATN interp needs to execute
+Recognizer.prototype.sempred = function(localctx, ruleIndex, actionIndex) {
+    return true;
+};
+
+Recognizer.prototype.precpred = function(localctx , precedence) {
+    return true;
+};
+
+//Indicate that the recognizer has changed internal state that is
+//consistent with the ATN state passed in.  This way we always know
+//where we are in the ATN as the parser goes along. The rule
+//context objects form a stack that lets us see the stack of
+//invoking rules. Combine this and we have complete ATN
+//configuration information.
+
+Object.defineProperty(Recognizer.prototype, "state", {
+	get : function() {
+		return this._stateNumber;
+	},
+	set : function(state) {
+		this._stateNumber = state;
+	}
+});
+
+
+exports.Recognizer = Recognizer;
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+///
+
+var DFAState = __webpack_require__(11).DFAState;
+var ATNConfigSet = __webpack_require__(9).ATNConfigSet;
+var getCachedPredictionContext = __webpack_require__(6).getCachedPredictionContext;
+var Map = __webpack_require__(0).Map;
+
+function ATNSimulator(atn, sharedContextCache) {
+
+    // The context cache maps all PredictionContext objects that are ==
+    //  to a single cached copy. This cache is shared across all contexts
+    //  in all ATNConfigs in all DFA states.  We rebuild each ATNConfigSet
+    //  to use only cached nodes/graphs in addDFAState(). We don't want to
+    //  fill this during closure() since there are lots of contexts that
+    //  pop up but are not used ever again. It also greatly slows down closure().
+    //
+    //  <p>This cache makes a huge difference in memory and a little bit in speed.
+    //  For the Java grammar on java.*, it dropped the memory requirements
+    //  at the end from 25M to 16M. We don't store any of the full context
+    //  graphs in the DFA because they are limited to local context only,
+    //  but apparently there's a lot of repetition there as well. We optimize
+    //  the config contexts before storing the config set in the DFA states
+    //  by literally rebuilding them with cached subgraphs only.</p>
+    //
+    //  <p>I tried a cache for use during closure operations, that was
+    //  whacked after each adaptivePredict(). It cost a little bit
+    //  more time I think and doesn't save on the overall footprint
+    //  so it's not worth the complexity.</p>
+    ///
+    this.atn = atn;
+    this.sharedContextCache = sharedContextCache;
+    return this;
+}
+
+// Must distinguish between missing edge and edge we know leads nowhere///
+ATNSimulator.ERROR = new DFAState(0x7FFFFFFF, new ATNConfigSet());
+
+
+ATNSimulator.prototype.getCachedContext = function(context) {
+    if (this.sharedContextCache ===null) {
+        return context;
+    }
+    var visited = new Map();
+    return getCachedPredictionContext(context, this.sharedContextCache, visited);
+};
+
+exports.ATNSimulator = ATNSimulator;
+
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+//
+//
+// This enumeration defines the prediction modes available in ANTLR 4 along with
+// utility methods for analyzing configuration sets for conflicts and/or
+// ambiguities.
+
+var Set = __webpack_require__(0).Set;
+var Map = __webpack_require__(0).Map;
+var BitSet = __webpack_require__(0).BitSet;
+var AltDict = __webpack_require__(0).AltDict;
+var ATN = __webpack_require__(7).ATN;
+var RuleStopState = __webpack_require__(3).RuleStopState;
+var ATNConfigSet = __webpack_require__(9).ATNConfigSet;
+var ATNConfig = __webpack_require__(13).ATNConfig;
+var SemanticContext = __webpack_require__(10).SemanticContext;
+var Hash = __webpack_require__(0).Hash;
+var hashStuff = __webpack_require__(0).hashStuff;
+var equalArrays = __webpack_require__(0).equalArrays;
+
+function PredictionMode() {
+	return this;
+}
+
+//
+// The SLL(*) prediction mode. This prediction mode ignores the current
+// parser context when making predictions. This is the fastest prediction
+// mode, and provides correct results for many grammars. This prediction
+// mode is more powerful than the prediction mode provided by ANTLR 3, but
+// may result in syntax errors for grammar and input combinations which are
+// not SLL.
+//
+// <p>
+// When using this prediction mode, the parser will either return a correct
+// parse tree (i.e. the same parse tree that would be returned with the
+// {@link //LL} prediction mode), or it will report a syntax error. If a
+// syntax error is encountered when using the {@link //SLL} prediction mode,
+// it may be due to either an actual syntax error in the input or indicate
+// that the particular combination of grammar and input requires the more
+// powerful {@link //LL} prediction abilities to complete successfully.</p>
+//
+// <p>
+// This prediction mode does not provide any guarantees for prediction
+// behavior for syntactically-incorrect inputs.</p>
+//
+PredictionMode.SLL = 0;
+//
+// The LL(*) prediction mode. This prediction mode allows the current parser
+// context to be used for resolving SLL conflicts that occur during
+// prediction. This is the fastest prediction mode that guarantees correct
+// parse results for all combinations of grammars with syntactically correct
+// inputs.
+//
+// <p>
+// When using this prediction mode, the parser will make correct decisions
+// for all syntactically-correct grammar and input combinations. However, in
+// cases where the grammar is truly ambiguous this prediction mode might not
+// report a precise answer for <em>exactly which</em> alternatives are
+// ambiguous.</p>
+//
+// <p>
+// This prediction mode does not provide any guarantees for prediction
+// behavior for syntactically-incorrect inputs.</p>
+//
+PredictionMode.LL = 1;
+//
+// The LL(*) prediction mode with exact ambiguity detection. In addition to
+// the correctness guarantees provided by the {@link //LL} prediction mode,
+// this prediction mode instructs the prediction algorithm to determine the
+// complete and exact set of ambiguous alternatives for every ambiguous
+// decision encountered while parsing.
+//
+// <p>
+// This prediction mode may be used for diagnosing ambiguities during
+// grammar development. Due to the performance overhead of calculating sets
+// of ambiguous alternatives, this prediction mode should be avoided when
+// the exact results are not necessary.</p>
+//
+// <p>
+// This prediction mode does not provide any guarantees for prediction
+// behavior for syntactically-incorrect inputs.</p>
+//
+PredictionMode.LL_EXACT_AMBIG_DETECTION = 2;
+
+
+//
+// Computes the SLL prediction termination condition.
+//
+// <p>
+// This method computes the SLL prediction termination condition for both of
+// the following cases.</p>
+//
+// <ul>
+// <li>The usual SLL+LL fallback upon SLL conflict</li>
+// <li>Pure SLL without LL fallback</li>
+// </ul>
+//
+// <p><strong>COMBINED SLL+LL PARSING</strong></p>
+//
+// <p>When LL-fallback is enabled upon SLL conflict, correct predictions are
+// ensured regardless of how the termination condition is computed by this
+// method. Due to the substantially higher cost of LL prediction, the
+// prediction should only fall back to LL when the additional lookahead
+// cannot lead to a unique SLL prediction.</p>
+//
+// <p>Assuming combined SLL+LL parsing, an SLL configuration set with only
+// conflicting subsets should fall back to full LL, even if the
+// configuration sets don't resolve to the same alternative (e.g.
+// {@code {1,2}} and {@code {3,4}}. If there is at least one non-conflicting
+// configuration, SLL could continue with the hopes that more lookahead will
+// resolve via one of those non-conflicting configurations.</p>
+//
+// <p>Here's the prediction termination rule them: SLL (for SLL+LL parsing)
+// stops when it sees only conflicting configuration subsets. In contrast,
+// full LL keeps going when there is uncertainty.</p>
+//
+// <p><strong>HEURISTIC</strong></p>
+//
+// <p>As a heuristic, we stop prediction when we see any conflicting subset
+// unless we see a state that only has one alternative associated with it.
+// The single-alt-state thing lets prediction continue upon rules like
+// (otherwise, it would admit defeat too soon):</p>
+//
+// <p>{@code [12|1|[], 6|2|[], 12|2|[]]. s : (ID | ID ID?) ';' ;}</p>
+//
+// <p>When the ATN simulation reaches the state before {@code ';'}, it has a
+// DFA state that looks like: {@code [12|1|[], 6|2|[], 12|2|[]]}. Naturally
+// {@code 12|1|[]} and {@code 12|2|[]} conflict, but we cannot stop
+// processing this node because alternative to has another way to continue,
+// via {@code [6|2|[]]}.</p>
+//
+// <p>It also let's us continue for this rule:</p>
+//
+// <p>{@code [1|1|[], 1|2|[], 8|3|[]] a : A | A | A B ;}</p>
+//
+// <p>After matching input A, we reach the stop state for rule A, state 1.
+// State 8 is the state right before B. Clearly alternatives 1 and 2
+// conflict and no amount of further lookahead will separate the two.
+// However, alternative 3 will be able to continue and so we do not stop
+// working on this state. In the previous example, we're concerned with
+// states associated with the conflicting alternatives. Here alt 3 is not
+// associated with the conflicting configs, but since we can continue
+// looking for input reasonably, don't declare the state done.</p>
+//
+// <p><strong>PURE SLL PARSING</strong></p>
+//
+// <p>To handle pure SLL parsing, all we have to do is make sure that we
+// combine stack contexts for configurations that differ only by semantic
+// predicate. From there, we can do the usual SLL termination heuristic.</p>
+//
+// <p><strong>PREDICATES IN SLL+LL PARSING</strong></p>
+//
+// <p>SLL decisions don't evaluate predicates until after they reach DFA stop
+// states because they need to create the DFA cache that works in all
+// semantic situations. In contrast, full LL evaluates predicates collected
+// during start state computation so it can ignore predicates thereafter.
+// This means that SLL termination detection can totally ignore semantic
+// predicates.</p>
+//
+// <p>Implementation-wise, {@link ATNConfigSet} combines stack contexts but not
+// semantic predicate contexts so we might see two configurations like the
+// following.</p>
+//
+// <p>{@code (s, 1, x, {}), (s, 1, x', {p})}</p>
+//
+// <p>Before testing these configurations against others, we have to merge
+// {@code x} and {@code x'} (without modifying the existing configurations).
+// For example, we test {@code (x+x')==x''} when looking for conflicts in
+// the following configurations.</p>
+//
+// <p>{@code (s, 1, x, {}), (s, 1, x', {p}), (s, 2, x'', {})}</p>
+//
+// <p>If the configuration set has predicates (as indicated by
+// {@link ATNConfigSet//hasSemanticContext}), this algorithm makes a copy of
+// the configurations to strip out all of the predicates so that a standard
+// {@link ATNConfigSet} will merge everything ignoring predicates.</p>
+//
+PredictionMode.hasSLLConflictTerminatingPrediction = function( mode, configs) {
+    // Configs in rule stop states indicate reaching the end of the decision
+    // rule (local context) or end of start rule (full context). If all
+    // configs meet this condition, then none of the configurations is able
+    // to match additional input so we terminate prediction.
+    //
+    if (PredictionMode.allConfigsInRuleStopStates(configs)) {
+        return true;
+    }
+    // pure SLL mode parsing
+    if (mode === PredictionMode.SLL) {
+        // Don't bother with combining configs from different semantic
+        // contexts if we can fail over to full LL; costs more time
+        // since we'll often fail over anyway.
+        if (configs.hasSemanticContext) {
+            // dup configs, tossing out semantic predicates
+            var dup = new ATNConfigSet();
+            for(var i=0;i<configs.items.length;i++) {
+            	var c = configs.items[i];
+                c = new ATNConfig({semanticContext:SemanticContext.NONE}, c);
+                dup.add(c);
+            }
+            configs = dup;
+        }
+        // now we have combined contexts for configs with dissimilar preds
+    }
+    // pure SLL or combined SLL+LL mode parsing
+    var altsets = PredictionMode.getConflictingAltSubsets(configs);
+    return PredictionMode.hasConflictingAltSet(altsets) && !PredictionMode.hasStateAssociatedWithOneAlt(configs);
+};
+
+// Checks if any configuration in {@code configs} is in a
+// {@link RuleStopState}. Configurations meeting this condition have reached
+// the end of the decision rule (local context) or end of start rule (full
+// context).
+//
+// @param configs the configuration set to test
+// @return {@code true} if any configuration in {@code configs} is in a
+// {@link RuleStopState}, otherwise {@code false}
+PredictionMode.hasConfigInRuleStopState = function(configs) {
+	for(var i=0;i<configs.items.length;i++) {
+		var c = configs.items[i];
+        if (c.state instanceof RuleStopState) {
+            return true;
+        }
+	}
+    return false;
+};
+
+// Checks if all configurations in {@code configs} are in a
+// {@link RuleStopState}. Configurations meeting this condition have reached
+// the end of the decision rule (local context) or end of start rule (full
+// context).
+//
+// @param configs the configuration set to test
+// @return {@code true} if all configurations in {@code configs} are in a
+// {@link RuleStopState}, otherwise {@code false}
+PredictionMode.allConfigsInRuleStopStates = function(configs) {
+	for(var i=0;i<configs.items.length;i++) {
+		var c = configs.items[i];
+        if (!(c.state instanceof RuleStopState)) {
+            return false;
+        }
+	}
+    return true;
+};
+
+//
+// Full LL prediction termination.
+//
+// <p>Can we stop looking ahead during ATN simulation or is there some
+// uncertainty as to which alternative we will ultimately pick, after
+// consuming more input? Even if there are partial conflicts, we might know
+// that everything is going to resolve to the same minimum alternative. That
+// means we can stop since no more lookahead will change that fact. On the
+// other hand, there might be multiple conflicts that resolve to different
+// minimums. That means we need more look ahead to decide which of those
+// alternatives we should predict.</p>
+//
+// <p>The basic idea is to split the set of configurations {@code C}, into
+// conflicting subsets {@code (s, _, ctx, _)} and singleton subsets with
+// non-conflicting configurations. Two configurations conflict if they have
+// identical {@link ATNConfig//state} and {@link ATNConfig//context} values
+// but different {@link ATNConfig//alt} value, e.g. {@code (s, i, ctx, _)}
+// and {@code (s, j, ctx, _)} for {@code i!=j}.</p>
+//
+// <p>Reduce these configuration subsets to the set of possible alternatives.
+// You can compute the alternative subsets in one pass as follows:</p>
+//
+// <p>{@code A_s,ctx = {i | (s, i, ctx, _)}} for each configuration in
+// {@code C} holding {@code s} and {@code ctx} fixed.</p>
+//
+// <p>Or in pseudo-code, for each configuration {@code c} in {@code C}:</p>
+//
+// <pre>
+// map[c] U= c.{@link ATNConfig//alt alt} // map hash/equals uses s and x, not
+// alt and not pred
+// </pre>
+//
+// <p>The values in {@code map} are the set of {@code A_s,ctx} sets.</p>
+//
+// <p>If {@code |A_s,ctx|=1} then there is no conflict associated with
+// {@code s} and {@code ctx}.</p>
+//
+// <p>Reduce the subsets to singletons by choosing a minimum of each subset. If
+// the union of these alternative subsets is a singleton, then no amount of
+// more lookahead will help us. We will always pick that alternative. If,
+// however, there is more than one alternative, then we are uncertain which
+// alternative to predict and must continue looking for resolution. We may
+// or may not discover an ambiguity in the future, even if there are no
+// conflicting subsets this round.</p>
+//
+// <p>The biggest sin is to terminate early because it means we've made a
+// decision but were uncertain as to the eventual outcome. We haven't used
+// enough lookahead. On the other hand, announcing a conflict too late is no
+// big deal; you will still have the conflict. It's just inefficient. It
+// might even look until the end of file.</p>
+//
+// <p>No special consideration for semantic predicates is required because
+// predicates are evaluated on-the-fly for full LL prediction, ensuring that
+// no configuration contains a semantic context during the termination
+// check.</p>
+//
+// <p><strong>CONFLICTING CONFIGS</strong></p>
+//
+// <p>Two configurations {@code (s, i, x)} and {@code (s, j, x')}, conflict
+// when {@code i!=j} but {@code x=x'}. Because we merge all
+// {@code (s, i, _)} configurations together, that means that there are at
+// most {@code n} configurations associated with state {@code s} for
+// {@code n} possible alternatives in the decision. The merged stacks
+// complicate the comparison of configuration contexts {@code x} and
+// {@code x'}. Sam checks to see if one is a subset of the other by calling
+// merge and checking to see if the merged result is either {@code x} or
+// {@code x'}. If the {@code x} associated with lowest alternative {@code i}
+// is the superset, then {@code i} is the only possible prediction since the
+// others resolve to {@code min(i)} as well. However, if {@code x} is
+// associated with {@code j>i} then at least one stack configuration for
+// {@code j} is not in conflict with alternative {@code i}. The algorithm
+// should keep going, looking for more lookahead due to the uncertainty.</p>
+//
+// <p>For simplicity, I'm doing a equality check between {@code x} and
+// {@code x'} that lets the algorithm continue to consume lookahead longer
+// than necessary. The reason I like the equality is of course the
+// simplicity but also because that is the test you need to detect the
+// alternatives that are actually in conflict.</p>
+//
+// <p><strong>CONTINUE/STOP RULE</strong></p>
+//
+// <p>Continue if union of resolved alternative sets from non-conflicting and
+// conflicting alternative subsets has more than one alternative. We are
+// uncertain about which alternative to predict.</p>
+//
+// <p>The complete set of alternatives, {@code [i for (_,i,_)]}, tells us which
+// alternatives are still in the running for the amount of input we've
+// consumed at this point. The conflicting sets let us to strip away
+// configurations that won't lead to more states because we resolve
+// conflicts to the configuration with a minimum alternate for the
+// conflicting set.</p>
+//
+// <p><strong>CASES</strong></p>
+//
+// <ul>
+//
+// <li>no conflicts and more than 1 alternative in set =&gt; continue</li>
+//
+// <li> {@code (s, 1, x)}, {@code (s, 2, x)}, {@code (s, 3, z)},
+// {@code (s', 1, y)}, {@code (s', 2, y)} yields non-conflicting set
+// {@code {3}} U conflicting sets {@code min({1,2})} U {@code min({1,2})} =
+// {@code {1,3}} =&gt; continue
+// </li>
+//
+// <li>{@code (s, 1, x)}, {@code (s, 2, x)}, {@code (s', 1, y)},
+// {@code (s', 2, y)}, {@code (s'', 1, z)} yields non-conflicting set
+// {@code {1}} U conflicting sets {@code min({1,2})} U {@code min({1,2})} =
+// {@code {1}} =&gt; stop and predict 1</li>
+//
+// <li>{@code (s, 1, x)}, {@code (s, 2, x)}, {@code (s', 1, y)},
+// {@code (s', 2, y)} yields conflicting, reduced sets {@code {1}} U
+// {@code {1}} = {@code {1}} =&gt; stop and predict 1, can announce
+// ambiguity {@code {1,2}}</li>
+//
+// <li>{@code (s, 1, x)}, {@code (s, 2, x)}, {@code (s', 2, y)},
+// {@code (s', 3, y)} yields conflicting, reduced sets {@code {1}} U
+// {@code {2}} = {@code {1,2}} =&gt; continue</li>
+//
+// <li>{@code (s, 1, x)}, {@code (s, 2, x)}, {@code (s', 3, y)},
+// {@code (s', 4, y)} yields conflicting, reduced sets {@code {1}} U
+// {@code {3}} = {@code {1,3}} =&gt; continue</li>
+//
+// </ul>
+//
+// <p><strong>EXACT AMBIGUITY DETECTION</strong></p>
+//
+// <p>If all states report the same conflicting set of alternatives, then we
+// know we have the exact ambiguity set.</p>
+//
+// <p><code>|A_<em>i</em>|&gt;1</code> and
+// <code>A_<em>i</em> = A_<em>j</em></code> for all <em>i</em>, <em>j</em>.</p>
+//
+// <p>In other words, we continue examining lookahead until all {@code A_i}
+// have more than one alternative and all {@code A_i} are the same. If
+// {@code A={{1,2}, {1,3}}}, then regular LL prediction would terminate
+// because the resolved set is {@code {1}}. To determine what the real
+// ambiguity is, we have to know whether the ambiguity is between one and
+// two or one and three so we keep going. We can only stop prediction when
+// we need exact ambiguity detection when the sets look like
+// {@code A={{1,2}}} or {@code {{1,2},{1,2}}}, etc...</p>
+//
+PredictionMode.resolvesToJustOneViableAlt = function(altsets) {
+    return PredictionMode.getSingleViableAlt(altsets);
+};
+
+//
+// Determines if every alternative subset in {@code altsets} contains more
+// than one alternative.
+//
+// @param altsets a collection of alternative subsets
+// @return {@code true} if every {@link BitSet} in {@code altsets} has
+// {@link BitSet//cardinality cardinality} &gt; 1, otherwise {@code false}
+//
+PredictionMode.allSubsetsConflict = function(altsets) {
+    return ! PredictionMode.hasNonConflictingAltSet(altsets);
+};
+//
+// Determines if any single alternative subset in {@code altsets} contains
+// exactly one alternative.
+//
+// @param altsets a collection of alternative subsets
+// @return {@code true} if {@code altsets} contains a {@link BitSet} with
+// {@link BitSet//cardinality cardinality} 1, otherwise {@code false}
+//
+PredictionMode.hasNonConflictingAltSet = function(altsets) {
+	for(var i=0;i<altsets.length;i++) {
+		var alts = altsets[i];
+        if (alts.length===1) {
+            return true;
+        }
+	}
+    return false;
+};
+
+//
+// Determines if any single alternative subset in {@code altsets} contains
+// more than one alternative.
+//
+// @param altsets a collection of alternative subsets
+// @return {@code true} if {@code altsets} contains a {@link BitSet} with
+// {@link BitSet//cardinality cardinality} &gt; 1, otherwise {@code false}
+//
+PredictionMode.hasConflictingAltSet = function(altsets) {
+	for(var i=0;i<altsets.length;i++) {
+		var alts = altsets[i];
+        if (alts.length>1) {
+            return true;
+        }
+	}
+    return false;
+};
+
+//
+// Determines if every alternative subset in {@code altsets} is equivalent.
+//
+// @param altsets a collection of alternative subsets
+// @return {@code true} if every member of {@code altsets} is equal to the
+// others, otherwise {@code false}
+//
+PredictionMode.allSubsetsEqual = function(altsets) {
+    var first = null;
+	for(var i=0;i<altsets.length;i++) {
+		var alts = altsets[i];
+        if (first === null) {
+            first = alts;
+        } else if (alts!==first) {
+            return false;
+        }
+	}
+    return true;
+};
+
+//
+// Returns the unique alternative predicted by all alternative subsets in
+// {@code altsets}. If no such alternative exists, this method returns
+// {@link ATN//INVALID_ALT_NUMBER}.
+//
+// @param altsets a collection of alternative subsets
+//
+PredictionMode.getUniqueAlt = function(altsets) {
+    var all = PredictionMode.getAlts(altsets);
+    if (all.length===1) {
+        return all.minValue();
+    } else {
+        return ATN.INVALID_ALT_NUMBER;
+    }
+};
+
+// Gets the complete set of represented alternatives for a collection of
+// alternative subsets. This method returns the union of each {@link BitSet}
+// in {@code altsets}.
+//
+// @param altsets a collection of alternative subsets
+// @return the set of represented alternatives in {@code altsets}
+//
+PredictionMode.getAlts = function(altsets) {
+    var all = new BitSet();
+    altsets.map( function(alts) { all.or(alts); });
+    return all;
+};
+
+//
+// This function gets the conflicting alt subsets from a configuration set.
+// For each configuration {@code c} in {@code configs}:
+//
+// <pre>
+// map[c] U= c.{@link ATNConfig//alt alt} // map hash/equals uses s and x, not
+// alt and not pred
+// </pre>
+
+PredictionMode.getConflictingAltSubsets = function(configs) {
+    var configToAlts = new Map();
+    configToAlts.hashFunction = function(cfg) { hashStuff(cfg.state.stateNumber, cfg.context); };
+    configToAlts.equalsFunction = function(c1, c2) { return c1.state.stateNumber==c2.state.stateNumber && c1.context.equals(c2.context);}
+    configs.items.map(function(cfg) {
+        var alts = configToAlts.get(cfg);
+        if (alts === null) {
+            alts = new BitSet();
+            configToAlts.put(cfg, alts);
+        }
+        alts.add(cfg.alt);
+	});
+    return configToAlts.getValues();
+};
+
+//
+// Get a map from state to alt subset from a configuration set. For each
+// configuration {@code c} in {@code configs}:
+//
+// <pre>
+// map[c.{@link ATNConfig//state state}] U= c.{@link ATNConfig//alt alt}
+// </pre>
+//
+PredictionMode.getStateToAltMap = function(configs) {
+    var m = new AltDict();
+    configs.items.map(function(c) {
+        var alts = m.get(c.state);
+        if (alts === null) {
+            alts = new BitSet();
+            m.put(c.state, alts);
+        }
+        alts.add(c.alt);
+    });
+    return m;
+};
+
+PredictionMode.hasStateAssociatedWithOneAlt = function(configs) {
+    var values = PredictionMode.getStateToAltMap(configs).values();
+    for(var i=0;i<values.length;i++) {
+        if (values[i].length===1) {
+            return true;
+        }
+    }
+    return false;
+};
+
+PredictionMode.getSingleViableAlt = function(altsets) {
+    var result = null;
+	for(var i=0;i<altsets.length;i++) {
+		var alts = altsets[i];
+        var minAlt = alts.minValue();
+        if(result===null) {
+            result = minAlt;
+        } else if(result!==minAlt) { // more than 1 viable alt
+            return ATN.INVALID_ALT_NUMBER;
+        }
+	}
+    return result;
+};
+
+exports.PredictionMode = PredictionMode;
+
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports) {
+
 /*! https://mths.be/codepointat v0.2.0 by @mathias */
-String.prototype.codePointAt||function(){"use strict";var t=function(){try{var t={},e=Object.defineProperty,n=e(t,t,t)&&e}catch(t){}return n}(),e=function(t){if(null==this)throw TypeError();var e=String(this),n=e.length,r=t?Number(t):0;if(r!=r&&(r=0),!(r<0||r>=n)){var i,o=e.charCodeAt(r);return o>=55296&&o<=56319&&n>r+1&&(i=e.charCodeAt(r+1))>=56320&&i<=57343?1024*(o-55296)+i-56320+65536:o}};t?t(String.prototype,"codePointAt",{value:e,configurable:!0,writable:!0}):String.prototype.codePointAt=e}()},function(t,e){var n,r,i,o;
+if (!String.prototype.codePointAt) {
+	(function() {
+		'use strict'; // needed to support `apply`/`call` with `undefined`/`null`
+		var defineProperty = (function() {
+			// IE 8 only supports `Object.defineProperty` on DOM elements
+			try {
+				var object = {};
+				var $defineProperty = Object.defineProperty;
+				var result = $defineProperty(object, object, object) && $defineProperty;
+			} catch(error) {}
+			return result;
+		}());
+		var codePointAt = function(position) {
+			if (this == null) {
+				throw TypeError();
+			}
+			var string = String(this);
+			var size = string.length;
+			// `ToInteger`
+			var index = position ? Number(position) : 0;
+			if (index != index) { // better `isNaN`
+				index = 0;
+			}
+			// Account for out-of-bounds indices:
+			if (index < 0 || index >= size) {
+				return undefined;
+			}
+			// Get the first code unit
+			var first = string.charCodeAt(index);
+			var second;
+			if ( // check if it’s the start of a surrogate pair
+				first >= 0xD800 && first <= 0xDBFF && // high surrogate
+				size > index + 1 // there is a next code unit
+			) {
+				second = string.charCodeAt(index + 1);
+				if (second >= 0xDC00 && second <= 0xDFFF) { // low surrogate
+					// https://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+					return (first - 0xD800) * 0x400 + second - 0xDC00 + 0x10000;
+				}
+			}
+			return first;
+		};
+		if (defineProperty) {
+			defineProperty(String.prototype, 'codePointAt', {
+				'value': codePointAt,
+				'configurable': true,
+				'writable': true
+			});
+		} else {
+			String.prototype.codePointAt = codePointAt;
+		}
+	}());
+}
+
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports) {
+
 /*! https://mths.be/fromcodepoint v0.2.1 by @mathias */
-String.fromCodePoint||(n=function(){try{var t={},e=Object.defineProperty,n=e(t,t,t)&&e}catch(t){}return n}(),r=String.fromCharCode,i=Math.floor,o=function(t){var e,n,o=[],s=-1,a=arguments.length;if(!a)return"";for(var c="";++s<a;){var u=Number(arguments[s]);if(!isFinite(u)||u<0||u>1114111||i(u)!=u)throw RangeError("Invalid code point: "+u);u<=65535?o.push(u):(e=55296+((u-=65536)>>10),n=u%1024+56320,o.push(e,n)),(s+1==a||o.length>16384)&&(c+=r.apply(null,o),o.length=0)}return c},n?n(String,"fromCodePoint",{value:o,configurable:!0,writable:!0}):String.fromCodePoint=o)},function(t,e,n){var r=n(1).Token,i=n(5),o=i.NoViableAltException,s=i.InputMismatchException,a=i.FailedPredicateException,c=i.ParseCancellationException,u=n(3).ATNState,l=n(2).Interval,p=n(2).IntervalSet;function h(){}function f(){return h.call(this),this.errorRecoveryMode=!1,this.lastErrorIndex=-1,this.lastErrorStates=null,this}function d(){return f.call(this),this}h.prototype.reset=function(t){},h.prototype.recoverInline=function(t){},h.prototype.recover=function(t,e){},h.prototype.sync=function(t){},h.prototype.inErrorRecoveryMode=function(t){},h.prototype.reportError=function(t){},f.prototype=Object.create(h.prototype),f.prototype.constructor=f,f.prototype.reset=function(t){this.endErrorCondition(t)},f.prototype.beginErrorCondition=function(t){this.errorRecoveryMode=!0},f.prototype.inErrorRecoveryMode=function(t){return this.errorRecoveryMode},f.prototype.endErrorCondition=function(t){this.errorRecoveryMode=!1,this.lastErrorStates=null,this.lastErrorIndex=-1},f.prototype.reportMatch=function(t){this.endErrorCondition(t)},f.prototype.reportError=function(t,e){this.inErrorRecoveryMode(t)||(this.beginErrorCondition(t),e instanceof o?this.reportNoViableAlternative(t,e):e instanceof s?this.reportInputMismatch(t,e):e instanceof a?this.reportFailedPredicate(t,e):(console.log("unknown recognition error type: "+e.constructor.name),console.log(e.stack),t.notifyErrorListeners(e.getOffendingToken(),e.getMessage(),e)))},f.prototype.recover=function(t,e){this.lastErrorIndex===t.getInputStream().index&&null!==this.lastErrorStates&&this.lastErrorStates.indexOf(t.state)>=0&&t.consume(),this.lastErrorIndex=t._input.index,null===this.lastErrorStates&&(this.lastErrorStates=[]),this.lastErrorStates.push(t.state);var n=this.getErrorRecoverySet(t);this.consumeUntil(t,n)},f.prototype.sync=function(t){if(!this.inErrorRecoveryMode(t)){var e=t._interp.atn.states[t.state],n=t.getTokenStream().LA(1),i=t.atn.nextTokens(e);if(!i.contains(r.EPSILON)&&!i.contains(n))switch(e.stateType){case u.BLOCK_START:case u.STAR_BLOCK_START:case u.PLUS_BLOCK_START:case u.STAR_LOOP_ENTRY:if(null!==this.singleTokenDeletion(t))return;throw new s(t);case u.PLUS_LOOP_BACK:case u.STAR_LOOP_BACK:this.reportUnwantedToken(t);var o=new p;o.addSet(t.getExpectedTokens());var a=o.addSet(this.getErrorRecoverySet(t));this.consumeUntil(t,a)}}},f.prototype.reportNoViableAlternative=function(t,e){var n,i=t.getTokenStream();n=null!==i?e.startToken.type===r.EOF?"<EOF>":i.getText(new l(e.startToken.tokenIndex,e.offendingToken.tokenIndex)):"<unknown input>";var o="no viable alternative at input "+this.escapeWSAndQuote(n);t.notifyErrorListeners(o,e.offendingToken,e)},f.prototype.reportInputMismatch=function(t,e){var n="mismatched input "+this.getTokenErrorDisplay(e.offendingToken)+" expecting "+e.getExpectedTokens().toString(t.literalNames,t.symbolicNames);t.notifyErrorListeners(n,e.offendingToken,e)},f.prototype.reportFailedPredicate=function(t,e){var n="rule "+t.ruleNames[t._ctx.ruleIndex]+" "+e.message;t.notifyErrorListeners(n,e.offendingToken,e)},f.prototype.reportUnwantedToken=function(t){if(!this.inErrorRecoveryMode(t)){this.beginErrorCondition(t);var e=t.getCurrentToken(),n="extraneous input "+this.getTokenErrorDisplay(e)+" expecting "+this.getExpectedTokens(t).toString(t.literalNames,t.symbolicNames);t.notifyErrorListeners(n,e,null)}},f.prototype.reportMissingToken=function(t){if(!this.inErrorRecoveryMode(t)){this.beginErrorCondition(t);var e=t.getCurrentToken(),n="missing "+this.getExpectedTokens(t).toString(t.literalNames,t.symbolicNames)+" at "+this.getTokenErrorDisplay(e);t.notifyErrorListeners(n,e,null)}},f.prototype.recoverInline=function(t){var e=this.singleTokenDeletion(t);if(null!==e)return t.consume(),e;if(this.singleTokenInsertion(t))return this.getMissingSymbol(t);throw new s(t)},f.prototype.singleTokenInsertion=function(t){var e=t.getTokenStream().LA(1),n=t._interp.atn,r=n.states[t.state].transitions[0].target;return!!n.nextTokens(r,t._ctx).contains(e)&&(this.reportMissingToken(t),!0)},f.prototype.singleTokenDeletion=function(t){var e=t.getTokenStream().LA(2);if(this.getExpectedTokens(t).contains(e)){this.reportUnwantedToken(t),t.consume();var n=t.getCurrentToken();return this.reportMatch(t),n}return null},f.prototype.getMissingSymbol=function(t){var e,n=t.getCurrentToken(),i=this.getExpectedTokens(t).first();e=i===r.EOF?"<missing EOF>":"<missing "+t.literalNames[i]+">";var o=n,s=t.getTokenStream().LT(-1);return o.type===r.EOF&&null!==s&&(o=s),t.getTokenFactory().create(o.source,i,e,r.DEFAULT_CHANNEL,-1,-1,o.line,o.column)},f.prototype.getExpectedTokens=function(t){return t.getExpectedTokens()},f.prototype.getTokenErrorDisplay=function(t){if(null===t)return"<no token>";var e=t.text;return null===e&&(e=t.type===r.EOF?"<EOF>":"<"+t.type+">"),this.escapeWSAndQuote(e)},f.prototype.escapeWSAndQuote=function(t){return"'"+(t=(t=(t=t.replace(/\n/g,"\\n")).replace(/\r/g,"\\r")).replace(/\t/g,"\\t"))+"'"},f.prototype.getErrorRecoverySet=function(t){for(var e=t._interp.atn,n=t._ctx,i=new p;null!==n&&n.invokingState>=0;){var o=e.states[n.invokingState].transitions[0],s=e.nextTokens(o.followState);i.addSet(s),n=n.parentCtx}return i.removeOne(r.EPSILON),i},f.prototype.consumeUntil=function(t,e){for(var n=t.getTokenStream().LA(1);n!==r.EOF&&!e.contains(n);)t.consume(),n=t.getTokenStream().LA(1)},d.prototype=Object.create(f.prototype),d.prototype.constructor=d,d.prototype.recover=function(t,e){for(var n=t._ctx;null!==n;)n.exception=e,n=n.parentCtx;throw new c(e)},d.prototype.recoverInline=function(t){this.recover(t,new s(t))},d.prototype.sync=function(t){},e.BailErrorStrategy=d,e.DefaultErrorStrategy=f},function(t,e){},function(t,e,n){var r=n(12),i=n(50).n3Lexer,o=n(51).n3Parser,s=n(53).n3PrefixListener,a=n(54).n3PrintListener;e.parse=function(t,e){var n=new r.InputStream(t),c=new i(n);c.removeErrorListeners(),c.addErrorListener(e);var u=new r.CommonTokenStream(c),l=new o(u);l.removeErrorListeners(),l.removeParseListeners(),e.syntaxError&&l.addErrorListener(e),e.unknownPrefix&&l.addParseListener(new s(e)),e.newAstLine&&l.addParseListener(new a(e)),l.n3Doc()}},function(t,e,n){e.ATN=n(7).ATN,e.ATNDeserializer=n(22).ATNDeserializer,e.LexerATNSimulator=n(36).LexerATNSimulator,e.ParserATNSimulator=n(39).ParserATNSimulator,e.PredictionMode=n(27).PredictionMode},function(t,e,n){var r=n(0).Set,i=n(0).BitSet,o=n(1).Token,s=n(13).ATNConfig,a=(n(2).Interval,n(2).IntervalSet),c=n(3).RuleStopState,u=n(8).RuleTransition,l=n(8).NotSetTransition,p=n(8).WildcardTransition,h=n(8).AbstractPredicateTransition,f=n(6),d=f.predictionContextFromRuleContext,y=f.PredictionContext,_=f.SingletonPredictionContext;function x(t){this.atn=t}x.HIT_PRED=o.INVALID_TYPE,x.prototype.getDecisionLookahead=function(t){if(null===t)return null;for(var e=t.transitions.length,n=[],o=0;o<e;o++){n[o]=new a;var s=new r;this._LOOK(t.transition(o).target,null,y.EMPTY,n[o],s,new i,!1,!1),(0===n[o].length||n[o].contains(x.HIT_PRED))&&(n[o]=null)}return n},x.prototype.LOOK=function(t,e,n){var o=new a,s=null!==(n=n||null)?d(t.atn,n):null;return this._LOOK(t,e,s,o,new r,new i,!0,!0),o},x.prototype._LOOK=function(t,e,n,r,i,a,f,d){var g=new s({state:t,alt:0,context:n},null);if(!i.contains(g)){if(i.add(g),t===e){if(null===n)return void r.addOne(o.EPSILON);if(n.isEmpty()&&d)return void r.addOne(o.EOF)}if(t instanceof c){if(null===n)return void r.addOne(o.EPSILON);if(n.isEmpty()&&d)return void r.addOne(o.EOF);if(n!==y.EMPTY){for(var T=0;T<n.length;T++){var E=this.atn.states[n.getReturnState(T)],v=a.contains(E.ruleIndex);try{a.remove(E.ruleIndex),this._LOOK(E,e,n.getParent(T),r,i,a,f,d)}finally{v&&a.add(E.ruleIndex)}}return}}for(var S=0;S<t.transitions.length;S++){var L=t.transitions[S];if(L.constructor===u){if(a.contains(L.target.ruleIndex))continue;var A=_.create(n,L.followState.stateNumber);try{a.add(L.target.ruleIndex),this._LOOK(L.target,e,A,r,i,a,f,d)}finally{a.remove(L.target.ruleIndex)}}else if(L instanceof h)f?this._LOOK(L.target,e,n,r,i,a,f,d):r.addOne(x.HIT_PRED);else if(L.isEpsilon)this._LOOK(L.target,e,n,r,i,a,f,d);else if(L.constructor===p)r.addRange(o.MIN_USER_TOKEN_TYPE,this.atn.maxTokenType);else{var C=L.label;null!==C&&(L instanceof l&&(C=C.complement(o.MIN_USER_TOKEN_TYPE,this.atn.maxTokenType)),r.addSet(C))}}}},e.LL1Analyzer=x},function(t,e){function n(){}n.LEXER=0,n.PARSER=1,e.ATNType=n},function(t,e,n){var r=n(1).Token,i=n(15).Lexer,o=n(7).ATN,s=n(26).ATNSimulator,a=n(11).DFAState,c=(n(9).ATNConfigSet,n(9).OrderedATNConfigSet),u=n(6).PredictionContext,l=n(6).SingletonPredictionContext,p=n(3).RuleStopState,h=n(13).LexerATNConfig,f=n(8).Transition,d=n(38).LexerActionExecutor,y=n(5).LexerNoViableAltException;function _(t){t.index=-1,t.line=0,t.column=-1,t.dfaState=null}function x(){return _(this),this}function g(t,e,n,r){return s.call(this,e,r),this.decisionToDFA=n,this.recog=t,this.startIndex=-1,this.line=1,this.column=0,this.mode=i.DEFAULT_MODE,this.prevAccept=new x,this}x.prototype.reset=function(){_(this)},g.prototype=Object.create(s.prototype),g.prototype.constructor=g,g.debug=!1,g.dfa_debug=!1,g.MIN_DFA_EDGE=0,g.MAX_DFA_EDGE=127,g.match_calls=0,g.prototype.copyState=function(t){this.column=t.column,this.line=t.line,this.mode=t.mode,this.startIndex=t.startIndex},g.prototype.match=function(t,e){this.match_calls+=1,this.mode=e;var n=t.mark();try{this.startIndex=t.index,this.prevAccept.reset();var r=this.decisionToDFA[e];return null===r.s0?this.matchATN(t):this.execATN(t,r.s0)}finally{t.release(n)}},g.prototype.reset=function(){this.prevAccept.reset(),this.startIndex=-1,this.line=1,this.column=0,this.mode=i.DEFAULT_MODE},g.prototype.matchATN=function(t){var e=this.atn.modeToStartState[this.mode];g.debug&&console.log("matchATN mode "+this.mode+" start: "+e);var n=this.mode,r=this.computeStartState(t,e),i=r.hasSemanticContext;r.hasSemanticContext=!1;var o=this.addDFAState(r);i||(this.decisionToDFA[this.mode].s0=o);var s=this.execATN(t,o);return g.debug&&console.log("DFA after matchATN: "+this.decisionToDFA[n].toLexerString()),s},g.prototype.execATN=function(t,e){g.debug&&console.log("start state closure="+e.configs),e.isAcceptState&&this.captureSimState(this.prevAccept,t,e);for(var n=t.LA(1),i=e;;){g.debug&&console.log("execATN loop starting closure: "+i.configs);var o=this.getExistingTargetState(i,n);if(null===o&&(o=this.computeTargetState(t,i,n)),o===s.ERROR)break;if(n!==r.EOF&&this.consume(t),o.isAcceptState&&(this.captureSimState(this.prevAccept,t,o),n===r.EOF))break;n=t.LA(1),i=o}return this.failOrAccept(this.prevAccept,t,i.configs,n)},g.prototype.getExistingTargetState=function(t,e){if(null===t.edges||e<g.MIN_DFA_EDGE||e>g.MAX_DFA_EDGE)return null;var n=t.edges[e-g.MIN_DFA_EDGE];return void 0===n&&(n=null),g.debug&&null!==n&&console.log("reuse state "+t.stateNumber+" edge to "+n.stateNumber),n},g.prototype.computeTargetState=function(t,e,n){var r=new c;return this.getReachableConfigSet(t,e.configs,r,n),0===r.items.length?(r.hasSemanticContext||this.addDFAEdge(e,n,s.ERROR),s.ERROR):this.addDFAEdge(e,n,null,r)},g.prototype.failOrAccept=function(t,e,n,i){if(null!==this.prevAccept.dfaState){var o=t.dfaState.lexerActionExecutor;return this.accept(e,o,this.startIndex,t.index,t.line,t.column),t.dfaState.prediction}if(i===r.EOF&&e.index===this.startIndex)return r.EOF;throw new y(this.recog,e,this.startIndex,n)},g.prototype.getReachableConfigSet=function(t,e,n,i){for(var s=o.INVALID_ALT_NUMBER,a=0;a<e.items.length;a++){var c=e.items[a],u=c.alt===s;if(!u||!c.passedThroughNonGreedyDecision){g.debug&&console.log("testing %s at %s\n",this.getTokenName(i),c.toString(this.recog,!0));for(var l=0;l<c.state.transitions.length;l++){var p=c.state.transitions[l],f=this.getReachableTarget(p,i);if(null!==f){var d=c.lexerActionExecutor;null!==d&&(d=d.fixOffsetBeforeMatch(t.index-this.startIndex));var y=i===r.EOF,_=new h({state:f,lexerActionExecutor:d},c);this.closure(t,_,n,u,!0,y)&&(s=c.alt)}}}}},g.prototype.accept=function(t,e,n,r,i,o){g.debug&&console.log("ACTION %s\n",e),t.seek(r),this.line=i,this.column=o,null!==e&&null!==this.recog&&e.execute(this.recog,t,n)},g.prototype.getReachableTarget=function(t,e){return t.matches(e,0,i.MAX_CHAR_VALUE)?t.target:null},g.prototype.computeStartState=function(t,e){for(var n=u.EMPTY,r=new c,i=0;i<e.transitions.length;i++){var o=e.transitions[i].target,s=new h({state:o,alt:i+1,context:n},null);this.closure(t,s,r,!1,!1,!1)}return r},g.prototype.closure=function(t,e,n,r,i,o){var s=null;if(g.debug&&console.log("closure("+e.toString(this.recog,!0)+")"),e.state instanceof p){if(g.debug&&(null!==this.recog?console.log("closure at %s rule stop %s\n",this.recog.ruleNames[e.state.ruleIndex],e):console.log("closure at rule stop %s\n",e)),null===e.context||e.context.hasEmptyPath()){if(null===e.context||e.context.isEmpty())return n.add(e),!0;n.add(new h({state:e.state,context:u.EMPTY},e)),r=!0}if(null!==e.context&&!e.context.isEmpty())for(var a=0;a<e.context.length;a++)if(e.context.getReturnState(a)!==u.EMPTY_RETURN_STATE){var c=e.context.getParent(a),l=this.atn.states[e.context.getReturnState(a)];s=new h({state:l,context:c},e),r=this.closure(t,s,n,r,i,o)}return r}e.state.epsilonOnlyTransitions||r&&e.passedThroughNonGreedyDecision||n.add(e);for(var f=0;f<e.state.transitions.length;f++){var d=e.state.transitions[f];null!==(s=this.getEpsilonTarget(t,e,d,n,i,o))&&(r=this.closure(t,s,n,r,i,o))}return r},g.prototype.getEpsilonTarget=function(t,e,n,o,s,a){var c=null;if(n.serializationType===f.RULE){var u=l.create(e.context,n.followState.stateNumber);c=new h({state:n.target,context:u},e)}else{if(n.serializationType===f.PRECEDENCE)throw"Precedence predicates are not supported in lexers.";if(n.serializationType===f.PREDICATE)g.debug&&console.log("EVAL rule "+n.ruleIndex+":"+n.predIndex),o.hasSemanticContext=!0,this.evaluatePredicate(t,n.ruleIndex,n.predIndex,s)&&(c=new h({state:n.target},e));else if(n.serializationType===f.ACTION)if(null===e.context||e.context.hasEmptyPath()){var p=d.append(e.lexerActionExecutor,this.atn.lexerActions[n.actionIndex]);c=new h({state:n.target,lexerActionExecutor:p},e)}else c=new h({state:n.target},e);else n.serializationType===f.EPSILON?c=new h({state:n.target},e):n.serializationType!==f.ATOM&&n.serializationType!==f.RANGE&&n.serializationType!==f.SET||a&&n.matches(r.EOF,0,i.MAX_CHAR_VALUE)&&(c=new h({state:n.target},e))}return c},g.prototype.evaluatePredicate=function(t,e,n,r){if(null===this.recog)return!0;if(!r)return this.recog.sempred(null,e,n);var i=this.column,o=this.line,s=t.index,a=t.mark();try{return this.consume(t),this.recog.sempred(null,e,n)}finally{this.column=i,this.line=o,t.seek(s),t.release(a)}},g.prototype.captureSimState=function(t,e,n){t.index=e.index,t.line=this.line,t.column=this.column,t.dfaState=n},g.prototype.addDFAEdge=function(t,e,n,r){if(void 0===n&&(n=null),void 0===r&&(r=null),null===n&&null!==r){var i=r.hasSemanticContext;if(r.hasSemanticContext=!1,n=this.addDFAState(r),i)return n}return e<g.MIN_DFA_EDGE||e>g.MAX_DFA_EDGE?n:(g.debug&&console.log("EDGE "+t+" -> "+n+" upon "+e),null===t.edges&&(t.edges=[]),t.edges[e-g.MIN_DFA_EDGE]=n,n)},g.prototype.addDFAState=function(t){for(var e=new a(null,t),n=null,r=0;r<t.items.length;r++){var i=t.items[r];if(i.state instanceof p){n=i;break}}null!==n&&(e.isAcceptState=!0,e.lexerActionExecutor=n.lexerActionExecutor,e.prediction=this.atn.ruleToTokenType[n.state.ruleIndex]);var o=this.decisionToDFA[this.mode],s=o.states.get(e);if(null!==s)return s;var c=e;return c.stateNumber=o.states.length,t.setReadonly(!0),c.configs=t,o.states.add(c),c},g.prototype.getDFA=function(t){return this.decisionToDFA[t]},g.prototype.getText=function(t){return t.getText(this.startIndex,t.index-1)},g.prototype.consume=function(t){t.LA(1)==="\n".charCodeAt(0)?(this.line+=1,this.column=0):this.column+=1,t.consume()},g.prototype.getTokenName=function(t){return-1===t?"EOF":"'"+String.fromCharCode(t)+"'"},e.LexerATNSimulator=g},function(t,e,n){var r=n(1).CommonToken;function i(){return this}function o(t){return i.call(this),this.copyText=void 0!==t&&t,this}o.prototype=Object.create(i.prototype),o.prototype.constructor=o,o.DEFAULT=new o,o.prototype.create=function(t,e,n,i,o,s,a,c){var u=new r(t,e,i,o,s);return u.line=a,u.column=c,null!==n?u.text=n:this.copyText&&null!==t[1]&&(u.text=t[1].getText(o,s)),u},o.prototype.createThin=function(t,e){var n=new r(null,t);return n.text=e,n},e.CommonTokenFactory=o},function(t,e,n){var r=n(0).hashStuff,i=n(24).LexerIndexedCustomAction;function o(t){return this.lexerActions=null===t?[]:t,this.cachedHashCode=r(t),this}o.append=function(t,e){return new o(null===t?[e]:t.lexerActions.concat([e]))},o.prototype.fixOffsetBeforeMatch=function(t){for(var e=null,n=0;n<this.lexerActions.length;n++)!this.lexerActions[n].isPositionDependent||this.lexerActions[n]instanceof i||(null===e&&(e=this.lexerActions.concat([])),e[n]=new i(t,this.lexerActions[n]));return null===e?this:new o(e)},o.prototype.execute=function(t,e,n){var r=!1,o=e.index;try{for(var s=0;s<this.lexerActions.length;s++){var a=this.lexerActions[s];if(a instanceof i){var c=a.offset;e.seek(n+c),a=a.action,r=n+c!==o}else a.isPositionDependent&&(e.seek(o),r=!1);a.execute(t)}}finally{r&&e.seek(o)}},o.prototype.hashCode=function(){return this.cachedHashCode},o.prototype.updateHashCode=function(t){t.update(this.cachedHashCode)},o.prototype.equals=function(t){if(this===t)return!0;if(t instanceof o){if(this.cachedHashCode!=t.cachedHashCode)return!1;if(this.lexerActions.length!=t.lexerActions.length)return!1;for(var e=this.lexerActions.length,n=0;n<e;++n)if(!this.lexerActions[n].equals(t.lexerActions[n]))return!1;return!0}return!1},e.LexerActionExecutor=o},function(t,e,n){var r=n(0),i=r.Set,o=r.BitSet,s=r.DoubleDict,a=n(7).ATN,c=n(3).ATNState,u=n(13).ATNConfig,l=n(9).ATNConfigSet,p=n(1).Token,h=n(11).DFAState,f=n(11).PredPrediction,d=n(26).ATNSimulator,y=n(27).PredictionMode,_=n(14).RuleContext,x=(n(18).ParserRuleContext,n(10).SemanticContext),g=(n(3).StarLoopEntryState,n(3).RuleStopState),T=n(6).PredictionContext,E=n(2).Interval,v=n(8),S=v.Transition,L=v.SetTransition,A=v.NotSetTransition,C=v.RuleTransition,N=v.ActionTransition,R=n(5).NoViableAltException,m=n(6).SingletonPredictionContext,I=n(6).predictionContextFromRuleContext;function O(t,e,n,r){return d.call(this,e,r),this.parser=t,this.decisionToDFA=n,this.predictionMode=y.LL,this._input=null,this._startIndex=0,this._outerContext=null,this._dfa=null,this.mergeCache=null,this}O.prototype=Object.create(d.prototype),O.prototype.constructor=O,O.prototype.debug=!1,O.prototype.debug_closure=!1,O.prototype.debug_add=!1,O.prototype.debug_list_atn_decisions=!1,O.prototype.dfa_debug=!1,O.prototype.retry_debug=!1,O.prototype.reset=function(){},O.prototype.adaptivePredict=function(t,e,n){(this.debug||this.debug_list_atn_decisions)&&console.log("adaptivePredict decision "+e+" exec LA(1)=="+this.getLookaheadName(t)+" line "+t.LT(1).line+":"+t.LT(1).column),this._input=t,this._startIndex=t.index,this._outerContext=n;var r=this.decisionToDFA[e];this._dfa=r;var i=t.mark(),o=t.index;try{var s;if(null===(s=r.precedenceDfa?r.getPrecedenceStartState(this.parser.getPrecedence()):r.s0)){null===n&&(n=_.EMPTY),(this.debug||this.debug_list_atn_decisions)&&console.log("predictATN decision "+r.decision+" exec LA(1)=="+this.getLookaheadName(t)+", outerContext="+n.toString(this.parser.ruleNames));var a=this.computeStartState(r.atnStartState,_.EMPTY,!1);r.precedenceDfa?(r.s0.configs=a,a=this.applyPrecedenceFilter(a),s=this.addDFAState(r,new h(null,a)),r.setPrecedenceStartState(this.parser.getPrecedence(),s)):(s=this.addDFAState(r,new h(null,a)),r.s0=s)}var c=this.execATN(r,s,t,o,n);return this.debug&&console.log("DFA after predictATN: "+r.toString(this.parser.literalNames)),c}finally{this._dfa=null,this.mergeCache=null,t.seek(o),t.release(i)}},O.prototype.execATN=function(t,e,n,r,i){var o;(this.debug||this.debug_list_atn_decisions)&&console.log("execATN decision "+t.decision+" exec LA(1)=="+this.getLookaheadName(n)+" line "+n.LT(1).line+":"+n.LT(1).column);var s=e;this.debug&&console.log("s0 = "+e);for(var c=n.LA(1);;){var u=this.getExistingTargetState(s,c);if(null===u&&(u=this.computeTargetState(t,s,c)),u===d.ERROR){var l=this.noViableAlt(n,i,s.configs,r);if(n.seek(r),(o=this.getSynValidOrSemInvalidAltThatFinishedDecisionEntryRule(s.configs,i))!==a.INVALID_ALT_NUMBER)return o;throw l}if(u.requiresFullContext&&this.predictionMode!==y.SLL){var h=null;if(null!==u.predicates){this.debug&&console.log("DFA state has preds in DFA sim LL failover");var f=n.index;if(f!==r&&n.seek(r),1===(h=this.evalSemanticContext(u.predicates,i,!0)).length)return this.debug&&console.log("Full LL avoided"),h.minValue();f!==r&&n.seek(f)}this.dfa_debug&&console.log("ctx sensitive state "+i+" in "+u);var _=this.computeStartState(t.atnStartState,i,!0);return this.reportAttemptingFullContext(t,h,u.configs,r,n.index),o=this.execATNWithFullContext(t,u,_,n,r,i)}if(u.isAcceptState){if(null===u.predicates)return u.prediction;var x=n.index;n.seek(r);var g=this.evalSemanticContext(u.predicates,i,!0);if(0===g.length)throw this.noViableAlt(n,i,u.configs,r);return 1===g.length?g.minValue():(this.reportAmbiguity(t,u,r,x,!1,g,u.configs),g.minValue())}s=u,c!==p.EOF&&(n.consume(),c=n.LA(1))}},O.prototype.getExistingTargetState=function(t,e){var n=t.edges;return null===n?null:n[e+1]||null},O.prototype.computeTargetState=function(t,e,n){var i=this.computeReachSet(e.configs,n,!1);if(null===i)return this.addDFAEdge(t,e,n,d.ERROR),d.ERROR;var o=new h(null,i),s=this.getUniqueAlt(i);if(this.debug){var c=y.getConflictingAltSubsets(i);console.log("SLL altSubSets="+r.arrayToString(c)+", previous="+e.configs+", configs="+i+", predict="+s+", allSubsetsConflict="+y.allSubsetsConflict(c)+", conflictingAlts="+this.getConflictingAlts(i))}return s!==a.INVALID_ALT_NUMBER?(o.isAcceptState=!0,o.configs.uniqueAlt=s,o.prediction=s):y.hasSLLConflictTerminatingPrediction(this.predictionMode,i)&&(o.configs.conflictingAlts=this.getConflictingAlts(i),o.requiresFullContext=!0,o.isAcceptState=!0,o.prediction=o.configs.conflictingAlts.minValue()),o.isAcceptState&&o.configs.hasSemanticContext&&(this.predicateDFAState(o,this.atn.getDecisionState(t.decision)),null!==o.predicates&&(o.prediction=a.INVALID_ALT_NUMBER)),o=this.addDFAEdge(t,e,n,o)},O.prototype.predicateDFAState=function(t,e){var n=e.transitions.length,r=this.getConflictingAltsOrUniqueAlt(t.configs),i=this.getPredsForAmbigAlts(r,t.configs,n);null!==i?(t.predicates=this.getPredicatePredictions(r,i),t.prediction=a.INVALID_ALT_NUMBER):t.prediction=r.minValue()},O.prototype.execATNWithFullContext=function(t,e,n,r,i,o){(this.debug||this.debug_list_atn_decisions)&&console.log("execATNWithFullContext "+n);var s=!1,c=null,u=n;r.seek(i);for(var l=r.LA(1),h=-1;;){if(null===(c=this.computeReachSet(u,l,!0))){var f=this.noViableAlt(r,o,u,i);r.seek(i);var d=this.getSynValidOrSemInvalidAltThatFinishedDecisionEntryRule(u,o);if(d!==a.INVALID_ALT_NUMBER)return d;throw f}var _=y.getConflictingAltSubsets(c);if(this.debug&&console.log("LL altSubSets="+_+", predict="+y.getUniqueAlt(_)+", resolvesToJustOneViableAlt="+y.resolvesToJustOneViableAlt(_)),c.uniqueAlt=this.getUniqueAlt(c),c.uniqueAlt!==a.INVALID_ALT_NUMBER){h=c.uniqueAlt;break}if(this.predictionMode!==y.LL_EXACT_AMBIG_DETECTION){if((h=y.resolvesToJustOneViableAlt(_))!==a.INVALID_ALT_NUMBER)break}else if(y.allSubsetsConflict(_)&&y.allSubsetsEqual(_)){s=!0,h=y.getSingleViableAlt(_);break}u=c,l!==p.EOF&&(r.consume(),l=r.LA(1))}return c.uniqueAlt!==a.INVALID_ALT_NUMBER?(this.reportContextSensitivity(t,h,c,i,r.index),h):(this.reportAmbiguity(t,e,i,r.index,s,null,c),h)},O.prototype.computeReachSet=function(t,e,n){this.debug&&console.log("in computeReachSet, starting closure: "+t),null===this.mergeCache&&(this.mergeCache=new s);for(var r=new l(n),o=null,c=0;c<t.items.length;c++){var h=t.items[c];if(this.debug_add&&console.log("testing "+this.getTokenName(e)+" at "+h),h.state instanceof g)(n||e===p.EOF)&&(null===o&&(o=[]),o.push(h),this.debug_add&&console.log("added "+h+" to skippedStopStates"));else for(var f=0;f<h.state.transitions.length;f++){var d=h.state.transitions[f],_=this.getReachableTarget(d,e);if(null!==_){var x=new u({state:_},h);r.add(x,this.mergeCache),this.debug_add&&console.log("added "+x+" to intermediate")}}}var T=null;if(null===o&&e!==p.EOF&&(1===r.items.length?T=r:this.getUniqueAlt(r)!==a.INVALID_ALT_NUMBER&&(T=r)),null===T){T=new l(n);for(var E=new i,v=e===p.EOF,S=0;S<r.items.length;S++)this.closure(r.items[S],T,E,!1,n,v)}if(e===p.EOF&&(T=this.removeAllConfigsNotInRuleStopState(T,T===r)),!(null===o||n&&y.hasConfigInRuleStopState(T)))for(var L=0;L<o.length;L++)T.add(o[L],this.mergeCache);return 0===T.items.length?null:T},O.prototype.removeAllConfigsNotInRuleStopState=function(t,e){if(y.allConfigsInRuleStopStates(t))return t;for(var n=new l(t.fullCtx),r=0;r<t.items.length;r++){var i=t.items[r];if(i.state instanceof g)n.add(i,this.mergeCache);else if(e&&i.state.epsilonOnlyTransitions)if(this.atn.nextTokens(i.state).contains(p.EPSILON)){var o=this.atn.ruleToStopState[i.state.ruleIndex];n.add(new u({state:o},i),this.mergeCache)}}return n},O.prototype.computeStartState=function(t,e,n){for(var r=I(this.atn,e),o=new l(n),s=0;s<t.transitions.length;s++){var a=t.transitions[s].target,c=new u({state:a,alt:s+1,context:r},null),p=new i;this.closure(c,o,p,!0,n,!1)}return o},O.prototype.applyPrecedenceFilter=function(t){for(var e,n=[],r=new l(t.fullCtx),i=0;i<t.items.length;i++)if(1===(e=t.items[i]).alt){var o=e.semanticContext.evalPrecedence(this.parser,this._outerContext);null!==o&&(n[e.state.stateNumber]=e.context,o!==e.semanticContext?r.add(new u({semanticContext:o},e),this.mergeCache):r.add(e,this.mergeCache))}for(i=0;i<t.items.length;i++)if(1!==(e=t.items[i]).alt){if(!e.precedenceFilterSuppressed){var s=n[e.state.stateNumber]||null;if(null!==s&&s.equals(e.context))continue}r.add(e,this.mergeCache)}return r},O.prototype.getReachableTarget=function(t,e){return t.matches(e,0,this.atn.maxTokenType)?t.target:null},O.prototype.getPredsForAmbigAlts=function(t,e,n){for(var i=[],o=0;o<e.items.length;o++){var s=e.items[o];t.contains(s.alt)&&(i[s.alt]=x.orContext(i[s.alt]||null,s.semanticContext))}var a=0;for(o=1;o<n+1;o++){var c=i[o]||null;null===c?i[o]=x.NONE:c!==x.NONE&&(a+=1)}return 0===a&&(i=null),this.debug&&console.log("getPredsForAmbigAlts result "+r.arrayToString(i)),i},O.prototype.getPredicatePredictions=function(t,e){for(var n=[],r=!1,i=1;i<e.length;i++){var o=e[i];null!==t&&t.contains(i)&&n.push(new f(o,i)),o!==x.NONE&&(r=!0)}return r?n:null},O.prototype.getSynValidOrSemInvalidAltThatFinishedDecisionEntryRule=function(t,e){var n=this.splitAccordingToSemanticValidity(t,e),r=n[0],i=n[1],o=this.getAltThatFinishedDecisionEntryRule(r);return o!==a.INVALID_ALT_NUMBER?o:i.items.length>0&&(o=this.getAltThatFinishedDecisionEntryRule(i))!==a.INVALID_ALT_NUMBER?o:a.INVALID_ALT_NUMBER},O.prototype.getAltThatFinishedDecisionEntryRule=function(t){for(var e=[],n=0;n<t.items.length;n++){var r=t.items[n];(r.reachesIntoOuterContext>0||r.state instanceof g&&r.context.hasEmptyPath())&&e.indexOf(r.alt)<0&&e.push(r.alt)}return 0===e.length?a.INVALID_ALT_NUMBER:Math.min.apply(null,e)},O.prototype.splitAccordingToSemanticValidity=function(t,e){for(var n=new l(t.fullCtx),r=new l(t.fullCtx),i=0;i<t.items.length;i++){var o=t.items[i];if(o.semanticContext!==x.NONE)o.semanticContext.evaluate(this.parser,e)?n.add(o):r.add(o);else n.add(o)}return[n,r]},O.prototype.evalSemanticContext=function(t,e,n){for(var r=new o,i=0;i<t.length;i++){var s=t[i];if(s.pred!==x.NONE){var a=s.pred.evaluate(this.parser,e);if((this.debug||this.dfa_debug)&&console.log("eval pred "+s+"="+a),a&&((this.debug||this.dfa_debug)&&console.log("PREDICT "+s.alt),r.add(s.alt),!n))break}else if(r.add(s.alt),!n)break}return r},O.prototype.closure=function(t,e,n,r,i,o){this.closureCheckingStopState(t,e,n,r,i,0,o)},O.prototype.closureCheckingStopState=function(t,e,n,r,i,o,s){if((this.debug||this.debug_closure)&&(console.log("closure("+t.toString(this.parser,!0)+")"),t.reachesIntoOuterContext>50))throw"problem";if(t.state instanceof g){if(!t.context.isEmpty()){for(var a=0;a<t.context.length;a++)if(t.context.getReturnState(a)!==T.EMPTY_RETURN_STATE){var c=this.atn.states[t.context.getReturnState(a)],l=t.context.getParent(a),p={state:c,alt:t.alt,context:l,semanticContext:t.semanticContext},h=new u(p,null);h.reachesIntoOuterContext=t.reachesIntoOuterContext,this.closureCheckingStopState(h,e,n,r,i,o-1,s)}else{if(i){e.add(new u({state:t.state,context:T.EMPTY},t),this.mergeCache);continue}this.debug&&console.log("FALLING off rule "+this.getRuleName(t.state.ruleIndex)),this.closure_(t,e,n,r,i,o,s)}return}if(i)return void e.add(t,this.mergeCache);this.debug&&console.log("FALLING off rule "+this.getRuleName(t.state.ruleIndex))}this.closure_(t,e,n,r,i,o,s)},O.prototype.closure_=function(t,e,n,r,i,o,s){var a=t.state;a.epsilonOnlyTransitions||e.add(t,this.mergeCache);for(var c=0;c<a.transitions.length;c++)if(0!=c||!this.canDropLoopEntryEdgeInLeftRecursiveRule(t)){var u=a.transitions[c],l=r&&!(u instanceof N),p=this.getEpsilonTarget(t,u,l,0===o,i,s);if(null!==p){var h=o;if(t.state instanceof g){if(null!==this._dfa&&this._dfa.precedenceDfa&&u.outermostPrecedenceReturn===this._dfa.atnStartState.ruleIndex&&(p.precedenceFilterSuppressed=!0),p.reachesIntoOuterContext+=1,n.add(p)!==p)continue;e.dipsIntoOuterContext=!0,h-=1,this.debug&&console.log("dips into outer ctx: "+p)}else{if(!u.isEpsilon&&n.add(p)!==p)continue;u instanceof C&&h>=0&&(h+=1)}this.closureCheckingStopState(p,e,n,l,i,h,s)}}},O.prototype.canDropLoopEntryEdgeInLeftRecursiveRule=function(t){var e=t.state;if(e.stateType!=c.STAR_LOOP_ENTRY)return!1;if(e.stateType!=c.STAR_LOOP_ENTRY||!e.isPrecedenceDecision||t.context.isEmpty()||t.context.hasEmptyPath())return!1;for(var n=t.context.length,r=0;r<n;r++){if((s=this.atn.states[t.context.getReturnState(r)]).ruleIndex!=e.ruleIndex)return!1}var i=e.transitions[0].target.endState.stateNumber,o=this.atn.states[i];for(r=0;r<n;r++){var s,a=t.context.getReturnState(r);if(1!=(s=this.atn.states[a]).transitions.length||!s.transitions[0].isEpsilon)return!1;var u=s.transitions[0].target;if((s.stateType!=c.BLOCK_END||u!=e)&&(s!=o&&u!=o&&(u.stateType!=c.BLOCK_END||1!=u.transitions.length||!u.transitions[0].isEpsilon||u.transitions[0].target!=e)))return!1}return!0},O.prototype.getRuleName=function(t){return null!==this.parser&&t>=0?this.parser.ruleNames[t]:"<rule "+t+">"},O.prototype.getEpsilonTarget=function(t,e,n,r,i,o){switch(e.serializationType){case S.RULE:return this.ruleTransition(t,e);case S.PRECEDENCE:return this.precedenceTransition(t,e,n,r,i);case S.PREDICATE:return this.predTransition(t,e,n,r,i);case S.ACTION:return this.actionTransition(t,e);case S.EPSILON:return new u({state:e.target},t);case S.ATOM:case S.RANGE:case S.SET:return o&&e.matches(p.EOF,0,1)?new u({state:e.target},t):null;default:return null}},O.prototype.actionTransition=function(t,e){if(this.debug){var n=-1==e.actionIndex?65535:e.actionIndex;console.log("ACTION edge "+e.ruleIndex+":"+n)}return new u({state:e.target},t)},O.prototype.precedenceTransition=function(t,e,n,i,o){this.debug&&(console.log("PRED (collectPredicates="+n+") "+e.precedence+">=_p, ctx dependent=true"),null!==this.parser&&console.log("context surrounding pred is "+r.arrayToString(this.parser.getRuleInvocationStack())));var s=null;if(n&&i)if(o){var a=this._input.index;this._input.seek(this._startIndex);var c=e.getPredicate().evaluate(this.parser,this._outerContext);this._input.seek(a),c&&(s=new u({state:e.target},t))}else{var l=x.andContext(t.semanticContext,e.getPredicate());s=new u({state:e.target,semanticContext:l},t)}else s=new u({state:e.target},t);return this.debug&&console.log("config from pred transition="+s),s},O.prototype.predTransition=function(t,e,n,i,o){this.debug&&(console.log("PRED (collectPredicates="+n+") "+e.ruleIndex+":"+e.predIndex+", ctx dependent="+e.isCtxDependent),null!==this.parser&&console.log("context surrounding pred is "+r.arrayToString(this.parser.getRuleInvocationStack())));var s=null;if(n&&(e.isCtxDependent&&i||!e.isCtxDependent))if(o){var a=this._input.index;this._input.seek(this._startIndex);var c=e.getPredicate().evaluate(this.parser,this._outerContext);this._input.seek(a),c&&(s=new u({state:e.target},t))}else{var l=x.andContext(t.semanticContext,e.getPredicate());s=new u({state:e.target,semanticContext:l},t)}else s=new u({state:e.target},t);return this.debug&&console.log("config from pred transition="+s),s},O.prototype.ruleTransition=function(t,e){this.debug&&console.log("CALL rule "+this.getRuleName(e.target.ruleIndex)+", ctx="+t.context);var n=e.followState,r=m.create(t.context,n.stateNumber);return new u({state:e.target,context:r},t)},O.prototype.getConflictingAlts=function(t){var e=y.getConflictingAltSubsets(t);return y.getAlts(e)},O.prototype.getConflictingAltsOrUniqueAlt=function(t){var e=null;return t.uniqueAlt!==a.INVALID_ALT_NUMBER?(e=new o).add(t.uniqueAlt):e=t.conflictingAlts,e},O.prototype.getTokenName=function(t){if(t===p.EOF)return"EOF";if(null!==this.parser&&null!==this.parser.literalNames){if(!(t>=this.parser.literalNames.length&&t>=this.parser.symbolicNames.length))return(this.parser.literalNames[t]||this.parser.symbolicNames[t])+"<"+t+">";console.log(t+" ttype out of range: "+this.parser.literalNames),console.log(""+this.parser.getInputStream().getTokens())}return""+t},O.prototype.getLookaheadName=function(t){return this.getTokenName(t.LA(1))},O.prototype.dumpDeadEndConfigs=function(t){console.log("dead end configs: ");for(var e=t.getDeadEndConfigs(),n=0;n<e.length;n++){var r=e[n],i="no edges";if(r.state.transitions.length>0){var o=r.state.transitions[0];if(o instanceof AtomTransition)i="Atom "+this.getTokenName(o.label);else if(o instanceof L){i=(o instanceof A?"~":"")+"Set "+o.set}}console.error(r.toString(this.parser,!0)+":"+i)}},O.prototype.noViableAlt=function(t,e,n,r){return new R(this.parser,t,t.get(r),t.LT(1),n,e)},O.prototype.getUniqueAlt=function(t){for(var e=a.INVALID_ALT_NUMBER,n=0;n<t.items.length;n++){var r=t.items[n];if(e===a.INVALID_ALT_NUMBER)e=r.alt;else if(r.alt!==e)return a.INVALID_ALT_NUMBER}return e},O.prototype.addDFAEdge=function(t,e,n,r){if(this.debug&&console.log("EDGE "+e+" -> "+r+" upon "+this.getTokenName(n)),null===r)return null;if(r=this.addDFAState(t,r),null===e||n<-1||n>this.atn.maxTokenType)return r;if(null===e.edges&&(e.edges=[]),e.edges[n+1]=r,this.debug){var i=null===this.parser?null:this.parser.literalNames,o=null===this.parser?null:this.parser.symbolicNames;console.log("DFA=\n"+t.toString(i,o))}return r},O.prototype.addDFAState=function(t,e){if(e==d.ERROR)return e;var n=t.states.get(e);return null!==n?n:(e.stateNumber=t.states.length,e.configs.readOnly||(e.configs.optimizeConfigs(this),e.configs.setReadonly(!0)),t.states.add(e),this.debug&&console.log("adding new DFA state: "+e),e)},O.prototype.reportAttemptingFullContext=function(t,e,n,r,i){if(this.debug||this.retry_debug){var o=new E(r,i+1);console.log("reportAttemptingFullContext decision="+t.decision+":"+n+", input="+this.parser.getTokenStream().getText(o))}null!==this.parser&&this.parser.getErrorListenerDispatch().reportAttemptingFullContext(this.parser,t,r,i,e,n)},O.prototype.reportContextSensitivity=function(t,e,n,r,i){if(this.debug||this.retry_debug){var o=new E(r,i+1);console.log("reportContextSensitivity decision="+t.decision+":"+n+", input="+this.parser.getTokenStream().getText(o))}null!==this.parser&&this.parser.getErrorListenerDispatch().reportContextSensitivity(this.parser,t,r,i,e,n)},O.prototype.reportAmbiguity=function(t,e,n,r,i,o,s){if(this.debug||this.retry_debug){var a=new E(n,r+1);console.log("reportAmbiguity "+o+":"+s+", input="+this.parser.getTokenStream().getText(a))}null!==this.parser&&this.parser.getErrorListenerDispatch().reportAmbiguity(this.parser,t,n,r,i,o,s)},e.ParserATNSimulator=O},function(t,e,n){e.DFA=n(41).DFA,e.DFASerializer=n(17).DFASerializer,e.LexerDFASerializer=n(17).LexerDFASerializer,e.PredPrediction=n(11).PredPrediction},function(t,e,n){var r=n(0).Set,i=n(11).DFAState,o=n(3).StarLoopEntryState,s=n(9).ATNConfigSet,a=n(17).DFASerializer,c=n(17).LexerDFASerializer;function u(t,e){if(void 0===e&&(e=0),this.atnStartState=t,this.decision=e,this._states=new r,this.s0=null,this.precedenceDfa=!1,t instanceof o&&t.isPrecedenceDecision){this.precedenceDfa=!0;var n=new i(null,new s);n.edges=[],n.isAcceptState=!1,n.requiresFullContext=!1,this.s0=n}return this}u.prototype.getPrecedenceStartState=function(t){if(!this.precedenceDfa)throw"Only precedence DFAs may contain a precedence start state.";return t<0||t>=this.s0.edges.length?null:this.s0.edges[t]||null},u.prototype.setPrecedenceStartState=function(t,e){if(!this.precedenceDfa)throw"Only precedence DFAs may contain a precedence start state.";t<0||(this.s0.edges[t]=e)},u.prototype.setPrecedenceDfa=function(t){if(this.precedenceDfa!==t){if(this._states=new DFAStatesSet,t){var e=new i(null,new s);e.edges=[],e.isAcceptState=!1,e.requiresFullContext=!1,this.s0=e}else this.s0=null;this.precedenceDfa=t}},Object.defineProperty(u.prototype,"states",{get:function(){return this._states}}),u.prototype.sortedStates=function(){return this._states.values().sort(function(t,e){return t.stateNumber-e.stateNumber})},u.prototype.toString=function(t,e){return t=t||null,e=e||null,null===this.s0?"":new a(this,t,e).toString()},u.prototype.toLexerString=function(){return null===this.s0?"":new c(this).toString()},e.DFA=u},function(t,e,n){var r=n(4);e.Trees=n(21).Trees,e.RuleNode=r.RuleNode,e.ParseTreeListener=r.ParseTreeListener,e.ParseTreeVisitor=r.ParseTreeVisitor,e.ParseTreeWalker=r.ParseTreeWalker},function(t,e,n){e.RecognitionException=n(5).RecognitionException,e.NoViableAltException=n(5).NoViableAltException,e.LexerNoViableAltException=n(5).LexerNoViableAltException,e.InputMismatchException=n(5).InputMismatchException,e.FailedPredicateException=n(5).FailedPredicateException,e.DiagnosticErrorListener=n(44).DiagnosticErrorListener,e.BailErrorStrategy=n(30).BailErrorStrategy,e.ErrorListener=n(16).ErrorListener},function(t,e,n){var r=n(0).BitSet,i=n(16).ErrorListener,o=n(2).Interval;function s(t){return i.call(this),t=t||!0,this.exactOnly=t,this}s.prototype=Object.create(i.prototype),s.prototype.constructor=s,s.prototype.reportAmbiguity=function(t,e,n,r,i,s,a){if(!this.exactOnly||i){var c="reportAmbiguity d="+this.getDecisionDescription(t,e)+": ambigAlts="+this.getConflictingAlts(s,a)+", input='"+t.getTokenStream().getText(new o(n,r))+"'";t.notifyErrorListeners(c)}},s.prototype.reportAttemptingFullContext=function(t,e,n,r,i,s){var a="reportAttemptingFullContext d="+this.getDecisionDescription(t,e)+", input='"+t.getTokenStream().getText(new o(n,r))+"'";t.notifyErrorListeners(a)},s.prototype.reportContextSensitivity=function(t,e,n,r,i,s){var a="reportContextSensitivity d="+this.getDecisionDescription(t,e)+", input='"+t.getTokenStream().getText(new o(n,r))+"'";t.notifyErrorListeners(a)},s.prototype.getDecisionDescription=function(t,e){var n=e.decision,r=e.atnStartState.ruleIndex,i=t.ruleNames;if(r<0||r>=i.length)return""+n;var o=i[r]||null;return null===o||0===o.length?""+n:n+" ("+o+")"},s.prototype.getConflictingAlts=function(t,e){if(null!==t)return t;for(var n=new r,i=0;i<e.items.length;i++)n.add(e.items[i].alt);return"{"+n.values().join(", ")+"}"},e.DiagnosticErrorListener=s},function(t,e,n){var r=n(19).InputStream,i="undefined"==typeof window&&"undefined"==typeof importScripts?n(31):null,o={fromString:function(t){return new r(t,!0)},fromBlob:function(t,e,n,i){var o=FileReader();o.onload=function(t){var e=new r(t.target.result,!0);n(e)},o.onerror=i,o.readAsText(t,e)},fromBuffer:function(t,e){return new r(t.toString(e),!0)},fromPath:function(t,e,n){i.readFile(t,e,function(t,e){var i=null;null!==e&&(i=new r(e,!0)),n(t,i)})},fromPathSync:function(t,e){var n=i.readFileSync(t,e);return new r(n,!0)}};e.CharStreams=o},function(t,e,n){var r=n(19).InputStream,i="undefined"==typeof window&&"undefined"==typeof importScripts?n(31):null;function o(t,e){var n=i.readFileSync(t,"utf8");return r.call(this,n,e),this.fileName=t,this}o.prototype=Object.create(r.prototype),o.prototype.constructor=o,e.FileStream=o},function(t,e,n){var r=n(1).Token,i=n(48).BufferedTokenStream;function o(t,e){return i.call(this,t),this.channel=void 0===e?r.DEFAULT_CHANNEL:e,this}o.prototype=Object.create(i.prototype),o.prototype.constructor=o,o.prototype.adjustSeekIndex=function(t){return this.nextTokenOnChannel(t,this.channel)},o.prototype.LB=function(t){if(0===t||this.index-t<0)return null;for(var e=this.index,n=1;n<=t;)e=this.previousTokenOnChannel(e-1,this.channel),n+=1;return e<0?null:this.tokens[e]},o.prototype.LT=function(t){if(this.lazyInit(),0===t)return null;if(t<0)return this.LB(-t);for(var e=this.index,n=1;n<t;)this.sync(e+1)&&(e=this.nextTokenOnChannel(e+1,this.channel)),n+=1;return this.tokens[e]},o.prototype.getNumberOfOnChannelTokens=function(){var t=0;this.fill();for(var e=0;e<this.tokens.length;e++){var n=this.tokens[e];if(n.channel===this.channel&&(t+=1),n.type===r.EOF)break}return t},e.CommonTokenStream=o},function(t,e,n){var r=n(1).Token,i=n(15).Lexer,o=n(2).Interval;function s(){return this}function a(t){return s.call(this),this.tokenSource=t,this.tokens=[],this.index=-1,this.fetchedEOF=!1,this}a.prototype=Object.create(s.prototype),a.prototype.constructor=a,a.prototype.mark=function(){return 0},a.prototype.release=function(t){},a.prototype.reset=function(){this.seek(0)},a.prototype.seek=function(t){this.lazyInit(),this.index=this.adjustSeekIndex(t)},a.prototype.get=function(t){return this.lazyInit(),this.tokens[t]},a.prototype.consume=function(){if(!(this.index>=0&&(this.fetchedEOF?this.index<this.tokens.length-1:this.index<this.tokens.length))&&this.LA(1)===r.EOF)throw"cannot consume EOF";this.sync(this.index+1)&&(this.index=this.adjustSeekIndex(this.index+1))},a.prototype.sync=function(t){var e=t-this.tokens.length+1;return!(e>0)||this.fetch(e)>=e},a.prototype.fetch=function(t){if(this.fetchedEOF)return 0;for(var e=0;e<t;e++){var n=this.tokenSource.nextToken();if(n.tokenIndex=this.tokens.length,this.tokens.push(n),n.type===r.EOF)return this.fetchedEOF=!0,e+1}return t},a.prototype.getTokens=function(t,e,n){if(void 0===n&&(n=null),t<0||e<0)return null;this.lazyInit();var i=[];e>=this.tokens.length&&(e=this.tokens.length-1);for(var o=t;o<e;o++){var s=this.tokens[o];if(s.type===r.EOF)break;(null===n||n.contains(s.type))&&i.push(s)}return i},a.prototype.LA=function(t){return this.LT(t).type},a.prototype.LB=function(t){return this.index-t<0?null:this.tokens[this.index-t]},a.prototype.LT=function(t){if(this.lazyInit(),0===t)return null;if(t<0)return this.LB(-t);var e=this.index+t-1;return this.sync(e),e>=this.tokens.length?this.tokens[this.tokens.length-1]:this.tokens[e]},a.prototype.adjustSeekIndex=function(t){return t},a.prototype.lazyInit=function(){-1===this.index&&this.setup()},a.prototype.setup=function(){this.sync(0),this.index=this.adjustSeekIndex(0)},a.prototype.setTokenSource=function(t){this.tokenSource=t,this.tokens=[],this.index=-1,this.fetchedEOF=!1},a.prototype.nextTokenOnChannel=function(t,e){if(this.sync(t),t>=this.tokens.length)return-1;for(var n=this.tokens[t];n.channel!==this.channel;){if(n.type===r.EOF)return-1;t+=1,this.sync(t),n=this.tokens[t]}return t},a.prototype.previousTokenOnChannel=function(t,e){for(;t>=0&&this.tokens[t].channel!==e;)t-=1;return t},a.prototype.getHiddenTokensToRight=function(t,e){if(void 0===e&&(e=-1),this.lazyInit(),t<0||t>=this.tokens.length)throw t+" not in 0.."+this.tokens.length-1;var n=this.nextTokenOnChannel(t+1,i.DEFAULT_TOKEN_CHANNEL),r=t+1,o=-1===n?this.tokens.length-1:n;return this.filterForChannel(r,o,e)},a.prototype.getHiddenTokensToLeft=function(t,e){if(void 0===e&&(e=-1),this.lazyInit(),t<0||t>=this.tokens.length)throw t+" not in 0.."+this.tokens.length-1;var n=this.previousTokenOnChannel(t-1,i.DEFAULT_TOKEN_CHANNEL);if(n===t-1)return null;var r=n+1,o=t-1;return this.filterForChannel(r,o,e)},a.prototype.filterForChannel=function(t,e,n){for(var r=[],o=t;o<e+1;o++){var s=this.tokens[o];-1===n?s.channel!==i.DEFAULT_TOKEN_CHANNEL&&r.push(s):s.channel===n&&r.push(s)}return 0===r.length?null:r},a.prototype.getSourceName=function(){return this.tokenSource.getSourceName()},a.prototype.getText=function(t){this.lazyInit(),this.fill(),null==t&&(t=new o(0,this.tokens.length-1));var e=t.start;e instanceof r&&(e=e.tokenIndex);var n=t.stop;if(n instanceof r&&(n=n.tokenIndex),null===e||null===n||e<0||n<0)return"";n>=this.tokens.length&&(n=this.tokens.length-1);for(var i="",s=e;s<n+1;s++){var a=this.tokens[s];if(a.type===r.EOF)break;i+=a.text}return i},a.prototype.fill=function(){for(this.lazyInit();1e3===this.fetch(1e3););},e.BufferedTokenStream=a},function(t,e,n){var r=n(1).Token,i=n(4).ParseTreeListener,o=n(25).Recognizer,s=n(30).DefaultErrorStrategy,a=n(22).ATNDeserializer,c=n(23).ATNDeserializationOptions,u=n(4).TerminalNode,l=n(4).ErrorNode;function p(t){return i.call(this),this.parser=t,this}function h(t){return o.call(this),this._input=null,this._errHandler=new s,this._precedenceStack=[],this._precedenceStack.push(0),this._ctx=null,this.buildParseTrees=!0,this._tracer=null,this._parseListeners=null,this._syntaxErrors=0,this.setInputStream(t),this}p.prototype=Object.create(i.prototype),p.prototype.constructor=p,p.prototype.enterEveryRule=function(t){console.log("enter   "+this.parser.ruleNames[t.ruleIndex]+", LT(1)="+this.parser._input.LT(1).text)},p.prototype.visitTerminal=function(t){console.log("consume "+t.symbol+" rule "+this.parser.ruleNames[this.parser._ctx.ruleIndex])},p.prototype.exitEveryRule=function(t){console.log("exit    "+this.parser.ruleNames[t.ruleIndex]+", LT(1)="+this.parser._input.LT(1).text)},h.prototype=Object.create(o.prototype),h.prototype.contructor=h,h.bypassAltsAtnCache={},h.prototype.reset=function(){null!==this._input&&this._input.seek(0),this._errHandler.reset(this),this._ctx=null,this._syntaxErrors=0,this.setTrace(!1),this._precedenceStack=[],this._precedenceStack.push(0),null!==this._interp&&this._interp.reset()},h.prototype.match=function(t){var e=this.getCurrentToken();return e.type===t?(this._errHandler.reportMatch(this),this.consume()):(e=this._errHandler.recoverInline(this),this.buildParseTrees&&-1===e.tokenIndex&&this._ctx.addErrorNode(e)),e},h.prototype.matchWildcard=function(){var t=this.getCurrentToken();return t.type>0?(this._errHandler.reportMatch(this),this.consume()):(t=this._errHandler.recoverInline(this),this._buildParseTrees&&-1===t.tokenIndex&&this._ctx.addErrorNode(t)),t},h.prototype.getParseListeners=function(){return this._parseListeners||[]},h.prototype.addParseListener=function(t){if(null===t)throw"listener";null===this._parseListeners&&(this._parseListeners=[]),this._parseListeners.push(t)},h.prototype.removeParseListener=function(t){if(null!==this._parseListeners){var e=this._parseListeners.indexOf(t);e>=0&&this._parseListeners.splice(e,1),0===this._parseListeners.length&&(this._parseListeners=null)}},h.prototype.removeParseListeners=function(){this._parseListeners=null},h.prototype.triggerEnterRuleEvent=function(){if(null!==this._parseListeners){var t=this._ctx;this._parseListeners.map(function(e){e.enterEveryRule(t),t.enterRule(e)})}},h.prototype.triggerExitRuleEvent=function(){if(null!==this._parseListeners){var t=this._ctx;this._parseListeners.slice(0).reverse().map(function(e){t.exitRule(e),e.exitEveryRule(t)})}},h.prototype.getTokenFactory=function(){return this._input.tokenSource._factory},h.prototype.setTokenFactory=function(t){this._input.tokenSource._factory=t},h.prototype.getATNWithBypassAlts=function(){var t=this.getSerializedATN();if(null===t)throw"The current parser does not support an ATN with bypass alternatives.";var e=this.bypassAltsAtnCache[t];if(null===e){var n=new c;n.generateRuleBypassTransitions=!0,e=new a(n).deserialize(t),this.bypassAltsAtnCache[t]=e}return e};var f=n(15).Lexer;h.prototype.compileParseTreePattern=function(t,e,n){if(null===(n=n||null)&&null!==this.getTokenStream()){var r=this.getTokenStream().tokenSource;r instanceof f&&(n=r)}if(null===n)throw"Parser can't discover a lexer to use";return new ParseTreePatternMatcher(n,this).compile(t,e)},h.prototype.getInputStream=function(){return this.getTokenStream()},h.prototype.setInputStream=function(t){this.setTokenStream(t)},h.prototype.getTokenStream=function(){return this._input},h.prototype.setTokenStream=function(t){this._input=null,this.reset(),this._input=t},h.prototype.getCurrentToken=function(){return this._input.LT(1)},h.prototype.notifyErrorListeners=function(t,e,n){n=n||null,null===(e=e||null)&&(e=this.getCurrentToken()),this._syntaxErrors+=1;var r=e.line,i=e.column;this.getErrorListenerDispatch().syntaxError(this,e,r,i,t,n)},h.prototype.consume=function(){var t=this.getCurrentToken();t.type!==r.EOF&&this.getInputStream().consume();var e,n=null!==this._parseListeners&&this._parseListeners.length>0;(this.buildParseTrees||n)&&((e=this._errHandler.inErrorRecoveryMode(this)?this._ctx.addErrorNode(t):this._ctx.addTokenNode(t)).invokingState=this.state,n&&this._parseListeners.map(function(t){e instanceof l||void 0!==e.isErrorNode&&e.isErrorNode()?t.visitErrorNode(e):e instanceof u&&t.visitTerminal(e)}));return t},h.prototype.addContextToParseTree=function(){null!==this._ctx.parentCtx&&this._ctx.parentCtx.addChild(this._ctx)},h.prototype.enterRule=function(t,e,n){this.state=e,this._ctx=t,this._ctx.start=this._input.LT(1),this.buildParseTrees&&this.addContextToParseTree(),null!==this._parseListeners&&this.triggerEnterRuleEvent()},h.prototype.exitRule=function(){this._ctx.stop=this._input.LT(-1),null!==this._parseListeners&&this.triggerExitRuleEvent(),this.state=this._ctx.invokingState,this._ctx=this._ctx.parentCtx},h.prototype.enterOuterAlt=function(t,e){t.setAltNumber(e),this.buildParseTrees&&this._ctx!==t&&null!==this._ctx.parentCtx&&(this._ctx.parentCtx.removeLastChild(),this._ctx.parentCtx.addChild(t)),this._ctx=t},h.prototype.getPrecedence=function(){return 0===this._precedenceStack.length?-1:this._precedenceStack[this._precedenceStack.length-1]},h.prototype.enterRecursionRule=function(t,e,n,r){this.state=e,this._precedenceStack.push(r),this._ctx=t,this._ctx.start=this._input.LT(1),null!==this._parseListeners&&this.triggerEnterRuleEvent()},h.prototype.pushNewRecursionContext=function(t,e,n){var r=this._ctx;r.parentCtx=t,r.invokingState=e,r.stop=this._input.LT(-1),this._ctx=t,this._ctx.start=r.start,this.buildParseTrees&&this._ctx.addChild(r),null!==this._parseListeners&&this.triggerEnterRuleEvent()},h.prototype.unrollRecursionContexts=function(t){this._precedenceStack.pop(),this._ctx.stop=this._input.LT(-1);var e=this._ctx;if(null!==this._parseListeners)for(;this._ctx!==t;)this.triggerExitRuleEvent(),this._ctx=this._ctx.parentCtx;else this._ctx=t;e.parentCtx=t,this.buildParseTrees&&null!==t&&t.addChild(e)},h.prototype.getInvokingContext=function(t){for(var e=this._ctx;null!==e;){if(e.ruleIndex===t)return e;e=e.parentCtx}return null},h.prototype.precpred=function(t,e){return e>=this._precedenceStack[this._precedenceStack.length-1]},h.prototype.inContext=function(t){return!1},h.prototype.isExpectedToken=function(t){var e=this._interp.atn,n=this._ctx,i=e.states[this.state],o=e.nextTokens(i);if(o.contains(t))return!0;if(!o.contains(r.EPSILON))return!1;for(;null!==n&&n.invokingState>=0&&o.contains(r.EPSILON);){var s=e.states[n.invokingState].transitions[0];if((o=e.nextTokens(s.followState)).contains(t))return!0;n=n.parentCtx}return!(!o.contains(r.EPSILON)||t!==r.EOF)},h.prototype.getExpectedTokens=function(){return this._interp.atn.getExpectedTokens(this.state,this._ctx)},h.prototype.getExpectedTokensWithinCurrentRule=function(){var t=this._interp.atn,e=t.states[this.state];return t.nextTokens(e)},h.prototype.getRuleIndex=function(t){var e=this.getRuleIndexMap()[t];return null!==e?e:-1},h.prototype.getRuleInvocationStack=function(t){null===(t=t||null)&&(t=this._ctx);for(var e=[];null!==t;){var n=t.ruleIndex;n<0?e.push("n/a"):e.push(this.ruleNames[n]),t=t.parentCtx}return e},h.prototype.getDFAStrings=function(){return this._interp.decisionToDFA.toString()},h.prototype.dumpDFA=function(){for(var t=!1,e=0;e<this._interp.decisionToDFA.length;e++){var n=this._interp.decisionToDFA[e];n.states.length>0&&(t&&console.log(),this.printer.println("Decision "+n.decision+":"),this.printer.print(n.toString(this.literalNames,this.symbolicNames)),t=!0)}},h.prototype.getSourceName=function(){return this._input.sourceName},h.prototype.setTrace=function(t){t?(null!==this._tracer&&this.removeParseListener(this._tracer),this._tracer=new p(this),this.addParseListener(this._tracer)):(this.removeParseListener(this._tracer),this._tracer=null)},e.Parser=h},function(t,e,n){var r=n(12),i=["а훑舆괭䐗껱趀ꫝ","=ȣ\b\t\t","\t\t\t\t","\b\t\b\t\t\t\n\t\n\v\t\v","\f\t\f\r\t\r\t\t","\t\t\t\t","\t\t\t","\t\t\t\t","\t\t\t",'\t\t \t !\t!"\t"#',"\t#$\t$%\t%&\t&'\t'(\t()\t)","*\t*+\t+,\t,-\t-.\t./\t/0\t0","1\t12\t23\t34\t45\t56\t67\t7","8\t89\t9:\t:;\t;<\t<","","","","\b\b\b\t\t","\t\t\n\n\n\n\n\v","\v\v\f\f\f\r\r\r","\r","","","","","","","","Ø\n\f","Û\v","","","","ó\n","ù\n    þ\n"," \f  ā\v   !!Ć\n!",'!!"""#####',"#Ē\n####Ė\n#\f##ę\v","###Ĝ\n#$$$Ġ\n$\r$$ġ","$$$Ħ\n$\r$$ħ$Ī\n$\f$","$ĭ\v$%%İ\n%%%ĳ\n%\r%","%Ĵ&&ĸ\n&&&Ļ\n&\f&&ľ","\v&&&&ł\n&\r&&Ń'","'Ň\n'''Ŋ\n'\r''ŋ'","''Ő\n'\f''œ\v'''","''Ř\n'\r''ř'''Ş","\n'\r''ş''ţ\n'((","(ŧ\n(((Ū\n(\r((ū))","))))))ŵ\n))))",")ź\n))ż\n)\f))ſ\v)))","))********ƌ","\n*****Ƒ\n**Ɠ\n*\f**Ɩ","\v*****++++","+Ơ\n+\f++ƣ\v+++,,",",,,ƫ\n,\f,,Ʈ\v,,,","----------","----------","-ǆ\n-...////0","00Ǒ\n0\f00ǔ\v0001","111Ǜ\n1\f11Ǟ\v122","2Ǣ\n233ǥ\n3444ǩ\n4","5555566666","667777Ǻ\n7\f77ǽ\v","777Ȁ\n78888ȅ\n8","8888Ȋ\n8\f88ȍ\v88","888Ȓ\n88Ȕ\n8999Ș","\n9::::;;ȟ\n;<","<<=\t\v","\r\b\t\n\v\f\r","!#%')+","-/13579;= ?!A","\"C#E$G%I&K'M(O)Q*S+U,W-Y.[/]0_1a2c3e4g5i6k7m8o9q:s;u<w=","\f\f\n!$$>>@@^^``bb}","2;C\\c|2;C\\c|--//","GGgg))^^$$^^\f\f","$$^^\f\f))^^\n$$))^^ddhhppttvv",'\v\f""C\\c|ÂØÚøú',"́ͲͿ΁ ‎‏⁲↑Ⰲ⿱〃","\ud801車﷑ﷲ￿//2;¹¹̂ͱ","⁁⁂DDddCCccUUuu","RRrrTTttHHhhKKkkZZz","z00<<2;CHch\t##%1==??ABaa","ɢ","\t","\v\r","","","","","!","#%","')","+-/","13","57","9;","=?","ACE","GI","KM","OQ","SU","WY[","]_","ac","eg","ik","moq","su","wy","{","\t\v","\r","","","¡¥","©«","!®#±","%³'µ)·","+¹-»","/½1¿","3Á5Ä","7Í9Õ",";ò=ø?ú","AąCĉ","EČGĝ","IįKķ","MņOŤ","QŭSƄUƛ","WƦYǅ","[Ǉ]Ǌ","_ǎaǗ","cǡeǤ","gǨiǪkǯ","mǶoȄ","qȗsș","uȞwȠ","yz0z{|B","|}r}~t~","ghk","z","Bd","cu","g\b","=\n",".\fc","B","c","jc","u","Bj","cu","k","u","q h ","¡¢B¢£","k£¤u¤","¥¦B¦§q","§¨h¨","©ª?ª","«¬>¬­?","­ ®¯?¯",'°@°"±²',"`²$³´","#´&µ¶]","¶(·¸_","¸*¹º*º",",»¼+¼.","½¾}¾0","¿ÀÀ2","ÁÂ`ÂÃ`","Ã4ÄÅB","ÅÆhÆÇqÇ","ÈtÈÉUÉÊ","qÊËoËÌ","gÌ6ÍÎB","ÎÏhÏÐq","ÐÑtÑÒCÒ","ÓnÓÔnÔ8","ÕÙ%ÖØ\n","×ÖØÛ","Ù×ÙÚ","ÚÜÛÙ","ÜÝ\bÝ:","Þßvßàt","àáwáógâ","ãhãäcäå","nåæuæó","gçèBèév","éêtêëw","ëógìíBí","îhîïcïð","nðñuñó","gòÞòâ","òçòì","ó<ôù","U+õùW,öùQ)÷ù","S*øôøõ","øöø÷","ù>úÿ",">ûþ\nüþY-","ýûýü","þāÿý","ÿĀĀĂ","āÿĂă@","ă@ĄĆm7ąĄ","ąĆĆć","ćĈ<ĈB","ĉĊA!Ċċo8","ċDČčač","Ď<Ďđď","Ēc2ĐĒ\tđď","đĐĒě","ēĖg4ĔĖ0","ĕēĕĔ","Ėęėĕ","ėĘĘĚ","ęėĚĜg4","ěėěĜ","ĜFĝğBĞ","Ġ\tğĞĠ","ġġğġ","ĢĢīģ","ĥ/ĤĦ\tĥĤ","Ħħħĥ","ħĨĨĪ","ĩģĪĭ","īĩīĬ","ĬHĭī","Įİ\tįĮ","įİİĲ","ıĳ\tĲı","ĳĴĴĲ","ĴĵĵJ","Ķĸ\tķĶ","ķĸĸļ","ĹĻ\tĺĹ","Ļľļĺ","ļĽĽĿ","ľļĿŁ","0ŀł\tŁŀ","łŃŃŁ","ŃńńL","ŅŇ\tņŅ","ņŇŇŢ","ňŊ\tŉň","Ŋŋŋŉ","ŋŌŌō","ōő0ŎŐ\t","ŏŎŐœ","őŏőŒ","ŒŔœő","ŔţO(ŕŗ0","ŖŘ\tŗŖ","Řřřŗ","řŚŚś","śţO(ŜŞ\tŝŜ","Şşşŝ","şŠŠš","šţO(Ţŉ","ŢŕŢŝ","ţNŤŦ\t\b","ťŧ\tŦť","Ŧŧŧũ","ŨŪ\tũŨ","Ūūūũ","ūŬŬP","ŭŮ)Ůů)","ůŰ)ŰŽ","űŵ)Ųų)ų","ŵ)ŴűŴ","ŲŴŵŵ","ŹŶź\n\tŷź","[.ŸźY-ŹŶ","ŹŷŹŸ","źżŻŴ","żſŽŻ","Žžžƀ","ſŽƀƁ)","ƁƂ)Ƃƃ)","ƃRƄƅ$ƅ","Ɔ$ƆƇ$ƇƔ","ƈƌ$ƉƊ","$Ɗƌ$Ƌƈ","ƋƉƋƌ","ƌƐƍƑ\n","\nƎƑ[.ƏƑY-Ɛ","ƍƐƎƐ","ƏƑƓƒ","ƋƓƖƔ","ƒƔƕƕ","ƗƖƔƗ","Ƙ$Ƙƙ$ƙƚ","$ƚTƛơ","$ƜƠ\n\vƝƠ[.","ƞƠY-ƟƜƟ","ƝƟƞƠ","ƣơƟơ","ƢƢƤƣ","ơƤƥ$ƥ","VƦƬ)Ƨƫ","\n\fƨƫ[.ƩƫY-","ƪƧƪƨ","ƪƩƫƮ","ƬƪƬƭ","ƭƯƮƬ","Ưư)ưXƱ","Ʋ^ƲƳwƳƴ","ƴƵu;Ƶƶ","u;ƶƷu;ƷƸu;Ƹǆ","ƹƺ^ƺƻ","WƻƼƼƽ","u;ƽƾu;ƾƿu;ƿ","ǀu;ǀǁu;ǁǂu;","ǂǃu;ǃǄu;Ǆǆ","ǅƱǅƹ","ǆZǇǈ","^ǈǉ\t\rǉ\\","Ǌǋ\tǋǌ","ǌǍ\b/Ǎ^ǎ","ǒ]ǏǑ]/ǐǏ","Ǒǔǒǐ","ǒǓǓǕ","ǔǒǕǖ","_ǖ`ǗǘA","ǘǜc2ǙǛg4ǚǙ","ǛǞǜǚ","ǜǝǝb","ǞǜǟǢ","e3ǠǢaǡǟ","ǡǠǢd","ǣǥ\tǤǣ","ǥfǦǩc2","ǧǩ\tǨǦ","Ǩǧǩh","Ǫǫ\tǫǬ\tǬ","ǭ\tǭǮ\t\bǮj","ǯǰ\tǰǱ\t","Ǳǲ\t\bǲǳ\t","ǳǴ\tǴǵ\tǵ","lǶǿe3ǷǺ","g4ǸǺ0ǹǷ","ǹǸǺǽ","ǻǹǻǼ","ǼǾǽǻ","ǾȀg4ǿǻ","ǿȀȀn","ȁȅc2Ȃȅ2<ȃȅ","q9ȄȁȄȂ","Ȅȃȅȓ","ȆȊg4ȇȊ\t","ȈȊq9ȉȆȉ","ȇȉȈȊ","ȍȋȉȋ","ȌȌȑȍ","ȋȎȒg4ȏȒ","<ȐȒq9ȑȎ","ȑȏȑȐ","ȒȔȓȋ","ȓȔȔp","ȕȘs:ȖȘw<ȗ","ȕȗȖȘ","rșȚ'Țț","u;țȜu;Ȝt","ȝȟ\tȞȝ","ȟvȠȡ^ȡ","Ȣ\tȢx7Ù","òøýÿąđĕėěġħī","įĴķļŃņŋőřşŢŦ","ūŴŹŽƋƐƔƟơƪƬǅ","ǒǜǡǤǨǹǻǿȄȉȋȑ","ȓȗȞ\b"].join(""),o=(new r.atn.ATNDeserializer).deserialize(i),s=o.decisionToState.map(function(t,e){return new r.dfa.DFA(t,e)});function a(t){return r.Lexer.call(this,t),this._interp=new r.atn.LexerATNSimulator(this,o,s,new r.PredictionContextCache),this}a.prototype=Object.create(r.Lexer.prototype),a.prototype.constructor=a,a.EOF=r.Token.EOF,a.T__0=1,a.T__1=2,a.T__2=3,a.T__3=4,a.T__4=5,a.T__5=6,a.T__6=7,a.T__7=8,a.T__8=9,a.T__9=10,a.T__10=11,a.T__11=12,a.T__12=13,a.T__13=14,a.T__14=15,a.T__15=16,a.T__16=17,a.T__17=18,a.T__18=19,a.T__19=20,a.T__20=21,a.T__21=22,a.T__22=23,a.T__23=24,a.T__24=25,a.T__25=26,a.T__26=27,a.COMMENT=28,a.BooleanLiteral=29,a.String=30,a.IRIREF=31,a.PNAME_NS=32,a.PNAME_LN=33,a.BLANK_NODE_LABEL=34,a.LANGTAG=35,a.INTEGER=36,a.DECIMAL=37,a.DOUBLE=38,a.EXPONENT=39,a.STRING_LITERAL_LONG_SINGLE_QUOTE=40,a.STRING_LITERAL_LONG_QUOTE=41,a.STRING_LITERAL_QUOTE=42,a.STRING_LITERAL_SINGLE_QUOTE=43,a.UCHAR=44,a.ECHAR=45,a.WS=46,a.ANON=47,a.QuickVarName=48,a.PN_CHARS_U=49,a.PN_CHARS_BASE=50,a.PN_CHARS=51,a.BASE=52,a.PREFIX=53,a.PN_PREFIX=54,a.PN_LOCAL=55,a.PLX=56,a.PERCENT=57,a.HEX=58,a.PN_LOCAL_ESC=59,a.prototype.modeNames=["DEFAULT_MODE"],a.prototype.literalNames=[null,"'.'","'@prefix'","'@base'","';'","','","'a'","'@a'","'has'","'@has'","'is'","'of'","'@is'","'@of'","'='","'<='","'=>'","'^'","'!'","'['","']'","'('","')'","'{'","'}'","'^^'","'@forSome'","'@forAll'"],a.prototype.symbolicNames=[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"COMMENT","BooleanLiteral","String","IRIREF","PNAME_NS","PNAME_LN","BLANK_NODE_LABEL","LANGTAG","INTEGER","DECIMAL","DOUBLE","EXPONENT","STRING_LITERAL_LONG_SINGLE_QUOTE","STRING_LITERAL_LONG_QUOTE","STRING_LITERAL_QUOTE","STRING_LITERAL_SINGLE_QUOTE","UCHAR","ECHAR","WS","ANON","QuickVarName","PN_CHARS_U","PN_CHARS_BASE","PN_CHARS","BASE","PREFIX","PN_PREFIX","PN_LOCAL","PLX","PERCENT","HEX","PN_LOCAL_ESC"],a.prototype.ruleNames=["T__0","T__1","T__2","T__3","T__4","T__5","T__6","T__7","T__8","T__9","T__10","T__11","T__12","T__13","T__14","T__15","T__16","T__17","T__18","T__19","T__20","T__21","T__22","T__23","T__24","T__25","T__26","COMMENT","BooleanLiteral","String","IRIREF","PNAME_NS","PNAME_LN","BLANK_NODE_LABEL","LANGTAG","INTEGER","DECIMAL","DOUBLE","EXPONENT","STRING_LITERAL_LONG_SINGLE_QUOTE","STRING_LITERAL_LONG_QUOTE","STRING_LITERAL_QUOTE","STRING_LITERAL_SINGLE_QUOTE","UCHAR","ECHAR","WS","ANON","QuickVarName","PN_CHARS_U","PN_CHARS_BASE","PN_CHARS","BASE","PREFIX","PN_PREFIX","PN_LOCAL","PLX","PERCENT","HEX","PN_LOCAL_ESC"],a.prototype.grammarFileName="n3.g4",e.n3Lexer=a},function(t,e,n){var r=n(12),i=n(20).n3Listener,o=n(52).n3Visitor,s=["а훑舆괭䐗껱趀ꫝ","=ü\t\t\t","\t\t\t","\b\t\b\t\t\t\n\t\n\v\t\v\f\t\f","\r\t\r\t\t\t","\t\t\t\t","\t\t\t","\t\t\t\t","\t\t\t","\t \t !\t!","G\n\fJ\v","","R\nV\n","Z\n","\b\b","\b\b\t\t\t\n\n\nl\n\n","\n\no\n\n\v\v\v\v","\v\v\vw\n\v\vy\n\v\f\v","\v|\v\v\f\f\f\f\n\f","\f\f\f\v\f\r\r\r\r\r","\r\r\r\r\r\r\r\r\r","\r\r\r\r\r\n\r","\n","","ª\n","","³\n","¸\n¼\n","Â\n","\fÅ\v","Ë\n","Ò\n","Ô\nØ","\nÚ\n","â\n","æ\n","ë\n\fî\v","","   !!!!",'"\b\n\f',' "$&(*,.02468:<>@&(','"#$$11ĆHQ',"U\bY","\n[\f^b","fk","p}",""," ",' ¢"¤',"$²&·","(¹*¿,È",".Ù0Û","2Ý4å","6ç8ï",":ñ<ó",">õ@øBC","CDDG","EG\bFBFE","GJHFHI","IKJHKL","LMR","NR\nOR> PR@!QM","QNQO","QPRSV","\bTV\tUSUT","VWZ\nXZ","\fYWYX","Z\t[\\6\\]!",']\v^_7_`"',"`a!a\rbc",'cd"de!e',"fggh!h","iljl(","kikjln","mo\vnmno","opq\rqz","\frvst\r","tu\fuwvs","vwwyxr","y|zxz{","{|z","}~","~","","","","\b\t","\n ","\v ","\f ","\r"," ","","","","","","","",""," "," "," "," ¡"," ¡¢£",'"£!¤©$','¥¦¦ª"','§¨¨ª"',"©¥©§","©ªª#","«³4¬³:","­³<®³*¯","³(°³&±³",",²«²¬","²­²®","²¯²°","²±³%","´¸2µ¸","0¶¸·´","·µ·¶","¸'¹»","º¼\v»º","»¼¼½","½¾¾)","¿ÃÀÂ","ÁÀÂÅ","ÃÁÃÄ","ÄÆÅÃ","ÆÇÇ+","ÈÊÉË",".ÊÉÊË","ËÌÌÍ","Í-ÎÓ","ÏÑÐÒ",".ÑÐÑÒ","ÒÔÓÏ","ÓÔÔÚ","Õ×\bÖØ",".×Ö×Ø","ØÚÙÎ","ÙÕÚ/","ÛÜ\tÜ1","Ýá Þâ","%ßààâ","4áÞáß","áââ3","ãæ!äæ","8åãåä","æ5çì","4èééë","4êèëî","ìêìí","í7îì","ïð\tð9","ñò\tò;","óô2ô=","õöö÷6","÷?øù","ùú6úA","FHQUYknvz©²·»ÃÊÑ","Ó×Ùáåì"].join(""),a=(new r.atn.ATNDeserializer).deserialize(s),c=a.decisionToState.map(function(t,e){return new r.dfa.DFA(t,e)}),u=new r.PredictionContextCache,l=[null,"'.'","'@prefix'","'@base'","';'","','","'a'","'@a'","'has'","'@has'","'is'","'of'","'@is'","'@of'","'='","'<='","'=>'","'^'","'!'","'['","']'","'('","')'","'{'","'}'","'^^'","'@forSome'","'@forAll'"],p=[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"COMMENT","BooleanLiteral","String","IRIREF","PNAME_NS","PNAME_LN","BLANK_NODE_LABEL","LANGTAG","INTEGER","DECIMAL","DOUBLE","EXPONENT","STRING_LITERAL_LONG_SINGLE_QUOTE","STRING_LITERAL_LONG_QUOTE","STRING_LITERAL_QUOTE","STRING_LITERAL_SINGLE_QUOTE","UCHAR","ECHAR","WS","ANON","QuickVarName","PN_CHARS_U","PN_CHARS_BASE","PN_CHARS","BASE","PREFIX","PN_PREFIX","PN_LOCAL","PLX","PERCENT","HEX","PN_LOCAL_ESC"],h=["n3Doc","n3Statement","n3Directive","sparqlDirective","sparqlBase","sparqlPrefix","prefixID","base","triples","predicateObjectList","objectList","verb","subject","predicate","object","expression","path","pathItem","literal","blankNodePropertyList","collection","formula","formulaContent","numericLiteral","rdfLiteral","iri","iriList","prefixedName","blankNode","quickVar","existential","universal"];function f(t){return r.Parser.call(this,t),this._interp=new r.atn.ParserATNSimulator(this,a,c,u),this.ruleNames=h,this.literalNames=l,this.symbolicNames=p,this}function d(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_n3Doc,this}function y(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_n3Statement,this}function _(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_n3Directive,this}function x(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_sparqlDirective,this}function g(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_sparqlBase,this}function T(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_sparqlPrefix,this}function E(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_prefixID,this}function v(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_base,this}function S(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_triples,this}function L(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_predicateObjectList,this}function A(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_objectList,this}function C(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_verb,this}function N(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_subject,this}function R(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_predicate,this}function m(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_object,this}function I(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_expression,this}function O(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_path,this}function P(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_pathItem,this}function b(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_literal,this}function k(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_blankNodePropertyList,this}function D(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_collection,this}function w(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_formula,this}function F(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_formulaContent,this}function M(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_numericLiteral,this}function U(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_rdfLiteral,this}function B(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_iri,this}function j(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_iriList,this}function H(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_prefixedName,this}function V(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_blankNode,this}function q(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_quickVar,this}function G(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_existential,this}function z(t,e,n){return void 0===e&&(e=null),null==n&&(n=-1),r.ParserRuleContext.call(this,e,n),this.parser=t,this.ruleIndex=f.RULE_universal,this}f.prototype=Object.create(r.Parser.prototype),f.prototype.constructor=f,Object.defineProperty(f.prototype,"atn",{get:function(){return a}}),f.EOF=r.Token.EOF,f.T__0=1,f.T__1=2,f.T__2=3,f.T__3=4,f.T__4=5,f.T__5=6,f.T__6=7,f.T__7=8,f.T__8=9,f.T__9=10,f.T__10=11,f.T__11=12,f.T__12=13,f.T__13=14,f.T__14=15,f.T__15=16,f.T__16=17,f.T__17=18,f.T__18=19,f.T__19=20,f.T__20=21,f.T__21=22,f.T__22=23,f.T__23=24,f.T__24=25,f.T__25=26,f.T__26=27,f.COMMENT=28,f.BooleanLiteral=29,f.String=30,f.IRIREF=31,f.PNAME_NS=32,f.PNAME_LN=33,f.BLANK_NODE_LABEL=34,f.LANGTAG=35,f.INTEGER=36,f.DECIMAL=37,f.DOUBLE=38,f.EXPONENT=39,f.STRING_LITERAL_LONG_SINGLE_QUOTE=40,f.STRING_LITERAL_LONG_QUOTE=41,f.STRING_LITERAL_QUOTE=42,f.STRING_LITERAL_SINGLE_QUOTE=43,f.UCHAR=44,f.ECHAR=45,f.WS=46,f.ANON=47,f.QuickVarName=48,f.PN_CHARS_U=49,f.PN_CHARS_BASE=50,f.PN_CHARS=51,f.BASE=52,f.PREFIX=53,f.PN_PREFIX=54,f.PN_LOCAL=55,f.PLX=56,f.PERCENT=57,f.HEX=58,f.PN_LOCAL_ESC=59,f.RULE_n3Doc=0,f.RULE_n3Statement=1,f.RULE_n3Directive=2,f.RULE_sparqlDirective=3,f.RULE_sparqlBase=4,f.RULE_sparqlPrefix=5,f.RULE_prefixID=6,f.RULE_base=7,f.RULE_triples=8,f.RULE_predicateObjectList=9,f.RULE_objectList=10,f.RULE_verb=11,f.RULE_subject=12,f.RULE_predicate=13,f.RULE_object=14,f.RULE_expression=15,f.RULE_path=16,f.RULE_pathItem=17,f.RULE_literal=18,f.RULE_blankNodePropertyList=19,f.RULE_collection=20,f.RULE_formula=21,f.RULE_formulaContent=22,f.RULE_numericLiteral=23,f.RULE_rdfLiteral=24,f.RULE_iri=25,f.RULE_iriList=26,f.RULE_prefixedName=27,f.RULE_blankNode=28,f.RULE_quickVar=29,f.RULE_existential=30,f.RULE_universal=31,d.prototype=Object.create(r.ParserRuleContext.prototype),d.prototype.constructor=d,d.prototype.EOF=function(){return this.getToken(f.EOF,0)},d.prototype.n3Statement=function(t){return void 0===t&&(t=null),null===t?this.getTypedRuleContexts(y):this.getTypedRuleContext(y,t)},d.prototype.sparqlDirective=function(t){return void 0===t&&(t=null),null===t?this.getTypedRuleContexts(x):this.getTypedRuleContext(x,t)},d.prototype.enterRule=function(t){t instanceof i&&t.enterN3Doc(this)},d.prototype.exitRule=function(t){t instanceof i&&t.exitN3Doc(this)},d.prototype.accept=function(t){return t instanceof o?t.visitN3Doc(this):t.visitChildren(this)},f.N3DocContext=d,f.prototype.n3Doc=function(){var t=new d(this,this._ctx,this.state);this.enterRule(t,0,f.RULE_n3Doc);var e=0;try{for(this.enterOuterAlt(t,1),this.state=70,this._errHandler.sync(this),e=this._input.LA(1);0==(-32&e)&&0!=(1<<e&(1<<f.T__1|1<<f.T__2|1<<f.T__18|1<<f.T__20|1<<f.T__22|1<<f.T__25|1<<f.T__26|1<<f.BooleanLiteral|1<<f.String|1<<f.IRIREF))||0==(e-32&-32)&&0!=(1<<e-32&(1<<f.PNAME_NS-32|1<<f.PNAME_LN-32|1<<f.BLANK_NODE_LABEL-32|1<<f.INTEGER-32|1<<f.DECIMAL-32|1<<f.DOUBLE-32|1<<f.ANON-32|1<<f.QuickVarName-32|1<<f.BASE-32|1<<f.PREFIX-32));){switch(this.state=68,this._errHandler.sync(this),this._input.LA(1)){case f.T__1:case f.T__2:case f.T__18:case f.T__20:case f.T__22:case f.T__25:case f.T__26:case f.BooleanLiteral:case f.String:case f.IRIREF:case f.PNAME_NS:case f.PNAME_LN:case f.BLANK_NODE_LABEL:case f.INTEGER:case f.DECIMAL:case f.DOUBLE:case f.ANON:case f.QuickVarName:this.state=64,this.n3Statement(),this.state=65,this.match(f.T__0);break;case f.BASE:case f.PREFIX:this.state=67,this.sparqlDirective();break;default:throw new r.error.NoViableAltException(this)}this.state=72,this._errHandler.sync(this),e=this._input.LA(1)}this.state=73,this.match(f.EOF)}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},y.prototype=Object.create(r.ParserRuleContext.prototype),y.prototype.constructor=y,y.prototype.n3Directive=function(){return this.getTypedRuleContext(_,0)},y.prototype.triples=function(){return this.getTypedRuleContext(S,0)},y.prototype.existential=function(){return this.getTypedRuleContext(G,0)},y.prototype.universal=function(){return this.getTypedRuleContext(z,0)},y.prototype.enterRule=function(t){t instanceof i&&t.enterN3Statement(this)},y.prototype.exitRule=function(t){t instanceof i&&t.exitN3Statement(this)},y.prototype.accept=function(t){return t instanceof o?t.visitN3Statement(this):t.visitChildren(this)},f.N3StatementContext=y,f.prototype.n3Statement=function(){var t=new y(this,this._ctx,this.state);this.enterRule(t,2,f.RULE_n3Statement);try{switch(this.state=79,this._errHandler.sync(this),this._input.LA(1)){case f.T__1:case f.T__2:this.enterOuterAlt(t,1),this.state=75,this.n3Directive();break;case f.T__18:case f.T__20:case f.T__22:case f.BooleanLiteral:case f.String:case f.IRIREF:case f.PNAME_NS:case f.PNAME_LN:case f.BLANK_NODE_LABEL:case f.INTEGER:case f.DECIMAL:case f.DOUBLE:case f.ANON:case f.QuickVarName:this.enterOuterAlt(t,2),this.state=76,this.triples();break;case f.T__25:this.enterOuterAlt(t,3),this.state=77,this.existential();break;case f.T__26:this.enterOuterAlt(t,4),this.state=78,this.universal();break;default:throw new r.error.NoViableAltException(this)}}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},_.prototype=Object.create(r.ParserRuleContext.prototype),_.prototype.constructor=_,_.prototype.prefixID=function(){return this.getTypedRuleContext(E,0)},_.prototype.base=function(){return this.getTypedRuleContext(v,0)},_.prototype.enterRule=function(t){t instanceof i&&t.enterN3Directive(this)},_.prototype.exitRule=function(t){t instanceof i&&t.exitN3Directive(this)},_.prototype.accept=function(t){return t instanceof o?t.visitN3Directive(this):t.visitChildren(this)},f.N3DirectiveContext=_,f.prototype.n3Directive=function(){var t=new _(this,this._ctx,this.state);this.enterRule(t,4,f.RULE_n3Directive);try{switch(this.state=83,this._errHandler.sync(this),this._input.LA(1)){case f.T__1:this.enterOuterAlt(t,1),this.state=81,this.prefixID();break;case f.T__2:this.enterOuterAlt(t,2),this.state=82,this.base();break;default:throw new r.error.NoViableAltException(this)}}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},x.prototype=Object.create(r.ParserRuleContext.prototype),x.prototype.constructor=x,x.prototype.sparqlBase=function(){return this.getTypedRuleContext(g,0)},x.prototype.sparqlPrefix=function(){return this.getTypedRuleContext(T,0)},x.prototype.enterRule=function(t){t instanceof i&&t.enterSparqlDirective(this)},x.prototype.exitRule=function(t){t instanceof i&&t.exitSparqlDirective(this)},x.prototype.accept=function(t){return t instanceof o?t.visitSparqlDirective(this):t.visitChildren(this)},f.SparqlDirectiveContext=x,f.prototype.sparqlDirective=function(){var t=new x(this,this._ctx,this.state);this.enterRule(t,6,f.RULE_sparqlDirective);try{switch(this.state=87,this._errHandler.sync(this),this._input.LA(1)){case f.BASE:this.enterOuterAlt(t,1),this.state=85,this.sparqlBase();break;case f.PREFIX:this.enterOuterAlt(t,2),this.state=86,this.sparqlPrefix();break;default:throw new r.error.NoViableAltException(this)}}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},g.prototype=Object.create(r.ParserRuleContext.prototype),g.prototype.constructor=g,g.prototype.BASE=function(){return this.getToken(f.BASE,0)},g.prototype.IRIREF=function(){return this.getToken(f.IRIREF,0)},g.prototype.enterRule=function(t){t instanceof i&&t.enterSparqlBase(this)},g.prototype.exitRule=function(t){t instanceof i&&t.exitSparqlBase(this)},g.prototype.accept=function(t){return t instanceof o?t.visitSparqlBase(this):t.visitChildren(this)},f.SparqlBaseContext=g,f.prototype.sparqlBase=function(){var t=new g(this,this._ctx,this.state);this.enterRule(t,8,f.RULE_sparqlBase);try{this.enterOuterAlt(t,1),this.state=89,this.match(f.BASE),this.state=90,this.match(f.IRIREF)}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},T.prototype=Object.create(r.ParserRuleContext.prototype),T.prototype.constructor=T,T.prototype.PREFIX=function(){return this.getToken(f.PREFIX,0)},T.prototype.PNAME_NS=function(){return this.getToken(f.PNAME_NS,0)},T.prototype.IRIREF=function(){return this.getToken(f.IRIREF,0)},T.prototype.enterRule=function(t){t instanceof i&&t.enterSparqlPrefix(this)},T.prototype.exitRule=function(t){t instanceof i&&t.exitSparqlPrefix(this)},T.prototype.accept=function(t){return t instanceof o?t.visitSparqlPrefix(this):t.visitChildren(this)},f.SparqlPrefixContext=T,f.prototype.sparqlPrefix=function(){var t=new T(this,this._ctx,this.state);this.enterRule(t,10,f.RULE_sparqlPrefix);try{this.enterOuterAlt(t,1),this.state=92,this.match(f.PREFIX),this.state=93,this.match(f.PNAME_NS),this.state=94,this.match(f.IRIREF)}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},E.prototype=Object.create(r.ParserRuleContext.prototype),E.prototype.constructor=E,E.prototype.PNAME_NS=function(){return this.getToken(f.PNAME_NS,0)},E.prototype.IRIREF=function(){return this.getToken(f.IRIREF,0)},E.prototype.enterRule=function(t){t instanceof i&&t.enterPrefixID(this)},E.prototype.exitRule=function(t){t instanceof i&&t.exitPrefixID(this)},E.prototype.accept=function(t){return t instanceof o?t.visitPrefixID(this):t.visitChildren(this)},f.PrefixIDContext=E,f.prototype.prefixID=function(){var t=new E(this,this._ctx,this.state);this.enterRule(t,12,f.RULE_prefixID);try{this.enterOuterAlt(t,1),this.state=96,this.match(f.T__1),this.state=97,this.match(f.PNAME_NS),this.state=98,this.match(f.IRIREF)}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},v.prototype=Object.create(r.ParserRuleContext.prototype),v.prototype.constructor=v,v.prototype.IRIREF=function(){return this.getToken(f.IRIREF,0)},v.prototype.enterRule=function(t){t instanceof i&&t.enterBase(this)},v.prototype.exitRule=function(t){t instanceof i&&t.exitBase(this)},v.prototype.accept=function(t){return t instanceof o?t.visitBase(this):t.visitChildren(this)},f.BaseContext=v,f.prototype.base=function(){var t=new v(this,this._ctx,this.state);this.enterRule(t,14,f.RULE_base);try{this.enterOuterAlt(t,1),this.state=100,this.match(f.T__2),this.state=101,this.match(f.IRIREF)}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},S.prototype=Object.create(r.ParserRuleContext.prototype),S.prototype.constructor=S,S.prototype.subject=function(){return this.getTypedRuleContext(N,0)},S.prototype.blankNodePropertyList=function(){return this.getTypedRuleContext(k,0)},S.prototype.predicateObjectList=function(){return this.getTypedRuleContext(L,0)},S.prototype.enterRule=function(t){t instanceof i&&t.enterTriples(this)},S.prototype.exitRule=function(t){t instanceof i&&t.exitTriples(this)},S.prototype.accept=function(t){return t instanceof o?t.visitTriples(this):t.visitChildren(this)},f.TriplesContext=S,f.prototype.triples=function(){var t=new S(this,this._ctx,this.state);this.enterRule(t,16,f.RULE_triples);var e=0;try{switch(this.enterOuterAlt(t,1),this.state=105,this._errHandler.sync(this),this._interp.adaptivePredict(this._input,5,this._ctx)){case 1:this.state=103,this.subject();break;case 2:this.state=104,this.blankNodePropertyList()}this.state=108,this._errHandler.sync(this),(0==(-32&(e=this._input.LA(1)))&&0!=(1<<e&(1<<f.T__5|1<<f.T__6|1<<f.T__7|1<<f.T__8|1<<f.T__9|1<<f.T__11|1<<f.T__13|1<<f.T__14|1<<f.T__15|1<<f.T__16|1<<f.T__18|1<<f.T__20|1<<f.T__22|1<<f.BooleanLiteral|1<<f.String|1<<f.IRIREF))||0==(e-32&-32)&&0!=(1<<e-32&(1<<f.PNAME_NS-32|1<<f.PNAME_LN-32|1<<f.BLANK_NODE_LABEL-32|1<<f.INTEGER-32|1<<f.DECIMAL-32|1<<f.DOUBLE-32|1<<f.ANON-32|1<<f.QuickVarName-32)))&&(this.state=107,this.predicateObjectList())}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},L.prototype=Object.create(r.ParserRuleContext.prototype),L.prototype.constructor=L,L.prototype.verb=function(t){return void 0===t&&(t=null),null===t?this.getTypedRuleContexts(C):this.getTypedRuleContext(C,t)},L.prototype.objectList=function(t){return void 0===t&&(t=null),null===t?this.getTypedRuleContexts(A):this.getTypedRuleContext(A,t)},L.prototype.enterRule=function(t){t instanceof i&&t.enterPredicateObjectList(this)},L.prototype.exitRule=function(t){t instanceof i&&t.exitPredicateObjectList(this)},L.prototype.accept=function(t){return t instanceof o?t.visitPredicateObjectList(this):t.visitChildren(this)},f.PredicateObjectListContext=L,f.prototype.predicateObjectList=function(){var t=new L(this,this._ctx,this.state);this.enterRule(t,18,f.RULE_predicateObjectList);var e=0;try{for(this.enterOuterAlt(t,1),this.state=110,this.verb(),this.state=111,this.objectList(),this.state=120,this._errHandler.sync(this),e=this._input.LA(1);e===f.T__3;)this.state=112,this.match(f.T__3),this.state=116,this._errHandler.sync(this),(0==(-32&(e=this._input.LA(1)))&&0!=(1<<e&(1<<f.T__5|1<<f.T__6|1<<f.T__7|1<<f.T__8|1<<f.T__9|1<<f.T__11|1<<f.T__13|1<<f.T__14|1<<f.T__15|1<<f.T__16|1<<f.T__18|1<<f.T__20|1<<f.T__22|1<<f.BooleanLiteral|1<<f.String|1<<f.IRIREF))||0==(e-32&-32)&&0!=(1<<e-32&(1<<f.PNAME_NS-32|1<<f.PNAME_LN-32|1<<f.BLANK_NODE_LABEL-32|1<<f.INTEGER-32|1<<f.DECIMAL-32|1<<f.DOUBLE-32|1<<f.ANON-32|1<<f.QuickVarName-32)))&&(this.state=113,this.verb(),this.state=114,this.objectList()),this.state=122,this._errHandler.sync(this),e=this._input.LA(1)}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},A.prototype=Object.create(r.ParserRuleContext.prototype),A.prototype.constructor=A,A.prototype.object=function(t){return void 0===t&&(t=null),null===t?this.getTypedRuleContexts(m):this.getTypedRuleContext(m,t)},A.prototype.enterRule=function(t){t instanceof i&&t.enterObjectList(this)},A.prototype.exitRule=function(t){t instanceof i&&t.exitObjectList(this)},A.prototype.accept=function(t){return t instanceof o?t.visitObjectList(this):t.visitChildren(this)},f.ObjectListContext=A,f.prototype.objectList=function(){var t=new A(this,this._ctx,this.state);this.enterRule(t,20,f.RULE_objectList);var e=0;try{for(this.enterOuterAlt(t,1),this.state=123,this.object(),this.state=128,this._errHandler.sync(this),e=this._input.LA(1);e===f.T__4;)this.state=124,this.match(f.T__4),this.state=125,this.object(),this.state=130,this._errHandler.sync(this),e=this._input.LA(1)}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},C.prototype=Object.create(r.ParserRuleContext.prototype),C.prototype.constructor=C,C.prototype.predicate=function(){return this.getTypedRuleContext(R,0)},C.prototype.expression=function(){return this.getTypedRuleContext(I,0)},C.prototype.enterRule=function(t){t instanceof i&&t.enterVerb(this)},C.prototype.exitRule=function(t){t instanceof i&&t.exitVerb(this)},C.prototype.accept=function(t){return t instanceof o?t.visitVerb(this):t.visitChildren(this)},f.VerbContext=C,f.prototype.verb=function(){var t=new C(this,this._ctx,this.state);this.enterRule(t,22,f.RULE_verb);try{switch(this.state=149,this._errHandler.sync(this),this._input.LA(1)){case f.T__16:case f.T__18:case f.T__20:case f.T__22:case f.BooleanLiteral:case f.String:case f.IRIREF:case f.PNAME_NS:case f.PNAME_LN:case f.BLANK_NODE_LABEL:case f.INTEGER:case f.DECIMAL:case f.DOUBLE:case f.ANON:case f.QuickVarName:this.enterOuterAlt(t,1),this.state=131,this.predicate();break;case f.T__5:this.enterOuterAlt(t,2),this.state=132,this.match(f.T__5);break;case f.T__6:this.enterOuterAlt(t,3),this.state=133,this.match(f.T__6);break;case f.T__7:this.enterOuterAlt(t,4),this.state=134,this.match(f.T__7),this.state=135,this.expression();break;case f.T__8:this.enterOuterAlt(t,5),this.state=136,this.match(f.T__8),this.state=137,this.expression();break;case f.T__9:this.enterOuterAlt(t,6),this.state=138,this.match(f.T__9),this.state=139,this.expression(),this.state=140,this.match(f.T__10);break;case f.T__11:this.enterOuterAlt(t,7),this.state=142,this.match(f.T__11),this.state=143,this.expression(),this.state=144,this.match(f.T__12);break;case f.T__13:this.enterOuterAlt(t,8),this.state=146,this.match(f.T__13);break;case f.T__14:this.enterOuterAlt(t,9),this.state=147,this.match(f.T__14);break;case f.T__15:this.enterOuterAlt(t,10),this.state=148,this.match(f.T__15);break;default:throw new r.error.NoViableAltException(this)}}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},N.prototype=Object.create(r.ParserRuleContext.prototype),N.prototype.constructor=N,N.prototype.expression=function(){return this.getTypedRuleContext(I,0)},N.prototype.enterRule=function(t){t instanceof i&&t.enterSubject(this)},N.prototype.exitRule=function(t){t instanceof i&&t.exitSubject(this)},N.prototype.accept=function(t){return t instanceof o?t.visitSubject(this):t.visitChildren(this)},f.SubjectContext=N,f.prototype.subject=function(){var t=new N(this,this._ctx,this.state);this.enterRule(t,24,f.RULE_subject);try{this.enterOuterAlt(t,1),this.state=151,this.expression()}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},R.prototype=Object.create(r.ParserRuleContext.prototype),R.prototype.constructor=R,R.prototype.expression=function(){return this.getTypedRuleContext(I,0)},R.prototype.enterRule=function(t){t instanceof i&&t.enterPredicate(this)},R.prototype.exitRule=function(t){t instanceof i&&t.exitPredicate(this)},R.prototype.accept=function(t){return t instanceof o?t.visitPredicate(this):t.visitChildren(this)},f.PredicateContext=R,f.prototype.predicate=function(){var t=new R(this,this._ctx,this.state);this.enterRule(t,26,f.RULE_predicate);try{switch(this.enterOuterAlt(t,1),this.state=156,this._errHandler.sync(this),this._input.LA(1)){case f.T__18:case f.T__20:case f.T__22:case f.BooleanLiteral:case f.String:case f.IRIREF:case f.PNAME_NS:case f.PNAME_LN:case f.BLANK_NODE_LABEL:case f.INTEGER:case f.DECIMAL:case f.DOUBLE:case f.ANON:case f.QuickVarName:this.state=153,this.expression();break;case f.T__16:this.state=154,this.match(f.T__16),this.state=155,this.expression();break;default:throw new r.error.NoViableAltException(this)}}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},m.prototype=Object.create(r.ParserRuleContext.prototype),m.prototype.constructor=m,m.prototype.expression=function(){return this.getTypedRuleContext(I,0)},m.prototype.enterRule=function(t){t instanceof i&&t.enterObject(this)},m.prototype.exitRule=function(t){t instanceof i&&t.exitObject(this)},m.prototype.accept=function(t){return t instanceof o?t.visitObject(this):t.visitChildren(this)},f.ObjectContext=m,f.prototype.object=function(){var t=new m(this,this._ctx,this.state);this.enterRule(t,28,f.RULE_object);try{this.enterOuterAlt(t,1),this.state=158,this.expression()}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},I.prototype=Object.create(r.ParserRuleContext.prototype),I.prototype.constructor=I,I.prototype.path=function(){return this.getTypedRuleContext(O,0)},I.prototype.enterRule=function(t){t instanceof i&&t.enterExpression(this)},I.prototype.exitRule=function(t){t instanceof i&&t.exitExpression(this)},I.prototype.accept=function(t){return t instanceof o?t.visitExpression(this):t.visitChildren(this)},f.ExpressionContext=I,f.prototype.expression=function(){var t=new I(this,this._ctx,this.state);this.enterRule(t,30,f.RULE_expression);try{this.enterOuterAlt(t,1),this.state=160,this.path()}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},O.prototype=Object.create(r.ParserRuleContext.prototype),O.prototype.constructor=O,O.prototype.pathItem=function(){return this.getTypedRuleContext(P,0)},O.prototype.path=function(){return this.getTypedRuleContext(O,0)},O.prototype.enterRule=function(t){t instanceof i&&t.enterPath(this)},O.prototype.exitRule=function(t){t instanceof i&&t.exitPath(this)},O.prototype.accept=function(t){return t instanceof o?t.visitPath(this):t.visitChildren(this)},f.PathContext=O,f.prototype.path=function(){var t=new O(this,this._ctx,this.state);this.enterRule(t,32,f.RULE_path);try{this.enterOuterAlt(t,1),this.state=162,this.pathItem(),this.state=167,this._errHandler.sync(this);var e=this._interp.adaptivePredict(this._input,12,this._ctx);1===e?(this.state=163,this.match(f.T__17),this.state=164,this.path()):2===e&&(this.state=165,this.match(f.T__16),this.state=166,this.path())}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},P.prototype=Object.create(r.ParserRuleContext.prototype),P.prototype.constructor=P,P.prototype.iri=function(){return this.getTypedRuleContext(B,0)},P.prototype.blankNode=function(){return this.getTypedRuleContext(V,0)},P.prototype.quickVar=function(){return this.getTypedRuleContext(q,0)},P.prototype.collection=function(){return this.getTypedRuleContext(D,0)},P.prototype.blankNodePropertyList=function(){return this.getTypedRuleContext(k,0)},P.prototype.literal=function(){return this.getTypedRuleContext(b,0)},P.prototype.formula=function(){return this.getTypedRuleContext(w,0)},P.prototype.enterRule=function(t){t instanceof i&&t.enterPathItem(this)},P.prototype.exitRule=function(t){t instanceof i&&t.exitPathItem(this)},P.prototype.accept=function(t){return t instanceof o?t.visitPathItem(this):t.visitChildren(this)},f.PathItemContext=P,f.prototype.pathItem=function(){var t=new P(this,this._ctx,this.state);this.enterRule(t,34,f.RULE_pathItem);try{switch(this.state=176,this._errHandler.sync(this),this._input.LA(1)){case f.IRIREF:case f.PNAME_NS:case f.PNAME_LN:this.enterOuterAlt(t,1),this.state=169,this.iri();break;case f.BLANK_NODE_LABEL:case f.ANON:this.enterOuterAlt(t,2),this.state=170,this.blankNode();break;case f.QuickVarName:this.enterOuterAlt(t,3),this.state=171,this.quickVar();break;case f.T__20:this.enterOuterAlt(t,4),this.state=172,this.collection();break;case f.T__18:this.enterOuterAlt(t,5),this.state=173,this.blankNodePropertyList();break;case f.BooleanLiteral:case f.String:case f.INTEGER:case f.DECIMAL:case f.DOUBLE:this.enterOuterAlt(t,6),this.state=174,this.literal();break;case f.T__22:this.enterOuterAlt(t,7),this.state=175,this.formula();break;default:throw new r.error.NoViableAltException(this)}}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},b.prototype=Object.create(r.ParserRuleContext.prototype),b.prototype.constructor=b,b.prototype.rdfLiteral=function(){return this.getTypedRuleContext(U,0)},b.prototype.numericLiteral=function(){return this.getTypedRuleContext(M,0)},b.prototype.BooleanLiteral=function(){return this.getToken(f.BooleanLiteral,0)},b.prototype.enterRule=function(t){t instanceof i&&t.enterLiteral(this)},b.prototype.exitRule=function(t){t instanceof i&&t.exitLiteral(this)},b.prototype.accept=function(t){return t instanceof o?t.visitLiteral(this):t.visitChildren(this)},f.LiteralContext=b,f.prototype.literal=function(){var t=new b(this,this._ctx,this.state);this.enterRule(t,36,f.RULE_literal);try{switch(this.state=181,this._errHandler.sync(this),this._input.LA(1)){case f.String:this.enterOuterAlt(t,1),this.state=178,this.rdfLiteral();break;case f.INTEGER:case f.DECIMAL:case f.DOUBLE:this.enterOuterAlt(t,2),this.state=179,this.numericLiteral();break;case f.BooleanLiteral:this.enterOuterAlt(t,3),this.state=180,this.match(f.BooleanLiteral);break;default:throw new r.error.NoViableAltException(this)}}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},k.prototype=Object.create(r.ParserRuleContext.prototype),k.prototype.constructor=k,k.prototype.predicateObjectList=function(){return this.getTypedRuleContext(L,0)},k.prototype.enterRule=function(t){t instanceof i&&t.enterBlankNodePropertyList(this)},k.prototype.exitRule=function(t){t instanceof i&&t.exitBlankNodePropertyList(this)},k.prototype.accept=function(t){return t instanceof o?t.visitBlankNodePropertyList(this):t.visitChildren(this)},f.BlankNodePropertyListContext=k,f.prototype.blankNodePropertyList=function(){var t=new k(this,this._ctx,this.state);this.enterRule(t,38,f.RULE_blankNodePropertyList);var e=0;try{this.enterOuterAlt(t,1),this.state=183,this.match(f.T__18),this.state=185,this._errHandler.sync(this),(0==(-32&(e=this._input.LA(1)))&&0!=(1<<e&(1<<f.T__5|1<<f.T__6|1<<f.T__7|1<<f.T__8|1<<f.T__9|1<<f.T__11|1<<f.T__13|1<<f.T__14|1<<f.T__15|1<<f.T__16|1<<f.T__18|1<<f.T__20|1<<f.T__22|1<<f.BooleanLiteral|1<<f.String|1<<f.IRIREF))||0==(e-32&-32)&&0!=(1<<e-32&(1<<f.PNAME_NS-32|1<<f.PNAME_LN-32|1<<f.BLANK_NODE_LABEL-32|1<<f.INTEGER-32|1<<f.DECIMAL-32|1<<f.DOUBLE-32|1<<f.ANON-32|1<<f.QuickVarName-32)))&&(this.state=184,this.predicateObjectList()),this.state=187,this.match(f.T__19)}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},D.prototype=Object.create(r.ParserRuleContext.prototype),D.prototype.constructor=D,D.prototype.object=function(t){return void 0===t&&(t=null),null===t?this.getTypedRuleContexts(m):this.getTypedRuleContext(m,t)},D.prototype.enterRule=function(t){t instanceof i&&t.enterCollection(this)},D.prototype.exitRule=function(t){t instanceof i&&t.exitCollection(this)},D.prototype.accept=function(t){return t instanceof o?t.visitCollection(this):t.visitChildren(this)},f.CollectionContext=D,f.prototype.collection=function(){var t=new D(this,this._ctx,this.state);this.enterRule(t,40,f.RULE_collection);var e=0;try{for(this.enterOuterAlt(t,1),this.state=189,this.match(f.T__20),this.state=193,this._errHandler.sync(this),e=this._input.LA(1);0==(e-19&-32)&&0!=(1<<e-19&(1<<f.T__18-19|1<<f.T__20-19|1<<f.T__22-19|1<<f.BooleanLiteral-19|1<<f.String-19|1<<f.IRIREF-19|1<<f.PNAME_NS-19|1<<f.PNAME_LN-19|1<<f.BLANK_NODE_LABEL-19|1<<f.INTEGER-19|1<<f.DECIMAL-19|1<<f.DOUBLE-19|1<<f.ANON-19|1<<f.QuickVarName-19));)this.state=190,this.object(),this.state=195,this._errHandler.sync(this),e=this._input.LA(1);this.state=196,this.match(f.T__21)}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},w.prototype=Object.create(r.ParserRuleContext.prototype),w.prototype.constructor=w,w.prototype.formulaContent=function(){return this.getTypedRuleContext(F,0)},w.prototype.enterRule=function(t){t instanceof i&&t.enterFormula(this)},w.prototype.exitRule=function(t){t instanceof i&&t.exitFormula(this)},w.prototype.accept=function(t){return t instanceof o?t.visitFormula(this):t.visitChildren(this)},f.FormulaContext=w,f.prototype.formula=function(){var t=new w(this,this._ctx,this.state);this.enterRule(t,42,f.RULE_formula);var e=0;try{this.enterOuterAlt(t,1),this.state=198,this.match(f.T__22),this.state=200,this._errHandler.sync(this),(0==(-32&(e=this._input.LA(1)))&&0!=(1<<e&(1<<f.T__1|1<<f.T__2|1<<f.T__18|1<<f.T__20|1<<f.T__22|1<<f.T__25|1<<f.T__26|1<<f.BooleanLiteral|1<<f.String|1<<f.IRIREF))||0==(e-32&-32)&&0!=(1<<e-32&(1<<f.PNAME_NS-32|1<<f.PNAME_LN-32|1<<f.BLANK_NODE_LABEL-32|1<<f.INTEGER-32|1<<f.DECIMAL-32|1<<f.DOUBLE-32|1<<f.ANON-32|1<<f.QuickVarName-32|1<<f.BASE-32|1<<f.PREFIX-32)))&&(this.state=199,this.formulaContent()),this.state=202,this.match(f.T__23)}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},F.prototype=Object.create(r.ParserRuleContext.prototype),F.prototype.constructor=F,F.prototype.n3Statement=function(){return this.getTypedRuleContext(y,0)},F.prototype.formulaContent=function(){return this.getTypedRuleContext(F,0)},F.prototype.sparqlDirective=function(){return this.getTypedRuleContext(x,0)},F.prototype.enterRule=function(t){t instanceof i&&t.enterFormulaContent(this)},F.prototype.exitRule=function(t){t instanceof i&&t.exitFormulaContent(this)},F.prototype.accept=function(t){return t instanceof o?t.visitFormulaContent(this):t.visitChildren(this)},f.FormulaContentContext=F,f.prototype.formulaContent=function(){var t=new F(this,this._ctx,this.state);this.enterRule(t,44,f.RULE_formulaContent);var e=0;try{switch(this.state=215,this._errHandler.sync(this),this._input.LA(1)){case f.T__1:case f.T__2:case f.T__18:case f.T__20:case f.T__22:case f.T__25:case f.T__26:case f.BooleanLiteral:case f.String:case f.IRIREF:case f.PNAME_NS:case f.PNAME_LN:case f.BLANK_NODE_LABEL:case f.INTEGER:case f.DECIMAL:case f.DOUBLE:case f.ANON:case f.QuickVarName:this.enterOuterAlt(t,1),this.state=204,this.n3Statement(),this.state=209,this._errHandler.sync(this),(e=this._input.LA(1))===f.T__0&&(this.state=205,this.match(f.T__0),this.state=207,this._errHandler.sync(this),(0==(-32&(e=this._input.LA(1)))&&0!=(1<<e&(1<<f.T__1|1<<f.T__2|1<<f.T__18|1<<f.T__20|1<<f.T__22|1<<f.T__25|1<<f.T__26|1<<f.BooleanLiteral|1<<f.String|1<<f.IRIREF))||0==(e-32&-32)&&0!=(1<<e-32&(1<<f.PNAME_NS-32|1<<f.PNAME_LN-32|1<<f.BLANK_NODE_LABEL-32|1<<f.INTEGER-32|1<<f.DECIMAL-32|1<<f.DOUBLE-32|1<<f.ANON-32|1<<f.QuickVarName-32|1<<f.BASE-32|1<<f.PREFIX-32)))&&(this.state=206,this.formulaContent()));break;case f.BASE:case f.PREFIX:this.enterOuterAlt(t,2),this.state=211,this.sparqlDirective(),this.state=213,this._errHandler.sync(this),(0==(-32&(e=this._input.LA(1)))&&0!=(1<<e&(1<<f.T__1|1<<f.T__2|1<<f.T__18|1<<f.T__20|1<<f.T__22|1<<f.T__25|1<<f.T__26|1<<f.BooleanLiteral|1<<f.String|1<<f.IRIREF))||0==(e-32&-32)&&0!=(1<<e-32&(1<<f.PNAME_NS-32|1<<f.PNAME_LN-32|1<<f.BLANK_NODE_LABEL-32|1<<f.INTEGER-32|1<<f.DECIMAL-32|1<<f.DOUBLE-32|1<<f.ANON-32|1<<f.QuickVarName-32|1<<f.BASE-32|1<<f.PREFIX-32)))&&(this.state=212,this.formulaContent());break;default:throw new r.error.NoViableAltException(this)}}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},M.prototype=Object.create(r.ParserRuleContext.prototype),M.prototype.constructor=M,M.prototype.INTEGER=function(){return this.getToken(f.INTEGER,0)},M.prototype.DECIMAL=function(){return this.getToken(f.DECIMAL,0)},M.prototype.DOUBLE=function(){return this.getToken(f.DOUBLE,0)},M.prototype.enterRule=function(t){t instanceof i&&t.enterNumericLiteral(this)},M.prototype.exitRule=function(t){t instanceof i&&t.exitNumericLiteral(this)},M.prototype.accept=function(t){return t instanceof o?t.visitNumericLiteral(this):t.visitChildren(this)},f.NumericLiteralContext=M,f.prototype.numericLiteral=function(){var t=new M(this,this._ctx,this.state);this.enterRule(t,46,f.RULE_numericLiteral);var e=0;try{this.enterOuterAlt(t,1),this.state=217,0!=((e=this._input.LA(1))-36&-32)||0==(1<<e-36&(1<<f.INTEGER-36|1<<f.DECIMAL-36|1<<f.DOUBLE-36))?this._errHandler.recoverInline(this):(this._errHandler.reportMatch(this),this.consume())}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},U.prototype=Object.create(r.ParserRuleContext.prototype),U.prototype.constructor=U,U.prototype.String=function(){return this.getToken(f.String,0)},U.prototype.LANGTAG=function(){return this.getToken(f.LANGTAG,0)},U.prototype.iri=function(){return this.getTypedRuleContext(B,0)},U.prototype.enterRule=function(t){t instanceof i&&t.enterRdfLiteral(this)},U.prototype.exitRule=function(t){t instanceof i&&t.exitRdfLiteral(this)},U.prototype.accept=function(t){return t instanceof o?t.visitRdfLiteral(this):t.visitChildren(this)},f.RdfLiteralContext=U,f.prototype.rdfLiteral=function(){var t=new U(this,this._ctx,this.state);this.enterRule(t,48,f.RULE_rdfLiteral);try{switch(this.enterOuterAlt(t,1),this.state=219,this.match(f.String),this.state=223,this._errHandler.sync(this),this._input.LA(1)){case f.LANGTAG:this.state=220,this.match(f.LANGTAG);break;case f.T__24:this.state=221,this.match(f.T__24),this.state=222,this.iri();break;case f.T__0:case f.T__3:case f.T__4:case f.T__5:case f.T__6:case f.T__7:case f.T__8:case f.T__9:case f.T__10:case f.T__11:case f.T__12:case f.T__13:case f.T__14:case f.T__15:case f.T__16:case f.T__17:case f.T__18:case f.T__19:case f.T__20:case f.T__21:case f.T__22:case f.T__23:case f.BooleanLiteral:case f.String:case f.IRIREF:case f.PNAME_NS:case f.PNAME_LN:case f.BLANK_NODE_LABEL:case f.INTEGER:case f.DECIMAL:case f.DOUBLE:case f.ANON:case f.QuickVarName:break;default:throw new r.error.NoViableAltException(this)}}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},B.prototype=Object.create(r.ParserRuleContext.prototype),B.prototype.constructor=B,B.prototype.IRIREF=function(){return this.getToken(f.IRIREF,0)},B.prototype.prefixedName=function(){return this.getTypedRuleContext(H,0)},B.prototype.enterRule=function(t){t instanceof i&&t.enterIri(this)},B.prototype.exitRule=function(t){t instanceof i&&t.exitIri(this)},B.prototype.accept=function(t){return t instanceof o?t.visitIri(this):t.visitChildren(this)},f.IriContext=B,f.prototype.iri=function(){var t=new B(this,this._ctx,this.state);this.enterRule(t,50,f.RULE_iri);try{switch(this.state=227,this._errHandler.sync(this),this._input.LA(1)){case f.IRIREF:this.enterOuterAlt(t,1),this.state=225,this.match(f.IRIREF);break;case f.PNAME_NS:case f.PNAME_LN:this.enterOuterAlt(t,2),this.state=226,this.prefixedName();break;default:throw new r.error.NoViableAltException(this)}}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},j.prototype=Object.create(r.ParserRuleContext.prototype),j.prototype.constructor=j,j.prototype.iri=function(t){return void 0===t&&(t=null),null===t?this.getTypedRuleContexts(B):this.getTypedRuleContext(B,t)},j.prototype.enterRule=function(t){t instanceof i&&t.enterIriList(this)},j.prototype.exitRule=function(t){t instanceof i&&t.exitIriList(this)},j.prototype.accept=function(t){return t instanceof o?t.visitIriList(this):t.visitChildren(this)},f.IriListContext=j,f.prototype.iriList=function(){var t=new j(this,this._ctx,this.state);this.enterRule(t,52,f.RULE_iriList);var e=0;try{for(this.enterOuterAlt(t,1),this.state=229,this.iri(),this.state=234,this._errHandler.sync(this),e=this._input.LA(1);e===f.T__4;)this.state=230,this.match(f.T__4),this.state=231,this.iri(),this.state=236,this._errHandler.sync(this),e=this._input.LA(1)}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},H.prototype=Object.create(r.ParserRuleContext.prototype),H.prototype.constructor=H,H.prototype.PNAME_NS=function(){return this.getToken(f.PNAME_NS,0)},H.prototype.PNAME_LN=function(){return this.getToken(f.PNAME_LN,0)},H.prototype.enterRule=function(t){t instanceof i&&t.enterPrefixedName(this)},H.prototype.exitRule=function(t){t instanceof i&&t.exitPrefixedName(this)},H.prototype.accept=function(t){return t instanceof o?t.visitPrefixedName(this):t.visitChildren(this)},f.PrefixedNameContext=H,f.prototype.prefixedName=function(){var t=new H(this,this._ctx,this.state);this.enterRule(t,54,f.RULE_prefixedName);var e=0;try{this.enterOuterAlt(t,1),this.state=237,(e=this._input.LA(1))!==f.PNAME_NS&&e!==f.PNAME_LN?this._errHandler.recoverInline(this):(this._errHandler.reportMatch(this),this.consume())}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},V.prototype=Object.create(r.ParserRuleContext.prototype),V.prototype.constructor=V,V.prototype.BLANK_NODE_LABEL=function(){return this.getToken(f.BLANK_NODE_LABEL,0)},V.prototype.ANON=function(){return this.getToken(f.ANON,0)},V.prototype.enterRule=function(t){t instanceof i&&t.enterBlankNode(this)},V.prototype.exitRule=function(t){t instanceof i&&t.exitBlankNode(this)},V.prototype.accept=function(t){return t instanceof o?t.visitBlankNode(this):t.visitChildren(this)},f.BlankNodeContext=V,f.prototype.blankNode=function(){var t=new V(this,this._ctx,this.state);this.enterRule(t,56,f.RULE_blankNode);var e=0;try{this.enterOuterAlt(t,1),this.state=239,(e=this._input.LA(1))!==f.BLANK_NODE_LABEL&&e!==f.ANON?this._errHandler.recoverInline(this):(this._errHandler.reportMatch(this),this.consume())}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},q.prototype=Object.create(r.ParserRuleContext.prototype),q.prototype.constructor=q,q.prototype.QuickVarName=function(){return this.getToken(f.QuickVarName,0)},q.prototype.enterRule=function(t){t instanceof i&&t.enterQuickVar(this)},q.prototype.exitRule=function(t){t instanceof i&&t.exitQuickVar(this)},q.prototype.accept=function(t){return t instanceof o?t.visitQuickVar(this):t.visitChildren(this)},f.QuickVarContext=q,f.prototype.quickVar=function(){var t=new q(this,this._ctx,this.state);this.enterRule(t,58,f.RULE_quickVar);try{this.enterOuterAlt(t,1),this.state=241,this.match(f.QuickVarName)}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},G.prototype=Object.create(r.ParserRuleContext.prototype),G.prototype.constructor=G,G.prototype.iriList=function(){return this.getTypedRuleContext(j,0)},G.prototype.enterRule=function(t){t instanceof i&&t.enterExistential(this)},G.prototype.exitRule=function(t){t instanceof i&&t.exitExistential(this)},G.prototype.accept=function(t){return t instanceof o?t.visitExistential(this):t.visitChildren(this)},f.ExistentialContext=G,f.prototype.existential=function(){var t=new G(this,this._ctx,this.state);this.enterRule(t,60,f.RULE_existential);try{this.enterOuterAlt(t,1),this.state=243,this.match(f.T__25),this.state=244,this.iriList()}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},z.prototype=Object.create(r.ParserRuleContext.prototype),z.prototype.constructor=z,z.prototype.iriList=function(){return this.getTypedRuleContext(j,0)},z.prototype.enterRule=function(t){t instanceof i&&t.enterUniversal(this)},z.prototype.exitRule=function(t){t instanceof i&&t.exitUniversal(this)},z.prototype.accept=function(t){return t instanceof o?t.visitUniversal(this):t.visitChildren(this)},f.UniversalContext=z,f.prototype.universal=function(){var t=new z(this,this._ctx,this.state);this.enterRule(t,62,f.RULE_universal);try{this.enterOuterAlt(t,1),this.state=246,this.match(f.T__26),this.state=247,this.iriList()}catch(e){if(!(e instanceof r.error.RecognitionException))throw e;t.exception=e,this._errHandler.reportError(this,e),this._errHandler.recover(this,e)}finally{this.exitRule()}return t},e.n3Parser=f},function(t,e,n){var r=n(12);function i(){return r.tree.ParseTreeVisitor.call(this),this}i.prototype=Object.create(r.tree.ParseTreeVisitor.prototype),i.prototype.constructor=i,i.prototype.visitN3Doc=function(t){return this.visitChildren(t)},i.prototype.visitN3Statement=function(t){return this.visitChildren(t)},i.prototype.visitN3Directive=function(t){return this.visitChildren(t)},i.prototype.visitSparqlDirective=function(t){return this.visitChildren(t)},i.prototype.visitSparqlBase=function(t){return this.visitChildren(t)},i.prototype.visitSparqlPrefix=function(t){return this.visitChildren(t)},i.prototype.visitPrefixID=function(t){return this.visitChildren(t)},i.prototype.visitBase=function(t){return this.visitChildren(t)},i.prototype.visitTriples=function(t){return this.visitChildren(t)},i.prototype.visitPredicateObjectList=function(t){return this.visitChildren(t)},i.prototype.visitObjectList=function(t){return this.visitChildren(t)},i.prototype.visitVerb=function(t){return this.visitChildren(t)},i.prototype.visitSubject=function(t){return this.visitChildren(t)},i.prototype.visitPredicate=function(t){return this.visitChildren(t)},i.prototype.visitObject=function(t){return this.visitChildren(t)},i.prototype.visitExpression=function(t){return this.visitChildren(t)},i.prototype.visitPath=function(t){return this.visitChildren(t)},i.prototype.visitPathItem=function(t){return this.visitChildren(t)},i.prototype.visitLiteral=function(t){return this.visitChildren(t)},i.prototype.visitBlankNodePropertyList=function(t){return this.visitChildren(t)},i.prototype.visitCollection=function(t){return this.visitChildren(t)},i.prototype.visitFormula=function(t){return this.visitChildren(t)},i.prototype.visitFormulaContent=function(t){return this.visitChildren(t)},i.prototype.visitNumericLiteral=function(t){return this.visitChildren(t)},i.prototype.visitRdfLiteral=function(t){return this.visitChildren(t)},i.prototype.visitIri=function(t){return this.visitChildren(t)},i.prototype.visitIriList=function(t){return this.visitChildren(t)},i.prototype.visitPrefixedName=function(t){return this.visitChildren(t)},i.prototype.visitBlankNode=function(t){return this.visitChildren(t)},i.prototype.visitQuickVar=function(t){return this.visitChildren(t)},i.prototype.visitExistential=function(t){return this.visitChildren(t)},i.prototype.visitUniversal=function(t){return this.visitChildren(t)},e.n3Visitor=i},function(t,e,n){var r=n(20).n3Listener;function i(t){return r.call(this),this.listener=t,this.prefixes={},this}i.prototype=Object.create(r.prototype),i.prototype.constructor=i,i.prototype.exitSparqlPrefix=function(t){this.processPrefix(t.PNAME_NS(),t.IRIREF())},i.prototype.exitPrefixID=function(t){this.processPrefix(t.PNAME_NS(),t.IRIREF())},i.prototype.processPrefix=function(t,e){if(null!=t){var n=t.getText().trim();n=n.substring(0,n.length-1);var r=this.iri(e);this.prefixes[n]=r}},i.prototype.exitPrefixedName=function(t){var e=t.PNAME_LN();if(null!=e){var n=e.getText().trim(),r=n.substring(0,n.indexOf(":")).trim();if(""==r)return;if(void 0===this.prefixes[r]){var i=t.start.line,o=t.start.column,s=o+r.length;this.listener.unknownPrefix(r,n,i,o,s)}}},i.prototype.text=function(t){return null==t?null:t.getText().trim()},i.prototype.iri=function(t){var e=this.text(t);return e.substring(1,e.length-1)},e.n3PrefixListener=i},function(t,e,n){var r=n(20).n3Listener;function i(t){return r.call(this),this.listener=t,this.lvl=0,this}i.prototype=Object.create(r.prototype),i.prototype.constructor=i,i.prototype.enterN3Doc=function(t){this.print("N3Doc"),this.incrLvl()},i.prototype.exitN3Doc=function(t){this.decrLvl()},i.prototype.enterN3Statement=function(t){this.print("N3Statement"),this.incrLvl()},i.prototype.exitN3Statement=function(t){this.decrLvl()},i.prototype.enterN3Directive=function(t){this.print("N3Directive"),this.incrLvl()},i.prototype.exitN3Directive=function(t){this.decrLvl()},i.prototype.enterSparqlDirective=function(t){this.print("SparqlDirective"),this.incrLvl()},i.prototype.exitSparqlDirective=function(t){this.decrLvl()},i.prototype.enterSparqlBase=function(t){this.print("SparqlBase"),this.incrLvl()},i.prototype.exitSparqlBase=function(t){this.decrLvl()},i.prototype.enterSparqlPrefix=function(t){this.print("SparqlPrefix"),this.incrLvl()},i.prototype.exitSparqlPrefix=function(t){this.decrLvl()},i.prototype.enterPrefixID=function(t){this.print("PrefixID"),this.incrLvl()},i.prototype.exitPrefixID=function(t){this.decrLvl()},i.prototype.enterBase=function(t){this.print("Base"),this.incrLvl()},i.prototype.exitBase=function(t){this.decrLvl()},i.prototype.enterTriples=function(t){this.print("Triples"),this.incrLvl()},i.prototype.exitTriples=function(t){this.decrLvl()},i.prototype.enterPredicateObjectList=function(t){this.print("PredicateObjectList"),this.incrLvl()},i.prototype.exitPredicateObjectList=function(t){this.decrLvl()},i.prototype.enterObjectList=function(t){this.print("ObjectList"),this.incrLvl()},i.prototype.exitObjectList=function(t){this.decrLvl()},i.prototype.enterVerb=function(t){this.print("Verb"),this.incrLvl()},i.prototype.exitVerb=function(t){this.decrLvl()},i.prototype.enterSubject=function(t){this.print("Subject"),this.incrLvl()},i.prototype.exitSubject=function(t){this.decrLvl()},i.prototype.enterPredicate=function(t){this.print("Predicate"),this.incrLvl()},i.prototype.exitPredicate=function(t){this.decrLvl()},i.prototype.enterObject=function(t){this.print("Object"),this.incrLvl()},i.prototype.exitObject=function(t){this.decrLvl()},i.prototype.enterExpression=function(t){this.print("Expression"),this.incrLvl()},i.prototype.exitExpression=function(t){this.decrLvl()},i.prototype.enterPath=function(t){this.print("Path"),this.incrLvl()},i.prototype.exitPath=function(t){this.decrLvl()},i.prototype.enterPathItem=function(t){this.print("PathItem"),this.incrLvl()},i.prototype.exitPathItem=function(t){this.decrLvl()},i.prototype.enterLiteral=function(t){this.print("Literal"),this.incrLvl()},i.prototype.exitLiteral=function(t){this.decrLvl()},i.prototype.enterBlankNodePropertyList=function(t){this.print("BlankNodePropertyList"),this.incrLvl()},i.prototype.exitBlankNodePropertyList=function(t){this.decrLvl()},i.prototype.enterCollection=function(t){this.print("Collection"),this.incrLvl()},i.prototype.exitCollection=function(t){this.decrLvl()},i.prototype.enterFormula=function(t){this.print("Formula"),this.incrLvl()},i.prototype.exitFormula=function(t){this.decrLvl()},i.prototype.enterFormulaContent=function(t){this.print("FormulaContent"),this.incrLvl()},i.prototype.exitFormulaContent=function(t){this.decrLvl()},i.prototype.enterNumericLiteral=function(t){this.print("NumericLiteral"),this.incrLvl()},i.prototype.exitNumericLiteral=function(t){this.decrLvl()},i.prototype.enterRdfLiteral=function(t){this.print("RdfLiteral"),this.incrLvl()},i.prototype.exitRdfLiteral=function(t){this.decrLvl()},i.prototype.enterIri=function(t){this.print("Iri"),this.incrLvl()},i.prototype.exitIri=function(t){this.decrLvl()},i.prototype.enterIriList=function(t){this.print("IriList"),this.incrLvl()},i.prototype.exitIriList=function(t){this.decrLvl()},i.prototype.enterPrefixedName=function(t){this.print("PrefixedName"),this.incrLvl()},i.prototype.exitPrefixedName=function(t){this.decrLvl()},i.prototype.enterBlankNode=function(t){this.print("BlankNode"),this.incrLvl()},i.prototype.exitBlankNode=function(t){this.decrLvl()},i.prototype.enterQuickVar=function(t){this.print("QuickVar"),this.incrLvl()},i.prototype.exitQuickVar=function(t){this.decrLvl()},i.prototype.enterExistential=function(t){this.print("Existential"),this.incrLvl()},i.prototype.exitExistential=function(t){this.decrLvl()},i.prototype.enterUniversal=function(t){this.print("Universal"),this.incrLvl()},i.prototype.exitUniversal=function(t){this.decrLvl()},i.prototype.incrLvl=function(){this.lvl++},i.prototype.decrLvl=function(){this.lvl--},i.prototype.print=function(t){var e=new Array(this.lvl+1).join(" ")+t+"\n";this.listener.newAstLine(e)},e.n3PrintListener=i}]);
+if (!String.fromCodePoint) {
+	(function() {
+		var defineProperty = (function() {
+			// IE 8 only supports `Object.defineProperty` on DOM elements
+			try {
+				var object = {};
+				var $defineProperty = Object.defineProperty;
+				var result = $defineProperty(object, object, object) && $defineProperty;
+			} catch(error) {}
+			return result;
+		}());
+		var stringFromCharCode = String.fromCharCode;
+		var floor = Math.floor;
+		var fromCodePoint = function(_) {
+			var MAX_SIZE = 0x4000;
+			var codeUnits = [];
+			var highSurrogate;
+			var lowSurrogate;
+			var index = -1;
+			var length = arguments.length;
+			if (!length) {
+				return '';
+			}
+			var result = '';
+			while (++index < length) {
+				var codePoint = Number(arguments[index]);
+				if (
+					!isFinite(codePoint) || // `NaN`, `+Infinity`, or `-Infinity`
+					codePoint < 0 || // not a valid Unicode code point
+					codePoint > 0x10FFFF || // not a valid Unicode code point
+					floor(codePoint) != codePoint // not an integer
+				) {
+					throw RangeError('Invalid code point: ' + codePoint);
+				}
+				if (codePoint <= 0xFFFF) { // BMP code point
+					codeUnits.push(codePoint);
+				} else { // Astral code point; split in surrogate halves
+					// https://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+					codePoint -= 0x10000;
+					highSurrogate = (codePoint >> 10) + 0xD800;
+					lowSurrogate = (codePoint % 0x400) + 0xDC00;
+					codeUnits.push(highSurrogate, lowSurrogate);
+				}
+				if (index + 1 == length || codeUnits.length > MAX_SIZE) {
+					result += stringFromCharCode.apply(null, codeUnits);
+					codeUnits.length = 0;
+				}
+			}
+			return result;
+		};
+		if (defineProperty) {
+			defineProperty(String, 'fromCodePoint', {
+				'value': fromCodePoint,
+				'configurable': true,
+				'writable': true
+			});
+		} else {
+			String.fromCodePoint = fromCodePoint;
+		}
+	}());
+}
+
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+//
+
+var Token = __webpack_require__(1).Token;
+var Errors = __webpack_require__(5);
+var NoViableAltException = Errors.NoViableAltException;
+var InputMismatchException = Errors.InputMismatchException;
+var FailedPredicateException = Errors.FailedPredicateException;
+var ParseCancellationException = Errors.ParseCancellationException;
+var ATNState = __webpack_require__(3).ATNState;
+var Interval = __webpack_require__(2).Interval;
+var IntervalSet = __webpack_require__(2).IntervalSet;
+
+function ErrorStrategy() {
+
+}
+
+ErrorStrategy.prototype.reset = function(recognizer){
+};
+
+ErrorStrategy.prototype.recoverInline = function(recognizer){
+};
+
+ErrorStrategy.prototype.recover = function(recognizer, e){
+};
+
+ErrorStrategy.prototype.sync = function(recognizer){
+};
+
+ErrorStrategy.prototype.inErrorRecoveryMode = function(recognizer){
+};
+
+ErrorStrategy.prototype.reportError = function(recognizer){
+};
+
+
+
+// This is the default implementation of {@link ANTLRErrorStrategy} used for
+// error reporting and recovery in ANTLR parsers.
+//
+function DefaultErrorStrategy() {
+	ErrorStrategy.call(this);
+    // Indicates whether the error strategy is currently "recovering from an
+    // error". This is used to suppress reporting multiple error messages while
+    // attempting to recover from a detected syntax error.
+    //
+    // @see //inErrorRecoveryMode
+    //
+    this.errorRecoveryMode = false;
+
+    // The index into the input stream where the last error occurred.
+    // This is used to prevent infinite loops where an error is found
+    // but no token is consumed during recovery...another error is found,
+    // ad nauseum. This is a failsafe mechanism to guarantee that at least
+    // one token/tree node is consumed for two errors.
+    //
+    this.lastErrorIndex = -1;
+    this.lastErrorStates = null;
+    return this;
+}
+
+DefaultErrorStrategy.prototype = Object.create(ErrorStrategy.prototype);
+DefaultErrorStrategy.prototype.constructor = DefaultErrorStrategy;
+
+// <p>The default implementation simply calls {@link //endErrorCondition} to
+// ensure that the handler is not in error recovery mode.</p>
+DefaultErrorStrategy.prototype.reset = function(recognizer) {
+    this.endErrorCondition(recognizer);
+};
+
+//
+// This method is called to enter error recovery mode when a recognition
+// exception is reported.
+//
+// @param recognizer the parser instance
+//
+DefaultErrorStrategy.prototype.beginErrorCondition = function(recognizer) {
+    this.errorRecoveryMode = true;
+};
+
+DefaultErrorStrategy.prototype.inErrorRecoveryMode = function(recognizer) {
+    return this.errorRecoveryMode;
+};
+
+//
+// This method is called to leave error recovery mode after recovering from
+// a recognition exception.
+//
+// @param recognizer
+//
+DefaultErrorStrategy.prototype.endErrorCondition = function(recognizer) {
+    this.errorRecoveryMode = false;
+    this.lastErrorStates = null;
+    this.lastErrorIndex = -1;
+};
+
+//
+// {@inheritDoc}
+//
+// <p>The default implementation simply calls {@link //endErrorCondition}.</p>
+//
+DefaultErrorStrategy.prototype.reportMatch = function(recognizer) {
+    this.endErrorCondition(recognizer);
+};
+
+//
+// {@inheritDoc}
+//
+// <p>The default implementation returns immediately if the handler is already
+// in error recovery mode. Otherwise, it calls {@link //beginErrorCondition}
+// and dispatches the reporting task based on the runtime type of {@code e}
+// according to the following table.</p>
+//
+// <ul>
+// <li>{@link NoViableAltException}: Dispatches the call to
+// {@link //reportNoViableAlternative}</li>
+// <li>{@link InputMismatchException}: Dispatches the call to
+// {@link //reportInputMismatch}</li>
+// <li>{@link FailedPredicateException}: Dispatches the call to
+// {@link //reportFailedPredicate}</li>
+// <li>All other types: calls {@link Parser//notifyErrorListeners} to report
+// the exception</li>
+// </ul>
+//
+DefaultErrorStrategy.prototype.reportError = function(recognizer, e) {
+   // if we've already reported an error and have not matched a token
+   // yet successfully, don't report any errors.
+    if(this.inErrorRecoveryMode(recognizer)) {
+        return; // don't report spurious errors
+    }
+    this.beginErrorCondition(recognizer);
+    if ( e instanceof NoViableAltException ) {
+        this.reportNoViableAlternative(recognizer, e);
+    } else if ( e instanceof InputMismatchException ) {
+        this.reportInputMismatch(recognizer, e);
+    } else if ( e instanceof FailedPredicateException ) {
+        this.reportFailedPredicate(recognizer, e);
+    } else {
+        console.log("unknown recognition error type: " + e.constructor.name);
+        console.log(e.stack);
+        recognizer.notifyErrorListeners(e.getOffendingToken(), e.getMessage(), e);
+    }
+};
+//
+// {@inheritDoc}
+//
+// <p>The default implementation resynchronizes the parser by consuming tokens
+// until we find one in the resynchronization set--loosely the set of tokens
+// that can follow the current rule.</p>
+//
+DefaultErrorStrategy.prototype.recover = function(recognizer, e) {
+    if (this.lastErrorIndex===recognizer.getInputStream().index &&
+        this.lastErrorStates !== null && this.lastErrorStates.indexOf(recognizer.state)>=0) {
+		// uh oh, another error at same token index and previously-visited
+		// state in ATN; must be a case where LT(1) is in the recovery
+		// token set so nothing got consumed. Consume a single token
+		// at least to prevent an infinite loop; this is a failsafe.
+		recognizer.consume();
+    }
+    this.lastErrorIndex = recognizer._input.index;
+    if (this.lastErrorStates === null) {
+        this.lastErrorStates = [];
+    }
+    this.lastErrorStates.push(recognizer.state);
+    var followSet = this.getErrorRecoverySet(recognizer);
+    this.consumeUntil(recognizer, followSet);
+};
+
+// The default implementation of {@link ANTLRErrorStrategy//sync} makes sure
+// that the current lookahead symbol is consistent with what were expecting
+// at this point in the ATN. You can call this anytime but ANTLR only
+// generates code to check before subrules/loops and each iteration.
+//
+// <p>Implements Jim Idle's magic sync mechanism in closures and optional
+// subrules. E.g.,</p>
+//
+// <pre>
+// a : sync ( stuff sync )* ;
+// sync : {consume to what can follow sync} ;
+// </pre>
+//
+// At the start of a sub rule upon error, {@link //sync} performs single
+// token deletion, if possible. If it can't do that, it bails on the current
+// rule and uses the default error recovery, which consumes until the
+// resynchronization set of the current rule.
+//
+// <p>If the sub rule is optional ({@code (...)?}, {@code (...)*}, or block
+// with an empty alternative), then the expected set includes what follows
+// the subrule.</p>
+//
+// <p>During loop iteration, it consumes until it sees a token that can start a
+// sub rule or what follows loop. Yes, that is pretty aggressive. We opt to
+// stay in the loop as long as possible.</p>
+//
+// <p><strong>ORIGINS</strong></p>
+//
+// <p>Previous versions of ANTLR did a poor job of their recovery within loops.
+// A single mismatch token or missing token would force the parser to bail
+// out of the entire rules surrounding the loop. So, for rule</p>
+//
+// <pre>
+// classDef : 'class' ID '{' member* '}'
+// </pre>
+//
+// input with an extra token between members would force the parser to
+// consume until it found the next class definition rather than the next
+// member definition of the current class.
+//
+// <p>This functionality cost a little bit of effort because the parser has to
+// compare token set at the start of the loop and at each iteration. If for
+// some reason speed is suffering for you, you can turn off this
+// functionality by simply overriding this method as a blank { }.</p>
+//
+DefaultErrorStrategy.prototype.sync = function(recognizer) {
+    // If already recovering, don't try to sync
+    if (this.inErrorRecoveryMode(recognizer)) {
+        return;
+    }
+    var s = recognizer._interp.atn.states[recognizer.state];
+    var la = recognizer.getTokenStream().LA(1);
+    // try cheaper subset first; might get lucky. seems to shave a wee bit off
+    var nextTokens = recognizer.atn.nextTokens(s);
+    if (nextTokens.contains(Token.EPSILON) || nextTokens.contains(la)) {
+        return;
+    }
+    switch (s.stateType) {
+    case ATNState.BLOCK_START:
+    case ATNState.STAR_BLOCK_START:
+    case ATNState.PLUS_BLOCK_START:
+    case ATNState.STAR_LOOP_ENTRY:
+       // report error and recover if possible
+        if( this.singleTokenDeletion(recognizer) !== null) {
+            return;
+        } else {
+            throw new InputMismatchException(recognizer);
+        }
+        break;
+    case ATNState.PLUS_LOOP_BACK:
+    case ATNState.STAR_LOOP_BACK:
+        this.reportUnwantedToken(recognizer);
+        var expecting = new IntervalSet();
+        expecting.addSet(recognizer.getExpectedTokens());
+        var whatFollowsLoopIterationOrRule = expecting.addSet(this.getErrorRecoverySet(recognizer));
+        this.consumeUntil(recognizer, whatFollowsLoopIterationOrRule);
+        break;
+    default:
+        // do nothing if we can't identify the exact kind of ATN state
+    }
+};
+
+// This is called by {@link //reportError} when the exception is a
+// {@link NoViableAltException}.
+//
+// @see //reportError
+//
+// @param recognizer the parser instance
+// @param e the recognition exception
+//
+DefaultErrorStrategy.prototype.reportNoViableAlternative = function(recognizer, e) {
+    var tokens = recognizer.getTokenStream();
+    var input;
+    if(tokens !== null) {
+        if (e.startToken.type===Token.EOF) {
+            input = "<EOF>";
+        } else {
+            input = tokens.getText(new Interval(e.startToken.tokenIndex, e.offendingToken.tokenIndex));
+        }
+    } else {
+        input = "<unknown input>";
+    }
+    var msg = "no viable alternative at input " + this.escapeWSAndQuote(input);
+    recognizer.notifyErrorListeners(msg, e.offendingToken, e);
+};
+
+//
+// This is called by {@link //reportError} when the exception is an
+// {@link InputMismatchException}.
+//
+// @see //reportError
+//
+// @param recognizer the parser instance
+// @param e the recognition exception
+//
+DefaultErrorStrategy.prototype.reportInputMismatch = function(recognizer, e) {
+    var msg = "mismatched input " + this.getTokenErrorDisplay(e.offendingToken) +
+          " expecting " + e.getExpectedTokens().toString(recognizer.literalNames, recognizer.symbolicNames);
+    recognizer.notifyErrorListeners(msg, e.offendingToken, e);
+};
+
+//
+// This is called by {@link //reportError} when the exception is a
+// {@link FailedPredicateException}.
+//
+// @see //reportError
+//
+// @param recognizer the parser instance
+// @param e the recognition exception
+//
+DefaultErrorStrategy.prototype.reportFailedPredicate = function(recognizer, e) {
+    var ruleName = recognizer.ruleNames[recognizer._ctx.ruleIndex];
+    var msg = "rule " + ruleName + " " + e.message;
+    recognizer.notifyErrorListeners(msg, e.offendingToken, e);
+};
+
+// This method is called to report a syntax error which requires the removal
+// of a token from the input stream. At the time this method is called, the
+// erroneous symbol is current {@code LT(1)} symbol and has not yet been
+// removed from the input stream. When this method returns,
+// {@code recognizer} is in error recovery mode.
+//
+// <p>This method is called when {@link //singleTokenDeletion} identifies
+// single-token deletion as a viable recovery strategy for a mismatched
+// input error.</p>
+//
+// <p>The default implementation simply returns if the handler is already in
+// error recovery mode. Otherwise, it calls {@link //beginErrorCondition} to
+// enter error recovery mode, followed by calling
+// {@link Parser//notifyErrorListeners}.</p>
+//
+// @param recognizer the parser instance
+//
+DefaultErrorStrategy.prototype.reportUnwantedToken = function(recognizer) {
+    if (this.inErrorRecoveryMode(recognizer)) {
+        return;
+    }
+    this.beginErrorCondition(recognizer);
+    var t = recognizer.getCurrentToken();
+    var tokenName = this.getTokenErrorDisplay(t);
+    var expecting = this.getExpectedTokens(recognizer);
+    var msg = "extraneous input " + tokenName + " expecting " +
+        expecting.toString(recognizer.literalNames, recognizer.symbolicNames);
+    recognizer.notifyErrorListeners(msg, t, null);
+};
+// This method is called to report a syntax error which requires the
+// insertion of a missing token into the input stream. At the time this
+// method is called, the missing token has not yet been inserted. When this
+// method returns, {@code recognizer} is in error recovery mode.
+//
+// <p>This method is called when {@link //singleTokenInsertion} identifies
+// single-token insertion as a viable recovery strategy for a mismatched
+// input error.</p>
+//
+// <p>The default implementation simply returns if the handler is already in
+// error recovery mode. Otherwise, it calls {@link //beginErrorCondition} to
+// enter error recovery mode, followed by calling
+// {@link Parser//notifyErrorListeners}.</p>
+//
+// @param recognizer the parser instance
+//
+DefaultErrorStrategy.prototype.reportMissingToken = function(recognizer) {
+    if ( this.inErrorRecoveryMode(recognizer)) {
+        return;
+    }
+    this.beginErrorCondition(recognizer);
+    var t = recognizer.getCurrentToken();
+    var expecting = this.getExpectedTokens(recognizer);
+    var msg = "missing " + expecting.toString(recognizer.literalNames, recognizer.symbolicNames) +
+          " at " + this.getTokenErrorDisplay(t);
+    recognizer.notifyErrorListeners(msg, t, null);
+};
+
+// <p>The default implementation attempts to recover from the mismatched input
+// by using single token insertion and deletion as described below. If the
+// recovery attempt fails, this method throws an
+// {@link InputMismatchException}.</p>
+//
+// <p><strong>EXTRA TOKEN</strong> (single token deletion)</p>
+//
+// <p>{@code LA(1)} is not what we are looking for. If {@code LA(2)} has the
+// right token, however, then assume {@code LA(1)} is some extra spurious
+// token and delete it. Then consume and return the next token (which was
+// the {@code LA(2)} token) as the successful result of the match operation.</p>
+//
+// <p>This recovery strategy is implemented by {@link
+// //singleTokenDeletion}.</p>
+//
+// <p><strong>MISSING TOKEN</strong> (single token insertion)</p>
+//
+// <p>If current token (at {@code LA(1)}) is consistent with what could come
+// after the expected {@code LA(1)} token, then assume the token is missing
+// and use the parser's {@link TokenFactory} to create it on the fly. The
+// "insertion" is performed by returning the created token as the successful
+// result of the match operation.</p>
+//
+// <p>This recovery strategy is implemented by {@link
+// //singleTokenInsertion}.</p>
+//
+// <p><strong>EXAMPLE</strong></p>
+//
+// <p>For example, Input {@code i=(3;} is clearly missing the {@code ')'}. When
+// the parser returns from the nested call to {@code expr}, it will have
+// call chain:</p>
+//
+// <pre>
+// stat &rarr; expr &rarr; atom
+// </pre>
+//
+// and it will be trying to match the {@code ')'} at this point in the
+// derivation:
+//
+// <pre>
+// =&gt; ID '=' '(' INT ')' ('+' atom)* ';'
+// ^
+// </pre>
+//
+// The attempt to match {@code ')'} will fail when it sees {@code ';'} and
+// call {@link //recoverInline}. To recover, it sees that {@code LA(1)==';'}
+// is in the set of tokens that can follow the {@code ')'} token reference
+// in rule {@code atom}. It can assume that you forgot the {@code ')'}.
+//
+DefaultErrorStrategy.prototype.recoverInline = function(recognizer) {
+    // SINGLE TOKEN DELETION
+    var matchedSymbol = this.singleTokenDeletion(recognizer);
+    if (matchedSymbol !== null) {
+        // we have deleted the extra token.
+        // now, move past ttype token as if all were ok
+        recognizer.consume();
+        return matchedSymbol;
+    }
+    // SINGLE TOKEN INSERTION
+    if (this.singleTokenInsertion(recognizer)) {
+        return this.getMissingSymbol(recognizer);
+    }
+    // even that didn't work; must throw the exception
+    throw new InputMismatchException(recognizer);
+};
+
+//
+// This method implements the single-token insertion inline error recovery
+// strategy. It is called by {@link //recoverInline} if the single-token
+// deletion strategy fails to recover from the mismatched input. If this
+// method returns {@code true}, {@code recognizer} will be in error recovery
+// mode.
+//
+// <p>This method determines whether or not single-token insertion is viable by
+// checking if the {@code LA(1)} input symbol could be successfully matched
+// if it were instead the {@code LA(2)} symbol. If this method returns
+// {@code true}, the caller is responsible for creating and inserting a
+// token with the correct type to produce this behavior.</p>
+//
+// @param recognizer the parser instance
+// @return {@code true} if single-token insertion is a viable recovery
+// strategy for the current mismatched input, otherwise {@code false}
+//
+DefaultErrorStrategy.prototype.singleTokenInsertion = function(recognizer) {
+    var currentSymbolType = recognizer.getTokenStream().LA(1);
+    // if current token is consistent with what could come after current
+    // ATN state, then we know we're missing a token; error recovery
+    // is free to conjure up and insert the missing token
+    var atn = recognizer._interp.atn;
+    var currentState = atn.states[recognizer.state];
+    var next = currentState.transitions[0].target;
+    var expectingAtLL2 = atn.nextTokens(next, recognizer._ctx);
+    if (expectingAtLL2.contains(currentSymbolType) ){
+        this.reportMissingToken(recognizer);
+        return true;
+    } else {
+        return false;
+    }
+};
+
+// This method implements the single-token deletion inline error recovery
+// strategy. It is called by {@link //recoverInline} to attempt to recover
+// from mismatched input. If this method returns null, the parser and error
+// handler state will not have changed. If this method returns non-null,
+// {@code recognizer} will <em>not</em> be in error recovery mode since the
+// returned token was a successful match.
+//
+// <p>If the single-token deletion is successful, this method calls
+// {@link //reportUnwantedToken} to report the error, followed by
+// {@link Parser//consume} to actually "delete" the extraneous token. Then,
+// before returning {@link //reportMatch} is called to signal a successful
+// match.</p>
+//
+// @param recognizer the parser instance
+// @return the successfully matched {@link Token} instance if single-token
+// deletion successfully recovers from the mismatched input, otherwise
+// {@code null}
+//
+DefaultErrorStrategy.prototype.singleTokenDeletion = function(recognizer) {
+    var nextTokenType = recognizer.getTokenStream().LA(2);
+    var expecting = this.getExpectedTokens(recognizer);
+    if (expecting.contains(nextTokenType)) {
+        this.reportUnwantedToken(recognizer);
+        // print("recoverFromMismatchedToken deleting " \
+        // + str(recognizer.getTokenStream().LT(1)) \
+        // + " since " + str(recognizer.getTokenStream().LT(2)) \
+        // + " is what we want", file=sys.stderr)
+        recognizer.consume(); // simply delete extra token
+        // we want to return the token we're actually matching
+        var matchedSymbol = recognizer.getCurrentToken();
+        this.reportMatch(recognizer); // we know current token is correct
+        return matchedSymbol;
+    } else {
+        return null;
+    }
+};
+
+// Conjure up a missing token during error recovery.
+//
+// The recognizer attempts to recover from single missing
+// symbols. But, actions might refer to that missing symbol.
+// For example, x=ID {f($x);}. The action clearly assumes
+// that there has been an identifier matched previously and that
+// $x points at that token. If that token is missing, but
+// the next token in the stream is what we want we assume that
+// this token is missing and we keep going. Because we
+// have to return some token to replace the missing token,
+// we have to conjure one up. This method gives the user control
+// over the tokens returned for missing tokens. Mostly,
+// you will want to create something special for identifier
+// tokens. For literals such as '{' and ',', the default
+// action in the parser or tree parser works. It simply creates
+// a CommonToken of the appropriate type. The text will be the token.
+// If you change what tokens must be created by the lexer,
+// override this method to create the appropriate tokens.
+//
+DefaultErrorStrategy.prototype.getMissingSymbol = function(recognizer) {
+    var currentSymbol = recognizer.getCurrentToken();
+    var expecting = this.getExpectedTokens(recognizer);
+    var expectedTokenType = expecting.first(); // get any element
+    var tokenText;
+    if (expectedTokenType===Token.EOF) {
+        tokenText = "<missing EOF>";
+    } else {
+        tokenText = "<missing " + recognizer.literalNames[expectedTokenType] + ">";
+    }
+    var current = currentSymbol;
+    var lookback = recognizer.getTokenStream().LT(-1);
+    if (current.type===Token.EOF && lookback !== null) {
+        current = lookback;
+    }
+    return recognizer.getTokenFactory().create(current.source,
+        expectedTokenType, tokenText, Token.DEFAULT_CHANNEL,
+        -1, -1, current.line, current.column);
+};
+
+DefaultErrorStrategy.prototype.getExpectedTokens = function(recognizer) {
+    return recognizer.getExpectedTokens();
+};
+
+// How should a token be displayed in an error message? The default
+// is to display just the text, but during development you might
+// want to have a lot of information spit out. Override in that case
+// to use t.toString() (which, for CommonToken, dumps everything about
+// the token). This is better than forcing you to override a method in
+// your token objects because you don't have to go modify your lexer
+// so that it creates a new Java type.
+//
+DefaultErrorStrategy.prototype.getTokenErrorDisplay = function(t) {
+    if (t === null) {
+        return "<no token>";
+    }
+    var s = t.text;
+    if (s === null) {
+        if (t.type===Token.EOF) {
+            s = "<EOF>";
+        } else {
+            s = "<" + t.type + ">";
+        }
+    }
+    return this.escapeWSAndQuote(s);
+};
+
+DefaultErrorStrategy.prototype.escapeWSAndQuote = function(s) {
+    s = s.replace(/\n/g,"\\n");
+    s = s.replace(/\r/g,"\\r");
+    s = s.replace(/\t/g,"\\t");
+    return "'" + s + "'";
+};
+
+// Compute the error recovery set for the current rule. During
+// rule invocation, the parser pushes the set of tokens that can
+// follow that rule reference on the stack; this amounts to
+// computing FIRST of what follows the rule reference in the
+// enclosing rule. See LinearApproximator.FIRST().
+// This local follow set only includes tokens
+// from within the rule; i.e., the FIRST computation done by
+// ANTLR stops at the end of a rule.
+//
+// EXAMPLE
+//
+// When you find a "no viable alt exception", the input is not
+// consistent with any of the alternatives for rule r. The best
+// thing to do is to consume tokens until you see something that
+// can legally follow a call to r//or* any rule that called r.
+// You don't want the exact set of viable next tokens because the
+// input might just be missing a token--you might consume the
+// rest of the input looking for one of the missing tokens.
+//
+// Consider grammar:
+//
+// a : '[' b ']'
+// | '(' b ')'
+// ;
+// b : c '^' INT ;
+// c : ID
+// | INT
+// ;
+//
+// At each rule invocation, the set of tokens that could follow
+// that rule is pushed on a stack. Here are the various
+// context-sensitive follow sets:
+//
+// FOLLOW(b1_in_a) = FIRST(']') = ']'
+// FOLLOW(b2_in_a) = FIRST(')') = ')'
+// FOLLOW(c_in_b) = FIRST('^') = '^'
+//
+// Upon erroneous input "[]", the call chain is
+//
+// a -> b -> c
+//
+// and, hence, the follow context stack is:
+//
+// depth follow set start of rule execution
+// 0 <EOF> a (from main())
+// 1 ']' b
+// 2 '^' c
+//
+// Notice that ')' is not included, because b would have to have
+// been called from a different context in rule a for ')' to be
+// included.
+//
+// For error recovery, we cannot consider FOLLOW(c)
+// (context-sensitive or otherwise). We need the combined set of
+// all context-sensitive FOLLOW sets--the set of all tokens that
+// could follow any reference in the call chain. We need to
+// resync to one of those tokens. Note that FOLLOW(c)='^' and if
+// we resync'd to that token, we'd consume until EOF. We need to
+// sync to context-sensitive FOLLOWs for a, b, and c: {']','^'}.
+// In this case, for input "[]", LA(1) is ']' and in the set, so we would
+// not consume anything. After printing an error, rule c would
+// return normally. Rule b would not find the required '^' though.
+// At this point, it gets a mismatched token error and throws an
+// exception (since LA(1) is not in the viable following token
+// set). The rule exception handler tries to recover, but finds
+// the same recovery set and doesn't consume anything. Rule b
+// exits normally returning to rule a. Now it finds the ']' (and
+// with the successful match exits errorRecovery mode).
+//
+// So, you can see that the parser walks up the call chain looking
+// for the token that was a member of the recovery set.
+//
+// Errors are not generated in errorRecovery mode.
+//
+// ANTLR's error recovery mechanism is based upon original ideas:
+//
+// "Algorithms + Data Structures = Programs" by Niklaus Wirth
+//
+// and
+//
+// "A note on error recovery in recursive descent parsers":
+// http://portal.acm.org/citation.cfm?id=947902.947905
+//
+// Later, Josef Grosch had some good ideas:
+//
+// "Efficient and Comfortable Error Recovery in Recursive Descent
+// Parsers":
+// ftp://www.cocolab.com/products/cocktail/doca4.ps/ell.ps.zip
+//
+// Like Grosch I implement context-sensitive FOLLOW sets that are combined
+// at run-time upon error to avoid overhead during parsing.
+//
+DefaultErrorStrategy.prototype.getErrorRecoverySet = function(recognizer) {
+    var atn = recognizer._interp.atn;
+    var ctx = recognizer._ctx;
+    var recoverSet = new IntervalSet();
+    while (ctx !== null && ctx.invokingState>=0) {
+        // compute what follows who invoked us
+        var invokingState = atn.states[ctx.invokingState];
+        var rt = invokingState.transitions[0];
+        var follow = atn.nextTokens(rt.followState);
+        recoverSet.addSet(follow);
+        ctx = ctx.parentCtx;
+    }
+    recoverSet.removeOne(Token.EPSILON);
+    return recoverSet;
+};
+
+// Consume tokens until one matches the given token set.//
+DefaultErrorStrategy.prototype.consumeUntil = function(recognizer, set) {
+    var ttype = recognizer.getTokenStream().LA(1);
+    while( ttype !== Token.EOF && !set.contains(ttype)) {
+        recognizer.consume();
+        ttype = recognizer.getTokenStream().LA(1);
+    }
+};
+
+//
+// This implementation of {@link ANTLRErrorStrategy} responds to syntax errors
+// by immediately canceling the parse operation with a
+// {@link ParseCancellationException}. The implementation ensures that the
+// {@link ParserRuleContext//exception} field is set for all parse tree nodes
+// that were not completed prior to encountering the error.
+//
+// <p>
+// This error strategy is useful in the following scenarios.</p>
+//
+// <ul>
+// <li><strong>Two-stage parsing:</strong> This error strategy allows the first
+// stage of two-stage parsing to immediately terminate if an error is
+// encountered, and immediately fall back to the second stage. In addition to
+// avoiding wasted work by attempting to recover from errors here, the empty
+// implementation of {@link BailErrorStrategy//sync} improves the performance of
+// the first stage.</li>
+// <li><strong>Silent validation:</strong> When syntax errors are not being
+// reported or logged, and the parse result is simply ignored if errors occur,
+// the {@link BailErrorStrategy} avoids wasting work on recovering from errors
+// when the result will be ignored either way.</li>
+// </ul>
+//
+// <p>
+// {@code myparser.setErrorHandler(new BailErrorStrategy());}</p>
+//
+// @see Parser//setErrorHandler(ANTLRErrorStrategy)
+//
+function BailErrorStrategy() {
+	DefaultErrorStrategy.call(this);
+	return this;
+}
+
+BailErrorStrategy.prototype = Object.create(DefaultErrorStrategy.prototype);
+BailErrorStrategy.prototype.constructor = BailErrorStrategy;
+
+// Instead of recovering from exception {@code e}, re-throw it wrapped
+// in a {@link ParseCancellationException} so it is not caught by the
+// rule function catches. Use {@link Exception//getCause()} to get the
+// original {@link RecognitionException}.
+//
+BailErrorStrategy.prototype.recover = function(recognizer, e) {
+    var context = recognizer._ctx;
+    while (context !== null) {
+        context.exception = e;
+        context = context.parentCtx;
+    }
+    throw new ParseCancellationException(e);
+};
+
+// Make sure we don't attempt to recover inline; if the parser
+// successfully recovers, it won't throw an exception.
+//
+BailErrorStrategy.prototype.recoverInline = function(recognizer) {
+    this.recover(recognizer, new InputMismatchException(recognizer));
+};
+
+// Make sure we don't attempt to recover from problems in subrules.//
+BailErrorStrategy.prototype.sync = function(recognizer) {
+    // pass
+};
+
+exports.BailErrorStrategy = BailErrorStrategy;
+exports.DefaultErrorStrategy = DefaultErrorStrategy;
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Generated from n3.g4 by ANTLR 4.6
+// jshint ignore: start
+var antlr4 = __webpack_require__(12);
+var n3Listener = __webpack_require__(32).n3Listener;
+var n3Visitor = __webpack_require__(33).n3Visitor;
+
+
+//    package parser.antlr;
+
+var grammarFileName = "n3.g4";
+
+var serializedATN = ["\u0003\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd",
+    "\u0003=\u00fc\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
+    "\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007\u0004",
+    "\b\t\b\u0004\t\t\t\u0004\n\t\n\u0004\u000b\t\u000b\u0004\f\t\f\u0004",
+    "\r\t\r\u0004\u000e\t\u000e\u0004\u000f\t\u000f\u0004\u0010\t\u0010\u0004",
+    "\u0011\t\u0011\u0004\u0012\t\u0012\u0004\u0013\t\u0013\u0004\u0014\t",
+    "\u0014\u0004\u0015\t\u0015\u0004\u0016\t\u0016\u0004\u0017\t\u0017\u0004",
+    "\u0018\t\u0018\u0004\u0019\t\u0019\u0004\u001a\t\u001a\u0004\u001b\t",
+    "\u001b\u0004\u001c\t\u001c\u0004\u001d\t\u001d\u0004\u001e\t\u001e\u0004",
+    "\u001f\t\u001f\u0004 \t \u0004!\t!\u0003\u0002\u0003\u0002\u0003\u0002",
+    "\u0003\u0002\u0007\u0002G\n\u0002\f\u0002\u000e\u0002J\u000b\u0002\u0003",
+    "\u0002\u0003\u0002\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0005",
+    "\u0003R\n\u0003\u0003\u0004\u0003\u0004\u0005\u0004V\n\u0004\u0003\u0005",
+    "\u0003\u0005\u0005\u0005Z\n\u0005\u0003\u0006\u0003\u0006\u0003\u0006",
+    "\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007\u0003\b\u0003\b\u0003",
+    "\b\u0003\b\u0003\t\u0003\t\u0003\t\u0003\n\u0003\n\u0005\nl\n\n\u0003",
+    "\n\u0005\no\n\n\u0003\u000b\u0003\u000b\u0003\u000b\u0003\u000b\u0003",
+    "\u000b\u0003\u000b\u0005\u000bw\n\u000b\u0007\u000by\n\u000b\f\u000b",
+    "\u000e\u000b|\u000b\u000b\u0003\f\u0003\f\u0003\f\u0007\f\u0081\n\f",
+    "\f\f\u000e\f\u0084\u000b\f\u0003\r\u0003\r\u0003\r\u0003\r\u0003\r\u0003",
+    "\r\u0003\r\u0003\r\u0003\r\u0003\r\u0003\r\u0003\r\u0003\r\u0003\r\u0003",
+    "\r\u0003\r\u0003\r\u0003\r\u0005\r\u0098\n\r\u0003\u000e\u0003\u000e",
+    "\u0003\u000f\u0003\u000f\u0003\u000f\u0005\u000f\u009f\n\u000f\u0003",
+    "\u0010\u0003\u0010\u0003\u0011\u0003\u0011\u0003\u0012\u0003\u0012\u0003",
+    "\u0012\u0003\u0012\u0003\u0012\u0005\u0012\u00aa\n\u0012\u0003\u0013",
+    "\u0003\u0013\u0003\u0013\u0003\u0013\u0003\u0013\u0003\u0013\u0003\u0013",
+    "\u0005\u0013\u00b3\n\u0013\u0003\u0014\u0003\u0014\u0003\u0014\u0005",
+    "\u0014\u00b8\n\u0014\u0003\u0015\u0003\u0015\u0005\u0015\u00bc\n\u0015",
+    "\u0003\u0015\u0003\u0015\u0003\u0016\u0003\u0016\u0007\u0016\u00c2\n",
+    "\u0016\f\u0016\u000e\u0016\u00c5\u000b\u0016\u0003\u0016\u0003\u0016",
+    "\u0003\u0017\u0003\u0017\u0005\u0017\u00cb\n\u0017\u0003\u0017\u0003",
+    "\u0017\u0003\u0018\u0003\u0018\u0003\u0018\u0005\u0018\u00d2\n\u0018",
+    "\u0005\u0018\u00d4\n\u0018\u0003\u0018\u0003\u0018\u0005\u0018\u00d8",
+    "\n\u0018\u0005\u0018\u00da\n\u0018\u0003\u0019\u0003\u0019\u0003\u001a",
+    "\u0003\u001a\u0003\u001a\u0003\u001a\u0005\u001a\u00e2\n\u001a\u0003",
+    "\u001b\u0003\u001b\u0005\u001b\u00e6\n\u001b\u0003\u001c\u0003\u001c",
+    "\u0003\u001c\u0007\u001c\u00eb\n\u001c\f\u001c\u000e\u001c\u00ee\u000b",
+    "\u001c\u0003\u001d\u0003\u001d\u0003\u001e\u0003\u001e\u0003\u001f\u0003",
+    "\u001f\u0003 \u0003 \u0003 \u0003!\u0003!\u0003!\u0003!\u0002\u0002",
+    "\"\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018\u001a",
+    "\u001c\u001e \"$&(*,.02468:<>@\u0002\u0005\u0003\u0002&(\u0003\u0002",
+    "\"#\u0004\u0002$$11\u0106\u0002H\u0003\u0002\u0002\u0002\u0004Q\u0003",
+    "\u0002\u0002\u0002\u0006U\u0003\u0002\u0002\u0002\bY\u0003\u0002\u0002",
+    "\u0002\n[\u0003\u0002\u0002\u0002\f^\u0003\u0002\u0002\u0002\u000eb",
+    "\u0003\u0002\u0002\u0002\u0010f\u0003\u0002\u0002\u0002\u0012k\u0003",
+    "\u0002\u0002\u0002\u0014p\u0003\u0002\u0002\u0002\u0016}\u0003\u0002",
+    "\u0002\u0002\u0018\u0097\u0003\u0002\u0002\u0002\u001a\u0099\u0003\u0002",
+    "\u0002\u0002\u001c\u009e\u0003\u0002\u0002\u0002\u001e\u00a0\u0003\u0002",
+    "\u0002\u0002 \u00a2\u0003\u0002\u0002\u0002\"\u00a4\u0003\u0002\u0002",
+    "\u0002$\u00b2\u0003\u0002\u0002\u0002&\u00b7\u0003\u0002\u0002\u0002",
+    "(\u00b9\u0003\u0002\u0002\u0002*\u00bf\u0003\u0002\u0002\u0002,\u00c8",
+    "\u0003\u0002\u0002\u0002.\u00d9\u0003\u0002\u0002\u00020\u00db\u0003",
+    "\u0002\u0002\u00022\u00dd\u0003\u0002\u0002\u00024\u00e5\u0003\u0002",
+    "\u0002\u00026\u00e7\u0003\u0002\u0002\u00028\u00ef\u0003\u0002\u0002",
+    "\u0002:\u00f1\u0003\u0002\u0002\u0002<\u00f3\u0003\u0002\u0002\u0002",
+    ">\u00f5\u0003\u0002\u0002\u0002@\u00f8\u0003\u0002\u0002\u0002BC\u0005",
+    "\u0004\u0003\u0002CD\u0007\u0003\u0002\u0002DG\u0003\u0002\u0002\u0002",
+    "EG\u0005\b\u0005\u0002FB\u0003\u0002\u0002\u0002FE\u0003\u0002\u0002",
+    "\u0002GJ\u0003\u0002\u0002\u0002HF\u0003\u0002\u0002\u0002HI\u0003\u0002",
+    "\u0002\u0002IK\u0003\u0002\u0002\u0002JH\u0003\u0002\u0002\u0002KL\u0007",
+    "\u0002\u0002\u0003L\u0003\u0003\u0002\u0002\u0002MR\u0005\u0006\u0004",
+    "\u0002NR\u0005\u0012\n\u0002OR\u0005> \u0002PR\u0005@!\u0002QM\u0003",
+    "\u0002\u0002\u0002QN\u0003\u0002\u0002\u0002QO\u0003\u0002\u0002\u0002",
+    "QP\u0003\u0002\u0002\u0002R\u0005\u0003\u0002\u0002\u0002SV\u0005\u000e",
+    "\b\u0002TV\u0005\u0010\t\u0002US\u0003\u0002\u0002\u0002UT\u0003\u0002",
+    "\u0002\u0002V\u0007\u0003\u0002\u0002\u0002WZ\u0005\n\u0006\u0002XZ",
+    "\u0005\f\u0007\u0002YW\u0003\u0002\u0002\u0002YX\u0003\u0002\u0002\u0002",
+    "Z\t\u0003\u0002\u0002\u0002[\\\u00076\u0002\u0002\\]\u0007!\u0002\u0002",
+    "]\u000b\u0003\u0002\u0002\u0002^_\u00077\u0002\u0002_`\u0007\"\u0002",
+    "\u0002`a\u0007!\u0002\u0002a\r\u0003\u0002\u0002\u0002bc\u0007\u0004",
+    "\u0002\u0002cd\u0007\"\u0002\u0002de\u0007!\u0002\u0002e\u000f\u0003",
+    "\u0002\u0002\u0002fg\u0007\u0005\u0002\u0002gh\u0007!\u0002\u0002h\u0011",
+    "\u0003\u0002\u0002\u0002il\u0005\u001a\u000e\u0002jl\u0005(\u0015\u0002",
+    "ki\u0003\u0002\u0002\u0002kj\u0003\u0002\u0002\u0002ln\u0003\u0002\u0002",
+    "\u0002mo\u0005\u0014\u000b\u0002nm\u0003\u0002\u0002\u0002no\u0003\u0002",
+    "\u0002\u0002o\u0013\u0003\u0002\u0002\u0002pq\u0005\u0018\r\u0002qz",
+    "\u0005\u0016\f\u0002rv\u0007\u0006\u0002\u0002st\u0005\u0018\r\u0002",
+    "tu\u0005\u0016\f\u0002uw\u0003\u0002\u0002\u0002vs\u0003\u0002\u0002",
+    "\u0002vw\u0003\u0002\u0002\u0002wy\u0003\u0002\u0002\u0002xr\u0003\u0002",
+    "\u0002\u0002y|\u0003\u0002\u0002\u0002zx\u0003\u0002\u0002\u0002z{\u0003",
+    "\u0002\u0002\u0002{\u0015\u0003\u0002\u0002\u0002|z\u0003\u0002\u0002",
+    "\u0002}\u0082\u0005\u001e\u0010\u0002~\u007f\u0007\u0007\u0002\u0002",
+    "\u007f\u0081\u0005\u001e\u0010\u0002\u0080~\u0003\u0002\u0002\u0002",
+    "\u0081\u0084\u0003\u0002\u0002\u0002\u0082\u0080\u0003\u0002\u0002\u0002",
+    "\u0082\u0083\u0003\u0002\u0002\u0002\u0083\u0017\u0003\u0002\u0002\u0002",
+    "\u0084\u0082\u0003\u0002\u0002\u0002\u0085\u0098\u0005\u001c\u000f\u0002",
+    "\u0086\u0098\u0007\b\u0002\u0002\u0087\u0098\u0007\t\u0002\u0002\u0088",
+    "\u0089\u0007\n\u0002\u0002\u0089\u0098\u0005 \u0011\u0002\u008a\u008b",
+    "\u0007\u000b\u0002\u0002\u008b\u0098\u0005 \u0011\u0002\u008c\u008d",
+    "\u0007\f\u0002\u0002\u008d\u008e\u0005 \u0011\u0002\u008e\u008f\u0007",
+    "\r\u0002\u0002\u008f\u0098\u0003\u0002\u0002\u0002\u0090\u0091\u0007",
+    "\u000e\u0002\u0002\u0091\u0092\u0005 \u0011\u0002\u0092\u0093\u0007",
+    "\u000f\u0002\u0002\u0093\u0098\u0003\u0002\u0002\u0002\u0094\u0098\u0007",
+    "\u0010\u0002\u0002\u0095\u0098\u0007\u0011\u0002\u0002\u0096\u0098\u0007",
+    "\u0012\u0002\u0002\u0097\u0085\u0003\u0002\u0002\u0002\u0097\u0086\u0003",
+    "\u0002\u0002\u0002\u0097\u0087\u0003\u0002\u0002\u0002\u0097\u0088\u0003",
+    "\u0002\u0002\u0002\u0097\u008a\u0003\u0002\u0002\u0002\u0097\u008c\u0003",
+    "\u0002\u0002\u0002\u0097\u0090\u0003\u0002\u0002\u0002\u0097\u0094\u0003",
+    "\u0002\u0002\u0002\u0097\u0095\u0003\u0002\u0002\u0002\u0097\u0096\u0003",
+    "\u0002\u0002\u0002\u0098\u0019\u0003\u0002\u0002\u0002\u0099\u009a\u0005",
+    " \u0011\u0002\u009a\u001b\u0003\u0002\u0002\u0002\u009b\u009f\u0005",
+    " \u0011\u0002\u009c\u009d\u0007\u0013\u0002\u0002\u009d\u009f\u0005",
+    " \u0011\u0002\u009e\u009b\u0003\u0002\u0002\u0002\u009e\u009c\u0003",
+    "\u0002\u0002\u0002\u009f\u001d\u0003\u0002\u0002\u0002\u00a0\u00a1\u0005",
+    " \u0011\u0002\u00a1\u001f\u0003\u0002\u0002\u0002\u00a2\u00a3\u0005",
+    "\"\u0012\u0002\u00a3!\u0003\u0002\u0002\u0002\u00a4\u00a9\u0005$\u0013",
+    "\u0002\u00a5\u00a6\u0007\u0014\u0002\u0002\u00a6\u00aa\u0005\"\u0012",
+    "\u0002\u00a7\u00a8\u0007\u0013\u0002\u0002\u00a8\u00aa\u0005\"\u0012",
+    "\u0002\u00a9\u00a5\u0003\u0002\u0002\u0002\u00a9\u00a7\u0003\u0002\u0002",
+    "\u0002\u00a9\u00aa\u0003\u0002\u0002\u0002\u00aa#\u0003\u0002\u0002",
+    "\u0002\u00ab\u00b3\u00054\u001b\u0002\u00ac\u00b3\u0005:\u001e\u0002",
+    "\u00ad\u00b3\u0005<\u001f\u0002\u00ae\u00b3\u0005*\u0016\u0002\u00af",
+    "\u00b3\u0005(\u0015\u0002\u00b0\u00b3\u0005&\u0014\u0002\u00b1\u00b3",
+    "\u0005,\u0017\u0002\u00b2\u00ab\u0003\u0002\u0002\u0002\u00b2\u00ac",
+    "\u0003\u0002\u0002\u0002\u00b2\u00ad\u0003\u0002\u0002\u0002\u00b2\u00ae",
+    "\u0003\u0002\u0002\u0002\u00b2\u00af\u0003\u0002\u0002\u0002\u00b2\u00b0",
+    "\u0003\u0002\u0002\u0002\u00b2\u00b1\u0003\u0002\u0002\u0002\u00b3%",
+    "\u0003\u0002\u0002\u0002\u00b4\u00b8\u00052\u001a\u0002\u00b5\u00b8",
+    "\u00050\u0019\u0002\u00b6\u00b8\u0007\u001f\u0002\u0002\u00b7\u00b4",
+    "\u0003\u0002\u0002\u0002\u00b7\u00b5\u0003\u0002\u0002\u0002\u00b7\u00b6",
+    "\u0003\u0002\u0002\u0002\u00b8\'\u0003\u0002\u0002\u0002\u00b9\u00bb",
+    "\u0007\u0015\u0002\u0002\u00ba\u00bc\u0005\u0014\u000b\u0002\u00bb\u00ba",
+    "\u0003\u0002\u0002\u0002\u00bb\u00bc\u0003\u0002\u0002\u0002\u00bc\u00bd",
+    "\u0003\u0002\u0002\u0002\u00bd\u00be\u0007\u0016\u0002\u0002\u00be)",
+    "\u0003\u0002\u0002\u0002\u00bf\u00c3\u0007\u0017\u0002\u0002\u00c0\u00c2",
+    "\u0005\u001e\u0010\u0002\u00c1\u00c0\u0003\u0002\u0002\u0002\u00c2\u00c5",
+    "\u0003\u0002\u0002\u0002\u00c3\u00c1\u0003\u0002\u0002\u0002\u00c3\u00c4",
+    "\u0003\u0002\u0002\u0002\u00c4\u00c6\u0003\u0002\u0002\u0002\u00c5\u00c3",
+    "\u0003\u0002\u0002\u0002\u00c6\u00c7\u0007\u0018\u0002\u0002\u00c7+",
+    "\u0003\u0002\u0002\u0002\u00c8\u00ca\u0007\u0019\u0002\u0002\u00c9\u00cb",
+    "\u0005.\u0018\u0002\u00ca\u00c9\u0003\u0002\u0002\u0002\u00ca\u00cb",
+    "\u0003\u0002\u0002\u0002\u00cb\u00cc\u0003\u0002\u0002\u0002\u00cc\u00cd",
+    "\u0007\u001a\u0002\u0002\u00cd-\u0003\u0002\u0002\u0002\u00ce\u00d3",
+    "\u0005\u0004\u0003\u0002\u00cf\u00d1\u0007\u0003\u0002\u0002\u00d0\u00d2",
+    "\u0005.\u0018\u0002\u00d1\u00d0\u0003\u0002\u0002\u0002\u00d1\u00d2",
+    "\u0003\u0002\u0002\u0002\u00d2\u00d4\u0003\u0002\u0002\u0002\u00d3\u00cf",
+    "\u0003\u0002\u0002\u0002\u00d3\u00d4\u0003\u0002\u0002\u0002\u00d4\u00da",
+    "\u0003\u0002\u0002\u0002\u00d5\u00d7\u0005\b\u0005\u0002\u00d6\u00d8",
+    "\u0005.\u0018\u0002\u00d7\u00d6\u0003\u0002\u0002\u0002\u00d7\u00d8",
+    "\u0003\u0002\u0002\u0002\u00d8\u00da\u0003\u0002\u0002\u0002\u00d9\u00ce",
+    "\u0003\u0002\u0002\u0002\u00d9\u00d5\u0003\u0002\u0002\u0002\u00da/",
+    "\u0003\u0002\u0002\u0002\u00db\u00dc\t\u0002\u0002\u0002\u00dc1\u0003",
+    "\u0002\u0002\u0002\u00dd\u00e1\u0007 \u0002\u0002\u00de\u00e2\u0007",
+    "%\u0002\u0002\u00df\u00e0\u0007\u001b\u0002\u0002\u00e0\u00e2\u0005",
+    "4\u001b\u0002\u00e1\u00de\u0003\u0002\u0002\u0002\u00e1\u00df\u0003",
+    "\u0002\u0002\u0002\u00e1\u00e2\u0003\u0002\u0002\u0002\u00e23\u0003",
+    "\u0002\u0002\u0002\u00e3\u00e6\u0007!\u0002\u0002\u00e4\u00e6\u0005",
+    "8\u001d\u0002\u00e5\u00e3\u0003\u0002\u0002\u0002\u00e5\u00e4\u0003",
+    "\u0002\u0002\u0002\u00e65\u0003\u0002\u0002\u0002\u00e7\u00ec\u0005",
+    "4\u001b\u0002\u00e8\u00e9\u0007\u0007\u0002\u0002\u00e9\u00eb\u0005",
+    "4\u001b\u0002\u00ea\u00e8\u0003\u0002\u0002\u0002\u00eb\u00ee\u0003",
+    "\u0002\u0002\u0002\u00ec\u00ea\u0003\u0002\u0002\u0002\u00ec\u00ed\u0003",
+    "\u0002\u0002\u0002\u00ed7\u0003\u0002\u0002\u0002\u00ee\u00ec\u0003",
+    "\u0002\u0002\u0002\u00ef\u00f0\t\u0003\u0002\u0002\u00f09\u0003\u0002",
+    "\u0002\u0002\u00f1\u00f2\t\u0004\u0002\u0002\u00f2;\u0003\u0002\u0002",
+    "\u0002\u00f3\u00f4\u00072\u0002\u0002\u00f4=\u0003\u0002\u0002\u0002",
+    "\u00f5\u00f6\u0007\u001c\u0002\u0002\u00f6\u00f7\u00056\u001c\u0002",
+    "\u00f7?\u0003\u0002\u0002\u0002\u00f8\u00f9\u0007\u001d\u0002\u0002",
+    "\u00f9\u00fa\u00056\u001c\u0002\u00faA\u0003\u0002\u0002\u0002\u001b",
+    "FHQUYknvz\u0082\u0097\u009e\u00a9\u00b2\u00b7\u00bb\u00c3\u00ca\u00d1",
+    "\u00d3\u00d7\u00d9\u00e1\u00e5\u00ec"].join("");
+
+
+var atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
+
+var decisionsToDFA = atn.decisionToState.map( function(ds, index) { return new antlr4.dfa.DFA(ds, index); });
+
+var sharedContextCache = new antlr4.PredictionContextCache();
+
+var literalNames = [ null, "'.'", "'@prefix'", "'@base'", "';'", "','", 
+                     "'a'", "'@a'", "'has'", "'@has'", "'is'", "'of'", "'@is'", 
+                     "'@of'", "'='", "'<='", "'=>'", "'^'", "'!'", "'['", 
+                     "']'", "'('", "')'", "'{'", "'}'", "'^^'", "'@forSome'", 
+                     "'@forAll'" ];
+n3Parser.literalNames = literalNames;
+
+var symbolicNames = [ null, null, null, null, null, null, null, null, null, 
+                      null, null, null, null, null, null, null, null, null, 
+                      null, null, null, null, null, null, null, null, null, 
+                      null, "COMMENT", "BooleanLiteral", "String", "IRIREF", 
+                      "PNAME_NS", "PNAME_LN", "BLANK_NODE_LABEL", "LANGTAG", 
+                      "INTEGER", "DECIMAL", "DOUBLE", "EXPONENT", "STRING_LITERAL_LONG_SINGLE_QUOTE", 
+                      "STRING_LITERAL_LONG_QUOTE", "STRING_LITERAL_QUOTE", 
+                      "STRING_LITERAL_SINGLE_QUOTE", "UCHAR", "ECHAR", "WS", 
+                      "ANON", "QuickVarName", "PN_CHARS_U", "PN_CHARS_BASE", 
+                      "PN_CHARS", "BASE", "PREFIX", "PN_PREFIX", "PN_LOCAL", 
+                      "PLX", "PERCENT", "HEX", "PN_LOCAL_ESC" ];
+n3Parser.symbolicNames = symbolicNames;
+
+var ruleNames =  [ "n3Doc", "n3Statement", "n3Directive", "sparqlDirective", 
+                   "sparqlBase", "sparqlPrefix", "prefixID", "base", "triples", 
+                   "predicateObjectList", "objectList", "verb", "subject", 
+                   "predicate", "object", "expression", "path", "pathItem", 
+                   "literal", "blankNodePropertyList", "collection", "formula", 
+                   "formulaContent", "numericLiteral", "rdfLiteral", "iri", 
+                   "iriList", "prefixedName", "blankNode", "quickVar", "existential", 
+                   "universal" ];
+
+function n3Parser (input) {
+	antlr4.Parser.call(this, input);
+    this._interp = new antlr4.atn.ParserATNSimulator(this, atn, decisionsToDFA, sharedContextCache);
+    this.ruleNames = ruleNames;
+    this.literalNames = literalNames;
+    this.symbolicNames = symbolicNames;
+    return this;
+}
+
+n3Parser.prototype = Object.create(antlr4.Parser.prototype);
+n3Parser.prototype.constructor = n3Parser;
+
+Object.defineProperty(n3Parser.prototype, "atn", {
+	get : function() {
+		return atn;
+	}
+});
+
+n3Parser.EOF = antlr4.Token.EOF;
+n3Parser.T__0 = 1;
+n3Parser.T__1 = 2;
+n3Parser.T__2 = 3;
+n3Parser.T__3 = 4;
+n3Parser.T__4 = 5;
+n3Parser.T__5 = 6;
+n3Parser.T__6 = 7;
+n3Parser.T__7 = 8;
+n3Parser.T__8 = 9;
+n3Parser.T__9 = 10;
+n3Parser.T__10 = 11;
+n3Parser.T__11 = 12;
+n3Parser.T__12 = 13;
+n3Parser.T__13 = 14;
+n3Parser.T__14 = 15;
+n3Parser.T__15 = 16;
+n3Parser.T__16 = 17;
+n3Parser.T__17 = 18;
+n3Parser.T__18 = 19;
+n3Parser.T__19 = 20;
+n3Parser.T__20 = 21;
+n3Parser.T__21 = 22;
+n3Parser.T__22 = 23;
+n3Parser.T__23 = 24;
+n3Parser.T__24 = 25;
+n3Parser.T__25 = 26;
+n3Parser.T__26 = 27;
+n3Parser.COMMENT = 28;
+n3Parser.BooleanLiteral = 29;
+n3Parser.String = 30;
+n3Parser.IRIREF = 31;
+n3Parser.PNAME_NS = 32;
+n3Parser.PNAME_LN = 33;
+n3Parser.BLANK_NODE_LABEL = 34;
+n3Parser.LANGTAG = 35;
+n3Parser.INTEGER = 36;
+n3Parser.DECIMAL = 37;
+n3Parser.DOUBLE = 38;
+n3Parser.EXPONENT = 39;
+n3Parser.STRING_LITERAL_LONG_SINGLE_QUOTE = 40;
+n3Parser.STRING_LITERAL_LONG_QUOTE = 41;
+n3Parser.STRING_LITERAL_QUOTE = 42;
+n3Parser.STRING_LITERAL_SINGLE_QUOTE = 43;
+n3Parser.UCHAR = 44;
+n3Parser.ECHAR = 45;
+n3Parser.WS = 46;
+n3Parser.ANON = 47;
+n3Parser.QuickVarName = 48;
+n3Parser.PN_CHARS_U = 49;
+n3Parser.PN_CHARS_BASE = 50;
+n3Parser.PN_CHARS = 51;
+n3Parser.BASE = 52;
+n3Parser.PREFIX = 53;
+n3Parser.PN_PREFIX = 54;
+n3Parser.PN_LOCAL = 55;
+n3Parser.PLX = 56;
+n3Parser.PERCENT = 57;
+n3Parser.HEX = 58;
+n3Parser.PN_LOCAL_ESC = 59;
+
+n3Parser.RULE_n3Doc = 0;
+n3Parser.RULE_n3Statement = 1;
+n3Parser.RULE_n3Directive = 2;
+n3Parser.RULE_sparqlDirective = 3;
+n3Parser.RULE_sparqlBase = 4;
+n3Parser.RULE_sparqlPrefix = 5;
+n3Parser.RULE_prefixID = 6;
+n3Parser.RULE_base = 7;
+n3Parser.RULE_triples = 8;
+n3Parser.RULE_predicateObjectList = 9;
+n3Parser.RULE_objectList = 10;
+n3Parser.RULE_verb = 11;
+n3Parser.RULE_subject = 12;
+n3Parser.RULE_predicate = 13;
+n3Parser.RULE_object = 14;
+n3Parser.RULE_expression = 15;
+n3Parser.RULE_path = 16;
+n3Parser.RULE_pathItem = 17;
+n3Parser.RULE_literal = 18;
+n3Parser.RULE_blankNodePropertyList = 19;
+n3Parser.RULE_collection = 20;
+n3Parser.RULE_formula = 21;
+n3Parser.RULE_formulaContent = 22;
+n3Parser.RULE_numericLiteral = 23;
+n3Parser.RULE_rdfLiteral = 24;
+n3Parser.RULE_iri = 25;
+n3Parser.RULE_iriList = 26;
+n3Parser.RULE_prefixedName = 27;
+n3Parser.RULE_blankNode = 28;
+n3Parser.RULE_quickVar = 29;
+n3Parser.RULE_existential = 30;
+n3Parser.RULE_universal = 31;
+
+function N3DocContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_n3Doc;
+    return this;
+}
+
+N3DocContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+N3DocContext.prototype.constructor = N3DocContext;
+
+N3DocContext.prototype.EOF = function() {
+    return this.getToken(n3Parser.EOF, 0);
+};
+
+N3DocContext.prototype.n3Statement = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(N3StatementContext);
+    } else {
+        return this.getTypedRuleContext(N3StatementContext,i);
+    }
+};
+
+N3DocContext.prototype.sparqlDirective = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(SparqlDirectiveContext);
+    } else {
+        return this.getTypedRuleContext(SparqlDirectiveContext,i);
+    }
+};
+
+N3DocContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterN3Doc(this);
+	}
+};
+
+N3DocContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitN3Doc(this);
+	}
+};
+
+N3DocContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitN3Doc(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.N3DocContext = N3DocContext;
+
+n3Parser.prototype.n3Doc = function() {
+
+    var localctx = new N3DocContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 0, n3Parser.RULE_n3Doc);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 70;
+        this._errHandler.sync(this);
+        _la = this._input.LA(1);
+        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3Parser.T__1) | (1 << n3Parser.T__2) | (1 << n3Parser.T__18) | (1 << n3Parser.T__20) | (1 << n3Parser.T__22) | (1 << n3Parser.T__25) | (1 << n3Parser.T__26) | (1 << n3Parser.BooleanLiteral) | (1 << n3Parser.String) | (1 << n3Parser.IRIREF))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3Parser.PNAME_NS - 32)) | (1 << (n3Parser.PNAME_LN - 32)) | (1 << (n3Parser.BLANK_NODE_LABEL - 32)) | (1 << (n3Parser.INTEGER - 32)) | (1 << (n3Parser.DECIMAL - 32)) | (1 << (n3Parser.DOUBLE - 32)) | (1 << (n3Parser.ANON - 32)) | (1 << (n3Parser.QuickVarName - 32)) | (1 << (n3Parser.BASE - 32)) | (1 << (n3Parser.PREFIX - 32)))) !== 0)) {
+            this.state = 68;
+            this._errHandler.sync(this);
+            switch(this._input.LA(1)) {
+            case n3Parser.T__1:
+            case n3Parser.T__2:
+            case n3Parser.T__18:
+            case n3Parser.T__20:
+            case n3Parser.T__22:
+            case n3Parser.T__25:
+            case n3Parser.T__26:
+            case n3Parser.BooleanLiteral:
+            case n3Parser.String:
+            case n3Parser.IRIREF:
+            case n3Parser.PNAME_NS:
+            case n3Parser.PNAME_LN:
+            case n3Parser.BLANK_NODE_LABEL:
+            case n3Parser.INTEGER:
+            case n3Parser.DECIMAL:
+            case n3Parser.DOUBLE:
+            case n3Parser.ANON:
+            case n3Parser.QuickVarName:
+                this.state = 64;
+                this.n3Statement();
+                this.state = 65;
+                this.match(n3Parser.T__0);
+                break;
+            case n3Parser.BASE:
+            case n3Parser.PREFIX:
+                this.state = 67;
+                this.sparqlDirective();
+                break;
+            default:
+                throw new antlr4.error.NoViableAltException(this);
+            }
+            this.state = 72;
+            this._errHandler.sync(this);
+            _la = this._input.LA(1);
+        }
+        this.state = 73;
+        this.match(n3Parser.EOF);
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function N3StatementContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_n3Statement;
+    return this;
+}
+
+N3StatementContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+N3StatementContext.prototype.constructor = N3StatementContext;
+
+N3StatementContext.prototype.n3Directive = function() {
+    return this.getTypedRuleContext(N3DirectiveContext,0);
+};
+
+N3StatementContext.prototype.triples = function() {
+    return this.getTypedRuleContext(TriplesContext,0);
+};
+
+N3StatementContext.prototype.existential = function() {
+    return this.getTypedRuleContext(ExistentialContext,0);
+};
+
+N3StatementContext.prototype.universal = function() {
+    return this.getTypedRuleContext(UniversalContext,0);
+};
+
+N3StatementContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterN3Statement(this);
+	}
+};
+
+N3StatementContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitN3Statement(this);
+	}
+};
+
+N3StatementContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitN3Statement(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.N3StatementContext = N3StatementContext;
+
+n3Parser.prototype.n3Statement = function() {
+
+    var localctx = new N3StatementContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 2, n3Parser.RULE_n3Statement);
+    try {
+        this.state = 79;
+        this._errHandler.sync(this);
+        switch(this._input.LA(1)) {
+        case n3Parser.T__1:
+        case n3Parser.T__2:
+            this.enterOuterAlt(localctx, 1);
+            this.state = 75;
+            this.n3Directive();
+            break;
+        case n3Parser.T__18:
+        case n3Parser.T__20:
+        case n3Parser.T__22:
+        case n3Parser.BooleanLiteral:
+        case n3Parser.String:
+        case n3Parser.IRIREF:
+        case n3Parser.PNAME_NS:
+        case n3Parser.PNAME_LN:
+        case n3Parser.BLANK_NODE_LABEL:
+        case n3Parser.INTEGER:
+        case n3Parser.DECIMAL:
+        case n3Parser.DOUBLE:
+        case n3Parser.ANON:
+        case n3Parser.QuickVarName:
+            this.enterOuterAlt(localctx, 2);
+            this.state = 76;
+            this.triples();
+            break;
+        case n3Parser.T__25:
+            this.enterOuterAlt(localctx, 3);
+            this.state = 77;
+            this.existential();
+            break;
+        case n3Parser.T__26:
+            this.enterOuterAlt(localctx, 4);
+            this.state = 78;
+            this.universal();
+            break;
+        default:
+            throw new antlr4.error.NoViableAltException(this);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function N3DirectiveContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_n3Directive;
+    return this;
+}
+
+N3DirectiveContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+N3DirectiveContext.prototype.constructor = N3DirectiveContext;
+
+N3DirectiveContext.prototype.prefixID = function() {
+    return this.getTypedRuleContext(PrefixIDContext,0);
+};
+
+N3DirectiveContext.prototype.base = function() {
+    return this.getTypedRuleContext(BaseContext,0);
+};
+
+N3DirectiveContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterN3Directive(this);
+	}
+};
+
+N3DirectiveContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitN3Directive(this);
+	}
+};
+
+N3DirectiveContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitN3Directive(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.N3DirectiveContext = N3DirectiveContext;
+
+n3Parser.prototype.n3Directive = function() {
+
+    var localctx = new N3DirectiveContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 4, n3Parser.RULE_n3Directive);
+    try {
+        this.state = 83;
+        this._errHandler.sync(this);
+        switch(this._input.LA(1)) {
+        case n3Parser.T__1:
+            this.enterOuterAlt(localctx, 1);
+            this.state = 81;
+            this.prefixID();
+            break;
+        case n3Parser.T__2:
+            this.enterOuterAlt(localctx, 2);
+            this.state = 82;
+            this.base();
+            break;
+        default:
+            throw new antlr4.error.NoViableAltException(this);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function SparqlDirectiveContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_sparqlDirective;
+    return this;
+}
+
+SparqlDirectiveContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+SparqlDirectiveContext.prototype.constructor = SparqlDirectiveContext;
+
+SparqlDirectiveContext.prototype.sparqlBase = function() {
+    return this.getTypedRuleContext(SparqlBaseContext,0);
+};
+
+SparqlDirectiveContext.prototype.sparqlPrefix = function() {
+    return this.getTypedRuleContext(SparqlPrefixContext,0);
+};
+
+SparqlDirectiveContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterSparqlDirective(this);
+	}
+};
+
+SparqlDirectiveContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitSparqlDirective(this);
+	}
+};
+
+SparqlDirectiveContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitSparqlDirective(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.SparqlDirectiveContext = SparqlDirectiveContext;
+
+n3Parser.prototype.sparqlDirective = function() {
+
+    var localctx = new SparqlDirectiveContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 6, n3Parser.RULE_sparqlDirective);
+    try {
+        this.state = 87;
+        this._errHandler.sync(this);
+        switch(this._input.LA(1)) {
+        case n3Parser.BASE:
+            this.enterOuterAlt(localctx, 1);
+            this.state = 85;
+            this.sparqlBase();
+            break;
+        case n3Parser.PREFIX:
+            this.enterOuterAlt(localctx, 2);
+            this.state = 86;
+            this.sparqlPrefix();
+            break;
+        default:
+            throw new antlr4.error.NoViableAltException(this);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function SparqlBaseContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_sparqlBase;
+    return this;
+}
+
+SparqlBaseContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+SparqlBaseContext.prototype.constructor = SparqlBaseContext;
+
+SparqlBaseContext.prototype.BASE = function() {
+    return this.getToken(n3Parser.BASE, 0);
+};
+
+SparqlBaseContext.prototype.IRIREF = function() {
+    return this.getToken(n3Parser.IRIREF, 0);
+};
+
+SparqlBaseContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterSparqlBase(this);
+	}
+};
+
+SparqlBaseContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitSparqlBase(this);
+	}
+};
+
+SparqlBaseContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitSparqlBase(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.SparqlBaseContext = SparqlBaseContext;
+
+n3Parser.prototype.sparqlBase = function() {
+
+    var localctx = new SparqlBaseContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 8, n3Parser.RULE_sparqlBase);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 89;
+        this.match(n3Parser.BASE);
+        this.state = 90;
+        this.match(n3Parser.IRIREF);
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function SparqlPrefixContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_sparqlPrefix;
+    return this;
+}
+
+SparqlPrefixContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+SparqlPrefixContext.prototype.constructor = SparqlPrefixContext;
+
+SparqlPrefixContext.prototype.PREFIX = function() {
+    return this.getToken(n3Parser.PREFIX, 0);
+};
+
+SparqlPrefixContext.prototype.PNAME_NS = function() {
+    return this.getToken(n3Parser.PNAME_NS, 0);
+};
+
+SparqlPrefixContext.prototype.IRIREF = function() {
+    return this.getToken(n3Parser.IRIREF, 0);
+};
+
+SparqlPrefixContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterSparqlPrefix(this);
+	}
+};
+
+SparqlPrefixContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitSparqlPrefix(this);
+	}
+};
+
+SparqlPrefixContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitSparqlPrefix(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.SparqlPrefixContext = SparqlPrefixContext;
+
+n3Parser.prototype.sparqlPrefix = function() {
+
+    var localctx = new SparqlPrefixContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 10, n3Parser.RULE_sparqlPrefix);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 92;
+        this.match(n3Parser.PREFIX);
+        this.state = 93;
+        this.match(n3Parser.PNAME_NS);
+        this.state = 94;
+        this.match(n3Parser.IRIREF);
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function PrefixIDContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_prefixID;
+    return this;
+}
+
+PrefixIDContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+PrefixIDContext.prototype.constructor = PrefixIDContext;
+
+PrefixIDContext.prototype.PNAME_NS = function() {
+    return this.getToken(n3Parser.PNAME_NS, 0);
+};
+
+PrefixIDContext.prototype.IRIREF = function() {
+    return this.getToken(n3Parser.IRIREF, 0);
+};
+
+PrefixIDContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterPrefixID(this);
+	}
+};
+
+PrefixIDContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitPrefixID(this);
+	}
+};
+
+PrefixIDContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitPrefixID(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.PrefixIDContext = PrefixIDContext;
+
+n3Parser.prototype.prefixID = function() {
+
+    var localctx = new PrefixIDContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 12, n3Parser.RULE_prefixID);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 96;
+        this.match(n3Parser.T__1);
+        this.state = 97;
+        this.match(n3Parser.PNAME_NS);
+        this.state = 98;
+        this.match(n3Parser.IRIREF);
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function BaseContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_base;
+    return this;
+}
+
+BaseContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+BaseContext.prototype.constructor = BaseContext;
+
+BaseContext.prototype.IRIREF = function() {
+    return this.getToken(n3Parser.IRIREF, 0);
+};
+
+BaseContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterBase(this);
+	}
+};
+
+BaseContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitBase(this);
+	}
+};
+
+BaseContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitBase(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.BaseContext = BaseContext;
+
+n3Parser.prototype.base = function() {
+
+    var localctx = new BaseContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 14, n3Parser.RULE_base);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 100;
+        this.match(n3Parser.T__2);
+        this.state = 101;
+        this.match(n3Parser.IRIREF);
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function TriplesContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_triples;
+    return this;
+}
+
+TriplesContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+TriplesContext.prototype.constructor = TriplesContext;
+
+TriplesContext.prototype.subject = function() {
+    return this.getTypedRuleContext(SubjectContext,0);
+};
+
+TriplesContext.prototype.blankNodePropertyList = function() {
+    return this.getTypedRuleContext(BlankNodePropertyListContext,0);
+};
+
+TriplesContext.prototype.predicateObjectList = function() {
+    return this.getTypedRuleContext(PredicateObjectListContext,0);
+};
+
+TriplesContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterTriples(this);
+	}
+};
+
+TriplesContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitTriples(this);
+	}
+};
+
+TriplesContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitTriples(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.TriplesContext = TriplesContext;
+
+n3Parser.prototype.triples = function() {
+
+    var localctx = new TriplesContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 16, n3Parser.RULE_triples);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 105;
+        this._errHandler.sync(this);
+        var la_ = this._interp.adaptivePredict(this._input,5,this._ctx);
+        switch(la_) {
+        case 1:
+            this.state = 103;
+            this.subject();
+            break;
+
+        case 2:
+            this.state = 104;
+            this.blankNodePropertyList();
+            break;
+
+        }
+        this.state = 108;
+        this._errHandler.sync(this);
+        _la = this._input.LA(1);
+        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3Parser.T__5) | (1 << n3Parser.T__6) | (1 << n3Parser.T__7) | (1 << n3Parser.T__8) | (1 << n3Parser.T__9) | (1 << n3Parser.T__11) | (1 << n3Parser.T__13) | (1 << n3Parser.T__14) | (1 << n3Parser.T__15) | (1 << n3Parser.T__16) | (1 << n3Parser.T__18) | (1 << n3Parser.T__20) | (1 << n3Parser.T__22) | (1 << n3Parser.BooleanLiteral) | (1 << n3Parser.String) | (1 << n3Parser.IRIREF))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3Parser.PNAME_NS - 32)) | (1 << (n3Parser.PNAME_LN - 32)) | (1 << (n3Parser.BLANK_NODE_LABEL - 32)) | (1 << (n3Parser.INTEGER - 32)) | (1 << (n3Parser.DECIMAL - 32)) | (1 << (n3Parser.DOUBLE - 32)) | (1 << (n3Parser.ANON - 32)) | (1 << (n3Parser.QuickVarName - 32)))) !== 0)) {
+            this.state = 107;
+            this.predicateObjectList();
+        }
+
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function PredicateObjectListContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_predicateObjectList;
+    return this;
+}
+
+PredicateObjectListContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+PredicateObjectListContext.prototype.constructor = PredicateObjectListContext;
+
+PredicateObjectListContext.prototype.verb = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(VerbContext);
+    } else {
+        return this.getTypedRuleContext(VerbContext,i);
+    }
+};
+
+PredicateObjectListContext.prototype.objectList = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(ObjectListContext);
+    } else {
+        return this.getTypedRuleContext(ObjectListContext,i);
+    }
+};
+
+PredicateObjectListContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterPredicateObjectList(this);
+	}
+};
+
+PredicateObjectListContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitPredicateObjectList(this);
+	}
+};
+
+PredicateObjectListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitPredicateObjectList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.PredicateObjectListContext = PredicateObjectListContext;
+
+n3Parser.prototype.predicateObjectList = function() {
+
+    var localctx = new PredicateObjectListContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 18, n3Parser.RULE_predicateObjectList);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 110;
+        this.verb();
+        this.state = 111;
+        this.objectList();
+        this.state = 120;
+        this._errHandler.sync(this);
+        _la = this._input.LA(1);
+        while(_la===n3Parser.T__3) {
+            this.state = 112;
+            this.match(n3Parser.T__3);
+            this.state = 116;
+            this._errHandler.sync(this);
+            _la = this._input.LA(1);
+            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3Parser.T__5) | (1 << n3Parser.T__6) | (1 << n3Parser.T__7) | (1 << n3Parser.T__8) | (1 << n3Parser.T__9) | (1 << n3Parser.T__11) | (1 << n3Parser.T__13) | (1 << n3Parser.T__14) | (1 << n3Parser.T__15) | (1 << n3Parser.T__16) | (1 << n3Parser.T__18) | (1 << n3Parser.T__20) | (1 << n3Parser.T__22) | (1 << n3Parser.BooleanLiteral) | (1 << n3Parser.String) | (1 << n3Parser.IRIREF))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3Parser.PNAME_NS - 32)) | (1 << (n3Parser.PNAME_LN - 32)) | (1 << (n3Parser.BLANK_NODE_LABEL - 32)) | (1 << (n3Parser.INTEGER - 32)) | (1 << (n3Parser.DECIMAL - 32)) | (1 << (n3Parser.DOUBLE - 32)) | (1 << (n3Parser.ANON - 32)) | (1 << (n3Parser.QuickVarName - 32)))) !== 0)) {
+                this.state = 113;
+                this.verb();
+                this.state = 114;
+                this.objectList();
+            }
+
+            this.state = 122;
+            this._errHandler.sync(this);
+            _la = this._input.LA(1);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function ObjectListContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_objectList;
+    return this;
+}
+
+ObjectListContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+ObjectListContext.prototype.constructor = ObjectListContext;
+
+ObjectListContext.prototype.object = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(ObjectContext);
+    } else {
+        return this.getTypedRuleContext(ObjectContext,i);
+    }
+};
+
+ObjectListContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterObjectList(this);
+	}
+};
+
+ObjectListContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitObjectList(this);
+	}
+};
+
+ObjectListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitObjectList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.ObjectListContext = ObjectListContext;
+
+n3Parser.prototype.objectList = function() {
+
+    var localctx = new ObjectListContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 20, n3Parser.RULE_objectList);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 123;
+        this.object();
+        this.state = 128;
+        this._errHandler.sync(this);
+        _la = this._input.LA(1);
+        while(_la===n3Parser.T__4) {
+            this.state = 124;
+            this.match(n3Parser.T__4);
+            this.state = 125;
+            this.object();
+            this.state = 130;
+            this._errHandler.sync(this);
+            _la = this._input.LA(1);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function VerbContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_verb;
+    return this;
+}
+
+VerbContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+VerbContext.prototype.constructor = VerbContext;
+
+VerbContext.prototype.predicate = function() {
+    return this.getTypedRuleContext(PredicateContext,0);
+};
+
+VerbContext.prototype.expression = function() {
+    return this.getTypedRuleContext(ExpressionContext,0);
+};
+
+VerbContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterVerb(this);
+	}
+};
+
+VerbContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitVerb(this);
+	}
+};
+
+VerbContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitVerb(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.VerbContext = VerbContext;
+
+n3Parser.prototype.verb = function() {
+
+    var localctx = new VerbContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 22, n3Parser.RULE_verb);
+    try {
+        this.state = 149;
+        this._errHandler.sync(this);
+        switch(this._input.LA(1)) {
+        case n3Parser.T__16:
+        case n3Parser.T__18:
+        case n3Parser.T__20:
+        case n3Parser.T__22:
+        case n3Parser.BooleanLiteral:
+        case n3Parser.String:
+        case n3Parser.IRIREF:
+        case n3Parser.PNAME_NS:
+        case n3Parser.PNAME_LN:
+        case n3Parser.BLANK_NODE_LABEL:
+        case n3Parser.INTEGER:
+        case n3Parser.DECIMAL:
+        case n3Parser.DOUBLE:
+        case n3Parser.ANON:
+        case n3Parser.QuickVarName:
+            this.enterOuterAlt(localctx, 1);
+            this.state = 131;
+            this.predicate();
+            break;
+        case n3Parser.T__5:
+            this.enterOuterAlt(localctx, 2);
+            this.state = 132;
+            this.match(n3Parser.T__5);
+            break;
+        case n3Parser.T__6:
+            this.enterOuterAlt(localctx, 3);
+            this.state = 133;
+            this.match(n3Parser.T__6);
+            break;
+        case n3Parser.T__7:
+            this.enterOuterAlt(localctx, 4);
+            this.state = 134;
+            this.match(n3Parser.T__7);
+            this.state = 135;
+            this.expression();
+            break;
+        case n3Parser.T__8:
+            this.enterOuterAlt(localctx, 5);
+            this.state = 136;
+            this.match(n3Parser.T__8);
+            this.state = 137;
+            this.expression();
+            break;
+        case n3Parser.T__9:
+            this.enterOuterAlt(localctx, 6);
+            this.state = 138;
+            this.match(n3Parser.T__9);
+            this.state = 139;
+            this.expression();
+            this.state = 140;
+            this.match(n3Parser.T__10);
+            break;
+        case n3Parser.T__11:
+            this.enterOuterAlt(localctx, 7);
+            this.state = 142;
+            this.match(n3Parser.T__11);
+            this.state = 143;
+            this.expression();
+            this.state = 144;
+            this.match(n3Parser.T__12);
+            break;
+        case n3Parser.T__13:
+            this.enterOuterAlt(localctx, 8);
+            this.state = 146;
+            this.match(n3Parser.T__13);
+            break;
+        case n3Parser.T__14:
+            this.enterOuterAlt(localctx, 9);
+            this.state = 147;
+            this.match(n3Parser.T__14);
+            break;
+        case n3Parser.T__15:
+            this.enterOuterAlt(localctx, 10);
+            this.state = 148;
+            this.match(n3Parser.T__15);
+            break;
+        default:
+            throw new antlr4.error.NoViableAltException(this);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function SubjectContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_subject;
+    return this;
+}
+
+SubjectContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+SubjectContext.prototype.constructor = SubjectContext;
+
+SubjectContext.prototype.expression = function() {
+    return this.getTypedRuleContext(ExpressionContext,0);
+};
+
+SubjectContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterSubject(this);
+	}
+};
+
+SubjectContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitSubject(this);
+	}
+};
+
+SubjectContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitSubject(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.SubjectContext = SubjectContext;
+
+n3Parser.prototype.subject = function() {
+
+    var localctx = new SubjectContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 24, n3Parser.RULE_subject);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 151;
+        this.expression();
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function PredicateContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_predicate;
+    return this;
+}
+
+PredicateContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+PredicateContext.prototype.constructor = PredicateContext;
+
+PredicateContext.prototype.expression = function() {
+    return this.getTypedRuleContext(ExpressionContext,0);
+};
+
+PredicateContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterPredicate(this);
+	}
+};
+
+PredicateContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitPredicate(this);
+	}
+};
+
+PredicateContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitPredicate(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.PredicateContext = PredicateContext;
+
+n3Parser.prototype.predicate = function() {
+
+    var localctx = new PredicateContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 26, n3Parser.RULE_predicate);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 156;
+        this._errHandler.sync(this);
+        switch(this._input.LA(1)) {
+        case n3Parser.T__18:
+        case n3Parser.T__20:
+        case n3Parser.T__22:
+        case n3Parser.BooleanLiteral:
+        case n3Parser.String:
+        case n3Parser.IRIREF:
+        case n3Parser.PNAME_NS:
+        case n3Parser.PNAME_LN:
+        case n3Parser.BLANK_NODE_LABEL:
+        case n3Parser.INTEGER:
+        case n3Parser.DECIMAL:
+        case n3Parser.DOUBLE:
+        case n3Parser.ANON:
+        case n3Parser.QuickVarName:
+            this.state = 153;
+            this.expression();
+            break;
+        case n3Parser.T__16:
+            this.state = 154;
+            this.match(n3Parser.T__16);
+            this.state = 155;
+            this.expression();
+            break;
+        default:
+            throw new antlr4.error.NoViableAltException(this);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function ObjectContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_object;
+    return this;
+}
+
+ObjectContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+ObjectContext.prototype.constructor = ObjectContext;
+
+ObjectContext.prototype.expression = function() {
+    return this.getTypedRuleContext(ExpressionContext,0);
+};
+
+ObjectContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterObject(this);
+	}
+};
+
+ObjectContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitObject(this);
+	}
+};
+
+ObjectContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitObject(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.ObjectContext = ObjectContext;
+
+n3Parser.prototype.object = function() {
+
+    var localctx = new ObjectContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 28, n3Parser.RULE_object);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 158;
+        this.expression();
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function ExpressionContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_expression;
+    return this;
+}
+
+ExpressionContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+ExpressionContext.prototype.constructor = ExpressionContext;
+
+ExpressionContext.prototype.path = function() {
+    return this.getTypedRuleContext(PathContext,0);
+};
+
+ExpressionContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterExpression(this);
+	}
+};
+
+ExpressionContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitExpression(this);
+	}
+};
+
+ExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.ExpressionContext = ExpressionContext;
+
+n3Parser.prototype.expression = function() {
+
+    var localctx = new ExpressionContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 30, n3Parser.RULE_expression);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 160;
+        this.path();
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function PathContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_path;
+    return this;
+}
+
+PathContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+PathContext.prototype.constructor = PathContext;
+
+PathContext.prototype.pathItem = function() {
+    return this.getTypedRuleContext(PathItemContext,0);
+};
+
+PathContext.prototype.path = function() {
+    return this.getTypedRuleContext(PathContext,0);
+};
+
+PathContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterPath(this);
+	}
+};
+
+PathContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitPath(this);
+	}
+};
+
+PathContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitPath(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.PathContext = PathContext;
+
+n3Parser.prototype.path = function() {
+
+    var localctx = new PathContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 32, n3Parser.RULE_path);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 162;
+        this.pathItem();
+        this.state = 167;
+        this._errHandler.sync(this);
+        var la_ = this._interp.adaptivePredict(this._input,12,this._ctx);
+        if(la_===1) {
+            this.state = 163;
+            this.match(n3Parser.T__17);
+            this.state = 164;
+            this.path();
+
+        } else if(la_===2) {
+            this.state = 165;
+            this.match(n3Parser.T__16);
+            this.state = 166;
+            this.path();
+
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function PathItemContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_pathItem;
+    return this;
+}
+
+PathItemContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+PathItemContext.prototype.constructor = PathItemContext;
+
+PathItemContext.prototype.iri = function() {
+    return this.getTypedRuleContext(IriContext,0);
+};
+
+PathItemContext.prototype.blankNode = function() {
+    return this.getTypedRuleContext(BlankNodeContext,0);
+};
+
+PathItemContext.prototype.quickVar = function() {
+    return this.getTypedRuleContext(QuickVarContext,0);
+};
+
+PathItemContext.prototype.collection = function() {
+    return this.getTypedRuleContext(CollectionContext,0);
+};
+
+PathItemContext.prototype.blankNodePropertyList = function() {
+    return this.getTypedRuleContext(BlankNodePropertyListContext,0);
+};
+
+PathItemContext.prototype.literal = function() {
+    return this.getTypedRuleContext(LiteralContext,0);
+};
+
+PathItemContext.prototype.formula = function() {
+    return this.getTypedRuleContext(FormulaContext,0);
+};
+
+PathItemContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterPathItem(this);
+	}
+};
+
+PathItemContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitPathItem(this);
+	}
+};
+
+PathItemContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitPathItem(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.PathItemContext = PathItemContext;
+
+n3Parser.prototype.pathItem = function() {
+
+    var localctx = new PathItemContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 34, n3Parser.RULE_pathItem);
+    try {
+        this.state = 176;
+        this._errHandler.sync(this);
+        switch(this._input.LA(1)) {
+        case n3Parser.IRIREF:
+        case n3Parser.PNAME_NS:
+        case n3Parser.PNAME_LN:
+            this.enterOuterAlt(localctx, 1);
+            this.state = 169;
+            this.iri();
+            break;
+        case n3Parser.BLANK_NODE_LABEL:
+        case n3Parser.ANON:
+            this.enterOuterAlt(localctx, 2);
+            this.state = 170;
+            this.blankNode();
+            break;
+        case n3Parser.QuickVarName:
+            this.enterOuterAlt(localctx, 3);
+            this.state = 171;
+            this.quickVar();
+            break;
+        case n3Parser.T__20:
+            this.enterOuterAlt(localctx, 4);
+            this.state = 172;
+            this.collection();
+            break;
+        case n3Parser.T__18:
+            this.enterOuterAlt(localctx, 5);
+            this.state = 173;
+            this.blankNodePropertyList();
+            break;
+        case n3Parser.BooleanLiteral:
+        case n3Parser.String:
+        case n3Parser.INTEGER:
+        case n3Parser.DECIMAL:
+        case n3Parser.DOUBLE:
+            this.enterOuterAlt(localctx, 6);
+            this.state = 174;
+            this.literal();
+            break;
+        case n3Parser.T__22:
+            this.enterOuterAlt(localctx, 7);
+            this.state = 175;
+            this.formula();
+            break;
+        default:
+            throw new antlr4.error.NoViableAltException(this);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function LiteralContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_literal;
+    return this;
+}
+
+LiteralContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+LiteralContext.prototype.constructor = LiteralContext;
+
+LiteralContext.prototype.rdfLiteral = function() {
+    return this.getTypedRuleContext(RdfLiteralContext,0);
+};
+
+LiteralContext.prototype.numericLiteral = function() {
+    return this.getTypedRuleContext(NumericLiteralContext,0);
+};
+
+LiteralContext.prototype.BooleanLiteral = function() {
+    return this.getToken(n3Parser.BooleanLiteral, 0);
+};
+
+LiteralContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterLiteral(this);
+	}
+};
+
+LiteralContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitLiteral(this);
+	}
+};
+
+LiteralContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitLiteral(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.LiteralContext = LiteralContext;
+
+n3Parser.prototype.literal = function() {
+
+    var localctx = new LiteralContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 36, n3Parser.RULE_literal);
+    try {
+        this.state = 181;
+        this._errHandler.sync(this);
+        switch(this._input.LA(1)) {
+        case n3Parser.String:
+            this.enterOuterAlt(localctx, 1);
+            this.state = 178;
+            this.rdfLiteral();
+            break;
+        case n3Parser.INTEGER:
+        case n3Parser.DECIMAL:
+        case n3Parser.DOUBLE:
+            this.enterOuterAlt(localctx, 2);
+            this.state = 179;
+            this.numericLiteral();
+            break;
+        case n3Parser.BooleanLiteral:
+            this.enterOuterAlt(localctx, 3);
+            this.state = 180;
+            this.match(n3Parser.BooleanLiteral);
+            break;
+        default:
+            throw new antlr4.error.NoViableAltException(this);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function BlankNodePropertyListContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_blankNodePropertyList;
+    return this;
+}
+
+BlankNodePropertyListContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+BlankNodePropertyListContext.prototype.constructor = BlankNodePropertyListContext;
+
+BlankNodePropertyListContext.prototype.predicateObjectList = function() {
+    return this.getTypedRuleContext(PredicateObjectListContext,0);
+};
+
+BlankNodePropertyListContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterBlankNodePropertyList(this);
+	}
+};
+
+BlankNodePropertyListContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitBlankNodePropertyList(this);
+	}
+};
+
+BlankNodePropertyListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitBlankNodePropertyList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.BlankNodePropertyListContext = BlankNodePropertyListContext;
+
+n3Parser.prototype.blankNodePropertyList = function() {
+
+    var localctx = new BlankNodePropertyListContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 38, n3Parser.RULE_blankNodePropertyList);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 183;
+        this.match(n3Parser.T__18);
+        this.state = 185;
+        this._errHandler.sync(this);
+        _la = this._input.LA(1);
+        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3Parser.T__5) | (1 << n3Parser.T__6) | (1 << n3Parser.T__7) | (1 << n3Parser.T__8) | (1 << n3Parser.T__9) | (1 << n3Parser.T__11) | (1 << n3Parser.T__13) | (1 << n3Parser.T__14) | (1 << n3Parser.T__15) | (1 << n3Parser.T__16) | (1 << n3Parser.T__18) | (1 << n3Parser.T__20) | (1 << n3Parser.T__22) | (1 << n3Parser.BooleanLiteral) | (1 << n3Parser.String) | (1 << n3Parser.IRIREF))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3Parser.PNAME_NS - 32)) | (1 << (n3Parser.PNAME_LN - 32)) | (1 << (n3Parser.BLANK_NODE_LABEL - 32)) | (1 << (n3Parser.INTEGER - 32)) | (1 << (n3Parser.DECIMAL - 32)) | (1 << (n3Parser.DOUBLE - 32)) | (1 << (n3Parser.ANON - 32)) | (1 << (n3Parser.QuickVarName - 32)))) !== 0)) {
+            this.state = 184;
+            this.predicateObjectList();
+        }
+
+        this.state = 187;
+        this.match(n3Parser.T__19);
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function CollectionContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_collection;
+    return this;
+}
+
+CollectionContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+CollectionContext.prototype.constructor = CollectionContext;
+
+CollectionContext.prototype.object = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(ObjectContext);
+    } else {
+        return this.getTypedRuleContext(ObjectContext,i);
+    }
+};
+
+CollectionContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterCollection(this);
+	}
+};
+
+CollectionContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitCollection(this);
+	}
+};
+
+CollectionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitCollection(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.CollectionContext = CollectionContext;
+
+n3Parser.prototype.collection = function() {
+
+    var localctx = new CollectionContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 40, n3Parser.RULE_collection);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 189;
+        this.match(n3Parser.T__20);
+        this.state = 193;
+        this._errHandler.sync(this);
+        _la = this._input.LA(1);
+        while(((((_la - 19)) & ~0x1f) == 0 && ((1 << (_la - 19)) & ((1 << (n3Parser.T__18 - 19)) | (1 << (n3Parser.T__20 - 19)) | (1 << (n3Parser.T__22 - 19)) | (1 << (n3Parser.BooleanLiteral - 19)) | (1 << (n3Parser.String - 19)) | (1 << (n3Parser.IRIREF - 19)) | (1 << (n3Parser.PNAME_NS - 19)) | (1 << (n3Parser.PNAME_LN - 19)) | (1 << (n3Parser.BLANK_NODE_LABEL - 19)) | (1 << (n3Parser.INTEGER - 19)) | (1 << (n3Parser.DECIMAL - 19)) | (1 << (n3Parser.DOUBLE - 19)) | (1 << (n3Parser.ANON - 19)) | (1 << (n3Parser.QuickVarName - 19)))) !== 0)) {
+            this.state = 190;
+            this.object();
+            this.state = 195;
+            this._errHandler.sync(this);
+            _la = this._input.LA(1);
+        }
+        this.state = 196;
+        this.match(n3Parser.T__21);
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function FormulaContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_formula;
+    return this;
+}
+
+FormulaContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+FormulaContext.prototype.constructor = FormulaContext;
+
+FormulaContext.prototype.formulaContent = function() {
+    return this.getTypedRuleContext(FormulaContentContext,0);
+};
+
+FormulaContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterFormula(this);
+	}
+};
+
+FormulaContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitFormula(this);
+	}
+};
+
+FormulaContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitFormula(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.FormulaContext = FormulaContext;
+
+n3Parser.prototype.formula = function() {
+
+    var localctx = new FormulaContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 42, n3Parser.RULE_formula);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 198;
+        this.match(n3Parser.T__22);
+        this.state = 200;
+        this._errHandler.sync(this);
+        _la = this._input.LA(1);
+        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3Parser.T__1) | (1 << n3Parser.T__2) | (1 << n3Parser.T__18) | (1 << n3Parser.T__20) | (1 << n3Parser.T__22) | (1 << n3Parser.T__25) | (1 << n3Parser.T__26) | (1 << n3Parser.BooleanLiteral) | (1 << n3Parser.String) | (1 << n3Parser.IRIREF))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3Parser.PNAME_NS - 32)) | (1 << (n3Parser.PNAME_LN - 32)) | (1 << (n3Parser.BLANK_NODE_LABEL - 32)) | (1 << (n3Parser.INTEGER - 32)) | (1 << (n3Parser.DECIMAL - 32)) | (1 << (n3Parser.DOUBLE - 32)) | (1 << (n3Parser.ANON - 32)) | (1 << (n3Parser.QuickVarName - 32)) | (1 << (n3Parser.BASE - 32)) | (1 << (n3Parser.PREFIX - 32)))) !== 0)) {
+            this.state = 199;
+            this.formulaContent();
+        }
+
+        this.state = 202;
+        this.match(n3Parser.T__23);
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function FormulaContentContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_formulaContent;
+    return this;
+}
+
+FormulaContentContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+FormulaContentContext.prototype.constructor = FormulaContentContext;
+
+FormulaContentContext.prototype.n3Statement = function() {
+    return this.getTypedRuleContext(N3StatementContext,0);
+};
+
+FormulaContentContext.prototype.formulaContent = function() {
+    return this.getTypedRuleContext(FormulaContentContext,0);
+};
+
+FormulaContentContext.prototype.sparqlDirective = function() {
+    return this.getTypedRuleContext(SparqlDirectiveContext,0);
+};
+
+FormulaContentContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterFormulaContent(this);
+	}
+};
+
+FormulaContentContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitFormulaContent(this);
+	}
+};
+
+FormulaContentContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitFormulaContent(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.FormulaContentContext = FormulaContentContext;
+
+n3Parser.prototype.formulaContent = function() {
+
+    var localctx = new FormulaContentContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 44, n3Parser.RULE_formulaContent);
+    var _la = 0; // Token type
+    try {
+        this.state = 215;
+        this._errHandler.sync(this);
+        switch(this._input.LA(1)) {
+        case n3Parser.T__1:
+        case n3Parser.T__2:
+        case n3Parser.T__18:
+        case n3Parser.T__20:
+        case n3Parser.T__22:
+        case n3Parser.T__25:
+        case n3Parser.T__26:
+        case n3Parser.BooleanLiteral:
+        case n3Parser.String:
+        case n3Parser.IRIREF:
+        case n3Parser.PNAME_NS:
+        case n3Parser.PNAME_LN:
+        case n3Parser.BLANK_NODE_LABEL:
+        case n3Parser.INTEGER:
+        case n3Parser.DECIMAL:
+        case n3Parser.DOUBLE:
+        case n3Parser.ANON:
+        case n3Parser.QuickVarName:
+            this.enterOuterAlt(localctx, 1);
+            this.state = 204;
+            this.n3Statement();
+            this.state = 209;
+            this._errHandler.sync(this);
+            _la = this._input.LA(1);
+            if(_la===n3Parser.T__0) {
+                this.state = 205;
+                this.match(n3Parser.T__0);
+                this.state = 207;
+                this._errHandler.sync(this);
+                _la = this._input.LA(1);
+                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3Parser.T__1) | (1 << n3Parser.T__2) | (1 << n3Parser.T__18) | (1 << n3Parser.T__20) | (1 << n3Parser.T__22) | (1 << n3Parser.T__25) | (1 << n3Parser.T__26) | (1 << n3Parser.BooleanLiteral) | (1 << n3Parser.String) | (1 << n3Parser.IRIREF))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3Parser.PNAME_NS - 32)) | (1 << (n3Parser.PNAME_LN - 32)) | (1 << (n3Parser.BLANK_NODE_LABEL - 32)) | (1 << (n3Parser.INTEGER - 32)) | (1 << (n3Parser.DECIMAL - 32)) | (1 << (n3Parser.DOUBLE - 32)) | (1 << (n3Parser.ANON - 32)) | (1 << (n3Parser.QuickVarName - 32)) | (1 << (n3Parser.BASE - 32)) | (1 << (n3Parser.PREFIX - 32)))) !== 0)) {
+                    this.state = 206;
+                    this.formulaContent();
+                }
+
+            }
+
+            break;
+        case n3Parser.BASE:
+        case n3Parser.PREFIX:
+            this.enterOuterAlt(localctx, 2);
+            this.state = 211;
+            this.sparqlDirective();
+            this.state = 213;
+            this._errHandler.sync(this);
+            _la = this._input.LA(1);
+            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3Parser.T__1) | (1 << n3Parser.T__2) | (1 << n3Parser.T__18) | (1 << n3Parser.T__20) | (1 << n3Parser.T__22) | (1 << n3Parser.T__25) | (1 << n3Parser.T__26) | (1 << n3Parser.BooleanLiteral) | (1 << n3Parser.String) | (1 << n3Parser.IRIREF))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3Parser.PNAME_NS - 32)) | (1 << (n3Parser.PNAME_LN - 32)) | (1 << (n3Parser.BLANK_NODE_LABEL - 32)) | (1 << (n3Parser.INTEGER - 32)) | (1 << (n3Parser.DECIMAL - 32)) | (1 << (n3Parser.DOUBLE - 32)) | (1 << (n3Parser.ANON - 32)) | (1 << (n3Parser.QuickVarName - 32)) | (1 << (n3Parser.BASE - 32)) | (1 << (n3Parser.PREFIX - 32)))) !== 0)) {
+                this.state = 212;
+                this.formulaContent();
+            }
+
+            break;
+        default:
+            throw new antlr4.error.NoViableAltException(this);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function NumericLiteralContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_numericLiteral;
+    return this;
+}
+
+NumericLiteralContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+NumericLiteralContext.prototype.constructor = NumericLiteralContext;
+
+NumericLiteralContext.prototype.INTEGER = function() {
+    return this.getToken(n3Parser.INTEGER, 0);
+};
+
+NumericLiteralContext.prototype.DECIMAL = function() {
+    return this.getToken(n3Parser.DECIMAL, 0);
+};
+
+NumericLiteralContext.prototype.DOUBLE = function() {
+    return this.getToken(n3Parser.DOUBLE, 0);
+};
+
+NumericLiteralContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterNumericLiteral(this);
+	}
+};
+
+NumericLiteralContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitNumericLiteral(this);
+	}
+};
+
+NumericLiteralContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitNumericLiteral(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.NumericLiteralContext = NumericLiteralContext;
+
+n3Parser.prototype.numericLiteral = function() {
+
+    var localctx = new NumericLiteralContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 46, n3Parser.RULE_numericLiteral);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 217;
+        _la = this._input.LA(1);
+        if(!(((((_la - 36)) & ~0x1f) == 0 && ((1 << (_la - 36)) & ((1 << (n3Parser.INTEGER - 36)) | (1 << (n3Parser.DECIMAL - 36)) | (1 << (n3Parser.DOUBLE - 36)))) !== 0))) {
+        this._errHandler.recoverInline(this);
+        }
+        else {
+        	this._errHandler.reportMatch(this);
+            this.consume();
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function RdfLiteralContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_rdfLiteral;
+    return this;
+}
+
+RdfLiteralContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+RdfLiteralContext.prototype.constructor = RdfLiteralContext;
+
+RdfLiteralContext.prototype.String = function() {
+    return this.getToken(n3Parser.String, 0);
+};
+
+RdfLiteralContext.prototype.LANGTAG = function() {
+    return this.getToken(n3Parser.LANGTAG, 0);
+};
+
+RdfLiteralContext.prototype.iri = function() {
+    return this.getTypedRuleContext(IriContext,0);
+};
+
+RdfLiteralContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterRdfLiteral(this);
+	}
+};
+
+RdfLiteralContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitRdfLiteral(this);
+	}
+};
+
+RdfLiteralContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitRdfLiteral(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.RdfLiteralContext = RdfLiteralContext;
+
+n3Parser.prototype.rdfLiteral = function() {
+
+    var localctx = new RdfLiteralContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 48, n3Parser.RULE_rdfLiteral);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 219;
+        this.match(n3Parser.String);
+        this.state = 223;
+        this._errHandler.sync(this);
+        switch (this._input.LA(1)) {
+        case n3Parser.LANGTAG:
+        	this.state = 220;
+        	this.match(n3Parser.LANGTAG);
+        	break;
+        case n3Parser.T__24:
+        	this.state = 221;
+        	this.match(n3Parser.T__24);
+        	this.state = 222;
+        	this.iri();
+        	break;
+        case n3Parser.T__0:
+        case n3Parser.T__3:
+        case n3Parser.T__4:
+        case n3Parser.T__5:
+        case n3Parser.T__6:
+        case n3Parser.T__7:
+        case n3Parser.T__8:
+        case n3Parser.T__9:
+        case n3Parser.T__10:
+        case n3Parser.T__11:
+        case n3Parser.T__12:
+        case n3Parser.T__13:
+        case n3Parser.T__14:
+        case n3Parser.T__15:
+        case n3Parser.T__16:
+        case n3Parser.T__17:
+        case n3Parser.T__18:
+        case n3Parser.T__19:
+        case n3Parser.T__20:
+        case n3Parser.T__21:
+        case n3Parser.T__22:
+        case n3Parser.T__23:
+        case n3Parser.BooleanLiteral:
+        case n3Parser.String:
+        case n3Parser.IRIREF:
+        case n3Parser.PNAME_NS:
+        case n3Parser.PNAME_LN:
+        case n3Parser.BLANK_NODE_LABEL:
+        case n3Parser.INTEGER:
+        case n3Parser.DECIMAL:
+        case n3Parser.DOUBLE:
+        case n3Parser.ANON:
+        case n3Parser.QuickVarName:
+        	break;
+        default:
+        	throw new antlr4.error.NoViableAltException(this);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function IriContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_iri;
+    return this;
+}
+
+IriContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+IriContext.prototype.constructor = IriContext;
+
+IriContext.prototype.IRIREF = function() {
+    return this.getToken(n3Parser.IRIREF, 0);
+};
+
+IriContext.prototype.prefixedName = function() {
+    return this.getTypedRuleContext(PrefixedNameContext,0);
+};
+
+IriContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterIri(this);
+	}
+};
+
+IriContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitIri(this);
+	}
+};
+
+IriContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitIri(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.IriContext = IriContext;
+
+n3Parser.prototype.iri = function() {
+
+    var localctx = new IriContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 50, n3Parser.RULE_iri);
+    try {
+        this.state = 227;
+        this._errHandler.sync(this);
+        switch(this._input.LA(1)) {
+        case n3Parser.IRIREF:
+            this.enterOuterAlt(localctx, 1);
+            this.state = 225;
+            this.match(n3Parser.IRIREF);
+            break;
+        case n3Parser.PNAME_NS:
+        case n3Parser.PNAME_LN:
+            this.enterOuterAlt(localctx, 2);
+            this.state = 226;
+            this.prefixedName();
+            break;
+        default:
+            throw new antlr4.error.NoViableAltException(this);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function IriListContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_iriList;
+    return this;
+}
+
+IriListContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+IriListContext.prototype.constructor = IriListContext;
+
+IriListContext.prototype.iri = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(IriContext);
+    } else {
+        return this.getTypedRuleContext(IriContext,i);
+    }
+};
+
+IriListContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterIriList(this);
+	}
+};
+
+IriListContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitIriList(this);
+	}
+};
+
+IriListContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitIriList(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.IriListContext = IriListContext;
+
+n3Parser.prototype.iriList = function() {
+
+    var localctx = new IriListContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 52, n3Parser.RULE_iriList);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 229;
+        this.iri();
+        this.state = 234;
+        this._errHandler.sync(this);
+        _la = this._input.LA(1);
+        while(_la===n3Parser.T__4) {
+            this.state = 230;
+            this.match(n3Parser.T__4);
+            this.state = 231;
+            this.iri();
+            this.state = 236;
+            this._errHandler.sync(this);
+            _la = this._input.LA(1);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function PrefixedNameContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_prefixedName;
+    return this;
+}
+
+PrefixedNameContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+PrefixedNameContext.prototype.constructor = PrefixedNameContext;
+
+PrefixedNameContext.prototype.PNAME_NS = function() {
+    return this.getToken(n3Parser.PNAME_NS, 0);
+};
+
+PrefixedNameContext.prototype.PNAME_LN = function() {
+    return this.getToken(n3Parser.PNAME_LN, 0);
+};
+
+PrefixedNameContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterPrefixedName(this);
+	}
+};
+
+PrefixedNameContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitPrefixedName(this);
+	}
+};
+
+PrefixedNameContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitPrefixedName(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.PrefixedNameContext = PrefixedNameContext;
+
+n3Parser.prototype.prefixedName = function() {
+
+    var localctx = new PrefixedNameContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 54, n3Parser.RULE_prefixedName);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 237;
+        _la = this._input.LA(1);
+        if(!(_la===n3Parser.PNAME_NS || _la===n3Parser.PNAME_LN)) {
+        this._errHandler.recoverInline(this);
+        }
+        else {
+        	this._errHandler.reportMatch(this);
+            this.consume();
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function BlankNodeContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_blankNode;
+    return this;
+}
+
+BlankNodeContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+BlankNodeContext.prototype.constructor = BlankNodeContext;
+
+BlankNodeContext.prototype.BLANK_NODE_LABEL = function() {
+    return this.getToken(n3Parser.BLANK_NODE_LABEL, 0);
+};
+
+BlankNodeContext.prototype.ANON = function() {
+    return this.getToken(n3Parser.ANON, 0);
+};
+
+BlankNodeContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterBlankNode(this);
+	}
+};
+
+BlankNodeContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitBlankNode(this);
+	}
+};
+
+BlankNodeContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitBlankNode(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.BlankNodeContext = BlankNodeContext;
+
+n3Parser.prototype.blankNode = function() {
+
+    var localctx = new BlankNodeContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 56, n3Parser.RULE_blankNode);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 239;
+        _la = this._input.LA(1);
+        if(!(_la===n3Parser.BLANK_NODE_LABEL || _la===n3Parser.ANON)) {
+        this._errHandler.recoverInline(this);
+        }
+        else {
+        	this._errHandler.reportMatch(this);
+            this.consume();
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function QuickVarContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_quickVar;
+    return this;
+}
+
+QuickVarContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+QuickVarContext.prototype.constructor = QuickVarContext;
+
+QuickVarContext.prototype.QuickVarName = function() {
+    return this.getToken(n3Parser.QuickVarName, 0);
+};
+
+QuickVarContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterQuickVar(this);
+	}
+};
+
+QuickVarContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitQuickVar(this);
+	}
+};
+
+QuickVarContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitQuickVar(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.QuickVarContext = QuickVarContext;
+
+n3Parser.prototype.quickVar = function() {
+
+    var localctx = new QuickVarContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 58, n3Parser.RULE_quickVar);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 241;
+        this.match(n3Parser.QuickVarName);
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function ExistentialContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_existential;
+    return this;
+}
+
+ExistentialContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+ExistentialContext.prototype.constructor = ExistentialContext;
+
+ExistentialContext.prototype.iriList = function() {
+    return this.getTypedRuleContext(IriListContext,0);
+};
+
+ExistentialContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterExistential(this);
+	}
+};
+
+ExistentialContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitExistential(this);
+	}
+};
+
+ExistentialContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitExistential(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.ExistentialContext = ExistentialContext;
+
+n3Parser.prototype.existential = function() {
+
+    var localctx = new ExistentialContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 60, n3Parser.RULE_existential);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 243;
+        this.match(n3Parser.T__25);
+        this.state = 244;
+        this.iriList();
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function UniversalContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = n3Parser.RULE_universal;
+    return this;
+}
+
+UniversalContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+UniversalContext.prototype.constructor = UniversalContext;
+
+UniversalContext.prototype.iriList = function() {
+    return this.getTypedRuleContext(IriListContext,0);
+};
+
+UniversalContext.prototype.enterRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.enterUniversal(this);
+	}
+};
+
+UniversalContext.prototype.exitRule = function(listener) {
+    if(listener instanceof n3Listener ) {
+        listener.exitUniversal(this);
+	}
+};
+
+UniversalContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof n3Visitor ) {
+        return visitor.visitUniversal(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+n3Parser.UniversalContext = UniversalContext;
+
+n3Parser.prototype.universal = function() {
+
+    var localctx = new UniversalContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 62, n3Parser.RULE_universal);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 246;
+        this.match(n3Parser.T__26);
+        this.state = 247;
+        this.iriList();
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+
+exports.n3Parser = n3Parser;
+
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Generated from n3.g4 by ANTLR 4.6
+// jshint ignore: start
+var antlr4 = __webpack_require__(12);
+
+// This class defines a complete listener for a parse tree produced by n3Parser.
+function n3Listener() {
+	antlr4.tree.ParseTreeListener.call(this);
+	return this;
+}
+
+n3Listener.prototype = Object.create(antlr4.tree.ParseTreeListener.prototype);
+n3Listener.prototype.constructor = n3Listener;
+
+// Enter a parse tree produced by n3Parser#n3Doc.
+n3Listener.prototype.enterN3Doc = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#n3Doc.
+n3Listener.prototype.exitN3Doc = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#n3Statement.
+n3Listener.prototype.enterN3Statement = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#n3Statement.
+n3Listener.prototype.exitN3Statement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#n3Directive.
+n3Listener.prototype.enterN3Directive = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#n3Directive.
+n3Listener.prototype.exitN3Directive = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#sparqlDirective.
+n3Listener.prototype.enterSparqlDirective = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#sparqlDirective.
+n3Listener.prototype.exitSparqlDirective = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#sparqlBase.
+n3Listener.prototype.enterSparqlBase = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#sparqlBase.
+n3Listener.prototype.exitSparqlBase = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#sparqlPrefix.
+n3Listener.prototype.enterSparqlPrefix = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#sparqlPrefix.
+n3Listener.prototype.exitSparqlPrefix = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#prefixID.
+n3Listener.prototype.enterPrefixID = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#prefixID.
+n3Listener.prototype.exitPrefixID = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#base.
+n3Listener.prototype.enterBase = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#base.
+n3Listener.prototype.exitBase = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#triples.
+n3Listener.prototype.enterTriples = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#triples.
+n3Listener.prototype.exitTriples = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#predicateObjectList.
+n3Listener.prototype.enterPredicateObjectList = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#predicateObjectList.
+n3Listener.prototype.exitPredicateObjectList = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#objectList.
+n3Listener.prototype.enterObjectList = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#objectList.
+n3Listener.prototype.exitObjectList = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#verb.
+n3Listener.prototype.enterVerb = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#verb.
+n3Listener.prototype.exitVerb = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#subject.
+n3Listener.prototype.enterSubject = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#subject.
+n3Listener.prototype.exitSubject = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#predicate.
+n3Listener.prototype.enterPredicate = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#predicate.
+n3Listener.prototype.exitPredicate = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#object.
+n3Listener.prototype.enterObject = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#object.
+n3Listener.prototype.exitObject = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#expression.
+n3Listener.prototype.enterExpression = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#expression.
+n3Listener.prototype.exitExpression = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#path.
+n3Listener.prototype.enterPath = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#path.
+n3Listener.prototype.exitPath = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#pathItem.
+n3Listener.prototype.enterPathItem = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#pathItem.
+n3Listener.prototype.exitPathItem = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#literal.
+n3Listener.prototype.enterLiteral = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#literal.
+n3Listener.prototype.exitLiteral = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#blankNodePropertyList.
+n3Listener.prototype.enterBlankNodePropertyList = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#blankNodePropertyList.
+n3Listener.prototype.exitBlankNodePropertyList = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#collection.
+n3Listener.prototype.enterCollection = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#collection.
+n3Listener.prototype.exitCollection = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#formula.
+n3Listener.prototype.enterFormula = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#formula.
+n3Listener.prototype.exitFormula = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#formulaContent.
+n3Listener.prototype.enterFormulaContent = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#formulaContent.
+n3Listener.prototype.exitFormulaContent = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#numericLiteral.
+n3Listener.prototype.enterNumericLiteral = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#numericLiteral.
+n3Listener.prototype.exitNumericLiteral = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#rdfLiteral.
+n3Listener.prototype.enterRdfLiteral = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#rdfLiteral.
+n3Listener.prototype.exitRdfLiteral = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#iri.
+n3Listener.prototype.enterIri = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#iri.
+n3Listener.prototype.exitIri = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#iriList.
+n3Listener.prototype.enterIriList = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#iriList.
+n3Listener.prototype.exitIriList = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#prefixedName.
+n3Listener.prototype.enterPrefixedName = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#prefixedName.
+n3Listener.prototype.exitPrefixedName = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#blankNode.
+n3Listener.prototype.enterBlankNode = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#blankNode.
+n3Listener.prototype.exitBlankNode = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#quickVar.
+n3Listener.prototype.enterQuickVar = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#quickVar.
+n3Listener.prototype.exitQuickVar = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#existential.
+n3Listener.prototype.enterExistential = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#existential.
+n3Listener.prototype.exitExistential = function(ctx) {
+};
+
+
+// Enter a parse tree produced by n3Parser#universal.
+n3Listener.prototype.enterUniversal = function(ctx) {
+};
+
+// Exit a parse tree produced by n3Parser#universal.
+n3Listener.prototype.exitUniversal = function(ctx) {
+};
+
+
+
+exports.n3Listener = n3Listener;
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Generated from n3.g4 by ANTLR 4.6
+// jshint ignore: start
+var antlr4 = __webpack_require__(12);
+
+// This class defines a complete generic visitor for a parse tree produced by n3Parser.
+
+function n3Visitor() {
+	antlr4.tree.ParseTreeVisitor.call(this);
+	return this;
+}
+
+n3Visitor.prototype = Object.create(antlr4.tree.ParseTreeVisitor.prototype);
+n3Visitor.prototype.constructor = n3Visitor;
+
+// Visit a parse tree produced by n3Parser#n3Doc.
+n3Visitor.prototype.visitN3Doc = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#n3Statement.
+n3Visitor.prototype.visitN3Statement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#n3Directive.
+n3Visitor.prototype.visitN3Directive = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#sparqlDirective.
+n3Visitor.prototype.visitSparqlDirective = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#sparqlBase.
+n3Visitor.prototype.visitSparqlBase = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#sparqlPrefix.
+n3Visitor.prototype.visitSparqlPrefix = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#prefixID.
+n3Visitor.prototype.visitPrefixID = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#base.
+n3Visitor.prototype.visitBase = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#triples.
+n3Visitor.prototype.visitTriples = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#predicateObjectList.
+n3Visitor.prototype.visitPredicateObjectList = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#objectList.
+n3Visitor.prototype.visitObjectList = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#verb.
+n3Visitor.prototype.visitVerb = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#subject.
+n3Visitor.prototype.visitSubject = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#predicate.
+n3Visitor.prototype.visitPredicate = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#object.
+n3Visitor.prototype.visitObject = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#expression.
+n3Visitor.prototype.visitExpression = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#path.
+n3Visitor.prototype.visitPath = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#pathItem.
+n3Visitor.prototype.visitPathItem = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#literal.
+n3Visitor.prototype.visitLiteral = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#blankNodePropertyList.
+n3Visitor.prototype.visitBlankNodePropertyList = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#collection.
+n3Visitor.prototype.visitCollection = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#formula.
+n3Visitor.prototype.visitFormula = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#formulaContent.
+n3Visitor.prototype.visitFormulaContent = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#numericLiteral.
+n3Visitor.prototype.visitNumericLiteral = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#rdfLiteral.
+n3Visitor.prototype.visitRdfLiteral = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#iri.
+n3Visitor.prototype.visitIri = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#iriList.
+n3Visitor.prototype.visitIriList = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#prefixedName.
+n3Visitor.prototype.visitPrefixedName = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#blankNode.
+n3Visitor.prototype.visitBlankNode = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#quickVar.
+n3Visitor.prototype.visitQuickVar = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#existential.
+n3Visitor.prototype.visitExistential = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by n3Parser#universal.
+n3Visitor.prototype.visitUniversal = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+
+exports.n3Visitor = n3Visitor;
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var antlr4 = __webpack_require__(12);
+var N3Lexer = __webpack_require__(52).n3Lexer;
+var N3Parser = __webpack_require__(31).n3Parser;
+var N3PrefixListener = __webpack_require__(53).n3PrefixListener;
+// var N3PrintListener = require('./n3PrintListener').n3PrintListener;
+var N3PrintVisitor = __webpack_require__(54).n3PrintVisitor;
+
+function parse(input, listener) {
+	var chars = new antlr4.InputStream(input);
+	
+	var n3Lexer = new N3Lexer(chars);
+	n3Lexer.removeErrorListeners();
+	n3Lexer.addErrorListener(listener);
+	
+	var tokens = new antlr4.CommonTokenStream(n3Lexer);
+	
+	var n3Parser = new N3Parser(tokens);
+	n3Parser.removeErrorListeners();
+	n3Parser.removeParseListeners();
+	
+	if (listener.syntaxError)
+		// will call listener with any syntax (parser/lexer) error
+		n3Parser.addErrorListener(listener);
+	
+	if (listener.unknownPrefix)
+		// will call listener with any prefix errors
+		n3Parser.addParseListener(new N3PrefixListener(listener));
+	
+	// if (listener.newAstLine)
+		// will call listener with individual ast lines
+		// n3Parser.addParseListener(new N3PrintListener(listener));
+	
+	var ast = n3Parser.n3Doc()
+	if (listener.newAstLine)
+		new N3PrintVisitor(listener).visit(ast)
+}
+
+exports.parse = parse;
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+exports.ATN = __webpack_require__(7).ATN;
+exports.ATNDeserializer = __webpack_require__(21).ATNDeserializer;
+exports.LexerATNSimulator = __webpack_require__(38).LexerATNSimulator;
+exports.ParserATNSimulator = __webpack_require__(41).ParserATNSimulator;
+exports.PredictionMode = __webpack_require__(26).PredictionMode;
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+///
+
+var Set = __webpack_require__(0).Set;
+var BitSet = __webpack_require__(0).BitSet;
+var Token = __webpack_require__(1).Token;
+var ATNConfig = __webpack_require__(13).ATNConfig;
+var Interval = __webpack_require__(2).Interval;
+var IntervalSet = __webpack_require__(2).IntervalSet;
+var RuleStopState = __webpack_require__(3).RuleStopState;
+var RuleTransition = __webpack_require__(8).RuleTransition;
+var NotSetTransition = __webpack_require__(8).NotSetTransition;
+var WildcardTransition = __webpack_require__(8).WildcardTransition;
+var AbstractPredicateTransition = __webpack_require__(8).AbstractPredicateTransition;
+
+var pc = __webpack_require__(6);
+var predictionContextFromRuleContext = pc.predictionContextFromRuleContext;
+var PredictionContext = pc.PredictionContext;
+var SingletonPredictionContext = pc.SingletonPredictionContext;
+
+function LL1Analyzer (atn) {
+    this.atn = atn;
+}
+
+//* Special value added to the lookahead sets to indicate that we hit
+//  a predicate during analysis if {@code seeThruPreds==false}.
+///
+LL1Analyzer.HIT_PRED = Token.INVALID_TYPE;
+
+
+//*
+// Calculates the SLL(1) expected lookahead set for each outgoing transition
+// of an {@link ATNState}. The returned array has one element for each
+// outgoing transition in {@code s}. If the closure from transition
+// <em>i</em> leads to a semantic predicate before matching a symbol, the
+// element at index <em>i</em> of the result will be {@code null}.
+//
+// @param s the ATN state
+// @return the expected symbols for each outgoing transition of {@code s}.
+///
+LL1Analyzer.prototype.getDecisionLookahead = function(s) {
+    if (s === null) {
+        return null;
+    }
+    var count = s.transitions.length;
+    var look = [];
+    for(var alt=0; alt< count; alt++) {
+        look[alt] = new IntervalSet();
+        var lookBusy = new Set();
+        var seeThruPreds = false; // fail to get lookahead upon pred
+        this._LOOK(s.transition(alt).target, null, PredictionContext.EMPTY,
+              look[alt], lookBusy, new BitSet(), seeThruPreds, false);
+        // Wipe out lookahead for this alternative if we found nothing
+        // or we had a predicate when we !seeThruPreds
+        if (look[alt].length===0 || look[alt].contains(LL1Analyzer.HIT_PRED)) {
+            look[alt] = null;
+        }
+    }
+    return look;
+};
+
+//*
+// Compute set of tokens that can follow {@code s} in the ATN in the
+// specified {@code ctx}.
+//
+// <p>If {@code ctx} is {@code null} and the end of the rule containing
+// {@code s} is reached, {@link Token//EPSILON} is added to the result set.
+// If {@code ctx} is not {@code null} and the end of the outermost rule is
+// reached, {@link Token//EOF} is added to the result set.</p>
+//
+// @param s the ATN state
+// @param stopState the ATN state to stop at. This can be a
+// {@link BlockEndState} to detect epsilon paths through a closure.
+// @param ctx the complete parser context, or {@code null} if the context
+// should be ignored
+//
+// @return The set of tokens that can follow {@code s} in the ATN in the
+// specified {@code ctx}.
+///
+LL1Analyzer.prototype.LOOK = function(s, stopState, ctx) {
+    var r = new IntervalSet();
+    var seeThruPreds = true; // ignore preds; get all lookahead
+	ctx = ctx || null;
+    var lookContext = ctx!==null ? predictionContextFromRuleContext(s.atn, ctx) : null;
+    this._LOOK(s, stopState, lookContext, r, new Set(), new BitSet(), seeThruPreds, true);
+    return r;
+};
+
+//*
+// Compute set of tokens that can follow {@code s} in the ATN in the
+// specified {@code ctx}.
+//
+// <p>If {@code ctx} is {@code null} and {@code stopState} or the end of the
+// rule containing {@code s} is reached, {@link Token//EPSILON} is added to
+// the result set. If {@code ctx} is not {@code null} and {@code addEOF} is
+// {@code true} and {@code stopState} or the end of the outermost rule is
+// reached, {@link Token//EOF} is added to the result set.</p>
+//
+// @param s the ATN state.
+// @param stopState the ATN state to stop at. This can be a
+// {@link BlockEndState} to detect epsilon paths through a closure.
+// @param ctx The outer context, or {@code null} if the outer context should
+// not be used.
+// @param look The result lookahead set.
+// @param lookBusy A set used for preventing epsilon closures in the ATN
+// from causing a stack overflow. Outside code should pass
+// {@code new Set<ATNConfig>} for this argument.
+// @param calledRuleStack A set used for preventing left recursion in the
+// ATN from causing a stack overflow. Outside code should pass
+// {@code new BitSet()} for this argument.
+// @param seeThruPreds {@code true} to true semantic predicates as
+// implicitly {@code true} and "see through them", otherwise {@code false}
+// to treat semantic predicates as opaque and add {@link //HIT_PRED} to the
+// result if one is encountered.
+// @param addEOF Add {@link Token//EOF} to the result if the end of the
+// outermost context is reached. This parameter has no effect if {@code ctx}
+// is {@code null}.
+///
+LL1Analyzer.prototype._LOOK = function(s, stopState , ctx, look, lookBusy, calledRuleStack, seeThruPreds, addEOF) {
+    var c = new ATNConfig({state:s, alt:0, context: ctx}, null);
+    if (lookBusy.contains(c)) {
+        return;
+    }
+    lookBusy.add(c);
+    if (s === stopState) {
+        if (ctx ===null) {
+            look.addOne(Token.EPSILON);
+            return;
+        } else if (ctx.isEmpty() && addEOF) {
+            look.addOne(Token.EOF);
+            return;
+        }
+    }
+    if (s instanceof RuleStopState ) {
+        if (ctx ===null) {
+            look.addOne(Token.EPSILON);
+            return;
+        } else if (ctx.isEmpty() && addEOF) {
+            look.addOne(Token.EOF);
+            return;
+        }
+        if (ctx !== PredictionContext.EMPTY) {
+            // run thru all possible stack tops in ctx
+            for(var i=0; i<ctx.length; i++) {
+                var returnState = this.atn.states[ctx.getReturnState(i)];
+                var removed = calledRuleStack.contains(returnState.ruleIndex);
+                try {
+                    calledRuleStack.remove(returnState.ruleIndex);
+                    this._LOOK(returnState, stopState, ctx.getParent(i), look, lookBusy, calledRuleStack, seeThruPreds, addEOF);
+                } finally {
+                    if (removed) {
+                        calledRuleStack.add(returnState.ruleIndex);
+                    }
+                }
+            }
+            return;
+        }
+    }
+    for(var j=0; j<s.transitions.length; j++) {
+        var t = s.transitions[j];
+        if (t.constructor === RuleTransition) {
+            if (calledRuleStack.contains(t.target.ruleIndex)) {
+                continue;
+            }
+            var newContext = SingletonPredictionContext.create(ctx, t.followState.stateNumber);
+            try {
+                calledRuleStack.add(t.target.ruleIndex);
+                this._LOOK(t.target, stopState, newContext, look, lookBusy, calledRuleStack, seeThruPreds, addEOF);
+            } finally {
+                calledRuleStack.remove(t.target.ruleIndex);
+            }
+        } else if (t instanceof AbstractPredicateTransition ) {
+            if (seeThruPreds) {
+                this._LOOK(t.target, stopState, ctx, look, lookBusy, calledRuleStack, seeThruPreds, addEOF);
+            } else {
+                look.addOne(LL1Analyzer.HIT_PRED);
+            }
+        } else if( t.isEpsilon) {
+            this._LOOK(t.target, stopState, ctx, look, lookBusy, calledRuleStack, seeThruPreds, addEOF);
+        } else if (t.constructor === WildcardTransition) {
+            look.addRange( Token.MIN_USER_TOKEN_TYPE, this.atn.maxTokenType );
+        } else {
+            var set = t.label;
+            if (set !== null) {
+                if (t instanceof NotSetTransition) {
+                    set = set.complement(Token.MIN_USER_TOKEN_TYPE, this.atn.maxTokenType);
+                }
+                look.addSet(set);
+            }
+        }
+    }
+};
+
+exports.LL1Analyzer = LL1Analyzer;
+
+
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+///
+
+// Represents the type of recognizer an ATN applies to.
+
+function ATNType() {
+
+}
+
+ATNType.LEXER = 0;
+ATNType.PARSER = 1;
+
+exports.ATNType = ATNType;
+
+
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+///
+
+// When we hit an accept state in either the DFA or the ATN, we
+//  have to notify the character stream to start buffering characters
+//  via {@link IntStream//mark} and record the current state. The current sim state
+//  includes the current index into the input, the current line,
+//  and current character position in that line. Note that the Lexer is
+//  tracking the starting line and characterization of the token. These
+//  variables track the "state" of the simulator when it hits an accept state.
+//
+//  <p>We track these variables separately for the DFA and ATN simulation
+//  because the DFA simulation often has to fail over to the ATN
+//  simulation. If the ATN simulation fails, we need the DFA to fall
+//  back to its previously accepted state, if any. If the ATN succeeds,
+//  then the ATN does the accept and the DFA simulator that invoked it
+//  can simply return the predicted token type.</p>
+///
+
+var Token = __webpack_require__(1).Token;
+var Lexer = __webpack_require__(15).Lexer;
+var ATN = __webpack_require__(7).ATN;
+var ATNSimulator = __webpack_require__(25).ATNSimulator;
+var DFAState = __webpack_require__(11).DFAState;
+var ATNConfigSet = __webpack_require__(9).ATNConfigSet;
+var OrderedATNConfigSet = __webpack_require__(9).OrderedATNConfigSet;
+var PredictionContext = __webpack_require__(6).PredictionContext;
+var SingletonPredictionContext = __webpack_require__(6).SingletonPredictionContext;
+var RuleStopState = __webpack_require__(3).RuleStopState;
+var LexerATNConfig = __webpack_require__(13).LexerATNConfig;
+var Transition = __webpack_require__(8).Transition;
+var LexerActionExecutor = __webpack_require__(40).LexerActionExecutor;
+var LexerNoViableAltException = __webpack_require__(5).LexerNoViableAltException;
+
+function resetSimState(sim) {
+	sim.index = -1;
+	sim.line = 0;
+	sim.column = -1;
+	sim.dfaState = null;
+}
+
+function SimState() {
+	resetSimState(this);
+	return this;
+}
+
+SimState.prototype.reset = function() {
+	resetSimState(this);
+};
+
+function LexerATNSimulator(recog, atn, decisionToDFA, sharedContextCache) {
+	ATNSimulator.call(this, atn, sharedContextCache);
+	this.decisionToDFA = decisionToDFA;
+	this.recog = recog;
+	// The current token's starting index into the character stream.
+	// Shared across DFA to ATN simulation in case the ATN fails and the
+	// DFA did not have a previous accept state. In this case, we use the
+	// ATN-generated exception object.
+	this.startIndex = -1;
+	// line number 1..n within the input///
+	this.line = 1;
+	// The index of the character relative to the beginning of the line
+	// 0..n-1///
+	this.column = 0;
+	this.mode = Lexer.DEFAULT_MODE;
+	// Used during DFA/ATN exec to record the most recent accept configuration
+	// info
+	this.prevAccept = new SimState();
+	// done
+	return this;
+}
+
+LexerATNSimulator.prototype = Object.create(ATNSimulator.prototype);
+LexerATNSimulator.prototype.constructor = LexerATNSimulator;
+
+LexerATNSimulator.debug = false;
+LexerATNSimulator.dfa_debug = false;
+
+LexerATNSimulator.MIN_DFA_EDGE = 0;
+LexerATNSimulator.MAX_DFA_EDGE = 127; // forces unicode to stay in ATN
+
+LexerATNSimulator.match_calls = 0;
+
+LexerATNSimulator.prototype.copyState = function(simulator) {
+	this.column = simulator.column;
+	this.line = simulator.line;
+	this.mode = simulator.mode;
+	this.startIndex = simulator.startIndex;
+};
+
+LexerATNSimulator.prototype.match = function(input, mode) {
+	this.match_calls += 1;
+	this.mode = mode;
+	var mark = input.mark();
+	try {
+		this.startIndex = input.index;
+		this.prevAccept.reset();
+		var dfa = this.decisionToDFA[mode];
+		if (dfa.s0 === null) {
+			return this.matchATN(input);
+		} else {
+			return this.execATN(input, dfa.s0);
+		}
+	} finally {
+		input.release(mark);
+	}
+};
+
+LexerATNSimulator.prototype.reset = function() {
+	this.prevAccept.reset();
+	this.startIndex = -1;
+	this.line = 1;
+	this.column = 0;
+	this.mode = Lexer.DEFAULT_MODE;
+};
+
+LexerATNSimulator.prototype.matchATN = function(input) {
+	var startState = this.atn.modeToStartState[this.mode];
+
+	if (LexerATNSimulator.debug) {
+		console.log("matchATN mode " + this.mode + " start: " + startState);
+	}
+	var old_mode = this.mode;
+	var s0_closure = this.computeStartState(input, startState);
+	var suppressEdge = s0_closure.hasSemanticContext;
+	s0_closure.hasSemanticContext = false;
+
+	var next = this.addDFAState(s0_closure);
+	if (!suppressEdge) {
+		this.decisionToDFA[this.mode].s0 = next;
+	}
+
+	var predict = this.execATN(input, next);
+
+	if (LexerATNSimulator.debug) {
+		console.log("DFA after matchATN: " + this.decisionToDFA[old_mode].toLexerString());
+	}
+	return predict;
+};
+
+LexerATNSimulator.prototype.execATN = function(input, ds0) {
+	if (LexerATNSimulator.debug) {
+		console.log("start state closure=" + ds0.configs);
+	}
+	if (ds0.isAcceptState) {
+		// allow zero-length tokens
+		this.captureSimState(this.prevAccept, input, ds0);
+	}
+	var t = input.LA(1);
+	var s = ds0; // s is current/from DFA state
+
+	while (true) { // while more work
+		if (LexerATNSimulator.debug) {
+			console.log("execATN loop starting closure: " + s.configs);
+		}
+
+		// As we move src->trg, src->trg, we keep track of the previous trg to
+		// avoid looking up the DFA state again, which is expensive.
+		// If the previous target was already part of the DFA, we might
+		// be able to avoid doing a reach operation upon t. If s!=null,
+		// it means that semantic predicates didn't prevent us from
+		// creating a DFA state. Once we know s!=null, we check to see if
+		// the DFA state has an edge already for t. If so, we can just reuse
+		// it's configuration set; there's no point in re-computing it.
+		// This is kind of like doing DFA simulation within the ATN
+		// simulation because DFA simulation is really just a way to avoid
+		// computing reach/closure sets. Technically, once we know that
+		// we have a previously added DFA state, we could jump over to
+		// the DFA simulator. But, that would mean popping back and forth
+		// a lot and making things more complicated algorithmically.
+		// This optimization makes a lot of sense for loops within DFA.
+		// A character will take us back to an existing DFA state
+		// that already has lots of edges out of it. e.g., .* in comments.
+		// print("Target for:" + str(s) + " and:" + str(t))
+		var target = this.getExistingTargetState(s, t);
+		// print("Existing:" + str(target))
+		if (target === null) {
+			target = this.computeTargetState(input, s, t);
+			// print("Computed:" + str(target))
+		}
+		if (target === ATNSimulator.ERROR) {
+			break;
+		}
+		// If this is a consumable input element, make sure to consume before
+		// capturing the accept state so the input index, line, and char
+		// position accurately reflect the state of the interpreter at the
+		// end of the token.
+		if (t !== Token.EOF) {
+			this.consume(input);
+		}
+		if (target.isAcceptState) {
+			this.captureSimState(this.prevAccept, input, target);
+			if (t === Token.EOF) {
+				break;
+			}
+		}
+		t = input.LA(1);
+		s = target; // flip; current DFA target becomes new src/from state
+	}
+	return this.failOrAccept(this.prevAccept, input, s.configs, t);
+};
+
+// Get an existing target state for an edge in the DFA. If the target state
+// for the edge has not yet been computed or is otherwise not available,
+// this method returns {@code null}.
+//
+// @param s The current DFA state
+// @param t The next input symbol
+// @return The existing target DFA state for the given input symbol
+// {@code t}, or {@code null} if the target state for this edge is not
+// already cached
+LexerATNSimulator.prototype.getExistingTargetState = function(s, t) {
+	if (s.edges === null || t < LexerATNSimulator.MIN_DFA_EDGE || t > LexerATNSimulator.MAX_DFA_EDGE) {
+		return null;
+	}
+
+	var target = s.edges[t - LexerATNSimulator.MIN_DFA_EDGE];
+	if(target===undefined) {
+		target = null;
+	}
+	if (LexerATNSimulator.debug && target !== null) {
+		console.log("reuse state " + s.stateNumber + " edge to " + target.stateNumber);
+	}
+	return target;
+};
+
+// Compute a target state for an edge in the DFA, and attempt to add the
+// computed state and corresponding edge to the DFA.
+//
+// @param input The input stream
+// @param s The current DFA state
+// @param t The next input symbol
+//
+// @return The computed target DFA state for the given input symbol
+// {@code t}. If {@code t} does not lead to a valid DFA state, this method
+// returns {@link //ERROR}.
+LexerATNSimulator.prototype.computeTargetState = function(input, s, t) {
+	var reach = new OrderedATNConfigSet();
+	// if we don't find an existing DFA state
+	// Fill reach starting from closure, following t transitions
+	this.getReachableConfigSet(input, s.configs, reach, t);
+
+	if (reach.items.length === 0) { // we got nowhere on t from s
+		if (!reach.hasSemanticContext) {
+			// we got nowhere on t, don't throw out this knowledge; it'd
+			// cause a failover from DFA later.
+			this.addDFAEdge(s, t, ATNSimulator.ERROR);
+		}
+		// stop when we can't match any more char
+		return ATNSimulator.ERROR;
+	}
+	// Add an edge from s to target DFA found/created for reach
+	return this.addDFAEdge(s, t, null, reach);
+};
+
+LexerATNSimulator.prototype.failOrAccept = function(prevAccept, input, reach, t) {
+	if (this.prevAccept.dfaState !== null) {
+		var lexerActionExecutor = prevAccept.dfaState.lexerActionExecutor;
+		this.accept(input, lexerActionExecutor, this.startIndex,
+				prevAccept.index, prevAccept.line, prevAccept.column);
+		return prevAccept.dfaState.prediction;
+	} else {
+		// if no accept and EOF is first char, return EOF
+		if (t === Token.EOF && input.index === this.startIndex) {
+			return Token.EOF;
+		}
+		throw new LexerNoViableAltException(this.recog, input, this.startIndex, reach);
+	}
+};
+
+// Given a starting configuration set, figure out all ATN configurations
+// we can reach upon input {@code t}. Parameter {@code reach} is a return
+// parameter.
+LexerATNSimulator.prototype.getReachableConfigSet = function(input, closure,
+		reach, t) {
+	// this is used to skip processing for configs which have a lower priority
+	// than a config that already reached an accept state for the same rule
+	var skipAlt = ATN.INVALID_ALT_NUMBER;
+	for (var i = 0; i < closure.items.length; i++) {
+		var cfg = closure.items[i];
+		var currentAltReachedAcceptState = (cfg.alt === skipAlt);
+		if (currentAltReachedAcceptState && cfg.passedThroughNonGreedyDecision) {
+			continue;
+		}
+		if (LexerATNSimulator.debug) {
+			console.log("testing %s at %s\n", this.getTokenName(t), cfg
+					.toString(this.recog, true));
+		}
+		for (var j = 0; j < cfg.state.transitions.length; j++) {
+			var trans = cfg.state.transitions[j]; // for each transition
+			var target = this.getReachableTarget(trans, t);
+			if (target !== null) {
+				var lexerActionExecutor = cfg.lexerActionExecutor;
+				if (lexerActionExecutor !== null) {
+					lexerActionExecutor = lexerActionExecutor.fixOffsetBeforeMatch(input.index - this.startIndex);
+				}
+				var treatEofAsEpsilon = (t === Token.EOF);
+				var config = new LexerATNConfig({state:target, lexerActionExecutor:lexerActionExecutor}, cfg);
+				if (this.closure(input, config, reach,
+						currentAltReachedAcceptState, true, treatEofAsEpsilon)) {
+					// any remaining configs for this alt have a lower priority
+					// than the one that just reached an accept state.
+					skipAlt = cfg.alt;
+				}
+			}
+		}
+	}
+};
+
+LexerATNSimulator.prototype.accept = function(input, lexerActionExecutor,
+		startIndex, index, line, charPos) {
+	if (LexerATNSimulator.debug) {
+		console.log("ACTION %s\n", lexerActionExecutor);
+	}
+	// seek to after last char in token
+	input.seek(index);
+	this.line = line;
+	this.column = charPos;
+	if (lexerActionExecutor !== null && this.recog !== null) {
+		lexerActionExecutor.execute(this.recog, input, startIndex);
+	}
+};
+
+LexerATNSimulator.prototype.getReachableTarget = function(trans, t) {
+	if (trans.matches(t, 0, Lexer.MAX_CHAR_VALUE)) {
+		return trans.target;
+	} else {
+		return null;
+	}
+};
+
+LexerATNSimulator.prototype.computeStartState = function(input, p) {
+	var initialContext = PredictionContext.EMPTY;
+	var configs = new OrderedATNConfigSet();
+	for (var i = 0; i < p.transitions.length; i++) {
+		var target = p.transitions[i].target;
+        var cfg = new LexerATNConfig({state:target, alt:i+1, context:initialContext}, null);
+		this.closure(input, cfg, configs, false, false, false);
+	}
+	return configs;
+};
+
+// Since the alternatives within any lexer decision are ordered by
+// preference, this method stops pursuing the closure as soon as an accept
+// state is reached. After the first accept state is reached by depth-first
+// search from {@code config}, all other (potentially reachable) states for
+// this rule would have a lower priority.
+//
+// @return {@code true} if an accept state is reached, otherwise
+// {@code false}.
+LexerATNSimulator.prototype.closure = function(input, config, configs,
+		currentAltReachedAcceptState, speculative, treatEofAsEpsilon) {
+	var cfg = null;
+	if (LexerATNSimulator.debug) {
+		console.log("closure(" + config.toString(this.recog, true) + ")");
+	}
+	if (config.state instanceof RuleStopState) {
+		if (LexerATNSimulator.debug) {
+			if (this.recog !== null) {
+				console.log("closure at %s rule stop %s\n", this.recog.ruleNames[config.state.ruleIndex], config);
+			} else {
+				console.log("closure at rule stop %s\n", config);
+			}
+		}
+		if (config.context === null || config.context.hasEmptyPath()) {
+			if (config.context === null || config.context.isEmpty()) {
+				configs.add(config);
+				return true;
+			} else {
+				configs.add(new LexerATNConfig({ state:config.state, context:PredictionContext.EMPTY}, config));
+				currentAltReachedAcceptState = true;
+			}
+		}
+		if (config.context !== null && !config.context.isEmpty()) {
+			for (var i = 0; i < config.context.length; i++) {
+				if (config.context.getReturnState(i) !== PredictionContext.EMPTY_RETURN_STATE) {
+					var newContext = config.context.getParent(i); // "pop" return state
+					var returnState = this.atn.states[config.context.getReturnState(i)];
+					cfg = new LexerATNConfig({ state:returnState, context:newContext }, config);
+					currentAltReachedAcceptState = this.closure(input, cfg,
+							configs, currentAltReachedAcceptState, speculative,
+							treatEofAsEpsilon);
+				}
+			}
+		}
+		return currentAltReachedAcceptState;
+	}
+	// optimization
+	if (!config.state.epsilonOnlyTransitions) {
+		if (!currentAltReachedAcceptState || !config.passedThroughNonGreedyDecision) {
+			configs.add(config);
+		}
+	}
+	for (var j = 0; j < config.state.transitions.length; j++) {
+		var trans = config.state.transitions[j];
+		cfg = this.getEpsilonTarget(input, config, trans, configs, speculative, treatEofAsEpsilon);
+		if (cfg !== null) {
+			currentAltReachedAcceptState = this.closure(input, cfg, configs,
+					currentAltReachedAcceptState, speculative, treatEofAsEpsilon);
+		}
+	}
+	return currentAltReachedAcceptState;
+};
+
+// side-effect: can alter configs.hasSemanticContext
+LexerATNSimulator.prototype.getEpsilonTarget = function(input, config, trans,
+		configs, speculative, treatEofAsEpsilon) {
+	var cfg = null;
+	if (trans.serializationType === Transition.RULE) {
+		var newContext = SingletonPredictionContext.create(config.context, trans.followState.stateNumber);
+		cfg = new LexerATNConfig( { state:trans.target, context:newContext}, config);
+	} else if (trans.serializationType === Transition.PRECEDENCE) {
+		throw "Precedence predicates are not supported in lexers.";
+	} else if (trans.serializationType === Transition.PREDICATE) {
+		// Track traversing semantic predicates. If we traverse,
+		// we cannot add a DFA state for this "reach" computation
+		// because the DFA would not test the predicate again in the
+		// future. Rather than creating collections of semantic predicates
+		// like v3 and testing them on prediction, v4 will test them on the
+		// fly all the time using the ATN not the DFA. This is slower but
+		// semantically it's not used that often. One of the key elements to
+		// this predicate mechanism is not adding DFA states that see
+		// predicates immediately afterwards in the ATN. For example,
+
+		// a : ID {p1}? | ID {p2}? ;
+
+		// should create the start state for rule 'a' (to save start state
+		// competition), but should not create target of ID state. The
+		// collection of ATN states the following ID references includes
+		// states reached by traversing predicates. Since this is when we
+		// test them, we cannot cash the DFA state target of ID.
+
+		if (LexerATNSimulator.debug) {
+			console.log("EVAL rule " + trans.ruleIndex + ":" + trans.predIndex);
+		}
+		configs.hasSemanticContext = true;
+		if (this.evaluatePredicate(input, trans.ruleIndex, trans.predIndex, speculative)) {
+			cfg = new LexerATNConfig({ state:trans.target}, config);
+		}
+	} else if (trans.serializationType === Transition.ACTION) {
+		if (config.context === null || config.context.hasEmptyPath()) {
+			// execute actions anywhere in the start rule for a token.
+			//
+			// TODO: if the entry rule is invoked recursively, some
+			// actions may be executed during the recursive call. The
+			// problem can appear when hasEmptyPath() is true but
+			// isEmpty() is false. In this case, the config needs to be
+			// split into two contexts - one with just the empty path
+			// and another with everything but the empty path.
+			// Unfortunately, the current algorithm does not allow
+			// getEpsilonTarget to return two configurations, so
+			// additional modifications are needed before we can support
+			// the split operation.
+			var lexerActionExecutor = LexerActionExecutor.append(config.lexerActionExecutor,
+					this.atn.lexerActions[trans.actionIndex]);
+			cfg = new LexerATNConfig({ state:trans.target, lexerActionExecutor:lexerActionExecutor }, config);
+		} else {
+			// ignore actions in referenced rules
+			cfg = new LexerATNConfig( { state:trans.target}, config);
+		}
+	} else if (trans.serializationType === Transition.EPSILON) {
+		cfg = new LexerATNConfig({ state:trans.target}, config);
+	} else if (trans.serializationType === Transition.ATOM ||
+				trans.serializationType === Transition.RANGE ||
+				trans.serializationType === Transition.SET) {
+		if (treatEofAsEpsilon) {
+			if (trans.matches(Token.EOF, 0, Lexer.MAX_CHAR_VALUE)) {
+				cfg = new LexerATNConfig( { state:trans.target }, config);
+			}
+		}
+	}
+	return cfg;
+};
+
+// Evaluate a predicate specified in the lexer.
+//
+// <p>If {@code speculative} is {@code true}, this method was called before
+// {@link //consume} for the matched character. This method should call
+// {@link //consume} before evaluating the predicate to ensure position
+// sensitive values, including {@link Lexer//getText}, {@link Lexer//getLine},
+// and {@link Lexer//getcolumn}, properly reflect the current
+// lexer state. This method should restore {@code input} and the simulator
+// to the original state before returning (i.e. undo the actions made by the
+// call to {@link //consume}.</p>
+//
+// @param input The input stream.
+// @param ruleIndex The rule containing the predicate.
+// @param predIndex The index of the predicate within the rule.
+// @param speculative {@code true} if the current index in {@code input} is
+// one character before the predicate's location.
+//
+// @return {@code true} if the specified predicate evaluates to
+// {@code true}.
+// /
+LexerATNSimulator.prototype.evaluatePredicate = function(input, ruleIndex,
+		predIndex, speculative) {
+	// assume true if no recognizer was provided
+	if (this.recog === null) {
+		return true;
+	}
+	if (!speculative) {
+		return this.recog.sempred(null, ruleIndex, predIndex);
+	}
+	var savedcolumn = this.column;
+	var savedLine = this.line;
+	var index = input.index;
+	var marker = input.mark();
+	try {
+		this.consume(input);
+		return this.recog.sempred(null, ruleIndex, predIndex);
+	} finally {
+		this.column = savedcolumn;
+		this.line = savedLine;
+		input.seek(index);
+		input.release(marker);
+	}
+};
+
+LexerATNSimulator.prototype.captureSimState = function(settings, input, dfaState) {
+	settings.index = input.index;
+	settings.line = this.line;
+	settings.column = this.column;
+	settings.dfaState = dfaState;
+};
+
+LexerATNSimulator.prototype.addDFAEdge = function(from_, tk, to, cfgs) {
+	if (to === undefined) {
+		to = null;
+	}
+	if (cfgs === undefined) {
+		cfgs = null;
+	}
+	if (to === null && cfgs !== null) {
+		// leading to this call, ATNConfigSet.hasSemanticContext is used as a
+		// marker indicating dynamic predicate evaluation makes this edge
+		// dependent on the specific input sequence, so the static edge in the
+		// DFA should be omitted. The target DFAState is still created since
+		// execATN has the ability to resynchronize with the DFA state cache
+		// following the predicate evaluation step.
+		//
+		// TJP notes: next time through the DFA, we see a pred again and eval.
+		// If that gets us to a previously created (but dangling) DFA
+		// state, we can continue in pure DFA mode from there.
+		// /
+		var suppressEdge = cfgs.hasSemanticContext;
+		cfgs.hasSemanticContext = false;
+
+		to = this.addDFAState(cfgs);
+
+		if (suppressEdge) {
+			return to;
+		}
+	}
+	// add the edge
+	if (tk < LexerATNSimulator.MIN_DFA_EDGE || tk > LexerATNSimulator.MAX_DFA_EDGE) {
+		// Only track edges within the DFA bounds
+		return to;
+	}
+	if (LexerATNSimulator.debug) {
+		console.log("EDGE " + from_ + " -> " + to + " upon " + tk);
+	}
+	if (from_.edges === null) {
+		// make room for tokens 1..n and -1 masquerading as index 0
+		from_.edges = [];
+	}
+	from_.edges[tk - LexerATNSimulator.MIN_DFA_EDGE] = to; // connect
+
+	return to;
+};
+
+// Add a new DFA state if there isn't one with this set of
+// configurations already. This method also detects the first
+// configuration containing an ATN rule stop state. Later, when
+// traversing the DFA, we will know which rule to accept.
+LexerATNSimulator.prototype.addDFAState = function(configs) {
+	var proposed = new DFAState(null, configs);
+	var firstConfigWithRuleStopState = null;
+	for (var i = 0; i < configs.items.length; i++) {
+		var cfg = configs.items[i];
+		if (cfg.state instanceof RuleStopState) {
+			firstConfigWithRuleStopState = cfg;
+			break;
+		}
+	}
+	if (firstConfigWithRuleStopState !== null) {
+		proposed.isAcceptState = true;
+		proposed.lexerActionExecutor = firstConfigWithRuleStopState.lexerActionExecutor;
+		proposed.prediction = this.atn.ruleToTokenType[firstConfigWithRuleStopState.state.ruleIndex];
+	}
+	var dfa = this.decisionToDFA[this.mode];
+	var existing = dfa.states.get(proposed);
+	if (existing!==null) {
+		return existing;
+	}
+	var newState = proposed;
+	newState.stateNumber = dfa.states.length;
+	configs.setReadonly(true);
+	newState.configs = configs;
+	dfa.states.add(newState);
+	return newState;
+};
+
+LexerATNSimulator.prototype.getDFA = function(mode) {
+	return this.decisionToDFA[mode];
+};
+
+// Get the text matched so far for the current token.
+LexerATNSimulator.prototype.getText = function(input) {
+	// index is first lookahead char, don't include.
+	return input.getText(this.startIndex, input.index - 1);
+};
+
+LexerATNSimulator.prototype.consume = function(input) {
+	var curChar = input.LA(1);
+	if (curChar === "\n".charCodeAt(0)) {
+		this.line += 1;
+		this.column = 0;
+	} else {
+		this.column += 1;
+	}
+	input.consume();
+};
+
+LexerATNSimulator.prototype.getTokenName = function(tt) {
+	if (tt === -1) {
+		return "EOF";
+	} else {
+		return "'" + String.fromCharCode(tt) + "'";
+	}
+};
+
+exports.LexerATNSimulator = LexerATNSimulator;
+
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+//
+
+//
+// This default implementation of {@link TokenFactory} creates
+// {@link CommonToken} objects.
+//
+
+var CommonToken = __webpack_require__(1).CommonToken;
+
+function TokenFactory() {
+	return this;
+}
+
+function CommonTokenFactory(copyText) {
+	TokenFactory.call(this);
+    // Indicates whether {@link CommonToken//setText} should be called after
+    // constructing tokens to explicitly set the text. This is useful for cases
+    // where the input stream might not be able to provide arbitrary substrings
+    // of text from the input after the lexer creates a token (e.g. the
+    // implementation of {@link CharStream//getText} in
+    // {@link UnbufferedCharStream} throws an
+    // {@link UnsupportedOperationException}). Explicitly setting the token text
+    // allows {@link Token//getText} to be called at any time regardless of the
+    // input stream implementation.
+    //
+    // <p>
+    // The default value is {@code false} to avoid the performance and memory
+    // overhead of copying text for every token unless explicitly requested.</p>
+    //
+    this.copyText = copyText===undefined ? false : copyText;
+	return this;
+}
+
+CommonTokenFactory.prototype = Object.create(TokenFactory.prototype);
+CommonTokenFactory.prototype.constructor = CommonTokenFactory;
+
+//
+// The default {@link CommonTokenFactory} instance.
+//
+// <p>
+// This token factory does not explicitly copy token text when constructing
+// tokens.</p>
+//
+CommonTokenFactory.DEFAULT = new CommonTokenFactory();
+
+CommonTokenFactory.prototype.create = function(source, type, text, channel, start, stop, line, column) {
+    var t = new CommonToken(source, type, channel, start, stop);
+    t.line = line;
+    t.column = column;
+    if (text !==null) {
+        t.text = text;
+    } else if (this.copyText && source[1] !==null) {
+        t.text = source[1].getText(start,stop);
+    }
+    return t;
+};
+
+CommonTokenFactory.prototype.createThin = function(type, text) {
+    var t = new CommonToken(null, type);
+    t.text = text;
+    return t;
+};
+
+exports.CommonTokenFactory = CommonTokenFactory;
+
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+///
+
+// Represents an executor for a sequence of lexer actions which traversed during
+// the matching operation of a lexer rule (token).
+//
+// <p>The executor tracks position information for position-dependent lexer actions
+// efficiently, ensuring that actions appearing only at the end of the rule do
+// not cause bloating of the {@link DFA} created for the lexer.</p>
+
+var hashStuff = __webpack_require__(0).hashStuff;
+var LexerIndexedCustomAction = __webpack_require__(23).LexerIndexedCustomAction;
+
+function LexerActionExecutor(lexerActions) {
+	this.lexerActions = lexerActions === null ? [] : lexerActions;
+	// Caches the result of {@link //hashCode} since the hash code is an element
+	// of the performance-critical {@link LexerATNConfig//hashCode} operation.
+	this.cachedHashCode = hashStuff(lexerActions); // "".join([str(la) for la in
+	// lexerActions]))
+	return this;
+}
+
+// Creates a {@link LexerActionExecutor} which executes the actions for
+// the input {@code lexerActionExecutor} followed by a specified
+// {@code lexerAction}.
+//
+// @param lexerActionExecutor The executor for actions already traversed by
+// the lexer while matching a token within a particular
+// {@link LexerATNConfig}. If this is {@code null}, the method behaves as
+// though it were an empty executor.
+// @param lexerAction The lexer action to execute after the actions
+// specified in {@code lexerActionExecutor}.
+//
+// @return A {@link LexerActionExecutor} for executing the combine actions
+// of {@code lexerActionExecutor} and {@code lexerAction}.
+LexerActionExecutor.append = function(lexerActionExecutor, lexerAction) {
+	if (lexerActionExecutor === null) {
+		return new LexerActionExecutor([ lexerAction ]);
+	}
+	var lexerActions = lexerActionExecutor.lexerActions.concat([ lexerAction ]);
+	return new LexerActionExecutor(lexerActions);
+};
+
+// Creates a {@link LexerActionExecutor} which encodes the current offset
+// for position-dependent lexer actions.
+//
+// <p>Normally, when the executor encounters lexer actions where
+// {@link LexerAction//isPositionDependent} returns {@code true}, it calls
+// {@link IntStream//seek} on the input {@link CharStream} to set the input
+// position to the <em>end</em> of the current token. This behavior provides
+// for efficient DFA representation of lexer actions which appear at the end
+// of a lexer rule, even when the lexer rule matches a variable number of
+// characters.</p>
+//
+// <p>Prior to traversing a match transition in the ATN, the current offset
+// from the token start index is assigned to all position-dependent lexer
+// actions which have not already been assigned a fixed offset. By storing
+// the offsets relative to the token start index, the DFA representation of
+// lexer actions which appear in the middle of tokens remains efficient due
+// to sharing among tokens of the same length, regardless of their absolute
+// position in the input stream.</p>
+//
+// <p>If the current executor already has offsets assigned to all
+// position-dependent lexer actions, the method returns {@code this}.</p>
+//
+// @param offset The current offset to assign to all position-dependent
+// lexer actions which do not already have offsets assigned.
+//
+// @return A {@link LexerActionExecutor} which stores input stream offsets
+// for all position-dependent lexer actions.
+// /
+LexerActionExecutor.prototype.fixOffsetBeforeMatch = function(offset) {
+	var updatedLexerActions = null;
+	for (var i = 0; i < this.lexerActions.length; i++) {
+		if (this.lexerActions[i].isPositionDependent &&
+				!(this.lexerActions[i] instanceof LexerIndexedCustomAction)) {
+			if (updatedLexerActions === null) {
+				updatedLexerActions = this.lexerActions.concat([]);
+			}
+			updatedLexerActions[i] = new LexerIndexedCustomAction(offset,
+					this.lexerActions[i]);
+		}
+	}
+	if (updatedLexerActions === null) {
+		return this;
+	} else {
+		return new LexerActionExecutor(updatedLexerActions);
+	}
+};
+
+// Execute the actions encapsulated by this executor within the context of a
+// particular {@link Lexer}.
+//
+// <p>This method calls {@link IntStream//seek} to set the position of the
+// {@code input} {@link CharStream} prior to calling
+// {@link LexerAction//execute} on a position-dependent action. Before the
+// method returns, the input position will be restored to the same position
+// it was in when the method was invoked.</p>
+//
+// @param lexer The lexer instance.
+// @param input The input stream which is the source for the current token.
+// When this method is called, the current {@link IntStream//index} for
+// {@code input} should be the start of the following token, i.e. 1
+// character past the end of the current token.
+// @param startIndex The token start index. This value may be passed to
+// {@link IntStream//seek} to set the {@code input} position to the beginning
+// of the token.
+// /
+LexerActionExecutor.prototype.execute = function(lexer, input, startIndex) {
+	var requiresSeek = false;
+	var stopIndex = input.index;
+	try {
+		for (var i = 0; i < this.lexerActions.length; i++) {
+			var lexerAction = this.lexerActions[i];
+			if (lexerAction instanceof LexerIndexedCustomAction) {
+				var offset = lexerAction.offset;
+				input.seek(startIndex + offset);
+				lexerAction = lexerAction.action;
+				requiresSeek = (startIndex + offset) !== stopIndex;
+			} else if (lexerAction.isPositionDependent) {
+				input.seek(stopIndex);
+				requiresSeek = false;
+			}
+			lexerAction.execute(lexer);
+		}
+	} finally {
+		if (requiresSeek) {
+			input.seek(stopIndex);
+		}
+	}
+};
+
+LexerActionExecutor.prototype.hashCode = function() {
+	return this.cachedHashCode;
+};
+
+LexerActionExecutor.prototype.updateHashCode = function(hash) {
+    hash.update(this.cachedHashCode);
+};
+
+
+LexerActionExecutor.prototype.equals = function(other) {
+	if (this === other) {
+		return true;
+	} else if (!(other instanceof LexerActionExecutor)) {
+		return false;
+	} else if (this.cachedHashCode != other.cachedHashCode) {
+		return false;
+	} else if (this.lexerActions.length != other.lexerActions.length) {
+		return false;
+	} else {
+		var numActions = this.lexerActions.length
+		for (var idx = 0; idx < numActions; ++idx) {
+			if (!this.lexerActions[idx].equals(other.lexerActions[idx])) {
+				return false;
+			}
+		}
+		return true;
+	}
+};
+
+exports.LexerActionExecutor = LexerActionExecutor;
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+//
+
+//
+// The embodiment of the adaptive LL(*), ALL(*), parsing strategy.
+//
+// <p>
+// The basic complexity of the adaptive strategy makes it harder to understand.
+// We begin with ATN simulation to build paths in a DFA. Subsequent prediction
+// requests go through the DFA first. If they reach a state without an edge for
+// the current symbol, the algorithm fails over to the ATN simulation to
+// complete the DFA path for the current input (until it finds a conflict state
+// or uniquely predicting state).</p>
+//
+// <p>
+// All of that is done without using the outer context because we want to create
+// a DFA that is not dependent upon the rule invocation stack when we do a
+// prediction. One DFA works in all contexts. We avoid using context not
+// necessarily because it's slower, although it can be, but because of the DFA
+// caching problem. The closure routine only considers the rule invocation stack
+// created during prediction beginning in the decision rule. For example, if
+// prediction occurs without invoking another rule's ATN, there are no context
+// stacks in the configurations. When lack of context leads to a conflict, we
+// don't know if it's an ambiguity or a weakness in the strong LL(*) parsing
+// strategy (versus full LL(*)).</p>
+//
+// <p>
+// When SLL yields a configuration set with conflict, we rewind the input and
+// retry the ATN simulation, this time using full outer context without adding
+// to the DFA. Configuration context stacks will be the full invocation stacks
+// from the start rule. If we get a conflict using full context, then we can
+// definitively say we have a true ambiguity for that input sequence. If we
+// don't get a conflict, it implies that the decision is sensitive to the outer
+// context. (It is not context-sensitive in the sense of context-sensitive
+// grammars.)</p>
+//
+// <p>
+// The next time we reach this DFA state with an SLL conflict, through DFA
+// simulation, we will again retry the ATN simulation using full context mode.
+// This is slow because we can't save the results and have to "interpret" the
+// ATN each time we get that input.</p>
+//
+// <p>
+// <strong>CACHING FULL CONTEXT PREDICTIONS</strong></p>
+//
+// <p>
+// We could cache results from full context to predicted alternative easily and
+// that saves a lot of time but doesn't work in presence of predicates. The set
+// of visible predicates from the ATN start state changes depending on the
+// context, because closure can fall off the end of a rule. I tried to cache
+// tuples (stack context, semantic context, predicted alt) but it was slower
+// than interpreting and much more complicated. Also required a huge amount of
+// memory. The goal is not to create the world's fastest parser anyway. I'd like
+// to keep this algorithm simple. By launching multiple threads, we can improve
+// the speed of parsing across a large number of files.</p>
+//
+// <p>
+// There is no strict ordering between the amount of input used by SLL vs LL,
+// which makes it really hard to build a cache for full context. Let's say that
+// we have input A B C that leads to an SLL conflict with full context X. That
+// implies that using X we might only use A B but we could also use A B C D to
+// resolve conflict. Input A B C D could predict alternative 1 in one position
+// in the input and A B C E could predict alternative 2 in another position in
+// input. The conflicting SLL configurations could still be non-unique in the
+// full context prediction, which would lead us to requiring more input than the
+// original A B C.	To make a	prediction cache work, we have to track	the exact
+// input	used during the previous prediction. That amounts to a cache that maps
+// X to a specific DFA for that context.</p>
+//
+// <p>
+// Something should be done for left-recursive expression predictions. They are
+// likely LL(1) + pred eval. Easier to do the whole SLL unless error and retry
+// with full LL thing Sam does.</p>
+//
+// <p>
+// <strong>AVOIDING FULL CONTEXT PREDICTION</strong></p>
+//
+// <p>
+// We avoid doing full context retry when the outer context is empty, we did not
+// dip into the outer context by falling off the end of the decision state rule,
+// or when we force SLL mode.</p>
+//
+// <p>
+// As an example of the not dip into outer context case, consider as super
+// constructor calls versus function calls. One grammar might look like
+// this:</p>
+//
+// <pre>
+// ctorBody
+//   : '{' superCall? stat* '}'
+//   ;
+// </pre>
+//
+// <p>
+// Or, you might see something like</p>
+//
+// <pre>
+// stat
+//   : superCall ';'
+//   | expression ';'
+//   | ...
+//   ;
+// </pre>
+//
+// <p>
+// In both cases I believe that no closure operations will dip into the outer
+// context. In the first case ctorBody in the worst case will stop at the '}'.
+// In the 2nd case it should stop at the ';'. Both cases should stay within the
+// entry rule and not dip into the outer context.</p>
+//
+// <p>
+// <strong>PREDICATES</strong></p>
+//
+// <p>
+// Predicates are always evaluated if present in either SLL or LL both. SLL and
+// LL simulation deals with predicates differently. SLL collects predicates as
+// it performs closure operations like ANTLR v3 did. It delays predicate
+// evaluation until it reaches and accept state. This allows us to cache the SLL
+// ATN simulation whereas, if we had evaluated predicates on-the-fly during
+// closure, the DFA state configuration sets would be different and we couldn't
+// build up a suitable DFA.</p>
+//
+// <p>
+// When building a DFA accept state during ATN simulation, we evaluate any
+// predicates and return the sole semantically valid alternative. If there is
+// more than 1 alternative, we report an ambiguity. If there are 0 alternatives,
+// we throw an exception. Alternatives without predicates act like they have
+// true predicates. The simple way to think about it is to strip away all
+// alternatives with false predicates and choose the minimum alternative that
+// remains.</p>
+//
+// <p>
+// When we start in the DFA and reach an accept state that's predicated, we test
+// those and return the minimum semantically viable alternative. If no
+// alternatives are viable, we throw an exception.</p>
+//
+// <p>
+// During full LL ATN simulation, closure always evaluates predicates and
+// on-the-fly. This is crucial to reducing the configuration set size during
+// closure. It hits a landmine when parsing with the Java grammar, for example,
+// without this on-the-fly evaluation.</p>
+//
+// <p>
+// <strong>SHARING DFA</strong></p>
+//
+// <p>
+// All instances of the same parser share the same decision DFAs through a
+// static field. Each instance gets its own ATN simulator but they share the
+// same {@link //decisionToDFA} field. They also share a
+// {@link PredictionContextCache} object that makes sure that all
+// {@link PredictionContext} objects are shared among the DFA states. This makes
+// a big size difference.</p>
+//
+// <p>
+// <strong>THREAD SAFETY</strong></p>
+//
+// <p>
+// The {@link ParserATNSimulator} locks on the {@link //decisionToDFA} field when
+// it adds a new DFA object to that array. {@link //addDFAEdge}
+// locks on the DFA for the current decision when setting the
+// {@link DFAState//edges} field. {@link //addDFAState} locks on
+// the DFA for the current decision when looking up a DFA state to see if it
+// already exists. We must make sure that all requests to add DFA states that
+// are equivalent result in the same shared DFA object. This is because lots of
+// threads will be trying to update the DFA at once. The
+// {@link //addDFAState} method also locks inside the DFA lock
+// but this time on the shared context cache when it rebuilds the
+// configurations' {@link PredictionContext} objects using cached
+// subgraphs/nodes. No other locking occurs, even during DFA simulation. This is
+// safe as long as we can guarantee that all threads referencing
+// {@code s.edge[t]} get the same physical target {@link DFAState}, or
+// {@code null}. Once into the DFA, the DFA simulation does not reference the
+// {@link DFA//states} map. It follows the {@link DFAState//edges} field to new
+// targets. The DFA simulator will either find {@link DFAState//edges} to be
+// {@code null}, to be non-{@code null} and {@code dfa.edges[t]} null, or
+// {@code dfa.edges[t]} to be non-null. The
+// {@link //addDFAEdge} method could be racing to set the field
+// but in either case the DFA simulator works; if {@code null}, and requests ATN
+// simulation. It could also race trying to get {@code dfa.edges[t]}, but either
+// way it will work because it's not doing a test and set operation.</p>
+//
+// <p>
+// <strong>Starting with SLL then failing to combined SLL/LL (Two-Stage
+// Parsing)</strong></p>
+//
+// <p>
+// Sam pointed out that if SLL does not give a syntax error, then there is no
+// point in doing full LL, which is slower. We only have to try LL if we get a
+// syntax error. For maximum speed, Sam starts the parser set to pure SLL
+// mode with the {@link BailErrorStrategy}:</p>
+//
+// <pre>
+// parser.{@link Parser//getInterpreter() getInterpreter()}.{@link //setPredictionMode setPredictionMode}{@code (}{@link PredictionMode//SLL}{@code )};
+// parser.{@link Parser//setErrorHandler setErrorHandler}(new {@link BailErrorStrategy}());
+// </pre>
+//
+// <p>
+// If it does not get a syntax error, then we're done. If it does get a syntax
+// error, we need to retry with the combined SLL/LL strategy.</p>
+//
+// <p>
+// The reason this works is as follows. If there are no SLL conflicts, then the
+// grammar is SLL (at least for that input set). If there is an SLL conflict,
+// the full LL analysis must yield a set of viable alternatives which is a
+// subset of the alternatives reported by SLL. If the LL set is a singleton,
+// then the grammar is LL but not SLL. If the LL set is the same size as the SLL
+// set, the decision is SLL. If the LL set has size &gt; 1, then that decision
+// is truly ambiguous on the current input. If the LL set is smaller, then the
+// SLL conflict resolution might choose an alternative that the full LL would
+// rule out as a possibility based upon better context information. If that's
+// the case, then the SLL parse will definitely get an error because the full LL
+// analysis says it's not viable. If SLL conflict resolution chooses an
+// alternative within the LL set, them both SLL and LL would choose the same
+// alternative because they both choose the minimum of multiple conflicting
+// alternatives.</p>
+//
+// <p>
+// Let's say we have a set of SLL conflicting alternatives {@code {1, 2, 3}} and
+// a smaller LL set called <em>s</em>. If <em>s</em> is {@code {2, 3}}, then SLL
+// parsing will get an error because SLL will pursue alternative 1. If
+// <em>s</em> is {@code {1, 2}} or {@code {1, 3}} then both SLL and LL will
+// choose the same alternative because alternative one is the minimum of either
+// set. If <em>s</em> is {@code {2}} or {@code {3}} then SLL will get a syntax
+// error. If <em>s</em> is {@code {1}} then SLL will succeed.</p>
+//
+// <p>
+// Of course, if the input is invalid, then we will get an error for sure in
+// both SLL and LL parsing. Erroneous input will therefore require 2 passes over
+// the input.</p>
+//
+
+var Utils = __webpack_require__(0);
+var Set = Utils.Set;
+var BitSet = Utils.BitSet;
+var DoubleDict = Utils.DoubleDict;
+var ATN = __webpack_require__(7).ATN;
+var ATNState = __webpack_require__(3).ATNState;
+var ATNConfig = __webpack_require__(13).ATNConfig;
+var ATNConfigSet = __webpack_require__(9).ATNConfigSet;
+var Token = __webpack_require__(1).Token;
+var DFAState = __webpack_require__(11).DFAState;
+var PredPrediction = __webpack_require__(11).PredPrediction;
+var ATNSimulator = __webpack_require__(25).ATNSimulator;
+var PredictionMode = __webpack_require__(26).PredictionMode;
+var RuleContext = __webpack_require__(14).RuleContext;
+var ParserRuleContext = __webpack_require__(18).ParserRuleContext;
+var SemanticContext = __webpack_require__(10).SemanticContext;
+var StarLoopEntryState = __webpack_require__(3).StarLoopEntryState;
+var RuleStopState = __webpack_require__(3).RuleStopState;
+var PredictionContext = __webpack_require__(6).PredictionContext;
+var Interval = __webpack_require__(2).Interval;
+var Transitions = __webpack_require__(8);
+var Transition = Transitions.Transition;
+var SetTransition = Transitions.SetTransition;
+var NotSetTransition = Transitions.NotSetTransition;
+var RuleTransition = Transitions.RuleTransition;
+var ActionTransition = Transitions.ActionTransition;
+var NoViableAltException = __webpack_require__(5).NoViableAltException;
+
+var SingletonPredictionContext = __webpack_require__(6).SingletonPredictionContext;
+var predictionContextFromRuleContext = __webpack_require__(6).predictionContextFromRuleContext;
+
+function ParserATNSimulator(parser, atn, decisionToDFA, sharedContextCache) {
+	ATNSimulator.call(this, atn, sharedContextCache);
+    this.parser = parser;
+    this.decisionToDFA = decisionToDFA;
+    // SLL, LL, or LL + exact ambig detection?//
+    this.predictionMode = PredictionMode.LL;
+    // LAME globals to avoid parameters!!!!! I need these down deep in predTransition
+    this._input = null;
+    this._startIndex = 0;
+    this._outerContext = null;
+    this._dfa = null;
+    // Each prediction operation uses a cache for merge of prediction contexts.
+    //  Don't keep around as it wastes huge amounts of memory. DoubleKeyMap
+    //  isn't synchronized but we're ok since two threads shouldn't reuse same
+    //  parser/atnsim object because it can only handle one input at a time.
+    //  This maps graphs a and b to merged result c. (a,b)&rarr;c. We can avoid
+    //  the merge if we ever see a and b again.  Note that (b,a)&rarr;c should
+    //  also be examined during cache lookup.
+    //
+    this.mergeCache = null;
+    return this;
+}
+
+ParserATNSimulator.prototype = Object.create(ATNSimulator.prototype);
+ParserATNSimulator.prototype.constructor = ParserATNSimulator;
+
+ParserATNSimulator.prototype.debug = false;
+ParserATNSimulator.prototype.debug_closure = false;
+ParserATNSimulator.prototype.debug_add = false;
+ParserATNSimulator.prototype.debug_list_atn_decisions = false;
+ParserATNSimulator.prototype.dfa_debug = false;
+ParserATNSimulator.prototype.retry_debug = false;
+
+
+ParserATNSimulator.prototype.reset = function() {
+};
+
+ParserATNSimulator.prototype.adaptivePredict = function(input, decision, outerContext) {
+    if (this.debug || this.debug_list_atn_decisions) {
+        console.log("adaptivePredict decision " + decision +
+                               " exec LA(1)==" + this.getLookaheadName(input) +
+                               " line " + input.LT(1).line + ":" +
+                               input.LT(1).column);
+    }
+    this._input = input;
+    this._startIndex = input.index;
+    this._outerContext = outerContext;
+
+    var dfa = this.decisionToDFA[decision];
+    this._dfa = dfa;
+    var m = input.mark();
+    var index = input.index;
+
+    // Now we are certain to have a specific decision's DFA
+    // But, do we still need an initial state?
+    try {
+        var s0;
+        if (dfa.precedenceDfa) {
+            // the start state for a precedence DFA depends on the current
+            // parser precedence, and is provided by a DFA method.
+            s0 = dfa.getPrecedenceStartState(this.parser.getPrecedence());
+        } else {
+            // the start state for a "regular" DFA is just s0
+            s0 = dfa.s0;
+        }
+        if (s0===null) {
+            if (outerContext===null) {
+                outerContext = RuleContext.EMPTY;
+            }
+            if (this.debug || this.debug_list_atn_decisions) {
+                console.log("predictATN decision " + dfa.decision +
+                                   " exec LA(1)==" + this.getLookaheadName(input) +
+                                   ", outerContext=" + outerContext.toString(this.parser.ruleNames));
+            }
+
+            var fullCtx = false;
+            var s0_closure = this.computeStartState(dfa.atnStartState, RuleContext.EMPTY, fullCtx);
+
+            if( dfa.precedenceDfa) {
+                // If this is a precedence DFA, we use applyPrecedenceFilter
+                // to convert the computed start state to a precedence start
+                // state. We then use DFA.setPrecedenceStartState to set the
+                // appropriate start state for the precedence level rather
+                // than simply setting DFA.s0.
+                //
+                dfa.s0.configs = s0_closure; // not used for prediction but useful to know start configs anyway
+                s0_closure = this.applyPrecedenceFilter(s0_closure);
+                s0 = this.addDFAState(dfa, new DFAState(null, s0_closure));
+                dfa.setPrecedenceStartState(this.parser.getPrecedence(), s0);
+            } else {
+                s0 = this.addDFAState(dfa, new DFAState(null, s0_closure));
+                dfa.s0 = s0;
+            }
+        }
+        var alt = this.execATN(dfa, s0, input, index, outerContext);
+        if (this.debug) {
+            console.log("DFA after predictATN: " + dfa.toString(this.parser.literalNames));
+        }
+        return alt;
+    } finally {
+        this._dfa = null;
+        this.mergeCache = null; // wack cache after each prediction
+        input.seek(index);
+        input.release(m);
+    }
+};
+// Performs ATN simulation to compute a predicted alternative based
+//  upon the remaining input, but also updates the DFA cache to avoid
+//  having to traverse the ATN again for the same input sequence.
+
+// There are some key conditions we're looking for after computing a new
+// set of ATN configs (proposed DFA state):
+      // if the set is empty, there is no viable alternative for current symbol
+      // does the state uniquely predict an alternative?
+      // does the state have a conflict that would prevent us from
+      //   putting it on the work list?
+
+// We also have some key operations to do:
+      // add an edge from previous DFA state to potentially new DFA state, D,
+      //   upon current symbol but only if adding to work list, which means in all
+      //   cases except no viable alternative (and possibly non-greedy decisions?)
+      // collecting predicates and adding semantic context to DFA accept states
+      // adding rule context to context-sensitive DFA accept states
+      // consuming an input symbol
+      // reporting a conflict
+      // reporting an ambiguity
+      // reporting a context sensitivity
+      // reporting insufficient predicates
+
+// cover these cases:
+//    dead end
+//    single alt
+//    single alt + preds
+//    conflict
+//    conflict + preds
+//
+ParserATNSimulator.prototype.execATN = function(dfa, s0, input, startIndex, outerContext ) {
+    if (this.debug || this.debug_list_atn_decisions) {
+        console.log("execATN decision " + dfa.decision +
+                " exec LA(1)==" + this.getLookaheadName(input) +
+                " line " + input.LT(1).line + ":" + input.LT(1).column);
+    }
+    var alt;
+    var previousD = s0;
+
+    if (this.debug) {
+        console.log("s0 = " + s0);
+    }
+    var t = input.LA(1);
+    while(true) { // while more work
+        var D = this.getExistingTargetState(previousD, t);
+        if(D===null) {
+            D = this.computeTargetState(dfa, previousD, t);
+        }
+        if(D===ATNSimulator.ERROR) {
+            // if any configs in previous dipped into outer context, that
+            // means that input up to t actually finished entry rule
+            // at least for SLL decision. Full LL doesn't dip into outer
+            // so don't need special case.
+            // We will get an error no matter what so delay until after
+            // decision; better error message. Also, no reachable target
+            // ATN states in SLL implies LL will also get nowhere.
+            // If conflict in states that dip out, choose min since we
+            // will get error no matter what.
+            var e = this.noViableAlt(input, outerContext, previousD.configs, startIndex);
+            input.seek(startIndex);
+            alt = this.getSynValidOrSemInvalidAltThatFinishedDecisionEntryRule(previousD.configs, outerContext);
+            if(alt!==ATN.INVALID_ALT_NUMBER) {
+                return alt;
+            } else {
+                throw e;
+            }
+        }
+        if(D.requiresFullContext && this.predictionMode !== PredictionMode.SLL) {
+            // IF PREDS, MIGHT RESOLVE TO SINGLE ALT => SLL (or syntax error)
+            var conflictingAlts = null;
+            if (D.predicates!==null) {
+                if (this.debug) {
+                    console.log("DFA state has preds in DFA sim LL failover");
+                }
+                var conflictIndex = input.index;
+                if(conflictIndex !== startIndex) {
+                    input.seek(startIndex);
+                }
+                conflictingAlts = this.evalSemanticContext(D.predicates, outerContext, true);
+                if (conflictingAlts.length===1) {
+                    if(this.debug) {
+                        console.log("Full LL avoided");
+                    }
+                    return conflictingAlts.minValue();
+                }
+                if (conflictIndex !== startIndex) {
+                    // restore the index so reporting the fallback to full
+                    // context occurs with the index at the correct spot
+                    input.seek(conflictIndex);
+                }
+            }
+            if (this.dfa_debug) {
+                console.log("ctx sensitive state " + outerContext +" in " + D);
+            }
+            var fullCtx = true;
+            var s0_closure = this.computeStartState(dfa.atnStartState, outerContext, fullCtx);
+            this.reportAttemptingFullContext(dfa, conflictingAlts, D.configs, startIndex, input.index);
+            alt = this.execATNWithFullContext(dfa, D, s0_closure, input, startIndex, outerContext);
+            return alt;
+        }
+        if (D.isAcceptState) {
+            if (D.predicates===null) {
+                return D.prediction;
+            }
+            var stopIndex = input.index;
+            input.seek(startIndex);
+            var alts = this.evalSemanticContext(D.predicates, outerContext, true);
+            if (alts.length===0) {
+                throw this.noViableAlt(input, outerContext, D.configs, startIndex);
+            } else if (alts.length===1) {
+                return alts.minValue();
+            } else {
+                // report ambiguity after predicate evaluation to make sure the correct set of ambig alts is reported.
+                this.reportAmbiguity(dfa, D, startIndex, stopIndex, false, alts, D.configs);
+                return alts.minValue();
+            }
+        }
+        previousD = D;
+
+        if (t !== Token.EOF) {
+            input.consume();
+            t = input.LA(1);
+        }
+    }
+};
+//
+// Get an existing target state for an edge in the DFA. If the target state
+// for the edge has not yet been computed or is otherwise not available,
+// this method returns {@code null}.
+//
+// @param previousD The current DFA state
+// @param t The next input symbol
+// @return The existing target DFA state for the given input symbol
+// {@code t}, or {@code null} if the target state for this edge is not
+// already cached
+//
+ParserATNSimulator.prototype.getExistingTargetState = function(previousD, t) {
+    var edges = previousD.edges;
+    if (edges===null) {
+        return null;
+    } else {
+        return edges[t + 1] || null;
+    }
+};
+//
+// Compute a target state for an edge in the DFA, and attempt to add the
+// computed state and corresponding edge to the DFA.
+//
+// @param dfa The DFA
+// @param previousD The current DFA state
+// @param t The next input symbol
+//
+// @return The computed target DFA state for the given input symbol
+// {@code t}. If {@code t} does not lead to a valid DFA state, this method
+// returns {@link //ERROR}.
+//
+ParserATNSimulator.prototype.computeTargetState = function(dfa, previousD, t) {
+   var reach = this.computeReachSet(previousD.configs, t, false);
+    if(reach===null) {
+        this.addDFAEdge(dfa, previousD, t, ATNSimulator.ERROR);
+        return ATNSimulator.ERROR;
+    }
+    // create new target state; we'll add to DFA after it's complete
+    var D = new DFAState(null, reach);
+
+    var predictedAlt = this.getUniqueAlt(reach);
+
+    if (this.debug) {
+        var altSubSets = PredictionMode.getConflictingAltSubsets(reach);
+        console.log("SLL altSubSets=" + Utils.arrayToString(altSubSets) +
+                    ", previous=" + previousD.configs +
+                    ", configs=" + reach +
+                    ", predict=" + predictedAlt +
+                    ", allSubsetsConflict=" +
+                    PredictionMode.allSubsetsConflict(altSubSets) + ", conflictingAlts=" +
+                    this.getConflictingAlts(reach));
+    }
+    if (predictedAlt!==ATN.INVALID_ALT_NUMBER) {
+        // NO CONFLICT, UNIQUELY PREDICTED ALT
+        D.isAcceptState = true;
+        D.configs.uniqueAlt = predictedAlt;
+        D.prediction = predictedAlt;
+    } else if (PredictionMode.hasSLLConflictTerminatingPrediction(this.predictionMode, reach)) {
+        // MORE THAN ONE VIABLE ALTERNATIVE
+        D.configs.conflictingAlts = this.getConflictingAlts(reach);
+        D.requiresFullContext = true;
+        // in SLL-only mode, we will stop at this state and return the minimum alt
+        D.isAcceptState = true;
+        D.prediction = D.configs.conflictingAlts.minValue();
+    }
+    if (D.isAcceptState && D.configs.hasSemanticContext) {
+        this.predicateDFAState(D, this.atn.getDecisionState(dfa.decision));
+        if( D.predicates!==null) {
+            D.prediction = ATN.INVALID_ALT_NUMBER;
+        }
+    }
+    // all adds to dfa are done after we've created full D state
+    D = this.addDFAEdge(dfa, previousD, t, D);
+    return D;
+};
+
+ParserATNSimulator.prototype.predicateDFAState = function(dfaState, decisionState) {
+    // We need to test all predicates, even in DFA states that
+    // uniquely predict alternative.
+    var nalts = decisionState.transitions.length;
+    // Update DFA so reach becomes accept state with (predicate,alt)
+    // pairs if preds found for conflicting alts
+    var altsToCollectPredsFrom = this.getConflictingAltsOrUniqueAlt(dfaState.configs);
+    var altToPred = this.getPredsForAmbigAlts(altsToCollectPredsFrom, dfaState.configs, nalts);
+    if (altToPred!==null) {
+        dfaState.predicates = this.getPredicatePredictions(altsToCollectPredsFrom, altToPred);
+        dfaState.prediction = ATN.INVALID_ALT_NUMBER; // make sure we use preds
+    } else {
+        // There are preds in configs but they might go away
+        // when OR'd together like {p}? || NONE == NONE. If neither
+        // alt has preds, resolve to min alt
+        dfaState.prediction = altsToCollectPredsFrom.minValue();
+    }
+};
+
+// comes back with reach.uniqueAlt set to a valid alt
+ParserATNSimulator.prototype.execATNWithFullContext = function(dfa, D, // how far we got before failing over
+                                     s0,
+                                     input,
+                                     startIndex,
+                                     outerContext) {
+    if (this.debug || this.debug_list_atn_decisions) {
+        console.log("execATNWithFullContext "+s0);
+    }
+    var fullCtx = true;
+    var foundExactAmbig = false;
+    var reach = null;
+    var previous = s0;
+    input.seek(startIndex);
+    var t = input.LA(1);
+    var predictedAlt = -1;
+    while (true) { // while more work
+        reach = this.computeReachSet(previous, t, fullCtx);
+        if (reach===null) {
+            // if any configs in previous dipped into outer context, that
+            // means that input up to t actually finished entry rule
+            // at least for LL decision. Full LL doesn't dip into outer
+            // so don't need special case.
+            // We will get an error no matter what so delay until after
+            // decision; better error message. Also, no reachable target
+            // ATN states in SLL implies LL will also get nowhere.
+            // If conflict in states that dip out, choose min since we
+            // will get error no matter what.
+            var e = this.noViableAlt(input, outerContext, previous, startIndex);
+            input.seek(startIndex);
+            var alt = this.getSynValidOrSemInvalidAltThatFinishedDecisionEntryRule(previous, outerContext);
+            if(alt!==ATN.INVALID_ALT_NUMBER) {
+                return alt;
+            } else {
+                throw e;
+            }
+        }
+        var altSubSets = PredictionMode.getConflictingAltSubsets(reach);
+        if(this.debug) {
+            console.log("LL altSubSets=" + altSubSets + ", predict=" +
+                  PredictionMode.getUniqueAlt(altSubSets) + ", resolvesToJustOneViableAlt=" +
+                  PredictionMode.resolvesToJustOneViableAlt(altSubSets));
+        }
+        reach.uniqueAlt = this.getUniqueAlt(reach);
+        // unique prediction?
+        if(reach.uniqueAlt!==ATN.INVALID_ALT_NUMBER) {
+            predictedAlt = reach.uniqueAlt;
+            break;
+        } else if (this.predictionMode !== PredictionMode.LL_EXACT_AMBIG_DETECTION) {
+            predictedAlt = PredictionMode.resolvesToJustOneViableAlt(altSubSets);
+            if(predictedAlt !== ATN.INVALID_ALT_NUMBER) {
+                break;
+            }
+        } else {
+            // In exact ambiguity mode, we never try to terminate early.
+            // Just keeps scarfing until we know what the conflict is
+            if (PredictionMode.allSubsetsConflict(altSubSets) && PredictionMode.allSubsetsEqual(altSubSets)) {
+                foundExactAmbig = true;
+                predictedAlt = PredictionMode.getSingleViableAlt(altSubSets);
+                break;
+            }
+            // else there are multiple non-conflicting subsets or
+            // we're not sure what the ambiguity is yet.
+            // So, keep going.
+        }
+        previous = reach;
+        if( t !== Token.EOF) {
+            input.consume();
+            t = input.LA(1);
+        }
+    }
+    // If the configuration set uniquely predicts an alternative,
+    // without conflict, then we know that it's a full LL decision
+    // not SLL.
+    if (reach.uniqueAlt !== ATN.INVALID_ALT_NUMBER ) {
+        this.reportContextSensitivity(dfa, predictedAlt, reach, startIndex, input.index);
+        return predictedAlt;
+    }
+    // We do not check predicates here because we have checked them
+    // on-the-fly when doing full context prediction.
+
+    //
+    // In non-exact ambiguity detection mode, we might	actually be able to
+    // detect an exact ambiguity, but I'm not going to spend the cycles
+    // needed to check. We only emit ambiguity warnings in exact ambiguity
+    // mode.
+    //
+    // For example, we might know that we have conflicting configurations.
+    // But, that does not mean that there is no way forward without a
+    // conflict. It's possible to have nonconflicting alt subsets as in:
+
+    // altSubSets=[{1, 2}, {1, 2}, {1}, {1, 2}]
+
+    // from
+    //
+    //    [(17,1,[5 $]), (13,1,[5 10 $]), (21,1,[5 10 $]), (11,1,[$]),
+    //     (13,2,[5 10 $]), (21,2,[5 10 $]), (11,2,[$])]
+    //
+    // In this case, (17,1,[5 $]) indicates there is some next sequence that
+    // would resolve this without conflict to alternative 1. Any other viable
+    // next sequence, however, is associated with a conflict.  We stop
+    // looking for input because no amount of further lookahead will alter
+    // the fact that we should predict alternative 1.  We just can't say for
+    // sure that there is an ambiguity without looking further.
+
+    this.reportAmbiguity(dfa, D, startIndex, input.index, foundExactAmbig, null, reach);
+
+    return predictedAlt;
+};
+
+ParserATNSimulator.prototype.computeReachSet = function(closure, t, fullCtx) {
+    if (this.debug) {
+        console.log("in computeReachSet, starting closure: " + closure);
+    }
+    if( this.mergeCache===null) {
+        this.mergeCache = new DoubleDict();
+    }
+    var intermediate = new ATNConfigSet(fullCtx);
+
+    // Configurations already in a rule stop state indicate reaching the end
+    // of the decision rule (local context) or end of the start rule (full
+    // context). Once reached, these configurations are never updated by a
+    // closure operation, so they are handled separately for the performance
+    // advantage of having a smaller intermediate set when calling closure.
+    //
+    // For full-context reach operations, separate handling is required to
+    // ensure that the alternative matching the longest overall sequence is
+    // chosen when multiple such configurations can match the input.
+
+    var skippedStopStates = null;
+
+    // First figure out where we can reach on input t
+    for (var i=0; i<closure.items.length;i++) {
+        var c = closure.items[i];
+        if(this.debug_add) {
+            console.log("testing " + this.getTokenName(t) + " at " + c);
+        }
+        if (c.state instanceof RuleStopState) {
+            if (fullCtx || t === Token.EOF) {
+                if (skippedStopStates===null) {
+                    skippedStopStates = [];
+                }
+                skippedStopStates.push(c);
+                if(this.debug_add) {
+                    console.log("added " + c + " to skippedStopStates");
+                }
+            }
+            continue;
+        }
+        for(var j=0;j<c.state.transitions.length;j++) {
+            var trans = c.state.transitions[j];
+            var target = this.getReachableTarget(trans, t);
+            if (target!==null) {
+                var cfg = new ATNConfig({state:target}, c);
+                intermediate.add(cfg, this.mergeCache);
+                if(this.debug_add) {
+                    console.log("added " + cfg + " to intermediate");
+                }
+            }
+        }
+    }
+    // Now figure out where the reach operation can take us...
+    var reach = null;
+
+    // This block optimizes the reach operation for intermediate sets which
+    // trivially indicate a termination state for the overall
+    // adaptivePredict operation.
+    //
+    // The conditions assume that intermediate
+    // contains all configurations relevant to the reach set, but this
+    // condition is not true when one or more configurations have been
+    // withheld in skippedStopStates, or when the current symbol is EOF.
+    //
+    if (skippedStopStates===null && t!==Token.EOF) {
+        if (intermediate.items.length===1) {
+            // Don't pursue the closure if there is just one state.
+            // It can only have one alternative; just add to result
+            // Also don't pursue the closure if there is unique alternative
+            // among the configurations.
+            reach = intermediate;
+        } else if (this.getUniqueAlt(intermediate)!==ATN.INVALID_ALT_NUMBER) {
+            // Also don't pursue the closure if there is unique alternative
+            // among the configurations.
+            reach = intermediate;
+        }
+    }
+    // If the reach set could not be trivially determined, perform a closure
+    // operation on the intermediate set to compute its initial value.
+    //
+    if (reach===null) {
+        reach = new ATNConfigSet(fullCtx);
+        var closureBusy = new Set();
+        var treatEofAsEpsilon = t === Token.EOF;
+        for (var k=0; k<intermediate.items.length;k++) {
+            this.closure(intermediate.items[k], reach, closureBusy, false, fullCtx, treatEofAsEpsilon);
+        }
+    }
+    if (t === Token.EOF) {
+        // After consuming EOF no additional input is possible, so we are
+        // only interested in configurations which reached the end of the
+        // decision rule (local context) or end of the start rule (full
+        // context). Update reach to contain only these configurations. This
+        // handles both explicit EOF transitions in the grammar and implicit
+        // EOF transitions following the end of the decision or start rule.
+        //
+        // When reach==intermediate, no closure operation was performed. In
+        // this case, removeAllConfigsNotInRuleStopState needs to check for
+        // reachable rule stop states as well as configurations already in
+        // a rule stop state.
+        //
+        // This is handled before the configurations in skippedStopStates,
+        // because any configurations potentially added from that list are
+        // already guaranteed to meet this condition whether or not it's
+        // required.
+        //
+        reach = this.removeAllConfigsNotInRuleStopState(reach, reach === intermediate);
+    }
+    // If skippedStopStates!==null, then it contains at least one
+    // configuration. For full-context reach operations, these
+    // configurations reached the end of the start rule, in which case we
+    // only add them back to reach if no configuration during the current
+    // closure operation reached such a state. This ensures adaptivePredict
+    // chooses an alternative matching the longest overall sequence when
+    // multiple alternatives are viable.
+    //
+    if (skippedStopStates!==null && ( (! fullCtx) || (! PredictionMode.hasConfigInRuleStopState(reach)))) {
+        for (var l=0; l<skippedStopStates.length;l++) {
+            reach.add(skippedStopStates[l], this.mergeCache);
+        }
+    }
+    if (reach.items.length===0) {
+        return null;
+    } else {
+        return reach;
+    }
+};
+//
+// Return a configuration set containing only the configurations from
+// {@code configs} which are in a {@link RuleStopState}. If all
+// configurations in {@code configs} are already in a rule stop state, this
+// method simply returns {@code configs}.
+//
+// <p>When {@code lookToEndOfRule} is true, this method uses
+// {@link ATN//nextTokens} for each configuration in {@code configs} which is
+// not already in a rule stop state to see if a rule stop state is reachable
+// from the configuration via epsilon-only transitions.</p>
+//
+// @param configs the configuration set to update
+// @param lookToEndOfRule when true, this method checks for rule stop states
+// reachable by epsilon-only transitions from each configuration in
+// {@code configs}.
+//
+// @return {@code configs} if all configurations in {@code configs} are in a
+// rule stop state, otherwise return a new configuration set containing only
+// the configurations from {@code configs} which are in a rule stop state
+//
+ParserATNSimulator.prototype.removeAllConfigsNotInRuleStopState = function(configs, lookToEndOfRule) {
+    if (PredictionMode.allConfigsInRuleStopStates(configs)) {
+        return configs;
+    }
+    var result = new ATNConfigSet(configs.fullCtx);
+    for(var i=0; i<configs.items.length;i++) {
+        var config = configs.items[i];
+        if (config.state instanceof RuleStopState) {
+            result.add(config, this.mergeCache);
+            continue;
+        }
+        if (lookToEndOfRule && config.state.epsilonOnlyTransitions) {
+            var nextTokens = this.atn.nextTokens(config.state);
+            if (nextTokens.contains(Token.EPSILON)) {
+                var endOfRuleState = this.atn.ruleToStopState[config.state.ruleIndex];
+                result.add(new ATNConfig({state:endOfRuleState}, config), this.mergeCache);
+            }
+        }
+    }
+    return result;
+};
+
+ParserATNSimulator.prototype.computeStartState = function(p, ctx, fullCtx) {
+    // always at least the implicit call to start rule
+    var initialContext = predictionContextFromRuleContext(this.atn, ctx);
+    var configs = new ATNConfigSet(fullCtx);
+    for(var i=0;i<p.transitions.length;i++) {
+        var target = p.transitions[i].target;
+        var c = new ATNConfig({ state:target, alt:i+1, context:initialContext }, null);
+        var closureBusy = new Set();
+        this.closure(c, configs, closureBusy, true, fullCtx, false);
+    }
+    return configs;
+};
+
+//
+// This method transforms the start state computed by
+// {@link //computeStartState} to the special start state used by a
+// precedence DFA for a particular precedence value. The transformation
+// process applies the following changes to the start state's configuration
+// set.
+//
+// <ol>
+// <li>Evaluate the precedence predicates for each configuration using
+// {@link SemanticContext//evalPrecedence}.</li>
+// <li>Remove all configurations which predict an alternative greater than
+// 1, for which another configuration that predicts alternative 1 is in the
+// same ATN state with the same prediction context. This transformation is
+// valid for the following reasons:
+// <ul>
+// <li>The closure block cannot contain any epsilon transitions which bypass
+// the body of the closure, so all states reachable via alternative 1 are
+// part of the precedence alternatives of the transformed left-recursive
+// rule.</li>
+// <li>The "primary" portion of a left recursive rule cannot contain an
+// epsilon transition, so the only way an alternative other than 1 can exist
+// in a state that is also reachable via alternative 1 is by nesting calls
+// to the left-recursive rule, with the outer calls not being at the
+// preferred precedence level.</li>
+// </ul>
+// </li>
+// </ol>
+//
+// <p>
+// The prediction context must be considered by this filter to address
+// situations like the following.
+// </p>
+// <code>
+// <pre>
+// grammar TA;
+// prog: statement* EOF;
+// statement: letterA | statement letterA 'b' ;
+// letterA: 'a';
+// </pre>
+// </code>
+// <p>
+// If the above grammar, the ATN state immediately before the token
+// reference {@code 'a'} in {@code letterA} is reachable from the left edge
+// of both the primary and closure blocks of the left-recursive rule
+// {@code statement}. The prediction context associated with each of these
+// configurations distinguishes between them, and prevents the alternative
+// which stepped out to {@code prog} (and then back in to {@code statement}
+// from being eliminated by the filter.
+// </p>
+//
+// @param configs The configuration set computed by
+// {@link //computeStartState} as the start state for the DFA.
+// @return The transformed configuration set representing the start state
+// for a precedence DFA at a particular precedence level (determined by
+// calling {@link Parser//getPrecedence}).
+//
+ParserATNSimulator.prototype.applyPrecedenceFilter = function(configs) {
+	var config;
+	var statesFromAlt1 = [];
+    var configSet = new ATNConfigSet(configs.fullCtx);
+    for(var i=0; i<configs.items.length; i++) {
+        config = configs.items[i];
+        // handle alt 1 first
+        if (config.alt !== 1) {
+            continue;
+        }
+        var updatedContext = config.semanticContext.evalPrecedence(this.parser, this._outerContext);
+        if (updatedContext===null) {
+            // the configuration was eliminated
+            continue;
+        }
+        statesFromAlt1[config.state.stateNumber] = config.context;
+        if (updatedContext !== config.semanticContext) {
+            configSet.add(new ATNConfig({semanticContext:updatedContext}, config), this.mergeCache);
+        } else {
+            configSet.add(config, this.mergeCache);
+        }
+    }
+    for(i=0; i<configs.items.length; i++) {
+        config = configs.items[i];
+        if (config.alt === 1) {
+            // already handled
+            continue;
+        }
+        // In the future, this elimination step could be updated to also
+        // filter the prediction context for alternatives predicting alt>1
+        // (basically a graph subtraction algorithm).
+		if (!config.precedenceFilterSuppressed) {
+            var context = statesFromAlt1[config.state.stateNumber] || null;
+            if (context!==null && context.equals(config.context)) {
+                // eliminated
+                continue;
+            }
+		}
+        configSet.add(config, this.mergeCache);
+    }
+    return configSet;
+};
+
+ParserATNSimulator.prototype.getReachableTarget = function(trans, ttype) {
+    if (trans.matches(ttype, 0, this.atn.maxTokenType)) {
+        return trans.target;
+    } else {
+        return null;
+    }
+};
+
+ParserATNSimulator.prototype.getPredsForAmbigAlts = function(ambigAlts, configs, nalts) {
+    // REACH=[1|1|[]|0:0, 1|2|[]|0:1]
+    // altToPred starts as an array of all null contexts. The entry at index i
+    // corresponds to alternative i. altToPred[i] may have one of three values:
+    //   1. null: no ATNConfig c is found such that c.alt==i
+    //   2. SemanticContext.NONE: At least one ATNConfig c exists such that
+    //      c.alt==i and c.semanticContext==SemanticContext.NONE. In other words,
+    //      alt i has at least one unpredicated config.
+    //   3. Non-NONE Semantic Context: There exists at least one, and for all
+    //      ATNConfig c such that c.alt==i, c.semanticContext!=SemanticContext.NONE.
+    //
+    // From this, it is clear that NONE||anything==NONE.
+    //
+    var altToPred = [];
+    for(var i=0;i<configs.items.length;i++) {
+        var c = configs.items[i];
+        if(ambigAlts.contains( c.alt )) {
+            altToPred[c.alt] = SemanticContext.orContext(altToPred[c.alt] || null, c.semanticContext);
+        }
+    }
+    var nPredAlts = 0;
+    for (i =1;i< nalts+1;i++) {
+        var pred = altToPred[i] || null;
+        if (pred===null) {
+            altToPred[i] = SemanticContext.NONE;
+        } else if (pred !== SemanticContext.NONE) {
+            nPredAlts += 1;
+        }
+    }
+    // nonambig alts are null in altToPred
+    if (nPredAlts===0) {
+        altToPred = null;
+    }
+    if (this.debug) {
+        console.log("getPredsForAmbigAlts result " + Utils.arrayToString(altToPred));
+    }
+    return altToPred;
+};
+
+ParserATNSimulator.prototype.getPredicatePredictions = function(ambigAlts, altToPred) {
+    var pairs = [];
+    var containsPredicate = false;
+    for (var i=1; i<altToPred.length;i++) {
+        var pred = altToPred[i];
+        // unpredicated is indicated by SemanticContext.NONE
+        if( ambigAlts!==null && ambigAlts.contains( i )) {
+            pairs.push(new PredPrediction(pred, i));
+        }
+        if (pred !== SemanticContext.NONE) {
+            containsPredicate = true;
+        }
+    }
+    if (! containsPredicate) {
+        return null;
+    }
+    return pairs;
+};
+
+//
+// This method is used to improve the localization of error messages by
+// choosing an alternative rather than throwing a
+// {@link NoViableAltException} in particular prediction scenarios where the
+// {@link //ERROR} state was reached during ATN simulation.
+//
+// <p>
+// The default implementation of this method uses the following
+// algorithm to identify an ATN configuration which successfully parsed the
+// decision entry rule. Choosing such an alternative ensures that the
+// {@link ParserRuleContext} returned by the calling rule will be complete
+// and valid, and the syntax error will be reported later at a more
+// localized location.</p>
+//
+// <ul>
+// <li>If a syntactically valid path or paths reach the end of the decision rule and
+// they are semantically valid if predicated, return the min associated alt.</li>
+// <li>Else, if a semantically invalid but syntactically valid path exist
+// or paths exist, return the minimum associated alt.
+// </li>
+// <li>Otherwise, return {@link ATN//INVALID_ALT_NUMBER}.</li>
+// </ul>
+//
+// <p>
+// In some scenarios, the algorithm described above could predict an
+// alternative which will result in a {@link FailedPredicateException} in
+// the parser. Specifically, this could occur if the <em>only</em> configuration
+// capable of successfully parsing to the end of the decision rule is
+// blocked by a semantic predicate. By choosing this alternative within
+// {@link //adaptivePredict} instead of throwing a
+// {@link NoViableAltException}, the resulting
+// {@link FailedPredicateException} in the parser will identify the specific
+// predicate which is preventing the parser from successfully parsing the
+// decision rule, which helps developers identify and correct logic errors
+// in semantic predicates.
+// </p>
+//
+// @param configs The ATN configurations which were valid immediately before
+// the {@link //ERROR} state was reached
+// @param outerContext The is the \gamma_0 initial parser context from the paper
+// or the parser stack at the instant before prediction commences.
+//
+// @return The value to return from {@link //adaptivePredict}, or
+// {@link ATN//INVALID_ALT_NUMBER} if a suitable alternative was not
+// identified and {@link //adaptivePredict} should report an error instead.
+//
+ParserATNSimulator.prototype.getSynValidOrSemInvalidAltThatFinishedDecisionEntryRule = function(configs, outerContext) {
+    var cfgs = this.splitAccordingToSemanticValidity(configs, outerContext);
+    var semValidConfigs = cfgs[0];
+    var semInvalidConfigs = cfgs[1];
+    var alt = this.getAltThatFinishedDecisionEntryRule(semValidConfigs);
+    if (alt!==ATN.INVALID_ALT_NUMBER) { // semantically/syntactically viable path exists
+        return alt;
+    }
+    // Is there a syntactically valid path with a failed pred?
+    if (semInvalidConfigs.items.length>0) {
+        alt = this.getAltThatFinishedDecisionEntryRule(semInvalidConfigs);
+        if (alt!==ATN.INVALID_ALT_NUMBER) { // syntactically viable path exists
+            return alt;
+        }
+    }
+    return ATN.INVALID_ALT_NUMBER;
+};
+
+ParserATNSimulator.prototype.getAltThatFinishedDecisionEntryRule = function(configs) {
+    var alts = [];
+    for(var i=0;i<configs.items.length; i++) {
+        var c = configs.items[i];
+        if (c.reachesIntoOuterContext>0 || ((c.state instanceof RuleStopState) && c.context.hasEmptyPath())) {
+            if(alts.indexOf(c.alt)<0) {
+                alts.push(c.alt);
+            }
+        }
+    }
+    if (alts.length===0) {
+        return ATN.INVALID_ALT_NUMBER;
+    } else {
+        return Math.min.apply(null, alts);
+    }
+};
+// Walk the list of configurations and split them according to
+//  those that have preds evaluating to true/false.  If no pred, assume
+//  true pred and include in succeeded set.  Returns Pair of sets.
+//
+//  Create a new set so as not to alter the incoming parameter.
+//
+//  Assumption: the input stream has been restored to the starting point
+//  prediction, which is where predicates need to evaluate.
+//
+ParserATNSimulator.prototype.splitAccordingToSemanticValidity = function( configs, outerContext) {
+    var succeeded = new ATNConfigSet(configs.fullCtx);
+    var failed = new ATNConfigSet(configs.fullCtx);
+    for(var i=0;i<configs.items.length; i++) {
+        var c = configs.items[i];
+        if (c.semanticContext !== SemanticContext.NONE) {
+            var predicateEvaluationResult = c.semanticContext.evaluate(this.parser, outerContext);
+            if (predicateEvaluationResult) {
+                succeeded.add(c);
+            } else {
+                failed.add(c);
+            }
+        } else {
+            succeeded.add(c);
+        }
+    }
+    return [succeeded, failed];
+};
+
+// Look through a list of predicate/alt pairs, returning alts for the
+//  pairs that win. A {@code NONE} predicate indicates an alt containing an
+//  unpredicated config which behaves as "always true." If !complete
+//  then we stop at the first predicate that evaluates to true. This
+//  includes pairs with null predicates.
+//
+ParserATNSimulator.prototype.evalSemanticContext = function(predPredictions, outerContext, complete) {
+    var predictions = new BitSet();
+    for(var i=0;i<predPredictions.length;i++) {
+    	var pair = predPredictions[i];
+        if (pair.pred === SemanticContext.NONE) {
+            predictions.add(pair.alt);
+            if (! complete) {
+                break;
+            }
+            continue;
+        }
+        var predicateEvaluationResult = pair.pred.evaluate(this.parser, outerContext);
+        if (this.debug || this.dfa_debug) {
+            console.log("eval pred " + pair + "=" + predicateEvaluationResult);
+        }
+        if (predicateEvaluationResult) {
+            if (this.debug || this.dfa_debug) {
+                console.log("PREDICT " + pair.alt);
+            }
+            predictions.add(pair.alt);
+            if (! complete) {
+                break;
+            }
+        }
+    }
+    return predictions;
+};
+
+// TODO: If we are doing predicates, there is no point in pursuing
+//     closure operations if we reach a DFA state that uniquely predicts
+//     alternative. We will not be caching that DFA state and it is a
+//     waste to pursue the closure. Might have to advance when we do
+//     ambig detection thought :(
+//
+
+ParserATNSimulator.prototype.closure = function(config, configs, closureBusy, collectPredicates, fullCtx, treatEofAsEpsilon) {
+    var initialDepth = 0;
+    this.closureCheckingStopState(config, configs, closureBusy, collectPredicates,
+                             fullCtx, initialDepth, treatEofAsEpsilon);
+};
+
+
+ParserATNSimulator.prototype.closureCheckingStopState = function(config, configs, closureBusy, collectPredicates, fullCtx, depth, treatEofAsEpsilon) {
+    if (this.debug || this.debug_closure) {
+        console.log("closure(" + config.toString(this.parser,true) + ")");
+        // console.log("configs(" + configs.toString() + ")");
+        if(config.reachesIntoOuterContext>50) {
+            throw "problem";
+        }
+    }
+    if (config.state instanceof RuleStopState) {
+        // We hit rule end. If we have context info, use it
+        // run thru all possible stack tops in ctx
+        if (! config.context.isEmpty()) {
+            for ( var i =0; i<config.context.length; i++) {
+                if (config.context.getReturnState(i) === PredictionContext.EMPTY_RETURN_STATE) {
+                    if (fullCtx) {
+                        configs.add(new ATNConfig({state:config.state, context:PredictionContext.EMPTY}, config), this.mergeCache);
+                        continue;
+                    } else {
+                        // we have no context info, just chase follow links (if greedy)
+                        if (this.debug) {
+                            console.log("FALLING off rule " + this.getRuleName(config.state.ruleIndex));
+                        }
+                        this.closure_(config, configs, closureBusy, collectPredicates,
+                                 fullCtx, depth, treatEofAsEpsilon);
+                    }
+                    continue;
+                }
+                var returnState = this.atn.states[config.context.getReturnState(i)];
+                var newContext = config.context.getParent(i); // "pop" return state
+                var parms = {state:returnState, alt:config.alt, context:newContext, semanticContext:config.semanticContext};
+                var c = new ATNConfig(parms, null);
+                // While we have context to pop back from, we may have
+                // gotten that context AFTER having falling off a rule.
+                // Make sure we track that we are now out of context.
+                c.reachesIntoOuterContext = config.reachesIntoOuterContext;
+                this.closureCheckingStopState(c, configs, closureBusy, collectPredicates, fullCtx, depth - 1, treatEofAsEpsilon);
+            }
+            return;
+        } else if( fullCtx) {
+            // reached end of start rule
+            configs.add(config, this.mergeCache);
+            return;
+        } else {
+            // else if we have no context info, just chase follow links (if greedy)
+            if (this.debug) {
+                console.log("FALLING off rule " + this.getRuleName(config.state.ruleIndex));
+            }
+        }
+    }
+    this.closure_(config, configs, closureBusy, collectPredicates, fullCtx, depth, treatEofAsEpsilon);
+};
+
+
+// Do the actual work of walking epsilon edges//
+ParserATNSimulator.prototype.closure_ = function(config, configs, closureBusy, collectPredicates, fullCtx, depth, treatEofAsEpsilon) {
+    var p = config.state;
+    // optimization
+    if (! p.epsilonOnlyTransitions) {
+        configs.add(config, this.mergeCache);
+        // make sure to not return here, because EOF transitions can act as
+        // both epsilon transitions and non-epsilon transitions.
+    }
+    for(var i = 0;i<p.transitions.length; i++) {
+        if(i==0 && this.canDropLoopEntryEdgeInLeftRecursiveRule(config))
+            continue;
+
+        var t = p.transitions[i];
+        var continueCollecting = collectPredicates && !(t instanceof ActionTransition);
+        var c = this.getEpsilonTarget(config, t, continueCollecting, depth === 0, fullCtx, treatEofAsEpsilon);
+        if (c!==null) {
+            var newDepth = depth;
+            if ( config.state instanceof RuleStopState) {
+                // target fell off end of rule; mark resulting c as having dipped into outer context
+                // We can't get here if incoming config was rule stop and we had context
+                // track how far we dip into outer context.  Might
+                // come in handy and we avoid evaluating context dependent
+                // preds if this is > 0.
+				if (this._dfa !== null && this._dfa.precedenceDfa) {
+					if (t.outermostPrecedenceReturn === this._dfa.atnStartState.ruleIndex) {
+						c.precedenceFilterSuppressed = true;
+					}
+				}
+
+                c.reachesIntoOuterContext += 1;
+                if (closureBusy.add(c)!==c) {
+                    // avoid infinite recursion for right-recursive rules
+                    continue;
+                }
+                configs.dipsIntoOuterContext = true; // TODO: can remove? only care when we add to set per middle of this method
+                newDepth -= 1;
+                if (this.debug) {
+                    console.log("dips into outer ctx: " + c);
+                }
+            } else {
+                if (!t.isEpsilon && closureBusy.add(c)!==c){
+                    // avoid infinite recursion for EOF* and EOF+
+                    continue;
+                }
+                if (t instanceof RuleTransition) {
+                    // latch when newDepth goes negative - once we step out of the entry context we can't return
+                    if (newDepth >= 0) {
+                        newDepth += 1;
+                    }
+                }
+            }
+            this.closureCheckingStopState(c, configs, closureBusy, continueCollecting, fullCtx, newDepth, treatEofAsEpsilon);
+        }
+    }
+};
+
+
+ParserATNSimulator.prototype.canDropLoopEntryEdgeInLeftRecursiveRule = function(config) {
+    // return False
+    var p = config.state;
+    // First check to see if we are in StarLoopEntryState generated during
+    // left-recursion elimination. For efficiency, also check if
+    // the context has an empty stack case. If so, it would mean
+    // global FOLLOW so we can't perform optimization
+    // Are we the special loop entry/exit state? or SLL wildcard
+    if(p.stateType != ATNState.STAR_LOOP_ENTRY)
+        return false;
+    if(p.stateType != ATNState.STAR_LOOP_ENTRY || !p.isPrecedenceDecision ||
+           config.context.isEmpty() || config.context.hasEmptyPath())
+        return false;
+
+    // Require all return states to return back to the same rule that p is in.
+    var numCtxs = config.context.length;
+    for(var i=0; i<numCtxs; i++) { // for each stack context
+        var returnState = this.atn.states[config.context.getReturnState(i)];
+        if (returnState.ruleIndex != p.ruleIndex)
+            return false;
+    }
+
+    var decisionStartState = p.transitions[0].target;
+    var blockEndStateNum = decisionStartState.endState.stateNumber;
+    var blockEndState = this.atn.states[blockEndStateNum];
+
+    // Verify that the top of each stack context leads to loop entry/exit
+    // state through epsilon edges and w/o leaving rule.
+    for(var i=0; i<numCtxs; i++) { // for each stack context
+        var returnStateNumber = config.context.getReturnState(i);
+        var returnState = this.atn.states[returnStateNumber];
+        // all states must have single outgoing epsilon edge
+        if (returnState.transitions.length != 1 || !returnState.transitions[0].isEpsilon)
+            return false;
+
+        // Look for prefix op case like 'not expr', (' type ')' expr
+        var returnStateTarget = returnState.transitions[0].target;
+        if ( returnState.stateType == ATNState.BLOCK_END && returnStateTarget == p )
+            continue;
+
+        // Look for 'expr op expr' or case where expr's return state is block end
+        // of (...)* internal block; the block end points to loop back
+        // which points to p but we don't need to check that
+        if ( returnState == blockEndState )
+            continue;
+
+        // Look for ternary expr ? expr : expr. The return state points at block end,
+        // which points at loop entry state
+        if ( returnStateTarget == blockEndState )
+            continue;
+
+        // Look for complex prefix 'between expr and expr' case where 2nd expr's
+        // return state points at block end state of (...)* internal block
+        if (returnStateTarget.stateType == ATNState.BLOCK_END && returnStateTarget.transitions.length == 1
+                && returnStateTarget.transitions[0].isEpsilon && returnStateTarget.transitions[0].target == p)
+            continue;
+
+        // anything else ain't conforming
+        return false;
+    }
+    return true;
+};
+
+
+ParserATNSimulator.prototype.getRuleName = function( index) {
+    if (this.parser!==null && index>=0) {
+        return this.parser.ruleNames[index];
+    } else {
+        return "<rule " + index + ">";
+    }
+};
+
+ParserATNSimulator.prototype.getEpsilonTarget = function(config, t, collectPredicates, inContext, fullCtx, treatEofAsEpsilon) {
+    switch(t.serializationType) {
+    case Transition.RULE:
+        return this.ruleTransition(config, t);
+    case Transition.PRECEDENCE:
+        return this.precedenceTransition(config, t, collectPredicates, inContext, fullCtx);
+    case Transition.PREDICATE:
+        return this.predTransition(config, t, collectPredicates, inContext, fullCtx);
+    case Transition.ACTION:
+        return this.actionTransition(config, t);
+    case Transition.EPSILON:
+        return new ATNConfig({state:t.target}, config);
+    case Transition.ATOM:
+    case Transition.RANGE:
+    case Transition.SET:
+        // EOF transitions act like epsilon transitions after the first EOF
+        // transition is traversed
+        if (treatEofAsEpsilon) {
+            if (t.matches(Token.EOF, 0, 1)) {
+                return new ATNConfig({state: t.target}, config);
+            }
+        }
+        return null;
+    default:
+    	return null;
+    }
+};
+
+ParserATNSimulator.prototype.actionTransition = function(config, t) {
+    if (this.debug) {
+        var index = t.actionIndex==-1 ? 65535 : t.actionIndex;
+        console.log("ACTION edge " + t.ruleIndex + ":" + index);
+    }
+    return new ATNConfig({state:t.target}, config);
+};
+
+ParserATNSimulator.prototype.precedenceTransition = function(config, pt,  collectPredicates, inContext, fullCtx) {
+    if (this.debug) {
+        console.log("PRED (collectPredicates=" + collectPredicates + ") " +
+                pt.precedence + ">=_p, ctx dependent=true");
+        if (this.parser!==null) {
+        	console.log("context surrounding pred is " + Utils.arrayToString(this.parser.getRuleInvocationStack()));
+        }
+    }
+    var c = null;
+    if (collectPredicates && inContext) {
+        if (fullCtx) {
+            // In full context mode, we can evaluate predicates on-the-fly
+            // during closure, which dramatically reduces the size of
+            // the config sets. It also obviates the need to test predicates
+            // later during conflict resolution.
+            var currentPosition = this._input.index;
+            this._input.seek(this._startIndex);
+            var predSucceeds = pt.getPredicate().evaluate(this.parser, this._outerContext);
+            this._input.seek(currentPosition);
+            if (predSucceeds) {
+                c = new ATNConfig({state:pt.target}, config); // no pred context
+            }
+        } else {
+            var newSemCtx = SemanticContext.andContext(config.semanticContext, pt.getPredicate());
+            c = new ATNConfig({state:pt.target, semanticContext:newSemCtx}, config);
+        }
+    } else {
+        c = new ATNConfig({state:pt.target}, config);
+    }
+    if (this.debug) {
+        console.log("config from pred transition=" + c);
+    }
+    return c;
+};
+
+ParserATNSimulator.prototype.predTransition = function(config, pt, collectPredicates, inContext, fullCtx) {
+    if (this.debug) {
+        console.log("PRED (collectPredicates=" + collectPredicates + ") " + pt.ruleIndex +
+                ":" + pt.predIndex + ", ctx dependent=" + pt.isCtxDependent);
+        if (this.parser!==null) {
+            console.log("context surrounding pred is " + Utils.arrayToString(this.parser.getRuleInvocationStack()));
+        }
+    }
+    var c = null;
+    if (collectPredicates && ((pt.isCtxDependent && inContext) || ! pt.isCtxDependent)) {
+        if (fullCtx) {
+            // In full context mode, we can evaluate predicates on-the-fly
+            // during closure, which dramatically reduces the size of
+            // the config sets. It also obviates the need to test predicates
+            // later during conflict resolution.
+            var currentPosition = this._input.index;
+            this._input.seek(this._startIndex);
+            var predSucceeds = pt.getPredicate().evaluate(this.parser, this._outerContext);
+            this._input.seek(currentPosition);
+            if (predSucceeds) {
+                c = new ATNConfig({state:pt.target}, config); // no pred context
+            }
+        } else {
+            var newSemCtx = SemanticContext.andContext(config.semanticContext, pt.getPredicate());
+            c = new ATNConfig({state:pt.target, semanticContext:newSemCtx}, config);
+        }
+    } else {
+        c = new ATNConfig({state:pt.target}, config);
+    }
+    if (this.debug) {
+        console.log("config from pred transition=" + c);
+    }
+    return c;
+};
+
+ParserATNSimulator.prototype.ruleTransition = function(config, t) {
+    if (this.debug) {
+        console.log("CALL rule " + this.getRuleName(t.target.ruleIndex) + ", ctx=" + config.context);
+    }
+    var returnState = t.followState;
+    var newContext = SingletonPredictionContext.create(config.context, returnState.stateNumber);
+    return new ATNConfig({state:t.target, context:newContext}, config );
+};
+
+ParserATNSimulator.prototype.getConflictingAlts = function(configs) {
+    var altsets = PredictionMode.getConflictingAltSubsets(configs);
+    return PredictionMode.getAlts(altsets);
+};
+
+ // Sam pointed out a problem with the previous definition, v3, of
+ // ambiguous states. If we have another state associated with conflicting
+ // alternatives, we should keep going. For example, the following grammar
+ //
+ // s : (ID | ID ID?) ';' ;
+ //
+ // When the ATN simulation reaches the state before ';', it has a DFA
+ // state that looks like: [12|1|[], 6|2|[], 12|2|[]]. Naturally
+ // 12|1|[] and 12|2|[] conflict, but we cannot stop processing this node
+ // because alternative to has another way to continue, via [6|2|[]].
+ // The key is that we have a single state that has config's only associated
+ // with a single alternative, 2, and crucially the state transitions
+ // among the configurations are all non-epsilon transitions. That means
+ // we don't consider any conflicts that include alternative 2. So, we
+ // ignore the conflict between alts 1 and 2. We ignore a set of
+ // conflicting alts when there is an intersection with an alternative
+ // associated with a single alt state in the state&rarr;config-list map.
+ //
+ // It's also the case that we might have two conflicting configurations but
+ // also a 3rd nonconflicting configuration for a different alternative:
+ // [1|1|[], 1|2|[], 8|3|[]]. This can come about from grammar:
+ //
+ // a : A | A | A B ;
+ //
+ // After matching input A, we reach the stop state for rule A, state 1.
+ // State 8 is the state right before B. Clearly alternatives 1 and 2
+ // conflict and no amount of further lookahead will separate the two.
+ // However, alternative 3 will be able to continue and so we do not
+ // stop working on this state. In the previous example, we're concerned
+ // with states associated with the conflicting alternatives. Here alt
+ // 3 is not associated with the conflicting configs, but since we can continue
+ // looking for input reasonably, I don't declare the state done. We
+ // ignore a set of conflicting alts when we have an alternative
+ // that we still need to pursue.
+//
+
+ParserATNSimulator.prototype.getConflictingAltsOrUniqueAlt = function(configs) {
+    var conflictingAlts = null;
+    if (configs.uniqueAlt!== ATN.INVALID_ALT_NUMBER) {
+        conflictingAlts = new BitSet();
+        conflictingAlts.add(configs.uniqueAlt);
+    } else {
+        conflictingAlts = configs.conflictingAlts;
+    }
+    return conflictingAlts;
+};
+
+ParserATNSimulator.prototype.getTokenName = function( t) {
+    if (t===Token.EOF) {
+        return "EOF";
+    }
+    if( this.parser!==null && this.parser.literalNames!==null) {
+        if (t >= this.parser.literalNames.length && t >= this.parser.symbolicNames.length) {
+            console.log("" + t + " ttype out of range: " + this.parser.literalNames);
+            console.log("" + this.parser.getInputStream().getTokens());
+        } else {
+            var name = this.parser.literalNames[t] || this.parser.symbolicNames[t];
+            return name + "<" + t + ">";
+        }
+    }
+    return "" + t;
+};
+
+ParserATNSimulator.prototype.getLookaheadName = function(input) {
+    return this.getTokenName(input.LA(1));
+};
+
+// Used for debugging in adaptivePredict around execATN but I cut
+//  it out for clarity now that alg. works well. We can leave this
+//  "dead" code for a bit.
+//
+ParserATNSimulator.prototype.dumpDeadEndConfigs = function(nvae) {
+    console.log("dead end configs: ");
+    var decs = nvae.getDeadEndConfigs();
+    for(var i=0; i<decs.length; i++) {
+    	var c = decs[i];
+        var trans = "no edges";
+        if (c.state.transitions.length>0) {
+            var t = c.state.transitions[0];
+            if (t instanceof AtomTransition) {
+                trans = "Atom "+ this.getTokenName(t.label);
+            } else if (t instanceof SetTransition) {
+                var neg = (t instanceof NotSetTransition);
+                trans = (neg ? "~" : "") + "Set " + t.set;
+            }
+        }
+        console.error(c.toString(this.parser, true) + ":" + trans);
+    }
+};
+
+ParserATNSimulator.prototype.noViableAlt = function(input, outerContext, configs, startIndex) {
+    return new NoViableAltException(this.parser, input, input.get(startIndex), input.LT(1), configs, outerContext);
+};
+
+ParserATNSimulator.prototype.getUniqueAlt = function(configs) {
+    var alt = ATN.INVALID_ALT_NUMBER;
+    for(var i=0;i<configs.items.length;i++) {
+    	var c = configs.items[i];
+        if (alt === ATN.INVALID_ALT_NUMBER) {
+            alt = c.alt // found first alt
+        } else if( c.alt!==alt) {
+            return ATN.INVALID_ALT_NUMBER;
+        }
+    }
+    return alt;
+};
+
+//
+// Add an edge to the DFA, if possible. This method calls
+// {@link //addDFAState} to ensure the {@code to} state is present in the
+// DFA. If {@code from} is {@code null}, or if {@code t} is outside the
+// range of edges that can be represented in the DFA tables, this method
+// returns without adding the edge to the DFA.
+//
+// <p>If {@code to} is {@code null}, this method returns {@code null}.
+// Otherwise, this method returns the {@link DFAState} returned by calling
+// {@link //addDFAState} for the {@code to} state.</p>
+//
+// @param dfa The DFA
+// @param from The source state for the edge
+// @param t The input symbol
+// @param to The target state for the edge
+//
+// @return If {@code to} is {@code null}, this method returns {@code null};
+// otherwise this method returns the result of calling {@link //addDFAState}
+// on {@code to}
+//
+ParserATNSimulator.prototype.addDFAEdge = function(dfa, from_, t, to) {
+    if( this.debug) {
+        console.log("EDGE " + from_ + " -> " + to + " upon " + this.getTokenName(t));
+    }
+    if (to===null) {
+        return null;
+    }
+    to = this.addDFAState(dfa, to); // used existing if possible not incoming
+    if (from_===null || t < -1 || t > this.atn.maxTokenType) {
+        return to;
+    }
+    if (from_.edges===null) {
+        from_.edges = [];
+    }
+    from_.edges[t+1] = to; // connect
+
+    if (this.debug) {
+        var literalNames = this.parser===null ? null : this.parser.literalNames;
+        var symbolicNames = this.parser===null ? null : this.parser.symbolicNames;
+        console.log("DFA=\n" + dfa.toString(literalNames, symbolicNames));
+    }
+    return to;
+};
+//
+// Add state {@code D} to the DFA if it is not already present, and return
+// the actual instance stored in the DFA. If a state equivalent to {@code D}
+// is already in the DFA, the existing state is returned. Otherwise this
+// method returns {@code D} after adding it to the DFA.
+//
+// <p>If {@code D} is {@link //ERROR}, this method returns {@link //ERROR} and
+// does not change the DFA.</p>
+//
+// @param dfa The dfa
+// @param D The DFA state to add
+// @return The state stored in the DFA. This will be either the existing
+// state if {@code D} is already in the DFA, or {@code D} itself if the
+// state was not already present.
+//
+ParserATNSimulator.prototype.addDFAState = function(dfa, D) {
+    if (D == ATNSimulator.ERROR) {
+        return D;
+    }
+    var existing = dfa.states.get(D);
+    if(existing!==null) {
+        return existing;
+    }
+    D.stateNumber = dfa.states.length;
+    if (! D.configs.readOnly) {
+        D.configs.optimizeConfigs(this);
+        D.configs.setReadonly(true);
+    }
+    dfa.states.add(D);
+    if (this.debug) {
+        console.log("adding new DFA state: " + D);
+    }
+    return D;
+};
+
+ParserATNSimulator.prototype.reportAttemptingFullContext = function(dfa, conflictingAlts, configs, startIndex, stopIndex) {
+    if (this.debug || this.retry_debug) {
+        var interval = new Interval(startIndex, stopIndex + 1);
+        console.log("reportAttemptingFullContext decision=" + dfa.decision + ":" + configs +
+                           ", input=" + this.parser.getTokenStream().getText(interval));
+    }
+    if (this.parser!==null) {
+        this.parser.getErrorListenerDispatch().reportAttemptingFullContext(this.parser, dfa, startIndex, stopIndex, conflictingAlts, configs);
+    }
+};
+
+ParserATNSimulator.prototype.reportContextSensitivity = function(dfa, prediction, configs, startIndex, stopIndex) {
+    if (this.debug || this.retry_debug) {
+        var interval = new Interval(startIndex, stopIndex + 1);
+        console.log("reportContextSensitivity decision=" + dfa.decision + ":" + configs +
+                           ", input=" + this.parser.getTokenStream().getText(interval));
+    }
+    if (this.parser!==null) {
+        this.parser.getErrorListenerDispatch().reportContextSensitivity(this.parser, dfa, startIndex, stopIndex, prediction, configs);
+    }
+};
+
+// If context sensitive parsing, we know it's ambiguity not conflict//
+ParserATNSimulator.prototype.reportAmbiguity = function(dfa, D, startIndex, stopIndex,
+                               exact, ambigAlts, configs ) {
+    if (this.debug || this.retry_debug) {
+        var interval = new Interval(startIndex, stopIndex + 1);
+        console.log("reportAmbiguity " + ambigAlts + ":" + configs +
+                           ", input=" + this.parser.getTokenStream().getText(interval));
+    }
+    if (this.parser!==null) {
+        this.parser.getErrorListenerDispatch().reportAmbiguity(this.parser, dfa, startIndex, stopIndex, exact, ambigAlts, configs);
+    }
+};
+
+exports.ParserATNSimulator = ParserATNSimulator;
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+exports.DFA = __webpack_require__(43).DFA;
+exports.DFASerializer = __webpack_require__(17).DFASerializer;
+exports.LexerDFASerializer = __webpack_require__(17).LexerDFASerializer;
+exports.PredPrediction = __webpack_require__(11).PredPrediction;
+
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+var Set = __webpack_require__(0).Set;
+var DFAState = __webpack_require__(11).DFAState;
+var StarLoopEntryState = __webpack_require__(3).StarLoopEntryState;
+var ATNConfigSet = __webpack_require__(9).ATNConfigSet;
+var DFASerializer = __webpack_require__(17).DFASerializer;
+var LexerDFASerializer = __webpack_require__(17).LexerDFASerializer;
+
+
+
+function DFA(atnStartState, decision) {
+	if (decision === undefined) {
+		decision = 0;
+	}
+	// From which ATN state did we create this DFA?
+	this.atnStartState = atnStartState;
+	this.decision = decision;
+	// A set of all DFA states. Use {@link Map} so we can get old state back
+	// ({@link Set} only allows you to see if it's there).
+	this._states = new Set();
+	this.s0 = null;
+	// {@code true} if this DFA is for a precedence decision; otherwise,
+	// {@code false}. This is the backing field for {@link //isPrecedenceDfa},
+	// {@link //setPrecedenceDfa}.
+	this.precedenceDfa = false;
+    if (atnStartState instanceof StarLoopEntryState)
+    {
+        if (atnStartState.isPrecedenceDecision) {
+            this.precedenceDfa = true;
+            var precedenceState = new DFAState(null, new ATNConfigSet());
+            precedenceState.edges = [];
+            precedenceState.isAcceptState = false;
+            precedenceState.requiresFullContext = false;
+            this.s0 = precedenceState;
+        }
+    }
+	return this;
+}
+
+// Get the start state for a specific precedence value.
+//
+// @param precedence The current precedence.
+// @return The start state corresponding to the specified precedence, or
+// {@code null} if no start state exists for the specified precedence.
+//
+// @throws IllegalStateException if this is not a precedence DFA.
+// @see //isPrecedenceDfa()
+
+DFA.prototype.getPrecedenceStartState = function(precedence) {
+	if (!(this.precedenceDfa)) {
+		throw ("Only precedence DFAs may contain a precedence start state.");
+	}
+	// s0.edges is never null for a precedence DFA
+	if (precedence < 0 || precedence >= this.s0.edges.length) {
+		return null;
+	}
+	return this.s0.edges[precedence] || null;
+};
+
+// Set the start state for a specific precedence value.
+//
+// @param precedence The current precedence.
+// @param startState The start state corresponding to the specified
+// precedence.
+//
+// @throws IllegalStateException if this is not a precedence DFA.
+// @see //isPrecedenceDfa()
+//
+DFA.prototype.setPrecedenceStartState = function(precedence, startState) {
+	if (!(this.precedenceDfa)) {
+		throw ("Only precedence DFAs may contain a precedence start state.");
+	}
+	if (precedence < 0) {
+		return;
+	}
+
+	// synchronization on s0 here is ok. when the DFA is turned into a
+	// precedence DFA, s0 will be initialized once and not updated again
+	// s0.edges is never null for a precedence DFA
+	this.s0.edges[precedence] = startState;
+};
+
+//
+// Sets whether this is a precedence DFA. If the specified value differs
+// from the current DFA configuration, the following actions are taken;
+// otherwise no changes are made to the current DFA.
+//
+// <ul>
+// <li>The {@link //states} map is cleared</li>
+// <li>If {@code precedenceDfa} is {@code false}, the initial state
+// {@link //s0} is set to {@code null}; otherwise, it is initialized to a new
+// {@link DFAState} with an empty outgoing {@link DFAState//edges} array to
+// store the start states for individual precedence values.</li>
+// <li>The {@link //precedenceDfa} field is updated</li>
+// </ul>
+//
+// @param precedenceDfa {@code true} if this is a precedence DFA; otherwise,
+// {@code false}
+
+DFA.prototype.setPrecedenceDfa = function(precedenceDfa) {
+	if (this.precedenceDfa!==precedenceDfa) {
+		this._states = new DFAStatesSet();
+		if (precedenceDfa) {
+			var precedenceState = new DFAState(null, new ATNConfigSet());
+			precedenceState.edges = [];
+			precedenceState.isAcceptState = false;
+			precedenceState.requiresFullContext = false;
+			this.s0 = precedenceState;
+		} else {
+			this.s0 = null;
+		}
+		this.precedenceDfa = precedenceDfa;
+	}
+};
+
+Object.defineProperty(DFA.prototype, "states", {
+	get : function() {
+		return this._states;
+	}
+});
+
+// Return a list of all states in this DFA, ordered by state number.
+DFA.prototype.sortedStates = function() {
+	var list = this._states.values();
+	return list.sort(function(a, b) {
+		return a.stateNumber - b.stateNumber;
+	});
+};
+
+DFA.prototype.toString = function(literalNames, symbolicNames) {
+	literalNames = literalNames || null;
+	symbolicNames = symbolicNames || null;
+	if (this.s0 === null) {
+		return "";
+	}
+	var serializer = new DFASerializer(this, literalNames, symbolicNames);
+	return serializer.toString();
+};
+
+DFA.prototype.toLexerString = function() {
+	if (this.s0 === null) {
+		return "";
+	}
+	var serializer = new LexerDFASerializer(this);
+	return serializer.toString();
+};
+
+exports.DFA = DFA;
+
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+var Tree = __webpack_require__(4);
+exports.Trees = __webpack_require__(20).Trees;
+exports.RuleNode = Tree.RuleNode;
+exports.ParseTreeListener = Tree.ParseTreeListener;
+exports.ParseTreeVisitor = Tree.ParseTreeVisitor;
+exports.ParseTreeWalker = Tree.ParseTreeWalker;
+
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+exports.RecognitionException = __webpack_require__(5).RecognitionException;
+exports.NoViableAltException = __webpack_require__(5).NoViableAltException;
+exports.LexerNoViableAltException = __webpack_require__(5).LexerNoViableAltException;
+exports.InputMismatchException = __webpack_require__(5).InputMismatchException;
+exports.FailedPredicateException = __webpack_require__(5).FailedPredicateException;
+exports.DiagnosticErrorListener = __webpack_require__(46).DiagnosticErrorListener;
+exports.BailErrorStrategy = __webpack_require__(29).BailErrorStrategy;
+exports.ErrorListener = __webpack_require__(16).ErrorListener;
+
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+//
+
+//
+// This implementation of {@link ANTLRErrorListener} can be used to identify
+// certain potential correctness and performance problems in grammars. "Reports"
+// are made by calling {@link Parser//notifyErrorListeners} with the appropriate
+// message.
+//
+// <ul>
+// <li><b>Ambiguities</b>: These are cases where more than one path through the
+// grammar can match the input.</li>
+// <li><b>Weak context sensitivity</b>: These are cases where full-context
+// prediction resolved an SLL conflict to a unique alternative which equaled the
+// minimum alternative of the SLL conflict.</li>
+// <li><b>Strong (forced) context sensitivity</b>: These are cases where the
+// full-context prediction resolved an SLL conflict to a unique alternative,
+// <em>and</em> the minimum alternative of the SLL conflict was found to not be
+// a truly viable alternative. Two-stage parsing cannot be used for inputs where
+// this situation occurs.</li>
+// </ul>
+
+var BitSet = __webpack_require__(0).BitSet;
+var ErrorListener = __webpack_require__(16).ErrorListener;
+var Interval = __webpack_require__(2).Interval;
+
+function DiagnosticErrorListener(exactOnly) {
+	ErrorListener.call(this);
+	exactOnly = exactOnly || true;
+	// whether all ambiguities or only exact ambiguities are reported.
+	this.exactOnly = exactOnly;
+	return this;
+}
+
+DiagnosticErrorListener.prototype = Object.create(ErrorListener.prototype);
+DiagnosticErrorListener.prototype.constructor = DiagnosticErrorListener;
+
+DiagnosticErrorListener.prototype.reportAmbiguity = function(recognizer, dfa,
+		startIndex, stopIndex, exact, ambigAlts, configs) {
+	if (this.exactOnly && !exact) {
+		return;
+	}
+	var msg = "reportAmbiguity d=" +
+			this.getDecisionDescription(recognizer, dfa) +
+			": ambigAlts=" +
+			this.getConflictingAlts(ambigAlts, configs) +
+			", input='" +
+			recognizer.getTokenStream().getText(new Interval(startIndex, stopIndex)) + "'";
+	recognizer.notifyErrorListeners(msg);
+};
+
+DiagnosticErrorListener.prototype.reportAttemptingFullContext = function(
+		recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs) {
+	var msg = "reportAttemptingFullContext d=" +
+			this.getDecisionDescription(recognizer, dfa) +
+			", input='" +
+			recognizer.getTokenStream().getText(new Interval(startIndex, stopIndex)) + "'";
+	recognizer.notifyErrorListeners(msg);
+};
+
+DiagnosticErrorListener.prototype.reportContextSensitivity = function(
+		recognizer, dfa, startIndex, stopIndex, prediction, configs) {
+	var msg = "reportContextSensitivity d=" +
+			this.getDecisionDescription(recognizer, dfa) +
+			", input='" +
+			recognizer.getTokenStream().getText(new Interval(startIndex, stopIndex)) + "'";
+	recognizer.notifyErrorListeners(msg);
+};
+
+DiagnosticErrorListener.prototype.getDecisionDescription = function(recognizer, dfa) {
+	var decision = dfa.decision;
+	var ruleIndex = dfa.atnStartState.ruleIndex;
+
+	var ruleNames = recognizer.ruleNames;
+	if (ruleIndex < 0 || ruleIndex >= ruleNames.length) {
+		return "" + decision;
+	}
+	var ruleName = ruleNames[ruleIndex] || null;
+	if (ruleName === null || ruleName.length === 0) {
+		return "" + decision;
+	}
+	return "" + decision + " (" + ruleName + ")";
+};
+
+//
+// Computes the set of conflicting or ambiguous alternatives from a
+// configuration set, if that information was not already provided by the
+// parser.
+//
+// @param reportedAlts The set of conflicting or ambiguous alternatives, as
+// reported by the parser.
+// @param configs The conflicting or ambiguous configuration set.
+// @return Returns {@code reportedAlts} if it is not {@code null}, otherwise
+// returns the set of alternatives represented in {@code configs}.
+//
+DiagnosticErrorListener.prototype.getConflictingAlts = function(reportedAlts, configs) {
+	if (reportedAlts !== null) {
+		return reportedAlts;
+	}
+	var result = new BitSet();
+	for (var i = 0; i < configs.items.length; i++) {
+		result.add(configs.items[i].alt);
+	}
+	return "{" + result.values().join(", ") + "}";
+};
+
+exports.DiagnosticErrorListener = DiagnosticErrorListener;
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+//
+
+var InputStream = __webpack_require__(19).InputStream;
+
+var isNodeJs = typeof window === 'undefined' && typeof importScripts === 'undefined';
+var fs = isNodeJs ? __webpack_require__(30) : null;
+
+// Utility functions to create InputStreams from various sources.
+//
+// All returned InputStreams support the full range of Unicode
+// up to U+10FFFF (the default behavior of InputStream only supports
+// code points up to U+FFFF).
+var CharStreams = {
+  // Creates an InputStream from a string.
+  fromString: function(str) {
+    return new InputStream(str, true);
+  },
+
+  // Asynchronously creates an InputStream from a blob given the
+  // encoding of the bytes in that blob (defaults to 'utf8' if
+  // encoding is null).
+  //
+  // Invokes onLoad(result) on success, onError(error) on
+  // failure.
+  fromBlob: function(blob, encoding, onLoad, onError) {
+    var reader = FileReader();
+    reader.onload = function(e) {
+      var is = new InputStream(e.target.result, true);
+      onLoad(is);
+    };
+    reader.onerror = onError;
+    reader.readAsText(blob, encoding);
+  },
+
+  // Creates an InputStream from a Buffer given the
+  // encoding of the bytes in that buffer (defaults to 'utf8' if
+  // encoding is null).
+  fromBuffer: function(buffer, encoding) {
+    return new InputStream(buffer.toString(encoding), true);
+  },
+
+  // Asynchronously creates an InputStream from a file on disk given
+  // the encoding of the bytes in that file (defaults to 'utf8' if
+  // encoding is null).
+  //
+  // Invokes callback(error, result) on completion.
+  fromPath: function(path, encoding, callback) {
+    fs.readFile(path, encoding, function(err, data) {
+      var is = null;
+      if (data !== null) {
+        is = new InputStream(data, true);
+      }
+      callback(err, is);
+    });
+  },
+
+  // Synchronously creates an InputStream given a path to a file
+  // on disk and the encoding of the bytes in that file (defaults to
+  // 'utf8' if encoding is null).
+  fromPathSync: function(path, encoding) {
+    var data = fs.readFileSync(path, encoding);
+    return new InputStream(data, true);
+  }
+};
+
+exports.CharStreams = CharStreams;
+
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+//
+
+//
+//  This is an InputStream that is loaded from a file all at once
+//  when you construct the object.
+//
+var InputStream = __webpack_require__(19).InputStream;
+var isNodeJs = typeof window === 'undefined' && typeof importScripts === 'undefined';
+var fs = isNodeJs ? __webpack_require__(30) : null;
+
+function FileStream(fileName, decodeToUnicodeCodePoints) {
+	var data = fs.readFileSync(fileName, "utf8");
+	InputStream.call(this, data, decodeToUnicodeCodePoints);
+	this.fileName = fileName;
+	return this;
+}
+
+FileStream.prototype = Object.create(InputStream.prototype);
+FileStream.prototype.constructor = FileStream;
+
+exports.FileStream = FileStream;
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+///
+
+//
+// This class extends {@link BufferedTokenStream} with functionality to filter
+// token streams to tokens on a particular channel (tokens where
+// {@link Token//getChannel} returns a particular value).
+//
+// <p>
+// This token stream provides access to all tokens by index or when calling
+// methods like {@link //getText}. The channel filtering is only used for code
+// accessing tokens via the lookahead methods {@link //LA}, {@link //LT}, and
+// {@link //LB}.</p>
+//
+// <p>
+// By default, tokens are placed on the default channel
+// ({@link Token//DEFAULT_CHANNEL}), but may be reassigned by using the
+// {@code ->channel(HIDDEN)} lexer command, or by using an embedded action to
+// call {@link Lexer//setChannel}.
+// </p>
+//
+// <p>
+// Note: lexer rules which use the {@code ->skip} lexer command or call
+// {@link Lexer//skip} do not produce tokens at all, so input text matched by
+// such a rule will not be available as part of the token stream, regardless of
+// channel.</p>
+///
+
+var Token = __webpack_require__(1).Token;
+var BufferedTokenStream = __webpack_require__(50).BufferedTokenStream;
+
+function CommonTokenStream(lexer, channel) {
+	BufferedTokenStream.call(this, lexer);
+    this.channel = channel===undefined ? Token.DEFAULT_CHANNEL : channel;
+    return this;
+}
+
+CommonTokenStream.prototype = Object.create(BufferedTokenStream.prototype);
+CommonTokenStream.prototype.constructor = CommonTokenStream;
+
+CommonTokenStream.prototype.adjustSeekIndex = function(i) {
+    return this.nextTokenOnChannel(i, this.channel);
+};
+
+CommonTokenStream.prototype.LB = function(k) {
+    if (k===0 || this.index-k<0) {
+        return null;
+    }
+    var i = this.index;
+    var n = 1;
+    // find k good tokens looking backwards
+    while (n <= k) {
+        // skip off-channel tokens
+        i = this.previousTokenOnChannel(i - 1, this.channel);
+        n += 1;
+    }
+    if (i < 0) {
+        return null;
+    }
+    return this.tokens[i];
+};
+
+CommonTokenStream.prototype.LT = function(k) {
+    this.lazyInit();
+    if (k === 0) {
+        return null;
+    }
+    if (k < 0) {
+        return this.LB(-k);
+    }
+    var i = this.index;
+    var n = 1; // we know tokens[pos] is a good one
+    // find k good tokens
+    while (n < k) {
+        // skip off-channel tokens, but make sure to not look past EOF
+        if (this.sync(i + 1)) {
+            i = this.nextTokenOnChannel(i + 1, this.channel);
+        }
+        n += 1;
+    }
+    return this.tokens[i];
+};
+
+// Count EOF just once.///
+CommonTokenStream.prototype.getNumberOfOnChannelTokens = function() {
+    var n = 0;
+    this.fill();
+    for (var i =0; i< this.tokens.length;i++) {
+        var t = this.tokens[i];
+        if( t.channel===this.channel) {
+            n += 1;
+        }
+        if( t.type===Token.EOF) {
+            break;
+        }
+    }
+    return n;
+};
+
+exports.CommonTokenStream = CommonTokenStream;
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+// This implementation of {@link TokenStream} loads tokens from a
+// {@link TokenSource} on-demand, and places the tokens in a buffer to provide
+// access to any previous token by index.
+//
+// <p>
+// This token stream ignores the value of {@link Token//getChannel}. If your
+// parser requires the token stream filter tokens to only those on a particular
+// channel, such as {@link Token//DEFAULT_CHANNEL} or
+// {@link Token//HIDDEN_CHANNEL}, use a filtering token stream such a
+// {@link CommonTokenStream}.</p>
+
+var Token = __webpack_require__(1).Token;
+var Lexer = __webpack_require__(15).Lexer;
+var Interval = __webpack_require__(2).Interval;
+
+// this is just to keep meaningful parameter types to Parser
+function TokenStream() {
+	return this;
+}
+
+function BufferedTokenStream(tokenSource) {
+
+	TokenStream.call(this);
+	// The {@link TokenSource} from which tokens for this stream are fetched.
+	this.tokenSource = tokenSource;
+
+	// A collection of all tokens fetched from the token source. The list is
+	// considered a complete view of the input once {@link //fetchedEOF} is set
+	// to {@code true}.
+	this.tokens = [];
+
+	// The index into {@link //tokens} of the current token (next token to
+	// {@link //consume}). {@link //tokens}{@code [}{@link //p}{@code ]} should
+	// be
+	// {@link //LT LT(1)}.
+	//
+	// <p>This field is set to -1 when the stream is first constructed or when
+	// {@link //setTokenSource} is called, indicating that the first token has
+	// not yet been fetched from the token source. For additional information,
+	// see the documentation of {@link IntStream} for a description of
+	// Initializing Methods.</p>
+	this.index = -1;
+
+	// Indicates whether the {@link Token//EOF} token has been fetched from
+	// {@link //tokenSource} and added to {@link //tokens}. This field improves
+	// performance for the following cases:
+	//
+	// <ul>
+	// <li>{@link //consume}: The lookahead check in {@link //consume} to
+	// prevent
+	// consuming the EOF symbol is optimized by checking the values of
+	// {@link //fetchedEOF} and {@link //p} instead of calling {@link
+	// //LA}.</li>
+	// <li>{@link //fetch}: The check to prevent adding multiple EOF symbols
+	// into
+	// {@link //tokens} is trivial with this field.</li>
+	// <ul>
+	this.fetchedEOF = false;
+	return this;
+}
+
+BufferedTokenStream.prototype = Object.create(TokenStream.prototype);
+BufferedTokenStream.prototype.constructor = BufferedTokenStream;
+
+BufferedTokenStream.prototype.mark = function() {
+	return 0;
+};
+
+BufferedTokenStream.prototype.release = function(marker) {
+	// no resources to release
+};
+
+BufferedTokenStream.prototype.reset = function() {
+	this.seek(0);
+};
+
+BufferedTokenStream.prototype.seek = function(index) {
+	this.lazyInit();
+	this.index = this.adjustSeekIndex(index);
+};
+
+BufferedTokenStream.prototype.get = function(index) {
+	this.lazyInit();
+	return this.tokens[index];
+};
+
+BufferedTokenStream.prototype.consume = function() {
+	var skipEofCheck = false;
+	if (this.index >= 0) {
+		if (this.fetchedEOF) {
+			// the last token in tokens is EOF. skip check if p indexes any
+			// fetched token except the last.
+			skipEofCheck = this.index < this.tokens.length - 1;
+		} else {
+			// no EOF token in tokens. skip check if p indexes a fetched token.
+			skipEofCheck = this.index < this.tokens.length;
+		}
+	} else {
+		// not yet initialized
+		skipEofCheck = false;
+	}
+	if (!skipEofCheck && this.LA(1) === Token.EOF) {
+		throw "cannot consume EOF";
+	}
+	if (this.sync(this.index + 1)) {
+		this.index = this.adjustSeekIndex(this.index + 1);
+	}
+};
+
+// Make sure index {@code i} in tokens has a token.
+//
+// @return {@code true} if a token is located at index {@code i}, otherwise
+// {@code false}.
+// @see //get(int i)
+// /
+BufferedTokenStream.prototype.sync = function(i) {
+	var n = i - this.tokens.length + 1; // how many more elements we need?
+	if (n > 0) {
+		var fetched = this.fetch(n);
+		return fetched >= n;
+	}
+	return true;
+};
+
+// Add {@code n} elements to buffer.
+//
+// @return The actual number of elements added to the buffer.
+// /
+BufferedTokenStream.prototype.fetch = function(n) {
+	if (this.fetchedEOF) {
+		return 0;
+	}
+	for (var i = 0; i < n; i++) {
+		var t = this.tokenSource.nextToken();
+		t.tokenIndex = this.tokens.length;
+		this.tokens.push(t);
+		if (t.type === Token.EOF) {
+			this.fetchedEOF = true;
+			return i + 1;
+		}
+	}
+	return n;
+};
+
+// Get all tokens from start..stop inclusively///
+BufferedTokenStream.prototype.getTokens = function(start, stop, types) {
+	if (types === undefined) {
+		types = null;
+	}
+	if (start < 0 || stop < 0) {
+		return null;
+	}
+	this.lazyInit();
+	var subset = [];
+	if (stop >= this.tokens.length) {
+		stop = this.tokens.length - 1;
+	}
+	for (var i = start; i < stop; i++) {
+		var t = this.tokens[i];
+		if (t.type === Token.EOF) {
+			break;
+		}
+		if (types === null || types.contains(t.type)) {
+			subset.push(t);
+		}
+	}
+	return subset;
+};
+
+BufferedTokenStream.prototype.LA = function(i) {
+	return this.LT(i).type;
+};
+
+BufferedTokenStream.prototype.LB = function(k) {
+	if (this.index - k < 0) {
+		return null;
+	}
+	return this.tokens[this.index - k];
+};
+
+BufferedTokenStream.prototype.LT = function(k) {
+	this.lazyInit();
+	if (k === 0) {
+		return null;
+	}
+	if (k < 0) {
+		return this.LB(-k);
+	}
+	var i = this.index + k - 1;
+	this.sync(i);
+	if (i >= this.tokens.length) { // return EOF token
+		// EOF must be last token
+		return this.tokens[this.tokens.length - 1];
+	}
+	return this.tokens[i];
+};
+
+// Allowed derived classes to modify the behavior of operations which change
+// the current stream position by adjusting the target token index of a seek
+// operation. The default implementation simply returns {@code i}. If an
+// exception is thrown in this method, the current stream index should not be
+// changed.
+//
+// <p>For example, {@link CommonTokenStream} overrides this method to ensure
+// that
+// the seek target is always an on-channel token.</p>
+//
+// @param i The target token index.
+// @return The adjusted target token index.
+
+BufferedTokenStream.prototype.adjustSeekIndex = function(i) {
+	return i;
+};
+
+BufferedTokenStream.prototype.lazyInit = function() {
+	if (this.index === -1) {
+		this.setup();
+	}
+};
+
+BufferedTokenStream.prototype.setup = function() {
+	this.sync(0);
+	this.index = this.adjustSeekIndex(0);
+};
+
+// Reset this token stream by setting its token source.///
+BufferedTokenStream.prototype.setTokenSource = function(tokenSource) {
+	this.tokenSource = tokenSource;
+	this.tokens = [];
+	this.index = -1;
+	this.fetchedEOF = false;
+};
+
+
+// Given a starting index, return the index of the next token on channel.
+// Return i if tokens[i] is on channel. Return -1 if there are no tokens
+// on channel between i and EOF.
+// /
+BufferedTokenStream.prototype.nextTokenOnChannel = function(i, channel) {
+	this.sync(i);
+	if (i >= this.tokens.length) {
+		return -1;
+	}
+	var token = this.tokens[i];
+	while (token.channel !== this.channel) {
+		if (token.type === Token.EOF) {
+			return -1;
+		}
+		i += 1;
+		this.sync(i);
+		token = this.tokens[i];
+	}
+	return i;
+};
+
+// Given a starting index, return the index of the previous token on channel.
+// Return i if tokens[i] is on channel. Return -1 if there are no tokens
+// on channel between i and 0.
+BufferedTokenStream.prototype.previousTokenOnChannel = function(i, channel) {
+	while (i >= 0 && this.tokens[i].channel !== channel) {
+		i -= 1;
+	}
+	return i;
+};
+
+// Collect all tokens on specified channel to the right of
+// the current token up until we see a token on DEFAULT_TOKEN_CHANNEL or
+// EOF. If channel is -1, find any non default channel token.
+BufferedTokenStream.prototype.getHiddenTokensToRight = function(tokenIndex,
+		channel) {
+	if (channel === undefined) {
+		channel = -1;
+	}
+	this.lazyInit();
+	if (tokenIndex < 0 || tokenIndex >= this.tokens.length) {
+		throw "" + tokenIndex + " not in 0.." + this.tokens.length - 1;
+	}
+	var nextOnChannel = this.nextTokenOnChannel(tokenIndex + 1, Lexer.DEFAULT_TOKEN_CHANNEL);
+	var from_ = tokenIndex + 1;
+	// if none onchannel to right, nextOnChannel=-1 so set to = last token
+	var to = nextOnChannel === -1 ? this.tokens.length - 1 : nextOnChannel;
+	return this.filterForChannel(from_, to, channel);
+};
+
+// Collect all tokens on specified channel to the left of
+// the current token up until we see a token on DEFAULT_TOKEN_CHANNEL.
+// If channel is -1, find any non default channel token.
+BufferedTokenStream.prototype.getHiddenTokensToLeft = function(tokenIndex,
+		channel) {
+	if (channel === undefined) {
+		channel = -1;
+	}
+	this.lazyInit();
+	if (tokenIndex < 0 || tokenIndex >= this.tokens.length) {
+		throw "" + tokenIndex + " not in 0.." + this.tokens.length - 1;
+	}
+	var prevOnChannel = this.previousTokenOnChannel(tokenIndex - 1, Lexer.DEFAULT_TOKEN_CHANNEL);
+	if (prevOnChannel === tokenIndex - 1) {
+		return null;
+	}
+	// if none on channel to left, prevOnChannel=-1 then from=0
+	var from_ = prevOnChannel + 1;
+	var to = tokenIndex - 1;
+	return this.filterForChannel(from_, to, channel);
+};
+
+BufferedTokenStream.prototype.filterForChannel = function(left, right, channel) {
+	var hidden = [];
+	for (var i = left; i < right + 1; i++) {
+		var t = this.tokens[i];
+		if (channel === -1) {
+			if (t.channel !== Lexer.DEFAULT_TOKEN_CHANNEL) {
+				hidden.push(t);
+			}
+		} else if (t.channel === channel) {
+			hidden.push(t);
+		}
+	}
+	if (hidden.length === 0) {
+		return null;
+	}
+	return hidden;
+};
+
+BufferedTokenStream.prototype.getSourceName = function() {
+	return this.tokenSource.getSourceName();
+};
+
+// Get the text of all tokens in this buffer.///
+BufferedTokenStream.prototype.getText = function(interval) {
+	this.lazyInit();
+	this.fill();
+	if (interval === undefined || interval === null) {
+		interval = new Interval(0, this.tokens.length - 1);
+	}
+	var start = interval.start;
+	if (start instanceof Token) {
+		start = start.tokenIndex;
+	}
+	var stop = interval.stop;
+	if (stop instanceof Token) {
+		stop = stop.tokenIndex;
+	}
+	if (start === null || stop === null || start < 0 || stop < 0) {
+		return "";
+	}
+	if (stop >= this.tokens.length) {
+		stop = this.tokens.length - 1;
+	}
+	var s = "";
+	for (var i = start; i < stop + 1; i++) {
+		var t = this.tokens[i];
+		if (t.type === Token.EOF) {
+			break;
+		}
+		s = s + t.text;
+	}
+	return s;
+};
+
+// Get all tokens from lexer until EOF///
+BufferedTokenStream.prototype.fill = function() {
+	this.lazyInit();
+	while (this.fetch(1000) === 1000) {
+		continue;
+	}
+};
+
+exports.BufferedTokenStream = BufferedTokenStream;
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+var Token = __webpack_require__(1).Token;
+var ParseTreeListener = __webpack_require__(4).ParseTreeListener;
+var Recognizer = __webpack_require__(24).Recognizer;
+var DefaultErrorStrategy = __webpack_require__(29).DefaultErrorStrategy;
+var ATNDeserializer = __webpack_require__(21).ATNDeserializer;
+var ATNDeserializationOptions = __webpack_require__(22).ATNDeserializationOptions;
+var TerminalNode = __webpack_require__(4).TerminalNode;
+var ErrorNode = __webpack_require__(4).ErrorNode;
+
+function TraceListener(parser) {
+	ParseTreeListener.call(this);
+    this.parser = parser;
+	return this;
+}
+
+TraceListener.prototype = Object.create(ParseTreeListener.prototype);
+TraceListener.prototype.constructor = TraceListener;
+
+TraceListener.prototype.enterEveryRule = function(ctx) {
+	console.log("enter   " + this.parser.ruleNames[ctx.ruleIndex] + ", LT(1)=" + this.parser._input.LT(1).text);
+};
+
+TraceListener.prototype.visitTerminal = function( node) {
+	console.log("consume " + node.symbol + " rule " + this.parser.ruleNames[this.parser._ctx.ruleIndex]);
+};
+
+TraceListener.prototype.exitEveryRule = function(ctx) {
+	console.log("exit    " + this.parser.ruleNames[ctx.ruleIndex] + ", LT(1)=" + this.parser._input.LT(1).text);
+};
+
+// this is all the parsing support code essentially; most of it is error
+// recovery stuff.//
+function Parser(input) {
+	Recognizer.call(this);
+	// The input stream.
+	this._input = null;
+	// The error handling strategy for the parser. The default value is a new
+	// instance of {@link DefaultErrorStrategy}.
+	this._errHandler = new DefaultErrorStrategy();
+	this._precedenceStack = [];
+	this._precedenceStack.push(0);
+	// The {@link ParserRuleContext} object for the currently executing rule.
+	// this is always non-null during the parsing process.
+	this._ctx = null;
+	// Specifies whether or not the parser should construct a parse tree during
+	// the parsing process. The default value is {@code true}.
+	this.buildParseTrees = true;
+	// When {@link //setTrace}{@code (true)} is called, a reference to the
+	// {@link TraceListener} is stored here so it can be easily removed in a
+	// later call to {@link //setTrace}{@code (false)}. The listener itself is
+	// implemented as a parser listener so this field is not directly used by
+	// other parser methods.
+	this._tracer = null;
+	// The list of {@link ParseTreeListener} listeners registered to receive
+	// events during the parse.
+	this._parseListeners = null;
+	// The number of syntax errors reported during parsing. this value is
+	// incremented each time {@link //notifyErrorListeners} is called.
+	this._syntaxErrors = 0;
+	this.setInputStream(input);
+	return this;
+}
+
+Parser.prototype = Object.create(Recognizer.prototype);
+Parser.prototype.contructor = Parser;
+
+// this field maps from the serialized ATN string to the deserialized {@link
+// ATN} with
+// bypass alternatives.
+//
+// @see ATNDeserializationOptions//isGenerateRuleBypassTransitions()
+//
+Parser.bypassAltsAtnCache = {};
+
+// reset the parser's state//
+Parser.prototype.reset = function() {
+	if (this._input !== null) {
+		this._input.seek(0);
+	}
+	this._errHandler.reset(this);
+	this._ctx = null;
+	this._syntaxErrors = 0;
+	this.setTrace(false);
+	this._precedenceStack = [];
+	this._precedenceStack.push(0);
+	if (this._interp !== null) {
+		this._interp.reset();
+	}
+};
+
+// Match current input symbol against {@code ttype}. If the symbol type
+// matches, {@link ANTLRErrorStrategy//reportMatch} and {@link //consume} are
+// called to complete the match process.
+//
+// <p>If the symbol type does not match,
+// {@link ANTLRErrorStrategy//recoverInline} is called on the current error
+// strategy to attempt recovery. If {@link //getBuildParseTree} is
+// {@code true} and the token index of the symbol returned by
+// {@link ANTLRErrorStrategy//recoverInline} is -1, the symbol is added to
+// the parse tree by calling {@link ParserRuleContext//addErrorNode}.</p>
+//
+// @param ttype the token type to match
+// @return the matched symbol
+// @throws RecognitionException if the current input symbol did not match
+// {@code ttype} and the error strategy could not recover from the
+// mismatched symbol
+
+Parser.prototype.match = function(ttype) {
+	var t = this.getCurrentToken();
+	if (t.type === ttype) {
+		this._errHandler.reportMatch(this);
+		this.consume();
+	} else {
+		t = this._errHandler.recoverInline(this);
+		if (this.buildParseTrees && t.tokenIndex === -1) {
+			// we must have conjured up a new token during single token
+			// insertion
+			// if it's not the current symbol
+			this._ctx.addErrorNode(t);
+		}
+	}
+	return t;
+};
+// Match current input symbol as a wildcard. If the symbol type matches
+// (i.e. has a value greater than 0), {@link ANTLRErrorStrategy//reportMatch}
+// and {@link //consume} are called to complete the match process.
+//
+// <p>If the symbol type does not match,
+// {@link ANTLRErrorStrategy//recoverInline} is called on the current error
+// strategy to attempt recovery. If {@link //getBuildParseTree} is
+// {@code true} and the token index of the symbol returned by
+// {@link ANTLRErrorStrategy//recoverInline} is -1, the symbol is added to
+// the parse tree by calling {@link ParserRuleContext//addErrorNode}.</p>
+//
+// @return the matched symbol
+// @throws RecognitionException if the current input symbol did not match
+// a wildcard and the error strategy could not recover from the mismatched
+// symbol
+
+Parser.prototype.matchWildcard = function() {
+	var t = this.getCurrentToken();
+	if (t.type > 0) {
+		this._errHandler.reportMatch(this);
+		this.consume();
+	} else {
+		t = this._errHandler.recoverInline(this);
+		if (this._buildParseTrees && t.tokenIndex === -1) {
+			// we must have conjured up a new token during single token
+			// insertion
+			// if it's not the current symbol
+			this._ctx.addErrorNode(t);
+		}
+	}
+	return t;
+};
+
+Parser.prototype.getParseListeners = function() {
+	return this._parseListeners || [];
+};
+
+// Registers {@code listener} to receive events during the parsing process.
+//
+// <p>To support output-preserving grammar transformations (including but not
+// limited to left-recursion removal, automated left-factoring, and
+// optimized code generation), calls to listener methods during the parse
+// may differ substantially from calls made by
+// {@link ParseTreeWalker//DEFAULT} used after the parse is complete. In
+// particular, rule entry and exit events may occur in a different order
+// during the parse than after the parser. In addition, calls to certain
+// rule entry methods may be omitted.</p>
+//
+// <p>With the following specific exceptions, calls to listener events are
+// <em>deterministic</em>, i.e. for identical input the calls to listener
+// methods will be the same.</p>
+//
+// <ul>
+// <li>Alterations to the grammar used to generate code may change the
+// behavior of the listener calls.</li>
+// <li>Alterations to the command line options passed to ANTLR 4 when
+// generating the parser may change the behavior of the listener calls.</li>
+// <li>Changing the version of the ANTLR Tool used to generate the parser
+// may change the behavior of the listener calls.</li>
+// </ul>
+//
+// @param listener the listener to add
+//
+// @throws NullPointerException if {@code} listener is {@code null}
+//
+Parser.prototype.addParseListener = function(listener) {
+	if (listener === null) {
+		throw "listener";
+	}
+	if (this._parseListeners === null) {
+		this._parseListeners = [];
+	}
+	this._parseListeners.push(listener);
+};
+
+//
+// Remove {@code listener} from the list of parse listeners.
+//
+// <p>If {@code listener} is {@code null} or has not been added as a parse
+// listener, this method does nothing.</p>
+// @param listener the listener to remove
+//
+Parser.prototype.removeParseListener = function(listener) {
+	if (this._parseListeners !== null) {
+		var idx = this._parseListeners.indexOf(listener);
+		if (idx >= 0) {
+			this._parseListeners.splice(idx, 1);
+		}
+		if (this._parseListeners.length === 0) {
+			this._parseListeners = null;
+		}
+	}
+};
+
+// Remove all parse listeners.
+Parser.prototype.removeParseListeners = function() {
+	this._parseListeners = null;
+};
+
+// Notify any parse listeners of an enter rule event.
+Parser.prototype.triggerEnterRuleEvent = function() {
+	if (this._parseListeners !== null) {
+        var ctx = this._ctx;
+		this._parseListeners.map(function(listener) {
+			listener.enterEveryRule(ctx);
+			ctx.enterRule(listener);
+		});
+	}
+};
+
+//
+// Notify any parse listeners of an exit rule event.
+//
+// @see //addParseListener
+//
+Parser.prototype.triggerExitRuleEvent = function() {
+	if (this._parseListeners !== null) {
+		// reverse order walk of listeners
+        var ctx = this._ctx;
+		this._parseListeners.slice(0).reverse().map(function(listener) {
+			ctx.exitRule(listener);
+			listener.exitEveryRule(ctx);
+		});
+	}
+};
+
+Parser.prototype.getTokenFactory = function() {
+	return this._input.tokenSource._factory;
+};
+
+// Tell our token source and error strategy about a new way to create tokens.//
+Parser.prototype.setTokenFactory = function(factory) {
+	this._input.tokenSource._factory = factory;
+};
+
+// The ATN with bypass alternatives is expensive to create so we create it
+// lazily.
+//
+// @throws UnsupportedOperationException if the current parser does not
+// implement the {@link //getSerializedATN()} method.
+//
+Parser.prototype.getATNWithBypassAlts = function() {
+	var serializedAtn = this.getSerializedATN();
+	if (serializedAtn === null) {
+		throw "The current parser does not support an ATN with bypass alternatives.";
+	}
+	var result = this.bypassAltsAtnCache[serializedAtn];
+	if (result === null) {
+		var deserializationOptions = new ATNDeserializationOptions();
+		deserializationOptions.generateRuleBypassTransitions = true;
+		result = new ATNDeserializer(deserializationOptions)
+				.deserialize(serializedAtn);
+		this.bypassAltsAtnCache[serializedAtn] = result;
+	}
+	return result;
+};
+
+// The preferred method of getting a tree pattern. For example, here's a
+// sample use:
+//
+// <pre>
+// ParseTree t = parser.expr();
+// ParseTreePattern p = parser.compileParseTreePattern("&lt;ID&gt;+0",
+// MyParser.RULE_expr);
+// ParseTreeMatch m = p.match(t);
+// String id = m.get("ID");
+// </pre>
+
+var Lexer = __webpack_require__(15).Lexer;
+
+Parser.prototype.compileParseTreePattern = function(pattern, patternRuleIndex, lexer) {
+	lexer = lexer || null;
+	if (lexer === null) {
+		if (this.getTokenStream() !== null) {
+			var tokenSource = this.getTokenStream().tokenSource;
+			if (tokenSource instanceof Lexer) {
+				lexer = tokenSource;
+			}
+		}
+	}
+	if (lexer === null) {
+		throw "Parser can't discover a lexer to use";
+	}
+	var m = new ParseTreePatternMatcher(lexer, this);
+	return m.compile(pattern, patternRuleIndex);
+};
+
+Parser.prototype.getInputStream = function() {
+	return this.getTokenStream();
+};
+
+Parser.prototype.setInputStream = function(input) {
+	this.setTokenStream(input);
+};
+
+Parser.prototype.getTokenStream = function() {
+	return this._input;
+};
+
+// Set the token stream and reset the parser.//
+Parser.prototype.setTokenStream = function(input) {
+	this._input = null;
+	this.reset();
+	this._input = input;
+};
+
+// Match needs to return the current input symbol, which gets put
+// into the label for the associated token ref; e.g., x=ID.
+//
+Parser.prototype.getCurrentToken = function() {
+	return this._input.LT(1);
+};
+
+Parser.prototype.notifyErrorListeners = function(msg, offendingToken, err) {
+	offendingToken = offendingToken || null;
+	err = err || null;
+	if (offendingToken === null) {
+		offendingToken = this.getCurrentToken();
+	}
+	this._syntaxErrors += 1;
+	var line = offendingToken.line;
+	var column = offendingToken.column;
+	var listener = this.getErrorListenerDispatch();
+	listener.syntaxError(this, offendingToken, line, column, msg, err);
+};
+
+//
+// Consume and return the {@linkplain //getCurrentToken current symbol}.
+//
+// <p>E.g., given the following input with {@code A} being the current
+// lookahead symbol, this function moves the cursor to {@code B} and returns
+// {@code A}.</p>
+//
+// <pre>
+// A B
+// ^
+// </pre>
+//
+// If the parser is not in error recovery mode, the consumed symbol is added
+// to the parse tree using {@link ParserRuleContext//addChild(Token)}, and
+// {@link ParseTreeListener//visitTerminal} is called on any parse listeners.
+// If the parser <em>is</em> in error recovery mode, the consumed symbol is
+// added to the parse tree using
+// {@link ParserRuleContext//addErrorNode(Token)}, and
+// {@link ParseTreeListener//visitErrorNode} is called on any parse
+// listeners.
+//
+Parser.prototype.consume = function() {
+	var o = this.getCurrentToken();
+	if (o.type !== Token.EOF) {
+		this.getInputStream().consume();
+	}
+	var hasListener = this._parseListeners !== null && this._parseListeners.length > 0;
+	if (this.buildParseTrees || hasListener) {
+		var node;
+		if (this._errHandler.inErrorRecoveryMode(this)) {
+			node = this._ctx.addErrorNode(o);
+		} else {
+			node = this._ctx.addTokenNode(o);
+		}
+        node.invokingState = this.state;
+		if (hasListener) {
+			this._parseListeners.map(function(listener) {
+				if (node instanceof ErrorNode || (node.isErrorNode !== undefined && node.isErrorNode())) {
+					listener.visitErrorNode(node);
+				} else if (node instanceof TerminalNode) {
+					listener.visitTerminal(node);
+				}
+			});
+		}
+	}
+	return o;
+};
+
+Parser.prototype.addContextToParseTree = function() {
+	// add current context to parent if we have a parent
+	if (this._ctx.parentCtx !== null) {
+		this._ctx.parentCtx.addChild(this._ctx);
+	}
+};
+
+// Always called by generated parsers upon entry to a rule. Access field
+// {@link //_ctx} get the current context.
+
+Parser.prototype.enterRule = function(localctx, state, ruleIndex) {
+	this.state = state;
+	this._ctx = localctx;
+	this._ctx.start = this._input.LT(1);
+	if (this.buildParseTrees) {
+		this.addContextToParseTree();
+	}
+	if (this._parseListeners !== null) {
+		this.triggerEnterRuleEvent();
+	}
+};
+
+Parser.prototype.exitRule = function() {
+	this._ctx.stop = this._input.LT(-1);
+	// trigger event on _ctx, before it reverts to parent
+	if (this._parseListeners !== null) {
+		this.triggerExitRuleEvent();
+	}
+	this.state = this._ctx.invokingState;
+	this._ctx = this._ctx.parentCtx;
+};
+
+Parser.prototype.enterOuterAlt = function(localctx, altNum) {
+   	localctx.setAltNumber(altNum);
+	// if we have new localctx, make sure we replace existing ctx
+	// that is previous child of parse tree
+	if (this.buildParseTrees && this._ctx !== localctx) {
+		if (this._ctx.parentCtx !== null) {
+			this._ctx.parentCtx.removeLastChild();
+			this._ctx.parentCtx.addChild(localctx);
+		}
+	}
+	this._ctx = localctx;
+};
+
+// Get the precedence level for the top-most precedence rule.
+//
+// @return The precedence level for the top-most precedence rule, or -1 if
+// the parser context is not nested within a precedence rule.
+
+Parser.prototype.getPrecedence = function() {
+	if (this._precedenceStack.length === 0) {
+		return -1;
+	} else {
+		return this._precedenceStack[this._precedenceStack.length-1];
+	}
+};
+
+Parser.prototype.enterRecursionRule = function(localctx, state, ruleIndex,
+		precedence) {
+	this.state = state;
+	this._precedenceStack.push(precedence);
+	this._ctx = localctx;
+	this._ctx.start = this._input.LT(1);
+	if (this._parseListeners !== null) {
+		this.triggerEnterRuleEvent(); // simulates rule entry for
+										// left-recursive rules
+	}
+};
+
+//
+// Like {@link //enterRule} but for recursive rules.
+
+Parser.prototype.pushNewRecursionContext = function(localctx, state, ruleIndex) {
+	var previous = this._ctx;
+	previous.parentCtx = localctx;
+	previous.invokingState = state;
+	previous.stop = this._input.LT(-1);
+
+	this._ctx = localctx;
+	this._ctx.start = previous.start;
+	if (this.buildParseTrees) {
+		this._ctx.addChild(previous);
+	}
+	if (this._parseListeners !== null) {
+		this.triggerEnterRuleEvent(); // simulates rule entry for
+										// left-recursive rules
+	}
+};
+
+Parser.prototype.unrollRecursionContexts = function(parentCtx) {
+	this._precedenceStack.pop();
+	this._ctx.stop = this._input.LT(-1);
+	var retCtx = this._ctx; // save current ctx (return value)
+	// unroll so _ctx is as it was before call to recursive method
+	if (this._parseListeners !== null) {
+		while (this._ctx !== parentCtx) {
+			this.triggerExitRuleEvent();
+			this._ctx = this._ctx.parentCtx;
+		}
+	} else {
+		this._ctx = parentCtx;
+	}
+	// hook into tree
+	retCtx.parentCtx = parentCtx;
+	if (this.buildParseTrees && parentCtx !== null) {
+		// add return ctx into invoking rule's tree
+		parentCtx.addChild(retCtx);
+	}
+};
+
+Parser.prototype.getInvokingContext = function(ruleIndex) {
+	var ctx = this._ctx;
+	while (ctx !== null) {
+		if (ctx.ruleIndex === ruleIndex) {
+			return ctx;
+		}
+		ctx = ctx.parentCtx;
+	}
+	return null;
+};
+
+Parser.prototype.precpred = function(localctx, precedence) {
+	return precedence >= this._precedenceStack[this._precedenceStack.length-1];
+};
+
+Parser.prototype.inContext = function(context) {
+	// TODO: useful in parser?
+	return false;
+};
+
+//
+// Checks whether or not {@code symbol} can follow the current state in the
+// ATN. The behavior of this method is equivalent to the following, but is
+// implemented such that the complete context-sensitive follow set does not
+// need to be explicitly constructed.
+//
+// <pre>
+// return getExpectedTokens().contains(symbol);
+// </pre>
+//
+// @param symbol the symbol type to check
+// @return {@code true} if {@code symbol} can follow the current state in
+// the ATN, otherwise {@code false}.
+
+Parser.prototype.isExpectedToken = function(symbol) {
+	var atn = this._interp.atn;
+	var ctx = this._ctx;
+	var s = atn.states[this.state];
+	var following = atn.nextTokens(s);
+	if (following.contains(symbol)) {
+		return true;
+	}
+	if (!following.contains(Token.EPSILON)) {
+		return false;
+	}
+	while (ctx !== null && ctx.invokingState >= 0 && following.contains(Token.EPSILON)) {
+		var invokingState = atn.states[ctx.invokingState];
+		var rt = invokingState.transitions[0];
+		following = atn.nextTokens(rt.followState);
+		if (following.contains(symbol)) {
+			return true;
+		}
+		ctx = ctx.parentCtx;
+	}
+	if (following.contains(Token.EPSILON) && symbol === Token.EOF) {
+		return true;
+	} else {
+		return false;
+	}
+};
+
+// Computes the set of input symbols which could follow the current parser
+// state and context, as given by {@link //getState} and {@link //getContext},
+// respectively.
+//
+// @see ATN//getExpectedTokens(int, RuleContext)
+//
+Parser.prototype.getExpectedTokens = function() {
+	return this._interp.atn.getExpectedTokens(this.state, this._ctx);
+};
+
+Parser.prototype.getExpectedTokensWithinCurrentRule = function() {
+	var atn = this._interp.atn;
+	var s = atn.states[this.state];
+	return atn.nextTokens(s);
+};
+
+// Get a rule's index (i.e., {@code RULE_ruleName} field) or -1 if not found.//
+Parser.prototype.getRuleIndex = function(ruleName) {
+	var ruleIndex = this.getRuleIndexMap()[ruleName];
+	if (ruleIndex !== null) {
+		return ruleIndex;
+	} else {
+		return -1;
+	}
+};
+
+// Return List&lt;String&gt; of the rule names in your parser instance
+// leading up to a call to the current rule. You could override if
+// you want more details such as the file/line info of where
+// in the ATN a rule is invoked.
+//
+// this is very useful for error messages.
+//
+Parser.prototype.getRuleInvocationStack = function(p) {
+	p = p || null;
+	if (p === null) {
+		p = this._ctx;
+	}
+	var stack = [];
+	while (p !== null) {
+		// compute what follows who invoked us
+		var ruleIndex = p.ruleIndex;
+		if (ruleIndex < 0) {
+			stack.push("n/a");
+		} else {
+			stack.push(this.ruleNames[ruleIndex]);
+		}
+		p = p.parentCtx;
+	}
+	return stack;
+};
+
+// For debugging and other purposes.//
+Parser.prototype.getDFAStrings = function() {
+	return this._interp.decisionToDFA.toString();
+};
+// For debugging and other purposes.//
+Parser.prototype.dumpDFA = function() {
+	var seenOne = false;
+	for (var i = 0; i < this._interp.decisionToDFA.length; i++) {
+		var dfa = this._interp.decisionToDFA[i];
+		if (dfa.states.length > 0) {
+			if (seenOne) {
+				console.log();
+			}
+			this.printer.println("Decision " + dfa.decision + ":");
+			this.printer.print(dfa.toString(this.literalNames, this.symbolicNames));
+			seenOne = true;
+		}
+	}
+};
+
+/*
+"			printer = function() {\r\n" +
+"				this.println = function(s) { document.getElementById('output') += s + '\\n'; }\r\n" +
+"				this.print = function(s) { document.getElementById('output') += s; }\r\n" +
+"			};\r\n" +
+*/
+
+Parser.prototype.getSourceName = function() {
+	return this._input.sourceName;
+};
+
+// During a parse is sometimes useful to listen in on the rule entry and exit
+// events as well as token matches. this is for quick and dirty debugging.
+//
+Parser.prototype.setTrace = function(trace) {
+	if (!trace) {
+		this.removeParseListener(this._tracer);
+		this._tracer = null;
+	} else {
+		if (this._tracer !== null) {
+			this.removeParseListener(this._tracer);
+		}
+		this._tracer = new TraceListener(this);
+		this.addParseListener(this._tracer);
+	}
+};
+
+exports.Parser = Parser;
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Generated from n3.g4 by ANTLR 4.6
+// jshint ignore: start
+var antlr4 = __webpack_require__(12);
+
+
+//    package parser.antlr;
+
+
+var serializedATN = ["\u0003\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd",
+    "\u0002=\u0223\b\u0001\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004",
+    "\u0004\t\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t",
+    "\u0007\u0004\b\t\b\u0004\t\t\t\u0004\n\t\n\u0004\u000b\t\u000b\u0004",
+    "\f\t\f\u0004\r\t\r\u0004\u000e\t\u000e\u0004\u000f\t\u000f\u0004\u0010",
+    "\t\u0010\u0004\u0011\t\u0011\u0004\u0012\t\u0012\u0004\u0013\t\u0013",
+    "\u0004\u0014\t\u0014\u0004\u0015\t\u0015\u0004\u0016\t\u0016\u0004\u0017",
+    "\t\u0017\u0004\u0018\t\u0018\u0004\u0019\t\u0019\u0004\u001a\t\u001a",
+    "\u0004\u001b\t\u001b\u0004\u001c\t\u001c\u0004\u001d\t\u001d\u0004\u001e",
+    "\t\u001e\u0004\u001f\t\u001f\u0004 \t \u0004!\t!\u0004\"\t\"\u0004#",
+    "\t#\u0004$\t$\u0004%\t%\u0004&\t&\u0004\'\t\'\u0004(\t(\u0004)\t)\u0004",
+    "*\t*\u0004+\t+\u0004,\t,\u0004-\t-\u0004.\t.\u0004/\t/\u00040\t0\u0004",
+    "1\t1\u00042\t2\u00043\t3\u00044\t4\u00045\t5\u00046\t6\u00047\t7\u0004",
+    "8\t8\u00049\t9\u0004:\t:\u0004;\t;\u0004<\t<\u0003\u0002\u0003\u0002",
+    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0003\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004",
+    "\u0003\u0004\u0003\u0004\u0003\u0005\u0003\u0005\u0003\u0006\u0003\u0006",
+    "\u0003\u0007\u0003\u0007\u0003\b\u0003\b\u0003\b\u0003\t\u0003\t\u0003",
+    "\t\u0003\t\u0003\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003\u000b\u0003",
+    "\u000b\u0003\u000b\u0003\f\u0003\f\u0003\f\u0003\r\u0003\r\u0003\r\u0003",
+    "\r\u0003\u000e\u0003\u000e\u0003\u000e\u0003\u000e\u0003\u000f\u0003",
+    "\u000f\u0003\u0010\u0003\u0010\u0003\u0010\u0003\u0011\u0003\u0011\u0003",
+    "\u0011\u0003\u0012\u0003\u0012\u0003\u0013\u0003\u0013\u0003\u0014\u0003",
+    "\u0014\u0003\u0015\u0003\u0015\u0003\u0016\u0003\u0016\u0003\u0017\u0003",
+    "\u0017\u0003\u0018\u0003\u0018\u0003\u0019\u0003\u0019\u0003\u001a\u0003",
+    "\u001a\u0003\u001a\u0003\u001b\u0003\u001b\u0003\u001b\u0003\u001b\u0003",
+    "\u001b\u0003\u001b\u0003\u001b\u0003\u001b\u0003\u001b\u0003\u001c\u0003",
+    "\u001c\u0003\u001c\u0003\u001c\u0003\u001c\u0003\u001c\u0003\u001c\u0003",
+    "\u001c\u0003\u001d\u0003\u001d\u0007\u001d\u00d8\n\u001d\f\u001d\u000e",
+    "\u001d\u00db\u000b\u001d\u0003\u001d\u0003\u001d\u0003\u001e\u0003\u001e",
+    "\u0003\u001e\u0003\u001e\u0003\u001e\u0003\u001e\u0003\u001e\u0003\u001e",
+    "\u0003\u001e\u0003\u001e\u0003\u001e\u0003\u001e\u0003\u001e\u0003\u001e",
+    "\u0003\u001e\u0003\u001e\u0003\u001e\u0003\u001e\u0003\u001e\u0003\u001e",
+    "\u0005\u001e\u00f3\n\u001e\u0003\u001f\u0003\u001f\u0003\u001f\u0003",
+    "\u001f\u0005\u001f\u00f9\n\u001f\u0003 \u0003 \u0003 \u0007 \u00fe\n",
+    " \f \u000e \u0101\u000b \u0003 \u0003 \u0003!\u0005!\u0106\n!\u0003",
+    "!\u0003!\u0003\"\u0003\"\u0003\"\u0003#\u0003#\u0003#\u0003#\u0003#",
+    "\u0005#\u0112\n#\u0003#\u0003#\u0007#\u0116\n#\f#\u000e#\u0119\u000b",
+    "#\u0003#\u0005#\u011c\n#\u0003$\u0003$\u0006$\u0120\n$\r$\u000e$\u0121",
+    "\u0003$\u0003$\u0006$\u0126\n$\r$\u000e$\u0127\u0007$\u012a\n$\f$\u000e",
+    "$\u012d\u000b$\u0003%\u0005%\u0130\n%\u0003%\u0006%\u0133\n%\r%\u000e",
+    "%\u0134\u0003&\u0005&\u0138\n&\u0003&\u0007&\u013b\n&\f&\u000e&\u013e",
+    "\u000b&\u0003&\u0003&\u0006&\u0142\n&\r&\u000e&\u0143\u0003\'\u0005",
+    "\'\u0147\n\'\u0003\'\u0006\'\u014a\n\'\r\'\u000e\'\u014b\u0003\'\u0003",
+    "\'\u0007\'\u0150\n\'\f\'\u000e\'\u0153\u000b\'\u0003\'\u0003\'\u0003",
+    "\'\u0006\'\u0158\n\'\r\'\u000e\'\u0159\u0003\'\u0003\'\u0006\'\u015e",
+    "\n\'\r\'\u000e\'\u015f\u0003\'\u0005\'\u0163\n\'\u0003(\u0003(\u0005",
+    "(\u0167\n(\u0003(\u0006(\u016a\n(\r(\u000e(\u016b\u0003)\u0003)\u0003",
+    ")\u0003)\u0003)\u0003)\u0003)\u0005)\u0175\n)\u0003)\u0003)\u0003)\u0005",
+    ")\u017a\n)\u0007)\u017c\n)\f)\u000e)\u017f\u000b)\u0003)\u0003)\u0003",
+    ")\u0003)\u0003*\u0003*\u0003*\u0003*\u0003*\u0003*\u0003*\u0005*\u018c",
+    "\n*\u0003*\u0003*\u0003*\u0005*\u0191\n*\u0007*\u0193\n*\f*\u000e*\u0196",
+    "\u000b*\u0003*\u0003*\u0003*\u0003*\u0003+\u0003+\u0003+\u0003+\u0007",
+    "+\u01a0\n+\f+\u000e+\u01a3\u000b+\u0003+\u0003+\u0003,\u0003,\u0003",
+    ",\u0003,\u0007,\u01ab\n,\f,\u000e,\u01ae\u000b,\u0003,\u0003,\u0003",
+    "-\u0003-\u0003-\u0003-\u0003-\u0003-\u0003-\u0003-\u0003-\u0003-\u0003",
+    "-\u0003-\u0003-\u0003-\u0003-\u0003-\u0003-\u0003-\u0003-\u0003-\u0005",
+    "-\u01c6\n-\u0003.\u0003.\u0003.\u0003/\u0003/\u0003/\u0003/\u00030\u0003",
+    "0\u00070\u01d1\n0\f0\u000e0\u01d4\u000b0\u00030\u00030\u00031\u0003",
+    "1\u00031\u00071\u01db\n1\f1\u000e1\u01de\u000b1\u00032\u00032\u0005",
+    "2\u01e2\n2\u00033\u00053\u01e5\n3\u00034\u00034\u00054\u01e9\n4\u0003",
+    "5\u00035\u00035\u00035\u00035\u00036\u00036\u00036\u00036\u00036\u0003",
+    "6\u00036\u00037\u00037\u00037\u00077\u01fa\n7\f7\u000e7\u01fd\u000b",
+    "7\u00037\u00057\u0200\n7\u00038\u00038\u00038\u00058\u0205\n8\u0003",
+    "8\u00038\u00038\u00078\u020a\n8\f8\u000e8\u020d\u000b8\u00038\u0003",
+    "8\u00038\u00058\u0212\n8\u00058\u0214\n8\u00039\u00039\u00059\u0218",
+    "\n9\u0003:\u0003:\u0003:\u0003:\u0003;\u0005;\u021f\n;\u0003<\u0003",
+    "<\u0003<\u0002\u0002=\u0003\u0003\u0005\u0004\u0007\u0005\t\u0006\u000b",
+    "\u0007\r\b\u000f\t\u0011\n\u0013\u000b\u0015\f\u0017\r\u0019\u000e\u001b",
+    "\u000f\u001d\u0010\u001f\u0011!\u0012#\u0013%\u0014\'\u0015)\u0016+",
+    "\u0017-\u0018/\u00191\u001a3\u001b5\u001c7\u001d9\u001e;\u001f= ?!A",
+    "\"C#E$G%I&K\'M(O)Q*S+U,W-Y.[/]0_1a2c3e4g5i6k7m8o9q:s;u<w=\u0003\u0002",
+    "\u001c\u0004\u0002\f\f\u000e\u000f\n\u0002\u0002!$$>>@@^^``bb}\u007f",
+    "\u0003\u00022;\u0004\u0002C\\c|\u0005\u00022;C\\c|\u0004\u0002--//\u0004",
+    "\u0002GGgg\u0004\u0002))^^\u0004\u0002$$^^\u0006\u0002\f\f\u000f\u000f",
+    "$$^^\u0006\u0002\f\f\u000f\u000f))^^\n\u0002$$))^^ddhhppttvv\u0005\u0002",
+    "\u000b\f\u000f\u000f\"\"\u000f\u0002C\\c|\u00c2\u00d8\u00da\u00f8\u00fa",
+    "\u0301\u0372\u037f\u0381\u2001\u200e\u200f\u2072\u2191\u2c02\u2ff1\u3003",
+    "\ud801\uf902\ufdd1\ufdf2\uffff\u0007\u0002//2;\u00b9\u00b9\u0302\u0371",
+    "\u2041\u2042\u0004\u0002DDdd\u0004\u0002CCcc\u0004\u0002UUuu\u0004\u0002",
+    "RRrr\u0004\u0002TTtt\u0004\u0002HHhh\u0004\u0002KKkk\u0004\u0002ZZz",
+    "z\u0004\u000200<<\u0005\u00022;CHch\t\u0002##%1==??ABaa\u0080\u0080",
+    "\u0262\u0002\u0003\u0003\u0002\u0002\u0002\u0002\u0005\u0003\u0002\u0002",
+    "\u0002\u0002\u0007\u0003\u0002\u0002\u0002\u0002\t\u0003\u0002\u0002",
+    "\u0002\u0002\u000b\u0003\u0002\u0002\u0002\u0002\r\u0003\u0002\u0002",
+    "\u0002\u0002\u000f\u0003\u0002\u0002\u0002\u0002\u0011\u0003\u0002\u0002",
+    "\u0002\u0002\u0013\u0003\u0002\u0002\u0002\u0002\u0015\u0003\u0002\u0002",
+    "\u0002\u0002\u0017\u0003\u0002\u0002\u0002\u0002\u0019\u0003\u0002\u0002",
+    "\u0002\u0002\u001b\u0003\u0002\u0002\u0002\u0002\u001d\u0003\u0002\u0002",
+    "\u0002\u0002\u001f\u0003\u0002\u0002\u0002\u0002!\u0003\u0002\u0002",
+    "\u0002\u0002#\u0003\u0002\u0002\u0002\u0002%\u0003\u0002\u0002\u0002",
+    "\u0002\'\u0003\u0002\u0002\u0002\u0002)\u0003\u0002\u0002\u0002\u0002",
+    "+\u0003\u0002\u0002\u0002\u0002-\u0003\u0002\u0002\u0002\u0002/\u0003",
+    "\u0002\u0002\u0002\u00021\u0003\u0002\u0002\u0002\u00023\u0003\u0002",
+    "\u0002\u0002\u00025\u0003\u0002\u0002\u0002\u00027\u0003\u0002\u0002",
+    "\u0002\u00029\u0003\u0002\u0002\u0002\u0002;\u0003\u0002\u0002\u0002",
+    "\u0002=\u0003\u0002\u0002\u0002\u0002?\u0003\u0002\u0002\u0002\u0002",
+    "A\u0003\u0002\u0002\u0002\u0002C\u0003\u0002\u0002\u0002\u0002E\u0003",
+    "\u0002\u0002\u0002\u0002G\u0003\u0002\u0002\u0002\u0002I\u0003\u0002",
+    "\u0002\u0002\u0002K\u0003\u0002\u0002\u0002\u0002M\u0003\u0002\u0002",
+    "\u0002\u0002O\u0003\u0002\u0002\u0002\u0002Q\u0003\u0002\u0002\u0002",
+    "\u0002S\u0003\u0002\u0002\u0002\u0002U\u0003\u0002\u0002\u0002\u0002",
+    "W\u0003\u0002\u0002\u0002\u0002Y\u0003\u0002\u0002\u0002\u0002[\u0003",
+    "\u0002\u0002\u0002\u0002]\u0003\u0002\u0002\u0002\u0002_\u0003\u0002",
+    "\u0002\u0002\u0002a\u0003\u0002\u0002\u0002\u0002c\u0003\u0002\u0002",
+    "\u0002\u0002e\u0003\u0002\u0002\u0002\u0002g\u0003\u0002\u0002\u0002",
+    "\u0002i\u0003\u0002\u0002\u0002\u0002k\u0003\u0002\u0002\u0002\u0002",
+    "m\u0003\u0002\u0002\u0002\u0002o\u0003\u0002\u0002\u0002\u0002q\u0003",
+    "\u0002\u0002\u0002\u0002s\u0003\u0002\u0002\u0002\u0002u\u0003\u0002",
+    "\u0002\u0002\u0002w\u0003\u0002\u0002\u0002\u0003y\u0003\u0002\u0002",
+    "\u0002\u0005{\u0003\u0002\u0002\u0002\u0007\u0083\u0003\u0002\u0002",
+    "\u0002\t\u0089\u0003\u0002\u0002\u0002\u000b\u008b\u0003\u0002\u0002",
+    "\u0002\r\u008d\u0003\u0002\u0002\u0002\u000f\u008f\u0003\u0002\u0002",
+    "\u0002\u0011\u0092\u0003\u0002\u0002\u0002\u0013\u0096\u0003\u0002\u0002",
+    "\u0002\u0015\u009b\u0003\u0002\u0002\u0002\u0017\u009e\u0003\u0002\u0002",
+    "\u0002\u0019\u00a1\u0003\u0002\u0002\u0002\u001b\u00a5\u0003\u0002\u0002",
+    "\u0002\u001d\u00a9\u0003\u0002\u0002\u0002\u001f\u00ab\u0003\u0002\u0002",
+    "\u0002!\u00ae\u0003\u0002\u0002\u0002#\u00b1\u0003\u0002\u0002\u0002",
+    "%\u00b3\u0003\u0002\u0002\u0002\'\u00b5\u0003\u0002\u0002\u0002)\u00b7",
+    "\u0003\u0002\u0002\u0002+\u00b9\u0003\u0002\u0002\u0002-\u00bb\u0003",
+    "\u0002\u0002\u0002/\u00bd\u0003\u0002\u0002\u00021\u00bf\u0003\u0002",
+    "\u0002\u00023\u00c1\u0003\u0002\u0002\u00025\u00c4\u0003\u0002\u0002",
+    "\u00027\u00cd\u0003\u0002\u0002\u00029\u00d5\u0003\u0002\u0002\u0002",
+    ";\u00f2\u0003\u0002\u0002\u0002=\u00f8\u0003\u0002\u0002\u0002?\u00fa",
+    "\u0003\u0002\u0002\u0002A\u0105\u0003\u0002\u0002\u0002C\u0109\u0003",
+    "\u0002\u0002\u0002E\u010c\u0003\u0002\u0002\u0002G\u011d\u0003\u0002",
+    "\u0002\u0002I\u012f\u0003\u0002\u0002\u0002K\u0137\u0003\u0002\u0002",
+    "\u0002M\u0146\u0003\u0002\u0002\u0002O\u0164\u0003\u0002\u0002\u0002",
+    "Q\u016d\u0003\u0002\u0002\u0002S\u0184\u0003\u0002\u0002\u0002U\u019b",
+    "\u0003\u0002\u0002\u0002W\u01a6\u0003\u0002\u0002\u0002Y\u01c5\u0003",
+    "\u0002\u0002\u0002[\u01c7\u0003\u0002\u0002\u0002]\u01ca\u0003\u0002",
+    "\u0002\u0002_\u01ce\u0003\u0002\u0002\u0002a\u01d7\u0003\u0002\u0002",
+    "\u0002c\u01e1\u0003\u0002\u0002\u0002e\u01e4\u0003\u0002\u0002\u0002",
+    "g\u01e8\u0003\u0002\u0002\u0002i\u01ea\u0003\u0002\u0002\u0002k\u01ef",
+    "\u0003\u0002\u0002\u0002m\u01f6\u0003\u0002\u0002\u0002o\u0204\u0003",
+    "\u0002\u0002\u0002q\u0217\u0003\u0002\u0002\u0002s\u0219\u0003\u0002",
+    "\u0002\u0002u\u021e\u0003\u0002\u0002\u0002w\u0220\u0003\u0002\u0002",
+    "\u0002yz\u00070\u0002\u0002z\u0004\u0003\u0002\u0002\u0002{|\u0007B",
+    "\u0002\u0002|}\u0007r\u0002\u0002}~\u0007t\u0002\u0002~\u007f\u0007",
+    "g\u0002\u0002\u007f\u0080\u0007h\u0002\u0002\u0080\u0081\u0007k\u0002",
+    "\u0002\u0081\u0082\u0007z\u0002\u0002\u0082\u0006\u0003\u0002\u0002",
+    "\u0002\u0083\u0084\u0007B\u0002\u0002\u0084\u0085\u0007d\u0002\u0002",
+    "\u0085\u0086\u0007c\u0002\u0002\u0086\u0087\u0007u\u0002\u0002\u0087",
+    "\u0088\u0007g\u0002\u0002\u0088\b\u0003\u0002\u0002\u0002\u0089\u008a",
+    "\u0007=\u0002\u0002\u008a\n\u0003\u0002\u0002\u0002\u008b\u008c\u0007",
+    ".\u0002\u0002\u008c\f\u0003\u0002\u0002\u0002\u008d\u008e\u0007c\u0002",
+    "\u0002\u008e\u000e\u0003\u0002\u0002\u0002\u008f\u0090\u0007B\u0002",
+    "\u0002\u0090\u0091\u0007c\u0002\u0002\u0091\u0010\u0003\u0002\u0002",
+    "\u0002\u0092\u0093\u0007j\u0002\u0002\u0093\u0094\u0007c\u0002\u0002",
+    "\u0094\u0095\u0007u\u0002\u0002\u0095\u0012\u0003\u0002\u0002\u0002",
+    "\u0096\u0097\u0007B\u0002\u0002\u0097\u0098\u0007j\u0002\u0002\u0098",
+    "\u0099\u0007c\u0002\u0002\u0099\u009a\u0007u\u0002\u0002\u009a\u0014",
+    "\u0003\u0002\u0002\u0002\u009b\u009c\u0007k\u0002\u0002\u009c\u009d",
+    "\u0007u\u0002\u0002\u009d\u0016\u0003\u0002\u0002\u0002\u009e\u009f",
+    "\u0007q\u0002\u0002\u009f\u00a0\u0007h\u0002\u0002\u00a0\u0018\u0003",
+    "\u0002\u0002\u0002\u00a1\u00a2\u0007B\u0002\u0002\u00a2\u00a3\u0007",
+    "k\u0002\u0002\u00a3\u00a4\u0007u\u0002\u0002\u00a4\u001a\u0003\u0002",
+    "\u0002\u0002\u00a5\u00a6\u0007B\u0002\u0002\u00a6\u00a7\u0007q\u0002",
+    "\u0002\u00a7\u00a8\u0007h\u0002\u0002\u00a8\u001c\u0003\u0002\u0002",
+    "\u0002\u00a9\u00aa\u0007?\u0002\u0002\u00aa\u001e\u0003\u0002\u0002",
+    "\u0002\u00ab\u00ac\u0007>\u0002\u0002\u00ac\u00ad\u0007?\u0002\u0002",
+    "\u00ad \u0003\u0002\u0002\u0002\u00ae\u00af\u0007?\u0002\u0002\u00af",
+    "\u00b0\u0007@\u0002\u0002\u00b0\"\u0003\u0002\u0002\u0002\u00b1\u00b2",
+    "\u0007`\u0002\u0002\u00b2$\u0003\u0002\u0002\u0002\u00b3\u00b4\u0007",
+    "#\u0002\u0002\u00b4&\u0003\u0002\u0002\u0002\u00b5\u00b6\u0007]\u0002",
+    "\u0002\u00b6(\u0003\u0002\u0002\u0002\u00b7\u00b8\u0007_\u0002\u0002",
+    "\u00b8*\u0003\u0002\u0002\u0002\u00b9\u00ba\u0007*\u0002\u0002\u00ba",
+    ",\u0003\u0002\u0002\u0002\u00bb\u00bc\u0007+\u0002\u0002\u00bc.\u0003",
+    "\u0002\u0002\u0002\u00bd\u00be\u0007}\u0002\u0002\u00be0\u0003\u0002",
+    "\u0002\u0002\u00bf\u00c0\u0007\u007f\u0002\u0002\u00c02\u0003\u0002",
+    "\u0002\u0002\u00c1\u00c2\u0007`\u0002\u0002\u00c2\u00c3\u0007`\u0002",
+    "\u0002\u00c34\u0003\u0002\u0002\u0002\u00c4\u00c5\u0007B\u0002\u0002",
+    "\u00c5\u00c6\u0007h\u0002\u0002\u00c6\u00c7\u0007q\u0002\u0002\u00c7",
+    "\u00c8\u0007t\u0002\u0002\u00c8\u00c9\u0007U\u0002\u0002\u00c9\u00ca",
+    "\u0007q\u0002\u0002\u00ca\u00cb\u0007o\u0002\u0002\u00cb\u00cc\u0007",
+    "g\u0002\u0002\u00cc6\u0003\u0002\u0002\u0002\u00cd\u00ce\u0007B\u0002",
+    "\u0002\u00ce\u00cf\u0007h\u0002\u0002\u00cf\u00d0\u0007q\u0002\u0002",
+    "\u00d0\u00d1\u0007t\u0002\u0002\u00d1\u00d2\u0007C\u0002\u0002\u00d2",
+    "\u00d3\u0007n\u0002\u0002\u00d3\u00d4\u0007n\u0002\u0002\u00d48\u0003",
+    "\u0002\u0002\u0002\u00d5\u00d9\u0007%\u0002\u0002\u00d6\u00d8\n\u0002",
+    "\u0002\u0002\u00d7\u00d6\u0003\u0002\u0002\u0002\u00d8\u00db\u0003\u0002",
+    "\u0002\u0002\u00d9\u00d7\u0003\u0002\u0002\u0002\u00d9\u00da\u0003\u0002",
+    "\u0002\u0002\u00da\u00dc\u0003\u0002\u0002\u0002\u00db\u00d9\u0003\u0002",
+    "\u0002\u0002\u00dc\u00dd\b\u001d\u0002\u0002\u00dd:\u0003\u0002\u0002",
+    "\u0002\u00de\u00df\u0007v\u0002\u0002\u00df\u00e0\u0007t\u0002\u0002",
+    "\u00e0\u00e1\u0007w\u0002\u0002\u00e1\u00f3\u0007g\u0002\u0002\u00e2",
+    "\u00e3\u0007h\u0002\u0002\u00e3\u00e4\u0007c\u0002\u0002\u00e4\u00e5",
+    "\u0007n\u0002\u0002\u00e5\u00e6\u0007u\u0002\u0002\u00e6\u00f3\u0007",
+    "g\u0002\u0002\u00e7\u00e8\u0007B\u0002\u0002\u00e8\u00e9\u0007v\u0002",
+    "\u0002\u00e9\u00ea\u0007t\u0002\u0002\u00ea\u00eb\u0007w\u0002\u0002",
+    "\u00eb\u00f3\u0007g\u0002\u0002\u00ec\u00ed\u0007B\u0002\u0002\u00ed",
+    "\u00ee\u0007h\u0002\u0002\u00ee\u00ef\u0007c\u0002\u0002\u00ef\u00f0",
+    "\u0007n\u0002\u0002\u00f0\u00f1\u0007u\u0002\u0002\u00f1\u00f3\u0007",
+    "g\u0002\u0002\u00f2\u00de\u0003\u0002\u0002\u0002\u00f2\u00e2\u0003",
+    "\u0002\u0002\u0002\u00f2\u00e7\u0003\u0002\u0002\u0002\u00f2\u00ec\u0003",
+    "\u0002\u0002\u0002\u00f3<\u0003\u0002\u0002\u0002\u00f4\u00f9\u0005",
+    "U+\u0002\u00f5\u00f9\u0005W,\u0002\u00f6\u00f9\u0005Q)\u0002\u00f7\u00f9",
+    "\u0005S*\u0002\u00f8\u00f4\u0003\u0002\u0002\u0002\u00f8\u00f5\u0003",
+    "\u0002\u0002\u0002\u00f8\u00f6\u0003\u0002\u0002\u0002\u00f8\u00f7\u0003",
+    "\u0002\u0002\u0002\u00f9>\u0003\u0002\u0002\u0002\u00fa\u00ff\u0007",
+    ">\u0002\u0002\u00fb\u00fe\n\u0003\u0002\u0002\u00fc\u00fe\u0005Y-\u0002",
+    "\u00fd\u00fb\u0003\u0002\u0002\u0002\u00fd\u00fc\u0003\u0002\u0002\u0002",
+    "\u00fe\u0101\u0003\u0002\u0002\u0002\u00ff\u00fd\u0003\u0002\u0002\u0002",
+    "\u00ff\u0100\u0003\u0002\u0002\u0002\u0100\u0102\u0003\u0002\u0002\u0002",
+    "\u0101\u00ff\u0003\u0002\u0002\u0002\u0102\u0103\u0007@\u0002\u0002",
+    "\u0103@\u0003\u0002\u0002\u0002\u0104\u0106\u0005m7\u0002\u0105\u0104",
+    "\u0003\u0002\u0002\u0002\u0105\u0106\u0003\u0002\u0002\u0002\u0106\u0107",
+    "\u0003\u0002\u0002\u0002\u0107\u0108\u0007<\u0002\u0002\u0108B\u0003",
+    "\u0002\u0002\u0002\u0109\u010a\u0005A!\u0002\u010a\u010b\u0005o8\u0002",
+    "\u010bD\u0003\u0002\u0002\u0002\u010c\u010d\u0007a\u0002\u0002\u010d",
+    "\u010e\u0007<\u0002\u0002\u010e\u0111\u0003\u0002\u0002\u0002\u010f",
+    "\u0112\u0005c2\u0002\u0110\u0112\t\u0004\u0002\u0002\u0111\u010f\u0003",
+    "\u0002\u0002\u0002\u0111\u0110\u0003\u0002\u0002\u0002\u0112\u011b\u0003",
+    "\u0002\u0002\u0002\u0113\u0116\u0005g4\u0002\u0114\u0116\u00070\u0002",
+    "\u0002\u0115\u0113\u0003\u0002\u0002\u0002\u0115\u0114\u0003\u0002\u0002",
+    "\u0002\u0116\u0119\u0003\u0002\u0002\u0002\u0117\u0115\u0003\u0002\u0002",
+    "\u0002\u0117\u0118\u0003\u0002\u0002\u0002\u0118\u011a\u0003\u0002\u0002",
+    "\u0002\u0119\u0117\u0003\u0002\u0002\u0002\u011a\u011c\u0005g4\u0002",
+    "\u011b\u0117\u0003\u0002\u0002\u0002\u011b\u011c\u0003\u0002\u0002\u0002",
+    "\u011cF\u0003\u0002\u0002\u0002\u011d\u011f\u0007B\u0002\u0002\u011e",
+    "\u0120\t\u0005\u0002\u0002\u011f\u011e\u0003\u0002\u0002\u0002\u0120",
+    "\u0121\u0003\u0002\u0002\u0002\u0121\u011f\u0003\u0002\u0002\u0002\u0121",
+    "\u0122\u0003\u0002\u0002\u0002\u0122\u012b\u0003\u0002\u0002\u0002\u0123",
+    "\u0125\u0007/\u0002\u0002\u0124\u0126\t\u0006\u0002\u0002\u0125\u0124",
+    "\u0003\u0002\u0002\u0002\u0126\u0127\u0003\u0002\u0002\u0002\u0127\u0125",
+    "\u0003\u0002\u0002\u0002\u0127\u0128\u0003\u0002\u0002\u0002\u0128\u012a",
+    "\u0003\u0002\u0002\u0002\u0129\u0123\u0003\u0002\u0002\u0002\u012a\u012d",
+    "\u0003\u0002\u0002\u0002\u012b\u0129\u0003\u0002\u0002\u0002\u012b\u012c",
+    "\u0003\u0002\u0002\u0002\u012cH\u0003\u0002\u0002\u0002\u012d\u012b",
+    "\u0003\u0002\u0002\u0002\u012e\u0130\t\u0007\u0002\u0002\u012f\u012e",
+    "\u0003\u0002\u0002\u0002\u012f\u0130\u0003\u0002\u0002\u0002\u0130\u0132",
+    "\u0003\u0002\u0002\u0002\u0131\u0133\t\u0004\u0002\u0002\u0132\u0131",
+    "\u0003\u0002\u0002\u0002\u0133\u0134\u0003\u0002\u0002\u0002\u0134\u0132",
+    "\u0003\u0002\u0002\u0002\u0134\u0135\u0003\u0002\u0002\u0002\u0135J",
+    "\u0003\u0002\u0002\u0002\u0136\u0138\t\u0007\u0002\u0002\u0137\u0136",
+    "\u0003\u0002\u0002\u0002\u0137\u0138\u0003\u0002\u0002\u0002\u0138\u013c",
+    "\u0003\u0002\u0002\u0002\u0139\u013b\t\u0004\u0002\u0002\u013a\u0139",
+    "\u0003\u0002\u0002\u0002\u013b\u013e\u0003\u0002\u0002\u0002\u013c\u013a",
+    "\u0003\u0002\u0002\u0002\u013c\u013d\u0003\u0002\u0002\u0002\u013d\u013f",
+    "\u0003\u0002\u0002\u0002\u013e\u013c\u0003\u0002\u0002\u0002\u013f\u0141",
+    "\u00070\u0002\u0002\u0140\u0142\t\u0004\u0002\u0002\u0141\u0140\u0003",
+    "\u0002\u0002\u0002\u0142\u0143\u0003\u0002\u0002\u0002\u0143\u0141\u0003",
+    "\u0002\u0002\u0002\u0143\u0144\u0003\u0002\u0002\u0002\u0144L\u0003",
+    "\u0002\u0002\u0002\u0145\u0147\t\u0007\u0002\u0002\u0146\u0145\u0003",
+    "\u0002\u0002\u0002\u0146\u0147\u0003\u0002\u0002\u0002\u0147\u0162\u0003",
+    "\u0002\u0002\u0002\u0148\u014a\t\u0004\u0002\u0002\u0149\u0148\u0003",
+    "\u0002\u0002\u0002\u014a\u014b\u0003\u0002\u0002\u0002\u014b\u0149\u0003",
+    "\u0002\u0002\u0002\u014b\u014c\u0003\u0002\u0002\u0002\u014c\u014d\u0003",
+    "\u0002\u0002\u0002\u014d\u0151\u00070\u0002\u0002\u014e\u0150\t\u0004",
+    "\u0002\u0002\u014f\u014e\u0003\u0002\u0002\u0002\u0150\u0153\u0003\u0002",
+    "\u0002\u0002\u0151\u014f\u0003\u0002\u0002\u0002\u0151\u0152\u0003\u0002",
+    "\u0002\u0002\u0152\u0154\u0003\u0002\u0002\u0002\u0153\u0151\u0003\u0002",
+    "\u0002\u0002\u0154\u0163\u0005O(\u0002\u0155\u0157\u00070\u0002\u0002",
+    "\u0156\u0158\t\u0004\u0002\u0002\u0157\u0156\u0003\u0002\u0002\u0002",
+    "\u0158\u0159\u0003\u0002\u0002\u0002\u0159\u0157\u0003\u0002\u0002\u0002",
+    "\u0159\u015a\u0003\u0002\u0002\u0002\u015a\u015b\u0003\u0002\u0002\u0002",
+    "\u015b\u0163\u0005O(\u0002\u015c\u015e\t\u0004\u0002\u0002\u015d\u015c",
+    "\u0003\u0002\u0002\u0002\u015e\u015f\u0003\u0002\u0002\u0002\u015f\u015d",
+    "\u0003\u0002\u0002\u0002\u015f\u0160\u0003\u0002\u0002\u0002\u0160\u0161",
+    "\u0003\u0002\u0002\u0002\u0161\u0163\u0005O(\u0002\u0162\u0149\u0003",
+    "\u0002\u0002\u0002\u0162\u0155\u0003\u0002\u0002\u0002\u0162\u015d\u0003",
+    "\u0002\u0002\u0002\u0163N\u0003\u0002\u0002\u0002\u0164\u0166\t\b\u0002",
+    "\u0002\u0165\u0167\t\u0007\u0002\u0002\u0166\u0165\u0003\u0002\u0002",
+    "\u0002\u0166\u0167\u0003\u0002\u0002\u0002\u0167\u0169\u0003\u0002\u0002",
+    "\u0002\u0168\u016a\t\u0004\u0002\u0002\u0169\u0168\u0003\u0002\u0002",
+    "\u0002\u016a\u016b\u0003\u0002\u0002\u0002\u016b\u0169\u0003\u0002\u0002",
+    "\u0002\u016b\u016c\u0003\u0002\u0002\u0002\u016cP\u0003\u0002\u0002",
+    "\u0002\u016d\u016e\u0007)\u0002\u0002\u016e\u016f\u0007)\u0002\u0002",
+    "\u016f\u0170\u0007)\u0002\u0002\u0170\u017d\u0003\u0002\u0002\u0002",
+    "\u0171\u0175\u0007)\u0002\u0002\u0172\u0173\u0007)\u0002\u0002\u0173",
+    "\u0175\u0007)\u0002\u0002\u0174\u0171\u0003\u0002\u0002\u0002\u0174",
+    "\u0172\u0003\u0002\u0002\u0002\u0174\u0175\u0003\u0002\u0002\u0002\u0175",
+    "\u0179\u0003\u0002\u0002\u0002\u0176\u017a\n\t\u0002\u0002\u0177\u017a",
+    "\u0005[.\u0002\u0178\u017a\u0005Y-\u0002\u0179\u0176\u0003\u0002\u0002",
+    "\u0002\u0179\u0177\u0003\u0002\u0002\u0002\u0179\u0178\u0003\u0002\u0002",
+    "\u0002\u017a\u017c\u0003\u0002\u0002\u0002\u017b\u0174\u0003\u0002\u0002",
+    "\u0002\u017c\u017f\u0003\u0002\u0002\u0002\u017d\u017b\u0003\u0002\u0002",
+    "\u0002\u017d\u017e\u0003\u0002\u0002\u0002\u017e\u0180\u0003\u0002\u0002",
+    "\u0002\u017f\u017d\u0003\u0002\u0002\u0002\u0180\u0181\u0007)\u0002",
+    "\u0002\u0181\u0182\u0007)\u0002\u0002\u0182\u0183\u0007)\u0002\u0002",
+    "\u0183R\u0003\u0002\u0002\u0002\u0184\u0185\u0007$\u0002\u0002\u0185",
+    "\u0186\u0007$\u0002\u0002\u0186\u0187\u0007$\u0002\u0002\u0187\u0194",
+    "\u0003\u0002\u0002\u0002\u0188\u018c\u0007$\u0002\u0002\u0189\u018a",
+    "\u0007$\u0002\u0002\u018a\u018c\u0007$\u0002\u0002\u018b\u0188\u0003",
+    "\u0002\u0002\u0002\u018b\u0189\u0003\u0002\u0002\u0002\u018b\u018c\u0003",
+    "\u0002\u0002\u0002\u018c\u0190\u0003\u0002\u0002\u0002\u018d\u0191\n",
+    "\n\u0002\u0002\u018e\u0191\u0005[.\u0002\u018f\u0191\u0005Y-\u0002\u0190",
+    "\u018d\u0003\u0002\u0002\u0002\u0190\u018e\u0003\u0002\u0002\u0002\u0190",
+    "\u018f\u0003\u0002\u0002\u0002\u0191\u0193\u0003\u0002\u0002\u0002\u0192",
+    "\u018b\u0003\u0002\u0002\u0002\u0193\u0196\u0003\u0002\u0002\u0002\u0194",
+    "\u0192\u0003\u0002\u0002\u0002\u0194\u0195\u0003\u0002\u0002\u0002\u0195",
+    "\u0197\u0003\u0002\u0002\u0002\u0196\u0194\u0003\u0002\u0002\u0002\u0197",
+    "\u0198\u0007$\u0002\u0002\u0198\u0199\u0007$\u0002\u0002\u0199\u019a",
+    "\u0007$\u0002\u0002\u019aT\u0003\u0002\u0002\u0002\u019b\u01a1\u0007",
+    "$\u0002\u0002\u019c\u01a0\n\u000b\u0002\u0002\u019d\u01a0\u0005[.\u0002",
+    "\u019e\u01a0\u0005Y-\u0002\u019f\u019c\u0003\u0002\u0002\u0002\u019f",
+    "\u019d\u0003\u0002\u0002\u0002\u019f\u019e\u0003\u0002\u0002\u0002\u01a0",
+    "\u01a3\u0003\u0002\u0002\u0002\u01a1\u019f\u0003\u0002\u0002\u0002\u01a1",
+    "\u01a2\u0003\u0002\u0002\u0002\u01a2\u01a4\u0003\u0002\u0002\u0002\u01a3",
+    "\u01a1\u0003\u0002\u0002\u0002\u01a4\u01a5\u0007$\u0002\u0002\u01a5",
+    "V\u0003\u0002\u0002\u0002\u01a6\u01ac\u0007)\u0002\u0002\u01a7\u01ab",
+    "\n\f\u0002\u0002\u01a8\u01ab\u0005[.\u0002\u01a9\u01ab\u0005Y-\u0002",
+    "\u01aa\u01a7\u0003\u0002\u0002\u0002\u01aa\u01a8\u0003\u0002\u0002\u0002",
+    "\u01aa\u01a9\u0003\u0002\u0002\u0002\u01ab\u01ae\u0003\u0002\u0002\u0002",
+    "\u01ac\u01aa\u0003\u0002\u0002\u0002\u01ac\u01ad\u0003\u0002\u0002\u0002",
+    "\u01ad\u01af\u0003\u0002\u0002\u0002\u01ae\u01ac\u0003\u0002\u0002\u0002",
+    "\u01af\u01b0\u0007)\u0002\u0002\u01b0X\u0003\u0002\u0002\u0002\u01b1",
+    "\u01b2\u0007^\u0002\u0002\u01b2\u01b3\u0007w\u0002\u0002\u01b3\u01b4",
+    "\u0003\u0002\u0002\u0002\u01b4\u01b5\u0005u;\u0002\u01b5\u01b6\u0005",
+    "u;\u0002\u01b6\u01b7\u0005u;\u0002\u01b7\u01b8\u0005u;\u0002\u01b8\u01c6",
+    "\u0003\u0002\u0002\u0002\u01b9\u01ba\u0007^\u0002\u0002\u01ba\u01bb",
+    "\u0007W\u0002\u0002\u01bb\u01bc\u0003\u0002\u0002\u0002\u01bc\u01bd",
+    "\u0005u;\u0002\u01bd\u01be\u0005u;\u0002\u01be\u01bf\u0005u;\u0002\u01bf",
+    "\u01c0\u0005u;\u0002\u01c0\u01c1\u0005u;\u0002\u01c1\u01c2\u0005u;\u0002",
+    "\u01c2\u01c3\u0005u;\u0002\u01c3\u01c4\u0005u;\u0002\u01c4\u01c6\u0003",
+    "\u0002\u0002\u0002\u01c5\u01b1\u0003\u0002\u0002\u0002\u01c5\u01b9\u0003",
+    "\u0002\u0002\u0002\u01c6Z\u0003\u0002\u0002\u0002\u01c7\u01c8\u0007",
+    "^\u0002\u0002\u01c8\u01c9\t\r\u0002\u0002\u01c9\\\u0003\u0002\u0002",
+    "\u0002\u01ca\u01cb\t\u000e\u0002\u0002\u01cb\u01cc\u0003\u0002\u0002",
+    "\u0002\u01cc\u01cd\b/\u0002\u0002\u01cd^\u0003\u0002\u0002\u0002\u01ce",
+    "\u01d2\u0007]\u0002\u0002\u01cf\u01d1\u0005]/\u0002\u01d0\u01cf\u0003",
+    "\u0002\u0002\u0002\u01d1\u01d4\u0003\u0002\u0002\u0002\u01d2\u01d0\u0003",
+    "\u0002\u0002\u0002\u01d2\u01d3\u0003\u0002\u0002\u0002\u01d3\u01d5\u0003",
+    "\u0002\u0002\u0002\u01d4\u01d2\u0003\u0002\u0002\u0002\u01d5\u01d6\u0007",
+    "_\u0002\u0002\u01d6`\u0003\u0002\u0002\u0002\u01d7\u01d8\u0007A\u0002",
+    "\u0002\u01d8\u01dc\u0005c2\u0002\u01d9\u01db\u0005g4\u0002\u01da\u01d9",
+    "\u0003\u0002\u0002\u0002\u01db\u01de\u0003\u0002\u0002\u0002\u01dc\u01da",
+    "\u0003\u0002\u0002\u0002\u01dc\u01dd\u0003\u0002\u0002\u0002\u01ddb",
+    "\u0003\u0002\u0002\u0002\u01de\u01dc\u0003\u0002\u0002\u0002\u01df\u01e2",
+    "\u0005e3\u0002\u01e0\u01e2\u0007a\u0002\u0002\u01e1\u01df\u0003\u0002",
+    "\u0002\u0002\u01e1\u01e0\u0003\u0002\u0002\u0002\u01e2d\u0003\u0002",
+    "\u0002\u0002\u01e3\u01e5\t\u000f\u0002\u0002\u01e4\u01e3\u0003\u0002",
+    "\u0002\u0002\u01e5f\u0003\u0002\u0002\u0002\u01e6\u01e9\u0005c2\u0002",
+    "\u01e7\u01e9\t\u0010\u0002\u0002\u01e8\u01e6\u0003\u0002\u0002\u0002",
+    "\u01e8\u01e7\u0003\u0002\u0002\u0002\u01e9h\u0003\u0002\u0002\u0002",
+    "\u01ea\u01eb\t\u0011\u0002\u0002\u01eb\u01ec\t\u0012\u0002\u0002\u01ec",
+    "\u01ed\t\u0013\u0002\u0002\u01ed\u01ee\t\b\u0002\u0002\u01eej\u0003",
+    "\u0002\u0002\u0002\u01ef\u01f0\t\u0014\u0002\u0002\u01f0\u01f1\t\u0015",
+    "\u0002\u0002\u01f1\u01f2\t\b\u0002\u0002\u01f2\u01f3\t\u0016\u0002\u0002",
+    "\u01f3\u01f4\t\u0017\u0002\u0002\u01f4\u01f5\t\u0018\u0002\u0002\u01f5",
+    "l\u0003\u0002\u0002\u0002\u01f6\u01ff\u0005e3\u0002\u01f7\u01fa\u0005",
+    "g4\u0002\u01f8\u01fa\u00070\u0002\u0002\u01f9\u01f7\u0003\u0002\u0002",
+    "\u0002\u01f9\u01f8\u0003\u0002\u0002\u0002\u01fa\u01fd\u0003\u0002\u0002",
+    "\u0002\u01fb\u01f9\u0003\u0002\u0002\u0002\u01fb\u01fc\u0003\u0002\u0002",
+    "\u0002\u01fc\u01fe\u0003\u0002\u0002\u0002\u01fd\u01fb\u0003\u0002\u0002",
+    "\u0002\u01fe\u0200\u0005g4\u0002\u01ff\u01fb\u0003\u0002\u0002\u0002",
+    "\u01ff\u0200\u0003\u0002\u0002\u0002\u0200n\u0003\u0002\u0002\u0002",
+    "\u0201\u0205\u0005c2\u0002\u0202\u0205\u00042<\u0002\u0203\u0205\u0005",
+    "q9\u0002\u0204\u0201\u0003\u0002\u0002\u0002\u0204\u0202\u0003\u0002",
+    "\u0002\u0002\u0204\u0203\u0003\u0002\u0002\u0002\u0205\u0213\u0003\u0002",
+    "\u0002\u0002\u0206\u020a\u0005g4\u0002\u0207\u020a\t\u0019\u0002\u0002",
+    "\u0208\u020a\u0005q9\u0002\u0209\u0206\u0003\u0002\u0002\u0002\u0209",
+    "\u0207\u0003\u0002\u0002\u0002\u0209\u0208\u0003\u0002\u0002\u0002\u020a",
+    "\u020d\u0003\u0002\u0002\u0002\u020b\u0209\u0003\u0002\u0002\u0002\u020b",
+    "\u020c\u0003\u0002\u0002\u0002\u020c\u0211\u0003\u0002\u0002\u0002\u020d",
+    "\u020b\u0003\u0002\u0002\u0002\u020e\u0212\u0005g4\u0002\u020f\u0212",
+    "\u0007<\u0002\u0002\u0210\u0212\u0005q9\u0002\u0211\u020e\u0003\u0002",
+    "\u0002\u0002\u0211\u020f\u0003\u0002\u0002\u0002\u0211\u0210\u0003\u0002",
+    "\u0002\u0002\u0212\u0214\u0003\u0002\u0002\u0002\u0213\u020b\u0003\u0002",
+    "\u0002\u0002\u0213\u0214\u0003\u0002\u0002\u0002\u0214p\u0003\u0002",
+    "\u0002\u0002\u0215\u0218\u0005s:\u0002\u0216\u0218\u0005w<\u0002\u0217",
+    "\u0215\u0003\u0002\u0002\u0002\u0217\u0216\u0003\u0002\u0002\u0002\u0218",
+    "r\u0003\u0002\u0002\u0002\u0219\u021a\u0007\'\u0002\u0002\u021a\u021b",
+    "\u0005u;\u0002\u021b\u021c\u0005u;\u0002\u021ct\u0003\u0002\u0002\u0002",
+    "\u021d\u021f\t\u001a\u0002\u0002\u021e\u021d\u0003\u0002\u0002\u0002",
+    "\u021fv\u0003\u0002\u0002\u0002\u0220\u0221\u0007^\u0002\u0002\u0221",
+    "\u0222\t\u001b\u0002\u0002\u0222x\u0003\u0002\u0002\u00027\u0002\u00d9",
+    "\u00f2\u00f8\u00fd\u00ff\u0105\u0111\u0115\u0117\u011b\u0121\u0127\u012b",
+    "\u012f\u0134\u0137\u013c\u0143\u0146\u014b\u0151\u0159\u015f\u0162\u0166",
+    "\u016b\u0174\u0179\u017d\u018b\u0190\u0194\u019f\u01a1\u01aa\u01ac\u01c5",
+    "\u01d2\u01dc\u01e1\u01e4\u01e8\u01f9\u01fb\u01ff\u0204\u0209\u020b\u0211",
+    "\u0213\u0217\u021e\u0003\b\u0002\u0002"].join("");
+
+
+var atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
+
+var decisionsToDFA = atn.decisionToState.map( function(ds, index) { return new antlr4.dfa.DFA(ds, index); });
+
+function n3Lexer(input) {
+	antlr4.Lexer.call(this, input);
+    this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.PredictionContextCache());
+    return this;
+}
+
+n3Lexer.prototype = Object.create(antlr4.Lexer.prototype);
+n3Lexer.prototype.constructor = n3Lexer;
+
+n3Lexer.EOF = antlr4.Token.EOF;
+n3Lexer.T__0 = 1;
+n3Lexer.T__1 = 2;
+n3Lexer.T__2 = 3;
+n3Lexer.T__3 = 4;
+n3Lexer.T__4 = 5;
+n3Lexer.T__5 = 6;
+n3Lexer.T__6 = 7;
+n3Lexer.T__7 = 8;
+n3Lexer.T__8 = 9;
+n3Lexer.T__9 = 10;
+n3Lexer.T__10 = 11;
+n3Lexer.T__11 = 12;
+n3Lexer.T__12 = 13;
+n3Lexer.T__13 = 14;
+n3Lexer.T__14 = 15;
+n3Lexer.T__15 = 16;
+n3Lexer.T__16 = 17;
+n3Lexer.T__17 = 18;
+n3Lexer.T__18 = 19;
+n3Lexer.T__19 = 20;
+n3Lexer.T__20 = 21;
+n3Lexer.T__21 = 22;
+n3Lexer.T__22 = 23;
+n3Lexer.T__23 = 24;
+n3Lexer.T__24 = 25;
+n3Lexer.T__25 = 26;
+n3Lexer.T__26 = 27;
+n3Lexer.COMMENT = 28;
+n3Lexer.BooleanLiteral = 29;
+n3Lexer.String = 30;
+n3Lexer.IRIREF = 31;
+n3Lexer.PNAME_NS = 32;
+n3Lexer.PNAME_LN = 33;
+n3Lexer.BLANK_NODE_LABEL = 34;
+n3Lexer.LANGTAG = 35;
+n3Lexer.INTEGER = 36;
+n3Lexer.DECIMAL = 37;
+n3Lexer.DOUBLE = 38;
+n3Lexer.EXPONENT = 39;
+n3Lexer.STRING_LITERAL_LONG_SINGLE_QUOTE = 40;
+n3Lexer.STRING_LITERAL_LONG_QUOTE = 41;
+n3Lexer.STRING_LITERAL_QUOTE = 42;
+n3Lexer.STRING_LITERAL_SINGLE_QUOTE = 43;
+n3Lexer.UCHAR = 44;
+n3Lexer.ECHAR = 45;
+n3Lexer.WS = 46;
+n3Lexer.ANON = 47;
+n3Lexer.QuickVarName = 48;
+n3Lexer.PN_CHARS_U = 49;
+n3Lexer.PN_CHARS_BASE = 50;
+n3Lexer.PN_CHARS = 51;
+n3Lexer.BASE = 52;
+n3Lexer.PREFIX = 53;
+n3Lexer.PN_PREFIX = 54;
+n3Lexer.PN_LOCAL = 55;
+n3Lexer.PLX = 56;
+n3Lexer.PERCENT = 57;
+n3Lexer.HEX = 58;
+n3Lexer.PN_LOCAL_ESC = 59;
+
+
+n3Lexer.prototype.modeNames = [ "DEFAULT_MODE" ];
+
+n3Lexer.prototype.literalNames = [ null, "'.'", "'@prefix'", "'@base'", 
+                                   "';'", "','", "'a'", "'@a'", "'has'", 
+                                   "'@has'", "'is'", "'of'", "'@is'", "'@of'", 
+                                   "'='", "'<='", "'=>'", "'^'", "'!'", 
+                                   "'['", "']'", "'('", "')'", "'{'", "'}'", 
+                                   "'^^'", "'@forSome'", "'@forAll'" ];
+
+n3Lexer.prototype.symbolicNames = [ null, null, null, null, null, null, 
+                                    null, null, null, null, null, null, 
+                                    null, null, null, null, null, null, 
+                                    null, null, null, null, null, null, 
+                                    null, null, null, null, "COMMENT", "BooleanLiteral", 
+                                    "String", "IRIREF", "PNAME_NS", "PNAME_LN", 
+                                    "BLANK_NODE_LABEL", "LANGTAG", "INTEGER", 
+                                    "DECIMAL", "DOUBLE", "EXPONENT", "STRING_LITERAL_LONG_SINGLE_QUOTE", 
+                                    "STRING_LITERAL_LONG_QUOTE", "STRING_LITERAL_QUOTE", 
+                                    "STRING_LITERAL_SINGLE_QUOTE", "UCHAR", 
+                                    "ECHAR", "WS", "ANON", "QuickVarName", 
+                                    "PN_CHARS_U", "PN_CHARS_BASE", "PN_CHARS", 
+                                    "BASE", "PREFIX", "PN_PREFIX", "PN_LOCAL", 
+                                    "PLX", "PERCENT", "HEX", "PN_LOCAL_ESC" ];
+
+n3Lexer.prototype.ruleNames = [ "T__0", "T__1", "T__2", "T__3", "T__4", 
+                                "T__5", "T__6", "T__7", "T__8", "T__9", 
+                                "T__10", "T__11", "T__12", "T__13", "T__14", 
+                                "T__15", "T__16", "T__17", "T__18", "T__19", 
+                                "T__20", "T__21", "T__22", "T__23", "T__24", 
+                                "T__25", "T__26", "COMMENT", "BooleanLiteral", 
+                                "String", "IRIREF", "PNAME_NS", "PNAME_LN", 
+                                "BLANK_NODE_LABEL", "LANGTAG", "INTEGER", 
+                                "DECIMAL", "DOUBLE", "EXPONENT", "STRING_LITERAL_LONG_SINGLE_QUOTE", 
+                                "STRING_LITERAL_LONG_QUOTE", "STRING_LITERAL_QUOTE", 
+                                "STRING_LITERAL_SINGLE_QUOTE", "UCHAR", 
+                                "ECHAR", "WS", "ANON", "QuickVarName", "PN_CHARS_U", 
+                                "PN_CHARS_BASE", "PN_CHARS", "BASE", "PREFIX", 
+                                "PN_PREFIX", "PN_LOCAL", "PLX", "PERCENT", 
+                                "HEX", "PN_LOCAL_ESC" ];
+
+n3Lexer.prototype.grammarFileName = "n3.g4";
+
+
+
+exports.n3Lexer = n3Lexer;
+
+
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var n3Listener = __webpack_require__(32).n3Listener;
+
+function n3PrefixListener(listener) {
+	n3Listener.call(this);
+	this.listener = listener;
+	this.prefixes = {};
+	
+	return this;
+}
+
+n3PrefixListener.prototype = Object.create(n3Listener.prototype);
+n3PrefixListener.prototype.constructor = n3PrefixListener;
+
+// Exit a parse tree produced by n3Parser#sparqlPrefix.
+n3PrefixListener.prototype.exitSparqlPrefix = function(ctx) {
+	this.processPrefix(ctx.PNAME_NS(), ctx.IRIREF());
+};
+
+// Exit a parse tree produced by n3Parser#prefixID.
+n3PrefixListener.prototype.exitPrefixID = function(ctx) {
+	this.processPrefix(ctx.PNAME_NS(), ctx.IRIREF());
+};
+
+n3PrefixListener.prototype.processPrefix = function(pNameNs, iriRef) {
+	if (pNameNs == null)
+		return
+
+	var prefix = pNameNs.getText().trim();
+	prefix = prefix.substring(0, prefix.length - 1)
+
+	var uri = this.iri(iriRef);
+	this.prefixes[prefix] = uri;
+}
+
+// Exit a parse tree produced by n3Parser#prefixedName.
+n3PrefixListener.prototype.exitPrefixedName = function(ctx) {
+	var pNameLn = ctx.PNAME_LN();
+
+	if (pNameLn != null) {
+		var pName = pNameLn.getText().trim();
+		var prefix = pName.substring(0, pName.indexOf(":")).trim();
+
+		if (prefix == "")
+			return;
+		
+		if (this.prefixes[prefix] === undefined) {
+			var line = ctx.start.line
+			var start = ctx.start.column
+			var end = start + prefix.length
+			
+			this.listener.unknownPrefix(prefix, pName, line, start, end);
+		}
+	}
+};
+
+n3PrefixListener.prototype.text = function(node) {
+	if (node == null)
+		return null;
+	
+	return node.getText().trim();
+}
+
+n3PrefixListener.prototype.iri = function(node) {
+	var s = this.text(node);
+	return s.substring(1, s.length - 1);
+}
+
+exports.n3PrefixListener = n3PrefixListener;
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var n3Visitor = __webpack_require__(33).n3Visitor
+var n3Parser = __webpack_require__(31).n3Parser
+
+function n3PrintVisitor(listener) {
+	n3Visitor.call(this);
+	this.listener = listener;
+	
+	this.lvl = 0
+	
+	return this;
+}
+
+n3PrintVisitor.prototype = Object.create(n3Visitor.prototype);
+n3PrintVisitor.prototype.constructor = n3PrintVisitor;
+
+// Visit a parse tree produced by n3Parser#n3Doc.
+n3PrintVisitor.prototype.visitN3Doc = function(ctx) {
+  this.print("N3Doc")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#n3Statement.
+n3PrintVisitor.prototype.visitN3Statement = function(ctx) {
+  this.print("N3Statement")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#n3Directive.
+n3PrintVisitor.prototype.visitN3Directive = function(ctx) {
+  this.print("N3Directive")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#sparqlDirective.
+n3PrintVisitor.prototype.visitSparqlDirective = function(ctx) {
+  this.print("SparqlDirective")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#sparqlBase.
+n3PrintVisitor.prototype.visitSparqlBase = function(ctx) {
+  this.print("SparqlBase")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#sparqlPrefix.
+n3PrintVisitor.prototype.visitSparqlPrefix = function(ctx) {
+  this.print("SparqlPrefix")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#prefixID.
+n3PrintVisitor.prototype.visitPrefixID = function(ctx) {
+  this.print("PrefixID")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#base.
+n3PrintVisitor.prototype.visitBase = function(ctx) {
+  this.print("Base")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#triples.
+n3PrintVisitor.prototype.visitTriples = function(ctx) {
+  this.print("Triples")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#predicateObjectList.
+n3PrintVisitor.prototype.visitPredicateObjectList = function(ctx) {
+  this.print("PredicateObjectList")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#objectList.
+n3PrintVisitor.prototype.visitObjectList = function(ctx) {
+  this.print("ObjectList")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#verb.
+n3PrintVisitor.prototype.visitVerb = function(ctx) {
+  this.print("Verb")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#subject.
+n3PrintVisitor.prototype.visitSubject = function(ctx) {
+  this.print("Subject")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#predicate.
+n3PrintVisitor.prototype.visitPredicate = function(ctx) {
+  this.print("Predicate")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#object.
+n3PrintVisitor.prototype.visitObject = function(ctx) {
+  this.print("Object")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#expression.
+n3PrintVisitor.prototype.visitExpression = function(ctx) {
+  this.print("Expression")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#path.
+n3PrintVisitor.prototype.visitPath = function(ctx) {
+  this.print("Path")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#pathItem.
+n3PrintVisitor.prototype.visitPathItem = function(ctx) {
+  this.print("PathItem")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#literal.
+n3PrintVisitor.prototype.visitLiteral = function(ctx) {
+  this.print("Literal")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#blankNodePropertyList.
+n3PrintVisitor.prototype.visitBlankNodePropertyList = function(ctx) {
+  this.print("BlankNodePropertyList")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#collection.
+n3PrintVisitor.prototype.visitCollection = function(ctx) {
+  this.print("Collection")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#formula.
+n3PrintVisitor.prototype.visitFormula = function(ctx) {
+  this.print("Formula")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#formulaContent.
+n3PrintVisitor.prototype.visitFormulaContent = function(ctx) {
+  this.print("FormulaContent")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#numericLiteral.
+n3PrintVisitor.prototype.visitNumericLiteral = function(ctx) {
+  this.print("NumericLiteral")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#rdfLiteral.
+n3PrintVisitor.prototype.visitRdfLiteral = function(ctx) {
+  this.print("RdfLiteral")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#iri.
+n3PrintVisitor.prototype.visitIri = function(ctx) {
+  this.print("Iri")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#iriList.
+n3PrintVisitor.prototype.visitIriList = function(ctx) {
+  this.print("IriList")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#prefixedName.
+n3PrintVisitor.prototype.visitPrefixedName = function(ctx) {
+  this.print("PrefixedName")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#blankNode.
+n3PrintVisitor.prototype.visitBlankNode = function(ctx) {
+  this.print("BlankNode")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#quickVar.
+n3PrintVisitor.prototype.visitQuickVar = function(ctx) {
+  this.print("QuickVar")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#existential.
+n3PrintVisitor.prototype.visitExistential = function(ctx) {
+  this.print("Existential")
+  return this.doVisitChildren(ctx)
+};
+
+
+// Visit a parse tree produced by n3Parser#universal.
+n3PrintVisitor.prototype.visitUniversal = function(ctx) {
+  this.print("Universal")
+  return this.doVisitChildren(ctx)
+};
+
+
+n3PrintVisitor.prototype.incrLvl = function() {
+	this.lvl++;
+}
+
+n3PrintVisitor.prototype.decrLvl = function() {
+	this.lvl--;
+}
+
+n3PrintVisitor.prototype.print = function(el) {	
+	var ws = new Array(this.lvl + 1).join(" ");
+	var out = ws + el + "\n";
+	
+	this.listener.newAstLine(out);
+}
+
+n3PrintVisitor.prototype.doVisitChildren = function(ctx) {
+	this.lvl++;
+	this.visitChildren(ctx);
+	this.lvl--;
+}
+
+n3PrintVisitor.prototype.visitChildren = function(node) {
+	var result = null; // this.defaultResult()
+	var n = node.getChildCount()
+	for (var i = 0; i < n; i++) {
+		// if (!this.shouldVisitNextChild(node, result)) {
+		//	break
+		// }
+
+		var c = node.getChild(i)
+		if (c.symbol !== undefined) {
+			var out = "' " + c + " '";
+			var type = c.symbol.type
+			if (type != -1 && n3Parser.symbolicNames[type] !== null)
+				out += " (" + n3Parser.symbolicNames[type] + ")"
+			this.print(out)
+
+		} else {
+			result = c.accept(this);
+			// result = this.aggregateResult(result, childResult);
+		}
+	}
+
+	return result
+}
+
+exports.n3PrintVisitor = n3PrintVisitor;
+
+/***/ })
+/******/ ]);

@@ -9,4 +9,7 @@ module.exports = {
     library: 'n3',
     path: path.resolve(__dirname, 'dist'),
   },
+  optimization: {
+    minimize: false
+  }
 };

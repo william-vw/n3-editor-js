@@ -2,7 +2,8 @@ var antlr4 = require('antlr4');
 var N3Lexer = require('./n3Lexer').n3Lexer;
 var N3Parser = require('./n3Parser').n3Parser;
 var N3PrefixListener = require('./n3PrefixListener').n3PrefixListener;
-var N3PrintListener = require('./n3PrintListener').n3PrintListener;
+// var N3PrintListener = require('./n3PrintListener').n3PrintListener;
+var N3PrintVisitor = require('./n3PrintVisitor').n3PrintVisitor;
 
 function parse(input, listener) {
 	var chars = new antlr4.InputStream(input);
@@ -25,11 +26,13 @@ function parse(input, listener) {
 		// will call listener with any prefix errors
 		n3Parser.addParseListener(new N3PrefixListener(listener));
 	
-	if (listener.newAstLine)
+	// if (listener.newAstLine)
 		// will call listener with individual ast lines
-		n3Parser.addParseListener(new N3PrintListener(listener));
+		// n3Parser.addParseListener(new N3PrintListener(listener));
 	
-	n3Parser.n3Doc()
+	var ast = n3Parser.n3Doc()
+	if (listener.newAstLine)
+		new N3PrintVisitor(listener).visit(ast)
 }
 
 exports.parse = parse;
