@@ -38,9 +38,10 @@ If you're using localhost and port 3002, you will find the server at [http://127
 
 After editing anything inside `editor/` folder (aside from the `lib/` folder), run `npx webpack` (requires (webpack)[https://webpack.js.org/guides/installation/]) to generate `dist\main.js\`. You'll see that `index.html` directly references `dist\main.js\` as well as the files from the `lib/` folder.
 
+- `n3Parser.js` requires a manual edit to make `symbolicNames` available outside of the module. Under `var symbolicNames ..` put `n3Parser.symbolicNames = symbolicNames;`.
+
 **Notes**:
 - You can turn off minimization in `webpack.config.js`. Enabling it will drastically reduce the size of `main.js` but also make it much harder to debug.
-- `n3Parser.js` requires a manual edit to make `symbolicNames` available outside of the module. Under `var symbolicNames ..` put `n3Parser.symbolicNames = symbolicNames;`.
 
 
 ## Usage
