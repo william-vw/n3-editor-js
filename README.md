@@ -6,7 +6,7 @@ You can find an online demo here: [http://ppr.cs.dal.ca:3002/n3/editor](http://p
 
 Using the [latest Notation3 grammar](https://github.com/w3c/N3/blob/master/grammar/README.md), 
 I generated a JS lexer, parser and listener using the ANTLR tool support. 
-See [here](https://github.com/w3c/N3/blob/master/grammar/README.md#creating-the-js-parser) for more information.
+See [here](https://github.com/w3c/N3/blob/master/grammar/README.md#creating-the-js-parser) for more information on how to generate the JS parser.
 
 I then used the JS parsing code to flag errors for a [CodeMirror lint-enabled editor](https://codemirror.net/demo/lint.html). 
 For syntax highlighting, I re-used the [Turtle mode](https://codemirror.net/mode/turtle/index.html),
