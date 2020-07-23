@@ -6,7 +6,7 @@ You can find an online demo here: [http://ppr.cs.dal.ca:3002/n3/editor](http://p
 
 Using the [latest Notation3 grammar](https://github.com/w3c/N3/blob/master/grammar/README.md), 
 I generated a JS lexer, parser and listener using the ANTLR tool support. 
-See [here](https://github.com/w3c/N3/blob/master/grammar/README.md#creating-the-js-parser) for more information.
+See [here](https://github.com/w3c/N3/blob/master/grammar/README.md#creating-the-js-parser) for more information on how to generate the JS parser.
 
 I then used the JS parsing code to flag errors for a [CodeMirror lint-enabled editor](https://codemirror.net/demo/lint.html). 
 For syntax highlighting, I re-used the [Turtle mode](https://codemirror.net/mode/turtle/index.html),
@@ -38,9 +38,10 @@ If you're using localhost and port 3002, you will find the server at [http://127
 
 After editing anything inside `editor/` folder (aside from the `lib/` folder), run `npx webpack` (requires (webpack)[https://webpack.js.org/guides/installation/]) to generate `dist\main.js\`. You'll see that `index.html` directly references `dist\main.js\` as well as the files from the `lib/` folder.
 
+**Important**: `n3Parser.js` requires a manual edit to make `symbolicNames` available outside of the module. Below `var symbolicNames ..` add `n3Parser.symbolicNames = symbolicNames;`.
+
 **Notes**:
 - You can turn off minimization in `webpack.config.js`. Enabling it will drastically reduce the size of `main.js` but also make it much harder to debug.
-- `n3Parser.js` requires a manual edit to make `symbolicNames` available outside of the module. Under `var symbolicNames ..` put `n3Parser.symbolicNames = symbolicNames;`.
 
 
 ## Usage
