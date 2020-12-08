@@ -108,6 +108,7 @@
 		var formula = editor.getDoc().getValue()
 		if (formula) {
 			var uri = window.location.href.split("?")[0] + "?formula=" + encodeURIComponent(formula)
+			uri = "http://tinyurl.com/create.php?url=" + uri
 			$("#linkPlaceholder").html(": <a href='" + uri + "'>Link</a>")
 		}
 		
@@ -176,7 +177,7 @@
 	
 	<div class="content">
 		<h1>Notation3 Editor</h1>
-		<p>Notation3 Editor is a simple editor that uses the JS parser to print the AST of an N3 expression.</p>
+		<p>Notation3 Editor is a simple editor that provides syntax checking for N3 code, reasoning features from <a href="http://eulersharp.sourceforge.net/">Eye</a> and <a href="https://www.w3.org/2000/10/swap/doc/cwm.html">Cwm</a>, and printing the AST using the JS parser.</p>
 		
 		<textarea rows=10 cols=50 id="input"></textarea>
 		
