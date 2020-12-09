@@ -52,11 +52,16 @@ After editing anything inside `editor/` folder (aside from the `lib/` folder), r
 
 You can use shortcuts "alt-x" and "alt-a" to execute the current formula or show its AST, respectively.
 
-You can generate links to share examples of N3 code ("create link to formula"). Currently, this requires URL-encoding the N3 formula, which can lead to very long URLs. Hence, the server is outfitted with a simple "link-shortening" service (a la bit.ly) that will generata a unique 8-letter ID for the generated URL. This service simply translates the URL-with-ID to the full URL-with-encoded-formula; meaning that the size of the formula will still be limited by the max. length of a URL (around 2000 characters). The service stores each ID with its corresponding full URL in a mysql database together with the timestamp.
+You can generate links to share examples of N3 code ("create link to formula"). Currently, this requires URL-encoding the N3 formula, which can lead to very long URLs. Hence, the server is outfitted with a simple "link-shortening" service (a la bit.ly) that will generata a unique 8-letter ID for the generated URL. 
+
+This service simply translates the URL-with-ID to the full URL-with-encoded-formula; meaning that the size of the formula will still be limited by the max. length of a URL (around 2000 characters). The service stores each ID with its corresponding full URL in a mysql database together with the timestamp.
 
 E.g. (copy URL in address bar):
-- Pass a formula and get its deductive closure from Cwm:  
-ht<span>tp://</span>ppr.cs.dal.ca:3002/n3/editor/?formula=:i :is :cool . :you :know :i . { :you :know ?a . ?a :is :cool } => { :you :is :cool } .&exec=eye
 
 - Pass a formula and print its AST:  
 ht<span>tp://</span>ppr.cs.dal.ca:3002/n3/editor/?formula=:i :am :cool .&ast=true
+
+
+- Pass a formula and get its deductive closure from Cwm:  
+ht<span>tp://</span>ppr.cs.dal.ca:3002/n3/editor/?formula=:i :is :cool . :you :know :i . { :you :know ?a . ?a :is :cool } => { :you :is :cool } .&exec=eye
+Short version: http://ppr.cs.dal.ca:3002/n3/editor/s/RpcS93bN
