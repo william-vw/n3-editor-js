@@ -8,3 +8,9 @@ exports.exec = {
 	eyePath: "/opt/eye/bin/eye.sh",
 	cwmPath: "/opt/cwm-1.2.1/swap/cwm.py"
 }
+
+exports.db = {
+	user: 'root',
+	// pwd: '12345',
+	pwd: 'changeit'
+}
