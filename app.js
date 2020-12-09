@@ -1,24 +1,39 @@
-var express = require('express')
-var bodyParser = require('body-parser')
-var cors = require('cors')
-var path = require('path')
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const path = require('path')
 
-var config = require('./config.js')
-var tmp = require('./lib/tmp.js')
-var eye = require('./lib/eye.js')
-var cwm = require('./lib/cwm.js')
+const config = require('./config.js')
+const tmp = require('./lib/tmp.js')
+const eye = require('./lib/eye.js')
+const cwm = require('./lib/cwm.js')
+const { generateLink, retrieveLink } = require('./lib/gen_link.js')
 
-var app = express()
+const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/n3/editor', express.static(path.join(__dirname, 'editor')));
 
+app.get('/n3/editor/s*', (request, response) => {
+	console.log("link:", request.url)
+	retrieveLink(request.url)
+	.then((url) => {
+		console.log("url: " + url)
+		// response.send({ success: url })
+		response.redirect(url)
+	})
+	.catch((error) => { 
+		console.log(error)
+		response.send("Error: " + error)
+	})
+})
+
 app.get('/n3', (request, response) => {
 	console.log('GET /')
 
-	var html = 
+	const html = 
 	`<html>
 		<body>
 			<h1>Welcome to the N3 server!</h1>
@@ -35,14 +50,44 @@ app.get('/n3', (request, response) => {
 app.post('/n3', (request, response) => {
 	console.log("POST /")	
 
-	var data = request.body
+	const data = request.body
 	console.log("data:", data)
+	
+	function ctu(ret) {
+		if (ret.error) {
+			// print stack trace
+			console.log(ret.error)
+			// now pass message on
+			ret.error = ret.error.message
+		}
+		response.send(ret)
+	}
+	
+	switch (data.task) {
+				
+		case 'deductive_closure':
+			doDeductiveClosure(data, ctu)
+			break
 
+		case 'generate_link':
+			doGenerateLink(data, ctu)
+			break
+			
+		default:
+			ctu({ error : 'unknown task: ' + data.task })
+	}
+})
+
+app.listen(config.http.port)
+console.log(`Listening at http://${config.http.hostname}:${config.http.port}`)
+
+function doDeductiveClosure(data, ctu) {	
 	tmp.save(data.formula, (file) => {
+		
 		function end(ret) {
 			tmp.del(file)
-			response.send(ret)
-		}
+			ctu(ret)
+		}		
 		
 		switch (data.system) {
 			case "eye":
@@ -58,7 +103,10 @@ app.post('/n3', (request, response) => {
 			break
 		}
 	})
-})
+}
 
-app.listen(config.http.port)
-console.log(`Listening at http://${config.http.hostname}:${config.http.port}`)
+function doGenerateLink(data, ctu) {
+	generateLink(data.url)
+	.then((link) => { console.log("generated link: " + link); ctu({ success: link }) })
+	.catch((error) => { ctu({ error: error }) })
+}
