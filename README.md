@@ -58,11 +58,10 @@ This service simply translates the URL-with-ID to the full URL-with-encoded-form
 
 E.g. (copy URL in address bar):
 
-- Pass a formula and print its AST:  
-ht<span>tp://</span>ppr.cs.dal.ca:3002/n3/editor/?formula=:i :am :cool .&ast=true
+Pass a formula and print its AST:  
+http://</span>ppr.cs.dal.ca:3002/n3/editor/?formula=:i :am :cool .&ast=true
 
 
-- Pass a formula and get its deductive closure from Cwm:  
-ht<span>tp://</span>ppr.cs.dal.ca:3002/n3/editor/?formula=:i :is :cool . :you :know :i . { :you :know ?a . ?a :is :cool } => { :you :is :cool } .&exec=eye
-
-short version: http://ppr.cs.dal.ca:3002/n3/editor/s/RpcS93bN
+Pass a formula and get its deductive closure from Cwm:  
+http://</span>ppr.cs.dal.ca:3002/n3/editor/?formula=:i :is :cool . :you :know :i . { :you :know ?a . ?a :is :cool } => { :you :is :cool } .&exec=eye  
+(short version: http://ppr.cs.dal.ca:3002/n3/editor/s/RpcS93bN)
