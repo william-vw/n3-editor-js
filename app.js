@@ -54,11 +54,9 @@ app.post('/n3', (request, response) => {
 	console.log("data:", data)
 	
 	function ctu(ret) {
+		console.log("ret?", ret)
 		if (ret.error) {
-			// print stack trace
 			console.log(ret.error)
-			// now pass message on
-			ret.error = ret.error.message
 		}
 		response.send(ret)
 	}
