@@ -130,14 +130,14 @@
 			link += `&valid=${valid}`
 			
 			console.log("link:", link);
-			/*n3.link(service, link, 
+			n3.link(service, link, 
 				(turl) => {
 					console.log("turl:", turl)
 					$("#linkPlaceholder").html(": <a href='" + turl + "'>Link</a>")
 				
 				}, (error) => {
 					$("#error").show().find("#output").html(error)
-				})*/
+				})
 		}
 		
 		return false
