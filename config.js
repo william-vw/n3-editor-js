@@ -6,8 +6,8 @@ exports.http = {
 
 exports.exec = {
 	eyePath: "/opt/eye/bin/eye.sh",
-	// cwmPath: "/opt/cwm-1.2.1/swap/cwm.py",
 	pythonCmd: "C:/Python27/python.exe",
+	// cwmPath: "/opt/cwm-1.2.1/swap/cwm.py",
 	cwmPath: "C:/cwm/cwm-1.2.1/swap/cwm.py"
 }
 
