@@ -1,12 +1,28 @@
 const path = require('path');
 
-module.exports = {
+// N3
+/*module.exports = {
   node: { module: "empty", net: "empty", fs: "empty" },
-  entry: './index.js',
+  entry: './parser/n3/index.js',
   output: {
-    filename: 'main.js',
+    filename: 'n3Main.js',
     libraryTarget: 'var',
     library: 'n3',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  optimization: {
+    minimize: false
+  }
+};*/
+
+// TurtleStar
+module.exports = {
+  node: { module: "empty", net: "empty", fs: "empty" },
+  entry: './parser/turtlestar/index.js',
+  output: {
+    filename: 'turtlestarMain.js',
+    libraryTarget: 'var',
+    library: 'turtlestar',
     path: path.resolve(__dirname, 'dist'),
   },
   optimization: {

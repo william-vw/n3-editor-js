@@ -1,8 +1,8 @@
-function N3SyntaxValidator() {
+function SyntaxValidator() {
 	this.output = []
 }
 
-N3SyntaxValidator.prototype.syntaxError = function(recognizer, offendingSymbol,
+SyntaxValidator.prototype.syntaxError = function(recognizer, offendingSymbol,
 		line, column, msg, err) {
 	
 	line -= 1
@@ -48,7 +48,7 @@ N3SyntaxValidator.prototype.syntaxError = function(recognizer, offendingSymbol,
 	}
 }
 
-N3SyntaxValidator.prototype.unknownPrefix = function(prefix, pName, line,
+SyntaxValidator.prototype.unknownPrefix = function(prefix, pName, line,
 		start, end) {
 	
 	line -= 1
@@ -70,19 +70,27 @@ N3SyntaxValidator.prototype.unknownPrefix = function(prefix, pName, line,
 	})
 },
 
-N3SyntaxValidator.prototype.consoleError = function(type, line, start, end, msg) {
+SyntaxValidator.prototype.consoleError = function(type, line, start, end, msg) {
 	console.error(`[${type}] line ${line}, col ${start}-${end}: ${msg}`)
 }
 
-n3.lint = function(text, options, editor) {
+function doLint(text, options, editor, lib) {
 	var output = []
 	text = editor.getDoc().getValue()
 
-	var validator = new N3SyntaxValidator()
-	n3.parse(text, validator)
+	var validator = new SyntaxValidator()
+	lib.parse(text, validator)
 
 	// console.log(validator.output)
 	return validator.output
+}
+
+n3.lint = function(text, options, editor) {
+	return doLint(text, options, editor, n3)
+}
+
+turtlestar.lint = function(text, options, editor) {
+	return doLint(text, options, editor, turtlestar)
 }
 
 // doesn't seem to work for me

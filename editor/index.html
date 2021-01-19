@@ -55,20 +55,26 @@
 </style>
 
 <!-- introduces n3 namespace -->
-<script src="dist/main.js"></script>
+<script src="dist/n3Main.js"></script>
+<script src="dist/turtlestarMain.js"></script>
 
-<script src="lib/codemirror-5.54.0/n3-lint.js"></script>
+<script src="lib/codemirror-5.54.0/lint.js"></script>
 <script src="lib/codemirror-5.54.0/n3-mode.js"></script>
-<script src="lib/n3-exec.js" type="text/javascript"></script>
-<script src="lib/n3-ast.js" type="text/javascript"></script>
-<script src="lib/n3-link.js" type="text/javascript"></script>
+<script src="lib/codemirror-5.54.0/turtle-mode.js"></script>
+
+<script src="lib/service.js" type="text/javascript"></script>
+<script src="lib/ast.js" type="text/javascript"></script>
 
 <script>
-	// const service = "http://127.0.0.1:3002/n3"
-	const service = "http://ppr.cs.dal.ca:3002/n3"
+	// const serviceUrl = "http://127.0.0.1:3002/n3"
+	const serviceUrl = "http://ppr.cs.dal.ca:3002/n3"
 	const systems = [ "eye", "cwm" ]
-	const validations = [ { type: 'n3', label: "N3" }, { type: 'none', label: "none" } ]
-	const defaultValid = validations[0]
+	const formats = {
+		n3: { type: 'n3', label: "N3", lib: n3, mode: 'n3' }, 
+		turtlestar: { type: 'turtlestar', label: "Turtle*", lib: turtlestar, mode: 'turtle' }, 
+		none: { type: 'none', label: "none" } 
+	}
+	const defaultFormat = formats.n3
 
 	var editor = null
 	function getFormula() {
@@ -76,6 +82,13 @@
 			return editor.getDoc().getValue()
 		else
 			return $('textarea#input').val()
+	}
+	
+	function getCurrentFormat() {
+		var format = $('input[name=format]:checked', '#formats').prop('id')
+		var format = format.substring(format.indexOf("_") + 1)
+		
+		return formats[format];
 	}
 
 	function exec() {
@@ -89,7 +102,7 @@
 			
 		$("#dc, #ast, #error").hide()
 	
-		n3.exec(service, {
+		service.exec(serviceUrl, {
 			task: "deductive_closure", 
 			system: system, 
 			formula: formula
@@ -105,17 +118,26 @@
 	}
 	
 	function ast() {
-		$("#dc, #error").hide()
-		
+		$("#dc, #error").hide()		
 		$("#ast_output").text("")
-		$("#ast").show()
-		n3.ast(getFormula(), 
-			(astLine) => {
-				$("#ast_output").append(astLine)
+		
+		const format = getCurrentFormat();
+		if (format.type == 'none') {
+			$("#ast").hide()
 			
-			}, (error) => {
-				$("#error").show().find("#output").html(error)
-			})
+			$("#error").show()
+			$("#error > #output").html("No format selected")
+			
+		} else {
+			$("#ast").show()
+			format.lib.ast(getFormula(), 
+				(astLine) => {
+					$("#ast_output").append(astLine)
+				
+				}, (error) => {
+					$("#error").show().find("#output").html(error)
+				})
+			}
 	}
 	
 	function link() {
@@ -125,12 +147,11 @@
 		if (formula) {
 			var link = window.location.href.split("?")[0] + "?formula=" + encodeURIComponent(formula)
 			
-			var valid = $('input[name=validation]:checked', '#validations').prop('id')
-			var valid = valid.substring(valid.indexOf("_") + 1)
-			link += `&valid=${valid}`
+			var format = getCurrentFormat().type
+			link += `&format=${format}`
 			
 			console.log("link:", link);
-			n3.link(service, link, 
+			service.link(serviceUrl, link, 
 				(turl) => {
 					console.log("turl:", turl)
 					$("#linkPlaceholder").html(": <a href='" + turl + "'>Link</a>")
@@ -143,19 +164,19 @@
 		return false
 	}
 
-	// - validations
+	// - formats
 
-	function setupValidationInput() {
-		const validContainer = $('#validations')
-		validations.forEach((v) => {
-			const elId = `validate_${v.type}`
-			const elLabel = (v.type == "none" ? v.label : `validate ${v.label}`)
-			var el = validContainer
+	function setupFormatInput() {
+		const container = $('#formats')
+		Object.entries(formats).forEach(([key, f]) => {
+			const elId = `format_${f.type}`
+			const elLabel = f.label
+			var el = container
 				.append(
-					$(`<input type="radio" name="validation" id="${elId}">${elLabel}</input>`)
+					$(`<input type="radio" name="format" id="${elId}">${elLabel}</input>`)
 						.change((e) => {
 							if (e.target.checked)
-								validate(v.type)
+								validate(f)
 						})
 				)
 		})
@@ -163,42 +184,41 @@
 
 	// https://stackoverflow.com/questions/19979741/codemirror-delete-a-editor-instance
 	
-	function validate(type, setInput) {
-		if (type == "none")
+	function validate(format, setInput) {
+		if (format.type == "none")
 			stopValidating(setInput)
 		else
-			startValidating(type, setInput)
+			startValidating(format, setInput)
 	}
 
-	function startValidating(type, setInput) {
+	function startValidating(format, setInput) {
 		if (setInput)
-			$(`#validate_${type}`).prop('checked', true)
+			$(`#format_${format.type}`).prop('checked', true)
 		
-		if (editor == null)
-			editor = CodeMirror.fromTextArea($("#input").get(0), {
-				gutters : [ "CodeMirror-lint-markers" ],
-				mode : type,
-				// TODO this should follow code-mirrors idiom
-				// (registering a helper) but not getting that to work
-				lint : n3.lint,
-				matchBrackets: true
-			})
-		else
-			editor.setOption("mode", type)
+		if (editor != null)
+			stopValidating(false)
+		
+		editor = CodeMirror.fromTextArea($("#input").get(0), {
+			gutters : [ "CodeMirror-lint-markers" ],
+			mode : format.mode,
+			// TODO this should follow code-mirrors idiom
+			// (registering a helper) but not getting that to work
+			lint : format.lib.lint,
+			matchBrackets: true
+		})
 	}
 	
 	function stopValidating(setInput) {
 		if (setInput)
-			$('#validate_none').prop('checked', true)
+			$('#format_none').prop('checked', true)
 	
 		editor.toTextArea();
 		editor = null
 	}
-
 	
 	function loaded() {
-		setupValidationInput()
-		validate(defaultValid.type, true)
+		setupFormatInput()
+		validate(defaultFormat, true)
 		
 		$(document).ajaxStart(() => {
 			$('#loading').css("display", "inline-block")
@@ -243,17 +263,17 @@
 				ast()
 			}
 			
-			var validParam = params.get("valid")
-			if (validParam) {
-				if (!validations.some(v => v.type == validParam))
-					alert("Unknown validation option: " + validParam)
+			var formatParam = params.get("format")
+			if (formatParam) {
+				if (formats[formatParam] === undefined)
+					alert("Unknown format: " + formatParam)
 				else {
-					console.log("setting validation from URL:", validParam);
-					validate(validParam, true)
+					console.log("setting format from URL:", formatParam);
+					validate(formats[formatParam], true)
 				}
 			} else {
-				console.log("setting default validation:", defaultValid.type);
-				validate(defaultValid.type, true)
+				console.log("setting default format:", defaultFormat.type);
+				validate(defaultFormat, true)
 			}
 		}
 	}
@@ -269,7 +289,7 @@
 		<h1>Notation3 Editor</h1>
 		<p>Notation3 Editor is a simple editor that provides syntax checking for N3 code, reasoning features from <a href="http://eulersharp.sourceforge.net/">Eye</a> and <a href="https://www.w3.org/2000/10/swap/doc/cwm.html">Cwm</a>, and printing the AST using the JS parser.</p>
 
-		<div id="validations"></div>		
+		<div id="formats"></div>		
 		
 		<textarea rows=10 cols=50 id="input"></textarea>
 		
