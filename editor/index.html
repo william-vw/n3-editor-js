@@ -21,7 +21,7 @@
 	color: #fff; border: 0; font-size: 17px; }
 	button:hover {background-color: #8a25b1; cursor: pointer;}
 	.content h1 + p { margin-bottom: 15px; line-height: 1.5; }
-	.content input[type=checkbox] { margin-bottom: 10px; }
+	.content input[type=radio] { margin-bottom: 10px; margin-left: 15px; }
 	.content textarea#input { overflow: scroll !important; width: 100%; height: 200px; }
 	h1 {font-size: 32px;}
 	h1::before { content: ''; display: block; background-color: #8a25b1; width: 60px; height: 5px; border-radius: 2px; margin-bottom: 10px;  }
@@ -67,10 +67,19 @@
 	// const service = "http://127.0.0.1:3002/n3"
 	const service = "http://ppr.cs.dal.ca:3002/n3"
 	const systems = [ "eye", "cwm" ]
-	const validations = [ "n3" ]
-	
+	const validations = [ { type: 'n3', label: "N3" }, { type: 'none', label: "none" } ]
+	const defaultValid = validations[0]
+
+	var editor = null
+	function getFormula() {
+		if (editor != null)
+			return editor.getDoc().getValue()
+		else
+			return $('textarea#input').val()
+	}
+
 	function exec() {
-		var formula = editor.getDoc().getValue().trim()
+		var formula = getFormula() 
 		if (formula.length == 0)
 			return
 	
@@ -100,7 +109,7 @@
 		
 		$("#ast_output").text("")
 		$("#ast").show()
-		n3.ast(editor.getDoc().getValue(), 
+		n3.ast(getFormula(), 
 			(astLine) => {
 				$("#ast_output").append(astLine)
 			
@@ -112,57 +121,90 @@
 	function link() {
 		$("#error").hide()
 	
-		var formula = editor.getDoc().getValue()
+		var formula = getFormula()
 		if (formula) {
 			var link = window.location.href.split("?")[0] + "?formula=" + encodeURIComponent(formula)
-			if ($('#validateN3').is(':checked'))
-				link += "&valid=n3"
 			
-			n3.link(service, link, 
+			var valid = $('input[name=validation]:checked', '#validations').prop('id')
+			var valid = valid.substring(valid.indexOf("_") + 1)
+			link += `&valid=${valid}`
+			
+			console.log("link:", link);
+			/*n3.link(service, link, 
 				(turl) => {
 					console.log("turl:", turl)
 					$("#linkPlaceholder").html(": <a href='" + turl + "'>Link</a>")
 				
 				}, (error) => {
 					$("#error").show().find("#output").html(error)
-				})
+				})*/
 		}
 		
 		return false
 	}
-	
-	// https://stackoverflow.com/questions/19979741/codemirror-delete-a-editor-instance
-	
-	function startValidating(type) {
-		editor = CodeMirror.fromTextArea($("#input").get(0), {
-			gutters : [ "CodeMirror-lint-markers" ],
-			mode : type,
-			// TODO this should follow code-mirrors idiom
-			// (registering a helper) but not getting that to work
-			lint : n3.lint,
-			matchBrackets: true
+
+	// - validations
+
+	function setupValidationInput() {
+		const validContainer = $('#validations')
+		validations.forEach((v) => {
+			const elId = `validate_${v.type}`
+			const elLabel = (v.type == "none" ? v.label : `validate ${v.label}`)
+			var el = validContainer
+				.append(
+					$(`<input type="radio" name="validation" id="${elId}">${elLabel}</input>`)
+						.change((e) => {
+							if (e.target.checked)
+								validate(v.type)
+						})
+				)
 		})
 	}
+
+	// https://stackoverflow.com/questions/19979741/codemirror-delete-a-editor-instance
 	
-	function stopValidating() {
-		editor.toTextArea();
+	function validate(type, setInput) {
+		if (type == "none")
+			stopValidating(setInput)
+		else
+			startValidating(type, setInput)
+	}
+
+	function startValidating(type, setInput) {
+		if (setInput)
+			$(`#validate_${type}`).prop('checked', true)
+		
+		if (editor == null)
+			editor = CodeMirror.fromTextArea($("#input").get(0), {
+				gutters : [ "CodeMirror-lint-markers" ],
+				mode : type,
+				// TODO this should follow code-mirrors idiom
+				// (registering a helper) but not getting that to work
+				lint : n3.lint,
+				matchBrackets: true
+			})
+		else
+			editor.setOption("mode", type)
 	}
 	
-	function loaded() {
-		startValidating("n3");
+	function stopValidating(setInput) {
+		if (setInput)
+			$('#validate_none').prop('checked', true)
 	
-		$('#validateN3').change((e) => {
-			if (e.target.checked)
-				startValidating("n3");
-			else
-				stopValidating();
-		});		
+		editor.toTextArea();
+		editor = null
+	}
+
+	
+	function loaded() {
+		setupValidationInput()
+		validate(defaultValid.type, true)
 		
 		$(document).ajaxStart(() => {
-			$('#loading').css("display", "inline-block");
+			$('#loading').css("display", "inline-block")
 		
 		}).ajaxStop(() => {
-			$('#loading').hide();
+			$('#loading').hide()
 		});
 
 		$("#execute").click(exec)
@@ -183,29 +225,35 @@
 				console.log("initializing formula from URL")
 				editor.getDoc().setValue(formulaParam)
 			}
+			
 			var execParam = params.get("exec")
 			if (execParam) {
 				if (!systems.includes(execParam))
 					alert("Unknown system: " + execParam)
 				else {
-					console.log("initializing system from URL")
+					console.log("initializing system from URL:", execParam)
 					$("input[name='system']").filter("[value='" + execParam + "']").attr('checked', true)
 					exec()
 				}
 			}
+			
 			var astParam = params.get("ast")
 			if (astParam) {
 				console.log("initializing AST from URL")
 				ast()
 			}
+			
 			var validParam = params.get("valid")
 			if (validParam) {
-				if (!validations.includes(validParam))
+				if (!validations.some(v => v.type == validParam))
 					alert("Unknown validation option: " + validParam)
 				else {
-					console.log("initializing validation from URL");
-					startValidating(validParam)
+					console.log("setting validation from URL:", validParam);
+					validate(validParam, true)
 				}
+			} else {
+				console.log("setting default validation:", defaultValid.type);
+				validate(defaultValid.type, true)
 			}
 		}
 	}
@@ -220,8 +268,8 @@
 	<div class="content">
 		<h1>Notation3 Editor</h1>
 		<p>Notation3 Editor is a simple editor that provides syntax checking for N3 code, reasoning features from <a href="http://eulersharp.sourceforge.net/">Eye</a> and <a href="https://www.w3.org/2000/10/swap/doc/cwm.html">Cwm</a>, and printing the AST using the JS parser.</p>
-		
-		<input id="validateN3" type="checkbox" checked>validate N3</input>
+
+		<div id="validations"></div>		
 		
 		<textarea rows=10 cols=50 id="input"></textarea>
 		
