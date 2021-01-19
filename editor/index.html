@@ -67,6 +67,7 @@
 	// const service = "http://127.0.0.1:3002/n3"
 	const service = "http://ppr.cs.dal.ca:3002/n3"
 	const systems = [ "eye", "cwm" ]
+	const validations = [ "n3" ]
 	
 	function exec() {
 		var formula = editor.getDoc().getValue().trim()
@@ -114,6 +115,9 @@
 		var formula = editor.getDoc().getValue()
 		if (formula) {
 			var link = window.location.href.split("?")[0] + "?formula=" + encodeURIComponent(formula)
+			if ($('#validateN3').is(':checked'))
+				link += "&valid=n3"
+			
 			n3.link(service, link, 
 				(turl) => {
 					console.log("turl:", turl)
@@ -129,10 +133,10 @@
 	
 	// https://stackoverflow.com/questions/19979741/codemirror-delete-a-editor-instance
 	
-	function startValidatingN3() {
+	function startValidating(type) {
 		editor = CodeMirror.fromTextArea($("#input").get(0), {
 			gutters : [ "CodeMirror-lint-markers" ],
-			mode : "n3",
+			mode : type,
 			// TODO this should follow code-mirrors idiom
 			// (registering a helper) but not getting that to work
 			lint : n3.lint,
@@ -140,18 +144,18 @@
 		})
 	}
 	
-	function stopValidatingN3() {
+	function stopValidating() {
 		editor.toTextArea();
 	}
 	
 	function loaded() {
-		startValidatingN3();
+		startValidating("n3");
 	
 		$('#validateN3').change((e) => {
 			if (e.target.checked)
-				startValidatingN3();
+				startValidating("n3");
 			else
-				stopValidatingN3();
+				stopValidating();
 		});		
 		
 		$(document).ajaxStart(() => {
@@ -193,6 +197,15 @@
 			if (astParam) {
 				console.log("initializing AST from URL")
 				ast()
+			}
+			var validParam = params.get("valid")
+			if (validParam) {
+				if (!validations.includes(validParam))
+					alert("Unknown validation option: " + validParam)
+				else {
+					console.log("initializing validation from URL");
+					startValidating(validParam)
+				}
 			}
 		}
 	}
