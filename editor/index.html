@@ -60,7 +60,8 @@
 
 <script src="lib/codemirror-5.54.0/lint.js"></script>
 <script src="lib/codemirror-5.54.0/n3-mode.js"></script>
-<script src="lib/codemirror-5.54.0/turtle-mode.js"></script>
+<script src="lib/codemirror-5.54.0/turtlestar-mode.js"></script>
+<link rel="stylesheet" href="lib/codemirror-5.54.0/rdf.css">
 
 <script src="lib/service.js" type="text/javascript"></script>
 <script src="lib/ast.js" type="text/javascript"></script>
@@ -71,7 +72,7 @@
 	const systems = [ "eye", "cwm" ]
 	const formats = {
 		n3: { type: 'n3', label: "N3", lib: n3, mode: 'n3' }, 
-		turtlestar: { type: 'turtlestar', label: "Turtle*", lib: turtlestar, mode: 'turtle' }, 
+		turtlestar: { type: 'turtlestar', label: "Turtle*", lib: turtlestar, mode: 'turtlestar' }, 
 		none: { type: 'none', label: "none" } 
 	}
 	const defaultFormat = formats.n3
@@ -198,9 +199,11 @@
 		if (editor != null)
 			stopValidating(false)
 		
+		// console.log("format", format);
 		editor = CodeMirror.fromTextArea($("#input").get(0), {
 			gutters : [ "CodeMirror-lint-markers" ],
 			mode : format.mode,
+			theme : "default rdf",
 			// TODO this should follow code-mirrors idiom
 			// (registering a helper) but not getting that to work
 			lint : format.lib.lint,

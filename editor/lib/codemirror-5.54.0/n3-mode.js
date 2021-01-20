@@ -21,9 +21,7 @@
 		}
 		var ops = wordRegexp([]);
 		// is a look-ahead for any of these keywords
-		var keywords = wordRegexp([ "@prefix", "@base", "PREFIX", "BASE", "a",
-				"@a", "has", "@has", "is", "@is", "of", "@of", "@forAll", "@forEach", 
-				"true", "@true", "false", "@false" ]);
+		var keywords = wordRegexp([ "@prefix", "@base", "a" ]);
 		var operatorChars = /[*+\-<>=&|]/;
 		var langTag = /@[^\s]*/
 
