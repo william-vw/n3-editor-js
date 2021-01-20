@@ -71,9 +71,9 @@
 	const serviceUrl = "http://ppr.cs.dal.ca:3002/n3"
 	const systems = [ "eye", "cwm" ]
 	const formats = {
-		n3: { type: 'n3', label: "N3", lib: n3, mode: 'n3' }, 
-		turtlestar: { type: 'turtlestar', label: "Turtle*", lib: turtlestar, mode: 'turtlestar' }, 
-		none: { type: 'none', label: "none" } 
+		n3: { type: 'n3', label: "<u>N</u>3", lib: n3, mode: 'n3' }, 
+		turtlestar: { type: 'turtlestar', label: "<u>T</u>urtle*", lib: turtlestar, mode: 'turtlestar' }, 
+		none: { type: 'none', label: "N<u>o</u>ne" } 
 	}
 	const defaultFormat = formats.n3
 
@@ -235,6 +235,10 @@
 		
 		$("#show_ast").click(ast)
 		shortcut.add("Alt+A", ast)
+		
+		shortcut.add("Alt+N", () => validate(formats['n3'], true))
+		shortcut.add("Alt+T", () => validate(formats['turtlestar'], true))
+		shortcut.add("Alt+O", () => validate(formats['none'], true))
 		
 		$("#link").click(link)
 		

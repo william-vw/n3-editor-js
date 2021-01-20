@@ -132,7 +132,7 @@
 					return null;
 				
 				var style = state.tokenize(stream, state);
-				console.log(style);
+				// console.log(style);
 				// if we're inside a nested structure &
 				// no terms have yet been found ..
 				if (style != "comment" && state.context
