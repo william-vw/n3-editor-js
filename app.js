@@ -8,6 +8,7 @@ const tmp = require('./lib/tmp.js')
 const eye = require('./lib/eye.js')
 const cwm = require('./lib/cwm.js')
 const { generateLink, retrieveLink } = require('./lib/gen_link.js')
+const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 
 const app = express()
 app.use(cors())
@@ -71,6 +72,10 @@ app.post('/n3', (request, response) => {
 			doGenerateLink(data, ctu)
 			break
 			
+		case 'check_builtin_input':
+			doCheckBuiltinInput(data, ctu)
+			break
+			
 		default:
 			ctu({ error : 'unknown task: ' + data.task })
 	}
@@ -107,4 +112,19 @@ function doGenerateLink(data, ctu) {
 	generateLink(data.url)
 	.then((link) => { console.log("generated link: " + link); ctu({ success: link }) })
 	.catch((error) => { ctu({ error: error }) })
+}
+
+function doCheckBuiltinInput(data, ctu) {
+	tmp.save(data.definitions, (defFile) => {		
+		tmp.save(data.test, (testFile) => {
+		
+			function end(ret) {
+				tmp.del(defFile)
+				tmp.del(testFile)
+				ctu(ret)
+			}
+			
+			checkBuiltinInput(defFile, testFile, end)
+		})
+	})
 }
