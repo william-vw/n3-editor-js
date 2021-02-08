@@ -22,7 +22,6 @@
 	button:hover {background-color: #8a25b1; cursor: pointer;}
 	.content h1 + p { margin-bottom: 15px; line-height: 1.5; }
 	.content input[type=radio] { margin-bottom: 10px; margin-left: 15px; }
-	.content textarea#input { overflow: scroll !important; width: 100%; height: 200px; }
 	h1 {font-size: 32px;}
 	h1::before { content: ''; display: block; background-color: #8a25b1; width: 60px; height: 5px; border-radius: 2px; margin-bottom: 10px;  }
 	#loading { display: none; margin-left: 10px }
@@ -52,8 +51,11 @@
 	h3 { margin-bottom: 5px }
 	.note1 { float:left; margin-bottom: 15px }
 	.note2 { float:right; margin-bottom: 15px }
-	div.CodeMirror { height: 200px; border: 1px solid #ddd; margin-bottom: 5px }
+	div.CodeMirror { border: 1px solid #ddd; margin-bottom: 5px }
+	td:nth-child(1) div.CodeMirror { height: 400px }
+	td:nth-child(2) div.CodeMirror { height: 200px }
 	table { width: 75% }
+	table td { vertical-align: top }
 	td:nth-child(1) { width: 55% }
 	td:nth-child(2) { width: 45% }
 	table td:nth-child(2) { border-left: 1px dashed rgb(138, 37, 177); }
@@ -75,8 +77,8 @@
 <script src="lib/utils.js" type="text/javascript"></script>
 
 <script>
-	const serviceUrl = "http://127.0.0.1:3002/n3"
-	// const serviceUrl = "http://ppr.cs.dal.ca:3002/n3"
+	// const serviceUrl = "http://127.0.0.1:3002/n3"
+	const serviceUrl = "http://ppr.cs.dal.ca:3002/n3"
 
 	var defEditor = null
 	var testEditor = null
@@ -163,13 +165,13 @@
 				<td>
 					<div class="section">
 						<b>Builtin definitions</b><br />
-						<textarea rows=20 cols=100 id="builtin_defs"></textarea>
+						<textarea rows=50 cols=100 id="builtin_defs"></textarea>
 					</div>
 				</td>
 				<td>
 					<div class="section">
 						<b>Builtin assertion</b><br />
-						<textarea rows=10 cols=70 id="builtin_test"></textarea>
+						<textarea rows=50 cols=70 id="builtin_test"></textarea>
 					</div>
 				</td>
 			</tr>

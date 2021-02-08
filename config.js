@@ -19,3 +19,5 @@ exports.db = {
 	// pwd: '12345',
 	pwd: 'changeit'
 }
+
+exports.path = "/home/woensel/projects/n3-editor-js"
