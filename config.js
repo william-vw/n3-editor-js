@@ -20,5 +20,5 @@ exports.db = {
 	pwd: 'changeit'
 }
 
-// exports.path = "/home/woensel/projects/n3-editor-js"
-exports.path = "D:/git/n3dev/n3-editor-js"
+exports.path = "/home/woensel/projects/n3-editor-js"
+// exports.path = "D:/git/n3dev/n3-editor-js"
