@@ -17,8 +17,9 @@
 	body { font-family: sans-serif; background-color: #eee; }
 	.content { position: relative; padding: 45px; background-color: #fff; margin: 45px auto; box-shadow: 0 0 120px rgba(0,0,0,0.1); }
 	.logo { display: block; margin: 30px auto 30px; height: 140px; }
-	button { padding: 8px 25px; border-radius: 5px; background-color: #e68103;
-	color: #fff; border: 0; font-size: 17px; }
+	button, input[type=file] { background-color: #e68103; color: #fff; border: 0; }
+	button.large { padding: 8px 25px; border-radius: 5px; font-size: 17px; }
+	button.small { padding: 4px 12px; border-radius: 2px; font-size: 12px; }
 	button:hover {background-color: #8a25b1; cursor: pointer;}
 	.content h1 + p { margin-bottom: 15px; line-height: 1.5; }
 	.content input[type=radio] { margin-bottom: 10px; margin-left: 15px; }
@@ -61,6 +62,8 @@
 	table td:nth-child(2) { border-left: 1px dashed rgb(138, 37, 177); }
 	div.section { margin-right: 25px; }
 	td:nth-child(2) div.section { margin-left: 25px; }
+	td:nth-child(1) input { margin-top: 15px; }
+	td:nth-child(1) div.CodeMirror { margin-top: 10px; }
 </style>
 
 <!-- introduces n3 namespace -->
@@ -77,17 +80,48 @@
 <script src="lib/utils.js" type="text/javascript"></script>
 
 <script>
-	// const serviceUrl = "http://127.0.0.1:3002/n3"
-	const serviceUrl = "http://ppr.cs.dal.ca:3002/n3"
+	const serviceUrl = "http://127.0.0.1:3002/n3"
+	// const serviceUrl = "http://ppr.cs.dal.ca:3002/n3"
 
 	var defEditor = null
 	var testEditor = null
 	function getDefinitions() {
 		return defEditor.getDoc().getValue()
 	}
+	function setDefinitions(value) {
+		return defEditor.getDoc().setValue(value)
+	}
 	
 	function getAssertion() {
 		return testEditor.getDoc().getValue()
+	}
+	function setAssertion(value) {
+		return testEditor.getDoc().setValue(value)
+	}
+	
+	/* function loadFromUrl(event) {
+		const url = $("#defUrl").val()
+		$.ajax({
+			url: url,
+			success: (result, status, xhr) => {
+				console.log(result)
+			},
+			error: (xhr, status, error) => {
+				console.log(status, error)
+			}
+		})
+	} */
+	
+	function loadFromFile(event) {
+		const file = event.target.files[0]
+	
+		const reader = new FileReader()
+		reader.addEventListener('load', (event) => {
+			var code = event.target.result
+			console.log(code)
+			setDefinitions(code)
+		});
+		reader.readAsText(file)
 	}
 
 	function check() {
@@ -147,6 +181,9 @@
 
 		$("#check").click(check)
 		shortcut.add("Alt+C", check)
+		
+		// $("#loadDefUrl").click(loadFromUrl);
+		$("#loadDefFile").change(loadFromFile);
 	}
 </script>
 </head>
@@ -157,14 +194,14 @@
 	</a>
 	
 	<div class="content">
-		<h1>Notation3 Editor</h1>
-		<p>Notation3 Editor is a simple editor that provides syntax checking for N3 code, reasoning features from <a href="http://eulersharp.sourceforge.net/">Eye</a> and <a href="https://www.w3.org/2000/10/swap/doc/cwm.html">Cwm</a>, and printing the AST using the JS parser.</p>
+		<h1>Notation3 Builtin Editor</h1>
 
 		<table>
 			<tr>
 				<td>
 					<div class="section">
 						<b>Builtin definitions</b><br />
+						file: <input id="loadDefFile" type="file"  /><br />
 						<textarea rows=50 cols=100 id="builtin_defs"></textarea>
 					</div>
 				</td>
@@ -183,7 +220,7 @@
 		
 		<br style="clear: both" />
 		
-		<button id="check"><u>c</u>heck</button>
+		<button class="large" id="check"><u>c</u>heck</button>
 		
 		<div id="loading">
 			<img src="img/ajax-loader.gif" alt="loader">
