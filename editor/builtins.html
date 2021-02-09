@@ -62,8 +62,8 @@
 	table td:nth-child(2) { border-left: 1px dashed rgb(138, 37, 177); }
 	div.section { margin-right: 25px; }
 	td:nth-child(2) div.section { margin-left: 25px; }
-	td:nth-child(1) input { margin-top: 15px; }
-	td:nth-child(1) div.CodeMirror { margin-top: 10px; }
+	input { margin-top: 15px; }
+	div.CodeMirror { margin-top: 10px; }
 </style>
 
 <!-- introduces n3 namespace -->
@@ -112,14 +112,14 @@
 		})
 	} */
 	
-	function loadFromFile(event) {
+	function loadFromFile(event, setter) {
 		const file = event.target.files[0]
 	
 		const reader = new FileReader()
 		reader.addEventListener('load', (event) => {
 			var code = event.target.result
 			console.log(code)
-			setDefinitions(code)
+			setter(code)
 		});
 		reader.readAsText(file)
 	}
@@ -183,7 +183,8 @@
 		shortcut.add("Alt+C", check)
 		
 		// $("#loadDefUrl").click(loadFromUrl);
-		$("#loadDefFile").change(loadFromFile);
+		$("#loadDefFile").change((event) => loadFromFile(event, setDefinitions));
+		$("#loadTestFile").change((event) => loadFromFile(event, setAssertion));
 	}
 </script>
 </head>
@@ -201,13 +202,14 @@
 				<td>
 					<div class="section">
 						<b>Builtin definitions</b><br />
-						file: <input id="loadDefFile" type="file"  /><br />
+						file: <input id="loadDefFile" type="file" /><br />
 						<textarea rows=50 cols=100 id="builtin_defs"></textarea>
 					</div>
 				</td>
 				<td>
 					<div class="section">
 						<b>Builtin assertion</b><br />
+						file: <input id="loadTestFile" type="file" /><br />
 						<textarea rows=50 cols=70 id="builtin_test"></textarea>
 					</div>
 				</td>
