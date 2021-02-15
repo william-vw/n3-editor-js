@@ -52,10 +52,10 @@ app.post('/n3', (request, response) => {
 	console.log("POST /")	
 
 	const data = request.body
-	console.log("data:", data)
+	// console.log("data:", data)
 	
 	function ctu(ret) {
-		console.log("ret:", ret)
+		// console.log("ret:", ret)
 		if (ret.error) {
 			console.log(ret.error)
 		}
