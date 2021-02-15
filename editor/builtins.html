@@ -54,16 +54,16 @@
 	.note2 { float:right; margin-bottom: 15px }
 	div.CodeMirror { border: 1px solid #ddd; margin-bottom: 5px }
 	td:nth-child(1) div.CodeMirror { height: 400px }
-	td:nth-child(2) div.CodeMirror { height: 200px }
+	td:nth-child(2) div.CodeMirror { height: 400px }
 	table { width: 95% }
 	table td { vertical-align: top }
-	td:nth-child(1) { width: 55% }
-	td:nth-child(2) { width: 45% }
+	td:nth-child(1) { width: 50% }
+	td:nth-child(2) { width: 50% }
 	table td:nth-child(2) { border-left: 1px dashed rgb(138, 37, 177); }
 	div.section { margin-right: 25px; }
 	td:nth-child(2) div.section { margin-left: 25px; }
 	input { margin-top: 15px; }
-	div.CodeMirror { margin-top: 10px; }
+	div.CodeMirror { margin-top: 10px; width: 800px }
 	.outputEntry { padding-top: 15px; padding-bottom: 15px; border-bottom: 1px solid black; }
 </style>
 
@@ -81,8 +81,8 @@
 <script src="lib/utils.js" type="text/javascript"></script>
 
 <script>
-	// const serviceUrl = "http://127.0.0.1:3002/n3"
-	const serviceUrl = "http://ppr.cs.dal.ca:3002/n3"
+	const serviceUrl = "http://127.0.0.1:3002/n3"
+	// const serviceUrl = "http://ppr.cs.dal.ca:3002/n3"
 
 	var defEditor = null
 	var testEditor = null
@@ -149,7 +149,7 @@
 			var out = ""
 			ret.forEach((entry, index) => {
 				out += "<div class=\"outputEntry\">"
-				out += `<b>builtin</b>:${entry.builtin}<br /><br /><b>input</b>:${entry.input}<br /><br /><b>result</b>:${entry.result}`;
+				out += `<b>builtin</b>:${entry.builtin}<br /><br /><b>input</b>:${escapeHtml(entry.input)}<br /><br /><b>result</b>:${entry.result}`;
 				if (entry.trace) {
 					trace = escapeHtml(entry.trace)
 					out += `<br /><br /><b>trace</b>:${trace}`
