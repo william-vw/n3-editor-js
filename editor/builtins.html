@@ -55,7 +55,7 @@
 	div.CodeMirror { border: 1px solid #ddd; margin-bottom: 5px }
 	td:nth-child(1) div.CodeMirror { height: 400px }
 	td:nth-child(2) div.CodeMirror { height: 200px }
-	table { width: 75% }
+	table { width: 95% }
 	table td { vertical-align: top }
 	td:nth-child(1) { width: 55% }
 	td:nth-child(2) { width: 45% }
@@ -64,6 +64,7 @@
 	td:nth-child(2) div.section { margin-left: 25px; }
 	input { margin-top: 15px; }
 	div.CodeMirror { margin-top: 10px; }
+	.outputEntry { padding-top: 15px; padding-bottom: 15px; border-bottom: 1px solid black; }
 </style>
 
 <!-- introduces n3 namespace -->
@@ -118,7 +119,7 @@
 		const reader = new FileReader()
 		reader.addEventListener('load', (event) => {
 			var code = event.target.result
-			console.log(code)
+			// console.log(code)
 			setter(code)
 		});
 		reader.readAsText(file)
@@ -142,11 +143,19 @@
 			test: test
 			
 		}, (ret) => {
+			// console.log(ret)
 			$("#results").show()
-			var out = `<b>builtin</b>:${ret.builtin}<br /><br /><b>input</b>:${ret.input}<br /><br /><b>result</b>:${ret.result}<br /><br />`;
-			if (ret.trace)
-				out += `<b>trace</b>:${escapeHtml(ret.trace)}`
 			
+			var out = ""
+			ret.forEach((entry, index) => {
+				out += "<div class=\"outputEntry\">"
+				out += `<b>builtin</b>:${entry.builtin}<br /><br /><b>input</b>:${entry.input}<br /><br /><b>result</b>:${entry.result}`;
+				if (entry.trace) {
+					trace = escapeHtml(entry.trace)
+					out += `<br /><br /><b>trace</b>:${trace}`
+				}
+				out += "</div>"
+			})			
 			$("#results > #output").html(out)
 		
 		}, (error) => {
