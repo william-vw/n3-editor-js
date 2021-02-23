@@ -21,7 +21,7 @@
 	color: #fff; border: 0; font-size: 17px; }
 	button:hover {background-color: #8a25b1; cursor: pointer;}
 	.content h1 + p { margin-bottom: 15px; line-height: 1.5; }
-	.content input[type=radio] { margin-bottom: 10px; margin-left: 15px; }
+	.content input[type=radio] { margin-bottom: 10px }
 	.content textarea#input { overflow: scroll !important; width: 100%; height: 200px; }
 	h1 {font-size: 32px;}
 	h1::before { content: ''; display: block; background-color: #8a25b1; width: 60px; height: 5px; border-radius: 2px; margin-bottom: 10px;  }
@@ -46,7 +46,7 @@
 		background: #ffa8a8;
 	}
 	.system { display: inline }
-	div.CodeMirror { height: 200px; border: 1px solid #ddd; margin-bottom: 5px }
+	div.CodeMirror { height: 300px; border: 1px solid #ddd; margin: 15px 0 5px 0 }
 	.separator { display: inline-block; margin: 0 25px 0 20px }
 	.separator:after { content: "|" }
 	h3 { margin-bottom: 5px }
@@ -58,6 +58,7 @@
 <script src="dist/n3Main.js"></script>
 <script src="dist/turtlestarMain.js"></script>
 
+<script src="lib/codemirror-5.54.0/namespaces.js"></script>
 <script src="lib/codemirror-5.54.0/lint.js"></script>
 <script src="lib/codemirror-5.54.0/n3-mode.js"></script>
 <script src="lib/codemirror-5.54.0/turtlestar-mode.js"></script>
@@ -174,7 +175,7 @@
 			const elLabel = f.label
 			var el = container
 				.append(
-					$(`<input type="radio" name="format" id="${elId}">${elLabel}</input>`)
+					$(`<span><input type="radio" name="format" id="${elId}">${elLabel}</input>&nbsp;&nbsp;</span>`)
 						.change((e) => {
 							if (e.target.checked)
 								validate(f)
@@ -191,6 +192,32 @@
 		else
 			startValidating(format, setInput)
 	}
+	
+	var alreadySuggested = []
+	
+	const onSuggestion = {
+		namespace : function(prefix, ns) {
+			if (!$("#auto-ns").prop('checked'))
+				return false
+		
+			console.log("prefix suggestion:", prefix, ":", ns)
+			if (alreadySuggested.includes(prefix)) {
+				console.log("already suggested")
+				return false
+			}
+			
+			alreadySuggested.push(prefix)
+			var insert = `@prefix ${prefix}: <${ns}> .\n`
+			
+			const content = editor.getDoc().getValue()
+			if (!content.trim().startsWith("@prefix"))
+				insert += "\n"
+			
+			editor.getDoc().replaceRange(insert, {line: 0, ch: 0})
+			
+			return true
+		}
+	}
 
 	function startValidating(format, setInput) {
 		if (setInput)
@@ -206,7 +233,7 @@
 			theme : "default rdf",
 			// TODO this should follow code-mirrors idiom
 			// (registering a helper) but not getting that to work
-			lint : format.lib.lint,
+			lint : format.lib.lint(onSuggestion),
 			matchBrackets: true
 		})
 	}
@@ -297,6 +324,9 @@
 		<p>Notation3 Editor is a simple editor that provides syntax checking for N3 code, reasoning features from <a href="http://eulersharp.sourceforge.net/">Eye</a> and <a href="https://www.w3.org/2000/10/swap/doc/cwm.html">Cwm</a>, and printing the AST using the JS parser.</p>
 
 		<div id="formats"></div>		
+		
+		<input id="auto-ns" type="checkbox" checked> Auto-suggest namespaces.<br />
+		<small>Experimental auto-suggestion of namespaces. A specific namespace will only be suggested once (so just remove it if it's wrong!).</small>
 		
 		<textarea rows=10 cols=50 id="input"></textarea>
 		

@@ -1,5 +1,6 @@
-function SyntaxValidator() {
+function SyntaxValidator(onSuggestion) {
 	this.output = []
+	this.onSuggestion = onSuggestion
 }
 
 SyntaxValidator.prototype.syntaxError = function(recognizer, offendingSymbol,
@@ -48,8 +49,20 @@ SyntaxValidator.prototype.syntaxError = function(recognizer, offendingSymbol,
 	}
 }
 
-SyntaxValidator.prototype.unknownPrefix = function(prefix, pName, line,
-		start, end) {
+SyntaxValidator.prototype.builtinNamespaces = { 
+	math: 'http://www.w3.org/2000/10/swap/math#', 
+	string: 'http://www.w3.org/2000/10/swap/string#',
+	list: 'http://www.w3.org/2000/10/swap/list#', 
+	log: 'http://www.w3.org/2000/10/swap/log#', 
+	crypto: 'http://www.w3.org/2000/10/swap/crypto#', 
+	os: 'http://www.w3.org/2000/10/swap/os#' 
+}
+
+SyntaxValidator.prototype.unknownPrefix = function(prefix, pName, line, start, end) {
+	if (namespaces[prefix]) {
+		if (this.onSuggestion && this.onSuggestion.namespace(prefix, namespaces[prefix]))
+			return
+	}
 	
 	line -= 1
 	
@@ -68,29 +81,33 @@ SyntaxValidator.prototype.unknownPrefix = function(prefix, pName, line,
 			ch : end
 		}
 	})
-},
+}
 
 SyntaxValidator.prototype.consoleError = function(type, line, start, end, msg) {
 	console.error(`[${type}] line ${line}, col ${start}-${end}: ${msg}`)
 }
 
-function doLint(text, options, editor, lib) {
+function doLint(text, options, editor, onSuggestion, lib) {
 	var output = []
 	text = editor.getDoc().getValue()
 
-	var validator = new SyntaxValidator()
+	var validator = new SyntaxValidator(onSuggestion)
 	lib.parse(text, validator)
 
 	// console.log(validator.output)
 	return validator.output
 }
 
-n3.lint = function(text, options, editor) {
-	return doLint(text, options, editor, n3)
+n3.lint = function(onSuggestion) {
+	return function(text, options, editor) {
+		return doLint(text, options, editor, onSuggestion, n3)
+	}
 }
 
-turtlestar.lint = function(text, options, editor) {
-	return doLint(text, options, editor, turtlestar)
+turtlestar.lint = function(onSuggestion) {
+	return function(text, options, editor) {
+		return doLint(text, options, editor, onSuggestion, turtlestar)
+	}
 }
 
 // doesn't seem to work for me
