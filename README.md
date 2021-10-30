@@ -40,7 +40,7 @@ If you're using localhost and port 3002, you will find the server at [http://127
 
 ## Development
 
-After editing anything inside `editor/` folder (aside from the `lib/` folder), run `npx webpack` (requires (webpack)[https://webpack.js.org/guides/installation/]) to generate `dist\main.js\`. You'll see that `index.html` directly references `dist\main.js\` as well as the files from the `lib/` folder.
+After editing anything inside `editor/` folder (aside from the `lib/` folder), run `npx webpack` ([requires webpack](https://webpack.js.org/guides/installation/)) to generate `dist\main.js\`. You'll see that `index.html` directly references `dist\main.js\` as well as the files from the `lib/` folder.
 
 **Important**: `n3Parser.js` requires a manual edit to make `symbolicNames` available outside of the module. Below `var symbolicNames ..` add `n3Parser.symbolicNames = symbolicNames;`.
 
