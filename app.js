@@ -52,7 +52,7 @@ app.post('/n3', (request, response) => {
 	console.log("POST /")	
 
 	const data = request.body
-	// console.log("data:", data)
+	console.log("data:", data)
 	
 	function ctu(ret) {
 		// console.log("ret:", ret)
@@ -61,11 +61,12 @@ app.post('/n3', (request, response) => {
 		}
 		response.send(ret)
 	}
-	
+
 	switch (data.task) {
 				
+		case 'derivations':
 		case 'deductive_closure':
-			doDeductiveClosure(data, ctu)
+			doReasoning(data, ctu)
 			break
 
 		case 'generate_link':
@@ -84,7 +85,7 @@ app.post('/n3', (request, response) => {
 app.listen(config.http.port)
 console.log(`Listening at http://${config.http.hostname}:${config.http.port}`)
 
-function doDeductiveClosure(data, ctu) {	
+function doReasoning(data, ctu) {	
 	tmp.save(data.formula, (file) => {
 		
 		function end(ret) {
@@ -94,11 +95,11 @@ function doDeductiveClosure(data, ctu) {
 		
 		switch (data.system) {
 			case "eye":
-				eye.exec(file, end)
+				eye.exec(data.task, file, end)
 			break
 			
 			case "cwm":
-				cwm.exec(file, end)
+				cwm.exec(data.task, file, end)
 			break
 			
 			default:

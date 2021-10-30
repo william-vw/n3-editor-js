@@ -1,6 +1,6 @@
 function exec(serviceUrl, options, onSuccess, onError) {
 	$.post(serviceUrl, options, (output, status) => {
-		console.log(status, output)
+		// console.log(status, output)
 		
 		switch (status) {
 			
