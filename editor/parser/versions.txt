@@ -1,0 +1,4 @@
+n3-or: the original N3 syntax
+
+n3: the current N3 syntax (incl. n3PropertyList)
+(this also includes a rewrite of index.js & listener/visitor classes to be in line with ES6)

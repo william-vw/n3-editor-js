@@ -1,8 +1,11 @@
 const path = require('path');
 
 // N3
-/*module.exports = {
-  node: { module: "empty", net: "empty", fs: "empty" },
+module.exports = {
+  // exclude node.js-only modules
+  // node: { module: "empty", net: "empty", fs: "empty" }, // older versions of webpack
+  resolve: { fallback: { fs: false } }, // webpack v5
+  
   entry: './parser/n3/index.js',
   output: {
     filename: 'n3Main.js',
@@ -13,10 +16,10 @@ const path = require('path');
   optimization: {
     minimize: false
   }
-};*/
+};
 
 // TurtleStar
-module.exports = {
+/*module.exports = {
   node: { module: "empty", net: "empty", fs: "empty" },
   entry: './parser/turtlestar/index.js',
   output: {
@@ -28,4 +31,4 @@ module.exports = {
   optimization: {
     minimize: false
   }
-};
+};*/

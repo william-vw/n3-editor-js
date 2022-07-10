@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Notation3 Grammar Test</title>
+
+    <script src="lib/jquery-3.5.1.min.js"></script>
+    <script src="dist/n3Main.js"></script>
+
+</head>
+
+<body>
+    <script>
+        n3.parse(
+            "@prefix a: <http://foo/a#> ." +
+            "a:b a:oneRef [" +
+            "  id a:node0" +
+            "  a:pp \"1\" ;" +
+            "  a:qq \"2\"" +
+            "] .",
+
+            {
+                syntaxError: function (recognizer, offendingSymbol,
+                    line, column, msg, err) {
+                    console.log("syntaxError", offendingSymbol,
+                        line, column, msg, err);
+                },
+                unknownPrefix: function (prefix, pName, line, start, end) {
+                    console.log("unknownPrefix", prefix, pName, line, start, end);
+                },
+                consoleError: function (type, line, start, end, msg) {
+                    console.log("consoleError", type, line, start, end, msg);
+                },
+                newAstLine: function(line) {
+                    console.log("ast", line);
+                }
+            });
+    </script>
+
+</body>
+
+</html>

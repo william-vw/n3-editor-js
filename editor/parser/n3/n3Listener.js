@@ -1,303 +1,279 @@
-// Generated from n3.g4 by ANTLR 4.6
+// Generated from n3.g4 by ANTLR 4.10.1
 // jshint ignore: start
-var antlr4 = require('antlr4/index');
+import antlr4 from 'antlr4';
 
 // This class defines a complete listener for a parse tree produced by n3Parser.
-function n3Listener() {
-	antlr4.tree.ParseTreeListener.call(this);
-	return this;
+export default class n3Listener extends antlr4.tree.ParseTreeListener {
+
+	// Enter a parse tree produced by n3Parser#n3Doc.
+	enterN3Doc(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#n3Doc.
+	exitN3Doc(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#n3Statement.
+	enterN3Statement(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#n3Statement.
+	exitN3Statement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#n3Directive.
+	enterN3Directive(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#n3Directive.
+	exitN3Directive(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#sparqlDirective.
+	enterSparqlDirective(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#sparqlDirective.
+	exitSparqlDirective(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#sparqlBase.
+	enterSparqlBase(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#sparqlBase.
+	exitSparqlBase(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#sparqlPrefix.
+	enterSparqlPrefix(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#sparqlPrefix.
+	exitSparqlPrefix(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#prefixID.
+	enterPrefixID(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#prefixID.
+	exitPrefixID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#base.
+	enterBase(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#base.
+	exitBase(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#triples.
+	enterTriples(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#triples.
+	exitTriples(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#predicateObjectList.
+	enterPredicateObjectList(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#predicateObjectList.
+	exitPredicateObjectList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#objectList.
+	enterObjectList(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#objectList.
+	exitObjectList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#verb.
+	enterVerb(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#verb.
+	exitVerb(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#subject.
+	enterSubject(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#subject.
+	exitSubject(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#predicate.
+	enterPredicate(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#predicate.
+	exitPredicate(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#object.
+	enterObject(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#object.
+	exitObject(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#expression.
+	enterExpression(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#expression.
+	exitExpression(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#path.
+	enterPath(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#path.
+	exitPath(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#pathItem.
+	enterPathItem(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#pathItem.
+	exitPathItem(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#literal.
+	enterLiteral(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#literal.
+	exitLiteral(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#blankNodePropertyList.
+	enterBlankNodePropertyList(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#blankNodePropertyList.
+	exitBlankNodePropertyList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#iriPropertyList.
+	enterIriPropertyList(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#iriPropertyList.
+	exitIriPropertyList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#collection.
+	enterCollection(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#collection.
+	exitCollection(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#formula.
+	enterFormula(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#formula.
+	exitFormula(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#formulaContent.
+	enterFormulaContent(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#formulaContent.
+	exitFormulaContent(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#numericLiteral.
+	enterNumericLiteral(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#numericLiteral.
+	exitNumericLiteral(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#rdfLiteral.
+	enterRdfLiteral(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#rdfLiteral.
+	exitRdfLiteral(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#iri.
+	enterIri(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#iri.
+	exitIri(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#prefixedName.
+	enterPrefixedName(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#prefixedName.
+	exitPrefixedName(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#blankNode.
+	enterBlankNode(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#blankNode.
+	exitBlankNode(ctx) {
+	}
+
+
+	// Enter a parse tree produced by n3Parser#quickVar.
+	enterQuickVar(ctx) {
+	}
+
+	// Exit a parse tree produced by n3Parser#quickVar.
+	exitQuickVar(ctx) {
+	}
+
+
+
 }
-
-n3Listener.prototype = Object.create(antlr4.tree.ParseTreeListener.prototype);
-n3Listener.prototype.constructor = n3Listener;
-
-// Enter a parse tree produced by n3Parser#n3Doc.
-n3Listener.prototype.enterN3Doc = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#n3Doc.
-n3Listener.prototype.exitN3Doc = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#n3Statement.
-n3Listener.prototype.enterN3Statement = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#n3Statement.
-n3Listener.prototype.exitN3Statement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#n3Directive.
-n3Listener.prototype.enterN3Directive = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#n3Directive.
-n3Listener.prototype.exitN3Directive = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#sparqlDirective.
-n3Listener.prototype.enterSparqlDirective = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#sparqlDirective.
-n3Listener.prototype.exitSparqlDirective = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#sparqlBase.
-n3Listener.prototype.enterSparqlBase = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#sparqlBase.
-n3Listener.prototype.exitSparqlBase = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#sparqlPrefix.
-n3Listener.prototype.enterSparqlPrefix = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#sparqlPrefix.
-n3Listener.prototype.exitSparqlPrefix = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#prefixID.
-n3Listener.prototype.enterPrefixID = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#prefixID.
-n3Listener.prototype.exitPrefixID = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#base.
-n3Listener.prototype.enterBase = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#base.
-n3Listener.prototype.exitBase = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#triples.
-n3Listener.prototype.enterTriples = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#triples.
-n3Listener.prototype.exitTriples = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#predicateObjectList.
-n3Listener.prototype.enterPredicateObjectList = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#predicateObjectList.
-n3Listener.prototype.exitPredicateObjectList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#objectList.
-n3Listener.prototype.enterObjectList = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#objectList.
-n3Listener.prototype.exitObjectList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#verb.
-n3Listener.prototype.enterVerb = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#verb.
-n3Listener.prototype.exitVerb = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#subject.
-n3Listener.prototype.enterSubject = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#subject.
-n3Listener.prototype.exitSubject = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#predicate.
-n3Listener.prototype.enterPredicate = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#predicate.
-n3Listener.prototype.exitPredicate = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#object.
-n3Listener.prototype.enterObject = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#object.
-n3Listener.prototype.exitObject = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#expression.
-n3Listener.prototype.enterExpression = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#expression.
-n3Listener.prototype.exitExpression = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#path.
-n3Listener.prototype.enterPath = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#path.
-n3Listener.prototype.exitPath = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#pathItem.
-n3Listener.prototype.enterPathItem = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#pathItem.
-n3Listener.prototype.exitPathItem = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#literal.
-n3Listener.prototype.enterLiteral = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#literal.
-n3Listener.prototype.exitLiteral = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#blankNodePropertyList.
-n3Listener.prototype.enterBlankNodePropertyList = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#blankNodePropertyList.
-n3Listener.prototype.exitBlankNodePropertyList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#collection.
-n3Listener.prototype.enterCollection = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#collection.
-n3Listener.prototype.exitCollection = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#formula.
-n3Listener.prototype.enterFormula = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#formula.
-n3Listener.prototype.exitFormula = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#formulaContent.
-n3Listener.prototype.enterFormulaContent = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#formulaContent.
-n3Listener.prototype.exitFormulaContent = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#numericLiteral.
-n3Listener.prototype.enterNumericLiteral = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#numericLiteral.
-n3Listener.prototype.exitNumericLiteral = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#rdfLiteral.
-n3Listener.prototype.enterRdfLiteral = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#rdfLiteral.
-n3Listener.prototype.exitRdfLiteral = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#iri.
-n3Listener.prototype.enterIri = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#iri.
-n3Listener.prototype.exitIri = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#iriList.
-n3Listener.prototype.enterIriList = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#iriList.
-n3Listener.prototype.exitIriList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#prefixedName.
-n3Listener.prototype.enterPrefixedName = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#prefixedName.
-n3Listener.prototype.exitPrefixedName = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#blankNode.
-n3Listener.prototype.enterBlankNode = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#blankNode.
-n3Listener.prototype.exitBlankNode = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#quickVar.
-n3Listener.prototype.enterQuickVar = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#quickVar.
-n3Listener.prototype.exitQuickVar = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#existential.
-n3Listener.prototype.enterExistential = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#existential.
-n3Listener.prototype.exitExistential = function(ctx) {
-};
-
-
-// Enter a parse tree produced by n3Parser#universal.
-n3Listener.prototype.enterUniversal = function(ctx) {
-};
-
-// Exit a parse tree produced by n3Parser#universal.
-n3Listener.prototype.exitUniversal = function(ctx) {
-};
-
-
-
-exports.n3Listener = n3Listener;
