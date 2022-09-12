@@ -7,6 +7,7 @@ const config = require('./config.js')
 const tmp = require('./lib/tmp.js')
 const eye = require('./lib/eye.js')
 const cwm = require('./lib/cwm.js')
+const jen3 = require('./lib/jen3.js')
 const { generateLink, retrieveLink } = require('./lib/gen_link.js')
 const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 
@@ -93,19 +94,26 @@ function doReasoning(data, ctu) {
 			ctu(ret)
 		}		
 		
+		var reasoner = null;
 		switch (data.system) {
 			case "eye":
-				eye.exec(data.task, file, end)
+				reasoner = eye
 			break
 			
 			case "cwm":
-				cwm.exec(data.task, file, end)
+				reasoner = cwm
+			break
+
+			case "jen3":
+				reasoner = jen3
 			break
 			
 			default:
 				end({ error: `unknown system: "${data.system}"` })
 			break
 		}
+		if (reasoner)
+			reasoner.exec(data.task, file, end)
 	})
 }
 

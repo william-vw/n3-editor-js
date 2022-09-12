@@ -71,7 +71,7 @@
 <script>
 	const serviceUrl = "http://127.0.0.1:3002/n3"
 	// const serviceUrl = "http://ppr.cs.dal.ca:3002/n3"
-	const systems = [ "eye", "cwm" ]
+	const systems = [ "eye", "cwm", "jen3" ]
 	const formats = {
 		n3: { type: 'n3', label: "<u>N</u>3", lib: n3, mode: 'n3' }, 
 		turtlestar: { type: 'turtlestar', label: "<u>T</u>urtle*", lib: turtlestar, mode: 'turtlestar' }, 
@@ -329,7 +329,7 @@
 	
 	<div class="content">
 		<h1>Notation3 Editor</h1>
-		<p>Notation3 Editor is a simple editor that provides syntax checking for N3 code, reasoning features from <a href="http://eulersharp.sourceforge.net/">Eye</a> and <a href="https://www.w3.org/2000/10/swap/doc/cwm.html">Cwm</a>, and printing the AST using the JS parser.</p>
+		<p>Notation3 Editor is a simple editor that provides syntax checking for N3 code, reasoning features from several reasoners, and printing the AST using the JS parser.</p>
 
 		<div id="formats"></div>		
 		
@@ -351,7 +351,8 @@
 		
 		<button id="execute">e<u>x</u>ecute</button>
 		<input class="system" name="system" type="radio" value="eye" id="eye" checked /><label for="eye">eye</label> 
-		<input class="system" name="system" type="radio" value="cwm" id="cwm" /><label for="cwm">cwm</label> 
+		<input class="system" name="system" type="radio" value="cwm" id="cwm" /><label for="cwm">cwm</label>
+		<input class="system" name="system" type="radio" value="jen3" id="jen3" /><label for="jen3">jen3</label> 
 		
 		<div class="separator"></div>
 		<button id="show_ast">show <u>a</u>st</button>

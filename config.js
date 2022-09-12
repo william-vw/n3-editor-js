@@ -11,7 +11,9 @@ exports.exec = {
 	pythonCmd: "python", // use python2 for cwm
 	
 	// cwmPath: "/opt/cwm-1.2.1/swap/cwm.py"
-	cwmPath: "/Users/wvw/cwm-1.2.1/swap/cwm.py"
+	cwmPath: "/Users/wvw/cwm-1.2.1/swap/cwm.py",
+
+	jen3Path: "/Users/wvw/git/n3/jen3/jen3.jar"
 }
 
 exports.db = {
