@@ -50,10 +50,11 @@ app.get('/n3', (request, response) => {
 })
 
 app.post('/n3', (request, response) => {
-	console.log("POST /")	
+	console.log("POST /")
 
 	const data = request.body
-	console.log("data:", data)
+	// console.log("data:", data)
+	console.log("task:", data.task, "system:", data.system);
 	
 	function ctu(ret) {
 		// console.log("ret:", ret)

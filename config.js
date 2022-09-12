@@ -13,7 +13,7 @@ exports.exec = {
 	// cwmPath: "/opt/cwm-1.2.1/swap/cwm.py"
 	cwmPath: "/Users/wvw/cwm-1.2.1/swap/cwm.py",
 
-	jen3Path: "/Users/wvw/git/n3/jen3/jen3.jar"
+	jen3Path: "/Users/wvw/git/n3/n3-editor-js/lib/jen3.jar"
 }
 
 exports.db = {
