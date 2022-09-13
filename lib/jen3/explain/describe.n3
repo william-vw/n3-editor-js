@@ -1,0 +1,254 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix pml: <http://provenanceweb.org/ns/pml#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix graph: <http://www.w3.org/2000/10/swap/graph#> .
+@prefix r: <http://www.w3.org/2000/10/swap/reason#> .
+@prefix x: <http://wvw.org/xai#> .
+@prefix : <http://wvw.org/xai#> .
+
+
+# divide
+# (all terms to be described are indicated as "x:term"s)
+
+# (will generate a skolemized IRI for blank nodes)
+{	?x r:gives ?value . ?value log:includes { ?s ?p ?o } .
+
+	( ?s ) log:skolem ?ss . ( ?p ) log:skolem ?ps . ( ?o ) log:skolem ?os .
+
+} => { ?value x:term ?s , ?p , ?o } . # ?value x:skolem ?ss , ?ps , ?os } .
+
+
+{	?value x:term ?t .
+	?t log:rawType log:List .
+	?t list:member ?m .
+	
+	( ?t ) log:skolem ?ts .
+	
+} => { 	?ts x:term ?m } .
+
+
+{ 	?value x:term ?t .
+	?t log:rawType log:Formula .
+	?t graph:member ?m .
+	?m log:includes { ?s ?p ?o } .
+	
+	( ?t ) log:skolem ?ts .
+
+} => { 	?ts x:term ?s , ?p , ?o } . 
+
+
+
+# conquer
+# (generate strings for every "x:term" as "x:description"s)
+
+# atomic terms
+
+# blank nodes
+{	?value x:term ?t .
+	?t log:rawType log:BlankNode .
+	?t log:label ?label .
+	
+	( ?t ) log:skolem ?ts 
+	
+} => { ?ts x:description ?label } .
+
+
+# uris (with label)
+{	?value x:term ?t . 
+	?t log:rawType log:Uri .
+	?t rdfs:label ?l .
+	( "'" ?l "'" ) string:concatenation ?l2 .
+	
+ 	( ?t ) log:skolem ?ts .
+
+} => { ?ts x:description ?l2 } .
+
+
+# uris (without label)
+
+{	?value x:term ?t . 
+	?t log:rawType log:Uri .
+	<> log:notIncludes { ?t rdfs:label ?l } .
+	?t!log:uri string:notMatches ".*/.well-known/genid/.*" .
+	
+	?t log:nameSpace ?ns .
+	# TODO more generic solution here (cfr. e:optional?)
+	?ns log:hasPrefix true .
+	?ns log:prefix ?prefix .
+ 	?t log:localName ?ln .
+ 	( ?prefix ":" ?ln ) string:concatenation ?str .
+ 	
+ 	( ?t ) log:skolem ?ts .
+
+} => { ?ts x:description ?str } .
+
+
+{	?value x:term ?t . 
+	?t log:rawType log:Uri .
+	<> log:notIncludes { ?t rdfs:label ?l } .
+	?t!log:uri string:notMatches ".*/.well-known/genid/.*" .
+	
+	?t log:nameSpace ?ns .
+	?ns log:hasPrefix false .
+ 	?t log:localName ?ln .
+ 	( "#" ?ln ) string:concatenation ?str .
+ 	
+ 	( ?t ) log:skolem ?ts .
+
+} => { ?ts x:description ?str } .
+
+
+# skolemized uris
+{	?value x:term ?t . 
+	?t log:rawType log:Uri .
+	?t!log:uri string:matches ".*/.well-known/genid/.*" .
+	
+	?t log:localName ?ln .
+ 	( "_:" ?ln ) string:concatenation ?str .
+ 	
+ 	( ?t ) log:skolem ?ts .
+
+} => { ?ts x:description ?str } .
+
+
+# literals
+{	?value x:term ?t . 
+	?t log:rawType log:Literal . 
+	( "\"" ?t "\"" ) string:concatenation ?t2 .
+	
+	( ?t ) log:skolem ?ts .
+
+} => { ?ts x:description ?t2 } .
+
+
+# compound terms
+# (collect all "x:description"s of constituents and use to describe compound itself)
+
+# list
+{   ?value x:term ?list .
+	?list log:rawType log:List .
+
+    ( ?td
+    {
+        ?list list:member ?t .
+        ( ?t )!log:skolem x:description ?td .
+
+    } ?strs ) log:collectAllIn <> .
+    
+    ?strs list:length ?list!list:length .
+    
+    ( ?strs " " ) string:join ?str2 .
+    ( "( " ?str2 " )" ) string:concatenation ?str3 .
+
+	( ?list ) log:skolem ?ls
+
+} => { ?ls x:description ?str3 } .
+
+
+# formula
+{   ?value x:term ?form .
+	?form log:rawType log:Formula .
+
+    ( ?td
+    {
+        ?form graph:member ?m .
+		?m log:includes { ?s ?p ?o } .
+	
+        ( ?s )!log:skolem x:description ?sd .
+        ( ?p )!log:skolem x:description ?pd .
+        ( ?o )!log:skolem x:description ?od .
+        
+        ( "<span class='triple'><span class='subject'>" ?sd "</span> <span class='predicate'>" ?pd "</span> <span class='object'>" ?od "</span> .</span>" ) 
+        	string:concatenation ?td .
+
+    } ?strs ) log:collectAllIn _:x .
+    
+    ?form graph:length ?strs!list:length .
+    
+    ( ?strs " " ) string:join ?str2 .
+    ( "{ " ?str2 " }" ) string:concatenation ?str3 .
+
+	( ?form ) log:skolem ?fs .
+
+} => { ?fs x:description ?str3 } .
+
+ 
+# finalize
+
+# (using "x:description"s of terms, generate strings for "r:gives"s)
+{	?x!rdf:type list:in ( r:Extraction r:Inference r:Fact ) .
+	?x r:gives ?value .
+
+	( ?str
+	{ 
+		?value graph:member ?m .
+		?m log:includes { ?s ?p ?o } .
+		
+		( ?s )!log:skolem x:description ?sd .
+        ( ?p )!log:skolem x:description ?pd .
+		( ?pd "log:implies" "<div class='implies'>=></div>" ) string:replace ?pd2 .
+        ( ?o )!log:skolem x:description ?od .
+        
+        ( "<span class='triple'><span class='subject'>" ?sd "</span> <span class='predicate'>" ?pd2 "</span> <span class='object'>" ?od "</span> .</span>" ) 
+        	string:concatenation ?str .
+		
+	} ?strs ) log:collectAllIn <> .
+	
+	?strs!list:length math:equalTo ?value!graph:length .
+	( ?strs "" ) string:join ?conclStr . 
+	
+} => { ?x x:conclusionStr ?conclStr } .
+
+
+# (describe inference nodes in some more detail)
+{	?x a x:InferenceNode ; 
+		r:rule ?extraction .
+	
+	?extraction x:conclusionStr ?ruleStr .
+	 
+	?extraction!r:because!r:source log:uri ?source .
+	
+	( ?assign
+	{	?x r:binding ?binding . ?binding!r:variable n3:uri ?var . ?binding!r:boundTo n3:uri ?uri .
+		( ?uri ".*?#(.*)" ) string:scrape ?ln . ( ":" ?ln ) string:concatenation ?ln2 .
+		( ?var ".*#(.*)" ) string:scrape ?var2 .
+		( "<div class='assign'><span class='var'>var:" ?var2 "</span> = <span class='val uri'>" ?ln2 "</span></div>" ) 
+			string:concatenation ?assign .
+		
+	} ?uriAssigns) log:collectAllIn <> .
+	
+	( ?assign
+	{	?x r:binding ?binding . ?binding!r:variable n3:uri ?var . 
+		?binding r:boundTo ?lit . ?lit log:rawType log:Literal . ( "\"" ?lit "\"" ) string:concatenation ?lit2 .
+		( ?var ".*#(.*)" ) string:scrape ?var2 .
+		( "<div class='assign'><span class='var'>var:" ?var2 "</span> = <span class='val lit'>" ?lit2 "</span></div>" ) 
+			string:concatenation ?assign .
+			
+	} ?litAssigns) log:collectAllIn <> .
+	
+	( ?uriAssigns ?litAssigns )!list:append list:sort ?assigns.	
+	?assigns string:concatenation ?bindingStr .
+	
+} => { ?x x:ruleStr ?ruleStr ; x:sourceStr ?source ; x:bindingStr ?bindingStr } .
+
+
+# auxiliary
+
+{ 	?inf a r:Inference .
+	<> log:notIncludes { ?x r:component ?inf } 
+
+} => {	?inf a x:InferenceNode } .
+
+
+{	?inf a x:InferenceNode .
+	
+	( ?x { ?x a x:InferenceNode . ?x!r:evidence list:member ?inf } ?xs ) log:collectAllIn <> .
+	?xs!list:length math:equalTo 0
+	
+} => {	?inf a x:RootNode } .

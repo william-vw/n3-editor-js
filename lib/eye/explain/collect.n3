@@ -1,0 +1,56 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix pml: <http://provenanceweb.org/ns/pml#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix r: <http://www.w3.org/2000/10/swap/reason#> .
+@prefix x: <http://wvw.org/xai#> .
+@base <http://wvw.org/xai#> .
+
+
+{	?x x:output ?html 
+
+} <= {	
+	?x a ?type .
+	?type list:in ( r:Extraction r:Fact ) .
+	?x x:conclusionStr ?str .
+	
+	( "<li class='fact'>" ?str "</li>" ) string:concatenation ?html .	
+} .
+
+
+{	?inf x:output ?html
+	
+} <= { 
+	?inf a x:InferenceNode ;
+		r:evidence ?evidences .
+	?evidences list:removeDuplicates ?evidences2 .
+
+	( ?li {	?evidence list:in ?evidences2 ; x:output ?li } ?lis ) log:collectAllIn _:x .
+	?evidences2!list:length math:equalTo ?lis!list:length .
+	
+	?lis string:concatenation ?lisStr .
+	
+	?inf x:conclusionStr ?label ;
+		x:ruleStr ?ruleStr ;
+		x:sourceStr ?sourceStr ;
+		x:bindingStr ?bindingStr .
+	
+	( ?label "</span><span" "</span><br /><span" ) string:replace ?label2 .
+	
+	( 	"<div class='rule'>" ?ruleStr "</div>"
+		"<div class='bindings'>" ?bindingStr "</div>"
+		"<div class='source'>(from: " ?sourceStr ")</div>" ) string:concatenation ?ruleInfo .	
+	
+	(	"<li class='inf'>" 
+			?label2 " "
+			"<span class='showHideRule'>(show rule)</span>"
+			"<div class='ruleInfo'>" ?ruleInfo "</div>"
+			"<ul>" ?lisStr "</ul>"
+		"</li>"
+	) string:concatenation ?html .
+} .

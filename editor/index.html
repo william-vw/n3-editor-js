@@ -99,7 +99,7 @@
 		if (formula.length == 0)
 			return
 	
-		var system = $("input[name=system]:checked").val()
+		var system = $("input[name=execute_system]:checked").val()
 		if (!system)
 			return
 		
@@ -114,6 +114,32 @@
 		// console.log(system, task);	
 		service.exec(serviceUrl, {
 			task: task, 
+			system: system, 
+			formula: formula
+			
+		}, (success) => {
+			$(`#${taskId}_out`).show()
+			$(`#${taskId}_out > div`).text(success)
+		
+		}, (error) => {		
+			$("#error_out").show()
+			$("#error_out > div").html(error)
+		})
+	}
+
+	function explain() {
+		var formula = getFormula() 
+		if (formula.length == 0)
+			return
+	
+		var system = $("input[name=explain_system]:checked").val()
+		if (!system)
+			return
+	
+		$(".output").hide()
+
+		// console.log(system, task);	
+		service.explain(serviceUrl, {
 			system: system, 
 			formula: formula
 			
@@ -350,13 +376,18 @@
 		<br style="clear: both" />
 		
 		<button id="execute">e<u>x</u>ecute</button>
-		<input class="system" name="system" type="radio" value="eye" id="eye" checked /><label for="eye">eye</label> 
-		<input class="system" name="system" type="radio" value="cwm" id="cwm" /><label for="cwm">cwm</label>
-		<input class="system" name="system" type="radio" value="jen3" id="jen3" /><label for="jen3">jen3</label> 
+		<input class="system" name="execute_system" type="radio" value="eye" id="eye" checked /><label for="eye">eye</label> 
+		<input class="system" name="execute_system" type="radio" value="cwm" id="cwm" /><label for="cwm">cwm</label>
+		<input class="system" name="execute_system" type="radio" value="jen3" id="jen3" /><label for="jen3">jen3</label> 
+		
+		<div class="separator"></div>
+		<button id="explain">explai<u>n</u></button>
+		<input class="system" name="explain_system" type="radio" value="eye" id="eye" checked /><label for="eye">eye</label> 
+		<input class="system" name="explain_system" type="radio" value="jen3" id="jen3" /><label for="jen3">jen3</label> 
 		
 		<div class="separator"></div>
 		<button id="show_ast">show <u>a</u>st</button>
-		
+
 		<div id="loading">
 			<img src="img/ajax-loader.gif" alt="loader">
 		</div>

@@ -1,0 +1,220 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix pml: <http://provenanceweb.org/ns/pml#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix graph: <http://www.w3.org/2000/10/swap/graph#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix r: <http://www.w3.org/2000/10/swap/reason#> .
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix n3: <http://www.w3.org/2004/06/rei#>.
+@prefix x: <http://wvw.org/xai#> .
+@base <http://wvw.org/xai#> .
+
+# TODO initial "conquer" step should identify term (e.g., UnlabelledURI, VariableURI)
+# next step can then check for existence of prefix, log:implies, etc.)
+# 	(possible second "identify" step as well)
+# only last step should then generate descriptions
+# best way of annotating terms 
+# (string:replace in finalize wouldn't work if e.g., log:implies also occurs in string)
+
+# TODO
+# the above will allow keeping the "var" prefix of rule variables
+
+# divide
+# (all terms to be described are indicated as "x:term"s)
+
+{   ?x r:gives ?value . # formula
+	?value e:labelvars ?valuel.
+	?valuel log:includes { ?s ?p ?o } .
+	
+} => { 	?valuel x:term ?s , ?p , ?o } .
+
+
+{	?value x:term ?t .
+	?t log:rawType rdf:List .
+	?t e:labelvars ?tl .
+	
+	?tl list:member ?m
+	
+} => { 	?tl x:term ?m } .
+
+
+{ 	?value x:term ?t .
+	?t log:rawType log:Formula .
+	?t e:labelvars ?tl .
+	
+	?tl e:graphMember ?m .
+	?m log:includes { ?s ?p ?o } .
+
+} => { 	?tl x:term ?s , ?p , ?o } . 
+
+
+# conquer
+# (generate strings for every "x:term" as "x:description"s)
+
+# atomic terms
+
+{   ?value x:term ?t .
+    ?t log:rawType log:Other .
+	_:x log:notIncludes { ?t rdfs:label ?l } .
+    ?t log:uri ?uri .
+    ( ?uri ".+(#|/)(.+)" ) string:search ( ?div ?ln ) .
+	( ":" ?ln ) string:concatenation ?ln2 . 
+
+    ?t log:localN3String ?ts .
+
+} => { ?ts x:description ?ln2 } .
+
+
+{   ?value x:term ?t .
+    ?t log:rawType log:Other .
+	?t rdfs:label ?l .
+	( "'" ?l "'" ) string:concatenation ?l2 .
+		
+	?t!e:labelvars log:localN3String ?ts .
+	
+} => { ?ts x:description ?l2 } .
+
+
+{ 	?value x:term ?t .
+	?t log:rawType log:Literal .
+	( "\"" ?t "\"" ) string:concatenation ?t2 .
+
+	?t log:localN3String ?ts .
+
+} => { ?ts x:description ?t2 } .
+
+
+# compound terms
+
+# (collect all "x:description"s of list terms and use to describe list itself)
+{   ?value x:term ?list .
+	?list log:rawType rdf:List .
+
+    ( ?td
+    {
+        ?list list:member ?t .
+        ?t!log:localN3String x:description ?td .
+
+    } ?strs ) log:collectAllIn _:x .
+    
+    ?strs!list:length math:equalTo ?list!list:length .
+    
+    ( ?strs " " ) string:join ?str2 .
+    ( "( " ?str2 " )" ) string:concatenation ?str3 .
+
+	?list log:localN3String ?ls
+
+} => { ?ls x:description ?str3 } .
+
+
+# (collect all "x:description"s of formula terms and use to describe formula itself)
+{   ?value x:term ?form .
+	?form log:rawType log:Formula .
+
+    ( ?td
+    {
+        ?form e:graphMember ?m .
+		?m log:includes { ?s ?p ?o } .
+	
+        ?s!log:localN3String x:description ?sd .
+        ?p!log:localN3String x:description ?pd .
+        ?o!log:localN3String x:description ?od .
+                
+        ( "<span class='triple'><span class='subject'>" ?sd "</span> <span class='predicate'>" ?pd "</span> <span class='object'>" ?od "</span> .</span>" )
+        	string:concatenation ?td .
+
+    } ?strs ) log:collectAllIn _:x .
+    
+    ?form graph:length ?strs!list:length .
+    
+    ( ?strs " " ) string:join ?str2 .
+    ( "{ " ?str2 " }" ) string:concatenation ?str3 .
+
+	?form log:localN3String ?fs
+
+} => { ?fs x:description ?str3 } .
+
+
+# finalize
+
+# (using "x:description"s of terms, generate strings for "r:gives"s)
+{	?x!rdf:type list:in ( r:Extraction r:Inference r:Fact ) .
+    ?x r:gives ?value .
+    ?value e:labelvars ?valuel .
+
+    ( ?str
+    {	?valuel e:graphMember ?m .
+        ?m log:includes { ?s ?p ?o } .
+         
+        ?s!log:localN3String x:description ?sd . 
+        ?p!log:localN3String x:description ?pd .
+        ?o!log:localN3String x:description ?od .
+        
+        ( "<span class='triple'><span class='subject'>" ?sd "</span> <span class='predicate'>" ?pd "</span> <span class='object'>" ?od "</span> .</span>" ) 
+        	string:concatenation ?str .
+
+    } ?strs ) log:collectAllIn _:x .
+    
+    ?strs!list:length math:equalTo ?value!graph:length .
+    
+    ( ?strs " " ) string:join ?str2 .
+    
+} => {	?x x:conclusionStr ?str2 } .
+
+
+# (describe inference nodes in some more detail)
+{	?x a x:InferenceNode ; 
+		r:rule ?extraction .
+	
+	?extraction x:conclusionStr ?ruleStr .
+	 
+	?extraction!r:because!r:source log:uri ?source .
+	
+	( ?assign
+	{	?x r:binding ?binding . ?binding!r:variable n3:uri ?var . ?binding!r:boundTo n3:uri ?uri .
+		( ?uri ".*?#(.*)" ) string:scrape ?ln . ( ":" ?ln ) string:concatenation ?ln2 .
+		( ?var ".*#(.*)" ) string:scrape ?var2 .
+		( "<div class='assign'><span class='var'>var:" ?var2 "</span> = <span class='val uri'>" ?ln2 "</span></div>" ) 
+			string:concatenation ?assign .
+		
+	} ?uriAssigns) log:collectAllIn _:x .
+	
+	( ?assign
+	{	?x r:binding ?binding . ?binding!r:variable n3:uri ?var . 
+		?binding r:boundTo ?lit . ?lit log:rawType log:Literal . ( "\"" ?lit "\"" ) string:concatenation ?lit2 .
+		( ?var ".*#(.*)" ) string:scrape ?var2 .
+		( "<div class='assign'><span class='var'>var:" ?var2 "</span> = <span class='val lit'>" ?lit2 "</span></div>" ) 
+			string:concatenation ?assign .
+			
+	} ?litAssigns) log:collectAllIn _:x .
+	
+	( ?uriAssigns ?litAssigns ) list:append ?assigns .
+	?assigns e:sort ?assigns2 .
+	
+	?assigns2 string:concatenation ?bindingStr .
+	
+} => { ?x x:ruleStr ?ruleStr ; x:sourceStr ?source ; x:bindingStr ?bindingStr } .
+
+
+# auxiliary
+
+{	?inf a x:InferenceNode 
+		
+} <= { ?inf a r:Inference .
+	_:x log:notIncludes { ?x r:component ?inf } 
+} .
+
+
+{	?inf a x:RootNode
+
+} <= { 
+	?inf a x:InferenceNode .
+	
+	( ?x { ?x a x:InferenceNode . ?x!r:evidence list:member ?inf } ?xs ) log:collectAllIn _:x .
+	?xs!list:length math:equalTo 0
+} .
