@@ -1,0 +1,98 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix DMTO: <https://bioportal.bioontology.org/ontologies/DMTO.owl#> .
+@prefix DTO: <https://bioportal.bioontology.org/ontologies/DTO.owl#> .
+@prefix DDO: <http://purl.obolibrary.org/obo/DDO.owl#> .
+@prefix obo: <http://purl.obolibrary.org/obo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cg: <http://niche.cs.dal.ca/codegen.owl#> .
+@prefix : <http://niche.cs.dal.ca/codegen.owl#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@base <https://bioportal.bioontology.org/ontologies/DMTO.owl> .
+
+:patient0 a DMTO:DMTO_0000021 ; # type patient
+    DMTO:DMTO_0001667 :patient0_profile . # has_patient_profile
+
+:patient0_profile
+
+    DDO:DDO_0000238 [ # has_physical_examination
+        a DDO:DDO_0000230 ; # type, BMI
+        DDO:DDO_0000134 37 # has_quantitative_value
+    ] ;
+
+    DDO:DDO_0000238 [ # has_physical_examination
+        a DDO:DDO_0000233 # type, history of prediabetes
+    ] ;
+
+    DDO:DDO_0000139 [ # has_demographic
+        a DDO:DDO_0000125 ; # type, age
+        DDO:DDO_0000134 38 # has_quantitative_value
+    ] ;
+
+    DDO:DDO_0000311 [ # has_lab_test
+        a DDO:DDO_0000244 ; # type, plasma fasting glucose 
+        DDO:DDO_0000134 115 # has_quantitative_value
+    ] ;
+
+    DDO:DDO_0000311 [ # has_lab_test
+        a DDO:DDO_0000243 ; # type, Hemoglobin A1c level
+        DDO:DDO_0000134 8 # has_quantitative_value
+    ] ;
+    
+    DMTO:DMTO_0001671 :patient0_plan . # has_treatment_plan
+
+{   ?patient a DMTO:DMTO_0000021 ; # type patient
+        DMTO:DMTO_0001667 ?profile . # has_patient_profile
+    ?profile DDO:DDO_0000238 ?exam . # has_physical_examination
+
+    ?exam a DDO:DDO_0000230 ; # type BMI
+        DDO:DDO_0000134 ?value . # has_quantitative_value
+    ?value math:notLessThan 30 .
+
+} => {
+    ?profile DDO:DDO_0000139 [ # has_demographic
+		a DTO:DTO:0002079 ; # type obese class I
+		DDO:DDO_0000134 0
+    ]
+
+} ; cg:loadParam ?patient .
+
+
+{   ?patient a DMTO:DMTO_0000021 ; # type patient
+        DMTO:DMTO_0001667 ?profile . # has_patient_profile
+    ?profile DDO:DDO_0000238 ?predb_exam . # has_physical_examination
+    ?predb_exam a DDO:DDO_0000233 . # type history of prediabetes
+
+    ?profile DDO:DDO_0000139 ?age_demo . # has_demographic
+    ?age_demo a DDO:DDO_0000125 ; # type age
+        DDO:DDO_0000134 ?age_value . # has_quantitative_value
+    ?age_value math:notLessThan 25 ; math:notGreaterThan 59 .
+    
+    ?profile DDO:DDO_0000139 ?obese_demo . # has_demographic
+    ?obese_demo a DTO:DTO:0002079 . # type obese class I
+
+    ?profile DDO:DDO_0000311 ?pfg_test . # has_lab_test
+    ?pfg_test a DDO:DDO_0000244 ; # plasma fasting glucose 
+        DDO:DDO_0000134 ?pfg_value . # has_quantitative_value
+    ?pfg_value math:notLessThan 110 .
+
+    ?profile DDO:DDO_0000311 ?a1c_test . # has_lab_test
+    ?a1c_test a DDO:DDO_0000243 ; # Hemoglobin A1c level
+        DDO:DDO_0000134 ?a1c_value . # has_quantitative_value
+    ?a1c_value math:notLessThan 6 .
+
+    ?profile DMTO:DMTO_0001671 ?plan . # has_treatment_plan
+
+} => {
+    ?plan DMTO:DMTO_0001701 [ # has_part
+        a DTO:DTO:0001980 ; # type monotherapy plan (drug subplan)
+        DMTO:DMTO_0001713 DMTO:DMTO_0000923 # has_drug_participant, metformin
+    ]
+
+} ; cg:loadParam ?patient ;
+    cg:event :NewTreatmentSubPlan .

@@ -58,15 +58,7 @@
 	
 	?inf :output ?html .
 	
-	( "<html>"
-		"<head>"
-			"<link rel='stylesheet' href='lib/explain.css' />"
-		"</head>"
-		"<body onload='loaded()'>"
-			"<ul>" ?html "</ul>"
-			"<script type='text/javascript' src='lib/explain.js'></script>"
-		"</body>"
-	"</html>"
+	(	"<ul>" ?html "</ul>"
 	
 	) string:concatenation ?doc .
 

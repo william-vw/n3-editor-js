@@ -1,0 +1,76 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix DMTO: <https://bioportal.bioontology.org/ontologies/DMTO.owl#> .
+@prefix DTO: <https://bioportal.bioontology.org/ontologies/DTO.owl#> .
+@prefix DDO: <http://purl.obolibrary.org/obo/DDO.owl#> .
+@prefix obo: <http://purl.obolibrary.org/obo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cg: <http://niche.cs.dal.ca/codegen.owl#> .
+@prefix : <http://niche.cs.dal.ca/codegen.owl#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@base <https://bioportal.bioontology.org/ontologies/DMTO.owl> .
+
+
+:sys0 a DDO:DDO_0000239 ; # type systolic blood pressure
+    DDO:DDO_0000134 150 . # has_quantitative_value
+    
+:dias a DDO:DDO_0000241 ; # type diastolic blood pressure
+    DDO:DDO_0000134 92 . # has_quantitative_value
+
+:patient0 a DMTO:DMTO_0000021 ; # type patient
+    DMTO:DMTO_0001667 [ # has_patient_profile
+        DMTO:DMTO_0001671 :patient0_plan # has_treatment_plan
+    ] .
+
+
+
+{   ?sys a DDO:DDO_0000239 . # type systolic blood pressure
+    ?sys!DDO:DDO_0000134 math:greaterThan 120 . # has_quantitative_value
+    
+    ?dias a DDO:DDO_0000241 . # type diastolic blood pressure
+    ?dias!DDO:DDO_0000134 math:greaterThan 80 . # has_quantitative_value
+
+    ?patient a DMTO:DMTO_0000021 . # type patient
+    ?patient!DMTO:DMTO_0001667 DMTO:DMTO_0001671 ?plan . # has_patient_profile, has_treatment_plan
+
+} => {
+    ?plan DMTO:DMTO_0001701 [ # has_part
+        a DMTO:DMTO_0001712 ; # type lifestyle_subplan    
+        rdfs:label """weight loss if indicated, 
+            a Dietary Approaches to Stop Hypertension (DASH)-style eating pattern, 
+            including reducing sodium and increasing potassium intake, moderation of alcohol intake, 
+            and increased physical activity."""
+    ]
+
+} ; cg:functionParam ?sys , ?dias ;
+    cg:loadParam ?patient ;
+    cg:event :NewTreatmentSubPlan .
+
+
+{   ?sys a DDO:DDO_0000239 . # type systolic blood pressure
+    ?sys!DDO:DDO_0000134 math:greaterThan 140 . # has_quantitative_value
+
+    ?dias a DDO:DDO_0000241 . # type diastolic blood pressure
+    ?dias!DDO:DDO_0000134 math:greaterThan 80 . # has_quantitative_value
+
+    ?patient a DMTO:DMTO_0000021 . # type patient
+    ?patient!DMTO:DMTO_0001667 DMTO:DMTO_0001671 ?plan . # has_patient_profile, has_treatment_plan
+
+} => {
+    ?plan DMTO:DMTO_0001701 [ # has_part
+        a DMTO:DMTO_0001710 ; # type drug subplan    
+        rdfs:label """in addition to lifestyle therapy, 
+        have prompt initiation and timely titration of pharmacologic therapy 
+        to achieve blood pressure goals"""
+    ]
+
+} ; cg:functionParam ?sys , ?dias ;
+    cg:loadParam ?patient ;
+    cg:event :NewTreatmentSubPlan .
+

@@ -1,10 +1,10 @@
-function initialize() {
+function initExplanation() {
 	const links = document.getElementsByClassName('showHideRule');
 	for (var link of links)
-		link.addEventListener('click', clicked);
+		link.addEventListener('click', showHideClicked);
 }
 
-function clicked(e) {
+function showHideClicked(e) {
 	const link = e.target;
 	const info = link.nextSibling;
 
@@ -12,11 +12,9 @@ function clicked(e) {
 	if (info.style.display != "block") {
 		info.style.display = "block";
 		link.innerHTML = "(hide rule)"
+
 	} else {
 		info.style.display = "none";
 		link.innerHTML = "(show rule)"
 	}
 }
-
-// assumes this script is loaded at the end of the HTML code
-initialize()

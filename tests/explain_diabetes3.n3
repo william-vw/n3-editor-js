@@ -1,0 +1,90 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix DMTO: <https://bioportal.bioontology.org/ontologies/DMTO.owl#> .
+@prefix DTO: <https://bioportal.bioontology.org/ontologies/DTO.owl#> .
+@prefix DDO: <http://purl.obolibrary.org/obo/DDO.owl#> .
+@prefix obo: <http://purl.obolibrary.org/obo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cg: <http://niche.cs.dal.ca/codegen.owl#> .
+@prefix : <http://niche.cs.dal.ca/codegen.owl#> .
+@prefix : <https://bioportal.bioontology.org/ontologies/DMTO.owl#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@base <https://bioportal.bioontology.org/ontologies/DMTO.owl> .
+
+:patient0 a DMTO:DMTO_0000021 ; # type patient
+    DMTO:DMTO_0001667 :patient0_profile . # has_patient_profile
+        
+:patient0_profile 
+    DDO:DDO_0000238 [ # has_physical_examination
+        a DDO:DDO_0000230 ; # type BMI
+            DDO:DDO_0000134 23 # has_quantitative_value
+        ] ;
+        
+    DDO:DDO_0000140 DTO:DTO:0001939 . # has_ethnicity, asian american
+        # DTO:DTO:0001936 # african american
+
+{   ?patient a DMTO:DMTO_0000021 ; # type patient
+        DMTO:DMTO_0001667 ?profile . # has_patient_profile
+
+    ?profile DDO:DDO_0000140 ?ethnicity . # has_ethnicity
+    ?ethnicity log:notEqualTo DTO:DTO:0001939 . # asian american
+   
+    ?profile DDO:DDO_0000238 ?exam . # has_physical_examination
+    ?exam a DDO:DDO_0000230 ; # type BMI
+        DDO:DDO_0000134 ?value . # has_quantitative_value
+    ?value math:notLessThan 25 .
+
+} => {
+    ?profile DDO:DDO_0000139 [ # has_demographic
+        a DTO:DTO:0002078 # type overweight
+    ]
+
+} ; cg:loadParam ?patient .
+
+
+{   ?patient a DMTO:DMTO_0000021 ; # type patient
+        DMTO:DMTO_0001667 ?profile . # has_patient_profile
+
+    ?profile DDO:DDO_0000140 DTO:DTO:0001939 . # has_ethnicity, asian american
+   
+    ?profile DDO:DDO_0000238 ?exam . # has_physical_examination
+    ?exam a DDO:DDO_0000230 ; # type BMI
+        DDO:DDO_0000134 ?value . # has_quantitative_value
+    ?value math:notLessThan 23 .
+
+} => {
+    ?profile DDO:DDO_0000139 [ # has_demographic
+        a DTO:DTO:0002078 # type overweight
+    ]
+
+} ; cg:loadParam ?patient .
+
+
+{   ?patient a DMTO:DMTO_0000021 ; # type patient
+        DMTO:DMTO_0001667 ?profile . # has_patient_profile
+    ?profile DDO:DDO_0000140 ?ethnicity . # has_ethnicity
+    # african american, latino, native american, asian american, pacific islander
+    ?ethnicity list:in ( DTO:DTO:0001936 DTO:DTO:0001937 DTO:DTO:0001938 DTO:DTO:0001939 DTO:DTO:0001940 ) 
+} => {
+     ?profile DDO:DDO_0000140 DTO:DTO:0001935 . # has_ethnicity, high risk ethnicity
+
+} ; cg:loadParam ?patient .
+
+
+{   ?patient a DMTO:DMTO_0000021 ; # type patient
+        DMTO:DMTO_0001667 ?profile . # has_patient_profile
+    ?profile!DDO:DDO_0000139 a DTO:DTO:0002078 . # has_demographic, type overweight
+    ?profile DDO:DDO_0000140 DTO:DTO:0001935 . # has_ethnicity, high risk ethnicity
+
+} => {
+    ?profile DMTO:recommend_test [ 
+    	a DMTO:diabetes_screening 
+    ]
+
+} ; cg:loadParam ?patient ; 
+    cg:event :RecommendDiabetesScreening .

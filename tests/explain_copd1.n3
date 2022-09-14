@@ -1,0 +1,160 @@
+@prefix : <http://wvw.org/copd#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix pml: <http://provenanceweb.org/ns/pml#> . 
+@prefix diary: <http://wvw.org/diary#> .
+
+:patientA 
+	:hasPhlemAmountValue 4 ;
+	:hasColoredPhlem false ;
+	:hasActivityExertionValue 3 ;
+	:hasCoughValue 4 ;
+	:has02SaturationValue 86 ;
+	:hasFeverValue 36 .
+
+{
+	?p :hasPhlemAmount :Moderate .
+} => {
+	?p :isStratified :YellowZone .
+} .
+
+{
+	?p :hasColoredPhlem true .
+} => {
+	?p :isStratified :YellowZone .
+} .
+
+{
+	?p :hasSwollenAnkle true .
+} => {
+	?p :isStratified :YellowZone .
+} .
+
+{
+	?p :hasActivityExertion :Moderate .
+} => {
+	?p :isStratified :YellowZone .
+} .
+
+{
+	?p :hasCyanosis true .
+} => {
+	?p :isStratified :RedZone .
+} .
+
+{
+	?p :hasChestPain true .
+} => {
+	?p :isStratified :RedZone .
+} .
+
+{
+	?p :hasActivityExertion :Severe .
+} => {
+	?p :isStratified :RedZone .
+} .
+
+{
+	?p :hasCough :Severe .
+} => {
+	?p :isStratified :RedZone .
+} .
+
+{
+	?p :hasLow02Saturation true .
+} => {
+	?p :isStratified :RedZone .
+} .
+
+{
+	?p :hasFever :Severe .
+} => {
+	?p :isStratified :RedZone .
+} .
+
+{
+	?p :hasConfusion true .
+} => {
+	?p :isStratified :RedZone .
+} .
+
+{
+	?p :hasPhlemAmountValue ?v . ?v math:greaterThan 5 . ?v math:lessThan 8 .
+} => {
+	?p :hasPhlemAmount :Moderate .
+} .
+
+{
+	?p :hasPhlemAmountValue ?v . ?v math:notLessThan 8 .
+} => {
+	?p :hasPhlemAmount :Severe .
+} .
+
+{
+	?p :hasActivityExertionValue ?v . ?v math:greaterThan 5 . ?v math:lessThan 8 .
+} => {
+	?p :hasActivityExertion :Moderate .
+} .
+
+{
+	?p :hasActivityExertionValue ?v . ?v math:notLessThan 8 .
+} => {
+	?p :hasActivityExertion :Severe .
+} .
+
+{
+	?p :hasCoughValue ?v . ?v math:greaterThan 5 . ?v math:lessThan 8 .
+} => {
+	?p :hasCough :Moderate .
+} .
+
+{
+	?p :hasCoughValue ?v . ?v math:notLessThan 8 .
+} => {
+	?p :hasCough :Severe .
+} .
+
+{
+	?p :has02SaturationValue ?v . ?v math:lessThan 88 .
+} => {
+	?p :hasLow02Saturation true .
+} .
+
+{
+	?p :hasFeverValue ?v . ?v math:greaterThan 37 . ?v math:lessThan 39.5 .
+} => {
+	?p :hasFever :Moderate .
+} .
+
+{
+	?p :hasFeverValue ?v . ?v math:notLessThan 39.5 .
+} => {
+	?p :hasFever :Severe .
+} .
+
+{
+	?env :hasHumidityValue ?v . ?v math:greaterThan 50 .
+} => {
+	?env :hasHighHumidity true . 
+} .
+
+{
+	?env :hasHighHumidity true .
+} => {
+	?env :recommendation :avoidGoingOutside . 
+} .
+
+#{
+#	?env :hasSuddenTemperatureChanges true .
+#} => {
+#	?env :recommendation :avoidGoingOutside . 
+#} .
+
+#{
+#	?env :hasAirPollution true .
+#} => {
+#	?env :recommendation :avoidGoingOutside . 
+#} .
+
