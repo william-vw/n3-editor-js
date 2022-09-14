@@ -54,12 +54,12 @@ app.post('/n3', (request, response) => {
 
 	const data = request.body
 	// console.log("data:", data)
-	console.log("task:", data.task, "system:", data.system);
+	console.log("task:", data.task, ", ", "system:", data.system);
 
 	function ctu(ret) {
 		// console.log("ret:", ret)
 		if (ret.error) {
-			console.log(ret.error)
+			console.log("error", ret.error)
 		}
 		response.send(ret)
 	}
@@ -126,9 +126,10 @@ function doExplaining(data, ctu) {
 	tmp.save(data.formula, (dataFile) => {
 
 		// use eye to generate proof given input n3 file
-		eye.exec('proof', dataFile, (proof) => {
+		eye.exec('proof', dataFile, (proofObject) => {
 			tmp.del(dataFile)
-
+			
+			const proof = proofObject.success;
 			tmp.save(proof, (proofFile) => {
 				
 				// use eye or jen3 to explain proof

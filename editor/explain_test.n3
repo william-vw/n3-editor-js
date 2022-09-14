@@ -1,0 +1,82 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix DMTO: <https://bioportal.bioontology.org/ontologies/DMTO.owl#> .
+@prefix DTO: <https://bioportal.bioontology.org/ontologies/DTO.owl#> .
+@prefix DDO: <http://purl.obolibrary.org/obo/DDO.owl#> .
+@prefix obo: <http://purl.obolibrary.org/obo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cg: <http://niche.cs.dal.ca/codegen.owl#> .
+@prefix : <http://niche.cs.dal.ca/codegen.owl#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@base <https://bioportal.bioontology.org/ontologies/DMTO.owl> .
+
+
+:exam0 a DDO:DDO_0000230 ; # type BMI
+    DDO:DDO_0000134 27 . # has_quantitative_value
+
+:patient0 a DMTO:DMTO_0000021 ; # type patient
+    DMTO:DMTO_0001667 :patient0_profile . # has_patient_profile
+        
+:patient0_profile 
+    DDO:DDO_0000114 [ # has_diagnosis
+        DMTO:DMTO_0001673 [ # has_diabetes_type 
+            a DDO:DDO_0003905 # type 2 diabetes mellitus
+        ]
+    ] ;
+    
+    DMTO:DMTO_0001671 :patient0_plan . # has_treatment_plan
+    
+
+{   ?exam a DDO:DDO_0000230 ; # type BMI
+        DDO:DDO_0000134 ?value . # has_quantitative_value
+    ?value math:notLessThan 25 .
+
+    ?patient a DMTO:DMTO_0000021 ; # type patient
+        DMTO:DMTO_0001667 ?profile . # has_patient_profile
+
+} => {
+    ?profile DDO:DDO_0000139 [ 
+    	a DTO:DTO:0002078
+    ]
+} .
+
+
+DDO:DDO_0000230 rdfs:label "BMI" .
+DDO:DDO_0000134 rdfs:label "has_quantitative_value" .
+DMTO:DMTO_0000021 rdfs:label "Patient" .
+DMTO:DMTO_0001667 rdfs:label "has_patient_profile" .
+DDO:DDO_0000139 rdfs:label "has_demographic" .
+DTO:DTO:0002078 rdfs:label "Overweight" .
+DDO:DDO_0000114 rdfs:label "has_diagnosis" .
+DMTO:DMTO_0001673 rdfs:label "has_diabetes_type" . 
+DDO:DDO_0003905 rdfs:label "Type 2 diabetes mellitus" .
+DDO:DDO_0000139 rdfs:label "has_demographic" .
+DMTO:DMTO_0001671 rdfs:label "has_treatment_plan" .
+DMTO:DMTO_0001701 rdfs:label "has_part" .
+DMTO:DMTO_0001712 rdfs:label "Lifestyle_subplan" .
+DDO:DDO_0000239 rdfs:label "Systolic blood pressure" .
+DDO:DDO_0000134 rdfs:label "has_quantitative_value" .
+DDO:DDO_0000241 rdfs:label "Diastolic blood pressure" .
+DMTO:DMTO_0001710 rdfs:label "Drug subplan" .
+DDO:DDO_0000140 rdfs:label "has_ethnicity" .
+DTO:DTO:0001939 rdfs:label "asian american" .
+DDO:DDO_0000238 rdfs:label "has_physical_examination" .
+DTO:DTO:0001936 rdfs:label "african american" .
+DTO:DTO:0001937 rdfs:label "latino" .
+DTO:DTO:0001938 rdfs:label "native american" .
+DTO:DTO:0001940 rdfs:label "pacific islander" .
+DTO:DTO:0001935 rdfs:label "high risk ethnicity" .
+DTO:DTO:0002079 rdfs:label "Obese class I" .
+DDO:DDO_0000233 rdfs:label "History of prediabetes" .
+DDO:DDO_0000125 rdfs:label "Age" .
+DDO:DDO_0000311 rdfs:label "has_lab_test" .
+DDO:DDO_0000244 rdfs:label "Plasma fasting glucose" .
+DDO:DDO_0000243 rdfs:label "Hemoglobin A1c level" .
+DTO:DTO:0001980 rdfs:label "Monotherapy plan" .
+DMTO:DMTO_0001713 rdfs:label "has_drug_participant" . 
+DMTO:DMTO_0000923 rdfs:label "metformin" .

@@ -21,10 +21,12 @@
 	
 	( "<html>"
 		"<head>"
-			"<link rel='stylesheet' href='lib/style.css' />"
-			"<script type='text/javascript' src='lib/util.js'></script>"
+			"<link rel='stylesheet' href='lib/explain.css' />"
 		"</head>"
-		"<body onload='loaded()'><ul>" ?lis "</ul></body>"
+		"<body onload='loaded()'>"
+			"<ul>" ?lis "</ul>"
+			"<script type='text/javascript' src='lib/explain.js'></script>"
+		"</body>"
 	"</html>"
 		
 	) string:concatenation ?doc .
