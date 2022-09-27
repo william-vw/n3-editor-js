@@ -24,7 +24,8 @@ exports.reasoners = {
 exports.db = {
 	user: 'root',
 	// pwd: '12345',
-	pwd: 'changeit'
+	// pwd: 'changeit'
+	pwd: ''
 }
 
 // exports.path = "/home/woensel/projects/n3-editor-js"
