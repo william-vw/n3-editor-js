@@ -89,8 +89,11 @@ app.post('/n3', (request, response) => {
 	}
 })
 
-app.listen(config.http.port)
-console.log(`Listening at http://${config.http.hostname}:${config.http.port}`)
+// heroku
+const port = process.env.PORT;
+//const port = config.http.port;
+app.listen(port)
+console.log(`Listening at http://${config.http.hostname}:${port}`)
 
 function doReasoning(data, ctu) {
 	tmp.save(data.formula, (file) => {
