@@ -1,8 +1,9 @@
 exports.http = {
 	// IMPORTANT also change in index.html
 	// hostname: 'ppr.cs.dal.ca', // ppr
-	hostname: '127.0.0.1', // local
+	// hostname: '127.0.0.1', // local
 	// port: 3002 // ppr, local
+	hostname: 'n3-editor.herokuapp.com', // heroku
 	port: process.env.PORT // heroku
 }
 
