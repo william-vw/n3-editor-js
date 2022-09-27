@@ -93,6 +93,7 @@ app.post('/n3', (request, response) => {
 const port = config.http.port;
 app.listen(port)
 console.log(`Listening at http://${config.http.hostname}:${port}`)
+console.log(process.env.HEROKU_APP_NAME);
 
 function doReasoning(data, ctu) {
 	tmp.save(data.formula, (file) => {
