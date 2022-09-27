@@ -1,0 +1,7 @@
+#!/bin/bash
+for dir in */
+do
+    pushd "${dir}"
+    ./test --quiet --skolem-genid 3917894951695475063
+    popd
+done

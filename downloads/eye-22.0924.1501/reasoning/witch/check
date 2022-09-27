@@ -1,0 +1,2 @@
+#!/bin/bash
+proofcheck --report witch-proof.n3 | tee witch-check.txt

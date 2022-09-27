@@ -1,0 +1,3 @@
+@prefix : <http://josd.github.io/eye/reasoning#>.
+
+{?S :i3960 ?A. ?A :i3960 ?B. ?B :i3960 ?C. ?C :i3960 ?O} => {?S :j ?O}.

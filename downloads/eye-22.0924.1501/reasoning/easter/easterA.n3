@@ -1,0 +1,39 @@
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>.
+@prefix : <http://www.agfa.com/w3c/euler/easterP#>.
+
+(4 4) :easterFor 2021 .
+(17 4) :easterFor 2022 .
+(9 4) :easterFor 2023 .
+(31 3) :easterFor 2024 .
+(20 4) :easterFor 2025 .
+(5 4) :easterFor 2026 .
+(28 3) :easterFor 2027 .
+(16 4) :easterFor 2028 .
+(1 4) :easterFor 2029 .
+(21 4) :easterFor 2030 .
+(13 4) :easterFor 2031 .
+(28 3) :easterFor 2032 .
+(17 4) :easterFor 2033 .
+(9 4) :easterFor 2034 .
+(25 3) :easterFor 2035 .
+(13 4) :easterFor 2036 .
+(5 4) :easterFor 2037 .
+(25 4) :easterFor 2038 .
+(10 4) :easterFor 2039 .
+(1 4) :easterFor 2040 .
+(21 4) :easterFor 2041 .
+(6 4) :easterFor 2042 .
+(29 3) :easterFor 2043 .
+(17 4) :easterFor 2044 .
+(9 4) :easterFor 2045 .
+(25 3) :easterFor 2046 .
+(14 4) :easterFor 2047 .
+(5 4) :easterFor 2048 .
+(18 4) :easterFor 2049 .
+(10 4) :easterFor 2050 .
+

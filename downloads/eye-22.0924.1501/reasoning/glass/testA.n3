@@ -1,0 +1,12 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix : <http://example.org/try#>.
+
+:test1 a :PASS.
+:test2 a :PASS.
+:test3 a :PASS.
+:test4 a :PASS.
+:test5 a :PASS.
+:test6 a :PASS.
+:test7 a :PASS.
+:test8 a :PASS.
+

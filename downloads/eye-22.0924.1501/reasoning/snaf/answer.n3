@@ -1,0 +1,7 @@
+@prefix : <http://example.org/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+
+:Alice :loves :Bob.
+:Bob a :Person.
+:Alice :hates :Nobody.
+
