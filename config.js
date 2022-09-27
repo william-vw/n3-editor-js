@@ -9,14 +9,17 @@ exports.http = {
 
 exports.reasoners = {
 	eye: {
-		exec: "/opt/eye/bin/eye.sh", // ppr
+		// exec: "/opt/eye/bin/eye.sh", // ppr
 		// folder: "/Users/wvw/git/n3/n3-editor-js/lib/eye" // local
-		folder: "/app/lib/eye"
+		exec: "/app/opt/eye/bin/eye", // heroku
+		folder: "/app/lib/eye" // heroku
 	},
 	cwm: {
 		pythonCmd: "python", // use python2 for cwm	
-		// cwm: "/opt/cwm-1.2.1/swap/cwm.py" // ppr
-		exec: "/Users/wvw/cwm-1.2.1/swap/cwm.py" // local
+		
+		// exec: "/opt/cwm-1.2.1/swap/cwm.py" // ppr
+		// exec: "/Users/wvw/cwm-1.2.1/swap/cwm.py" // local
+		exec: "" // heroku (python2 is not available)
 	},
 	jen3: {
 		// exec: "/Users/wvw/git/n3/n3-editor-js/lib/jen3/jen3.jar", // local
