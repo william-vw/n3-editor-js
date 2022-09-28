@@ -1,0 +1,43 @@
+Heroku
+
+- install java (on non-java app): 
+https://help.heroku.com/2FSHO0RR/how-can-i-add-java-to-a-non-java-app
+
+$ cat system.properties
+java.runtime.version=17
+
+add, commit & push changes to heroku
+(git push heroku master)
+
+
+- install swipl:
+https://help.heroku.com/IYRYW6VB/how-do-i-install-additional-software-packages-that-my-application-requires
+
+$ cat Aptfile
+swipl-prolog
+
+commit & push changes to heroku
+
+
+- install eye
+$ mkdir downloads
+download latest eye release: https://github.com/josd/eye/releases
+
+$ unzip eye.zip
+
+$ downloads/eye[..]/install.sh --prefix=/Users/wvw/git/n3/n3-editor-js/opt/eye
+(will install eye in localfolder) 
+
+$ cat ~/git/n3/n3-editor-js/opt/eye/bin/eye
+#!/bin/sh
+swipl -x /Users/wvw/git/n3/n3-editor-js/opt/eye/lib/eye.pvm -- "$@"
+
+change path to "/app/opt/.." since this is the heroku location
+
+commit & push changes to heroku
+
+(each new push seems to reset any folders added via bash; so "install" it this way)
+
+
+- install cleardb
+https://devcenter.heroku.com/articles/cleardb#the-cleardb-shared-mysql-complete-tutorial
