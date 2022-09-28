@@ -1,5 +1,4 @@
 const express = require('express')
-const serveIndex = require('serve-index');
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const path = require('path')
@@ -18,8 +17,6 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/n3/tests', express.static(path.join(__dirname, 'tests')));
-app.use('/n3/tests', serveIndex(__dirname + '/tests'));
 app.use('/n3/editor', express.static(path.join(__dirname, 'editor')));
 
 app.get('/n3/editor/s*', (request, response) => {
@@ -44,6 +41,8 @@ app.get('/n3', (request, response) => {
 		<body>
 			<h1>Welcome to the N3 server!</h1>
 			<h3>Serving N3 since 2nd June 2020.</h3>
+			config:
+			<pre>${JSON.stringify(config, null, 4)}</pre>			</p>
 		</body>
 	</html>`
 
