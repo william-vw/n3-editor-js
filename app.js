@@ -89,7 +89,8 @@ app.post('/n3', (request, response) => {
 })
 
 // heroku
-const port = config.http.port;
+const port = process.env.PORT;
+//const port = config.http.port;
 app.listen(port)
 console.log(`Listening at http://${config.http.hostname}:${port}`)
 
