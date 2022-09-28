@@ -15,13 +15,11 @@ exports.reasoners = {
 		folder: "/app/lib/eye" // heroku
 	},
 	cwm: {
-		// (use python2 for cwm)
-		pythonCmd: "python", // local, ppr
+		pythonCmd: "python", // use python2 for cwm	
+		
 		// exec: "/opt/cwm-1.2.1/swap/cwm.py" // ppr
 		// exec: "/Users/wvw/cwm-1.2.1/swap/cwm.py" // local
-		
-		pythonCmd: "", // heroku (python2 is not available)
-		exec: "" // heroku
+		exec: "" // heroku (python2 is not available)
 	},
 	jen3: {
 		// exec: "/Users/wvw/git/n3/n3-editor-js/lib/jen3/jen3.jar", // local
