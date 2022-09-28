@@ -1,2 +1,2 @@
 #!/bin/sh
-swipl -x /app/opt/eye/lib/eye.pvm -- "$@"
+swipl -x /Users/wvw/git/n3/n3-editor-js/opt/eye/lib/eye.pvm -- "$@"
