@@ -41,4 +41,3 @@ commit & push changes to heroku
 
 - install cleardb
 https://devcenter.heroku.com/articles/cleardb#the-cleardb-shared-mysql-complete-tutorial
-https://www.bezkoder.com/deploy-node-js-app-heroku-cleardb-mysql/

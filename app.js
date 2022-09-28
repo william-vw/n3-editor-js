@@ -8,8 +8,7 @@ const tmp = require('./lib/tmp.js')
 const eye = require('./lib/eye/eye.js')
 const cwm = require('./lib/cwm/cwm.js')
 const jen3 = require('./lib/jen3/jen3.js')
-// const { generateLink, retrieveLink } = require('./lib/gen_link.js') // local, ppr
-const { generateLink, retrieveLink } = require('./lib/gen_link_heroku.js') // heroku
+const { generateLink, retrieveLink } = require('./lib/gen_link.js')
 const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 
 const app = express()
