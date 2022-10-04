@@ -129,6 +129,11 @@ function doExplaining(data, ctu) {
 		eye.exec('proof', dataFile, (proofObject) => {
 			tmp.del(dataFile)
 			
+			if (proofObject.error) {
+				ctu(proofObject)
+				return
+			}
+
 			const proof = proofObject.success;
 			tmp.save(proof, (proofFile) => {
 				
