@@ -12,7 +12,7 @@ exports.http = {
 exports.reasoners = {
 	eye: {
 		// - ppr
-		exec: "/home/woensel/projects/n3-editor-js/opt/eye/bin/eye.sh",
+		exec: "/home/woensel/projects/n3-editor-js/opt/eye/bin/eye",
 		folder: "/home/woensel/projects/n3-editor-js/lib/eye"
 		// - local
 		// exec: "/Users/wvw/git/n3/n3-editor-js/opt/eye/bin/eye",
