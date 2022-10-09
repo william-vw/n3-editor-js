@@ -28,6 +28,7 @@ AstPrinter.prototype.reportContextSensitivity =
 }
 
 AstPrinter.prototype.newAstLine = function(line) {
+	line = line.replaceAll(" ", "&nbsp;").replaceAll("\n", "<br />")
 	this.onAstLine(line)
 }
 

@@ -119,24 +119,25 @@
 	}
 	
 	function ast() {
-		$("#dc, #error").hide()		
-		$("#ast_output").text("")
+		$(".output").hide()
+		$("#ast_out > div").text("")
 		
 		const format = getCurrentFormat();
 		if (format.type == 'none') {
-			$("#ast").hide()
+			$("#ast_out").hide()
 			
-			$("#error").show()
-			$("#error > #output").html("No format selected")
+			$("#error_out").show()
+			$("#error_out > div").html("No format selected")
 			
 		} else {
-			$("#ast").show()
+			$("#ast_out").show()
 			format.lib.ast(getFormula(), 
 				(astLine) => {
-					$("#ast_output").append(astLine)
+					$("#ast_out > div").append(astLine)
 				
 				}, (error) => {
-					$("#error").show().find("#output").html(error)
+					$("#error_out").show()
+					$("#error_out > div").html(error)
 				})
 			}
 	}

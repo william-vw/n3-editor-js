@@ -51,7 +51,7 @@ exports.db = {
 	db: "n3_links",
 	user: 'root', // local, ppr
 	// pwd: '12345', // (?)
-	pwd: 'changeit' // ppr (?)
+	pwd: 'changeit' // ppr
 	// pwd: '' // local
 	// - heroku
 	// mysql://b4837d17c012f1:e023e78d@us-cdbr-east-06.cleardb.net/heroku_e750abd160bbcaf?reconnect=true
