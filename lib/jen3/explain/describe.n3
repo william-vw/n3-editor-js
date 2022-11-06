@@ -13,11 +13,29 @@
 @prefix : <http://wvw.org/xai#> .
 
 
+# auxiliary
+
+{ 	?inf a r:Inference .
+	<> log:notIncludes { ?x r:component ?inf } 
+
+} => {	?inf a x:InferenceNode } .
+
+
+{	?inf a x:InferenceNode .
+	
+	( ?x { ?x a x:InferenceNode . ?x!r:evidence list:member ?inf } ?xs ) log:collectAllIn <> .
+	?xs!list:length math:equalTo 0
+	
+} => {	?inf a x:RootNode } .
+
+
 # divide
 # (all terms to be described are indicated as "x:term"s)
 
 # (will generate a skolemized IRI for blank nodes)
-{	?x r:gives ?value . ?value log:includes { ?s ?p ?o } .
+{	?x r:gives ?value . 
+	?x!rdf:type list:in ( x:InferenceNode r:Extraction r:Fact ) .
+	?value log:includes { ?s ?p ?o } .
 
 	( ?s ) log:skolem ?ss . ( ?p ) log:skolem ?ps . ( ?o ) log:skolem ?os .
 
@@ -236,19 +254,3 @@
 	?assigns string:concatenation ?bindingStr .
 	
 } => { ?x x:ruleStr ?ruleStr ; x:sourceStr ?source ; x:bindingStr ?bindingStr } .
-
-
-# auxiliary
-
-{ 	?inf a r:Inference .
-	<> log:notIncludes { ?x r:component ?inf } 
-
-} => {	?inf a x:InferenceNode } .
-
-
-{	?inf a x:InferenceNode .
-	
-	( ?x { ?x a x:InferenceNode . ?x!r:evidence list:member ?inf } ?xs ) log:collectAllIn <> .
-	?xs!list:length math:equalTo 0
-	
-} => {	?inf a x:RootNode } .

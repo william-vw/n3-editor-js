@@ -24,10 +24,37 @@
 # TODO
 # the above will allow keeping the "var" prefix of rule variables
 
+
+# auxiliary
+
+# (ignore "inferences" that simply list entire deductive closure; 
+# these are listed as r:component's of the main "proof")
+{	?inf a x:InferenceNode 
+		
+} <= { 
+	?inf a r:Inference .
+	_:t log:notIncludes { ?x r:component ?inf } 
+} .
+
+
+# (root is not used as r:evidence for anything else)
+{	?inf a x:RootNode
+
+} <= { 
+	?inf a x:InferenceNode .
+	
+	( ?x { ?x a x:InferenceNode . ?x!r:evidence list:member ?inf } ?xs ) log:collectAllIn _:x .
+	?xs!list:length math:equalTo 0
+} .
+
+
+
 # divide
 # (all terms to be described are indicated as "x:term"s)
 
 {   ?x r:gives ?value . # formula
+	?x!rdf:type list:in ( x:InferenceNode r:Extraction r:Fact ) .
+
 	?value e:labelvars ?valuel.
 	?valuel log:includes { ?s ?p ?o } .
 	
@@ -199,22 +226,3 @@
 	?assigns2 string:concatenation ?bindingStr .
 	
 } => { ?x x:ruleStr ?ruleStr ; x:sourceStr ?source ; x:bindingStr ?bindingStr } .
-
-
-# auxiliary
-
-{	?inf a x:InferenceNode 
-		
-} <= { ?inf a r:Inference .
-	_:x log:notIncludes { ?x r:component ?inf } 
-} .
-
-
-{	?inf a x:RootNode
-
-} <= { 
-	?inf a x:InferenceNode .
-	
-	( ?x { ?x a x:InferenceNode . ?x!r:evidence list:member ?inf } ?xs ) log:collectAllIn _:x .
-	?xs!list:length math:equalTo 0
-} .
