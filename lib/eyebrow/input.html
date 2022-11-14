@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <textarea id="n3" rows="25" cols="100"></textarea><br />
+    <button id="action">do it</button>
+
+    <div id="output"></div>
+
+    <script src="./swipl-web.js"></script>
+
+    <script>
+        let yield = null;
+
+        document.getElementById('action').addEventListener('click', (e) => {
+            const n3 = document.getElementById('n3').value;
+            Module.FS.writeFile('./input.n3', n3);
+
+            derivations('./input.n3');
+        })
+
+        class Output {
+
+            constructor() {
+                this.buffers = {
+                    stdout: [],
+                    stderr: []
+                };
+
+                this.output = document.getElementById('output');
+            }
+
+            write(to, c) {
+                if (c)
+                    this.buffers[to].push(c);
+
+                if (c == 10 || c == null)
+                    this.flush(to);
+            }
+
+            flush(to) {
+                const line = String.fromCharCode.apply(null, this.buffers[to]);
+                this.print(line, to);
+                this.buffers[to] = [];
+            }
+
+            print(line, cls) {
+                console.log(line);
+
+                // const node = document.createElement('span');
+                // node.className = cls;
+                // node.textContent = line;
+                // this.output.append(node);
+            };
+        }
+
+        var Module = {
+            noInitialRun: true,
+            arguments: [],
+            locateFile: function (file) {
+                return './' + file;
+            },
+            preRun: [() => {
+                const output = new Output();
+                Module.FS.init(undefined, (c) => output.write("stdout", c), (c) => output.write("stderr", c))
+            }]
+        };
+
+        async function retrieve(link, file) {
+            const response = await fetch(link);
+            await Module.FS.writeFile(file, await response.text());
+        }
+
+        function exec(query) {
+            yield.resume(query);
+        }
+
+        function derivations(file) {
+            exec(`main(['--n3', '${file}', '--nope', '--pass-only-new']).`);
+        }
+
+        function deduc_closure(file) {
+            exec(`main(['--n3', '${file}', '--nope', '--pass-all']).`);
+        }
+
+        SWIPL(Module).then(async (module) => {
+            await retrieve('./eye.pl', 'eye.pl');
+
+            module.prolog.call("set_prolog_flag(tty_control, true)");
+            module.prolog.call("set_prolog_flag(debug_on_error, false)");
+
+            yield = module.prolog.call("'$query_loop'", {
+                async: true,
+                module: "$toplevel"
+            });
+
+            exec("consult('./eye.pl')");
+        });
+    </script>
+</body>
+
+</html>
