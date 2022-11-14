@@ -17,6 +17,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/n3/editor', express.static(path.join(__dirname, 'editor')));
+
+// testing
 app.use('/n3/lib/eyebrow', express.static(path.join(__dirname, 'lib/eyebrow')));
 
 app.get('/n3/editor/s*', (request, response) => {

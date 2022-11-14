@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <textarea id="n3" rows="25" cols="100">
+        @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix : <http://example.org/socrates#>.
+@prefix r: <http://www.w3.org/2000/10/swap/reason#>.
+
+:Socrates a :Human {| r:source <http://josd.github.io/eye/reasoning/socrates/socrates-data.n3> |}.
+:Human rdfs:subClassOf :Mortal {| r:source <http://josd.github.io/eye/reasoning/socrates/socrates-data.n3> |}.
+
+{?A rdfs:subClassOf ?B. ?S a ?A} => {?S a ?B} {| r:source <http://josd.github.io/eye/reasoning/socrates/socrates-data.n3> |}.
+    </textarea><br />
+    <button id="action">do it</button>
+
+    <script src="./swipl-web.js"></script>
+
+    <script>
+        class Output {
+
+            constructor() {
+                this.buffers = {
+                    stdout: [],
+                    stderr: []
+                };
+
+                this.output = document.getElementById('output');
+            }
+
+            write(to, c) {
+                if (c)
+                    this.buffers[to].push(c);
+
+                // console.log(c);
+                // if (c == 10 || c == null)
+                // this.flush(to);
+            }
+
+            flushAll(callback) {
+                let stderr = this.flush("stderr");
+                if (stderr) {
+                    if (stderr.includes("**")) {
+                        let dl = stderr.lastIndexOf("**") + 2
+                        let error = stderr.substring(dl).trim()
+
+                        // console.log("error:", error)
+                        callback({ error: error });
+                        return;
+                    }
+                }
+
+                let output = this.flush("stdout");
+                let dl = output.indexOf("\n", output.indexOf("#eye"))
+                let dl2 = output.lastIndexOf("\n", output.indexOf("#ENDS") - 2)
+                output = output.substring(dl, dl2).trim()
+
+                // console.log("output:", output);
+                callback({ success: output });
+            }
+
+            flush(to) {
+                let str = String.fromCharCode.apply(null, this.buffers[to]);
+                this.buffers[to] = [];
+
+                return str;
+            }
+        }
+
+        const output = new Output();
+
+        const callback = (msg) => {
+            if (msg.error)
+                console.error("error", msg.error);
+            else
+                console.log("output", msg.success);
+        }
+
+        document.getElementById('action').addEventListener('click', (e) => {
+            const n3 = document.getElementById('n3').value;
+            Module.FS.writeFile('./input.n3', n3);
+
+            derivations('./input.n3', callback);
+        })
+
+        var Module = {
+            noInitialRun: true,
+            arguments: [],
+            locateFile: function (file) {
+                return './' + file;
+            },
+            preRun: [() => {
+                Module.FS.init(undefined, (c) => output.write("stdout", c), (c) => output.write("stderr", c))
+            }]
+        };
+
+        async function retrieve(link, file) {
+            const response = await fetch(link);
+            await Module.FS.writeFile(file, await response.text());
+        }
+
+        let yield = null;
+
+        function exec(query, cb) {
+            yield.resume(query);
+            output.flushAll(cb);
+        }
+
+        function derivations(file, cb) {
+            exec(`main(['--n3', '${file}', '--nope', '--pass-only-new']).`, cb);
+        }
+
+        function deduc_closure(file, cb) {
+            exec(`main(['--n3', '${file}', '--nope', '--pass-all']).`, cb);
+        }
+
+        SWIPL(Module).then(async (module) => {
+            module.prolog.call("set_prolog_flag(tty_control, true)");
+            module.prolog.call("set_prolog_flag(debug_on_error, false)");
+
+            yield = module.prolog.call("'$query_loop'", {
+                async: true,
+                module: "$toplevel"
+            });
+
+            await retrieve('./eye.pl', 'eye.pl');
+            exec("consult('./eye.pl')", callback);
+        });
+    </script>
+</body>
+
+</html>

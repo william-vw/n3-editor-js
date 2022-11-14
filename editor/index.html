@@ -1,405 +1,429 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>Notation3 Editor</title>
+	<meta charset="utf-8">
+	<title>Notation3 Editor</title>
 
-<script src="lib/jquery-3.5.1.min.js"></script>
-<script src="lib/shortcut.js"></script>
+	<script src="lib/jquery-3.5.1.min.js"></script>
+	<script src="lib/shortcut.js"></script>
 
-<script src="codemirror-5.54.0/lib/codemirror.js"></script>
-<link rel="stylesheet" href="codemirror-5.54.0/lib/codemirror.css">
-<link rel="stylesheet" href="codemirror-5.54.0/addon/lint/lint.css">
-<script src="codemirror-5.54.0/addon/lint/lint.js"></script>
-<script src="codemirror-5.54.0/addon/edit/matchbrackets.js"></script>
+	<script src="codemirror-5.54.0/lib/codemirror.js"></script>
+	<link rel="stylesheet" href="codemirror-5.54.0/lib/codemirror.css">
+	<link rel="stylesheet" href="codemirror-5.54.0/addon/lint/lint.css">
+	<script src="codemirror-5.54.0/addon/lint/lint.js"></script>
+	<script src="codemirror-5.54.0/addon/edit/matchbrackets.js"></script>
 
-<!-- introduces n3 namespace -->
-<script src="dist/n3Main.js"></script>
-<script src="dist/turtlestarMain.js"></script>
+	<!-- introduces n3 namespace -->
+	<script src="dist/n3Main.js"></script>
+	<script src="dist/turtlestarMain.js"></script>
 
-<script src="lib/codemirror-5.54.0/namespaces.js"></script>
-<script src="lib/codemirror-5.54.0/lint.js"></script>
-<script src="lib/codemirror-5.54.0/n3-mode.js"></script>
-<script src="lib/codemirror-5.54.0/turtlestar-mode.js"></script>
-<link rel="stylesheet" href="lib/codemirror-5.54.0/rdf.css">
+	<script src="lib/codemirror-5.54.0/namespaces.js"></script>
+	<script src="lib/codemirror-5.54.0/lint.js"></script>
+	<script src="lib/codemirror-5.54.0/n3-mode.js"></script>
+	<script src="lib/codemirror-5.54.0/turtlestar-mode.js"></script>
+	<link rel="stylesheet" href="lib/codemirror-5.54.0/rdf.css">
 
-<script src="lib/service.js" type="text/javascript"></script>
-<script src="lib/ast.js" type="text/javascript"></script>
+	<script type='module' src="lib/service.js" type="text/javascript"></script>
+	<script src="lib/ast.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="lib/default.css">
-<link rel="stylesheet" href="lib/explain.css">
-<script src="lib/explain.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="lib/default.css">
+	<link rel="stylesheet" href="lib/explain.css">
+	<script src="lib/explain.js" type="text/javascript"></script>
 
-<script>
-	const serviceUrl = "http://ppr.cs.dal.ca:3002/n3" // ppr
-	// const serviceUrl = "http://127.0.0.1:3002/n3" // local
-	// const serviceUrl = "https://n3-editor.herokuapp.com/n3"
-	const systems = [ "eye", "cwm", "jen3" ]
-	const formats = {
-		n3: { type: 'n3', label: "<u>N</u>3", lib: n3, mode: 'n3' }, 
-		turtlestar: { type: 'turtlestar', label: "<u>T</u>urtle*", lib: turtlestar, mode: 'turtlestar' }, 
-		none: { type: 'none', label: "N<u>o</u>ne" } 
-	}
-	const defaultFormat = formats.n3
-
-	var editor = null
-	function getFormula() {
-		if (editor != null)
-			return editor.getDoc().getValue()
-		else
-			return $('textarea#input').val()
-	}
-	
-	function getCurrentFormat() {
-		var format = $('input[name=format]:checked', '#formats').prop('id')
-		var format = format.substring(format.indexOf("_") + 1)
-		
-		return formats[format];
-	}
-
-	function exec() {
-		var formula = getFormula() 
-		if (formula.length == 0)
-			return
-	
-		var system = $("input[name=execute_system]:checked").val()
-		if (!system)
-			return
-		
-		var taskEl = $("input[name=reason_task]:checked");
-		var taskId = taskEl.attr('id');
-		var task = taskEl.val();
-		if (!task)
-			return;
-	
-		$(".output").hide()
-
-		// console.log(system, task);	
-		service.exec(serviceUrl, {
-			task: task, 
-			system: system, 
-			formula: formula
-			
-		}, (success) => {
-			$(`#${taskId}_out`).show()
-			$(`#${taskId}_out > div`).text(success)
-		
-		}, (error) => {
-			$("#error_out").show()
-			$("#error_out > div").html(error)
-		})
-	}
-
-	function explain() {
-		var formula = getFormula() 
-		if (formula.length == 0)
-			return
-	
-		var system = $("input[name=explain_system]:checked").val()
-		if (!system)
-			return
-	
-		$(".output").hide()
-
-		service.exec(serviceUrl, {
-			task: 'explain',
-			system: system, 
-			formula: formula
-			
-		}, (success) => {
-			$(`#expl_out`).show()
-			$(`#expl_out > div`).html(success)
-
-			initExplanation()
-		
-		}, (error) => {		
-			$("#error_out").show()
-			$("#error_out > div").html(error)
-		})
-	}
-	
-	function ast() {
-		$(".output").hide()
-		$("#ast_out > div").text("")
-		
-		const format = getCurrentFormat();
-		if (format.type == 'none') {
-			$("#ast_out").hide()
-			
-			$("#error_out").show()
-			$("#error_out > div").html("No format selected")
-			
-		} else {
-			$("#ast_out").show()
-			format.lib.ast(getFormula(), 
-				(astLine) => {
-					$("#ast_out > div").append(astLine)
-				
-				}, (error) => {
-					$("#error_out").show()
-					$("#error_out > div").html(error)
-				})
-			}
-	}
-	
-	function link() {
-		$("#error").hide()
-	
-		var formula = getFormula()
-		if (formula) {
-			var link = window.location.href.split("?")[0] + "?formula=" + encodeURIComponent(formula)
-			
-			var format = getCurrentFormat().type
-			link += `&format=${format}`
-			
-			console.log("link:", link);
-			service.link(serviceUrl, link, 
-				(turl) => {
-					console.log("turl:", turl)
-					$("#linkPlaceholder").html(": <a href='" + turl + "'>Link</a>")
-				
-				}, (error) => {
-					$("#error").show().find("#output").html(error)
-				})
+	<script>
+		const systems = ["eyebrow", "eye", "cwm", "jen3"]
+		const formats = {
+			n3: { type: 'n3', label: "<u>N</u>3", lib: n3, mode: 'n3' },
+			turtlestar: { type: 'turtlestar', label: "<u>T</u>urtle*", lib: turtlestar, mode: 'turtlestar' },
+			none: { type: 'none', label: "N<u>o</u>ne" }
 		}
-		
-		return false
-	}
+		const defaultFormat = formats.n3
 
-	// - formats
-
-	function setupFormatInput() {
-		const container = $('#formats')
-		Object.entries(formats).forEach(([key, f]) => {
-			const elId = `format_${f.type}`
-			const elLabel = f.label
-			var el = container
-				.append(
-					$(`<span><input type="radio" name="format" id="${elId}">${elLabel}</input>&nbsp;&nbsp;</span>`)
-						.change((e) => {
-							if (e.target.checked)
-								validate(f)
-						})
-				)
-		})
-	}
-
-	// https://stackoverflow.com/questions/19979741/codemirror-delete-a-editor-instance
-	
-	function validate(format, setInput) {
-		if (format.type == "none")
-			stopValidating(setInput)
-		else
-			startValidating(format, setInput)
-	}
-	
-	var alreadySuggested = []
-	
-	const onSuggestion = {
-		namespace : function(prefix, ns) {
-			if (!$("#auto-ns").prop('checked'))
-				return false
-		
-			console.log("prefix suggestion:", prefix, ":", ns)
-			if (alreadySuggested.includes(prefix)) {
-				console.log("already suggested")
-				return false
-			}
-			
-			alreadySuggested.push(prefix)
-			var insert = `@prefix ${prefix}: <${ns}> .\n`
-			
-			const content = editor.getDoc().getValue()
-			if (!content.trim().startsWith("@prefix"))
-				insert += "\n"
-			
-			editor.getDoc().replaceRange(insert, {line: 0, ch: 0})
-			
-			return true
+		var editor = null
+		function getFormula() {
+			if (editor != null)
+				return editor.getDoc().getValue()
+			else
+				return $('textarea#input').val()
 		}
-	}
 
-	function startValidating(format, setInput) {
-		if (setInput)
-			$(`#format_${format.type}`).prop('checked', true)
-		
-		if (editor != null)
-			stopValidating(false)
-		
-		// console.log("format", format);
-		editor = CodeMirror.fromTextArea($("#input").get(0), {
-			gutters : [ "CodeMirror-lint-markers" ],
-			mode : format.mode,
-			theme : "default rdf",
-			// TODO this should follow code-mirrors idiom
-			// (registering a helper) but not getting that to work
-			lint : format.lib.lint(onSuggestion),
-			matchBrackets: true
-		})
-	}
-	
-	function stopValidating(setInput) {
-		if (setInput)
-			$('#format_none').prop('checked', true)
-	
-		editor.toTextArea();
-		editor = null
-	}
-	
-	function loaded() {
-		setupFormatInput()
-		validate(defaultFormat, true)
-		
-		$(document).ajaxStart(() => {
-			$('#loading').css("display", "inline-block")
-		
-		}).ajaxStop(() => {
-			$('#loading').hide()
-		});
+		function getCurrentFormat() {
+			var format = $('input[name=format]:checked', '#formats').prop('id')
+			var format = format.substring(format.indexOf("_") + 1)
 
-		$("#execute").click(exec)
-		shortcut.add("Alt+X", exec)
-		
-		$("#explain").click(explain)
-		shortcut.add("Alt+N", explain)
+			return formats[format];
+		}
 
-		$("#show_ast").click(ast)
-		shortcut.add("Alt+A", ast)
-		
-		shortcut.add("Alt+N", () => validate(formats['n3'], true))
-		shortcut.add("Alt+T", () => validate(formats['turtlestar'], true))
-		shortcut.add("Alt+O", () => validate(formats['none'], true))
-		
-		$("#link").click(link)
-		
-		// url-encode hash symbol so we can work with url search params	
-		var url = window.location.toString().replace(/#/g, "%23")
-		if (url.includes("?")) {
-			console.log("url", url)
-			var params = new URLSearchParams(url.substring(url.indexOf("?")))
-			var formulaParam = params.get("formula")
-			if (formulaParam) {
-				console.log("initializing formula from URL")
-				editor.getDoc().setValue(formulaParam)
+		function exec() {
+			var formula = getFormula()
+			if (formula.length == 0) {
+				console.log("empty formula - ignoring");
+				return
 			}
-			
-			var execParam = params.get("exec")
-			if (execParam) {
-				if (!systems.includes(execParam))
-					alert("Unknown system: " + execParam)
-				else {
-					console.log("initializing system from URL:", execParam)
-					$("input[name='system']").filter("[value='" + execParam + "']").attr('checked', true)
-					exec()
-				}
-			}
-			
-			var astParam = params.get("ast")
-			if (astParam) {
-				console.log("initializing AST from URL")
-				ast()
-			}
-			
-			var formatParam = params.get("format")
-			if (formatParam) {
-				if (formats[formatParam] === undefined)
-					alert("Unknown format: " + formatParam)
-				else {
-					console.log("setting format from URL:", formatParam);
-					validate(formats[formatParam], true)
-				}
+
+			var system = $("input[name=execute_system]:checked").val()
+			if (!system)
+				return
+
+			var taskEl = $("input[name=reason_task]:checked");
+			var taskId = taskEl.attr('id');
+			var task = taskEl.val();
+			if (!task)
+				return;
+
+			$(".output").hide()
+
+			// console.log(system, task);
+			service.exec({
+				task: task,
+				system: system,
+				formula: formula
+
+			}, (success) => {
+				$(`#${taskId}_out`).show()
+				$(`#${taskId}_out > div`).text(success)
+
+			}, (error) => {
+				$("#error_out").show()
+				$("#error_out > div").html(error)
+			})
+		}
+
+		function explain() {
+			var formula = getFormula()
+			if (formula.length == 0)
+				return
+
+			var system = $("input[name=explain_system]:checked").val()
+			if (!system)
+				return
+
+			$(".output").hide()
+
+			service.exec({
+				task: 'explain',
+				system: system,
+				formula: formula
+
+			}, (success) => {
+				$(`#expl_out`).show()
+				$(`#expl_out > div`).html(success)
+
+				initExplanation()
+
+			}, (error) => {
+				$("#error_out").show()
+				$("#error_out > div").html(error)
+			})
+		}
+
+		function ast() {
+			$(".output").hide()
+			$("#ast_out > div").text("")
+
+			const format = getCurrentFormat();
+			if (format.type == 'none') {
+				$("#ast_out").hide()
+
+				$("#error_out").show()
+				$("#error_out > div").html("No format selected")
+
 			} else {
-				console.log("setting default format:", defaultFormat.type);
-				validate(defaultFormat, true)
+				$("#ast_out").show()
+				format.lib.ast(getFormula(),
+					(astLine) => {
+						$("#ast_out > div").append(astLine)
+
+					}, (error) => {
+						$("#error_out").show()
+						$("#error_out > div").html(error)
+					})
 			}
 		}
-	}
-</script>
-</head>
-<body onload="loaded()">
-<main>
-	<a href="https://github.com/w3c/N3">
-		<img class="logo" alt="Notation3 Editor" title="Notation3 Editor" src="logo.png" />
-	</a>
-	
-	<div class="content">
-		<h1>Notation3 Editor</h1>
-		<p>Notation3 Editor is a simple editor that provides syntax checking for N3 code, reasoning features from several reasoners, and printing the AST using the JS parser.</p>
 
-		<div id="formats"></div>		
-		
-		<input id="auto-ns" type="checkbox" checked> Auto-suggest namespaces.<br />
-		<small>Experimental auto-suggestion of namespaces. A specific namespace will only be suggested once (so just remove it if it's wrong!).</small>
-		
-		<textarea rows=10 cols=50 id="input"></textarea>
-		
-		<small class="note1">
-			<a href="#" id="link">Create link to formula</a>
-			<span id="linkPlaceholder"></span>
-		</small>
-		
-		<small class="note2">
-			Please submit bugs or feature requests on <a href="https://github.com/william-vw/n3-editor-js">GitHub</a>.
-		</small>.
-		
-		<br style="clear: both" />
-		
-		<button id="execute">e<u>x</u>ecute</button>
-		<input class="system" name="execute_system" type="radio" value="eye" id="eye_exec" checked /><label for="eye_exec">eye</label> 
-		<input class="system" name="execute_system" type="radio" value="cwm" id="cwm_exec" /><label for="cwm_exec">cwm</label>
-		<input class="system" name="execute_system" type="radio" value="jen3" id="jen3_exec" /><label for="jen3_exec">jen3</label> 
-		
-		<div class="separator"></div>
-		<button id="explain" style="position: relative">
+		function link() {
+			$("#error").hide()
+
+			var formula = getFormula()
+			if (formula) {
+				var link = window.location.href.split("?")[0] + "?formula=" + encodeURIComponent(formula)
+
+				var format = getCurrentFormat().type
+				link += `&format=${format}`
+
+				console.log("link:", link);
+				service.link(link,
+					(turl) => {
+						console.log("turl:", turl)
+						$("#linkPlaceholder").html(": <a href='" + turl + "'>Link</a>")
+
+					}, (error) => {
+						$("#error").show().find("#output").html(error)
+					})
+			}
+
+			return false
+		}
+
+		// - formats
+
+		function setupFormatInput() {
+			const container = $('#formats')
+			Object.entries(formats).forEach(([key, f]) => {
+				const elId = `format_${f.type}`
+				const elLabel = f.label
+				var el = container
+					.append(
+						$(`<span><input type="radio" name="format" id="${elId}">${elLabel}</input>&nbsp;&nbsp;</span>`)
+							.change((e) => {
+								if (e.target.checked)
+									validate(f)
+							})
+					)
+			})
+		}
+
+		// https://stackoverflow.com/questions/19979741/codemirror-delete-a-editor-instance
+
+		function validate(format, setInput) {
+			if (format.type == "none")
+				stopValidating(setInput)
+			else
+				startValidating(format, setInput)
+		}
+
+		var alreadySuggested = []
+
+		const onSuggestion = {
+			namespace: function (prefix, ns) {
+				if (!$("#auto-ns").prop('checked'))
+					return false
+
+				console.log("prefix suggestion:", prefix, ":", ns)
+				if (alreadySuggested.includes(prefix)) {
+					console.log("already suggested")
+					return false
+				}
+
+				alreadySuggested.push(prefix)
+				var insert = `@prefix ${prefix}: <${ns}> .\n`
+
+				const content = editor.getDoc().getValue()
+				if (!content.trim().startsWith("@prefix"))
+					insert += "\n"
+
+				editor.getDoc().replaceRange(insert, { line: 0, ch: 0 })
+
+				return true
+			}
+		}
+
+		function startValidating(format, setInput) {
+			if (setInput)
+				$(`#format_${format.type}`).prop('checked', true)
+
+			if (editor != null)
+				stopValidating(false)
+
+			// console.log("format", format);
+			editor = CodeMirror.fromTextArea($("#input").get(0), {
+				gutters: ["CodeMirror-lint-markers"],
+				mode: format.mode,
+				theme: "default rdf",
+				// TODO this should follow code-mirrors idiom
+				// (registering a helper) but not getting that to work
+				lint: format.lib.lint(onSuggestion),
+				matchBrackets: true
+			})
+		}
+
+		function stopValidating(setInput) {
+			if (setInput)
+				$('#format_none').prop('checked', true)
+
+			editor.toTextArea();
+			editor = null
+		}
+
+		function loaded() {
+			setupFormatInput()
+			validate(defaultFormat, true)
+
+			$(document).ajaxStart(() => {
+				$('#loading').css("display", "inline-block")
+
+			}).ajaxStop(() => {
+				$('#loading').hide()
+			});
+
+			$("#execute").click(exec)
+			shortcut.add("Alt+X", exec)
+
+			$("#explain").click(explain)
+			shortcut.add("Alt+N", explain)
+
+			$("#show_ast").click(ast)
+			shortcut.add("Alt+A", ast)
+
+			shortcut.add("Alt+N", () => validate(formats['n3'], true))
+			shortcut.add("Alt+T", () => validate(formats['turtlestar'], true))
+			shortcut.add("Alt+O", () => validate(formats['none'], true))
+
+			$("#link").click(link)
+
+			// url-encode hash symbol so we can work with url search params	
+			var url = window.location.toString().replace(/#/g, "%23")
+			if (url.includes("?")) {
+				console.log("url", url)
+				var params = new URLSearchParams(url.substring(url.indexOf("?")))
+				var formulaParam = params.get("formula")
+				if (formulaParam) {
+					console.log("initializing formula from URL")
+					editor.getDoc().setValue(formulaParam)
+				}
+
+				var execParam = params.get("exec")
+				if (execParam) {
+					if (!systems.includes(execParam))
+						alert("Unknown system: " + execParam)
+					else {
+						console.log("initializing system from URL:", execParam)
+						$("input[name='system']").filter("[value='" + execParam + "']").attr('checked', true)
+						exec()
+					}
+				}
+
+				var astParam = params.get("ast")
+				if (astParam) {
+					console.log("initializing AST from URL")
+					ast()
+				}
+
+				var formatParam = params.get("format")
+				if (formatParam) {
+					if (formats[formatParam] === undefined)
+						alert("Unknown format: " + formatParam)
+					else {
+						console.log("setting format from URL:", formatParam);
+						validate(formats[formatParam], true)
+					}
+				} else {
+					console.log("setting default format:", defaultFormat.type);
+					validate(defaultFormat, true)
+				}
+			}
+		}
+	</script>
+</head>
+
+<body onload="loaded()">
+	<main>
+		<a href="https://github.com/w3c/N3">
+			<img class="logo" alt="Notation3 Editor" title="Notation3 Editor" src="logo.png" />
+		</a>
+
+		<div class="content">
+			<h1>Notation3 Editor</h1>
+			<p>Notation3 Editor is a simple editor that provides syntax checking for N3 code, reasoning features from
+				several reasoners, and printing the AST using the JS parser.</p>
+
+			<div id="formats"></div>
+
+			<input id="auto-ns" type="checkbox" checked> Auto-suggest namespaces.<br />
+			<small>Experimental auto-suggestion of namespaces. A specific namespace will only be suggested once (so just
+				remove it if it's wrong!).</small>
+
+			<textarea rows=10 cols=50 id="input">
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix : <http://example.org/socrates#>.
+@prefix r: <http://www.w3.org/2000/10/swap/reason#>.
+
+:Socrates a :Human .
+:Human rdfs:subClassOf :Mortal .
+
+{?A rdfs:subClassOf ?B. ?S a ?A} => {?S a ?B} .
+		</textarea>
+
+			<small class="note1">
+				<a href="#" id="link">Create link to formula</a>
+				<span id="linkPlaceholder"></span>
+			</small>
+
+			<small class="note2">
+				Please submit bugs or feature requests on <a
+					href="https://github.com/william-vw/n3-editor-js">GitHub</a>.
+			</small>.
+
+			<br style="clear: both" />
+
+			<button id="execute">e<u>x</u>ecute</button>
+			<input class="system" name="execute_system" type="radio" value="eyebrow" id="eyebrow_exec" checked /><label
+				for="eyebrow_exec">🤨</label>
+			<input class="system" name="execute_system" type="radio" value="eye" id="eye_exec" /><label
+				for="eye_exec">eye</label>
+			<input class="system" name="execute_system" type="radio" value="cwm" id="cwm_exec" /><label
+				for="cwm_exec">cwm</label>
+			<input class="system" name="execute_system" type="radio" value="jen3" id="jen3_exec" /><label
+				for="jen3_exec">jen3</label>
+
+			<div class="separator"></div>
+			<button id="explain" style="position: relative">
 				explai<u>n</u>
 				<div style="position: absolute; right: 2px; top: 2px; font-size: 10px; color: #ffe3c0">beta</div>
-		</button>
-		<input class="system" name="explain_system" type="radio" value="eye" id="eye_expl" checked /><label for="eye_expl">eye</label> 
-		<input class="system" name="explain_system" type="radio" value="jen3" id="jen3_expl" /><label for="jen3_expl">jen3
+			</button>
+			<input class="system" name="explain_system" type="radio" value="eye" id="eye_expl" checked /><label
+				for="eye_expl">eye</label>
+			<input class="system" name="explain_system" type="radio" value="jen3" id="jen3_expl" /><label
+				for="jen3_expl">jen3
 				<div class="tooltip">(?)
-					<span class="tooltiptext">eye is used to generate the proof, but its human readable explanation is generated by jen3.</span>
+					<span class="tooltiptext">eye is used to generate the proof, but its human readable explanation is
+						generated by jen3.</span>
 				</div>
-		</label> 
-		
-		<div class="separator"></div>
-		<button id="show_ast">show <u>a</u>st</button>
+			</label>
 
-		<div id="loading">
-			<img src="img/ajax-loader.gif" alt="loader">
-		</div>
-		
-		<div id="reason_tasks">
-			<b>output:</b>
-			<input name="reason_task" type="radio" value="deductive_closure" id="clos" /><label for="clos">closure</label>
-			<input name="reason_task" type="radio" value="derivations" id="deriv" checked /><label for="deriv">derivations</label>
-		</div>
+			<div class="separator"></div>
+			<button id="show_ast">show <u>a</u>st</button>
 
-		<div id="error_out" class="output">
-			<h3>Error:</h3>
-			<div class="box"></div>
-		</div>
-		
-		<div id="deriv_out" class="output">
-			<h3>Derivations:</h3>
-			<div class="box"></div>
-		</div>
+			<div id="loading">
+				<img src="img/ajax-loader.gif" alt="loader">
+			</div>
 
-		<div id="clos_out" class="output">
-			<h3>Deductive closure:</h3>
-			<div class="box"></div>
+			<div id="reason_tasks">
+				<b>output:</b>
+				<input name="reason_task" type="radio" value="deductive_closure" id="clos" /><label
+					for="clos">closure</label>
+				<input name="reason_task" type="radio" value="derivations" id="deriv" checked /><label
+					for="deriv">derivations</label>
+			</div>
+
+			<div id="error_out" class="output">
+				<h3>Error:</h3>
+				<div class="box"></div>
+			</div>
+
+			<div id="deriv_out" class="output">
+				<h3>Derivations:</h3>
+				<div class="box"></div>
+			</div>
+
+			<div id="clos_out" class="output">
+				<h3>Deductive closure:</h3>
+				<div class="box"></div>
+			</div>
+
+			<div id="expl_out" class="output">
+				<h3>Explanation:</h3>
+				<div class="box"></div>
+			</div>
+
+			<div id="ast_out" class="output">
+				<h3>Abstract Syntax Tree:</h3>
+				<div class="box"></div>
+			</div>
 		</div>
-		
-		<div id="expl_out" class="output">
-			<h3>Explanation:</h3>
-			<div class="box"></div>
-		</div>
-		
-		<div id="ast_out" class="output">
-			<h3>Abstract Syntax Tree:</h3>
-			<div class="box"></div>
-		</div>
-	</div>
-</main>
+	</main>
 
 </body>
+
 </html>
