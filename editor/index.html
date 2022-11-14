@@ -334,16 +334,7 @@
 			<small>Experimental auto-suggestion of namespaces. A specific namespace will only be suggested once (so just
 				remove it if it's wrong!).</small>
 
-			<textarea rows=10 cols=50 id="input">
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix : <http://example.org/socrates#>.
-@prefix r: <http://www.w3.org/2000/10/swap/reason#>.
-
-:Socrates a :Human .
-:Human rdfs:subClassOf :Mortal .
-
-{?A rdfs:subClassOf ?B. ?S a ?A} => {?S a ?B} .
-		</textarea>
+			<textarea rows=10 cols=50 id="input"></textarea>
 
 			<small class="note1">
 				<a href="#" id="link">Create link to formula</a>
