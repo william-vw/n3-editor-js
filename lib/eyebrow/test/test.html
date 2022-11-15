@@ -7,45 +7,11 @@
 <body>
     <div id="output"></div>
 
-    <script src="../swipl-web.js"></script>
+    <script src="./swipl-web.js"></script>
+    <script type="module">
+        import { Output } from './output.js';
 
-    <script>
-        let yield = null;
-
-        class Output {
-
-            constructor() {
-                this.buffers = {
-                    stdout: [],
-                    stderr: []
-                };
-
-                this.output = document.getElementById('output');
-            }
-
-            write(to, c) {
-                if (c)
-                    this.buffers[to].push(c);
-
-                if (c == 10 || c == null)
-                    this.flush(to);
-            }
-
-            flush(to) {
-                const line = String.fromCharCode.apply(null, this.buffers[to]);
-                this.print(line, to);
-                this.buffers[to] = [];
-            }
-
-            print(line, cls) {
-                console.log(line);
-
-                // const node = document.createElement('span');
-                // node.className = cls;
-                // node.textContent = line;
-                // this.output.append(node);
-            };
-        }
+        const output = new Output();
 
         var Module = {
             noInitialRun: true,
@@ -54,39 +20,58 @@
                 return './' + file;
             },
             preRun: [() => {
-                const output = new Output();
                 Module.FS.init(undefined, (c) => output.write("stdout", c), (c) => output.write("stderr", c))
             }]
         };
+
+        function exec(query) {
+            Module.prolog.call(query);
+
+            return output.flushAll();
+        }
+
+        function derivations(file) {
+            return exec(`main(['--n3', '${file}', '--nope', '--pass-only-new']).`);
+        }
 
         async function retrieve(link, file) {
             const response = await fetch(link);
             await Module.FS.writeFile(file, await response.text());
         }
 
-        SWIPL(Module).then(async (module) => {
-            await retrieve('./eye.pl', 'eye.pl');
-            // await retrieve('https://josd.github.io/eye/eye.pl', 'eye.pl');
-            await retrieve('./socrates.n3', 'socrates.n3');
-            // await retrieve('https://josd.github.io/eye/reasoning/socrates/socrates.n3', 'socrates.n3');
-            await retrieve('./query.n3', 'query.n3');
-            // await retrieve('https://josd.github.io/eye/reasoning/socrates/socrates-query.n3', 'socrates-query.n3');
-            
-            module.prolog.call("set_prolog_flag(tty_control, true)");
-            module.prolog.call("set_prolog_flag(debug_on_error, false)");
+        // - load SWIPL
+        var start = performance.now();
 
-            yield = module.prolog.call("'$query_loop'", {
-                async: true,
-                module: "$toplevel"
-            });
+        const module = await SWIPL(Module);
+        module.prolog.call("set_prolog_flag(tty_control, true)");
+        module.prolog.call("set_prolog_flag(debug_on_error, false)");
 
-            yield.resume("consult('./eye.pl')");
-            // yield.resume("main(['--wcache', 'http://josd.github.io/eye/reasoning/socrates', '.', 'http://josd.github.io/eye/reasoning/socrates/socrates.n3', '--query', 'http://josd.github.io/eye/reasoning/socrates/socrates-query.n3']).");
-            // yield.resume("main(['./socrates.n3', '--query', './query.n3']).");
-            yield.resume("main(['--n3', './socrates.n3', '--nope', '--pass-only-new']).");
+        var end = performance.now();
+        console.log("loading SWIPL:", (end - start));
 
-            // query("consult('./eye.pl')");
-        });
+        // - load eye.pl
+        start = performance.now();
+
+        await retrieve('./eye.pl', 'eye.pl');
+        var msg = await exec("consult('./eye.pl')");
+        if (msg.error)
+            console.error("eyebrow", msg.error);
+
+        end = performance.now();
+        console.log("loading eye.pl:", (end - start));
+
+        start = performance.now();
+
+        // - run example
+        await retrieve('./socrates.n3', 'socrates.n3');
+        msg = await derivations('./socrates.n3');
+
+        end = performance.now();
+        console.log("running socrates:", (end - start));
+
+        console.log(msg.success);
+        Android.log(msg.success);
+
     </script>
 </body>
 

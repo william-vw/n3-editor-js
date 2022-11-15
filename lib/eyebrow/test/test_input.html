@@ -18,74 +18,11 @@
     <button id="action">do it</button>
 
     <script src="./swipl-web.js"></script>
-
-    <script>
-        class Output {
-
-            constructor() {
-                this.buffers = {
-                    stdout: [],
-                    stderr: []
-                };
-
-                this.output = document.getElementById('output');
-            }
-
-            write(to, c) {
-                if (c)
-                    this.buffers[to].push(c);
-
-                // console.log(c);
-                // if (c == 10 || c == null)
-                // this.flush(to);
-            }
-
-            flushAll(callback) {
-                let stderr = this.flush("stderr");
-                if (stderr) {
-                    if (stderr.includes("**")) {
-                        let dl = stderr.lastIndexOf("**") + 2
-                        let error = stderr.substring(dl).trim()
-
-                        // console.log("error:", error)
-                        callback({ error: error });
-                        return;
-                    }
-                }
-
-                let output = this.flush("stdout");
-                let dl = output.indexOf("\n", output.indexOf("#eye"))
-                let dl2 = output.lastIndexOf("\n", output.indexOf("#ENDS") - 2)
-                output = output.substring(dl, dl2).trim()
-
-                // console.log("output:", output);
-                callback({ success: output });
-            }
-
-            flush(to) {
-                let str = String.fromCharCode.apply(null, this.buffers[to]);
-                this.buffers[to] = [];
-
-                return str;
-            }
-        }
+    <script type="module">
+        import { Output } from './output.js';
 
         const output = new Output();
-
-        const callback = (msg) => {
-            if (msg.error)
-                console.error("error", msg.error);
-            else
-                console.log("output", msg.success);
-        }
-
-        document.getElementById('action').addEventListener('click', (e) => {
-            const n3 = document.getElementById('n3').value;
-            Module.FS.writeFile('./input.n3', n3);
-
-            derivations('./input.n3', callback);
-        })
-
+        
         var Module = {
             noInitialRun: true,
             arguments: [],
@@ -97,38 +34,47 @@
             }]
         };
 
+        function exec(query) {
+            Module.prolog.call(query);
+
+            return output.flushAll();
+        }
+
+        function derivations(file) {
+            return exec(`main(['--n3', '${file}', '--nope', '--pass-only-new']).`);
+        }
+
+        document.getElementById('action').addEventListener('click', (e) => {
+            const n3 = document.getElementById('n3').value;
+            Module.FS.writeFile('./input.n3', n3);
+
+            derivations('./input.n3');
+        })
+
         async function retrieve(link, file) {
             const response = await fetch(link);
             await Module.FS.writeFile(file, await response.text());
         }
 
-        let yield = null;
+        var start = performance.now();
+        const module = await SWIPL(Module);
+        module.prolog.call("set_prolog_flag(tty_control, true)");
+        module.prolog.call("set_prolog_flag(debug_on_error, false)");
 
-        function exec(query, cb) {
-            yield.resume(query);
-            output.flushAll(cb);
-        }
+        var end = performance.now();
+        console.log("loading SWIPL:", (end - start));
 
-        function derivations(file, cb) {
-            exec(`main(['--n3', '${file}', '--nope', '--pass-only-new']).`, cb);
-        }
+        start = performance.now();
 
-        function deduc_closure(file, cb) {
-            exec(`main(['--n3', '${file}', '--nope', '--pass-all']).`, cb);
-        }
+        await retrieve('/n3/lib/eyebrow/eye.pl', 'eye.pl');
+        var msg = await exec("consult('./eye.pl')");
+        console.log(msg);
 
-        SWIPL(Module).then(async (module) => {
-            module.prolog.call("set_prolog_flag(tty_control, true)");
-            module.prolog.call("set_prolog_flag(debug_on_error, false)");
+        end = performance.now();
+        console.log("loading eye.pl:", (end - start));
 
-            yield = module.prolog.call("'$query_loop'", {
-                async: true,
-                module: "$toplevel"
-            });
-
-            await retrieve('./eye.pl', 'eye.pl');
-            exec("consult('./eye.pl')", callback);
-        });
+        if (msg.error)
+            console.error("eyebrow", msg.error);
     </script>
 </body>
 
