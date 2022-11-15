@@ -1,0 +1,3 @@
+#Processed by EYE v22.1105.2210 josd
+#eye --n3 /Users/wvw/git/n3/n3-expl/src/main/resources/cases/rheumatology-xai.n3 --query target_out.ttl
+
