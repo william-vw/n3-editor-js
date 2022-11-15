@@ -3,21 +3,13 @@
 #!/bin/bash
 usage()
 {
-	echo -e "usage: explain.sh [-e|--eye]* [-d|--data] [-r|--rules]* ([-l|--labels]) [-q|--query_proof] [-x|--xexplain] [-i|--inf_out] [-p|--pe_out]\n"
+	echo -e "usage: explain.sh [-f|--folder]* [-e|--eye]* [-d|--data] [-r|--rules]* ([-l|--labels]) [-q|--query_proof] [-x|--xexplain] [-i|--inf_out] [-p|--pe_out]\n"
 }
 
 if [ "$1" == "" ]; then
 	usage
 	exit 1
 fi
-
-aux_query_top=lib/eye/explain/aux_query_top.n3
-aux_query_all=lib/eye/explain/aux_query_all.n3
-query_heads=lib/eye/explain/query_heads.n3
-query_xexplain=lib/eye/explain/query_xexplain.n3
-describe=lib/eye/explain/describe.n3
-collect=lib/eye/explain/collect.n3
-query_html=lib/eye/explain/query.n3
 
 xexplain=0
 inf_out=inf_out.ttl
@@ -27,6 +19,9 @@ labels=
 
 while [ "$1" != "" ]; do
     case $1 in
+	-f | --folder )				shift
+								folder=$1
+								;;
 	-e | --eye )				shift
 								eye=$1
 								;;
@@ -59,10 +54,19 @@ while [ "$1" != "" ]; do
     shift
 done
 
-if [ -z "$eye" ] || [ -z "$rules" ]; then
+if [ -z "$folder" ] || [ -z "$eye" ] || [ -z "$rules" ]; then
 	usage
 	exit 1
 fi
+
+aux_query_top="${folder}/explain/aux_query_top.n3"
+aux_query_all="${folder}/explain/aux_query_all.n3"
+query_heads="${folder}/explain/query_heads.n3"
+query_xexplain="${folder}/explain/query_xexplain.n3"
+describe="${folder}/explain/describe.n3"
+collect="${folder}/explain/collect.n3"
+query_html="${folder}/explain/query.n3"
+
 
 # - print proof
 
