@@ -5,7 +5,7 @@ const serviceUrl = `${config.http.hostname}:${config.http.port}/n3`;
 function exec(options, onSuccess, onError) {
 	switch (options.system) {
 		case 'eyebrow':
-			eyebrow(options.task, options.formula, (output) => {
+			eyebrow(options, options.formula, (output) => {
 				if (output.success)
 					onSuccess(output.success);
 				else

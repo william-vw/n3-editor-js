@@ -4,31 +4,29 @@
 @prefix pml: <http://provenanceweb.org/ns/pml#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix graph: <http://www.w3.org/2000/10/swap/graph#> .
 @prefix list: <http://www.w3.org/2000/10/swap/list#> .
 @prefix math: <http://www.w3.org/2000/10/swap/math#> .
 @prefix string: <http://www.w3.org/2000/10/swap/string#> .
 @prefix r: <http://www.w3.org/2000/10/swap/reason#> .
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix n3: <http://www.w3.org/2004/06/rei#>.
 @prefix x: <http://wvw.org/xai#> .
 @base <http://wvw.org/xai#> .
 
 
-{	1 log:outputString ?doc
-
-} <= {
-	( ?root { ?root a x:RootNode } ?roots ) log:collectAllIn _:x .
-	?roots list:removeDuplicates ?uniqueRoots . 
-	
-	( ?html { ?uniqueRoots list:member ?root . ?root x:output ?html } ?htmls ) log:collectAllIn _:x . 
-	
-	?htmls string:concatenation ?lis .
-	
-	( "<html>"
-		"<head>"
-			"<link rel='stylesheet' href='lib/style.css' />"
-			"<script type='text/javascript' src='lib/util.js'></script>"
-		"</head>"
-		"<body onload='loaded()'><ul>" ?lis "</ul></body>"
-	"</html>"
+# ignore "inferences" that prove the query; 
+# these are listed as r:component's of the main "proof"
+{	?inf a x:InferenceNode 
 		
-	) string:concatenation ?doc .
+} <= { 
+	?inf a r:Inference .
+	_:t log:notIncludes { ?x r:component ?inf } 
+} .
+
+# lemmas used by top-level lemmas as root-nodes
+{	?i a x:RootNode
+
+} <= {	
+	?x!r:component!r:evidence list:member ?i
 } .

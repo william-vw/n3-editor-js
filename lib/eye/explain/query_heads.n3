@@ -1,0 +1,4 @@
+@base <http://wvw.org/xai#> .
+
+
+{ ?x => ?y } => { ?y <= ?y }.

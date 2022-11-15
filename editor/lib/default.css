@@ -138,7 +138,7 @@ h3 {
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 300px;
+    width: 200px;
     margin-left: -150px;
     background-color: black;
     color: #fff;

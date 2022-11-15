@@ -1,0 +1,12 @@
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix x: <http://wvw.org/xai#> .
+@prefix rh: <http://swot.sisinflab.poliba.it/onto/rheumatology#> .
+@base <http://wvw.org/xai#> .
+
+
+{	?p a x:Explain .
+
+	?x => ?y .
+	?y log:includes { ?s ?p ?o } .  
+	
+} => { ?y <= ?y } .

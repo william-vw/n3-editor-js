@@ -1,0 +1,38 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix pml: <http://provenanceweb.org/ns/pml#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix graph: <http://www.w3.org/2000/10/swap/graph#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix r: <http://www.w3.org/2000/10/swap/reason#> .
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix n3: <http://www.w3.org/2004/06/rei#>.
+@prefix x: <http://wvw.org/xai#> .
+@base <http://wvw.org/xai#> .
+
+
+# ignore "inferences" that prove the query; 
+# these are listed as r:component's of the main "proof"
+{	?inf a x:InferenceNode 
+		
+} <= { 
+	?inf a r:Inference .
+	_:t log:notIncludes { ?x r:component ?inf } 
+} .
+
+# lemmas used by top-level lemmas as root-nodes
+{	?i a x:RootNode
+
+} <= {	
+	?x!r:component!r:evidence list:member ?i .
+	
+	# avoid listing "supporting" inferences
+	# i.e., any lemmas that support a root-node (lemma used by top-level lemma)
+	_:t log:notIncludes { 
+		?y!r:component!r:evidence!list:member!r:evidence list:member ?i
+	} .
+} .

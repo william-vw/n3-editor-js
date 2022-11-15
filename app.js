@@ -94,8 +94,8 @@ app.post('/n3', (request, response) => {
 app.listen(config.http.port)
 console.log(`Listening at http://${config.http.hostname}:${config.http.port}`)
 
-function doReasoning(data, ctu) {
-	tmp.save(data.formula, (file) => {
+function doReasoning(options, ctu) {
+	tmp.save(options.formula, (file) => {
 
 		function end(ret) {
 			tmp.del(file)
@@ -103,7 +103,7 @@ function doReasoning(data, ctu) {
 		}
 
 		var reasoner = null;
-		switch (data.system) {
+		switch (options.system) {
 			case "eye":
 				reasoner = eye
 				break
@@ -117,63 +117,45 @@ function doReasoning(data, ctu) {
 				break
 
 			default:
-				end({ error: `unsupported system: "${data.system}"` })
+				end({ error: `unsupported system: "${options.system}"` })
 				break
 		}
 		if (reasoner)
-			reasoner.exec(data.task, file, end)
+			reasoner.exec(options, file, end)
 	})
 }
 
-function doExplaining(data, ctu) {
-	tmp.save(data.formula, (dataFile) => {
+function doExplaining(options, ctu) {
+	tmp.save(options.formula, (file) => {
 
-		// use eye to generate proof given input n3 file
-		eye.exec('proof', dataFile, (proofObject) => {
-			tmp.del(dataFile)
-			
-			if (proofObject.error) {
-				ctu(proofObject)
-				return
-			}
+		var reasoner = null;
+		switch (options.system) {
+			case "eye":
+				reasoner = eye
+				break
 
-			const proof = proofObject.success;
-			tmp.save(proof, (proofFile) => {
-				
-				// use eye or jen3 to explain proof
-				var reasoner = null;
-				switch (data.system) {
-					case "eye":
-						reasoner = eye
-						break
+			default:
+				end({ error: `unsupported system: "${options.system}"` })
+				break
+		}
 
-					case "jen3":
-						reasoner = jen3
-						break
+		reasoner.exec(options, file, (explanation) => {
+			tmp.del(file)
 
-					default:
-						end({ error: `unsupported system: "${data.system}"` })
-						break
-				}
-				if (reasoner)
-					reasoner.exec('explain', proofFile, (explanation) => {
-						tmp.del(proofFile)
-						ctu(explanation)
-					})
-			})
+			ctu(explanation)
 		})
 	})
 }
 
-function doGenerateLink(data, ctu) {
-	generateLink(data.url)
+function doGenerateLink(options, ctu) {
+	generateLink(options.url)
 		.then((link) => { console.log("generated link: " + link); ctu({ success: link }) })
 		.catch((error) => { ctu({ error: error }) })
 }
 
-function doCheckBuiltinInput(data, ctu) {
-	tmp.save(data.definitions, (defFile) => {
-		tmp.save(data.test, (testFile) => {
+function doCheckBuiltinInput(options, ctu) {
+	tmp.save(options.definitions, (defFile) => {
+		tmp.save(options.test, (testFile) => {
 
 			function end(ret) {
 				tmp.del(defFile)

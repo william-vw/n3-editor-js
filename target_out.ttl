@@ -1,0 +1,49 @@
+#Processed by EYE v22.1105.2210 josd
+#eye --nope --n3 tmp/tmp_1668531535339.n3 --query lib/eye/explain/query_heads.n3
+
+@prefix : <http://swot.sisinflab.poliba.it/onto/rheumatology#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix schema: <http://schema.org/>.
+@prefix eo: <https://purl.org/heals/eo#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix ep: <http://linkedu.eu/dedalo/explanationPattern.owl#>.
+@prefix prov: <http://www.w3.org/ns/prov#>.
+@prefix x: <http://wvw.org/xai#>.
+
+{?U_4 :bmiValue ?U_5} <= {?U_4 :bmiValue ?U_5}.
+{?U_6 :hasBmiClass :Underweight} <= {?U_6 :hasBmiClass :Underweight}.
+{?U_7 :hasBmiClass :NormalWeight} <= {?U_7 :hasBmiClass :NormalWeight}.
+{?U_8 :hasBmiClass :Overweight} <= {?U_8 :hasBmiClass :Overweight}.
+{?U_9 :hasBmiClass :ObeseClass1} <= {?U_9 :hasBmiClass :ObeseClass1}.
+{?U_10 :hasBmiClass :ObeseClass2} <= {?U_10 :hasBmiClass :ObeseClass2}.
+{?U_11 :hasBmiClass :ObeseClass3} <= {?U_11 :hasBmiClass :ObeseClass3}.
+{?U_12 :cdaiIndex ?U_13} <= {?U_12 :cdaiIndex ?U_13}.
+{?U_14 :hasDiseaseActivity :Remission} <= {?U_14 :hasDiseaseActivity :Remission}.
+{?U_15 :hasDiseaseActivity :LowDiseaseActivity} <= {?U_15 :hasDiseaseActivity :LowDiseaseActivity}.
+{?U_16 :hasDiseaseActivity :ModerateDiseaseActivity} <= {?U_16 :hasDiseaseActivity :ModerateDiseaseActivity}.
+{?U_17 :hasDiseaseActivity :HighDiseaseActivity} <= {?U_17 :hasDiseaseActivity :HighDiseaseActivity}.
+{?U_18 :morningStiffnessLevel 0} <= {?U_18 :morningStiffnessLevel 0}.
+{?U_19 :morningStiffnessLevel 1} <= {?U_19 :morningStiffnessLevel 1}.
+{?U_20 :morningStiffnessLevel 2} <= {?U_20 :morningStiffnessLevel 2}.
+{?U_21 :morningStiffnessLevel 3} <= {?U_21 :morningStiffnessLevel 3}.
+{?U_22 :morningStiffnessLevel 4} <= {?U_22 :morningStiffnessLevel 4}.
+{?U_23 :morningStiffnessLevel 5} <= {?U_23 :morningStiffnessLevel 5}.
+{?U_24 :morningStiffnessLevel 6} <= {?U_24 :morningStiffnessLevel 6}.
+{?U_25 :radaiIndex ?U_26} <= {?U_25 :radaiIndex ?U_26}.
+{?U_27 :hasOutcome :SuspectedDiseaseActivity} <= {?U_27 :hasOutcome :SuspectedDiseaseActivity}.
+{?U_28 :recommendation ?U_29. ?U_29 a :ContactRheumatologistRecommendation. ?U_29 prov:used :SuspectedDiseaseActivity} <= {?U_28 :recommendation ?U_29. ?U_29 a :ContactRheumatologistRecommendation. ?U_29 prov:used :SuspectedDiseaseActivity}.
+{?U_30 :recommendation ?U_31. ?U_31 a :QuitSmokingRecommendation. ?U_31 prov:used :Smoker. ?U_31 prov:used :RheumatoidFactorPositive. ?U_31 prov:used :AntiCyclicCitrullinatedPeptideAntibodyPositive} <= {?U_30 :recommendation ?U_31. ?U_31 a :QuitSmokingRecommendation. ?U_31 prov:used :Smoker. ?U_31 prov:used :RheumatoidFactorPositive. ?U_31 prov:used :AntiCyclicCitrullinatedPeptideAntibodyPositive}.
+{?U_32 :recommendation ?U_33. ?U_33 a :LoseWeightRecommendation. ?U_33 prov:used :ObeseClass1} <= {?U_32 :recommendation ?U_33. ?U_33 a :LoseWeightRecommendation. ?U_33 prov:used :ObeseClass1}.
+{?U_34 :recommendation ?U_35. ?U_35 a :CarefulOralHygieneRecommendation. ?U_35 prov:used :NonErosiveRheumatoidArthritis} <= {?U_34 :recommendation ?U_35. ?U_35 a :CarefulOralHygieneRecommendation. ?U_35 prov:used :NonErosiveRheumatoidArthritis}.
+{?U_36 :since ?U_37. ?U_36 :because ?U_38} <= {?U_36 :since ?U_37. ?U_36 :because ?U_38}.
+{?U_39 :plan ?U_40} <= {?U_39 :plan ?U_40}.
+{?U_41 :hasResponse ?U_42} <= {?U_41 :hasResponse ?U_42}.
+
+#2022-11-15T16:58:55.429Z in=123 out=28 ent=69 step=114 brake=2 inf=198649 sec=0.046 inf/sec=4318457
+#ENDS
+
