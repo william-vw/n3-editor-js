@@ -24,10 +24,8 @@
 	
 	( "<html>"
 		"<head>"
-			"<link rel='stylesheet' href='lib/style.css' />"
-			"<script type='text/javascript' src='lib/util.js'></script>"
 		"</head>"
-		"<body onload='loaded()'><ul>" ?lis "</ul></body>"
+		"<body><ul>" ?lis "</ul></body>"
 	"</html>"
 		
 	) string:concatenation ?doc .
