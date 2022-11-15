@@ -34,9 +34,7 @@
             await Module.FS.writeFile(file, await response.text());
         }
 
-        window.init = async function(msg) {
-            console.log("received from Android:", msg);
-
+        window.init = async function() {
             // - load SWIPL
             var start = performance.now();
 
@@ -58,25 +56,30 @@
             end = performance.now();
             console.log("loading eye.pl:", (end - start));
 
-            start = performance.now();
-
-            // - run example
-            await retrieve('./socrates.n3', 'socrates.n3');
-            msg = await derivations('./socrates.n3');
-
-            end = performance.now();
-            console.log("running socrates:", (end - start));
-
-            // console.log(msg.success);
-            Android.log(msg.success);
+            Caller.initDone();
         }
 
-        // init("hello world");
+        window.run = async function(code) {
+            var start = performance.now();
+
+            await Module.FS.writeFile("code.n3", code);
+            var msg = await derivations('./code.n3');
+
+            var end = performance.now();
+            console.log("runtime:", (end - start));
+
+            var result = (msg.success ? msg.success : null);
+            var error = (msg.error ? msg.error : null);
+            Caller.runDone(result, error);
+        }
+
+        // await init();
+        // run("1 .");
     </script>
 </head>
 
 <body>
-    Hello world!
+    🤨
 </body>
 
 </html>
