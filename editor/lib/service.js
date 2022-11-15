@@ -1,8 +1,6 @@
-// const serviceUrl = "http://ppr.cs.dal.ca:3002/n3" // ppr
-const serviceUrl = "http://127.0.0.1:3002/n3" // local
-// const serviceUrl = "https://n3-editor.herokuapp.com/n3"
-
 import { eyebrow } from "../../lib/eyebrow/eyebrow.js";
+
+const serviceUrl = `${config.http.hostname}:${config.http.port}/n3`;
 
 function exec(options, onSuccess, onError) {
 	switch (options.system) {

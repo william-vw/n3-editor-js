@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const path = require('path')
 
-const config = require('./config.js')
+const { config } = require('./config.js')
 const tmp = require('./lib/tmp.js')
 const eye = require('./lib/eye/eye.js')
 const cwm = require('./lib/cwm/cwm.js')
@@ -18,19 +18,19 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/n3/editor', express.static(path.join(__dirname, 'editor')));
 
-// testing
 app.use('/n3/lib/eyebrow', express.static(path.join(__dirname, 'lib/eyebrow')));
+app.use('/n3/config.js', express.static(path.join(__dirname, 'config.js')));
 
 app.get('/n3/editor/s*', (request, response) => {
 	console.log("link:", request.url)
 	retrieveLink(request.url)
 		.then((url) => {
-			console.log("url: " + url)
+			// console.log("url:", url)
 			// response.send({ success: url })
 			response.redirect(url)
 		})
 		.catch((error) => {
-			console.log(error)
+			console.error(error)
 			response.send("Error: " + error)
 		})
 })
@@ -56,13 +56,13 @@ app.post('/n3', (request, response) => {
 	console.log("POST /")
 
 	const data = request.body
-	console.log("data:", data);
+	// console.log("data:", data);
 	console.log("task:", data.task, ", ", "system:", data.system);
 
 	function ctu(ret) {
 		// console.log("ret:", ret)
 		if (ret.error) {
-			console.log("error", ret.error)
+			console.error("error", ret.error)
 		}
 		response.send(ret)
 	}
