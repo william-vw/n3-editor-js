@@ -21,20 +21,6 @@ app.use('/n3/editor', express.static(path.join(__dirname, 'editor')));
 app.use('/n3/lib/eyebrow', express.static(path.join(__dirname, 'lib/eyebrow')));
 app.use('/n3/config.js', express.static(path.join(__dirname, 'config.js')));
 
-app.get('/n3/editor/s*', (request, response) => {
-	console.log("link:", request.url)
-	retrieveLink(request.url)
-		.then((url) => {
-			// console.log("url:", url)
-			// response.send({ success: url })
-			response.redirect(url)
-		})
-		.catch((error) => {
-			console.error(error)
-			response.send("Error: " + error)
-		})
-})
-
 app.get('/n3', (request, response) => {
 	console.log('GET /')
 
@@ -80,6 +66,10 @@ app.post('/n3', (request, response) => {
 
 		case 'generate_link':
 			doGenerateLink(data, ctu)
+			break
+
+		case 'resolve_link':
+			doResolveLink(data, ctu)
 			break
 
 		case 'check_builtin_input':
@@ -148,8 +138,14 @@ function doExplaining(options, ctu) {
 }
 
 function doGenerateLink(options, ctu) {
-	generateLink(options.url)
-		.then((link) => { console.log("generated link: " + link); ctu({ success: link }) })
+	generateLink(options.formula, options.format)
+		.then((id) => { console.log("generated link:", id); ctu({ success: id }) })
+		.catch((error) => { ctu({ error: error }) })
+}
+
+function doResolveLink(options, ctu) {
+	resolveLink(options.formula, options.format)
+		.then((data) => { console.log("resolved link:", data); ctu({ success: data }) })
 		.catch((error) => { ctu({ error: error }) })
 }
 

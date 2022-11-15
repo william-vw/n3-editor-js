@@ -149,20 +149,19 @@
 			}
 		}
 
-		function link() {
+		function generate_link() {
 			$("#error").hide()
 
 			var formula = getFormula()
 			if (formula) {
-				var link = window.location.href.split("?")[0] + "?formula=" + encodeURIComponent(formula)
-
 				var format = getCurrentFormat().type
-				link += `&format=${format}`
+				var base = window.location.href.split("?")[0];
 
-				console.log("link:", link);
-				service.link(link,
-					(turl) => {
+				service.generate_link(formula, format,
+					(id) => {
+						let turl = base + "/s/" + id;
 						console.log("turl:", turl)
+
 						$("#linkPlaceholder").html(": <a href='" + turl + "'>Link</a>")
 
 					}, (error) => {
@@ -171,6 +170,17 @@
 			}
 
 			return false
+		}
+
+		function resolve_link(id) {
+			service.resolve_link(id,
+				(data) => {
+					console.log("resolved:", data);
+					// TODO ...
+
+				}, (error) => {
+					$("#error").show().find("#output").html(error)
+				})
 		}
 
 		// - formats
@@ -277,11 +287,18 @@
 			shortcut.add("Alt+T", () => validate(formats['turtlestar'], true))
 			shortcut.add("Alt+O", () => validate(formats['none'], true))
 
-			$("#link").click(link)
+			$("#link").click(generate_link)
 
-			// url-encode hash symbol so we can work with url search params	
-			var url = window.location.toString().replace(/#/g, "%23")
-			if (url.includes("?")) {
+			let url = window.location.toString()
+			let path = window.location.pathname
+			if (path.startsWith('/n3/editor/s')) {
+				var id = path.substring(path.indexOf("/s/") + "/s/".length)
+
+				resolve_link(id);
+
+			} else if (url.includes("?")) {
+				// url-encode hash symbol so we can work with url search params	
+				url = url.replace(/#/g, "%23")
 				console.log("url", url)
 				var params = new URLSearchParams(url.substring(url.indexOf("?")))
 				var formulaParam = params.get("formula")

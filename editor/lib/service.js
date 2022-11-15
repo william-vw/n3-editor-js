@@ -37,10 +37,11 @@ function exec(options, onSuccess, onError) {
 	}
 }
 
-function link(url, onSuccess, onError) {
+function generate_link(formula, format, onSuccess, onError) {
 	$.post(serviceUrl, {
 		task: 'generate_link',
-		url: url
+		formula: formula,
+		format: format
 
 	}, (output, status) => {
 		// console.log(status, output)
@@ -52,4 +53,19 @@ function link(url, onSuccess, onError) {
 	})
 }
 
-window.service = { exec: exec, link: link }
+function resolve_link(id, onSuccess, onError) {
+	$.post(serviceUrl, {
+		task: 'resolve_link',
+		id: id
+
+	}, (output, status) => {
+		// console.log(status, output)
+
+		if (output.success !== undefined)
+			onSuccess(output.success)
+		else
+			onError(output.error)
+	})
+}
+
+window.service = { exec: exec, generate_link: generate_link, resolve_link: resolve_link }
