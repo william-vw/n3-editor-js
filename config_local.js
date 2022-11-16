@@ -20,12 +20,15 @@ config = {
 		}
 	},
 
-	db: {
-		port: '33060',
-		host: 'localhost',
-		db: "n3_links",
-		user: 'root',
-		pwd: ''
+	link: {
+		max_len: 50000,
+		db: {
+			port: '33060',
+			host: 'localhost',
+			db: "n3_links",
+			user: 'root',
+			pwd: ''
+		}
 	},
 
 	path: "/Users/wvw/git/n3/n3-editor-js"
