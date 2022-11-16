@@ -1,7 +1,7 @@
 config = {
 	http: {
-		// hostname: 'http://ppr.cs.dal.ca',
-		// port: 3002
+		hostname: 'http://ppr.cs.dal.ca',
+		port: 3002
 	},
 
 	reasoners: {
