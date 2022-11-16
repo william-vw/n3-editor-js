@@ -69,3 +69,6 @@ function resolve_link(id, onSuccess, onError) {
 }
 
 window.service = { exec: exec, generate_link: generate_link, resolve_link: resolve_link }
+
+// yes it's needed here
+loaded();

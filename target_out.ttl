@@ -1,12 +1,14 @@
 #Processed by EYE v22.1105.2210 josd
-#eye --nope --n3 tmp/tmp_1668533168483.n3 --query /Users/wvw/git/n3/n3-editor-js/lib/eye/explain/query_heads.n3
+#eye --nope --n3 tmp/tmp_1668611028143.n3 --query /Users/wvw/git/n3/n3-editor-js/lib/eye/explain/query_xexplain.n3
 
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix : <http://example.org/socrates#>.
 @prefix r: <http://www.w3.org/2000/10/swap/reason#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix x: <http://wvw.org/xai#>.
+@prefix rh: <http://swot.sisinflab.poliba.it/onto/rheumatology#>.
 
-{?U_0 a ?U_1} <= {?U_0 a ?U_1}.
 
-#2022-11-15T17:26:08.567Z in=4 out=1 ent=2 step=4 brake=2 inf=21284 sec=0.038 inf/sec=560105
+#2022-11-16T15:03:48.228Z in=4 out=0 ent=1 step=2 brake=2 inf=22926 sec=0.037 inf/sec=619622
 #ENDS
 

@@ -8,7 +8,7 @@ const tmp = require('./lib/tmp.js')
 const eye = require('./lib/eye/eye.js')
 const cwm = require('./lib/cwm/cwm.js')
 const jen3 = require('./lib/jen3/jen3.js')
-const { generateLink, retrieveLink } = require('./lib/gen_link.js')
+const { generateLink, resolveLink } = require('./lib/gen_link.js')
 const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 
 const app = express()
@@ -16,9 +16,11 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/n3/editor', express.static(path.join(__dirname, 'editor')));
-
-app.use('/n3/lib/eyebrow', express.static(path.join(__dirname, 'lib/eyebrow')));
+app.use('/n3/editor/s/*', (req, res) => {
+	res.sendFile(path.join(__dirname, "editor/index.html")); 
+});
+app.use('/n3/editor', express.static(path.join(__dirname, "editor")));
+app.use('/n3/lib/eyebrow', express.static(path.join(__dirname, "lib/eyebrow")));
 app.use('/n3/config.js', express.static(path.join(__dirname, 'config.js')));
 
 app.get('/n3', (request, response) => {
@@ -43,7 +45,10 @@ app.post('/n3', (request, response) => {
 
 	const data = request.body
 	// console.log("data:", data);
-	console.log("task:", data.task, ", ", "system:", data.system);
+	console.log(
+		"task:", data.task, 
+		(data.system? ", system: " + data.system : "")
+	);
 
 	function ctu(ret) {
 		// console.log("ret:", ret)
@@ -144,8 +149,11 @@ function doGenerateLink(options, ctu) {
 }
 
 function doResolveLink(options, ctu) {
-	resolveLink(options.formula, options.format)
-		.then((data) => { console.log("resolved link:", data); ctu({ success: data }) })
+	resolveLink(options.id)
+		.then((data) => { 
+			// console.log("resolved link:", data);
+			ctu({ success: data })
+		})
 		.catch((error) => { ctu({ error: error }) })
 }
 
