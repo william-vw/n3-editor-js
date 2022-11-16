@@ -154,21 +154,27 @@
 			$("#error").hide()
 
 			var formula = getFormula()
-			if (formula) {
-				var format = getCurrentFormat().type
-				var base = "/n3/editor";
+			if (!formula)
+				return false
 
-				service.generate_link(formula, format,
-					(id) => {
-						let turl = base + "/s/" + id;
-						console.log("turl:", turl)
-
-						$("#linkPlaceholder").html(": <a href='" + turl + "'>Link</a>")
-
-					}, (error) => {
-						$("#error").show().find("#output").html(error)
-					})
+			if (formula.length > config.link.max_len) {
+				$("#linkPlaceholder").html(`Formula too long (max. length: ${config.link.max_len})`)
+				return false
 			}
+
+			var format = getCurrentFormat().type
+			var base = "/n3/editor";
+
+			service.generate_link(formula, format,
+				(id) => {
+					let turl = base + "/s/" + id;
+					console.log("turl:", turl)
+
+					$("#linkPlaceholder").html(": <a href='" + turl + "'>Link</a>")
+
+				}, (error) => {
+					$("#error").show().find("#output").html(error)
+				})
 
 			return false
 		}
@@ -179,7 +185,9 @@
 					// console.log("resolved:", data);
 					
 					console.log("initializing formula from link")
-					editor.getDoc().setValue(data.formula);
+					editor.getDoc().setValue(data.formula)
+
+					console.log("format:", data.format)
 					validate(formats[data.format], true)
 
 				}, (error) => {
@@ -319,7 +327,7 @@
 					if (!systems.includes(execParam))
 						alert("Unknown system: " + execParam)
 					else {
-						console.log("initializing system from URL:", execParam)
+						console.log("system:", execParam)
 						$("input[name='system']").filter("[value='" + execParam + "']").attr('checked', true)
 						exec()
 					}
@@ -336,11 +344,11 @@
 					if (formats[formatParam] === undefined)
 						alert("Unknown format: " + formatParam)
 					else {
-						console.log("setting format from URL:", formatParam);
+						console.log("format:", formatParam);
 						validate(formats[formatParam], true)
 					}
 				} else {
-					console.log("setting default format:", defaultFormat.type);
+					console.log("default format:", defaultFormat.type);
 					validate(defaultFormat, true)
 				}
 			}
@@ -369,8 +377,7 @@
 			<small>Experimental auto-suggestion of namespaces. A specific namespace will only be suggested once (so just
 				remove it if it's wrong!).</small>
 
-			<textarea rows=10 cols=50 id="input">
-			</textarea>
+			<textarea rows=10 cols=50 id="input"></textarea>
 
 			<small class="note1">
 				<a href="#" id="link">Create link to formula</a>
