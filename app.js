@@ -87,7 +87,7 @@ app.post('/n3', (request, response) => {
 })
 
 app.listen(config.http.port)
-console.log(`Listening at http://${config.http.hostname}:${config.http.port}`)
+console.log(`Listening at ${config.http.hostname}:${config.http.port}`)
 
 function doReasoning(options, ctu) {
 	tmp.save(options.formula, (file) => {
