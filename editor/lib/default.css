@@ -12,6 +12,10 @@ body {
     box-shadow: 0 0 120px rgba(0, 0, 0, 0.1);
 }
 
+table td {
+    vertical-align: top
+}
+
 .logo {
     display: block;
     margin: 30px auto 30px;
@@ -63,7 +67,7 @@ h1::before {
 
 #loading {
     display: none;
-    margin-left: 10px
+    margin: 10px 0 0 10px
 }
 
 .output {
@@ -71,7 +75,7 @@ h1::before {
 }
 
 #reason_tasks {
-    margin: 10px 0 0 15px;
+    margin: 10px 0 0 0;
 }
 
 .box {
@@ -104,13 +108,14 @@ div.CodeMirror {
     margin: 15px 0 5px 0
 }
 
-.separator {
-    display: inline-block;
-    margin: 0 25px 0 20px
+td.separator {
+    padding: 10px;
 }
 
-.separator:after {
-    content: "|"
+td.separator div {
+    width: 1px;
+    height: 20px;
+    background: black;
 }
 
 h3 {

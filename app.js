@@ -69,6 +69,10 @@ app.post('/n3', (request, response) => {
 			doExplaining(data, ctu)
 			break
 
+		case 'imperate':
+			doImperating(data, ctu)
+			break
+
 		case 'generate_link':
 			doGenerateLink(data, ctu)
 			break
@@ -138,6 +142,18 @@ function doExplaining(options, ctu) {
 			tmp.del(file)
 
 			ctu(explanation)
+		})
+	})
+}
+
+function doImperating(options, ctu) {
+	tmp.save(options.formula, (file) => {
+
+		var reasoner = jen3;
+		reasoner.exec(options, file, (code) => {
+			tmp.del(file)
+
+			ctu(code)
 		})
 	})
 }
