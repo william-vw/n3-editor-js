@@ -54,11 +54,11 @@ function exec(options, onSuccess, onError) {
 						break
 
 					default:
-						onError("Error reaching N3 service.")
+						onError("Error reaching N3 service: ", status)
 						break
 				}
 			}).fail((response) => {
-				onError("Error reaching N3 service.")
+				onError("Error reaching N3 service:", response)
 			})
 			break;
 	}
