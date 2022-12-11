@@ -71,7 +71,8 @@ h1::before {
 }
 
 .output {
-    display: none
+    display: none;
+    position: relative;
 }
 
 #reason_tasks {
@@ -176,3 +177,34 @@ h3 {
 .CodeMirror {
     resize: vertical;
 }
+
+.copy {
+    position: absolute;
+    top: 55px;
+    right: 215px;
+    width: 25px;
+    height: 25px;
+    background-image: url("../img/copy.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border-bottom: none;
+}
+
+.copy .tooltiptext {
+    width: 140px;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+  }
+  
+  .copy .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }

@@ -26,6 +26,7 @@
 
 	<script src="/n3/config.js"></script>
 	<script src="/n3/editor/lib/ast.js" type="text/javascript"></script>
+	<script src="lib/utils.js" type="text/javascript"></script>
 
 	<link rel="stylesheet" href="/n3/editor/lib/default.css">
 	<link rel="stylesheet" href="/n3/editor/lib/explain.css">
@@ -169,7 +170,7 @@
 
 			}, (success) => {
 				$(`#imper_out`).show()
-				$(`#imper_out > div`).text(success)
+				$(`#imper_out > div.box`).text(success)
 
 			}, (error) => {
 				$("#error_out").show()
@@ -325,6 +326,9 @@
 			$("#imperate").click(imperate)
 			shortcut.add("Alt+I", imperate)
 
+			$("#imper_out .copy").click(() => copyText("#imper_out .box", "#imper_out .tooltiptext"));
+			$("#imper_out .copy").mouseout(() => resetCopyTip("#imper_out .tooltiptext"))
+
 			shortcut.add("Alt+N", () => validate(formats['n3'], true))
 			shortcut.add("Alt+T", () => validate(formats['turtlestar'], true))
 			shortcut.add("Alt+O", () => validate(formats['none'], true))
@@ -407,7 +411,49 @@
 			<small>Experimental auto-suggestion of namespaces. A specific namespace will only be suggested once (so just
 				remove it if it's wrong!).</small>
 
-			<textarea rows=10 cols=50 id="input"></textarea>
+			<textarea rows=10 cols=50 id="input">
+				@prefix : <http://swot.sisinflab.poliba.it/onto/rheumatology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> . 
+@prefix eo: <https://purl.org/heals/eo#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> . 
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ep: <http://linkedu.eu/dedalo/explanationPattern.owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix cg: <http://niche.cs.dal.ca/codegen.owl#> .
+
+
+schema:height 
+	rdfs:range xsd:int ;
+	a owl:FunctionalProperty .
+schema:weight 
+	rdfs:range xsd:int ;
+	a owl:FunctionalProperty .
+	
+:bmiValue 
+	rdfs:domain :Patient ; 
+	rdfs:range xsd:int ;
+	a owl:FunctionalProperty .
+
+
+{
+	?p 	schema:height ?h_cm ;
+		schema:weight ?w .
+	(?h_cm 100) math:quotient ?h_mt .
+	(?h_mt 2) math:exponentiation ?h_exp .
+	(?w ?h_exp) math:quotient ?bmi
+} => {
+	?p :bmiValue ?bmi .
+} 
+    ; cg:loadParam ?p .
+			</textarea>
 
 			<small class="note1">
 				<a href="#" id="link">Create link to formula</a>
@@ -527,6 +573,10 @@
 			<div id="imper_out" class="output">
 				<h3>Imperative Code:</h3>
 				<div class="box"></div>
+				<div class="copy tooltip">
+					<!-- NOTE also change default text in utils.js -->
+					<span class="tooltiptext">Copy to clipboard</span>
+				</div>
 			</div>
 		</div>
 	</main>
