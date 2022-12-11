@@ -1,16 +1,43 @@
-import { eyebrow } from "../../lib/eyebrow/eyebrow.js";
+// import { eyebrow } from "../../lib/eyebrow/eyebrow.js";
 
 const serviceUrl = `${config.http.hostname}:${config.http.port}/n3`;
+
+window.loadedEyebrow = function() {
+	doneLoading();
+
+	window.eyebrowCtu();
+}
+
+window.eyebrowCtu = function() {
+	let [ options, onSuccess, onError ] = window.eyebrowParams;
+	
+	window.eyebrow(options, options.formula, (output) => {
+		if (output.success !== undefined)
+			onSuccess(output.success);
+		else
+			onError(output.error);
+	});
+}
 
 function exec(options, onSuccess, onError) {
 	switch (options.system) {
 		case 'eyebrow':
-			eyebrow(options, options.formula, (output) => {
-				if (output.success)
-					onSuccess(output.success);
-				else
-					onError(output.error);
-			});
+			window.eyebrowParams = [ options, onSuccess, onError ];
+
+			// TODO instead of this mess, 
+			// do this properly with requirejs
+			if (!window.eyebrow) {
+				startLoading();
+
+				var load_eyebrow = document.createElement('script');
+				load_eyebrow.setAttribute('type', 'module');
+				load_eyebrow.setAttribute('src', 'lib/load_eyebrow.js');
+
+				document.head.appendChild(load_eyebrow);
+
+			} else
+				window.eyebrowCtu();
+
 			break;
 
 		default:

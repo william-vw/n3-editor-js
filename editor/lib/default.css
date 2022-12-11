@@ -65,9 +65,26 @@ h1::before {
     margin-bottom: 10px;
 }
 
+.functions {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr;
+}
+
+.function {
+    /* float: left; */
+    /* padding: 25px; */
+    margin: 0 25px 0 25px;
+    /* border: 1px solid black; */
+}
+
+.function button {
+    margin-bottom: 15px;
+}
+
 #loading {
     display: none;
-    margin: 10px 0 0 10px
+    margin: 10px 0 0 10px;
+    float: left;
 }
 
 .output {
@@ -110,12 +127,12 @@ div.CodeMirror {
 }
 
 td.separator {
-    padding: 10px;
+    padding: 25px;
 }
 
 td.separator div {
     width: 1px;
-    height: 20px;
+    height: 50px;
     background: black;
 }
 
