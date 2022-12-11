@@ -41,6 +41,7 @@ function exec(options, onSuccess, onError) {
 			break;
 
 		default:
+			console.log("serviceUrl? ", serviceUrl);
 			$.post(serviceUrl, options, (output, status) => {
 				console.log(status, output)
 
