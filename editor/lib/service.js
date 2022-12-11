@@ -1,6 +1,6 @@
 // import { eyebrow } from "../../lib/eyebrow/eyebrow.js";
 
-const serviceUrl = `${config.http.hostname}:${config.http.port}/n3`;
+const serviceUrl = `${config.http.hostname}:${config.http.port !== undefined ? `:${config.http.port}` : ""}/n3`;
 
 window.loadedEyebrow = function() {
 	doneLoading();
