@@ -16,6 +16,7 @@ config = {
 		},
 		jen3: {
 			exec: "/Users/wvw/git/n3/n3-editor-js/lib/jen3/jen3.jar",
+			codegen: "/Users/wvw/git/n3/n3-editor-js/lib/jen3/codegen.jar",
 			folder: "/Users/wvw/git/n3/n3-editor-js/lib/jen3"
 		}
 	},
