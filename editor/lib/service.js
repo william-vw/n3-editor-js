@@ -42,7 +42,7 @@ function exec(options, onSuccess, onError) {
 
 		default:
 			$.post(serviceUrl, options, (output, status) => {
-				// console.log(status, output)
+				console.log(status, output)
 
 				switch (status) {
 
