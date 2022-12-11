@@ -1,7 +1,7 @@
 config = {
 	http: {
 		hostname: 'https://n3-editor.herokuapp.com',
-	    port: process.env.PORT
+	    port: ((typeof process) != "undefined" ? process.env.PORT : undefined)
 	},
 
 	reasoners: {
