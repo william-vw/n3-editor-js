@@ -8,11 +8,11 @@ module.exports = {
   // node: { module: "empty", net: "empty", fs: "empty" }, // older versions of webpack
   resolve: { fallback: { fs: false } }, // webpack v5
 
-  entry: './parser/n3/index.js',
+  entry: './parser/turtlestar/index.js',
   output: {
-    filename: 'n3Main.js',
+    filename: 'turtlestarMain.js',
     libraryTarget: 'var',
-    library: 'n3',
+    library: 'turtlestar',
     path: path.resolve(__dirname, 'dist'),
   },
   optimization: {

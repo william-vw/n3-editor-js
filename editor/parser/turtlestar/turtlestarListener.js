@@ -1,222 +1,216 @@
-// Generated from D:\git\n3dev\N3\grammar\turtlestar.g4 by ANTLR 4.6
+// Generated from java-escape by ANTLR 4.11.1
 // jshint ignore: start
-var antlr4 = require('antlr4/index');
+import antlr4 from 'antlr4';
 
 // This class defines a complete listener for a parse tree produced by turtlestarParser.
-function turtlestarListener() {
-	antlr4.tree.ParseTreeListener.call(this);
-	return this;
+export default class turtlestarListener extends antlr4.tree.ParseTreeListener {
+
+	// Enter a parse tree produced by turtlestarParser#turtleStarDoc.
+	enterTurtleStarDoc(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#turtleStarDoc.
+	exitTurtleStarDoc(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#statement.
+	enterStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#statement.
+	exitStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#directive.
+	enterDirective(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#directive.
+	exitDirective(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#prefixID.
+	enterPrefixID(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#prefixID.
+	exitPrefixID(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#base.
+	enterBase(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#base.
+	exitBase(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#sparqlBase.
+	enterSparqlBase(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#sparqlBase.
+	exitSparqlBase(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#sparqlPrefix.
+	enterSparqlPrefix(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#sparqlPrefix.
+	exitSparqlPrefix(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#triples.
+	enterTriples(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#triples.
+	exitTriples(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#predicateObjectList.
+	enterPredicateObjectList(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#predicateObjectList.
+	exitPredicateObjectList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#objectList.
+	enterObjectList(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#objectList.
+	exitObjectList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#verb.
+	enterVerb(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#verb.
+	exitVerb(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#subject.
+	enterSubject(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#subject.
+	exitSubject(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#predicate.
+	enterPredicate(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#predicate.
+	exitPredicate(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#object.
+	enterObject(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#object.
+	exitObject(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#tripleX.
+	enterTripleX(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#tripleX.
+	exitTripleX(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#subjectX.
+	enterSubjectX(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#subjectX.
+	exitSubjectX(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#objectX.
+	enterObjectX(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#objectX.
+	exitObjectX(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#literal.
+	enterLiteral(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#literal.
+	exitLiteral(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#blankNodePropertyList.
+	enterBlankNodePropertyList(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#blankNodePropertyList.
+	exitBlankNodePropertyList(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#collection.
+	enterCollection(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#collection.
+	exitCollection(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#rdfLiteral.
+	enterRdfLiteral(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#rdfLiteral.
+	exitRdfLiteral(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#iri.
+	enterIri(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#iri.
+	exitIri(ctx) {
+	}
+
+
+	// Enter a parse tree produced by turtlestarParser#prefixedName.
+	enterPrefixedName(ctx) {
+	}
+
+	// Exit a parse tree produced by turtlestarParser#prefixedName.
+	exitPrefixedName(ctx) {
+	}
+
+
+
 }
-
-turtlestarListener.prototype = Object.create(antlr4.tree.ParseTreeListener.prototype);
-turtlestarListener.prototype.constructor = turtlestarListener;
-
-// Enter a parse tree produced by turtlestarParser#turtleStarDoc.
-turtlestarListener.prototype.enterTurtleStarDoc = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#turtleStarDoc.
-turtlestarListener.prototype.exitTurtleStarDoc = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#statement.
-turtlestarListener.prototype.enterStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#statement.
-turtlestarListener.prototype.exitStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#directive.
-turtlestarListener.prototype.enterDirective = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#directive.
-turtlestarListener.prototype.exitDirective = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#prefixID.
-turtlestarListener.prototype.enterPrefixID = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#prefixID.
-turtlestarListener.prototype.exitPrefixID = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#base.
-turtlestarListener.prototype.enterBase = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#base.
-turtlestarListener.prototype.exitBase = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#sparqlBase.
-turtlestarListener.prototype.enterSparqlBase = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#sparqlBase.
-turtlestarListener.prototype.exitSparqlBase = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#sparqlPrefix.
-turtlestarListener.prototype.enterSparqlPrefix = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#sparqlPrefix.
-turtlestarListener.prototype.exitSparqlPrefix = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#triples.
-turtlestarListener.prototype.enterTriples = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#triples.
-turtlestarListener.prototype.exitTriples = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#predicateObjectList.
-turtlestarListener.prototype.enterPredicateObjectList = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#predicateObjectList.
-turtlestarListener.prototype.exitPredicateObjectList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#objectList.
-turtlestarListener.prototype.enterObjectList = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#objectList.
-turtlestarListener.prototype.exitObjectList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#verb.
-turtlestarListener.prototype.enterVerb = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#verb.
-turtlestarListener.prototype.exitVerb = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#subject.
-turtlestarListener.prototype.enterSubject = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#subject.
-turtlestarListener.prototype.exitSubject = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#predicate.
-turtlestarListener.prototype.enterPredicate = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#predicate.
-turtlestarListener.prototype.exitPredicate = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#object.
-turtlestarListener.prototype.enterObject = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#object.
-turtlestarListener.prototype.exitObject = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#tripleX.
-turtlestarListener.prototype.enterTripleX = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#tripleX.
-turtlestarListener.prototype.exitTripleX = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#subjectX.
-turtlestarListener.prototype.enterSubjectX = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#subjectX.
-turtlestarListener.prototype.exitSubjectX = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#objectX.
-turtlestarListener.prototype.enterObjectX = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#objectX.
-turtlestarListener.prototype.exitObjectX = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#literal.
-turtlestarListener.prototype.enterLiteral = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#literal.
-turtlestarListener.prototype.exitLiteral = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#blankNodePropertyList.
-turtlestarListener.prototype.enterBlankNodePropertyList = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#blankNodePropertyList.
-turtlestarListener.prototype.exitBlankNodePropertyList = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#collection.
-turtlestarListener.prototype.enterCollection = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#collection.
-turtlestarListener.prototype.exitCollection = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#rdfLiteral.
-turtlestarListener.prototype.enterRdfLiteral = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#rdfLiteral.
-turtlestarListener.prototype.exitRdfLiteral = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#iri.
-turtlestarListener.prototype.enterIri = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#iri.
-turtlestarListener.prototype.exitIri = function(ctx) {
-};
-
-
-// Enter a parse tree produced by turtlestarParser#prefixedName.
-turtlestarListener.prototype.enterPrefixedName = function(ctx) {
-};
-
-// Exit a parse tree produced by turtlestarParser#prefixedName.
-turtlestarListener.prototype.exitPrefixedName = function(ctx) {
-};
-
-
-
-exports.turtlestarListener = turtlestarListener;
