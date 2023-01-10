@@ -1,4 +1,4 @@
-// Generated from n3.g4 by ANTLR 4.10.1
+// Generated from java-escape by ANTLR 4.11.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import n3Listener from './n3Listener.js';
@@ -83,7 +83,7 @@ const sharedContextCache = new antlr4.PredictionContextCache();
 
 export default class n3Parser extends antlr4.Parser {
 
-    static grammarFileName = "n3.g4";
+    static grammarFileName = "java-escape";
     static literalNames = [ null, "'.'", "'@prefix'", "'@base'", "';'", 
                             "','", "'a'", "'has'", "'is'", "'of'", "'='", 
                             "'<='", "'=>'", "'<-'", "'!'", "'^'", "'['", 
@@ -132,34 +132,34 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 66;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3Parser.T__1) | (1 << n3Parser.T__2) | (1 << n3Parser.T__15) | (1 << n3Parser.T__17) | (1 << n3Parser.T__19) | (1 << n3Parser.BooleanLiteral) | (1 << n3Parser.String) | (1 << n3Parser.IRIREF) | (1 << n3Parser.PNAME_NS) | (1 << n3Parser.PNAME_LN) | (1 << n3Parser.BLANK_NODE_LABEL) | (1 << n3Parser.INTEGER))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3Parser.DECIMAL - 32)) | (1 << (n3Parser.DOUBLE - 32)) | (1 << (n3Parser.IPLSTART - 32)) | (1 << (n3Parser.ANON - 32)) | (1 << (n3Parser.QuickVarName - 32)) | (1 << (n3Parser.BASE - 32)) | (1 << (n3Parser.PREFIX - 32)))) !== 0)) {
+	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & 3205824524) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & 203779) !== 0)) {
 	            this.state = 64;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case n3Parser.T__1:
-	            case n3Parser.T__2:
-	            case n3Parser.T__15:
-	            case n3Parser.T__17:
-	            case n3Parser.T__19:
-	            case n3Parser.BooleanLiteral:
-	            case n3Parser.String:
-	            case n3Parser.IRIREF:
-	            case n3Parser.PNAME_NS:
-	            case n3Parser.PNAME_LN:
-	            case n3Parser.BLANK_NODE_LABEL:
-	            case n3Parser.INTEGER:
-	            case n3Parser.DECIMAL:
-	            case n3Parser.DOUBLE:
-	            case n3Parser.IPLSTART:
-	            case n3Parser.ANON:
-	            case n3Parser.QuickVarName:
+	            case 2:
+	            case 3:
+	            case 16:
+	            case 18:
+	            case 20:
+	            case 24:
+	            case 25:
+	            case 26:
+	            case 27:
+	            case 28:
+	            case 29:
+	            case 31:
+	            case 32:
+	            case 33:
+	            case 42:
+	            case 43:
+	            case 44:
 	                this.state = 60;
 	                this.n3Statement();
 	                this.state = 61;
 	                this.match(n3Parser.T__0);
 	                break;
-	            case n3Parser.BASE:
-	            case n3Parser.PREFIX:
+	            case 48:
+	            case 49:
 	                this.state = 63;
 	                this.sparqlDirective();
 	                break;
@@ -195,27 +195,27 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 73;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case n3Parser.T__1:
-	        case n3Parser.T__2:
+	        case 2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 71;
 	            this.n3Directive();
 	            break;
-	        case n3Parser.T__15:
-	        case n3Parser.T__17:
-	        case n3Parser.T__19:
-	        case n3Parser.BooleanLiteral:
-	        case n3Parser.String:
-	        case n3Parser.IRIREF:
-	        case n3Parser.PNAME_NS:
-	        case n3Parser.PNAME_LN:
-	        case n3Parser.BLANK_NODE_LABEL:
-	        case n3Parser.INTEGER:
-	        case n3Parser.DECIMAL:
-	        case n3Parser.DOUBLE:
-	        case n3Parser.IPLSTART:
-	        case n3Parser.ANON:
-	        case n3Parser.QuickVarName:
+	        case 16:
+	        case 18:
+	        case 20:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 42:
+	        case 43:
+	        case 44:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 72;
 	            this.triples();
@@ -246,12 +246,12 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 77;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case n3Parser.T__1:
+	        case 2:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 75;
 	            this.prefixID();
 	            break;
-	        case n3Parser.T__2:
+	        case 3:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 76;
 	            this.base();
@@ -282,12 +282,12 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 81;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case n3Parser.BASE:
+	        case 48:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 79;
 	            this.sparqlBase();
 	            break;
-	        case n3Parser.PREFIX:
+	        case 49:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 80;
 	            this.sparqlPrefix();
@@ -426,7 +426,7 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 99;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3Parser.T__5) | (1 << n3Parser.T__6) | (1 << n3Parser.T__7) | (1 << n3Parser.T__9) | (1 << n3Parser.T__10) | (1 << n3Parser.T__11) | (1 << n3Parser.T__12) | (1 << n3Parser.T__15) | (1 << n3Parser.T__17) | (1 << n3Parser.T__19) | (1 << n3Parser.BooleanLiteral) | (1 << n3Parser.String) | (1 << n3Parser.IRIREF) | (1 << n3Parser.PNAME_NS) | (1 << n3Parser.PNAME_LN) | (1 << n3Parser.BLANK_NODE_LABEL) | (1 << n3Parser.INTEGER))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3Parser.DECIMAL - 32)) | (1 << (n3Parser.DOUBLE - 32)) | (1 << (n3Parser.IPLSTART - 32)) | (1 << (n3Parser.ANON - 32)) | (1 << (n3Parser.QuickVarName - 32)))) !== 0)) {
+	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & 3205840320) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & 7171) !== 0)) {
 	            this.state = 98;
 	            this.predicateObjectList();
 	        }
@@ -460,13 +460,13 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 111;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===n3Parser.T__3) {
+	        while(_la===4) {
 	            this.state = 103;
 	            this.match(n3Parser.T__3);
 	            this.state = 107;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3Parser.T__5) | (1 << n3Parser.T__6) | (1 << n3Parser.T__7) | (1 << n3Parser.T__9) | (1 << n3Parser.T__10) | (1 << n3Parser.T__11) | (1 << n3Parser.T__12) | (1 << n3Parser.T__15) | (1 << n3Parser.T__17) | (1 << n3Parser.T__19) | (1 << n3Parser.BooleanLiteral) | (1 << n3Parser.String) | (1 << n3Parser.IRIREF) | (1 << n3Parser.PNAME_NS) | (1 << n3Parser.PNAME_LN) | (1 << n3Parser.BLANK_NODE_LABEL) | (1 << n3Parser.INTEGER))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3Parser.DECIMAL - 32)) | (1 << (n3Parser.DOUBLE - 32)) | (1 << (n3Parser.IPLSTART - 32)) | (1 << (n3Parser.ANON - 32)) | (1 << (n3Parser.QuickVarName - 32)))) !== 0)) {
+	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & 3205840320) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & 7171) !== 0)) {
 	                this.state = 104;
 	                this.verb();
 	                this.state = 105;
@@ -504,7 +504,7 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 119;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===n3Parser.T__4) {
+	        while(_la===5) {
 	            this.state = 115;
 	            this.match(n3Parser.T__4);
 	            this.state = 116;
@@ -536,39 +536,39 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 133;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case n3Parser.T__12:
-	        case n3Parser.T__15:
-	        case n3Parser.T__17:
-	        case n3Parser.T__19:
-	        case n3Parser.BooleanLiteral:
-	        case n3Parser.String:
-	        case n3Parser.IRIREF:
-	        case n3Parser.PNAME_NS:
-	        case n3Parser.PNAME_LN:
-	        case n3Parser.BLANK_NODE_LABEL:
-	        case n3Parser.INTEGER:
-	        case n3Parser.DECIMAL:
-	        case n3Parser.DOUBLE:
-	        case n3Parser.IPLSTART:
-	        case n3Parser.ANON:
-	        case n3Parser.QuickVarName:
+	        case 13:
+	        case 16:
+	        case 18:
+	        case 20:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 42:
+	        case 43:
+	        case 44:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 122;
 	            this.predicate();
 	            break;
-	        case n3Parser.T__5:
+	        case 6:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 123;
 	            this.match(n3Parser.T__5);
 	            break;
-	        case n3Parser.T__6:
+	        case 7:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 124;
 	            this.match(n3Parser.T__6);
 	            this.state = 125;
 	            this.expression();
 	            break;
-	        case n3Parser.T__7:
+	        case 8:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 126;
 	            this.match(n3Parser.T__7);
@@ -577,17 +577,17 @@ export default class n3Parser extends antlr4.Parser {
 	            this.state = 128;
 	            this.match(n3Parser.T__8);
 	            break;
-	        case n3Parser.T__9:
+	        case 10:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 130;
 	            this.match(n3Parser.T__9);
 	            break;
-	        case n3Parser.T__10:
+	        case 11:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 131;
 	            this.match(n3Parser.T__10);
 	            break;
-	        case n3Parser.T__11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 132;
 	            this.match(n3Parser.T__11);
@@ -642,25 +642,25 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 140;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case n3Parser.T__15:
-	        case n3Parser.T__17:
-	        case n3Parser.T__19:
-	        case n3Parser.BooleanLiteral:
-	        case n3Parser.String:
-	        case n3Parser.IRIREF:
-	        case n3Parser.PNAME_NS:
-	        case n3Parser.PNAME_LN:
-	        case n3Parser.BLANK_NODE_LABEL:
-	        case n3Parser.INTEGER:
-	        case n3Parser.DECIMAL:
-	        case n3Parser.DOUBLE:
-	        case n3Parser.IPLSTART:
-	        case n3Parser.ANON:
-	        case n3Parser.QuickVarName:
+	        case 16:
+	        case 18:
+	        case 20:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 42:
+	        case 43:
+	        case 44:
 	            this.state = 137;
 	            this.expression();
 	            break;
-	        case n3Parser.T__12:
+	        case 13:
 	            this.state = 138;
 	            this.match(n3Parser.T__12);
 	            this.state = 139;
@@ -741,47 +741,47 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 151;
 	        this._errHandler.sync(this);
 	        switch (this._input.LA(1)) {
-	        case n3Parser.T__13:
+	        case 14:
 	        	this.state = 147;
 	        	this.match(n3Parser.T__13);
 	        	this.state = 148;
 	        	this.path();
 	        	break;
-	        case n3Parser.T__14:
+	        case 15:
 	        	this.state = 149;
 	        	this.match(n3Parser.T__14);
 	        	this.state = 150;
 	        	this.path();
 	        	break;
-	        case n3Parser.T__0:
-	        case n3Parser.T__3:
-	        case n3Parser.T__4:
-	        case n3Parser.T__5:
-	        case n3Parser.T__6:
-	        case n3Parser.T__7:
-	        case n3Parser.T__8:
-	        case n3Parser.T__9:
-	        case n3Parser.T__10:
-	        case n3Parser.T__11:
-	        case n3Parser.T__12:
-	        case n3Parser.T__15:
-	        case n3Parser.T__16:
-	        case n3Parser.T__17:
-	        case n3Parser.T__18:
-	        case n3Parser.T__19:
-	        case n3Parser.T__20:
-	        case n3Parser.BooleanLiteral:
-	        case n3Parser.String:
-	        case n3Parser.IRIREF:
-	        case n3Parser.PNAME_NS:
-	        case n3Parser.PNAME_LN:
-	        case n3Parser.BLANK_NODE_LABEL:
-	        case n3Parser.INTEGER:
-	        case n3Parser.DECIMAL:
-	        case n3Parser.DOUBLE:
-	        case n3Parser.IPLSTART:
-	        case n3Parser.ANON:
-	        case n3Parser.QuickVarName:
+	        case 1:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 42:
+	        case 43:
+	        case 44:
 	        	break;
 	        default:
 	        	break;
@@ -809,49 +809,49 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 161;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case n3Parser.IRIREF:
-	        case n3Parser.PNAME_NS:
-	        case n3Parser.PNAME_LN:
+	        case 26:
+	        case 27:
+	        case 28:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 153;
 	            this.iri();
 	            break;
-	        case n3Parser.BLANK_NODE_LABEL:
-	        case n3Parser.ANON:
+	        case 29:
+	        case 43:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 154;
 	            this.blankNode();
 	            break;
-	        case n3Parser.QuickVarName:
+	        case 44:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 155;
 	            this.quickVar();
 	            break;
-	        case n3Parser.T__17:
+	        case 18:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 156;
 	            this.collection();
 	            break;
-	        case n3Parser.T__15:
+	        case 16:
 	            this.enterOuterAlt(localctx, 5);
 	            this.state = 157;
 	            this.blankNodePropertyList();
 	            break;
-	        case n3Parser.IPLSTART:
+	        case 42:
 	            this.enterOuterAlt(localctx, 6);
 	            this.state = 158;
 	            this.iriPropertyList();
 	            break;
-	        case n3Parser.BooleanLiteral:
-	        case n3Parser.String:
-	        case n3Parser.INTEGER:
-	        case n3Parser.DECIMAL:
-	        case n3Parser.DOUBLE:
+	        case 24:
+	        case 25:
+	        case 31:
+	        case 32:
+	        case 33:
 	            this.enterOuterAlt(localctx, 7);
 	            this.state = 159;
 	            this.literal();
 	            break;
-	        case n3Parser.T__19:
+	        case 20:
 	            this.enterOuterAlt(localctx, 8);
 	            this.state = 160;
 	            this.formula();
@@ -882,19 +882,19 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 166;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case n3Parser.String:
+	        case 25:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 163;
 	            this.rdfLiteral();
 	            break;
-	        case n3Parser.INTEGER:
-	        case n3Parser.DECIMAL:
-	        case n3Parser.DOUBLE:
+	        case 31:
+	        case 32:
+	        case 33:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 164;
 	            this.numericLiteral();
 	            break;
-	        case n3Parser.BooleanLiteral:
+	        case 24:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 165;
 	            this.match(n3Parser.BooleanLiteral);
@@ -985,7 +985,7 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 181;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 16)) & ~0x1f) == 0 && ((1 << (_la - 16)) & ((1 << (n3Parser.T__15 - 16)) | (1 << (n3Parser.T__17 - 16)) | (1 << (n3Parser.T__19 - 16)) | (1 << (n3Parser.BooleanLiteral - 16)) | (1 << (n3Parser.String - 16)) | (1 << (n3Parser.IRIREF - 16)) | (1 << (n3Parser.PNAME_NS - 16)) | (1 << (n3Parser.PNAME_LN - 16)) | (1 << (n3Parser.BLANK_NODE_LABEL - 16)) | (1 << (n3Parser.INTEGER - 16)) | (1 << (n3Parser.DECIMAL - 16)) | (1 << (n3Parser.DOUBLE - 16)) | (1 << (n3Parser.IPLSTART - 16)) | (1 << (n3Parser.ANON - 16)) | (1 << (n3Parser.QuickVarName - 16)))) !== 0)) {
+	        while(((((_la - 16)) & ~0x1f) == 0 && ((1 << (_la - 16)) & 470007573) !== 0)) {
 	            this.state = 178;
 	            this.object();
 	            this.state = 183;
@@ -1021,7 +1021,7 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 188;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3Parser.T__1) | (1 << n3Parser.T__2) | (1 << n3Parser.T__15) | (1 << n3Parser.T__17) | (1 << n3Parser.T__19) | (1 << n3Parser.BooleanLiteral) | (1 << n3Parser.String) | (1 << n3Parser.IRIREF) | (1 << n3Parser.PNAME_NS) | (1 << n3Parser.PNAME_LN) | (1 << n3Parser.BLANK_NODE_LABEL) | (1 << n3Parser.INTEGER))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3Parser.DECIMAL - 32)) | (1 << (n3Parser.DOUBLE - 32)) | (1 << (n3Parser.IPLSTART - 32)) | (1 << (n3Parser.ANON - 32)) | (1 << (n3Parser.QuickVarName - 32)) | (1 << (n3Parser.BASE - 32)) | (1 << (n3Parser.PREFIX - 32)))) !== 0)) {
+	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & 3205824524) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & 203779) !== 0)) {
 	            this.state = 187;
 	            this.formulaContent();
 	        }
@@ -1052,36 +1052,36 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 203;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case n3Parser.T__1:
-	        case n3Parser.T__2:
-	        case n3Parser.T__15:
-	        case n3Parser.T__17:
-	        case n3Parser.T__19:
-	        case n3Parser.BooleanLiteral:
-	        case n3Parser.String:
-	        case n3Parser.IRIREF:
-	        case n3Parser.PNAME_NS:
-	        case n3Parser.PNAME_LN:
-	        case n3Parser.BLANK_NODE_LABEL:
-	        case n3Parser.INTEGER:
-	        case n3Parser.DECIMAL:
-	        case n3Parser.DOUBLE:
-	        case n3Parser.IPLSTART:
-	        case n3Parser.ANON:
-	        case n3Parser.QuickVarName:
+	        case 2:
+	        case 3:
+	        case 16:
+	        case 18:
+	        case 20:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 42:
+	        case 43:
+	        case 44:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 192;
 	            this.n3Statement();
 	            this.state = 197;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(_la===n3Parser.T__0) {
+	            if(_la===1) {
 	                this.state = 193;
 	                this.match(n3Parser.T__0);
 	                this.state = 195;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3Parser.T__1) | (1 << n3Parser.T__2) | (1 << n3Parser.T__15) | (1 << n3Parser.T__17) | (1 << n3Parser.T__19) | (1 << n3Parser.BooleanLiteral) | (1 << n3Parser.String) | (1 << n3Parser.IRIREF) | (1 << n3Parser.PNAME_NS) | (1 << n3Parser.PNAME_LN) | (1 << n3Parser.BLANK_NODE_LABEL) | (1 << n3Parser.INTEGER))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3Parser.DECIMAL - 32)) | (1 << (n3Parser.DOUBLE - 32)) | (1 << (n3Parser.IPLSTART - 32)) | (1 << (n3Parser.ANON - 32)) | (1 << (n3Parser.QuickVarName - 32)) | (1 << (n3Parser.BASE - 32)) | (1 << (n3Parser.PREFIX - 32)))) !== 0)) {
+	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & 3205824524) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & 203779) !== 0)) {
 	                    this.state = 194;
 	                    this.formulaContent();
 	                }
@@ -1089,15 +1089,15 @@ export default class n3Parser extends antlr4.Parser {
 	            }
 
 	            break;
-	        case n3Parser.BASE:
-	        case n3Parser.PREFIX:
+	        case 48:
+	        case 49:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 199;
 	            this.sparqlDirective();
 	            this.state = 201;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3Parser.T__1) | (1 << n3Parser.T__2) | (1 << n3Parser.T__15) | (1 << n3Parser.T__17) | (1 << n3Parser.T__19) | (1 << n3Parser.BooleanLiteral) | (1 << n3Parser.String) | (1 << n3Parser.IRIREF) | (1 << n3Parser.PNAME_NS) | (1 << n3Parser.PNAME_LN) | (1 << n3Parser.BLANK_NODE_LABEL) | (1 << n3Parser.INTEGER))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3Parser.DECIMAL - 32)) | (1 << (n3Parser.DOUBLE - 32)) | (1 << (n3Parser.IPLSTART - 32)) | (1 << (n3Parser.ANON - 32)) | (1 << (n3Parser.QuickVarName - 32)) | (1 << (n3Parser.BASE - 32)) | (1 << (n3Parser.PREFIX - 32)))) !== 0)) {
+	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & 3205824524) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & 203779) !== 0)) {
 	                this.state = 200;
 	                this.formulaContent();
 	            }
@@ -1130,7 +1130,7 @@ export default class n3Parser extends antlr4.Parser {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 205;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 31)) & ~0x1f) == 0 && ((1 << (_la - 31)) & ((1 << (n3Parser.INTEGER - 31)) | (1 << (n3Parser.DECIMAL - 31)) | (1 << (n3Parser.DOUBLE - 31)))) !== 0))) {
+	        if(!(((((_la - 31)) & ~0x1f) == 0 && ((1 << (_la - 31)) & 7) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1163,47 +1163,47 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 211;
 	        this._errHandler.sync(this);
 	        switch (this._input.LA(1)) {
-	        case n3Parser.LANGTAG:
+	        case 30:
 	        	this.state = 208;
 	        	this.match(n3Parser.LANGTAG);
 	        	break;
-	        case n3Parser.T__21:
+	        case 22:
 	        	this.state = 209;
 	        	this.match(n3Parser.T__21);
 	        	this.state = 210;
 	        	this.iri();
 	        	break;
-	        case n3Parser.T__0:
-	        case n3Parser.T__3:
-	        case n3Parser.T__4:
-	        case n3Parser.T__5:
-	        case n3Parser.T__6:
-	        case n3Parser.T__7:
-	        case n3Parser.T__8:
-	        case n3Parser.T__9:
-	        case n3Parser.T__10:
-	        case n3Parser.T__11:
-	        case n3Parser.T__12:
-	        case n3Parser.T__13:
-	        case n3Parser.T__14:
-	        case n3Parser.T__15:
-	        case n3Parser.T__16:
-	        case n3Parser.T__17:
-	        case n3Parser.T__18:
-	        case n3Parser.T__19:
-	        case n3Parser.T__20:
-	        case n3Parser.BooleanLiteral:
-	        case n3Parser.String:
-	        case n3Parser.IRIREF:
-	        case n3Parser.PNAME_NS:
-	        case n3Parser.PNAME_LN:
-	        case n3Parser.BLANK_NODE_LABEL:
-	        case n3Parser.INTEGER:
-	        case n3Parser.DECIMAL:
-	        case n3Parser.DOUBLE:
-	        case n3Parser.IPLSTART:
-	        case n3Parser.ANON:
-	        case n3Parser.QuickVarName:
+	        case 1:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 7:
+	        case 8:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 13:
+	        case 14:
+	        case 15:
+	        case 16:
+	        case 17:
+	        case 18:
+	        case 19:
+	        case 20:
+	        case 21:
+	        case 24:
+	        case 25:
+	        case 26:
+	        case 27:
+	        case 28:
+	        case 29:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 42:
+	        case 43:
+	        case 44:
 	        	break;
 	        default:
 	        	break;
@@ -1231,13 +1231,13 @@ export default class n3Parser extends antlr4.Parser {
 	        this.state = 215;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case n3Parser.IRIREF:
+	        case 26:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 213;
 	            this.match(n3Parser.IRIREF);
 	            break;
-	        case n3Parser.PNAME_NS:
-	        case n3Parser.PNAME_LN:
+	        case 27:
+	        case 28:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 214;
 	            this.prefixedName();
@@ -1269,7 +1269,7 @@ export default class n3Parser extends antlr4.Parser {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 217;
 	        _la = this._input.LA(1);
-	        if(!(_la===n3Parser.PNAME_NS || _la===n3Parser.PNAME_LN)) {
+	        if(!(_la===27 || _la===28)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -1300,7 +1300,7 @@ export default class n3Parser extends antlr4.Parser {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 219;
 	        _la = this._input.LA(1);
-	        if(!(_la===n3Parser.BLANK_NODE_LABEL || _la===n3Parser.ANON)) {
+	        if(!(_la===29 || _la===43)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
