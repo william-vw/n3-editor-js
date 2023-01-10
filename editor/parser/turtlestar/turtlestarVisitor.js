@@ -1,154 +1,148 @@
-// Generated from D:\git\n3dev\N3\grammar\turtlestar.g4 by ANTLR 4.6
+// Generated from java-escape by ANTLR 4.11.1
 // jshint ignore: start
-var antlr4 = require('antlr4/index');
+import antlr4 from 'antlr4';
 
 // This class defines a complete generic visitor for a parse tree produced by turtlestarParser.
 
-function turtlestarVisitor() {
-	antlr4.tree.ParseTreeVisitor.call(this);
-	return this;
+export default class turtlestarVisitor extends antlr4.tree.ParseTreeVisitor {
+
+	// Visit a parse tree produced by turtlestarParser#turtleStarDoc.
+	visitTurtleStarDoc(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#statement.
+	visitStatement(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#directive.
+	visitDirective(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#prefixID.
+	visitPrefixID(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#base.
+	visitBase(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#sparqlBase.
+	visitSparqlBase(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#sparqlPrefix.
+	visitSparqlPrefix(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#triples.
+	visitTriples(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#predicateObjectList.
+	visitPredicateObjectList(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#objectList.
+	visitObjectList(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#verb.
+	visitVerb(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#subject.
+	visitSubject(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#predicate.
+	visitPredicate(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#object.
+	visitObject(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#tripleX.
+	visitTripleX(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#subjectX.
+	visitSubjectX(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#objectX.
+	visitObjectX(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#literal.
+	visitLiteral(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#blankNodePropertyList.
+	visitBlankNodePropertyList(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#collection.
+	visitCollection(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#rdfLiteral.
+	visitRdfLiteral(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#iri.
+	visitIri(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by turtlestarParser#prefixedName.
+	visitPrefixedName(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+
 }
-
-turtlestarVisitor.prototype = Object.create(antlr4.tree.ParseTreeVisitor.prototype);
-turtlestarVisitor.prototype.constructor = turtlestarVisitor;
-
-// Visit a parse tree produced by turtlestarParser#turtleStarDoc.
-turtlestarVisitor.prototype.visitTurtleStarDoc = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#statement.
-turtlestarVisitor.prototype.visitStatement = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#directive.
-turtlestarVisitor.prototype.visitDirective = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#prefixID.
-turtlestarVisitor.prototype.visitPrefixID = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#base.
-turtlestarVisitor.prototype.visitBase = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#sparqlBase.
-turtlestarVisitor.prototype.visitSparqlBase = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#sparqlPrefix.
-turtlestarVisitor.prototype.visitSparqlPrefix = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#triples.
-turtlestarVisitor.prototype.visitTriples = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#predicateObjectList.
-turtlestarVisitor.prototype.visitPredicateObjectList = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#objectList.
-turtlestarVisitor.prototype.visitObjectList = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#verb.
-turtlestarVisitor.prototype.visitVerb = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#subject.
-turtlestarVisitor.prototype.visitSubject = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#predicate.
-turtlestarVisitor.prototype.visitPredicate = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#object.
-turtlestarVisitor.prototype.visitObject = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#tripleX.
-turtlestarVisitor.prototype.visitTripleX = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#subjectX.
-turtlestarVisitor.prototype.visitSubjectX = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#objectX.
-turtlestarVisitor.prototype.visitObjectX = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#literal.
-turtlestarVisitor.prototype.visitLiteral = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#blankNodePropertyList.
-turtlestarVisitor.prototype.visitBlankNodePropertyList = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#collection.
-turtlestarVisitor.prototype.visitCollection = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#rdfLiteral.
-turtlestarVisitor.prototype.visitRdfLiteral = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#iri.
-turtlestarVisitor.prototype.visitIri = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by turtlestarParser#prefixedName.
-turtlestarVisitor.prototype.visitPrefixedName = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-
-exports.turtlestarVisitor = turtlestarVisitor;

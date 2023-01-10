@@ -232,7 +232,7 @@
 				const elLabel = f.label
 				var el = container
 					.append(
-						$(`<span><input type="radio" name="format" id="${elId}">${elLabel}</input>&nbsp;&nbsp;</span>`)
+						$(`<span><input type="radio" name="format" id="${elId}"><label for="${elId}">${elLabel}</label></input>&nbsp;&nbsp;</span>`)
 							.change((e) => {
 								if (e.target.checked)
 									validate(f)

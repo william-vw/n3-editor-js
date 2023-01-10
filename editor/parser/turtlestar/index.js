@@ -1,18 +1,27 @@
-var antlr4 = require('antlr4');
-var TurtleStarLexer = require('./turtlestarLexer').turtlestarLexer;
-var TurtleStarParser = require('./turtlestarParser').turtlestarParser;
-var TurtleStarPrefixListener = require('./turtlestarPrefixListener').turtlestarPrefixListener;
-// var TurtleStarPrintListener = require('./turtlestarPrintListener').turtlestarPrintListener;
-var TurtleStarPrintVisitor = require('./turtlestarPrintVisitor').turtlestarPrintVisitor;
+// - CommonJS
+// var antlr4 = require('antlr4');
+// var TurtleStarLexer = require('./turtlestarLexer').turtlestarLexer;
+// var TurtleStarParser = require('./turtlestarParser').turtlestarParser;
+// var TurtleStarPrefixListener = require('./turtlestarPrefixListener').turtlestarPrefixListener;
+// // var TurtleStarPrintListener = require('./turtlestarPrintListener').turtlestarPrintListener;
+// var TurtleStarPrintVisitor = require('./turtlestarPrintVisitor').turtlestarPrintVisitor;
+
+// - ES6
+import InputStream from 'antlr4/src/antlr4/InputStream';
+import CommonTokenStream from 'antlr4/src/antlr4/CommonTokenStream';
+import TurtleStarLexer from './turtlestarLexer';
+import TurtleStarParser from './turtlestarParser';
+import TurtleStarPrintListener from './turtlestarPrintListener';
+import TurtleStarPrintVisitor from './turtlestarPrintVisitor';
 
 function parse(input, listener) {
-	var chars = new antlr4.InputStream(input);
+	var chars = new InputStream(input);
 	
 	var turtlestarLexer = new TurtleStarLexer(chars);
 	turtlestarLexer.removeErrorListeners();
 	turtlestarLexer.addErrorListener(listener);
 	
-	var tokens = new antlr4.CommonTokenStream(turtlestarLexer);
+	var tokens = new CommonTokenStream(turtlestarLexer);
 	
 	var turtlestarParser = new TurtleStarParser(tokens);
 	turtlestarParser.removeErrorListeners();
