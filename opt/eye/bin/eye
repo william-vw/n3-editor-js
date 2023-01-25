@@ -1,2 +1,2 @@
 #!/bin/sh
-swipl -x /opt/eye/lib/eye.pvm -- "$@"
+swipl -x /app/opt/eye/lib/eye.pvm -- "$@"
