@@ -104,12 +104,6 @@ n3.lint = function(onSuggestion) {
 	}
 }
 
-turtlestar.lint = function(onSuggestion) {
-	return function(text, options, editor) {
-		return doLint(text, options, editor, onSuggestion, turtlestar)
-	}
-}
-
 // doesn't seem to work for me
 // tried adding it to codemirror addon folder (copying setup from other
 // lints); re-installing codemirror (npm install), ..

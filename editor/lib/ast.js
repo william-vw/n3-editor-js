@@ -40,7 +40,3 @@ function doAst(formula, onAstLine, onError, lib) {
 n3.ast = function(formula, onAstLine, onError) {
 	doAst(formula, onAstLine, onError, n3);
 }
-
-turtlestar.ast = function(formula, onAstLine, onError) {
-	doAst(formula, onAstLine, onError, turtlestar);
-}
