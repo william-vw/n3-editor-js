@@ -1,23 +1,23 @@
 config = {
 	http: {
-		hostname: 'http://127.0.0.1',
+		hostname: 'http://ppr.cs.dal.ca',
 		port: 3002
 	},
 
 	reasoners: {
 		eye: {
-			exec: "/Users/wvw/git/n3/n3-editor-js/opt/eye/bin/eye",
-			folder: "/Users/wvw/git/n3/n3-editor-js/lib/eye"
+			exec: "/home/woensel/projects/n3-editor-js/opt/eye/bin/eye",
+			folder: "/home/woensel/projects/n3-editor-js/lib/eye"
 		},
 		cwm: {
 			// (use python2 for cwm)
 			pythonCmd: "python",
-			exec: "/Users/wvw/cwm-1.2.1/swap/cwm.py"
+			exec: "/opt/cwm-1.2.1/swap/cwm.py"
 		},
 		jen3: {
-			exec: "/Users/wvw/git/n3/n3-editor-js/lib/jen3/jen3.jar",
-			codegen: "/Users/wvw/git/n3/n3-editor-js/lib/jen3/codegen.jar",
-			folder: "/Users/wvw/git/n3/n3-editor-js/lib/jen3"
+			exec: "/home/woensel/projects/n3-editor-js/lib/jen3/jen3.jar",
+			codegen: "/home/woensel/projects/n3-editor-js/lib/jen3/codegen.jar",
+			folder: "/home/woensel/projects/n3-editor-js/lib/jen3"
 		}
 	},
 
@@ -27,12 +27,12 @@ config = {
 			port: '33060',
 			host: 'localhost',
 			db: "n3_links",
-			user: 'root',
-			pwd: ''
+			user: 'root', 
+			pwd: 'changeit'
 		}
 	},
 
-	path: "/Users/wvw/git/n3/n3-editor-js"
+	path: "/home/woensel/projects/n3-editor-js"
 }
 
 if (typeof exports === 'object' && typeof module === 'object')
