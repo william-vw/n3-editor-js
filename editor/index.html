@@ -16,12 +16,10 @@
 
 	<!-- introduces n3 namespace -->
 	<script src="/n3/editor/dist/n3Main.js"></script>
-	<script src="/n3/editor/dist/turtlestarMain.js"></script>
 
 	<script src="/n3/editor/lib/codemirror-5.54.0/namespaces.js"></script>
 	<script src="/n3/editor/lib/codemirror-5.54.0/lint.js"></script>
 	<script src="/n3/editor/lib/codemirror-5.54.0/n3-mode.js"></script>
-	<script src="/n3/editor/lib/codemirror-5.54.0/turtlestar-mode.js"></script>
 	<link rel="stylesheet" href="/n3/editor/lib/codemirror-5.54.0/rdf.css">
 
 	<script src="/n3/config.js"></script>
@@ -36,7 +34,6 @@
 		const systems = ["eye", "cwm", "jen3"]
 		const formats = {
 			n3: { type: 'n3', label: "<u>N</u>3", lib: n3, mode: 'n3' },
-			turtlestar: { type: 'turtlestar', label: "<u>T</u>urtle*", lib: turtlestar, mode: 'turtlestar' },
 			none: { type: 'none', label: "N<u>o</u>ne" }
 		}
 		const defaultFormat = formats.n3
@@ -325,7 +322,6 @@
 			$("#imper_out .copy").mouseout(() => resetCopyTip("#imper_out .tooltiptext"))
 
 			shortcut.add("Alt+N", () => validate(formats['n3'], true))
-			shortcut.add("Alt+T", () => validate(formats['turtlestar'], true))
 			shortcut.add("Alt+O", () => validate(formats['none'], true))
 
 			$("#link").click(generate_link)
@@ -414,49 +410,7 @@
 			<small>Experimental auto-suggestion of namespaces. A specific namespace will only be suggested once (so just
 				remove it if it's wrong!).</small>
 
-			<textarea rows=10 cols=50 id="input">
-				@prefix : <http://swot.sisinflab.poliba.it/onto/rheumatology#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix math: <http://www.w3.org/2000/10/swap/math#> .
-@prefix log: <http://www.w3.org/2000/10/swap/log#> .
-@prefix list: <http://www.w3.org/2000/10/swap/list#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix schema: <http://schema.org/> . 
-@prefix eo: <https://purl.org/heals/eo#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> . 
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ep: <http://linkedu.eu/dedalo/explanationPattern.owl#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix cg: <http://niche.cs.dal.ca/codegen.owl#> .
-
-
-schema:height 
-	rdfs:range xsd:int ;
-	a owl:FunctionalProperty .
-schema:weight 
-	rdfs:range xsd:int ;
-	a owl:FunctionalProperty .
-	
-:bmiValue 
-	rdfs:domain :Patient ; 
-	rdfs:range xsd:int ;
-	a owl:FunctionalProperty .
-
-
-{
-	?p 	schema:height ?h_cm ;
-		schema:weight ?w .
-	(?h_cm 100) math:quotient ?h_mt .
-	(?h_mt 2) math:exponentiation ?h_exp .
-	(?w ?h_exp) math:quotient ?bmi
-} => {
-	?p :bmiValue ?bmi .
-} 
-    ; cg:loadParam ?p .
-			</textarea>
+			<textarea rows=10 cols=50 id="input"></textarea>
 
 			<small class="note1">
 				<a href="#" id="link">Create link to formula</a>
@@ -520,14 +474,14 @@ schema:weight
 				<div class="function">
 					<button id="show_ast">show <u>a</u>st</button>
 				</div>
-				<div class="function">
+				<!-- <div class="function">
 					<button id="imperate"><u>i</u>mperate</button>
 					<br />
 					<select name="imperate_language">
 						<option value="javascript" id="js_imper" selected>javascript</option>
 						<option value="solidity" id="solid_imper">solidity</option>
 					</select>
-				</div>
+				</div> -->
 				<div id="loading">
 					<img src="/n3/editor/img/ajax-loader.gif" alt="loader">
 				</div>
