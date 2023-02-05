@@ -277,11 +277,11 @@
 		// (modules aren't yet loaded when onload event is fired)
 
 		function startLoading() {
-			$('#loading').css("display", "inline-block")
+			$('.loading').css("display", "inline-block")
 		}
 
 		function doneLoading() {
-			$('#loading').hide()
+			$('.loading').hide()
 		}
 
 	</script>
@@ -299,7 +299,10 @@
 			</div>
 			<br/>
 			<div>
-				<button id="get_spin">To <u>S</u>PIN</button><br />
+				<button id="get_spin">To <u>S</u>PIN</button>
+				<div class="loading">
+					<img src="/n3/editor/img/ajax-loader.gif" alt="loader">
+				</div>
 				<br/>
 				<textarea rows=20 cols=100 id="spin" placeholder="SPIN"></textarea>
 			</div>
@@ -336,7 +339,7 @@
 						<option value="derivations" id="deriv" selected>derivations</option>
 					</select>
 				</div>
-				<div id="loading">
+				<div class="loading">
 					<img src="/n3/editor/img/ajax-loader.gif" alt="loader">
 				</div>
 			</div>
