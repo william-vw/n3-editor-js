@@ -8,6 +8,7 @@ const tmp = require('./lib/tmp.js')
 const eye = require('./lib/eye/eye.js')
 const cwm = require('./lib/cwm/cwm.js')
 const jen3 = require('./lib/jen3/jen3.js')
+const triplify = require('./lib/triplify/triplify.js')
 const { generateLink, resolveLink } = require('./lib/gen_link.js')
 const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 
@@ -71,6 +72,10 @@ app.post('/n3', (request, response) => {
 
 		case 'imperate':
 			doImperating(data, ctu)
+			break
+
+		case 'triplify':
+			doTriplify(data, ctu)
 			break
 
 		case 'generate_link':
@@ -151,6 +156,17 @@ function doImperating(options, ctu) {
 
 		var reasoner = jen3;
 		reasoner.exec(options, file, (code) => {
+			tmp.del(file)
+
+			ctu(code)
+		})
+	})
+}
+
+function doTriplify(options, ctu) {
+	tmp.save(options.formula, (file) => {
+
+		triplify.exec(options, file, (code) => {
 			tmp.del(file)
 
 			ctu(code)

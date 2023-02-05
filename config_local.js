@@ -4,7 +4,7 @@ config = {
 		port: 3002
 	},
 
-	reasoners: {
+	tools: {
 		eye: {
 			exec: "/Users/wvw/git/n3/n3-editor-js/opt/eye/bin/eye",
 			folder: "/Users/wvw/git/n3/n3-editor-js/lib/eye"
@@ -18,6 +18,9 @@ config = {
 			exec: "/Users/wvw/git/n3/n3-editor-js/lib/jen3/jen3.jar",
 			codegen: "/Users/wvw/git/n3/n3-editor-js/lib/jen3/codegen.jar",
 			folder: "/Users/wvw/git/n3/n3-editor-js/lib/jen3"
+		},
+		triplify: {
+			exec: "/Users/wvw/git/n3/n3-editor-js/lib/triplify/sparql2spin.jar"
 		}
 	},
 

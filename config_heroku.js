@@ -4,7 +4,7 @@ config = {
 	    port: ((typeof process) != "undefined" ? process.env.PORT : undefined)
 	},
 
-	reasoners: {
+	tools: {
 		eye: {
 			exec: "/app/opt/eye/bin/eye", 
 		    folder: "/app/lib/eye"
@@ -18,6 +18,9 @@ config = {
             exec: "/app/lib/jen3/jen3.jar",
             codegen: "/app/lib/jen3/codegen.jar",
 		    folder: "/app/lib/jen3"
+		},
+		triplify: {
+			exec: "/app/lib/triplify/sparql2spin.jar"
 		}
 	},
 
