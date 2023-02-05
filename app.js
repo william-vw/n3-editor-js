@@ -20,6 +20,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/n3/editor/s/*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/index.html")); 
 });
+app.use('/n3/sparql2n3/s/*', (req, res) => {
+	res.sendFile(path.join(__dirname, "editor/sparql2n3.html")); 
+});
 app.use('/n3/editor', express.static(path.join(__dirname, "editor")));
 app.use('/n3/lib/eyebrow', express.static(path.join(__dirname, "lib/eyebrow")));
 app.use('/n3/config.js', express.static(path.join(__dirname, 'config.js')));
