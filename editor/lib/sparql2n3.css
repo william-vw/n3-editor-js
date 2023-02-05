@@ -5,6 +5,11 @@
 
 .function {
     margin-left: 0;
+    float: left;
+}
+
+#loading {
+    float: right;
 }
 
 .sparql_spin {
