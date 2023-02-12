@@ -30,8 +30,10 @@
 	<link rel="stylesheet" href="/n3/editor/lib/explain.css">
 	<script src="/n3/editor/lib/explain.js" type="text/javascript"></script>
 
+	<script src="https://eyereasoner.github.io/eye-js/2/latest/index.js"></script>
+
 	<script>
-		const systems = ["eye", "cwm", "jen3"]
+		const systems = ["eye", "cwm", "jen3", "eyejs"]
 		const formats = {
 			n3: { type: 'n3', label: "<u>N</u>3", lib: n3, mode: 'n3' },
 			none: { type: 'none', label: "N<u>o</u>ne" }
@@ -433,6 +435,7 @@
 						<option value="eye" id="eye_exec" selected>eye</option>
 						<!-- <option value="cwm" id="cwm_exec">cwm</option> -->
 						<option value="jen3" id="jen3_exec">jen3</option>
+						<option value="eyejs" id="eyejs_exec">eye-js</option>
 					</select>
 					<br />
 					<div id="reason_tasks">
