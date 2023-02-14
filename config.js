@@ -6,7 +6,7 @@ config = {
 
 	tools: {
 		eye: {
-			exec: "/app/opt/eye/bin/eye", 
+			exec: "eye", 
 		    folder: "/app/lib/eye"
 		},
 		cwm: {
