@@ -116,19 +116,19 @@
 
 			var formula = getFormula()
 			if (!formula) {
-				$("#linkPlaceholder").html("no N3 code found.");
+				$("#linkPlaceholder").html("(need N3 code to share)");
 				return false
 			}
 
 			var sparql = $('#sparql').val()
 			if (sparql.length == 0) {
-				$("#linkPlaceholder").html("no SPARQL code found.");
+				$("#linkPlaceholder").html("(need SPARQL code to share)");
 				return false
 			}
 
 			var spin = $('#spin').val()
 			if (spin.length == 0) {
-				$("#linkPlaceholder").html("no SPIN code found.");
+				$("#linkPlaceholder").html("(need SPIN code to share)");
 				return false
 			}
 
