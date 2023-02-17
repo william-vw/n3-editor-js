@@ -115,16 +115,22 @@
 			$("#error").hide()
 
 			var formula = getFormula()
-			if (!formula)
+			if (!formula) {
+				$("#linkPlaceholder").html("no N3 code found.");
 				return false
+			}
 
 			var sparql = $('#sparql').val()
-			if (sparql.length == 0)
+			if (sparql.length == 0) {
+				$("#linkPlaceholder").html("no SPARQL code found.");
 				return false
+			}
 
 			var spin = $('#spin').val()
-			if (spin.length == 0)
+			if (spin.length == 0) {
+				$("#linkPlaceholder").html("no SPIN code found.");
 				return false
+			}
 
 			formula = "sparql=" + sparql + "\n\nspin=" + spin + "\n\nn3=" + formula
 
