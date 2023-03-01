@@ -19,6 +19,9 @@ config = {
 			codegen: "/Users/wvw/git/n3/n3-editor-js/lib/jen3/codegen.jar",
 			folder: "/Users/wvw/git/n3/n3-editor-js/lib/jen3"
 		},
+		jena: {
+			exec: "/Users/wvw/git/n3/n3-editor-js/lib/jena/sparql.jar",
+		},
 		triplify: {
 			exec: "/Users/wvw/git/n3/n3-editor-js/lib/triplify/sparql2spin.jar"
 		}

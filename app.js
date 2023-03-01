@@ -8,6 +8,7 @@ const tmp = require('./lib/tmp.js')
 const eye = require('./lib/eye/eye.js')
 const cwm = require('./lib/cwm/cwm.js')
 const jen3 = require('./lib/jen3/jen3.js')
+const jena = require('./lib/jena/jena.js')
 const triplify = require('./lib/triplify/triplify.js')
 const { generateLink, resolveLink } = require('./lib/gen_link.js')
 const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
@@ -18,10 +19,13 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/n3/editor/s/*', (req, res) => {
-	res.sendFile(path.join(__dirname, "editor/index.html")); 
+	res.sendFile(path.join(__dirname, "editor/index.html"));
 });
 app.use('/n3/sparql2n3*', (req, res) => {
-	res.sendFile(path.join(__dirname, "editor/sparql2n3.html")); 
+	res.sendFile(path.join(__dirname, "editor/sparql2n3.html"));
+});
+app.use('/n3/sparql*', (req, res) => {
+	res.sendFile(path.join(__dirname, "editor/sparql.html"));
 });
 app.use('/n3/editor', express.static(path.join(__dirname, "editor")));
 app.use('/n3/lib/eyebrow', express.static(path.join(__dirname, "lib/eyebrow")));
@@ -50,8 +54,8 @@ app.post('/n3', (request, response) => {
 	const data = request.body
 	// console.log("data:", data);
 	console.log(
-		"task:", data.task, 
-		(data.system? ", system: " + data.system : "")
+		"task:", data.task,
+		(data.system ? ", system: " + data.system : "")
 	);
 
 	function ctu(ret) {
@@ -79,6 +83,10 @@ app.post('/n3', (request, response) => {
 
 		case 'triplify':
 			doTriplify(data, ctu)
+			break
+
+		case 'query':
+			doQuery(data, ctu)
 			break
 
 		case 'generate_link':
@@ -177,6 +185,33 @@ function doTriplify(options, ctu) {
 	})
 }
 
+function doQuery(options, ctu) {
+	tmp.save(options.data, (data) => {
+		tmp.save(options.query, (query) => {
+
+			function end(ret) {
+				tmp.del(data)
+				tmp.del(query)
+				ctu(ret)
+			}
+	
+			var engine = null;
+			switch (options.system) {
+
+				case "jena":
+					engine = jena
+					break
+
+				default:
+					end({ error: `unsupported system: "${options.system}"` })
+					break
+			}
+			if (engine)
+				engine.exec(options, data, query, end)
+		})
+	})
+}
+
 function doGenerateLink(options, ctu) {
 	generateLink(options.formula, options.format)
 		.then((id) => { console.log("generated link:", id); ctu({ success: id }) })
@@ -185,7 +220,7 @@ function doGenerateLink(options, ctu) {
 
 function doResolveLink(options, ctu) {
 	resolveLink(options.id)
-		.then((data) => { 
+		.then((data) => {
 			// console.log("resolved link:", data);
 			ctu({ success: data })
 		})

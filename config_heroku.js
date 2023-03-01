@@ -19,6 +19,9 @@ config = {
             codegen: "/app/lib/jen3/codegen.jar",
 		    folder: "/app/lib/jen3"
 		},
+		jena: {
+			exec: "/app/lib/jena/sparql.jar",
+		},
 		triplify: {
 			exec: "/app/lib/triplify/sparql2spin.jar"
 		}
