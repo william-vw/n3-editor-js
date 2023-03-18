@@ -48,6 +48,10 @@
 				return $('textarea#input').val()
 		}
 
+		function setFormula(formula) {
+			editor.getDoc().setValue(formula);
+		}
+
 		function getCurrentFormat() {
 			var format = $('input[name=format]:checked', '#formats').prop('id')
 			var format = format.substring(format.indexOf("_") + 1)
@@ -88,6 +92,16 @@
 				$("#error_out").show()
 				$("#error_out > div").html(error)
 			})
+		}
+
+		function format() {
+			let formatted = n3.format(getFormula(), {
+				tab: 4,
+				graphOnNewline: true
+			});
+
+			// console.log(formatted);
+			setFormula(formatted);
 		}
 
 		function explain() {
@@ -312,6 +326,9 @@
 			$("#execute").click(exec)
 			shortcut.add("Alt+X", exec)
 
+			$("#format").click(format)
+			shortcut.add("Alt+F", format)
+
 			$("#explain").click(explain)
 			shortcut.add("Alt+N", explain)
 
@@ -390,9 +407,9 @@
 		}
 
 		function doneLoading() {
-			$('#loading').hide()	
+			$('#loading').hide()
 		}
-		
+
 	</script>
 </head>
 
@@ -444,6 +461,9 @@
 							<option value="derivations" id="deriv" selected>derivations</option>
 						</select>
 					</div>
+				</div>
+				<div class="function">
+					<button id="format"><u>f</u>ormat</button>
 				</div>
 				<div class="function">
 					<button id="explain" style="position: relative">
