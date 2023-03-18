@@ -4,76 +4,75 @@ import antlr4 from 'antlr4';
 import n3_nodropListener from './n3_nodropListener.js';
 import n3_nodropVisitor from './n3_nodropVisitor.js';
 
-const serializedATN = [4,1,55,225,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,55,224,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
 20,7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,
-7,27,2,28,7,28,2,29,7,29,1,0,1,0,1,0,1,0,1,0,5,0,66,8,0,10,0,12,0,69,9,0,
-1,0,1,0,1,1,1,1,3,1,75,8,1,1,2,1,2,3,2,79,8,2,1,3,1,3,3,3,83,8,3,1,4,1,4,
-1,4,1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,8,1,8,3,8,101,8,8,1,9,
-1,9,1,9,1,9,1,9,1,9,3,9,109,8,9,5,9,111,8,9,10,9,12,9,114,9,9,1,10,1,10,
-1,10,5,10,119,8,10,10,10,12,10,122,9,10,1,11,1,11,1,11,1,11,1,11,1,11,1,
-11,1,11,1,11,1,11,1,11,3,11,135,8,11,1,12,1,12,1,13,1,13,1,13,3,13,142,8,
-13,1,14,1,14,1,15,1,15,1,16,1,16,1,16,1,16,1,16,3,16,153,8,16,1,17,1,17,
-1,17,1,17,1,17,1,17,1,17,1,17,3,17,163,8,17,1,18,1,18,1,18,3,18,168,8,18,
-1,19,1,19,1,19,1,19,1,20,1,20,1,20,1,20,1,20,1,21,1,21,5,21,181,8,21,10,
-21,12,21,184,9,21,1,21,1,21,1,22,1,22,3,22,190,8,22,1,22,1,22,1,23,1,23,
-1,23,3,23,197,8,23,3,23,199,8,23,1,23,1,23,3,23,203,8,23,3,23,205,8,23,1,
-24,1,24,1,25,1,25,1,25,1,25,3,25,213,8,25,1,26,1,26,3,26,217,8,26,1,27,1,
-27,1,28,1,28,1,29,1,29,1,29,0,0,30,0,2,4,6,8,10,12,14,16,18,20,22,24,26,
-28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,0,3,1,0,31,33,1,0,27,28,
-2,0,29,29,43,43,231,0,67,1,0,0,0,2,74,1,0,0,0,4,78,1,0,0,0,6,82,1,0,0,0,
-8,84,1,0,0,0,10,87,1,0,0,0,12,91,1,0,0,0,14,95,1,0,0,0,16,98,1,0,0,0,18,
-102,1,0,0,0,20,115,1,0,0,0,22,134,1,0,0,0,24,136,1,0,0,0,26,141,1,0,0,0,
-28,143,1,0,0,0,30,145,1,0,0,0,32,147,1,0,0,0,34,162,1,0,0,0,36,167,1,0,0,
-0,38,169,1,0,0,0,40,173,1,0,0,0,42,178,1,0,0,0,44,187,1,0,0,0,46,204,1,0,
-0,0,48,206,1,0,0,0,50,208,1,0,0,0,52,216,1,0,0,0,54,218,1,0,0,0,56,220,1,
-0,0,0,58,222,1,0,0,0,60,66,5,23,0,0,61,62,3,2,1,0,62,63,5,1,0,0,63,66,1,
-0,0,0,64,66,3,6,3,0,65,60,1,0,0,0,65,61,1,0,0,0,65,64,1,0,0,0,66,69,1,0,
-0,0,67,65,1,0,0,0,67,68,1,0,0,0,68,70,1,0,0,0,69,67,1,0,0,0,70,71,5,0,0,
-1,71,1,1,0,0,0,72,75,3,4,2,0,73,75,3,16,8,0,74,72,1,0,0,0,74,73,1,0,0,0,
-75,3,1,0,0,0,76,79,3,12,6,0,77,79,3,14,7,0,78,76,1,0,0,0,78,77,1,0,0,0,79,
-5,1,0,0,0,80,83,3,8,4,0,81,83,3,10,5,0,82,80,1,0,0,0,82,81,1,0,0,0,83,7,
-1,0,0,0,84,85,5,48,0,0,85,86,5,26,0,0,86,9,1,0,0,0,87,88,5,49,0,0,88,89,
-5,27,0,0,89,90,5,26,0,0,90,11,1,0,0,0,91,92,5,2,0,0,92,93,5,27,0,0,93,94,
-5,26,0,0,94,13,1,0,0,0,95,96,5,3,0,0,96,97,5,26,0,0,97,15,1,0,0,0,98,100,
-3,24,12,0,99,101,3,18,9,0,100,99,1,0,0,0,100,101,1,0,0,0,101,17,1,0,0,0,
-102,103,3,22,11,0,103,112,3,20,10,0,104,108,5,4,0,0,105,106,3,22,11,0,106,
-107,3,20,10,0,107,109,1,0,0,0,108,105,1,0,0,0,108,109,1,0,0,0,109,111,1,
-0,0,0,110,104,1,0,0,0,111,114,1,0,0,0,112,110,1,0,0,0,112,113,1,0,0,0,113,
-19,1,0,0,0,114,112,1,0,0,0,115,120,3,28,14,0,116,117,5,5,0,0,117,119,3,28,
-14,0,118,116,1,0,0,0,119,122,1,0,0,0,120,118,1,0,0,0,120,121,1,0,0,0,121,
-21,1,0,0,0,122,120,1,0,0,0,123,135,3,26,13,0,124,135,5,6,0,0,125,126,5,7,
-0,0,126,135,3,30,15,0,127,128,5,8,0,0,128,129,3,30,15,0,129,130,5,9,0,0,
-130,135,1,0,0,0,131,135,5,10,0,0,132,135,5,11,0,0,133,135,5,12,0,0,134,123,
-1,0,0,0,134,124,1,0,0,0,134,125,1,0,0,0,134,127,1,0,0,0,134,131,1,0,0,0,
-134,132,1,0,0,0,134,133,1,0,0,0,135,23,1,0,0,0,136,137,3,30,15,0,137,25,
-1,0,0,0,138,142,3,30,15,0,139,140,5,13,0,0,140,142,3,30,15,0,141,138,1,0,
-0,0,141,139,1,0,0,0,142,27,1,0,0,0,143,144,3,30,15,0,144,29,1,0,0,0,145,
-146,3,32,16,0,146,31,1,0,0,0,147,152,3,34,17,0,148,149,5,14,0,0,149,153,
-3,32,16,0,150,151,5,15,0,0,151,153,3,32,16,0,152,148,1,0,0,0,152,150,1,0,
-0,0,152,153,1,0,0,0,153,33,1,0,0,0,154,163,3,52,26,0,155,163,3,56,28,0,156,
-163,3,58,29,0,157,163,3,42,21,0,158,163,3,38,19,0,159,163,3,40,20,0,160,
-163,3,36,18,0,161,163,3,44,22,0,162,154,1,0,0,0,162,155,1,0,0,0,162,156,
-1,0,0,0,162,157,1,0,0,0,162,158,1,0,0,0,162,159,1,0,0,0,162,160,1,0,0,0,
-162,161,1,0,0,0,163,35,1,0,0,0,164,168,3,50,25,0,165,168,3,48,24,0,166,168,
-5,24,0,0,167,164,1,0,0,0,167,165,1,0,0,0,167,166,1,0,0,0,168,37,1,0,0,0,
-169,170,5,16,0,0,170,171,3,18,9,0,171,172,5,17,0,0,172,39,1,0,0,0,173,174,
-5,42,0,0,174,175,3,52,26,0,175,176,3,18,9,0,176,177,5,17,0,0,177,41,1,0,
-0,0,178,182,5,18,0,0,179,181,3,28,14,0,180,179,1,0,0,0,181,184,1,0,0,0,182,
-180,1,0,0,0,182,183,1,0,0,0,183,185,1,0,0,0,184,182,1,0,0,0,185,186,5,19,
-0,0,186,43,1,0,0,0,187,189,5,20,0,0,188,190,3,46,23,0,189,188,1,0,0,0,189,
-190,1,0,0,0,190,191,1,0,0,0,191,192,5,21,0,0,192,45,1,0,0,0,193,198,3,2,
-1,0,194,196,5,1,0,0,195,197,3,46,23,0,196,195,1,0,0,0,196,197,1,0,0,0,197,
-199,1,0,0,0,198,194,1,0,0,0,198,199,1,0,0,0,199,205,1,0,0,0,200,202,3,6,
-3,0,201,203,3,46,23,0,202,201,1,0,0,0,202,203,1,0,0,0,203,205,1,0,0,0,204,
-193,1,0,0,0,204,200,1,0,0,0,205,47,1,0,0,0,206,207,7,0,0,0,207,49,1,0,0,
-0,208,212,5,25,0,0,209,213,5,30,0,0,210,211,5,22,0,0,211,213,3,52,26,0,212,
-209,1,0,0,0,212,210,1,0,0,0,212,213,1,0,0,0,213,51,1,0,0,0,214,217,5,26,
-0,0,215,217,3,54,27,0,216,214,1,0,0,0,216,215,1,0,0,0,217,53,1,0,0,0,218,
-219,7,1,0,0,219,55,1,0,0,0,220,221,7,2,0,0,221,57,1,0,0,0,222,223,5,44,0,
-0,223,59,1,0,0,0,22,65,67,74,78,82,100,108,112,120,134,141,152,162,167,182,
-189,196,198,202,204,212,216];
+7,27,2,28,7,28,2,29,7,29,1,0,1,0,1,0,1,0,5,0,65,8,0,10,0,12,0,68,9,0,1,0,
+1,0,1,1,1,1,3,1,74,8,1,1,2,1,2,3,2,78,8,2,1,3,1,3,3,3,82,8,3,1,4,1,4,1,4,
+1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,8,1,8,3,8,100,8,8,1,9,1,9,
+1,9,1,9,1,9,1,9,3,9,108,8,9,5,9,110,8,9,10,9,12,9,113,9,9,1,10,1,10,1,10,
+5,10,118,8,10,10,10,12,10,121,9,10,1,11,1,11,1,11,1,11,1,11,1,11,1,11,1,
+11,1,11,1,11,1,11,3,11,134,8,11,1,12,1,12,1,13,1,13,1,13,3,13,141,8,13,1,
+14,1,14,1,15,1,15,1,16,1,16,1,16,1,16,1,16,3,16,152,8,16,1,17,1,17,1,17,
+1,17,1,17,1,17,1,17,1,17,3,17,162,8,17,1,18,1,18,1,18,3,18,167,8,18,1,19,
+1,19,1,19,1,19,1,20,1,20,1,20,1,20,1,20,1,21,1,21,5,21,180,8,21,10,21,12,
+21,183,9,21,1,21,1,21,1,22,1,22,3,22,189,8,22,1,22,1,22,1,23,1,23,1,23,3,
+23,196,8,23,3,23,198,8,23,1,23,1,23,3,23,202,8,23,3,23,204,8,23,1,24,1,24,
+1,25,1,25,1,25,1,25,3,25,212,8,25,1,26,1,26,3,26,216,8,26,1,27,1,27,1,28,
+1,28,1,29,1,29,1,29,0,0,30,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,
+34,36,38,40,42,44,46,48,50,52,54,56,58,0,3,1,0,31,33,1,0,27,28,2,0,29,29,
+43,43,229,0,66,1,0,0,0,2,73,1,0,0,0,4,77,1,0,0,0,6,81,1,0,0,0,8,83,1,0,0,
+0,10,86,1,0,0,0,12,90,1,0,0,0,14,94,1,0,0,0,16,97,1,0,0,0,18,101,1,0,0,0,
+20,114,1,0,0,0,22,133,1,0,0,0,24,135,1,0,0,0,26,140,1,0,0,0,28,142,1,0,0,
+0,30,144,1,0,0,0,32,146,1,0,0,0,34,161,1,0,0,0,36,166,1,0,0,0,38,168,1,0,
+0,0,40,172,1,0,0,0,42,177,1,0,0,0,44,186,1,0,0,0,46,203,1,0,0,0,48,205,1,
+0,0,0,50,207,1,0,0,0,52,215,1,0,0,0,54,217,1,0,0,0,56,219,1,0,0,0,58,221,
+1,0,0,0,60,61,3,2,1,0,61,62,5,1,0,0,62,65,1,0,0,0,63,65,3,6,3,0,64,60,1,
+0,0,0,64,63,1,0,0,0,65,68,1,0,0,0,66,64,1,0,0,0,66,67,1,0,0,0,67,69,1,0,
+0,0,68,66,1,0,0,0,69,70,5,0,0,1,70,1,1,0,0,0,71,74,3,4,2,0,72,74,3,16,8,
+0,73,71,1,0,0,0,73,72,1,0,0,0,74,3,1,0,0,0,75,78,3,12,6,0,76,78,3,14,7,0,
+77,75,1,0,0,0,77,76,1,0,0,0,78,5,1,0,0,0,79,82,3,8,4,0,80,82,3,10,5,0,81,
+79,1,0,0,0,81,80,1,0,0,0,82,7,1,0,0,0,83,84,5,48,0,0,84,85,5,26,0,0,85,9,
+1,0,0,0,86,87,5,49,0,0,87,88,5,27,0,0,88,89,5,26,0,0,89,11,1,0,0,0,90,91,
+5,2,0,0,91,92,5,27,0,0,92,93,5,26,0,0,93,13,1,0,0,0,94,95,5,3,0,0,95,96,
+5,26,0,0,96,15,1,0,0,0,97,99,3,24,12,0,98,100,3,18,9,0,99,98,1,0,0,0,99,
+100,1,0,0,0,100,17,1,0,0,0,101,102,3,22,11,0,102,111,3,20,10,0,103,107,5,
+4,0,0,104,105,3,22,11,0,105,106,3,20,10,0,106,108,1,0,0,0,107,104,1,0,0,
+0,107,108,1,0,0,0,108,110,1,0,0,0,109,103,1,0,0,0,110,113,1,0,0,0,111,109,
+1,0,0,0,111,112,1,0,0,0,112,19,1,0,0,0,113,111,1,0,0,0,114,119,3,28,14,0,
+115,116,5,5,0,0,116,118,3,28,14,0,117,115,1,0,0,0,118,121,1,0,0,0,119,117,
+1,0,0,0,119,120,1,0,0,0,120,21,1,0,0,0,121,119,1,0,0,0,122,134,3,26,13,0,
+123,134,5,6,0,0,124,125,5,7,0,0,125,134,3,30,15,0,126,127,5,8,0,0,127,128,
+3,30,15,0,128,129,5,9,0,0,129,134,1,0,0,0,130,134,5,10,0,0,131,134,5,11,
+0,0,132,134,5,12,0,0,133,122,1,0,0,0,133,123,1,0,0,0,133,124,1,0,0,0,133,
+126,1,0,0,0,133,130,1,0,0,0,133,131,1,0,0,0,133,132,1,0,0,0,134,23,1,0,0,
+0,135,136,3,30,15,0,136,25,1,0,0,0,137,141,3,30,15,0,138,139,5,13,0,0,139,
+141,3,30,15,0,140,137,1,0,0,0,140,138,1,0,0,0,141,27,1,0,0,0,142,143,3,30,
+15,0,143,29,1,0,0,0,144,145,3,32,16,0,145,31,1,0,0,0,146,151,3,34,17,0,147,
+148,5,14,0,0,148,152,3,32,16,0,149,150,5,15,0,0,150,152,3,32,16,0,151,147,
+1,0,0,0,151,149,1,0,0,0,151,152,1,0,0,0,152,33,1,0,0,0,153,162,3,52,26,0,
+154,162,3,56,28,0,155,162,3,58,29,0,156,162,3,42,21,0,157,162,3,38,19,0,
+158,162,3,40,20,0,159,162,3,36,18,0,160,162,3,44,22,0,161,153,1,0,0,0,161,
+154,1,0,0,0,161,155,1,0,0,0,161,156,1,0,0,0,161,157,1,0,0,0,161,158,1,0,
+0,0,161,159,1,0,0,0,161,160,1,0,0,0,162,35,1,0,0,0,163,167,3,50,25,0,164,
+167,3,48,24,0,165,167,5,24,0,0,166,163,1,0,0,0,166,164,1,0,0,0,166,165,1,
+0,0,0,167,37,1,0,0,0,168,169,5,16,0,0,169,170,3,18,9,0,170,171,5,17,0,0,
+171,39,1,0,0,0,172,173,5,42,0,0,173,174,3,52,26,0,174,175,3,18,9,0,175,176,
+5,17,0,0,176,41,1,0,0,0,177,181,5,18,0,0,178,180,3,28,14,0,179,178,1,0,0,
+0,180,183,1,0,0,0,181,179,1,0,0,0,181,182,1,0,0,0,182,184,1,0,0,0,183,181,
+1,0,0,0,184,185,5,19,0,0,185,43,1,0,0,0,186,188,5,20,0,0,187,189,3,46,23,
+0,188,187,1,0,0,0,188,189,1,0,0,0,189,190,1,0,0,0,190,191,5,21,0,0,191,45,
+1,0,0,0,192,197,3,2,1,0,193,195,5,1,0,0,194,196,3,46,23,0,195,194,1,0,0,
+0,195,196,1,0,0,0,196,198,1,0,0,0,197,193,1,0,0,0,197,198,1,0,0,0,198,204,
+1,0,0,0,199,201,3,6,3,0,200,202,3,46,23,0,201,200,1,0,0,0,201,202,1,0,0,
+0,202,204,1,0,0,0,203,192,1,0,0,0,203,199,1,0,0,0,204,47,1,0,0,0,205,206,
+7,0,0,0,206,49,1,0,0,0,207,211,5,25,0,0,208,212,5,30,0,0,209,210,5,22,0,
+0,210,212,3,52,26,0,211,208,1,0,0,0,211,209,1,0,0,0,211,212,1,0,0,0,212,
+51,1,0,0,0,213,216,5,26,0,0,214,216,3,54,27,0,215,213,1,0,0,0,215,214,1,
+0,0,0,216,53,1,0,0,0,217,218,7,1,0,0,218,55,1,0,0,0,219,220,7,2,0,0,220,
+57,1,0,0,0,221,222,5,44,0,0,222,59,1,0,0,0,22,64,66,73,77,81,99,107,111,
+119,133,140,151,161,166,181,188,195,197,201,203,211,215];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -130,17 +129,13 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 67;
+	        this.state = 66;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3_nodropParser.T__1) | (1 << n3_nodropParser.T__2) | (1 << n3_nodropParser.T__15) | (1 << n3_nodropParser.T__17) | (1 << n3_nodropParser.T__19) | (1 << n3_nodropParser.COMMENT) | (1 << n3_nodropParser.BooleanLiteral) | (1 << n3_nodropParser.String) | (1 << n3_nodropParser.IRIREF) | (1 << n3_nodropParser.PNAME_NS) | (1 << n3_nodropParser.PNAME_LN) | (1 << n3_nodropParser.BLANK_NODE_LABEL) | (1 << n3_nodropParser.INTEGER))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3_nodropParser.DECIMAL - 32)) | (1 << (n3_nodropParser.DOUBLE - 32)) | (1 << (n3_nodropParser.IPLSTART - 32)) | (1 << (n3_nodropParser.ANON - 32)) | (1 << (n3_nodropParser.QuickVarName - 32)) | (1 << (n3_nodropParser.BASE - 32)) | (1 << (n3_nodropParser.PREFIX - 32)))) !== 0)) {
-	            this.state = 65;
+	        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3_nodropParser.T__1) | (1 << n3_nodropParser.T__2) | (1 << n3_nodropParser.T__15) | (1 << n3_nodropParser.T__17) | (1 << n3_nodropParser.T__19) | (1 << n3_nodropParser.BooleanLiteral) | (1 << n3_nodropParser.String) | (1 << n3_nodropParser.IRIREF) | (1 << n3_nodropParser.PNAME_NS) | (1 << n3_nodropParser.PNAME_LN) | (1 << n3_nodropParser.BLANK_NODE_LABEL) | (1 << n3_nodropParser.INTEGER))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3_nodropParser.DECIMAL - 32)) | (1 << (n3_nodropParser.DOUBLE - 32)) | (1 << (n3_nodropParser.IPLSTART - 32)) | (1 << (n3_nodropParser.ANON - 32)) | (1 << (n3_nodropParser.QuickVarName - 32)) | (1 << (n3_nodropParser.BASE - 32)) | (1 << (n3_nodropParser.PREFIX - 32)))) !== 0)) {
+	            this.state = 64;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case n3_nodropParser.COMMENT:
-	                this.state = 60;
-	                this.match(n3_nodropParser.COMMENT);
-	                break;
 	            case n3_nodropParser.T__1:
 	            case n3_nodropParser.T__2:
 	            case n3_nodropParser.T__15:
@@ -158,24 +153,24 @@ export default class n3_nodropParser extends antlr4.Parser {
 	            case n3_nodropParser.IPLSTART:
 	            case n3_nodropParser.ANON:
 	            case n3_nodropParser.QuickVarName:
-	                this.state = 61;
+	                this.state = 60;
 	                this.n3Statement();
-	                this.state = 62;
+	                this.state = 61;
 	                this.match(n3_nodropParser.T__0);
 	                break;
 	            case n3_nodropParser.BASE:
 	            case n3_nodropParser.PREFIX:
-	                this.state = 64;
+	                this.state = 63;
 	                this.sparqlDirective();
 	                break;
 	            default:
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
-	            this.state = 69;
+	            this.state = 68;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 70;
+	        this.state = 69;
 	        this.match(n3_nodropParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -197,13 +192,13 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    let localctx = new N3StatementContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, n3_nodropParser.RULE_n3Statement);
 	    try {
-	        this.state = 74;
+	        this.state = 73;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case n3_nodropParser.T__1:
 	        case n3_nodropParser.T__2:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 72;
+	            this.state = 71;
 	            this.n3Directive();
 	            break;
 	        case n3_nodropParser.T__15:
@@ -222,7 +217,7 @@ export default class n3_nodropParser extends antlr4.Parser {
 	        case n3_nodropParser.ANON:
 	        case n3_nodropParser.QuickVarName:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 73;
+	            this.state = 72;
 	            this.triples();
 	            break;
 	        default:
@@ -248,17 +243,17 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    let localctx = new N3DirectiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, n3_nodropParser.RULE_n3Directive);
 	    try {
-	        this.state = 78;
+	        this.state = 77;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case n3_nodropParser.T__1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 76;
+	            this.state = 75;
 	            this.prefixID();
 	            break;
 	        case n3_nodropParser.T__2:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 77;
+	            this.state = 76;
 	            this.base();
 	            break;
 	        default:
@@ -284,17 +279,17 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    let localctx = new SparqlDirectiveContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 6, n3_nodropParser.RULE_sparqlDirective);
 	    try {
-	        this.state = 82;
+	        this.state = 81;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case n3_nodropParser.BASE:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 80;
+	            this.state = 79;
 	            this.sparqlBase();
 	            break;
 	        case n3_nodropParser.PREFIX:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 81;
+	            this.state = 80;
 	            this.sparqlPrefix();
 	            break;
 	        default:
@@ -321,9 +316,9 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 8, n3_nodropParser.RULE_sparqlBase);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 84;
+	        this.state = 83;
 	        this.match(n3_nodropParser.BASE);
-	        this.state = 85;
+	        this.state = 84;
 	        this.match(n3_nodropParser.IRIREF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -346,11 +341,11 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 10, n3_nodropParser.RULE_sparqlPrefix);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 87;
+	        this.state = 86;
 	        this.match(n3_nodropParser.PREFIX);
-	        this.state = 88;
+	        this.state = 87;
 	        this.match(n3_nodropParser.PNAME_NS);
-	        this.state = 89;
+	        this.state = 88;
 	        this.match(n3_nodropParser.IRIREF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -373,11 +368,11 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 12, n3_nodropParser.RULE_prefixID);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 91;
+	        this.state = 90;
 	        this.match(n3_nodropParser.T__1);
-	        this.state = 92;
+	        this.state = 91;
 	        this.match(n3_nodropParser.PNAME_NS);
-	        this.state = 93;
+	        this.state = 92;
 	        this.match(n3_nodropParser.IRIREF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -400,9 +395,9 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 14, n3_nodropParser.RULE_base);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 95;
+	        this.state = 94;
 	        this.match(n3_nodropParser.T__2);
-	        this.state = 96;
+	        this.state = 95;
 	        this.match(n3_nodropParser.IRIREF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -426,13 +421,13 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 98;
+	        this.state = 97;
 	        this.subject();
-	        this.state = 100;
+	        this.state = 99;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3_nodropParser.T__5) | (1 << n3_nodropParser.T__6) | (1 << n3_nodropParser.T__7) | (1 << n3_nodropParser.T__9) | (1 << n3_nodropParser.T__10) | (1 << n3_nodropParser.T__11) | (1 << n3_nodropParser.T__12) | (1 << n3_nodropParser.T__15) | (1 << n3_nodropParser.T__17) | (1 << n3_nodropParser.T__19) | (1 << n3_nodropParser.BooleanLiteral) | (1 << n3_nodropParser.String) | (1 << n3_nodropParser.IRIREF) | (1 << n3_nodropParser.PNAME_NS) | (1 << n3_nodropParser.PNAME_LN) | (1 << n3_nodropParser.BLANK_NODE_LABEL) | (1 << n3_nodropParser.INTEGER))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3_nodropParser.DECIMAL - 32)) | (1 << (n3_nodropParser.DOUBLE - 32)) | (1 << (n3_nodropParser.IPLSTART - 32)) | (1 << (n3_nodropParser.ANON - 32)) | (1 << (n3_nodropParser.QuickVarName - 32)))) !== 0)) {
-	            this.state = 99;
+	            this.state = 98;
 	            this.predicateObjectList();
 	        }
 
@@ -458,27 +453,27 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 102;
+	        this.state = 101;
 	        this.verb();
-	        this.state = 103;
+	        this.state = 102;
 	        this.objectList();
-	        this.state = 112;
+	        this.state = 111;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        while(_la===n3_nodropParser.T__3) {
-	            this.state = 104;
+	            this.state = 103;
 	            this.match(n3_nodropParser.T__3);
-	            this.state = 108;
+	            this.state = 107;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3_nodropParser.T__5) | (1 << n3_nodropParser.T__6) | (1 << n3_nodropParser.T__7) | (1 << n3_nodropParser.T__9) | (1 << n3_nodropParser.T__10) | (1 << n3_nodropParser.T__11) | (1 << n3_nodropParser.T__12) | (1 << n3_nodropParser.T__15) | (1 << n3_nodropParser.T__17) | (1 << n3_nodropParser.T__19) | (1 << n3_nodropParser.BooleanLiteral) | (1 << n3_nodropParser.String) | (1 << n3_nodropParser.IRIREF) | (1 << n3_nodropParser.PNAME_NS) | (1 << n3_nodropParser.PNAME_LN) | (1 << n3_nodropParser.BLANK_NODE_LABEL) | (1 << n3_nodropParser.INTEGER))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3_nodropParser.DECIMAL - 32)) | (1 << (n3_nodropParser.DOUBLE - 32)) | (1 << (n3_nodropParser.IPLSTART - 32)) | (1 << (n3_nodropParser.ANON - 32)) | (1 << (n3_nodropParser.QuickVarName - 32)))) !== 0)) {
-	                this.state = 105;
+	                this.state = 104;
 	                this.verb();
-	                this.state = 106;
+	                this.state = 105;
 	                this.objectList();
 	            }
 
-	            this.state = 114;
+	            this.state = 113;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -504,17 +499,17 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 115;
+	        this.state = 114;
 	        this.object();
-	        this.state = 120;
+	        this.state = 119;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        while(_la===n3_nodropParser.T__4) {
-	            this.state = 116;
+	            this.state = 115;
 	            this.match(n3_nodropParser.T__4);
-	            this.state = 117;
+	            this.state = 116;
 	            this.object();
-	            this.state = 122;
+	            this.state = 121;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -538,7 +533,7 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    let localctx = new VerbContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, n3_nodropParser.RULE_verb);
 	    try {
-	        this.state = 134;
+	        this.state = 133;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case n3_nodropParser.T__12:
@@ -558,43 +553,43 @@ export default class n3_nodropParser extends antlr4.Parser {
 	        case n3_nodropParser.ANON:
 	        case n3_nodropParser.QuickVarName:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 123;
+	            this.state = 122;
 	            this.predicate();
 	            break;
 	        case n3_nodropParser.T__5:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 124;
+	            this.state = 123;
 	            this.match(n3_nodropParser.T__5);
 	            break;
 	        case n3_nodropParser.T__6:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 125;
+	            this.state = 124;
 	            this.match(n3_nodropParser.T__6);
-	            this.state = 126;
+	            this.state = 125;
 	            this.expression();
 	            break;
 	        case n3_nodropParser.T__7:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 127;
+	            this.state = 126;
 	            this.match(n3_nodropParser.T__7);
-	            this.state = 128;
+	            this.state = 127;
 	            this.expression();
-	            this.state = 129;
+	            this.state = 128;
 	            this.match(n3_nodropParser.T__8);
 	            break;
 	        case n3_nodropParser.T__9:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 131;
+	            this.state = 130;
 	            this.match(n3_nodropParser.T__9);
 	            break;
 	        case n3_nodropParser.T__10:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 132;
+	            this.state = 131;
 	            this.match(n3_nodropParser.T__10);
 	            break;
 	        case n3_nodropParser.T__11:
 	            this.enterOuterAlt(localctx, 7);
-	            this.state = 133;
+	            this.state = 132;
 	            this.match(n3_nodropParser.T__11);
 	            break;
 	        default:
@@ -621,7 +616,7 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 24, n3_nodropParser.RULE_subject);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 136;
+	        this.state = 135;
 	        this.expression();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -644,7 +639,7 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 26, n3_nodropParser.RULE_predicate);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 141;
+	        this.state = 140;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case n3_nodropParser.T__15:
@@ -662,13 +657,13 @@ export default class n3_nodropParser extends antlr4.Parser {
 	        case n3_nodropParser.IPLSTART:
 	        case n3_nodropParser.ANON:
 	        case n3_nodropParser.QuickVarName:
-	            this.state = 138;
+	            this.state = 137;
 	            this.expression();
 	            break;
 	        case n3_nodropParser.T__12:
-	            this.state = 139;
+	            this.state = 138;
 	            this.match(n3_nodropParser.T__12);
-	            this.state = 140;
+	            this.state = 139;
 	            this.expression();
 	            break;
 	        default:
@@ -695,7 +690,7 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 28, n3_nodropParser.RULE_object);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 143;
+	        this.state = 142;
 	        this.expression();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -718,7 +713,7 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 30, n3_nodropParser.RULE_expression);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 145;
+	        this.state = 144;
 	        this.path();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -741,21 +736,21 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 32, n3_nodropParser.RULE_path);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 147;
+	        this.state = 146;
 	        this.pathItem();
-	        this.state = 152;
+	        this.state = 151;
 	        this._errHandler.sync(this);
 	        switch (this._input.LA(1)) {
 	        case n3_nodropParser.T__13:
-	        	this.state = 148;
+	        	this.state = 147;
 	        	this.match(n3_nodropParser.T__13);
-	        	this.state = 149;
+	        	this.state = 148;
 	        	this.path();
 	        	break;
 	        case n3_nodropParser.T__14:
-	        	this.state = 150;
+	        	this.state = 149;
 	        	this.match(n3_nodropParser.T__14);
-	        	this.state = 151;
+	        	this.state = 150;
 	        	this.path();
 	        	break;
 	        case n3_nodropParser.T__0:
@@ -811,40 +806,40 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    let localctx = new PathItemContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, n3_nodropParser.RULE_pathItem);
 	    try {
-	        this.state = 162;
+	        this.state = 161;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case n3_nodropParser.IRIREF:
 	        case n3_nodropParser.PNAME_NS:
 	        case n3_nodropParser.PNAME_LN:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 154;
+	            this.state = 153;
 	            this.iri();
 	            break;
 	        case n3_nodropParser.BLANK_NODE_LABEL:
 	        case n3_nodropParser.ANON:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 155;
+	            this.state = 154;
 	            this.blankNode();
 	            break;
 	        case n3_nodropParser.QuickVarName:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 156;
+	            this.state = 155;
 	            this.quickVar();
 	            break;
 	        case n3_nodropParser.T__17:
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 157;
+	            this.state = 156;
 	            this.collection();
 	            break;
 	        case n3_nodropParser.T__15:
 	            this.enterOuterAlt(localctx, 5);
-	            this.state = 158;
+	            this.state = 157;
 	            this.blankNodePropertyList();
 	            break;
 	        case n3_nodropParser.IPLSTART:
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 159;
+	            this.state = 158;
 	            this.iriPropertyList();
 	            break;
 	        case n3_nodropParser.BooleanLiteral:
@@ -853,12 +848,12 @@ export default class n3_nodropParser extends antlr4.Parser {
 	        case n3_nodropParser.DECIMAL:
 	        case n3_nodropParser.DOUBLE:
 	            this.enterOuterAlt(localctx, 7);
-	            this.state = 160;
+	            this.state = 159;
 	            this.literal();
 	            break;
 	        case n3_nodropParser.T__19:
 	            this.enterOuterAlt(localctx, 8);
-	            this.state = 161;
+	            this.state = 160;
 	            this.formula();
 	            break;
 	        default:
@@ -884,24 +879,24 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    let localctx = new LiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, n3_nodropParser.RULE_literal);
 	    try {
-	        this.state = 167;
+	        this.state = 166;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case n3_nodropParser.String:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 164;
+	            this.state = 163;
 	            this.rdfLiteral();
 	            break;
 	        case n3_nodropParser.INTEGER:
 	        case n3_nodropParser.DECIMAL:
 	        case n3_nodropParser.DOUBLE:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 165;
+	            this.state = 164;
 	            this.numericLiteral();
 	            break;
 	        case n3_nodropParser.BooleanLiteral:
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 166;
+	            this.state = 165;
 	            this.match(n3_nodropParser.BooleanLiteral);
 	            break;
 	        default:
@@ -928,11 +923,11 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 38, n3_nodropParser.RULE_blankNodePropertyList);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 169;
+	        this.state = 168;
 	        this.match(n3_nodropParser.T__15);
-	        this.state = 170;
+	        this.state = 169;
 	        this.predicateObjectList();
-	        this.state = 171;
+	        this.state = 170;
 	        this.match(n3_nodropParser.T__16);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -955,13 +950,13 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 40, n3_nodropParser.RULE_iriPropertyList);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 173;
+	        this.state = 172;
 	        this.match(n3_nodropParser.IPLSTART);
-	        this.state = 174;
+	        this.state = 173;
 	        this.iri();
-	        this.state = 175;
+	        this.state = 174;
 	        this.predicateObjectList();
-	        this.state = 176;
+	        this.state = 175;
 	        this.match(n3_nodropParser.T__16);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -985,19 +980,19 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 178;
+	        this.state = 177;
 	        this.match(n3_nodropParser.T__17);
-	        this.state = 182;
+	        this.state = 181;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        while(((((_la - 16)) & ~0x1f) == 0 && ((1 << (_la - 16)) & ((1 << (n3_nodropParser.T__15 - 16)) | (1 << (n3_nodropParser.T__17 - 16)) | (1 << (n3_nodropParser.T__19 - 16)) | (1 << (n3_nodropParser.BooleanLiteral - 16)) | (1 << (n3_nodropParser.String - 16)) | (1 << (n3_nodropParser.IRIREF - 16)) | (1 << (n3_nodropParser.PNAME_NS - 16)) | (1 << (n3_nodropParser.PNAME_LN - 16)) | (1 << (n3_nodropParser.BLANK_NODE_LABEL - 16)) | (1 << (n3_nodropParser.INTEGER - 16)) | (1 << (n3_nodropParser.DECIMAL - 16)) | (1 << (n3_nodropParser.DOUBLE - 16)) | (1 << (n3_nodropParser.IPLSTART - 16)) | (1 << (n3_nodropParser.ANON - 16)) | (1 << (n3_nodropParser.QuickVarName - 16)))) !== 0)) {
-	            this.state = 179;
+	            this.state = 178;
 	            this.object();
-	            this.state = 184;
+	            this.state = 183;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 185;
+	        this.state = 184;
 	        this.match(n3_nodropParser.T__18);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1021,17 +1016,17 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 187;
+	        this.state = 186;
 	        this.match(n3_nodropParser.T__19);
-	        this.state = 189;
+	        this.state = 188;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3_nodropParser.T__1) | (1 << n3_nodropParser.T__2) | (1 << n3_nodropParser.T__15) | (1 << n3_nodropParser.T__17) | (1 << n3_nodropParser.T__19) | (1 << n3_nodropParser.BooleanLiteral) | (1 << n3_nodropParser.String) | (1 << n3_nodropParser.IRIREF) | (1 << n3_nodropParser.PNAME_NS) | (1 << n3_nodropParser.PNAME_LN) | (1 << n3_nodropParser.BLANK_NODE_LABEL) | (1 << n3_nodropParser.INTEGER))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3_nodropParser.DECIMAL - 32)) | (1 << (n3_nodropParser.DOUBLE - 32)) | (1 << (n3_nodropParser.IPLSTART - 32)) | (1 << (n3_nodropParser.ANON - 32)) | (1 << (n3_nodropParser.QuickVarName - 32)) | (1 << (n3_nodropParser.BASE - 32)) | (1 << (n3_nodropParser.PREFIX - 32)))) !== 0)) {
-	            this.state = 188;
+	            this.state = 187;
 	            this.formulaContent();
 	        }
 
-	        this.state = 191;
+	        this.state = 190;
 	        this.match(n3_nodropParser.T__20);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1054,7 +1049,7 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 46, n3_nodropParser.RULE_formulaContent);
 	    var _la = 0; // Token type
 	    try {
-	        this.state = 204;
+	        this.state = 203;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case n3_nodropParser.T__1:
@@ -1075,19 +1070,19 @@ export default class n3_nodropParser extends antlr4.Parser {
 	        case n3_nodropParser.ANON:
 	        case n3_nodropParser.QuickVarName:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 193;
+	            this.state = 192;
 	            this.n3Statement();
-	            this.state = 198;
+	            this.state = 197;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	            if(_la===n3_nodropParser.T__0) {
-	                this.state = 194;
+	                this.state = 193;
 	                this.match(n3_nodropParser.T__0);
-	                this.state = 196;
+	                this.state = 195;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
 	                if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3_nodropParser.T__1) | (1 << n3_nodropParser.T__2) | (1 << n3_nodropParser.T__15) | (1 << n3_nodropParser.T__17) | (1 << n3_nodropParser.T__19) | (1 << n3_nodropParser.BooleanLiteral) | (1 << n3_nodropParser.String) | (1 << n3_nodropParser.IRIREF) | (1 << n3_nodropParser.PNAME_NS) | (1 << n3_nodropParser.PNAME_LN) | (1 << n3_nodropParser.BLANK_NODE_LABEL) | (1 << n3_nodropParser.INTEGER))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3_nodropParser.DECIMAL - 32)) | (1 << (n3_nodropParser.DOUBLE - 32)) | (1 << (n3_nodropParser.IPLSTART - 32)) | (1 << (n3_nodropParser.ANON - 32)) | (1 << (n3_nodropParser.QuickVarName - 32)) | (1 << (n3_nodropParser.BASE - 32)) | (1 << (n3_nodropParser.PREFIX - 32)))) !== 0)) {
-	                    this.state = 195;
+	                    this.state = 194;
 	                    this.formulaContent();
 	                }
 
@@ -1097,13 +1092,13 @@ export default class n3_nodropParser extends antlr4.Parser {
 	        case n3_nodropParser.BASE:
 	        case n3_nodropParser.PREFIX:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 200;
+	            this.state = 199;
 	            this.sparqlDirective();
-	            this.state = 202;
+	            this.state = 201;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	            if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << n3_nodropParser.T__1) | (1 << n3_nodropParser.T__2) | (1 << n3_nodropParser.T__15) | (1 << n3_nodropParser.T__17) | (1 << n3_nodropParser.T__19) | (1 << n3_nodropParser.BooleanLiteral) | (1 << n3_nodropParser.String) | (1 << n3_nodropParser.IRIREF) | (1 << n3_nodropParser.PNAME_NS) | (1 << n3_nodropParser.PNAME_LN) | (1 << n3_nodropParser.BLANK_NODE_LABEL) | (1 << n3_nodropParser.INTEGER))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (n3_nodropParser.DECIMAL - 32)) | (1 << (n3_nodropParser.DOUBLE - 32)) | (1 << (n3_nodropParser.IPLSTART - 32)) | (1 << (n3_nodropParser.ANON - 32)) | (1 << (n3_nodropParser.QuickVarName - 32)) | (1 << (n3_nodropParser.BASE - 32)) | (1 << (n3_nodropParser.PREFIX - 32)))) !== 0)) {
-	                this.state = 201;
+	                this.state = 200;
 	                this.formulaContent();
 	            }
 
@@ -1133,7 +1128,7 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 206;
+	        this.state = 205;
 	        _la = this._input.LA(1);
 	        if(!(((((_la - 31)) & ~0x1f) == 0 && ((1 << (_la - 31)) & ((1 << (n3_nodropParser.INTEGER - 31)) | (1 << (n3_nodropParser.DECIMAL - 31)) | (1 << (n3_nodropParser.DOUBLE - 31)))) !== 0))) {
 	        this._errHandler.recoverInline(this);
@@ -1163,19 +1158,19 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 50, n3_nodropParser.RULE_rdfLiteral);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 208;
+	        this.state = 207;
 	        this.match(n3_nodropParser.String);
-	        this.state = 212;
+	        this.state = 211;
 	        this._errHandler.sync(this);
 	        switch (this._input.LA(1)) {
 	        case n3_nodropParser.LANGTAG:
-	        	this.state = 209;
+	        	this.state = 208;
 	        	this.match(n3_nodropParser.LANGTAG);
 	        	break;
 	        case n3_nodropParser.T__21:
-	        	this.state = 210;
+	        	this.state = 209;
 	        	this.match(n3_nodropParser.T__21);
-	        	this.state = 211;
+	        	this.state = 210;
 	        	this.iri();
 	        	break;
 	        case n3_nodropParser.T__0:
@@ -1233,18 +1228,18 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    let localctx = new IriContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, n3_nodropParser.RULE_iri);
 	    try {
-	        this.state = 216;
+	        this.state = 215;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case n3_nodropParser.IRIREF:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 214;
+	            this.state = 213;
 	            this.match(n3_nodropParser.IRIREF);
 	            break;
 	        case n3_nodropParser.PNAME_NS:
 	        case n3_nodropParser.PNAME_LN:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 215;
+	            this.state = 214;
 	            this.prefixedName();
 	            break;
 	        default:
@@ -1272,7 +1267,7 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 218;
+	        this.state = 217;
 	        _la = this._input.LA(1);
 	        if(!(_la===n3_nodropParser.PNAME_NS || _la===n3_nodropParser.PNAME_LN)) {
 	        this._errHandler.recoverInline(this);
@@ -1303,7 +1298,7 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 220;
+	        this.state = 219;
 	        _la = this._input.LA(1);
 	        if(!(_la===n3_nodropParser.BLANK_NODE_LABEL || _la===n3_nodropParser.ANON)) {
 	        this._errHandler.recoverInline(this);
@@ -1333,7 +1328,7 @@ export default class n3_nodropParser extends antlr4.Parser {
 	    this.enterRule(localctx, 58, n3_nodropParser.RULE_quickVar);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 222;
+	        this.state = 221;
 	        this.match(n3_nodropParser.QuickVarName);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -1457,18 +1452,6 @@ class N3DocContext extends antlr4.ParserRuleContext {
 	EOF() {
 	    return this.getToken(n3_nodropParser.EOF, 0);
 	};
-
-	COMMENT = function(i) {
-		if(i===undefined) {
-			i = null;
-		}
-	    if(i===null) {
-	        return this.getTokens(n3_nodropParser.COMMENT);
-	    } else {
-	        return this.getToken(n3_nodropParser.COMMENT, i);
-	    }
-	};
-
 
 	n3Statement = function(i) {
 	    if(i===undefined) {

@@ -12,6 +12,10 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
         this.indent = 0;
     }
 
+    callAccept(child) {
+        child.accept(this);
+    }
+
     // Visit a parse tree produced by n3Parser#n3Doc.
     visitN3Doc(ctx) {
         this.logVisit("N3Doc");
@@ -108,7 +112,7 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
 
             } else {
                 // non-terminal (term)
-                child.accept(this);
+                this.callAccept(child);
                 this.separate(" ");
             }
         });
@@ -193,7 +197,7 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
         this.appendNewline();
 
         for (let i = 1; i < ctx.getChildCount() - 1; i++) {
-            ctx.getChild(i).accept(this);
+            this.callAccept(ctx.getChild(i));
         }
 
         this.decrIndent();
@@ -213,13 +217,13 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
 
         // id
         this.separate(" ");
-        ctx.getChild(1).accept(this)
+        this.callAccept(ctx.getChild(1));
 
         this.incrIndent(1);
         this.appendNewline();
 
         for (let i = 2; i < ctx.getChildCount() - 1; i++) {
-            ctx.getChild(i).accept(this);
+            this.callAccept(ctx.getChild(i));
         }
 
         this.decrIndent(1);
@@ -248,7 +252,7 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
                 if (i > 1)
                     this.appendNewline();
 
-                ctx.getChild(i).accept(this);
+                this.callAccept(ctx.getChild(i));
             }
 
             this.decrIndent();
@@ -291,7 +295,7 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
         this.incrIndent();
         this.appendNewline();
 
-        ctx.getChild(1).accept(this);
+        this.callAccept(ctx.getChild(1));
 
         this.decrIndent();
 
@@ -399,7 +403,7 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
 
             } else {
                 // non-terminal
-                child.accept(this);
+                this.callAccept(child);
                 if (child.ruleIndex == 3) { // SparqlDirective
                     if (i < n - 1) // not last child
                         this.appendNewline(); // newline afterwards
@@ -434,7 +438,7 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
 
             } else {
                 // non-terminal
-                child.accept(this);
+                this.callAccept(child);
             }
         }
     }
