@@ -1,4 +1,4 @@
-// Generated from n3_nodrop.g4 by ANTLR 4.10.1
+// Generated from /Users/wvw/git/n3/N3/grammar/n3_nodrop.g4 by ANTLR 4.10.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 

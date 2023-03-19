@@ -12,8 +12,11 @@ import CommonTokenStream from 'antlr4/src/antlr4/CommonTokenStream';
 import N3Lexer from './n3_nodropLexer';
 import N3Parser from './n3_nodropParser';
 import N3PrefixListener from './n3_nodropPrefixListener';
+import N3PrintVisitor from './n3_nodropPrintVisitor';
 import N3FormatVisitor from './n3_nodropFormatVisitor';
 
+// re-generate n3_nodrop:
+// (base) wvw@Williams-MBP n3_nodrop % java -jar ~/git/antlr4/antlr-4.10.1-complete.jar -Dlanguage=JavaScript ~/git/n3/N3/grammar/n3_nodrop.g4 -visitor -o ./
 
 export function parse(input, listener) {
 	var chars = new InputStream(input);
@@ -56,7 +59,7 @@ export function format(input, config) {
 	let ast = n3Parser.n3Doc();
 	// return ast;
 
-	var visitor = new N3FormatVisitor(config);
+	var visitor = new N3FormatVisitor(config, tokens);
 	return visitor.visitN3Doc(ast);
 }
 

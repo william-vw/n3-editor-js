@@ -2,11 +2,17 @@ import n3_nodropVisitor from './n3_nodropVisitor';
 // import n3_nodropParser from './n3_nodropParser';
 
 export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
+    
+    static CHANNEL_COMMENT = 2;
 
-    constructor(config) {
+    static DIR_LEFT = 1;
+    static DIR_RIGHT = 2;
+
+    constructor(config, tokens) {
         super();
 
         this.config = config;
+        this.tokens = tokens;
 
         this.str = "";
         this.indent = 0;
@@ -395,6 +401,9 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
 
             // terminating "."
             if (child.symbol !== undefined) {
+                if (child.toString() == "<EOF>")
+                    return;
+
                 this.separate(" ");
                 this.print(child);
                 // newline for N3Statements after "."
@@ -426,10 +435,7 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
 
             // terminal
             if (child.symbol !== undefined) {
-                let out = child.toString();
-                // console.log("out", out);
-
-                this.print(out);
+                this.print(child);
 
                 // (get type of symbol for debugging)
                 // var type = c.symbol.type;
@@ -465,8 +471,60 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
         this.print(sep);
     }
 
-    print(str) {
-        if (str != "<EOF>")
-            this.str += str;
+    print(node) {
+        if (typeof node === 'string') {
+            this.str += node;
+
+        } else {
+            // for every single token we print
+            // check whether there's a comment before or after
+            let commentLeft = this.hiddenToken(node,
+                n3_nodropFormatVisitor.DIR_LEFT, n3_nodropFormatVisitor.CHANNEL_COMMENT);
+            if (commentLeft) {
+                // console.log("commentLeft", commentLeft.text);
+                this.str += commentLeft.text;
+                this.appendNewline(); // add newline after this comment
+            }
+
+            this.str += node;
+
+            let commentRight = this.hiddenToken(node,
+                n3_nodropFormatVisitor.DIR_RIGHT, n3_nodropFormatVisitor.CHANNEL_COMMENT);
+            if (commentRight) {
+                // console.log("commentRight", commentRight.text);
+                this.separate(" "); // add ws after whatever we printed before
+                this.str += commentRight.text;
+                this.appendNewline(); // add newline after this comment
+            }
+        }
+    }
+
+    hiddenToken(node, dir, channelId) {
+        let symbol;
+        if (node.symbol)
+            symbol = node.symbol
+        else {
+            if (dir == n3_nodropFormatVisitor.DIR_LEFT)
+                symbol = node.start;
+            else
+                symbol = node.end;
+        }
+
+        let idx = symbol.tokenIndex;
+
+        let fn = (dir == n3_nodropFormatVisitor.DIR_LEFT ?
+            this.tokens.getHiddenTokensToLeft :
+            this.tokens.getHiddenTokensToRight
+        );
+        let channel = fn.call(this.tokens, idx, channelId);
+        if (channel != null) {
+            let token = channel[0];
+            if (!token.consumed) {
+                token.consumed = true;
+                return token;
+            }
+        }
+
+        return false;
     }
 }
