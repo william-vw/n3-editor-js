@@ -4,7 +4,7 @@ const path = require('path');
 
 // -- script
 
-// n3
+// (default n3)
 // module.exports = {
 //   // exclude node.js-only modules
 //   // node: { module: "empty", net: "empty", fs: "empty" }, // older versions of webpack
@@ -22,7 +22,7 @@ const path = require('path');
 //   }
 // };
 
-// n3_nodrop
+// (n3_nodrop)
 module.exports = {
   // exclude node.js-only modules
   // node: { module: "empty", net: "empty", fs: "empty" }, // older versions of webpack
@@ -40,7 +40,10 @@ module.exports = {
   }
 };
 
+
 // -- requires
+
+// (default n3)
 // module.exports = {
 //   // exclude node.js-only modules
 //   // node: { module: "empty", net: "empty", fs: "empty" }, // older versions of webpack
@@ -60,6 +63,28 @@ module.exports = {
 //     minimize: false
 //   }
 // };
+
+// (n3_nodrop)
+// module.exports = {
+//   // exclude node.js-only modules
+//   // node: { module: "empty", net: "empty", fs: "empty" }, // older versions of webpack
+//   resolve: { fallback: { fs: false } }, // webpack v5
+
+//   entry: './parser/n3_nodrop/index.js',
+//   output: {
+//     filename: 'n3Main_nodrop_umd.js',
+//     path: path.resolve(__dirname, 'dist'),
+//     globalObject: 'this',
+//     library: {
+//       name: 'n3Main',
+//       type: 'umd',
+//     },
+//   },
+//   optimization: {
+//     minimize: false
+//   }
+// };
+
 
 // - TurtleStar
 

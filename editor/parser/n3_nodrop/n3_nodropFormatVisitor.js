@@ -61,8 +61,11 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
             `@prefix ${prefix} ${this.ns[prefix]} .`
         ).join("\n");
 
-        if (this.base)
+        if (this.base) {
+            if (preamble)
+                preamble += "\n";
             preamble += `@base ${this.base} .`;
+        }
 
         if (preamble == "")
             return;
