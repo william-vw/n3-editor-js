@@ -145,7 +145,7 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
             let uri = ctx.children[2].toString()
 
             if (this.ns[prefix])
-                console.warn(`overwriting prefix '${prefix}'`);
+                console.warn(`WARNING overwriting prefix '${prefix}'`);
 
             this.ns[prefix] = uri;
 
@@ -584,14 +584,22 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
     }
 
     appendNewline() {
-        // if we already end with newline:
-        // replace it with our newline (and its possibly updated indents)
+        this.beforeNewNewline();
+
+        this.str += "\n" + new Array(this.indent).join(" ");
+    }
+
+    // called whenever a new newline is being added
+    // (e.g., appendNewline, add left comment)
+    beforeNewNewline() {
+        // possible we already end with newline that we ourselves added before
+        // (e.g., adding newline after closing "}")
+        // we don't want to add double newlines, so, remove it & its indent
         let matches = [...this.str.matchAll(/^([\s\S]*)\n\s*$/g)];
+        
         if (matches.length > 0) {
             this.str = matches[0][1];
         }
-
-        this.str += "\n" + new Array(this.indent).join(" ");
     }
 
     separate(sep) {
@@ -607,11 +615,16 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
         if (typeof node === 'string') {
             this.str += node;
 
-            // for every single node we print:
-            // check whether there's a comment before or after
+        // for every node we print:
+        // print comments that come before or after
         } else {
-            this.str += this.leftComment(node);
+            let lc = this.leftComment(node);
+            if (lc.startsWith("\n"))
+                this.beforeNewNewline();
+            this.str += lc;
+
             this.str += node;
+            
             this.str += this.rightComment(node);
         }
     }
@@ -626,6 +639,7 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
 
             let text = tokens.map(c => c.text).join("");
             // after the last comment, keep only the newlines
+            // (avoid cases like "#blah\n    :a")
             text = text.replace(/[ \t]*$/, "");
 
             return text;
@@ -647,6 +661,7 @@ export default class n3_nodropFormatVisitor extends n3_nodropVisitor {
 
             let text = tokens.map(c => c.text).join("");
             // keep all whitespaces before first comment & between comments
+            // (avoid cases like ":c #blah\n    :a")
             text = text.trimEnd();
 
             if (text)
