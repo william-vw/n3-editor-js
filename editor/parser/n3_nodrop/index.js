@@ -59,7 +59,7 @@ export function format(input, config) {
 	let ast = n3Parser.n3Doc();
 	// return ast;
 
-	var visitor = new N3FormatVisitor(config, tokens);
+	var visitor = new N3FormatVisitor(config, tokens, n3Parser);
 	return visitor.visitN3Doc(ast);
 }
 
