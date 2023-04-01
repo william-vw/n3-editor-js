@@ -1,7 +1,0 @@
-#Processed by EYE v22.1105.2210 josd
-#eye --nope --n3 tmp/tmp_1670684286575.n3 --query /Users/wvw/git/n3/n3-editor-js/lib/eye/explain/query_heads.n3
-
-
-#2022-12-10T14:58:06.656Z in=2 out=0 ent=0 step=0 brake=1 inf=17541 sec=0.035 inf/sec=501171
-#ENDS
-
