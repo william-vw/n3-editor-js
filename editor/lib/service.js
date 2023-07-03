@@ -9,7 +9,7 @@ function exec(options, onSuccess, onError) {
 			let task = options.task;
 			switch (options.task) {
 
-				case 'derivations':
+ 				case 'derivations':
 					break;
 
 				case 'deductive_closure':
