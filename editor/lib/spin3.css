@@ -1,0 +1,20 @@
+.functions {
+    display: block;
+    margin-top: 20px;
+}
+
+.function {
+    margin-left: 0;
+    float: left;
+}
+
+.loading {
+    display: none;
+    float: right;
+}
+
+.sparql_spin {
+    width: 100%;
+}
+
+.CodeMirror pre.CodeMirror-placeholder { color: grey ; }

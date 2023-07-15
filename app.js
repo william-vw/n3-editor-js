@@ -6,10 +6,11 @@ const path = require('path')
 const { config } = require('./config.js')
 const tmp = require('./lib/tmp.js')
 const eye = require('./lib/eye/eye.js')
-const cwm = require('./lib/cwm/cwm.js')
+// const cwm = require('./lib/cwm/cwm.js')
 const jen3 = require('./lib/jen3/jen3.js')
 const jena = require('./lib/jena/jena.js')
 const triplify = require('./lib/triplify/triplify.js')
+const spin3 = require('./lib/spin3/spin3.js')
 const { generateLink, resolveLink } = require('./lib/gen_link.js')
 const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 
@@ -21,8 +22,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/n3/editor/s/*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/index.html"));
 });
-app.use('/n3/sparql2n3*', (req, res) => {
-	res.sendFile(path.join(__dirname, "editor/sparql2n3.html"));
+app.use('/n3/spin3*', (req, res) => {
+	res.sendFile(path.join(__dirname, "editor/spin3.html"));
 });
 app.use('/n3/sparql*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/sparql.html"));
@@ -55,6 +56,7 @@ app.post('/n3', (request, response) => {
 	// console.log("data:", data);
 	console.log(
 		"task:", data.task,
+		(data.subTask ? ", subTask: " + data.subTask : ""),
 		(data.system ? ", system: " + data.system : "")
 	);
 
@@ -89,16 +91,20 @@ app.post('/n3', (request, response) => {
 			doQuery(data, ctu)
 			break
 
+		case 'spin3':
+			doSpin3(data, ctu);
+			break
+	
+		case 'check_builtin_input':
+			doCheckBuiltinInput(data, ctu)
+			break
+
 		case 'generate_link':
 			doGenerateLink(data, ctu)
 			break
 
 		case 'resolve_link':
 			doResolveLink(data, ctu)
-			break
-
-		case 'check_builtin_input':
-			doCheckBuiltinInput(data, ctu)
 			break
 
 		default:
@@ -109,15 +115,12 @@ app.post('/n3', (request, response) => {
 app.listen(config.http.port)
 console.log(`Listening at ${config.http.hostname}:${config.http.port}`)
 
-function doReasoning(options, ctu) {
-	tmp.save(options.formula, (file) => {
+async function doReasoning(options, ctu) {
+	let file;
+	try {
+		file = await tmp.save(options.formula)
 
-		function end(ret) {
-			tmp.del(file)
-			ctu(ret)
-		}
-
-		var reasoner = null;
+		let reasoner = null;
 		switch (options.system) {
 			case "eye":
 				reasoner = eye
@@ -132,84 +135,130 @@ function doReasoning(options, ctu) {
 				break
 
 			default:
-				end({ error: `unsupported system: "${options.system}"` })
-				break
+				throw `unsupported system: "${options.system}"`
 		}
-		if (reasoner)
-			reasoner.exec(options, file, end)
-	})
+		
+		const output = await reasoner.exec(options, file)
+		ctu({ success: output })
+
+	} catch (e) {
+		console.log(e)
+		ctu({ error: e + "" })
+	
+	} finally {
+		await tmp.del(file)
+	}
 }
 
-function doExplaining(options, ctu) {
-	tmp.save(options.formula, (file) => {
+async function doExplaining(options, ctu) {
+	let file
+	try {
+		file = await tmp.save(options.formula)
 
-		var reasoner = null;
+		let reasoner = null;
 		switch (options.system) {
 			case "eye":
 				reasoner = eye
 				break
 
 			default:
-				end({ error: `unsupported system: "${options.system}"` })
-				break
+				throw `unsupported system: "${options.system}"`
 		}
 
-		reasoner.exec(options, file, (explanation) => {
-			tmp.del(file)
+		const explanation = await reasoner.exec(options, file)
+		ctu({ success: explanation })
 
-			ctu(explanation)
-		})
-	})
+	} catch(e) {
+		console.log(e)
+		ctu({ error: e })
+
+	} finally {
+		await tmp.del(file)
+	}
 }
 
-function doImperating(options, ctu) {
-	tmp.save(options.formula, (file) => {
+async function doImperating(options, ctu) {
+	let file
+	try {
+		file = await tmp.save(options.formula)
+		
+		const reasoner = jen3;
+		const code = await reasoner.exec(options, file)
+		ctu({ success: code })
 
-		var reasoner = jen3;
-		reasoner.exec(options, file, (code) => {
-			tmp.del(file)
+	} catch (e) {
+		console.log(e)
+		ctu({ error: e + "" })
 
-			ctu(code)
-		})
-	})
+	} finally {
+		await tmp.del(file)
+	}
 }
 
-function doTriplify(options, ctu) {
-	tmp.save(options.formula, (file) => {
+async function doTriplify(options, ctu) {
+	let file
+	try {
+		file = tmp.save(options.formula)
 
-		triplify.exec(options, file, (code) => {
-			tmp.del(file)
+		const code = await triplify.exec(options, file)
+		ctu({ success: code })
 
-			ctu(code)
-		})
-	})
+	} catch (e) {
+		console.log(e)
+		ctu({ error: e + "" })
+
+	} finally {
+		await tmp.del(file)
+	}
 }
 
-function doQuery(options, ctu) {
-	tmp.save(options.data, (data) => {
-		tmp.save(options.query, (query) => {
+async function doQuery(options, ctu) {
+	let data, query
+	try {
+		data = await tmp.save(options.data)
+		query = await tmp.save(options.query)
 
-			function end(ret) {
-				tmp.del(data)
-				tmp.del(query)
-				ctu(ret)
-			}
-	
-			var engine = null;
-			switch (options.system) {
+		let engine = null;
+		switch (options.system) {
 
-				case "jena":
-					engine = jena
-					break
+			case "jena":
+				engine = jena
+				break
 
-				default:
-					end({ error: `unsupported system: "${options.system}"` })
-					break
-			}
-			if (engine)
-				engine.exec(options, data, query, end)
-		})
-	})
+			default:
+				throw `unsupported system: "${options.system}"`
+		}
+		
+		const output = await engine.exec(options, data, query)
+		ctu({ success: output })
+
+	} catch (e) {
+		console.log(e)
+		ctu({ error: e + "" })
+
+	} finally {
+		await tmp.del(data)
+		await tmp.del(query)
+	}
+}
+
+async function doSpin3(options, ctu) {
+	let data, query
+	try {
+		data = await tmp.save(options.data)
+		query = await tmp.save(options.query)
+
+		const output = await spin3.exec(options, data, query);
+		ctu({ success: output })
+		
+	} catch (e) {
+		console.log(e)
+		ctu({ error: e + "" })
+
+	} finally {
+		await tmp.del(data)
+		await tmp.del(query)
+	}
 }
 
 function doGenerateLink(options, ctu) {
@@ -227,17 +276,21 @@ function doResolveLink(options, ctu) {
 		.catch((error) => { ctu({ error: error }) })
 }
 
-function doCheckBuiltinInput(options, ctu) {
-	tmp.save(options.definitions, (defFile) => {
-		tmp.save(options.test, (testFile) => {
+async function doCheckBuiltinInput(options, ctu) {
+	let defFile, testFile
+	try {
+		defFile = await tmp.save(options.definitions)
+		testFile = await tmp.save(options.test)
 
-			function end(ret) {
-				tmp.del(defFile)
-				tmp.del(testFile)
-				ctu(ret)
-			}
+		const output = await checkBuiltinInput(defFile, testFile)
+		ctu({ success: output })
 
-			checkBuiltinInput(defFile, testFile, end)
-		})
-	})
+	} catch (e) {
+		console.log(e)
+		ctu({ error: e + "" })
+
+	} finally {
+		await tmp.del(defFile)
+		await tmp.del(testFile)
+	}
 }

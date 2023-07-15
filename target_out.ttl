@@ -1,0 +1,11 @@
+# Processed by EYE v4.6.0 (2023-07-14)
+# eye --nope --n3 tmp/tmp_1689435880215.n3 --query /Users/wvw/git/n3/n3-editor-js/lib/eye/explain/query_heads.n3
+
+{
+    ?U_1 ?U_0 ?U_2.
+} <= {
+    ?U_1 ?U_0 ?U_2.
+}.
+# 2023-07-15T15:44:40.289Z in=3 out=1 ent=2 step=5 brake=2 inf=19444 sec=0.038 inf/sec=511684
+# ENDS
+

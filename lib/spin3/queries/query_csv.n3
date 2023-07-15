@@ -1,0 +1,46 @@
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spin: <http://spinrdf.org/spin#>.
+@prefix sp: <http://spinrdf.org/sp#>.
+@prefix ex: <http://example.org/spin#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix aux: <http://example.org/aux#>.
+
+
+
+
+## select
+{   ?x a       sp:Select .
+
+    ?x  sp:where ?where.
+
+
+    #get result variables 
+    ?x aux:getResultVariables ?outvars.
+    #handle graph
+   (false ?where) aux:createGraph ?g1.
+    #handle aggregation
+    (?x ?g1) aux:handleAggregation ?g.
+
+   
+
+
+     (?name {(?name ?value) list:in ?outvars} ?names) log:collectAllIn ?scope.
+    (?names ",") string:join ?nameString.
+    (?nameString "\n") string:concatenation ?outname.
+    ?names log:skolem ?out.
+   
+
+    (?g { (?v2 {(?name ?value) list:in ?outvars. ?value aux:getString ?v2 } ?values) log:collectAllIn ?scope2.
+    (?values ",") string:join ?valString.   (?valString "\n" ) string:concatenation ?out.  }  ) log:conjunction ?gout.
+
+
+  }=>{
+    {?x11 aux:getString ?u11}<={?x11 log:uri ?u11. }.
+    {?x11 aux:getString ?x11}<={?x11 log:rawType ?t11. ?t11 log:notEqualTo log:Other}.
+    ?g => {1 log:outputString ?outname}.
+   ?gout => {2 log:outputString ?out}.
+  }.

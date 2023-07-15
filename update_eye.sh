@@ -1,0 +1,1 @@
+cp /opt/eye/lib/eye.pvm opt/eye/lib

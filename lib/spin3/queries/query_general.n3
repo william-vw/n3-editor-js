@@ -1,0 +1,46 @@
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spin: <http://spinrdf.org/spin#>.
+@prefix sp: <http://spinrdf.org/sp#>.
+@prefix ex: <http://example.org/spin#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix aux: <http://example.org/aux#>.
+
+## construct
+{   ?x a       sp:Construct ;
+      sp:templates ?temps ;
+      sp:where ?where.
+    ?x aux:subtest false.
+ 	   (false ?where) aux:createGraph ?g1.
+     (false ?temps) aux:handleTriples ?g2
+	}=>{?g1=>?g2. }.
+
+## ask
+  {   ?x a       sp:Ask ;
+        sp:where ?where.
+    ?x aux:subtest false.
+   	    (false ?where) aux:createGraph ?g1.
+  	}=>{?g1 => {?x ex:result true}. {(1 ?g1 ()) log:collectAllIn ?scope}=>{?x ex:result false}
+    }.
+
+## select
+{   ?x a       sp:Select .
+
+    ?x  sp:where ?where.
+   # only if this is no sub-query 
+   ?x aux:subtest false.
+
+    #get result variables 
+    ?x aux:getResultVariables ?outvars.
+    #handle graph
+   (false ?where) aux:createGraph ?g1.
+    #handle aggregation
+    (?x ?g1) aux:handleAggregation ?g.
+
+    
+
+  }=>{?g => {?x ex:result ?outvars}.
+  }.
