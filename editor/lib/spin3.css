@@ -105,6 +105,11 @@ h1::before {
     display: none;
 }
 
+#times {
+    margin-top: 15px;
+    display: none;
+}
+
 #links div {
     display: inline
 }

@@ -99,6 +99,9 @@
 				$(`#spin_link`).html(`<a href="${success.spin}">View SPIN</a>`);
 				$(`#n3_link`).html(`<a href="${success.n3}">View N3</a>`);
 
+				$('#times').show();
+				$('#times').text(success.times.join(" | "));
+
 				$(`#${taskId}_out`).show()
 				$(`#${taskId}_out > div.box`).text(success.data)
 
@@ -350,6 +353,8 @@ CONSTRUCT {?x ?y ?z} WHERE {?z ?y ?x}</textarea>
 				<h3>Results:</h3>
 				<div id="links">
 					<div id="spin_link"></div> | <div id="n3_link"></div>
+				</div>
+				<div id="times">
 				</div>
 				<div class="box"></div>
 			</div>
