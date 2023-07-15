@@ -4,9 +4,11 @@ config = {
 		port: 3002
 	},
 
+	out: "/Users/wvw/git/n3/n3-editor-js/out",
+
 	tools: {
 		eye: {
-			exec: "/Users/wvw/git/n3/n3-editor-js/opt/eye/bin/eye",
+			exec: "eye",
 			folder: "/Users/wvw/git/n3/n3-editor-js/lib/eye"
 		},
 		cwm: {
@@ -24,7 +26,10 @@ config = {
 		},
 		triplify: {
 			exec: "/Users/wvw/git/n3/n3-editor-js/lib/triplify/sparql2spin.jar"
-		}
+		},
+		spin3: {
+			folder: "/Users/wvw/git/n3/n3-editor-js/lib/spin3"
+		},
 	},
 
 	link: {

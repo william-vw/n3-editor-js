@@ -4,6 +4,8 @@ config = {
 	    port: ((typeof process) != "undefined" ? process.env.PORT : undefined)
 	},
 
+	out: "/app/out",
+
 	tools: {
 		eye: {
 			exec: "eye", 
@@ -24,7 +26,10 @@ config = {
 		},
 		triplify: {
 			exec: "/app/lib/triplify/sparql2spin.jar"
-		}
+		},
+		spin3: {
+			folder: "/app/lib/spin3"
+		},
 	},
 
 	link: {

@@ -1,0 +1,45 @@
+# Processed by EYE v4.6.0 (2023-07-14)
+# eye /Users/wvw/git/n3/n3-editor-js/out/query.spin /Users/wvw/git/n3/n3-editor-js/lib/spin3/auxiliary-files/aux.n3 --query /Users/wvw/git/n3/n3-editor-js/lib/spin3/queries/query_general.n3 --nope --quantify http://eyereasoner.github.io/.well-known/genid/
+
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix spin: <http://spinrdf.org/spin#>.
+@prefix sp: <http://spinrdf.org/sp#>.
+@prefix ex: <http://example.org/spin#>.
+@prefix aux: <http://example.org/aux#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#>.
+@prefix crypto: <http://www.w3.org/2000/10/swap/crypto#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix var: <http://eyereasoner.github.io/.well-known/genid/349592cd-a0d3-43f8-971a-c14f70068e49#>.
+
+{
+    ?t_14 <http://example.org/b> "''}SELECT".
+} => {
+    ?t_14 <http://example.org/y> <http://example.org/z>.
+}.
+{
+    ?t_15 ?t_16 ?t_14.
+} => {
+    ?t_14 ?t_16 ?t_15.
+}.
+{
+    ((() (("x" ?t_14))) {
+        ?t_14 <http://example.org/b> "\\\"{".
+    } ?t_17) log:collectAllIn ?t_18.
+    (?t_19 ?t_20) list:in ?t_17.
+    (?t_21 {
+        (?t_19 ?t_22) list:in ?t_17.
+        ("x" ?t_21) list:in ?t_22.
+    } ?t_23) log:collectAllIn ?t_18.
+    ?t_14 list:in ("{").
+} => {
+    _:bn_9 ex:result (("SELECT" _:t_24) ("CONSTRUCT" _:t_25)).
+}.
+# 2023-07-15T20:57:26.142Z in=169 out=3 ent=3 step=3 brake=2 inf=397830 sec=0.044 inf/sec=9041591
+# ENDS
+

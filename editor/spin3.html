@@ -26,7 +26,6 @@
 	<script src="/n3/config.js"></script>
 	<script src="/n3/editor/lib/utils.js" type="text/javascript"></script>
 
-	<link rel="stylesheet" href="/n3/editor/lib/default.css">
 	<link rel="stylesheet" href="/n3/editor/lib/spin3.css">
 
 	<script>
@@ -47,6 +46,17 @@
 		function getCurrentFormat() {
 			return defaultFormat;
 		}
+
+		// function code_link(label, code) {
+		// 	const el = $(`<a href="#">${label}</a>`)
+		// 	el.click(() => {
+		// 		const w = window.open("", "_blank")
+		// 		w.document.body.innerText = code
+		// 		w.document.close()
+		// 	})
+
+		// 	return el
+		// }
 
 		function exec() {
 			var sparql = $('#sparql').val()
@@ -81,37 +91,39 @@
 				data: data
 
 			}, (success) => {
+				console.log(success);
+
+				$('#links').show()
+				// $(`#spin_link`).html(code_link("View SPIN", success.spin));
+				// $(`#n3_link`).html(code_link("View N3", success.n3));
+				$(`#spin_link`).html(`<a href="${success.spin}">View SPIN</a>`);
+				$(`#n3_link`).html(`<a href="${success.n3}">View N3</a>`);
+
 				$(`#${taskId}_out`).show()
-				$(`#${taskId}_out > div`).text(success)
+				$(`#${taskId}_out > div.box`).text(success.data)
 
 			}, (error) => {
 				$("#error_out").show()
-				$("#error_out > div").html(error)
+				$("#error_out > div.box").html(error)
 			})
 		}
 
 		function generate_link() {
 			$("#error").hide()
 
-			var formula = getFormula()
-			if (!formula) {
-				$("#linkPlaceholder").html("(need N3 code to share)");
-				return false
-			}
-
 			var sparql = $('#sparql').val()
 			if (sparql.length == 0) {
-				$("#linkPlaceholder").html("(need SPARQL code to share)");
-				return false
+				console.log("empty SPARQL - ignoring");
+				return;
 			}
 
-			var spin = $('#spin').val()
-			if (spin.length == 0) {
-				$("#linkPlaceholder").html("(need SPIN code to share)");
-				return false
+			var data = getFormula()
+			if (data.length == 0) {
+				console.log("empty data - ignoring");
+				return;
 			}
 
-			formula = "sparql=" + sparql + "\n\nspin=" + spin + "\n\nn3=" + formula
+			formula = "sparql=" + sparql + "\n\nn3=" + data
 
 			if (formula.length > config.link.max_len) {
 				$("#linkPlaceholder").html(`Formula too long (max. length: ${config.link.max_len})`)
@@ -142,19 +154,17 @@
 
 					var formula = data.formula
 					if (!formula.startsWith("sparql=")) {
-						console.error("wrong formula link for sparql-to-spin")
+						console.error("wrong formula link for spin3")
 						return
 					}
 
-					var matches = formula.match(/sparql=([^]*)\n\nspin=([^]*)\n\nn3=([^]*)/)
+					var matches = formula.match(/sparql=([^]*)\n\nn3=([^]*)/)
 					var sparql = matches[1];
-					var spin = matches[2];
 					var n3 = matches[3];
 
 					console.log("initializing formula from link")
 
 					$('#sparql').val(sparql);
-					$('#spin').val(spin);
 					editor.getDoc().setValue(n3)
 
 					validate(defaultFormat, true)
@@ -177,8 +187,8 @@
 
 		const onSuggestion = {
 			namespace: function (prefix, ns) {
-				if (!$("#auto-ns").prop('checked'))
-					return false
+				// if (!$("#auto-ns").prop('checked'))
+				// 	return false
 
 				console.log("prefix suggestion:", prefix, ":", ns)
 				if (alreadySuggested.includes(prefix)) {
@@ -268,46 +278,67 @@
 
 <body>
 	<main>
-		<a href="https://github.com/w3c/N3">
-			<img class="logo" alt="Notation3 Editor" title="Notation3 Editor" src="/n3/editor/logo.png" />
-		</a>
+		<div class="header">
+			<table>
+				<tr>
+					<td>
+						<a href="https://github.com/w3c/N3">
+							<img class="logo" alt="Notation3 Editor" title="Notation3 Editor" src="/n3/editor/logo-small.png" />
+						</a>
+					</td>
+					<td>
+						<div class="functions">
+							<div class="function">
+								<button id="execute">e<u>x</u>ecute</button>
+								<!-- <select name="reason_task">
+									<option value="deductive_closure" id="clos">closure</option>
+									<option value="derivations" id="deriv" selected>derivations</option>
+								</select> -->
+							</div>
+							<div class="function">
+								<button id="link">s<u>h</u>are</button>
+								<span id="linkPlaceholder"></span>
+							</div>
+							<div class="loading">
+								<img src="/n3/editor/img/ajax-loader.gif" alt="loader">
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
 
 		<div class="content">
-			<div>
-				<textarea rows=20 cols=100 id="sparql" placeholder="SPARQL"></textarea>
-			</div>
-			<br />
-			<textarea rows=10 cols=50 id="data" placeholder="Data"></textarea>
+			<table>
+				<tr>
+					<td>
+						<textarea rows=20 cols=100 id="sparql" placeholder="SPARQL">CONSTRUCT {
+	?x <http://example.org/y> <http://example.org/z> .
 
-			<small class="note1">
-				<a href="#" id="link">Create link to formula</a>
-				<span id="linkPlaceholder"></span>
-			</small>
+} WHERE {
+	?x <http://example.org/b> "''}SELECT" .
+	{
+		SELECT ?x WHERE  {  }
+	}
+}
+
+SELECT ?SELECT (?x in ( "{" ) as ?CONSTRUCT
+	) { # }
+	?x <http://example.org/b> "\\\"{"
+}
+
+CONSTRUCT {?x ?y ?z} WHERE {?z ?y ?x}</textarea>
+					</td>
+					<td>
+						<textarea rows=10 cols=50 id="data" placeholder="Data">:a :b :c .</textarea>
+					</td>
+				</tr>
+			</table>
 
 			<small class="note2">
 				Please submit bugs or feature requests on <a
 					href="https://github.com/william-vw/n3-editor-js">GitHub</a>.
 			</small>
-
-			<br style="clear: both" />
-			
-			<input id="auto-ns" type="checkbox" checked> Auto-suggest namespaces.<br />
-			<small>Auto-suggestion of namespaces. A specific namespace will only be suggested once (so just
-				remove it if it's wrong!).</small>
-
-			<div class="functions">
-				<div class="function">
-					<button id="execute">e<u>x</u>ecute</button>
-					<!-- <select name="reason_task">
-						<option value="deductive_closure" id="clos">closure</option>
-						<option value="derivations" id="deriv" selected>derivations</option>
-					</select> -->
-				</div>
-				<div class="loading">
-					<img src="/n3/editor/img/ajax-loader.gif" alt="loader">
-				</div>
-			</div>
-
 			<br style="clear: both" />
 			
 			<div id="error_out" class="output">
@@ -316,12 +347,10 @@
 			</div>
 
 			<div id="deriv_out" class="output">
-				<h3>Derivations:</h3>
-				<div class="box"></div>
-			</div>
-
-			<div id="clos_out" class="output">
-				<h3>Deductive closure:</h3>
+				<h3>Results:</h3>
+				<div id="links">
+					<div id="spin_link"></div> | <div id="n3_link"></div>
+				</div>
 				<div class="box"></div>
 			</div>
 		</div>
