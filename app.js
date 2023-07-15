@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/n3/editor/s/*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/index.html"));
 });
+app.use('/n3/out', express.static("editor/out"));
 app.use('/n3/editor/out', express.static("out"));
 app.use('/n3/spin3*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/spin3.html"));
