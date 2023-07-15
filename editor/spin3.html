@@ -100,7 +100,7 @@
 				$(`#n3_link`).html(`<a href="${success.n3}">View N3</a>`);
 
 				$('#times').show();
-				$('#times').text(success.times.join(" | "));
+				$('#times').text("(" + success.times.map(t => t + "ms").join(" | ") + ")");
 
 				$(`#${taskId}_out`).show()
 				$(`#${taskId}_out > div.box`).text(success.data)
