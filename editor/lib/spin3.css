@@ -110,6 +110,10 @@ h1::before {
     display: none;
 }
 
+#num_constructs {
+    display: none
+}
+
 #links div {
     display: inline
 }

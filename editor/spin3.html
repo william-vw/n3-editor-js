@@ -99,8 +99,12 @@
 				$(`#spin_link`).html(`<a href="${success.spin}">View SPIN</a>`);
 				$(`#n3_link`).html(`<a href="${success.n3}">View N3</a>`);
 
+				const num = success.num_constructs;
+				$('#num_constructs').show();
+				$('#num_constructs').html(`Found ${num} CONSTRUCT ${num > 1 ? "queries" : "query"}.`);
+
 				$('#times').show();
-				$('#times').text("(" + success.times.map(t => t + "ms").join(" | ") + ")");
+				$('#times').text("(times: " + success.times.map(t => t + "ms").join(" | ") + ")");
 
 				$(`#${taskId}_out`).show()
 				$(`#${taskId}_out > div.box`).text(success.data)
@@ -335,6 +339,7 @@
 			</div>
 
 			<div id="deriv_out" class="output">
+				<div id="num_constructs"></div>
 				<h3>Results:</h3>
 				<div id="links">
 					<div id="spin_link"></div> | <div id="n3_link"></div>
