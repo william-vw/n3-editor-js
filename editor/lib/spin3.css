@@ -111,7 +111,12 @@ h1::before {
 }
 
 #num_constructs {
-    display: none
+    display: none;
+    font-size: 14px;
+}
+
+.hint {
+    font-size: 14px;
 }
 
 #links div {
