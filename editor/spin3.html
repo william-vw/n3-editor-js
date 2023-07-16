@@ -315,25 +315,10 @@
 			<table>
 				<tr>
 					<td>
-						<textarea rows=20 cols=100 id="sparql" placeholder="SPARQL">CONSTRUCT {
-	?x <http://example.org/y> <http://example.org/z> .
-
-} WHERE {
-	?x <http://example.org/b> "''}SELECT" .
-	{
-		SELECT ?x WHERE  {  }
-	}
-}
-
-SELECT ?SELECT (?x in ( "{" ) as ?CONSTRUCT
-	) { # }
-	?x <http://example.org/b> "\\\"{"
-}
-
-CONSTRUCT {?x ?y ?z} WHERE {?z ?y ?x}</textarea>
+						<textarea rows=20 cols=100 id="sparql" placeholder="SPARQL"></textarea>
 					</td>
 					<td>
-						<textarea rows=10 cols=50 id="data" placeholder="Data">:a :b :c .</textarea>
+						<textarea rows=10 cols=50 id="data" placeholder="Data"></textarea>
 					</td>
 				</tr>
 			</table>
