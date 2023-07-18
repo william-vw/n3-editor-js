@@ -18,14 +18,14 @@
 }
 <= 
 {
-   
    ?steps list:firstRest ( ?step ?rest ) .
-   true log:callWithCut true.
+
    # steps = list with steps (again lists) as elements
    # (individual steps would have numbers as last elements)
    ?steps!list:last log:rawType rdf:List .
    # "sequenceOfSteps" log:trace ?step .
    ( ?start ?interm ) aux:stepThroughPath ?step .
+   (?start ?interm) aux:fullyIntsantiated true.
    #
    ( ?interm ?end ) aux:stepThroughPath ?rest 
 } .
@@ -75,6 +75,8 @@
 <= 
 {
    ( ?start ?o ) aux:stepThroughPath ?nested .
+   #make sure that the last step is really "done"
+   (?start ?o) aux:fullyIntsantiated true.
    ( ?o ?end ) aux:stepThroughPath ( ?nested 1 -2 ) .
 } .
 
@@ -198,3 +200,5 @@
    ( ?uriStrs "|" ) string:join ?regex .
 } .
 
+
+{(?a ?b) aux:fullyIntsantiated true}<={?a log:rawType ?t1. ?t1 log:notEqualTo log:ForAll. ?b log:rawType ?t2. ?t2 log:notEqualTo log:ForAll.}.
