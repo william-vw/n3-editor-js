@@ -96,15 +96,15 @@
 				$('#links').show()
 				// $(`#spin_link`).html(code_link("View SPIN", success.spin));
 				// $(`#n3_link`).html(code_link("View N3", success.n3));
-				$(`#spin_link`).html(`<a href="${success.spin}">View SPIN</a>`);
-				$(`#n3_link`).html(`<a href="${success.n3}">View N3</a>`);
+				$(`#spin_link`).attr('href', success.spin);
+				$(`#n3_link`).attr('href', success.n3);
 
 				const num = success.num_constructs;
 				$('#num_constructs').show();
 				$('#num_constructs').html(`Found ${num} CONSTRUCT ${num > 1 ? "queries" : "query"}.`);
 
 				$('#times').show();
-				$('#times').text("(times: " + success.times.map(t => t + "ms").join(" | ") + ")");
+				$('#times').text("(" + success.times.map(t => t + "ms").join(" | ") + ")");
 
 				$(`#${taskId}_out`).show()
 				$(`#${taskId}_out > div.box`).text(success.data)
@@ -252,7 +252,7 @@
 			$("#execute").click(exec)
 			shortcut.add("Alt+X", exec)
 
-			$("#link").click(generate_link)
+			$("#share").click(generate_link)
 
 			let url = window.location.toString()
 			let path = window.location.pathname
@@ -303,7 +303,7 @@
 								</select> -->
 							</div>
 							<div class="function">
-								<button id="link">s<u>h</u>are</button>
+								<button id="share">s<u>h</u>are</button>
 								<span id="linkPlaceholder"></span>
 							</div>
 							<div class="loading">
@@ -343,7 +343,8 @@
 				<div id="num_constructs"></div>
 				<h3>Results:</h3>
 				<div id="links">
-					<div id="spin_link"></div> | <div id="n3_link"></div>
+					<a class="link" id="spin_link">View SPIN</a>
+					<a class="link" id="n3_link">View N3</a>
 				</div>
 				<div id="times">
 				</div>

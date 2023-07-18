@@ -15,18 +15,17 @@
 @prefix crypto: <http://www.w3.org/2000/10/swap/crypto#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix var: <http://eyereasoner.github.io/.well-known/genid/c0839322-0a6f-48ee-8b1d-b291673f90b5#>.
+@prefix var: <http://eyereasoner.github.io/.well-known/genid/4d9cf08a-f81e-4460-b3c3-de89e222b8a4#>.
 
 {
-    ?t_3 <http://example.org#y> ?t_4.
+    ?t_2 a <http://hl7.org/fhir/Patient>.
+    ?t_2 <http://example.org/utils#hasCondition> ?t_3.
+    (?t_3 77386006) aux:stepThroughPath ((<http://hl7.org/fhir/code> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
+    (?t_3 "active") aux:stepThroughPath ((<http://hl7.org/fhir/clinicalStatus> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
+    (?t_3 "confirmed") aux:stepThroughPath ((<http://hl7.org/fhir/verificationStatus> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
 } => {
-    ?t_4 _:t_5 ?t_3.
+    ?t_2 <http://example.org/zika#isPregnant> true.
 }.
-{
-    ?t_3 ?t_5 ?t_4.
-} => {
-    ?t_4 ?t_5 ?t_3.
-}.
-# 2023-07-16T14:22:08.088Z in=154 out=2 ent=2 step=2 brake=2 inf=381231 sec=0.040 inf/sec=9530775
+# 2023-07-18T13:50:00.125Z in=164 out=1 ent=1 step=1 brake=2 inf=391063 sec=0.041 inf/sec=9538122
 # ENDS
 

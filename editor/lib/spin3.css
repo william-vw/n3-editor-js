@@ -1,8 +1,6 @@
 body {
     font-family: sans-serif;
     padding-left: 15px;
-    max-width: 1400px;
-    margin: auto;
 }
 
 .content {
@@ -22,17 +20,29 @@ body {
     display: block;
 }
 
-button {
-    padding: 8px 25px;
+button , .link {
     border-radius: 5px;
     color: #fff;
     border: 0;
+    background-color: rgb(177, 177, 177);
+}
+
+button:hover , .link:hover {
+    cursor: pointer;
+    background-color: rgb(139, 139, 139);
+}
+
+button {
+    padding: 8px 25px;
     font-size: 17px;
     margin-left: 15px;
 }
 
-button:hover {
-    cursor: pointer;
+.link {
+    padding: 8px 8px 6px 8px;
+    font-size: 16px;
+    margin-right: 15px;
+    text-decoration: none;
 }
 
 button#execute {
@@ -41,14 +51,6 @@ button#execute {
 
 button#execute:hover {
     background-color: #8a25b1;
-}
-
-button#link {
-    background-color: rgb(177, 177, 177);
-}
-
-button#link:hover {
-    background-color: rgb(139, 139, 139);
 }
 
 .content h1+p {
@@ -124,14 +126,6 @@ h1::before {
 #links div {
     display: inline
 }
-
-#links a {
-    color: #fff;
-    background-color: rgb(139, 139, 139);
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
 
 .box {
     white-space: pre-wrap;
