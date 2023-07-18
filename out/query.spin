@@ -1,55 +1,404 @@
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/zika#residentOfZikaArea> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ <http://spinrdf.org/sp#object>
-                          <http://hl7.org/fhir/Patient> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "country"
-                          ] ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
+        "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/zika#isPregnant> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ <http://spinrdf.org/sp#object>
+        <http://hl7.org/fhir/Patient> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#hasCondition> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        77386006 ;
+                            <http://spinrdf.org/sp#path>
         [ a       <http://spinrdf.org/sp#SeqPath> ;
           <http://spinrdf.org/sp#path1>
-                  <http://hl7.org/fhir/address> ;
+                  <http://hl7.org/fhir/code> ;
           <http://spinrdf.org/sp#path2>
-                  <http://hl7.org/fhir/country>
+                  <http://example.org/utils#hasCodeValue>
         ] ;
-                            <http://spinrdf.org/sp#path2>
-        <http://hl7.org/fhir/v>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "country"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/zika#hasZikaArea> ;
-                  <http://spinrdf.org/sp#subject>
-                          <http://example.org/zika#world>
-                ]) .
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        "active" ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  <http://hl7.org/fhir/clinicalStatus> ;
+          <http://spinrdf.org/sp#path2>
+                  <http://example.org/utils#hasCodeValue>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        "confirmed" ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  <http://hl7.org/fhir/verificationStatus> ;
+          <http://spinrdf.org/sp#path2>
+                  <http://example.org/utils#hasCodeValue>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ]
+                          ])
+              ] .
 
-<http://www.w3.org/2002/07/owl#Class>
+
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/zika#hasZikaSymptom> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ <http://spinrdf.org/sp#object>
+        <http://hl7.org/fhir/Patient> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#hasCondition> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        "active" ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  <http://hl7.org/fhir/clinicalStatus> ;
+          <http://spinrdf.org/sp#path2>
+                  <http://example.org/utils#hasCodeValue>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        "confirmed" ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  <http://hl7.org/fhir/verificationStatus> ;
+          <http://spinrdf.org/sp#path2>
+                  <http://example.org/utils#hasCodeValue>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "code"
+        ] ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  <http://hl7.org/fhir/code> ;
+          <http://spinrdf.org/sp#path2>
+                  <http://example.org/utils#hasCodeValue>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#Filter> ;
+                            <http://spinrdf.org/sp#expression>
+        [ a       <http://spinrdf.org/sp#in> ;
+          <http://spinrdf.org/sp#arg1>
+                  [ <http://spinrdf.org/sp#varName>
+                            "code"
+                  ] ;
+          <http://spinrdf.org/sp#arg2>
+                  84387000 ;
+          <http://spinrdf.org/sp#arg3>
+                  271749004 ;
+          <http://spinrdf.org/sp#arg4>
+                  47725002 ;
+          <http://spinrdf.org/sp#arg5>
+                  57676002 ;
+          <http://spinrdf.org/sp#arg6>
+                  9826008 ;
+          <http://spinrdf.org/sp#arg7>
+                  68962001 ;
+          <http://spinrdf.org/sp#arg8>
+                  25064002
+        ]
+                          ])
+              ] .
+
+
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
+        "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/zika#residentOfZikaArea> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ <http://spinrdf.org/sp#object>
+        <http://hl7.org/fhir/Patient> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "country"
+        ] ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  [ a       <http://spinrdf.org/sp#SeqPath> ;
+                    <http://spinrdf.org/sp#path1>
+                            <http://hl7.org/fhir/address> ;
+                    <http://spinrdf.org/sp#path2>
+                            <http://hl7.org/fhir/country>
+                  ] ;
+          <http://spinrdf.org/sp#path2>
+                  <http://hl7.org/fhir/v>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "country"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/zika#hasZikaArea> ;
+                            <http://spinrdf.org/sp#subject>
+        <http://example.org/zika#world>
+                          ])
+              ] .
+
+
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
+        "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/zika#recentTravelToZikaArea> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ <http://spinrdf.org/sp#object>
+        <http://hl7.org/fhir/Patient> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "o"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#hasObservation> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        420008001 ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  <http://hl7.org/fhir/code> ;
+          <http://spinrdf.org/sp#path2>
+                  <http://example.org/utils#hasCodeValue>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "o"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "cmp"
+        ] ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  [ a       <http://spinrdf.org/sp#SeqPath> ;
+                    <http://spinrdf.org/sp#path1>
+                            <http://hl7.org/fhir/component> ;
+                    <http://spinrdf.org/sp#path2>
+                            [ a       <http://spinrdf.org/sp#ModPath> ;
+  <http://spinrdf.org/sp#modMax>
+          -2 ;
+  <http://spinrdf.org/sp#modMin>
+          0 ;
+  <http://spinrdf.org/sp#subPath>
+          <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
+                            ]
+                  ] ;
+          <http://spinrdf.org/sp#path2>
+                  <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "o"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        "LOC" ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  <http://hl7.org/fhir/code> ;
+          <http://spinrdf.org/sp#path2>
+                  <http://example.org/utils#hasCodeValue>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "cmp"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "country"
+        ] ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  [ a       <http://spinrdf.org/sp#SeqPath> ;
+                    <http://spinrdf.org/sp#path1>
+                            [ a       <http://spinrdf.org/sp#SeqPath> ;
+  <http://spinrdf.org/sp#path1>
+          [ a       <http://spinrdf.org/sp#SeqPath> ;
+            <http://spinrdf.org/sp#path1>
+                    [ a       <http://spinrdf.org/sp#SeqPath> ;
+                      <http://spinrdf.org/sp#path1>
+                              <http://hl7.org/fhir/extension> ;
+                      <http://spinrdf.org/sp#path2>
+                              [ a       <http://spinrdf.org/sp#ModPath> ;
+    <http://spinrdf.org/sp#modMax>
+            -2 ;
+    <http://spinrdf.org/sp#modMin>
+            0 ;
+    <http://spinrdf.org/sp#subPath>
+            <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
+                              ]
+                    ] ;
+            <http://spinrdf.org/sp#path2>
+                    <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
+          ] ;
+  <http://spinrdf.org/sp#path2>
+          <http://hl7.org/fhir/value>
+                            ] ;
+                    <http://spinrdf.org/sp#path2>
+                            <http://hl7.org/fhir/country>
+                  ] ;
+          <http://spinrdf.org/sp#path2>
+                  <http://hl7.org/fhir/v>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "cmp"
+        ]
+                          ] [ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "country"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/zika#hasZikaArea> ;
+                            <http://spinrdf.org/sp#subject>
+        <http://example.org/zika#world>
+                          ] [ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "timeSince"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#timeSinceObsEnd> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "cmp"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#Filter> ;
+                            <http://spinrdf.org/sp#expression>
+        [ a       <http://spinrdf.org/sp#lt> ;
+          <http://spinrdf.org/sp#arg1>
+                  [ <http://spinrdf.org/sp#varName>
+                            "timeSince"
+                  ] ;
+          <http://spinrdf.org/sp#arg2>
+                  2678400000
+        ]
+                          ])
+              ] .
+
+
+<http://example.org/Class>
       <http://spinrdf.org/spin#rule>
               [ a       <http://spinrdf.org/sp#Construct> ;
                 <http://spinrdf.org/sp#templates>
@@ -274,602 +623,495 @@
                           ])
               ] .
 
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/zika#possibleZikaExposure> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ a       <http://spinrdf.org/sp#Union> ;
-                  <http://spinrdf.org/sp#elements>
-                          (([ <http://spinrdf.org/sp#object>
-            "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
-    <http://spinrdf.org/sp#predicate>
-            <http://example.org/zika#recentTravelToZikaArea> ;
-    <http://spinrdf.org/sp#subject>
-            [ <http://spinrdf.org/sp#varName>
-                      "p"
-            ]
-  ]) ([ <http://spinrdf.org/sp#object>
-            "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
-    <http://spinrdf.org/sp#predicate>
-            <http://example.org/zika#recentSexualEncounterWithZikaResidentOrTraveler> ;
-    <http://spinrdf.org/sp#subject>
-            [ <http://spinrdf.org/sp#varName>
-                      "p"
-            ]
-  ]))
-                ]) .
 
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/zika#hasZikaSymptom> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ <http://spinrdf.org/sp#object>
-                          <http://hl7.org/fhir/Patient> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#hasCondition> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          "active" ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/clinicalStatus> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://example.org/utils#hasCodeValue>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          "confirmed" ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/verificationStatus> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://example.org/utils#hasCodeValue>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "code"
-                          ] ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/code> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://example.org/utils#hasCodeValue>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#Filter> ;
-                  <http://spinrdf.org/sp#expression>
-                          [ a       <http://spinrdf.org/sp#in> ;
-                            <http://spinrdf.org/sp#arg1>
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
+        "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/zika#recentSexualEncounterWithZikaResidentOrTraveler> ;
+                            <http://spinrdf.org/sp#subject>
         [ <http://spinrdf.org/sp#varName>
-                  "code"
+                  "p"
+        ]
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "o"
         ] ;
-                            <http://spinrdf.org/sp#arg2>
-        84387000 ;
-                            <http://spinrdf.org/sp#arg3>
-        271749004 ;
-                            <http://spinrdf.org/sp#arg4>
-        47725002 ;
-                            <http://spinrdf.org/sp#arg5>
-        57676002 ;
-                            <http://spinrdf.org/sp#arg6>
-        9826008 ;
-                            <http://spinrdf.org/sp#arg7>
-        68962001 ;
-                            <http://spinrdf.org/sp#arg8>
-        25064002
-                          ]
-                ]) .
-
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/zika#recentSexualEncounterWithZikaResidentOrTraveler> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "o"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#hasObservation> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#Union> ;
-                  <http://spinrdf.org/sp#elements>
-                          (([ <http://spinrdf.org/sp#object>
-            "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
-    <http://spinrdf.org/sp#predicate>
-            <http://example.org/zika#recentTravelToZikaArea> ;
-    <http://spinrdf.org/sp#subject>
-            [ <http://spinrdf.org/sp#varName>
-                      "p2"
-            ]
-  ]) ([ <http://spinrdf.org/sp#object>
-            "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
-    <http://spinrdf.org/sp#predicate>
-            <http://example.org/zika#residentOfZikaArea> ;
-    <http://spinrdf.org/sp#subject>
-            [ <http://spinrdf.org/sp#varName>
-                      "p2"
-            ]
-  ]))
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          225517006 ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/code> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://example.org/utils#hasCodeValue>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "o"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "p2"
-                          ] ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/value> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://example.org/utils#refersTo>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "o"
-                          ]
-                ] [ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "timeSince"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#timeSinceObsEnd> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "o"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#Filter> ;
-                  <http://spinrdf.org/sp#expression>
-                          [ a       <http://spinrdf.org/sp#lt> ;
-                            <http://spinrdf.org/sp#arg1>
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#hasObservation> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#Union> ;
+                            <http://spinrdf.org/sp#elements>
+        (([ <http://spinrdf.org/sp#object>
+                      "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+              <http://spinrdf.org/sp#predicate>
+                      <http://example.org/zika#recentTravelToZikaArea> ;
+              <http://spinrdf.org/sp#subject>
+                      [ <http://spinrdf.org/sp#varName>
+    "p2"
+                      ]
+            ]) ([ <http://spinrdf.org/sp#object>
+                      "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+              <http://spinrdf.org/sp#predicate>
+                      <http://example.org/zika#residentOfZikaArea> ;
+              <http://spinrdf.org/sp#subject>
+                      [ <http://spinrdf.org/sp#varName>
+    "p2"
+                      ]
+            ]))
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        225517006 ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  <http://hl7.org/fhir/code> ;
+          <http://spinrdf.org/sp#path2>
+                  <http://example.org/utils#hasCodeValue>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "o"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "p2"
+        ] ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  <http://hl7.org/fhir/value> ;
+          <http://spinrdf.org/sp#path2>
+                  <http://example.org/utils#refersTo>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "o"
+        ]
+                          ] [ <http://spinrdf.org/sp#object>
         [ <http://spinrdf.org/sp#varName>
                   "timeSince"
         ] ;
-                            <http://spinrdf.org/sp#arg2>
-        2678400000
-                          ]
-                ]) .
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#timeSinceObsEnd> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "o"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#Filter> ;
+                            <http://spinrdf.org/sp#expression>
+        [ a       <http://spinrdf.org/sp#lt> ;
+          <http://spinrdf.org/sp#arg1>
+                  [ <http://spinrdf.org/sp#varName>
+                            "timeSince"
+                  ] ;
+          <http://spinrdf.org/sp#arg2>
+                  2678400000
+        ]
+                          ])
+              ] .
 
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "avgTimeSince"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/zika#avgTimeSinceZikaSymptomsOnset> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ a       <http://spinrdf.org/sp#SubQuery> ;
-                  <http://spinrdf.org/sp#query>
-                          [ a       <http://spinrdf.org/sp#Select> ;
-                            <http://spinrdf.org/sp#groupBy>
-        ([ <http://spinrdf.org/sp#varName>
-                    "p"
-          ]) ;
-                            <http://spinrdf.org/sp#resultVariables>
-        ([ <http://spinrdf.org/sp#expression>
-                    [ a       <http://spinrdf.org/sp#Avg> ;
-                      <http://spinrdf.org/sp#expression>
+
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
+        "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/zika#possibleZikaExposure> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ a       <http://spinrdf.org/sp#Union> ;
+                            <http://spinrdf.org/sp#elements>
+        (([ <http://spinrdf.org/sp#object>
+                      "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+              <http://spinrdf.org/sp#predicate>
+                      <http://example.org/zika#recentTravelToZikaArea> ;
+              <http://spinrdf.org/sp#subject>
+                      [ <http://spinrdf.org/sp#varName>
+    "p"
+                      ]
+            ]) ([ <http://spinrdf.org/sp#object>
+                      "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+              <http://spinrdf.org/sp#predicate>
+                      <http://example.org/zika#recentSexualEncounterWithZikaResidentOrTraveler> ;
+              <http://spinrdf.org/sp#subject>
+                      [ <http://spinrdf.org/sp#varName>
+    "p"
+                      ]
+            ]))
+                          ])
+              ] .
+
+
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "avgTimeSince"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/zika#avgTimeSinceZikaSymptomsOnset> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ a       <http://spinrdf.org/sp#SubQuery> ;
+                            <http://spinrdf.org/sp#query>
+        [ a       <http://spinrdf.org/sp#Select> ;
+          <http://spinrdf.org/sp#groupBy>
+                  ([ <http://spinrdf.org/sp#varName>
+  "p"
+                    ]) ;
+          <http://spinrdf.org/sp#resultVariables>
+                  ([ <http://spinrdf.org/sp#expression>
+  [ a       <http://spinrdf.org/sp#Avg> ;
+    <http://spinrdf.org/sp#expression>
+            [ <http://spinrdf.org/sp#varName>
+                      "timeSince"
+            ]
+  ] ;
+                      <http://spinrdf.org/sp#varName>
+  "avgTimeSince"
+                    ] [ <http://spinrdf.org/sp#varName>
+  "p"
+                    ]) ;
+          <http://spinrdf.org/sp#where>
+                  ([ <http://spinrdf.org/sp#object>
+  <http://hl7.org/fhir/Patient> ;
+                      <http://spinrdf.org/sp#predicate>
+  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+                      <http://spinrdf.org/sp#subject>
+  [ <http://spinrdf.org/sp#varName>
+            "p"
+  ]
+                    ] [ <http://spinrdf.org/sp#object>
+  [ <http://spinrdf.org/sp#varName>
+            "c"
+  ] ;
+                      <http://spinrdf.org/sp#predicate>
+  <http://example.org/zika#hasZikaSymptom> ;
+                      <http://spinrdf.org/sp#subject>
+  [ <http://spinrdf.org/sp#varName>
+            "p"
+  ]
+                    ] [ <http://spinrdf.org/sp#object>
   [ <http://spinrdf.org/sp#varName>
             "timeSince"
+  ] ;
+                      <http://spinrdf.org/sp#predicate>
+  <http://example.org/utils#timeSinceCondOnset> ;
+                      <http://spinrdf.org/sp#subject>
+  [ <http://spinrdf.org/sp#varName>
+            "c"
   ]
-                    ] ;
-            <http://spinrdf.org/sp#varName>
-                    "avgTimeSince"
-          ] [ <http://spinrdf.org/sp#varName>
-                    "p"
-          ]) ;
-                            <http://spinrdf.org/sp#where>
-        ([ <http://spinrdf.org/sp#object>
-                    <http://hl7.org/fhir/Patient> ;
-            <http://spinrdf.org/sp#predicate>
-                    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
-            <http://spinrdf.org/sp#subject>
-                    [ <http://spinrdf.org/sp#varName>
-  "p"
-                    ]
-          ] [ <http://spinrdf.org/sp#object>
-                    [ <http://spinrdf.org/sp#varName>
-  "c"
-                    ] ;
-            <http://spinrdf.org/sp#predicate>
-                    <http://example.org/zika#hasZikaSymptom> ;
-            <http://spinrdf.org/sp#subject>
-                    [ <http://spinrdf.org/sp#varName>
-  "p"
-                    ]
-          ] [ <http://spinrdf.org/sp#object>
-                    [ <http://spinrdf.org/sp#varName>
-  "timeSince"
-                    ] ;
-            <http://spinrdf.org/sp#predicate>
-                    <http://example.org/utils#timeSinceCondOnset> ;
-            <http://spinrdf.org/sp#subject>
-                    [ <http://spinrdf.org/sp#varName>
-  "c"
-                    ]
-          ])
-                          ]
-                ]) .
-
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "r"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#has> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "id"
-                          ] ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/id> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://hl7.org/fhir/v>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "id"
-                          ] ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        [ a       <http://spinrdf.org/sp#SeqPath> ;
-          <http://spinrdf.org/sp#path1>
-                  <http://hl7.org/fhir/subject> ;
-          <http://spinrdf.org/sp#path2>
-                  <http://hl7.org/fhir/reference>
-        ] ;
-                            <http://spinrdf.org/sp#path2>
-        <http://hl7.org/fhir/v>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "r"
-                          ]
-                ]) .
-
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "timeSince"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#timeSinceObsEnd> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "o"
-                          ]
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "period"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://hl7.org/fhir/effective> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "o"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "start"
-                          ] ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/start> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://hl7.org/fhir/v>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "period"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "end"
-                          ] ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/end> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://hl7.org/fhir/v>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "period"
-                          ]
-                ] [ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "now"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> ;
-                  <http://spinrdf.org/sp#subject>
-                          <http://example.org/utils#now>
-                ] [ a       <http://spinrdf.org/sp#Bind> ;
-                  <http://spinrdf.org/sp#expression>
-                          [ a       <http://spinrdf.org/sp#sub> ;
-                            <http://spinrdf.org/sp#arg1>
-        [ <http://spinrdf.org/sp#varName>
-                  "now"
-        ] ;
-                            <http://spinrdf.org/sp#arg2>
-        [ <http://spinrdf.org/sp#varName>
-                  "end"
+                    ])
         ]
-                          ] ;
-                  <http://spinrdf.org/sp#variable>
-                          [ <http://spinrdf.org/sp#varName>
-        "timeSince"
-                          ]
-                ]) .
+                          ])
+              ] .
 
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/zika#isPregnant> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ <http://spinrdf.org/sp#object>
-                          <http://hl7.org/fhir/Patient> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#hasCondition> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          77386006 ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/code> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://example.org/utils#hasCodeValue>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          "active" ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/clinicalStatus> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://example.org/utils#hasCodeValue>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          "confirmed" ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/verificationStatus> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://example.org/utils#hasCodeValue>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ]
-                ]) .
 
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/zika#recentTravelToZikaArea> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ <http://spinrdf.org/sp#object>
-                          <http://hl7.org/fhir/Patient> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "o"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#hasObservation> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          420008001 ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
+        <http://hl7.org/fhir/ServiceRequest> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+                            <http://spinrdf.org/sp#subject>
+        _:b1
+                          ] [ <http://spinrdf.org/sp#object>
+        _:b2 ;
+                            <http://spinrdf.org/sp#predicate>
         <http://hl7.org/fhir/code> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://example.org/utils#hasCodeValue>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "o"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "cmp"
-                          ] ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
+                            <http://spinrdf.org/sp#subject>
+        _:b1
+                          ] [ <http://spinrdf.org/sp#object>
+        _:b3 ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://hl7.org/fhir/concept> ;
+                            <http://spinrdf.org/sp#subject>
+        _:b2
+                          ] [ <http://spinrdf.org/sp#object>
+        _:b4 ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://hl7.org/fhir/coding> ;
+                            <http://spinrdf.org/sp#subject>
+        _:b3
+                          ] [ <http://spinrdf.org/sp#object>
+        _:b5 ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> ;
+                            <http://spinrdf.org/sp#subject>
+        _:b4
+                          ] [ <http://spinrdf.org/sp#object>
+        _:b6 ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://hl7.org/fhir/system> ;
+                            <http://spinrdf.org/sp#subject>
+        _:b5
+                          ] [ <http://spinrdf.org/sp#object>
+        "http://snomed.org/sct"^^<http://www.w3.org/2001/XMLSchema#anyURI> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://hl7.org/fhir/v> ;
+                            <http://spinrdf.org/sp#subject>
+        _:b6
+                          ] [ <http://spinrdf.org/sp#object>
+        _:b7 ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://hl7.org/fhir/code> ;
+                            <http://spinrdf.org/sp#subject>
+        _:b5
+                          ] [ <http://spinrdf.org/sp#object>
+        "69363007" ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://hl7.org/fhir/v> ;
+                            <http://spinrdf.org/sp#subject>
+        _:b7
+                          ] [ <http://spinrdf.org/sp#object>
+        () ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> ;
+                            <http://spinrdf.org/sp#subject>
+        _:b4
+                          ] [ <http://spinrdf.org/sp#object>
+        _:b8 ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://hl7.org/fhir/text> ;
+                            <http://spinrdf.org/sp#subject>
+        _:b3
+                          ] [ <http://spinrdf.org/sp#object>
+        "Zika virus NAAT on serum" ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://hl7.org/fhir/v> ;
+                            <http://spinrdf.org/sp#subject>
+        _:b8
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ <http://spinrdf.org/sp#object>
+        "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/zika#isPregnant> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "symptom"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/zika#hasZikaSymptom> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ <http://spinrdf.org/sp#object>
+        "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/zika#possibleZikaExposure> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "timeSince"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/zika#avgTimeSinceZikaSymptomsOnset> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#Filter> ;
+                            <http://spinrdf.org/sp#expression>
+        [ a       <http://spinrdf.org/sp#lt> ;
+          <http://spinrdf.org/sp#arg1>
+                  [ <http://spinrdf.org/sp#varName>
+                            "timeSince"
+                  ] ;
+          <http://spinrdf.org/sp#arg2>
+                  7257600000
+        ]
+                          ])
+              ] .
+
+
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#hasCondition> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#has> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ <http://spinrdf.org/sp#object>
+        <http://hl7.org/fhir/Condition> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ]
+                          ])
+              ] .
+
+
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "o"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#hasObservation> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "o"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#has> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ <http://spinrdf.org/sp#object>
+        <http://hl7.org/fhir/Observation> ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "o"
+        ]
+                          ])
+              ] .
+
+
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "r"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#has> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "id"
+        ] ;
+                            <http://spinrdf.org/sp#path>
         [ a       <http://spinrdf.org/sp#SeqPath> ;
           <http://spinrdf.org/sp#path1>
-                  <http://hl7.org/fhir/component> ;
+                  <http://hl7.org/fhir/id> ;
           <http://spinrdf.org/sp#path2>
-                  [ a       <http://spinrdf.org/sp#ModPath> ;
-                    <http://spinrdf.org/sp#modMax>
-                            -2 ;
-                    <http://spinrdf.org/sp#modMin>
-                            0 ;
-                    <http://spinrdf.org/sp#subPath>
-                            <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
-                  ]
+                  <http://hl7.org/fhir/v>
         ] ;
-                            <http://spinrdf.org/sp#path2>
-        <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "o"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          "LOC" ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/code> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://example.org/utils#hasCodeValue>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "cmp"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "country"
-                          ] ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "id"
+        ] ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  [ a       <http://spinrdf.org/sp#SeqPath> ;
+                    <http://spinrdf.org/sp#path1>
+                            <http://hl7.org/fhir/subject> ;
+                    <http://spinrdf.org/sp#path2>
+                            <http://hl7.org/fhir/reference>
+                  ] ;
+          <http://spinrdf.org/sp#path2>
+                  <http://hl7.org/fhir/v>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "r"
+        ]
+                          ])
+              ] .
+
+
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#hasCodeValue> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "r"
+        ]
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "c"
+        ] ;
+                            <http://spinrdf.org/sp#path>
         [ a       <http://spinrdf.org/sp#SeqPath> ;
           <http://spinrdf.org/sp#path1>
                   [ a       <http://spinrdf.org/sp#SeqPath> ;
@@ -878,7 +1120,7 @@
   <http://spinrdf.org/sp#path1>
           [ a       <http://spinrdf.org/sp#SeqPath> ;
             <http://spinrdf.org/sp#path1>
-                    <http://hl7.org/fhir/extension> ;
+                    <http://hl7.org/fhir/coding> ;
             <http://spinrdf.org/sp#path2>
                     [ a       <http://spinrdf.org/sp#ModPath> ;
                       <http://spinrdf.org/sp#modMax>
@@ -893,338 +1135,155 @@
           <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
                             ] ;
                     <http://spinrdf.org/sp#path2>
-                            <http://hl7.org/fhir/value>
+                            <http://hl7.org/fhir/code>
                   ] ;
           <http://spinrdf.org/sp#path2>
-                  <http://hl7.org/fhir/country>
+                  <http://hl7.org/fhir/v>
         ] ;
-                            <http://spinrdf.org/sp#path2>
-        <http://hl7.org/fhir/v>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "cmp"
-                          ]
-                ] [ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "country"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/zika#hasZikaArea> ;
-                  <http://spinrdf.org/sp#subject>
-                          <http://example.org/zika#world>
-                ] [ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "timeSince"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#timeSinceObsEnd> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "cmp"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#Filter> ;
-                  <http://spinrdf.org/sp#expression>
-                          [ a       <http://spinrdf.org/sp#lt> ;
-                            <http://spinrdf.org/sp#arg1>
+                            <http://spinrdf.org/sp#subject>
         [ <http://spinrdf.org/sp#varName>
-                  "timeSince"
+                  "r"
+        ]
+                          ])
+              ] .
+
+
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
         ] ;
-                            <http://spinrdf.org/sp#arg2>
-        2678400000
-                          ]
-                ]) .
-
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "o"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#hasObservation> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "o"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#has> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ <http://spinrdf.org/sp#object>
-                          <http://hl7.org/fhir/Observation> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "o"
-                          ]
-                ]) .
-
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#hasCodeValue> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "r"
-                          ]
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ] ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#refersTo> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "r"
+        ]
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "id"
+        ] ;
+                            <http://spinrdf.org/sp#path>
         [ a       <http://spinrdf.org/sp#SeqPath> ;
           <http://spinrdf.org/sp#path1>
-                  [ a       <http://spinrdf.org/sp#SeqPath> ;
-                    <http://spinrdf.org/sp#path1>
-                            [ a       <http://spinrdf.org/sp#SeqPath> ;
-  <http://spinrdf.org/sp#path1>
-          <http://hl7.org/fhir/coding> ;
-  <http://spinrdf.org/sp#path2>
-          [ a       <http://spinrdf.org/sp#ModPath> ;
-            <http://spinrdf.org/sp#modMax>
-                    -2 ;
-            <http://spinrdf.org/sp#modMin>
-                    0 ;
-            <http://spinrdf.org/sp#subPath>
-                    <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest>
-          ]
-                            ] ;
-                    <http://spinrdf.org/sp#path2>
-                            <http://www.w3.org/1999/02/22-rdf-syntax-ns#first>
-                  ] ;
+                  <http://hl7.org/fhir/id> ;
           <http://spinrdf.org/sp#path2>
-                  <http://hl7.org/fhir/code>
+                  <http://hl7.org/fhir/v>
         ] ;
-                            <http://spinrdf.org/sp#path2>
-        <http://hl7.org/fhir/v>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "r"
-                          ]
-                ]) .
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "p"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "id"
+        ] ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  <http://hl7.org/fhir/reference> ;
+          <http://spinrdf.org/sp#path2>
+                  <http://hl7.org/fhir/v>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "r"
+        ]
+                          ])
+              ] .
 
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#hasCondition> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#has> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ <http://spinrdf.org/sp#object>
-                          <http://hl7.org/fhir/Condition> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "c"
-                          ]
-                ]) .
 
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/utils#refersTo> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "r"
-                          ]
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "id"
-                          ] ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/id> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://hl7.org/fhir/v>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#TriplePath> ;
-                  <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "id"
-                          ] ;
-                  <http://spinrdf.org/sp#path>
-                          [ a       <http://spinrdf.org/sp#SeqPath> ;
-                            <http://spinrdf.org/sp#path1>
-        <http://hl7.org/fhir/reference> ;
-                            <http://spinrdf.org/sp#path2>
-        <http://hl7.org/fhir/v>
-                          ] ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "r"
-                          ]
-                ]) .
-
-[]    a       <http://spinrdf.org/sp#Construct> ;
-      <http://spinrdf.org/sp#templates>
-              ([ <http://spinrdf.org/sp#object>
-                          <http://hl7.org/fhir/ServiceRequest> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ;
-                  <http://spinrdf.org/sp#subject>
-                          _:b1
-                ] [ <http://spinrdf.org/sp#object>
-                          _:b2 ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://hl7.org/fhir/code> ;
-                  <http://spinrdf.org/sp#subject>
-                          _:b1
-                ] [ <http://spinrdf.org/sp#object>
-                          _:b3 ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://hl7.org/fhir/concept> ;
-                  <http://spinrdf.org/sp#subject>
-                          _:b2
-                ] [ <http://spinrdf.org/sp#object>
-                          _:b4 ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://hl7.org/fhir/coding> ;
-                  <http://spinrdf.org/sp#subject>
-                          _:b3
-                ] [ <http://spinrdf.org/sp#object>
-                          _:b5 ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> ;
-                  <http://spinrdf.org/sp#subject>
-                          _:b4
-                ] [ <http://spinrdf.org/sp#object>
-                          _:b6 ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://hl7.org/fhir/system> ;
-                  <http://spinrdf.org/sp#subject>
-                          _:b5
-                ] [ <http://spinrdf.org/sp#object>
-                          "http://snomed.org/sct"^^<http://www.w3.org/2001/XMLSchema#anyURI> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://hl7.org/fhir/v> ;
-                  <http://spinrdf.org/sp#subject>
-                          _:b6
-                ] [ <http://spinrdf.org/sp#object>
-                          _:b7 ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://hl7.org/fhir/code> ;
-                  <http://spinrdf.org/sp#subject>
-                          _:b5
-                ] [ <http://spinrdf.org/sp#object>
-                          "69363007" ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://hl7.org/fhir/v> ;
-                  <http://spinrdf.org/sp#subject>
-                          _:b7
-                ] [ <http://spinrdf.org/sp#object>
-                          () ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> ;
-                  <http://spinrdf.org/sp#subject>
-                          _:b4
-                ] [ <http://spinrdf.org/sp#object>
-                          _:b8 ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://hl7.org/fhir/text> ;
-                  <http://spinrdf.org/sp#subject>
-                          _:b3
-                ] [ <http://spinrdf.org/sp#object>
-                          "Zika virus NAAT on serum" ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://hl7.org/fhir/v> ;
-                  <http://spinrdf.org/sp#subject>
-                          _:b8
-                ]) ;
-      <http://spinrdf.org/sp#where>
-              ([ <http://spinrdf.org/sp#object>
-                          "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/zika#isPregnant> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "symptom"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/zika#hasZikaSymptom> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ <http://spinrdf.org/sp#object>
-                          "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/zika#possibleZikaExposure> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ <http://spinrdf.org/sp#object>
-                          [ <http://spinrdf.org/sp#varName>
-        "timeSince"
-                          ] ;
-                  <http://spinrdf.org/sp#predicate>
-                          <http://example.org/zika#avgTimeSinceZikaSymptomsOnset> ;
-                  <http://spinrdf.org/sp#subject>
-                          [ <http://spinrdf.org/sp#varName>
-        "p"
-                          ]
-                ] [ a       <http://spinrdf.org/sp#Filter> ;
-                  <http://spinrdf.org/sp#expression>
-                          [ a       <http://spinrdf.org/sp#lt> ;
-                            <http://spinrdf.org/sp#arg1>
+<http://example.org/Class>
+      <http://spinrdf.org/spin#rule>
+              [ a       <http://spinrdf.org/sp#Construct> ;
+                <http://spinrdf.org/sp#templates>
+                        ([ <http://spinrdf.org/sp#object>
         [ <http://spinrdf.org/sp#varName>
                   "timeSince"
         ] ;
-                            <http://spinrdf.org/sp#arg2>
-        7257600000
-                          ]
-                ]) .
+                            <http://spinrdf.org/sp#predicate>
+        <http://example.org/utils#timeSinceObsEnd> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "o"
+        ]
+                          ]) ;
+                <http://spinrdf.org/sp#where>
+                        ([ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "period"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://hl7.org/fhir/effective> ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "o"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "start"
+        ] ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  <http://hl7.org/fhir/start> ;
+          <http://spinrdf.org/sp#path2>
+                  <http://hl7.org/fhir/v>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "period"
+        ]
+                          ] [ a       <http://spinrdf.org/sp#TriplePath> ;
+                            <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "end"
+        ] ;
+                            <http://spinrdf.org/sp#path>
+        [ a       <http://spinrdf.org/sp#SeqPath> ;
+          <http://spinrdf.org/sp#path1>
+                  <http://hl7.org/fhir/end> ;
+          <http://spinrdf.org/sp#path2>
+                  <http://hl7.org/fhir/v>
+        ] ;
+                            <http://spinrdf.org/sp#subject>
+        [ <http://spinrdf.org/sp#varName>
+                  "period"
+        ]
+                          ] [ <http://spinrdf.org/sp#object>
+        [ <http://spinrdf.org/sp#varName>
+                  "now"
+        ] ;
+                            <http://spinrdf.org/sp#predicate>
+        <http://www.w3.org/1999/02/22-rdf-syntax-ns#value> ;
+                            <http://spinrdf.org/sp#subject>
+        <http://example.org/utils#now>
+                          ] [ a       <http://spinrdf.org/sp#Bind> ;
+                            <http://spinrdf.org/sp#expression>
+        [ a       <http://spinrdf.org/sp#sub> ;
+          <http://spinrdf.org/sp#arg1>
+                  [ <http://spinrdf.org/sp#varName>
+                            "now"
+                  ] ;
+          <http://spinrdf.org/sp#arg2>
+                  [ <http://spinrdf.org/sp#varName>
+                            "end"
+                  ]
+        ] ;
+                            <http://spinrdf.org/sp#variable>
+        [ <http://spinrdf.org/sp#varName>
+                  "timeSince"
+        ]
+                          ])
+              ] .
+
+
+
