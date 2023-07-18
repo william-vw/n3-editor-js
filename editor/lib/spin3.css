@@ -1,6 +1,8 @@
 body {
     font-family: sans-serif;
     padding-left: 15px;
+    max-width: 1400px;
+    margin: auto;
 }
 
 .content {
@@ -122,6 +124,14 @@ h1::before {
 #links div {
     display: inline
 }
+
+#links a {
+    color: #fff;
+    background-color: rgb(139, 139, 139);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
 
 .box {
     white-space: pre-wrap;
