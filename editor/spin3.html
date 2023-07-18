@@ -96,8 +96,8 @@
 				$('#links').show()
 				// $(`#spin_link`).html(code_link("View SPIN", success.spin));
 				// $(`#n3_link`).html(code_link("View N3", success.n3));
-				$(`#spin_link`).attr('href', `/${success.spin}`);
-				$(`#n3_link`).attr('href', `/${success.n3}`);
+				$(`#spin_link`).attr('href', `/n3/${success.spin}`);
+				$(`#n3_link`).attr('href', `/n3/${success.n3}`);
 
 				const num = success.num_constructs;
 				$('#num_constructs').show();
