@@ -15,7 +15,7 @@
 @prefix crypto: <http://www.w3.org/2000/10/swap/crypto#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix var: <http://eyereasoner.github.io/.well-known/genid/13f50dbc-56c0-4e58-ad66-c6c17417ef9c#>.
+@prefix var: <http://eyereasoner.github.io/.well-known/genid/2c508730-fd6b-48bd-8303-8eb4db6d6ba7#>.
 
 {
     ?t_4 <http://example.org/zika#isPregnant> true.
@@ -37,6 +37,6 @@
     _:e_b3_1 <http://hl7.org/fhir/text> _:e_b8_1.
     _:e_b8_1 <http://hl7.org/fhir/v> "Zika virus NAAT on serum".
 }.
-# 2023-07-19T21:38:34.006Z in=187 out=1 ent=1 step=1 brake=2 inf=412181 sec=0.045 inf/sec=9159578
+# 2023-07-19T21:40:26.925Z in=187 out=1 ent=1 step=1 brake=2 inf=412181 sec=0.042 inf/sec=9813833
 # ENDS
 
