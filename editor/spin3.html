@@ -77,12 +77,14 @@
 			var sparql = $('textarea#code-textarea--input').val()
 			if (sparql.length == 0) {
 				console.log("empty SPARQL - ignoring");
+				showError("Please enter some SPARQL CONSTRUCT queries.")
 				return;
 			}
 
 			var data = getFormula()
 			if (data.length == 0) {
 				console.log("empty data - ignoring");
+				showError("Please enter some data to reason over.")
 				return;
 			}
 
@@ -114,9 +116,13 @@
 				$(`#spin_link`).attr('href', `/n3/${success.spin}`);
 				$(`#n3_link`).attr('href', `/n3/${success.n3}`);
 
-				const num = success.num_constructs;
-				$('#num_constructs').show();
-				$('#num_constructs').html(`Found ${num} CONSTRUCT ${num > 1 ? "queries" : "query"}.`);
+				const info = success.info;
+				$('#info').show();
+				const numFilters = info.numFilters
+				const numConstructs = info.numConstructs
+				$('#info').html(
+					`Found ${numConstructs} CONSTRUCT quer${numConstructs > 1 ? "ies" : "y"}` + 
+					(numFilters == 0 ? "" : ` and ${numFilters} filter${numFilters > 1 ? "s" : ""}`) + ".");
 
 				$('#times').show();
 				$('#times').text("(" + success.times.map(t => t + "ms").join(" | ") + ")");
@@ -125,8 +131,7 @@
 				$(`#${taskId}_out > div.box`).text(success.data)
 
 			}, (error) => {
-				$("#error_out").show()
-				$("#error_out > div.box").html(error)
+				showError(error)
 			})
 		}
 
@@ -136,12 +141,13 @@
 			var sparql = $('textarea#code-textarea--input').val()
 			if (sparql.length == 0) {
 				console.log("empty SPARQL - ignoring");
+				showError("Please enter some SPARQL CONSTRUCT queries.")
 				return;
 			}
 
 			var data = getFormula()
 			if (data.length == 0) {
-				console.log("empty data - ignoring");
+				showError("Please enter some N3 data.")
 				return;
 			}
 
@@ -296,6 +302,12 @@
 			$('.loading').hide()
 		}
 
+		function showError(error) {
+			$(".output").hide()
+
+			$("#error_out").show()
+			$("#error_out > div.box").html(error)
+		}
 	</script>
 </head>
 
@@ -356,7 +368,7 @@
 			</div>
 
 			<div id="deriv_out" class="output">
-				<div id="num_constructs"></div>
+				<div id="info"></div>
 				<h3>Results:</h3>
 				<div id="links">
 					<a class="link" id="spin_link">View SPIN</a>
