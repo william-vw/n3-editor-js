@@ -126,12 +126,14 @@
 			var sparql = $('#sparql').val()
 			if (sparql.length == 0) {
 				console.log("empty SPARQL - ignoring");
+				showError("Please enter some SPARQL CONSTRUCT queries.")
 				return;
 			}
 
 			var data = getFormula()
 			if (data.length == 0) {
 				console.log("empty data - ignoring");
+				showError("Please enter some N3 data.")
 				return;
 			}
 
