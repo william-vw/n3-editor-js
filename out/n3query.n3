@@ -15,160 +15,140 @@
 @prefix crypto: <http://www.w3.org/2000/10/swap/crypto#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix var: <http://eyereasoner.github.io/.well-known/genid/bf3c117b-9f35-4a46-b7db-71907cf66bbe#>.
+@prefix var: <http://eyereasoner.github.io/.well-known/genid/174ca1e9-873b-41f3-9fb3-0e1701e75080#>.
 
 {
-    ?t_45 a <http://hl7.org/fhir/Patient>.
-    ?t_45 <http://example.org/utils#hasCondition> ?t_46.
-    (?t_46 77386006) aux:stepThroughPath ((<http://hl7.org/fhir/code> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
-    (?t_46 "active") aux:stepThroughPath ((<http://hl7.org/fhir/clinicalStatus> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
-    (?t_46 "confirmed") aux:stepThroughPath ((<http://hl7.org/fhir/verificationStatus> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
+    ?t_43 a <http://hl7.org/fhir/Patient>.
+    ?t_43 <http://example.org/utils#hasCondition> ?t_44.
+    (?t_44 77386006) aux:stepThroughPath ((<http://hl7.org/fhir/code> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
+    (?t_44 "active") aux:stepThroughPath ((<http://hl7.org/fhir/clinicalStatus> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
+    (?t_44 "confirmed") aux:stepThroughPath ((<http://hl7.org/fhir/verificationStatus> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
 } => {
-    ?t_45 <http://example.org/zika#isPregnant> true.
+    ?t_43 <http://example.org/zika#isPregnant> true.
 }.
 {
-    ?t_45 a <http://hl7.org/fhir/Patient>.
-    ?t_45 <http://example.org/utils#hasCondition> ?t_46.
-    (?t_46 "active") aux:stepThroughPath ((<http://hl7.org/fhir/clinicalStatus> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
-    (?t_46 "confirmed") aux:stepThroughPath ((<http://hl7.org/fhir/verificationStatus> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
-    (?t_46 ?t_47) aux:stepThroughPath ((<http://hl7.org/fhir/code> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
-    ?t_47 list:in (84387000 271749004 47725002 57676002 9826008 68962001 25064002).
+    ?t_43 a <http://hl7.org/fhir/Patient>.
+    ?t_43 <http://example.org/utils#hasCondition> ?t_44.
+    (?t_44 "active") aux:stepThroughPath ((<http://hl7.org/fhir/clinicalStatus> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
+    (?t_44 "confirmed") aux:stepThroughPath ((<http://hl7.org/fhir/verificationStatus> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
+    (?t_44 ?t_45) aux:stepThroughPath ((<http://hl7.org/fhir/code> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
+    ?t_45 list:in (84387000 271749004 47725002 57676002 9826008 68962001 25064002).
 } => {
-    ?t_45 <http://example.org/zika#hasZikaSymptom> ?t_46.
+    ?t_43 <http://example.org/zika#hasZikaSymptom> ?t_44.
 }.
 {
-    ?t_45 a <http://hl7.org/fhir/Patient>.
-    <http://example.org/zika#world> <http://example.org/zika#hasZikaArea> ?t_48.
-    (?t_45 ?t_48) aux:stepThroughPath ((<http://hl7.org/fhir/address> 1 1) (<http://hl7.org/fhir/country> 1 1) (<http://hl7.org/fhir/v> 1 1)).
+    ?t_43 a <http://hl7.org/fhir/Patient>.
+    <http://example.org/zika#world> <http://example.org/zika#hasZikaArea> ?t_46.
+    (?t_43 ?t_46) aux:stepThroughPath ((<http://hl7.org/fhir/address> 1 1) (<http://hl7.org/fhir/country> 1 1) (<http://hl7.org/fhir/v> 1 1)).
 } => {
-    ?t_45 <http://example.org/zika#residentOfZikaArea> true.
+    ?t_43 <http://example.org/zika#residentOfZikaArea> true.
 }.
 {
-    ?t_45 a <http://hl7.org/fhir/Patient>.
-    ?t_45 <http://example.org/utils#hasObservation> ?t_49.
-    <http://example.org/zika#world> <http://example.org/zika#hasZikaArea> ?t_48.
-    ?t_50 <http://example.org/utils#timeSinceObsEnd> ?t_51.
-    (?t_49 420008001) aux:stepThroughPath ((<http://hl7.org/fhir/code> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
-    (?t_49 ?t_50) aux:stepThroughPath ((<http://hl7.org/fhir/component> 1 1) (((rdf:rest 1 1)) 0 -2) (rdf:first 1 1)).
-    (?t_50 "LOC") aux:stepThroughPath ((<http://hl7.org/fhir/code> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
-    (?t_50 ?t_48) aux:stepThroughPath ((<http://hl7.org/fhir/extension> 1 1) (((rdf:rest 1 1)) 0 -2) (rdf:first 1 1) (<http://hl7.org/fhir/value> 1 1) (<http://hl7.org/fhir/country> 1 1) (<http://hl7.org/fhir/v> 1 1)).
-    ?t_51 math:lessThan 2678400000.
+    ?t_43 a <http://hl7.org/fhir/Patient>.
+    ?t_43 <http://example.org/utils#hasObservation> ?t_47.
+    <http://example.org/zika#world> <http://example.org/zika#hasZikaArea> ?t_46.
+    ?t_48 <http://example.org/utils#timeSinceObsEnd> ?t_49.
+    (?t_47 420008001) aux:stepThroughPath ((<http://hl7.org/fhir/code> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
+    (?t_47 ?t_48) aux:stepThroughPath ((<http://hl7.org/fhir/component> 1 1) (((rdf:rest 1 1)) 0 -2) (rdf:first 1 1)).
+    (?t_48 "LOC") aux:stepThroughPath ((<http://hl7.org/fhir/code> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
+    (?t_48 ?t_46) aux:stepThroughPath ((<http://hl7.org/fhir/extension> 1 1) (((rdf:rest 1 1)) 0 -2) (rdf:first 1 1) (<http://hl7.org/fhir/value> 1 1) (<http://hl7.org/fhir/country> 1 1) (<http://hl7.org/fhir/v> 1 1)).
+    ?t_49 math:lessThan 2678400000.
 } => {
-    ?t_45 <http://example.org/zika#recentTravelToZikaArea> true.
+    ?t_43 <http://example.org/zika#recentTravelToZikaArea> true.
 }.
 {
-    (?t_52 ?t_48) aux:stepThroughPath ((<http://hl7.org/fhir/country> 1 1) (<http://hl7.org/fhir/v> 1 1)).
-    ?t_48 list:in ("American Samoa" "Angola" "Anguilla" "Antigua and Barbuda" "Argentina" "Aruba" "Bahamas" "Bangladesh" "Barbados" "Belize" "Bolivia" "Bonaire" "Brazil" "British Virgin Islands" "Burkina Faso" "Burma" "Burundi" "Cambodia" "Cameroon" "Cape Verde" "Cayman Islands" "Central African Republic" "Colombia" "Cook Islands" "Costa Rica" "Cuba" "Curacao" "Dominica" "Dominican Republic" "Easter Island" "Ecuador" "El Salvador" "Ethiopia" "Federated States of Micronesia" "Fiji" "France" "French Guiana" "French Polynesia" "Gabon" "Grenada" "Guadeloupe" "Guatemala" "Guinea-Bissau" "Guyana" "Haiti" "Honduras" "India" "Indonesia" "Ivory Coast" "Jamaica" "Kenya" "Kiribati" "Laos" "Malaysia" "Maldives" "Marshall Islands" "Martinique" "Mexico" "Montserrat" "New Caledonia" "Nicaragua" "Nigeria" "Palau" "Panama" "Papua New Guinea" "Paraguay" "Peru" "Philippines" "Puerto Rico" "Saba" "Saint Barthelemy" "Saint Kitts and Nevis" "Saint Lucia" "Saint Martin" "Saint Vincent and the Grenadines" "Samoa" "Senegal" "Singapore" "Sint Eustatius" "Sint Maarten" "Solomon Islands" "Suriname" "Thailand" "Tonga" "Trinidad and Tobago" "Turks and Caicos" "Uganda" "United States (Continental US)" "United States Virgin Islands" "Vanuatu" "Venezuela" "Vietnam").
+    (?t_50 ?t_46) aux:stepThroughPath ((<http://hl7.org/fhir/country> 1 1) (<http://hl7.org/fhir/v> 1 1)).
+    ?t_46 list:in ("American Samoa" "Angola" "Anguilla" "Antigua and Barbuda" "Argentina" "Aruba" "Bahamas" "Bangladesh" "Barbados" "Belize" "Bolivia" "Bonaire" "Brazil" "British Virgin Islands" "Burkina Faso" "Burma" "Burundi" "Cambodia" "Cameroon" "Cape Verde" "Cayman Islands" "Central African Republic" "Colombia" "Cook Islands" "Costa Rica" "Cuba" "Curacao" "Dominica" "Dominican Republic" "Easter Island" "Ecuador" "El Salvador" "Ethiopia" "Federated States of Micronesia" "Fiji" "France" "French Guiana" "French Polynesia" "Gabon" "Grenada" "Guadeloupe" "Guatemala" "Guinea-Bissau" "Guyana" "Haiti" "Honduras" "India" "Indonesia" "Ivory Coast" "Jamaica" "Kenya" "Kiribati" "Laos" "Malaysia" "Maldives" "Marshall Islands" "Martinique" "Mexico" "Montserrat" "New Caledonia" "Nicaragua" "Nigeria" "Palau" "Panama" "Papua New Guinea" "Paraguay" "Peru" "Philippines" "Puerto Rico" "Saba" "Saint Barthelemy" "Saint Kitts and Nevis" "Saint Lucia" "Saint Martin" "Saint Vincent and the Grenadines" "Samoa" "Senegal" "Singapore" "Sint Eustatius" "Sint Maarten" "Solomon Islands" "Suriname" "Thailand" "Tonga" "Trinidad and Tobago" "Turks and Caicos" "Uganda" "United States (Continental US)" "United States Virgin Islands" "Vanuatu" "Venezuela" "Vietnam").
 } => {
-    <http://example.org/zika#world> <http://example.org/zika#hasZikaArea> ?t_48.
+    <http://example.org/zika#world> <http://example.org/zika#hasZikaArea> ?t_46.
 }.
 {
-    ?t_45 <http://example.org/utils#hasObservation> ?t_49.
-    ?t_49 <http://example.org/utils#timeSinceObsEnd> ?t_51.
-    (?t_49 225517006) aux:stepThroughPath ((<http://hl7.org/fhir/code> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
-    (?t_49 ?t_53) aux:stepThroughPath ((<http://hl7.org/fhir/value> 1 1) (<http://example.org/utils#refersTo> 1 1)).
-    ?t_51 math:lessThan 2678400000 .
-    ?t_53 <http://example.org/zika#recentTravelToZikaArea> true.
+    ?t_43 <http://example.org/utils#hasObservation> ?t_47.
+    ?t_47 <http://example.org/utils#timeSinceObsEnd> ?t_49.
+    (?t_47 225517006) aux:stepThroughPath ((<http://hl7.org/fhir/code> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
+    (?t_47 ?t_51) aux:stepThroughPath ((<http://hl7.org/fhir/value> 1 1) (<http://example.org/utils#refersTo> 1 1)).
+    ?t_49 math:lessThan 2678400000 .
+    ?t_51 <http://example.org/zika#recentTravelToZikaArea> true.
 } => {
-    ?t_45 <http://example.org/zika#recentSexualEncounterWithZikaResidentOrTraveler> true.
+    ?t_43 <http://example.org/zika#recentSexualEncounterWithZikaResidentOrTraveler> true.
 }.
 {
-    ?t_45 <http://example.org/utils#hasObservation> ?t_49.
-    ?t_49 <http://example.org/utils#timeSinceObsEnd> ?t_51.
-    (?t_49 225517006) aux:stepThroughPath ((<http://hl7.org/fhir/code> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
-    (?t_49 ?t_53) aux:stepThroughPath ((<http://hl7.org/fhir/value> 1 1) (<http://example.org/utils#refersTo> 1 1)).
-    ?t_51 math:lessThan 2678400000 .
-    ?t_53 <http://example.org/zika#residentOfZikaArea> true.
+    ?t_43 <http://example.org/utils#hasObservation> ?t_47.
+    ?t_47 <http://example.org/utils#timeSinceObsEnd> ?t_49.
+    (?t_47 225517006) aux:stepThroughPath ((<http://hl7.org/fhir/code> 1 1) (<http://example.org/utils#hasCodeValue> 1 1)).
+    (?t_47 ?t_51) aux:stepThroughPath ((<http://hl7.org/fhir/value> 1 1) (<http://example.org/utils#refersTo> 1 1)).
+    ?t_49 math:lessThan 2678400000 .
+    ?t_51 <http://example.org/zika#residentOfZikaArea> true.
 } => {
-    ?t_45 <http://example.org/zika#recentSexualEncounterWithZikaResidentOrTraveler> true.
+    ?t_43 <http://example.org/zika#recentSexualEncounterWithZikaResidentOrTraveler> true.
 }.
 {
-    ?t_45 <http://example.org/zika#recentTravelToZikaArea> true.
+    ?t_43 <http://example.org/zika#recentTravelToZikaArea> true.
 } => {
-    ?t_45 <http://example.org/zika#possibleZikaExposure> true.
+    ?t_43 <http://example.org/zika#possibleZikaExposure> true.
 }.
 {
-    ?t_45 <http://example.org/zika#recentSexualEncounterWithZikaResidentOrTraveler> true.
+    ?t_43 <http://example.org/zika#recentSexualEncounterWithZikaResidentOrTraveler> true.
 } => {
-    ?t_45 <http://example.org/zika#possibleZikaExposure> true.
+    ?t_43 <http://example.org/zika#possibleZikaExposure> true.
 }.
 {
-    (((("p" ?t_45)) (("c" ?t_54) ("timeSince" ?t_55))) {
-        ?t_45 a <http://hl7.org/fhir/Patient>.
-        ?t_45 <http://example.org/zika#hasZikaSymptom> ?t_54.
-        ?t_54 <http://example.org/utils#timeSinceCondOnset> ?t_55.
-    } ?t_56) log:collectAllIn ?t_57.
-    (?t_58 ?t_59) list:in ?t_56.
-    (?t_60 {
-        (?t_58 ?t_61) list:in ?t_56.
-        ("timeSince" ?t_60) list:in ?t_61.
-    } ?t_62) log:collectAllIn ?t_57.
-    ("p" ?t_45) list:in ?t_58.
-    ?t_62 math:sum ?t_63.
-    ?t_62 list:length ?t_64.
-    (?t_63 ?t_64) math:quotient ?t_65.
+    (((("p" ?t_43)) (("c" ?t_52) ("timeSince" ?t_53))) {
+        ?t_43 a <http://hl7.org/fhir/Patient>.
+        ?t_43 <http://example.org/zika#hasZikaSymptom> ?t_52.
+        ?t_52 <http://example.org/utils#timeSinceCondOnset> ?t_53.
+    } ?t_54) log:collectAllIn ?t_55.
+    (?t_56 ?t_57) list:in ?t_54.
+    (?t_58 {
+        (?t_56 ?t_59) list:in ?t_54.
+        ("timeSince" ?t_58) list:in ?t_59.
+    } ?t_60) log:collectAllIn ?t_55.
+    ("p" ?t_43) list:in ?t_56.
+    ?t_60 math:sum ?t_61.
+    ?t_60 list:length ?t_62.
+    (?t_61 ?t_62) math:quotient ?t_63.
 } => {
-    ?t_45 <http://example.org/zika#avgTimeSinceZikaSymptomsOnset> ?t_65.
+    ?t_43 <http://example.org/zika#avgTimeSinceZikaSymptomsOnset> ?t_63.
 }.
 {
-    ?t_45 <http://example.org/zika#isPregnant> true.
-    ?t_45 <http://example.org/zika#hasZikaSymptom> ?t_66.
-    ?t_45 <http://example.org/zika#possibleZikaExposure> true.
-    ?t_45 <http://example.org/zika#avgTimeSinceZikaSymptomsOnset> ?t_51.
-    ?t_51 math:lessThan 7257600000.
+    ?t_43 <http://example.org/utils#has> ?t_44.
+    ?t_44 a <http://hl7.org/fhir/Condition>.
 } => {
-    _:e_b1_1 a <http://hl7.org/fhir/ServiceRequest>.
-    _:e_b1_1 <http://hl7.org/fhir/code> _:e_b2_1.
-    _:e_b2_1 <http://hl7.org/fhir/concept> _:e_b3_1.
-    _:e_b3_1 <http://hl7.org/fhir/coding> _:e_b4_1.
-    _:e_b4_1 rdf:first _:e_b5_1.
-    _:e_b5_1 <http://hl7.org/fhir/system> _:e_b6_1.
-    _:e_b6_1 <http://hl7.org/fhir/v> "http://snomed.org/sct"^^xsd:anyURI.
-    _:e_b5_1 <http://hl7.org/fhir/code> _:e_b7_1.
-    _:e_b7_1 <http://hl7.org/fhir/v> "69363007".
-    _:e_b4_1 rdf:rest ().
-    _:e_b3_1 <http://hl7.org/fhir/text> _:e_b8_1.
-    _:e_b8_1 <http://hl7.org/fhir/v> "Zika virus NAAT on serum".
+    ?t_43 <http://example.org/utils#hasCondition> ?t_44.
 }.
 {
-    ?t_45 <http://example.org/utils#has> ?t_46.
-    ?t_46 a <http://hl7.org/fhir/Condition>.
+    ?t_43 <http://example.org/utils#has> ?t_47.
+    ?t_47 a <http://hl7.org/fhir/Observation>.
 } => {
-    ?t_45 <http://example.org/utils#hasCondition> ?t_46.
+    ?t_43 <http://example.org/utils#hasObservation> ?t_47.
 }.
 {
-    ?t_45 <http://example.org/utils#has> ?t_49.
-    ?t_49 a <http://hl7.org/fhir/Observation>.
+    (?t_43 ?t_64) aux:stepThroughPath ((<http://hl7.org/fhir/id> 1 1) (<http://hl7.org/fhir/v> 1 1)).
+    (?t_65 ?t_64) aux:stepThroughPath ((<http://hl7.org/fhir/subject> 1 1) (<http://hl7.org/fhir/reference> 1 1) (<http://hl7.org/fhir/v> 1 1)).
 } => {
-    ?t_45 <http://example.org/utils#hasObservation> ?t_49.
+    ?t_43 <http://example.org/utils#has> ?t_65.
 }.
 {
-    (?t_45 ?t_67) aux:stepThroughPath ((<http://hl7.org/fhir/id> 1 1) (<http://hl7.org/fhir/v> 1 1)).
-    (?t_68 ?t_67) aux:stepThroughPath ((<http://hl7.org/fhir/subject> 1 1) (<http://hl7.org/fhir/reference> 1 1) (<http://hl7.org/fhir/v> 1 1)).
+    (?t_65 ?t_44) aux:stepThroughPath ((<http://hl7.org/fhir/coding> 1 1) (((rdf:rest 1 1)) 0 -2) (rdf:first 1 1) (<http://hl7.org/fhir/code> 1 1) (<http://hl7.org/fhir/v> 1 1)).
 } => {
-    ?t_45 <http://example.org/utils#has> ?t_68.
+    ?t_65 <http://example.org/utils#hasCodeValue> ?t_44.
 }.
 {
-    (?t_68 ?t_46) aux:stepThroughPath ((<http://hl7.org/fhir/coding> 1 1) (((rdf:rest 1 1)) 0 -2) (rdf:first 1 1) (<http://hl7.org/fhir/code> 1 1) (<http://hl7.org/fhir/v> 1 1)).
+    (?t_43 ?t_64) aux:stepThroughPath ((<http://hl7.org/fhir/id> 1 1) (<http://hl7.org/fhir/v> 1 1)).
+    (?t_65 ?t_64) aux:stepThroughPath ((<http://hl7.org/fhir/reference> 1 1) (<http://hl7.org/fhir/v> 1 1)).
 } => {
-    ?t_68 <http://example.org/utils#hasCodeValue> ?t_46.
+    ?t_65 <http://example.org/utils#refersTo> ?t_43.
 }.
 {
-    (?t_45 ?t_67) aux:stepThroughPath ((<http://hl7.org/fhir/id> 1 1) (<http://hl7.org/fhir/v> 1 1)).
-    (?t_68 ?t_67) aux:stepThroughPath ((<http://hl7.org/fhir/reference> 1 1) (<http://hl7.org/fhir/v> 1 1)).
+    ?t_47 <http://hl7.org/fhir/effective> ?t_66.
+    <http://example.org/utils#now> rdf:value ?t_67.
+    (?t_66 ?t_68) aux:stepThroughPath ((<http://hl7.org/fhir/start> 1 1) (<http://hl7.org/fhir/v> 1 1)).
+    (?t_66 ?t_69) aux:stepThroughPath ((<http://hl7.org/fhir/end> 1 1) (<http://hl7.org/fhir/v> 1 1)).
+    ?t_70 log:equalTo ?t_49.
+    (?t_67 ?t_69) math:difference ?t_70.
 } => {
-    ?t_68 <http://example.org/utils#refersTo> ?t_45.
+    ?t_47 <http://example.org/utils#timeSinceObsEnd> ?t_49.
 }.
-{
-    ?t_49 <http://hl7.org/fhir/effective> ?t_69.
-    <http://example.org/utils#now> rdf:value ?t_70.
-    (?t_69 ?t_71) aux:stepThroughPath ((<http://hl7.org/fhir/start> 1 1) (<http://hl7.org/fhir/v> 1 1)).
-    (?t_69 ?t_72) aux:stepThroughPath ((<http://hl7.org/fhir/end> 1 1) (<http://hl7.org/fhir/v> 1 1)).
-    ?t_73 log:equalTo ?t_51.
-    (?t_70 ?t_72) math:difference ?t_73.
-} => {
-    ?t_49 <http://example.org/utils#timeSinceObsEnd> ?t_51.
-}.
-# 2023-07-18T14:36:45.263Z in=788 out=17 ent=17 step=17 brake=2 inf=983124 sec=0.071 inf/sec=13846817
+# 2023-07-19T12:53:48.694Z in=724 out=16 ent=16 step=16 brake=2 inf=927942 sec=0.068 inf/sec=13646206
 # ENDS
 

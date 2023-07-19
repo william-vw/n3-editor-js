@@ -1,6 +1,9 @@
 body {
     font-family: sans-serif;
     padding-left: 15px;
+    width: 1600px;
+    margin: 0 auto;
+    margin-top: 15px;
 }
 
 .content {
