@@ -1,0 +1,42 @@
+# Processed by EYE v4.6.0 (2023-07-14)
+# eye /Users/wvw/git/n3/n3-editor-js/out/filter.spin /Users/wvw/git/n3/n3-editor-js/lib/spin3/auxiliary-files/aux.n3 --query /Users/wvw/git/n3/n3-editor-js/lib/spin3/queries/query_general.n3 --nope --quantify http://eyereasoner.github.io/.well-known/genid/
+
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix spin: <http://spinrdf.org/spin#>.
+@prefix sp: <http://spinrdf.org/sp#>.
+@prefix ex: <http://example.org/spin#>.
+@prefix aux: <http://example.org/aux#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix time: <http://www.w3.org/2000/10/swap/time#>.
+@prefix crypto: <http://www.w3.org/2000/10/swap/crypto#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix var: <http://eyereasoner.github.io/.well-known/genid/13f50dbc-56c0-4e58-ad66-c6c17417ef9c#>.
+
+{
+    ?t_4 <http://example.org/zika#isPregnant> true.
+    ?t_4 <http://example.org/zika#hasZikaSymptom> ?t_5.
+    ?t_4 <http://example.org/zika#possibleZikaExposure> true.
+    ?t_4 <http://example.org/zika#avgTimeSinceZikaSymptomsOnset> ?t_6.
+    ?t_6 math:lessThan 7257600000.
+} => {
+    _:e_b1_1 a <http://hl7.org/fhir/ServiceRequest>.
+    _:e_b1_1 <http://hl7.org/fhir/code> _:e_b2_1.
+    _:e_b2_1 <http://hl7.org/fhir/concept> _:e_b3_1.
+    _:e_b3_1 <http://hl7.org/fhir/coding> _:e_b4_1.
+    _:e_b4_1 rdf:first _:e_b5_1.
+    _:e_b5_1 <http://hl7.org/fhir/system> _:e_b6_1.
+    _:e_b6_1 <http://hl7.org/fhir/v> "http://snomed.org/sct"^^xsd:anyURI.
+    _:e_b5_1 <http://hl7.org/fhir/code> _:e_b7_1.
+    _:e_b7_1 <http://hl7.org/fhir/v> "69363007".
+    _:e_b4_1 rdf:rest ().
+    _:e_b3_1 <http://hl7.org/fhir/text> _:e_b8_1.
+    _:e_b8_1 <http://hl7.org/fhir/v> "Zika virus NAAT on serum".
+}.
+# 2023-07-19T21:38:34.006Z in=187 out=1 ent=1 step=1 brake=2 inf=412181 sec=0.045 inf/sec=9159578
+# ENDS
+
