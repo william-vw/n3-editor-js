@@ -1,0 +1,11 @@
+[
+  {
+    "name": "SPARQL",
+    "versions": [
+      {
+        "name": "latest",
+        "url": "/n3/editor/lib/syntaxica/workers/sparql.worker.js"
+      }
+    ]
+  }
+]

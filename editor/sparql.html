@@ -29,9 +29,22 @@
 	<link rel="stylesheet" href="/n3/editor/lib/default.css">
 	<link rel="stylesheet" href="/n3/editor/lib/sparql2n3.css">
 
+    <!--	Syntaxica Code Editor -->
+	<script defer="defer" src="/n3/editor/lib/syntaxica/editor.js"></script>
+
 	<style>
 		div.CodeMirror {
 			height: 225px;
+		}
+
+		@font-face {
+			font-family: 'jetbrains-mono';
+			src: url('/n3/editor/lib/syntaxica/fonts/jetbrains-mono.ttf');
+		}
+
+		@font-face {
+			font-family: 'roboto';
+			src: url('/n3/editor/lib/syntaxica/fonts/roboto.ttf');
 		}
 	</style>
 
@@ -47,7 +60,7 @@
 			if (editor != null)
 				return editor.getDoc().getValue()
 			else
-				return $('textarea#input').val()
+				return $('textarea#code-textarea--input').val()
 		}
 
 		function getCurrentFormat() {
@@ -275,9 +288,7 @@
 		</a>
 
 		<div class="content">
-			<div>
-				<textarea rows=15 cols=100 id="sparql" placeholder="SPARQL"></textarea>
-			</div>
+			<div id="syntaxica"></div>
 			<br />
 			<textarea rows=10 cols=50 id="input" placeholder="Data (N3)"></textarea>
 			<input id="auto-ns" type="checkbox" checked> Auto-suggest namespaces.<br />
@@ -305,7 +316,7 @@
 			</small>
 
 			<br style="clear: both" />
-			
+
 			<div id="error_out" class="output">
 				<h3>Error:</h3>
 				<div class="box"></div>
