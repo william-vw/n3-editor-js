@@ -243,7 +243,7 @@ h3 {
     left: 50%;
     margin-left: -75px;
   }
-  
+
   .copy .tooltiptext::after {
     content: "";
     position: absolute;
@@ -256,3 +256,7 @@ h3 {
   }
 
 .CodeMirror pre.CodeMirror-placeholder { color: grey ; }
+
+div#syntaxica {
+    width: 465px;
+}
