@@ -1,18 +1,35 @@
 body {
     font-family: sans-serif;
     padding-left: 15px;
-    width: 1600px;
-    margin: 0 auto;
     margin-top: 15px;
 }
 
-.content {
+main {
     padding-top: 15px;
+    width: 1600px;
+    margin: 0 auto;
+}
+
+.content table {
+    width: 100%;
 }
 
 .content table td {
-    width: 50%;
+    max-width: 800px;
     vertical-align: top;
+}
+
+div#syntaxica {
+    width: 800px;
+}
+
+button[data-testid="ti-share-button"] {
+    display: none;
+}
+
+div.CodeMirror {
+    border: 1px solid #ddd;
+    width: 800px;
 }
 
 .header table td {
@@ -124,6 +141,7 @@ h1::before {
 
 .hint {
     font-size: 14px;
+    margin-top: 5px;
 }
 
 #links div {
@@ -152,10 +170,6 @@ h1::before {
 
 .system {
     display: inline
-}
-
-div.CodeMirror {
-    border: 1px solid #ddd;
 }
 
 td.separator {

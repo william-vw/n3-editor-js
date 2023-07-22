@@ -46,8 +46,3 @@ config = {
 
 	path: "/Users/wvw/git/n3/n3-editor-js" // ??
 }
-
-if (typeof exports === 'object' && typeof module === 'object')
-	module.exports = {
-		config
-	};

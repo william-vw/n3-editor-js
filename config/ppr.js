@@ -37,8 +37,3 @@ config = {
 
 	path: "/home/woensel/projects/n3-editor-js"
 }
-
-if (typeof exports === 'object' && typeof module === 'object')
-	module.exports = {
-		config
-	};
