@@ -14,6 +14,7 @@ const spin3 = require('./lib/spin3/spin3.js')
 const { generateLink, resolveLink } = require('./lib/gen_link.js')
 const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 
+console.log(process);
 console.log(config);
 
 const app = express()
