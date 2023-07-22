@@ -23,6 +23,10 @@ div#syntaxica {
     width: 800px;
 }
 
+button[data-testid="ti-share-button"] {
+    display: none;
+}
+
 div.CodeMirror {
     border: 1px solid #ddd;
     width: 800px;
