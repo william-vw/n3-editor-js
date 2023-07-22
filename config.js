@@ -1,49 +1,50 @@
 config = {
 	http: {
-		hostname: 'http://127.0.0.1',
-		port: 3002
+		hostname: 'https://n3-editor.herokuapp.com',
+	    port: ((typeof process) != "undefined" ? process.env.PORT : undefined)
 	},
 
-	out: "/Users/wvw/git/n3/n3-editor-js/out",
+	out: "/app/out",
 
 	tools: {
 		eye: {
-			exec: "eye",
-			folder: "/Users/wvw/git/n3/n3-editor-js/lib/eye"
+			exec: "eye", 
+		    folder: "/app/lib/eye"
 		},
 		cwm: {
 			// (use python2 for cwm)
-			pythonCmd: "python",
-			exec: "/Users/wvw/cwm-1.2.1/swap/cwm.py"
+			pythonCmd: "", // (python2 is not available)
+            exec: ""
 		},
 		jen3: {
-			exec: "/Users/wvw/git/n3/n3-editor-js/lib/jen3/jen3.jar",
-			codegen: "/Users/wvw/git/n3/n3-editor-js/lib/jen3/codegen.jar",
-			folder: "/Users/wvw/git/n3/n3-editor-js/lib/jen3"
+            exec: "/app/lib/jen3/jen3.jar",
+            codegen: "/app/lib/jen3/codegen.jar",
+		    folder: "/app/lib/jen3"
 		},
 		jena: {
-			exec: "/Users/wvw/git/n3/n3-editor-js/lib/jena/sparql.jar",
+			exec: "/app/lib/jena/sparql.jar",
 		},
 		triplify: {
-			exec: "/Users/wvw/git/n3/n3-editor-js/lib/triplify/sparql2spin.jar"
+			exec: "/app/lib/triplify/sparql2spin.jar"
 		},
 		spin3: {
-			folder: "/Users/wvw/git/n3/n3-editor-js/lib/spin3"
+			folder: "/app/lib/spin3"
 		},
 	},
 
 	link: {
 		max_len: 50000,
 		db: {
+            // mysql://b4837d17c012f1:e023e78d@us-cdbr-east-06.cleardb.net/heroku_e750abd160bbcaf?reconnect=true
 			port: '33060',
-			host: 'localhost',
-			db: "n3_links",
-			user: 'root',
-			pwd: ''
+            host: "us-cdbr-east-06.cleardb.net",
+            db: "heroku_e750abd160bbcaf",
+            user: "b4837d17c012f1",
+            pwd: "e023e78d"
 		}
 	},
 
-	path: "/Users/wvw/git/n3/n3-editor-js"
+	path: "/Users/wvw/git/n3/n3-editor-js" // ??
 }
 
 if (typeof exports === 'object' && typeof module === 'object')
