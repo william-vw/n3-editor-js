@@ -14,8 +14,8 @@ const spin3 = require('./lib/spin3/spin3.js')
 const { generateLink, resolveLink } = require('./lib/gen_link.js')
 const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 
-console.log(process);
-console.log(config);
+// console.log(process);
+// console.log(config);
 
 const app = express()
 app.use(cors())
@@ -25,16 +25,16 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/n3/editor/s/*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/index.html"));
 });
+app.use('/n3/editor/out', express.static("out"));
+app.use('/n3/editor', express.static(path.join(__dirname, "editor")));
 app.use('/n3/config', express.static("config"));
 app.use('/n3/out', express.static("out"));
-app.use('/n3/editor/out', express.static("out"));
 app.use('/n3/spin3*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/spin3.html"));
 });
 app.use('/n3/sparql*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/sparql.html"));
 });
-app.use('/n3/editor', express.static(path.join(__dirname, "editor")));
 app.use('/n3/lib/eyebrow', express.static(path.join(__dirname, "lib/eyebrow")));
 
 app.get('/n3', (request, response) => {
