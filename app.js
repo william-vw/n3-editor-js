@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const path = require('path')
 
-console.log(process.env.USER);
+console.log(process);
 const { config } = require('./config.js')
 const tmp = require('./lib/tmp.js')
 const eye = require('./lib/eye/eye.js')
