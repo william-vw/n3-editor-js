@@ -62,14 +62,12 @@
 			var sparql = $('#sparql').val()
 			if (sparql.length == 0) {
 				console.log("empty SPARQL - ignoring");
-				showError("Please enter some SPARQL CONSTRUCT queries.")
 				return;
 			}
 
 			var data = getFormula()
 			if (data.length == 0) {
 				console.log("empty data - ignoring");
-				showError("Please enter some data to reason over.")
 				return;
 			}
 
@@ -101,13 +99,9 @@
 				$(`#spin_link`).attr('href', `/n3/${success.spin}`);
 				$(`#n3_link`).attr('href', `/n3/${success.n3}`);
 
-				const info = success.info;
-				$('#info').show();
-				const numFilters = info.numFilters
-				const numConstructs = info.numConstructs
-				$('#info').html(
-					`Found ${numConstructs} CONSTRUCT quer${numConstructs > 1 ? "ies" : "y"}` + 
-					(numFilters == 0 ? "" : ` and ${numFilters} filter${numFilters > 1 ? "s" : ""}`) + ".");
+				const num = success.num_constructs;
+				$('#num_constructs').show();
+				$('#num_constructs').html(`Found ${num} CONSTRUCT ${num > 1 ? "queries" : "query"}.`);
 
 				$('#times').show();
 				$('#times').text("(" + success.times.map(t => t + "ms").join(" | ") + ")");
@@ -116,7 +110,8 @@
 				$(`#${taskId}_out > div.box`).text(success.data)
 
 			}, (error) => {
-				showError(error)
+				$("#error_out").show()
+				$("#error_out > div.box").html(error)
 			})
 		}
 
@@ -126,14 +121,12 @@
 			var sparql = $('#sparql').val()
 			if (sparql.length == 0) {
 				console.log("empty SPARQL - ignoring");
-				showError("Please enter some SPARQL CONSTRUCT queries.")
 				return;
 			}
 
 			var data = getFormula()
 			if (data.length == 0) {
 				console.log("empty data - ignoring");
-				showError("Please enter some N3 data.")
 				return;
 			}
 
@@ -288,11 +281,6 @@
 			$('.loading').hide()
 		}
 
-		function showError(error) {
-			$("#error_out").show()
-			$("#error_out > div.box").html(error)
-		}
-
 	</script>
 </head>
 
@@ -329,8 +317,7 @@
 		</div>
 
 		<div class="content">
-			<div class="hint"><b>Hint</b>: each CONSTRUCT query should end with a period (".") followed by at least 1 newline.</div>
-			<div class="hint"><b>Hint</b>: indicate a query filter by preceding it with "# @filter" and a newline.</div>
+			<div class="hint"><b>Hint</b>: each CONSTRUCT query should be separated with a period (".") followed by at least 1 newline.</div>
 			<table>
 				<tr>
 					<td>
@@ -342,10 +329,10 @@
 				</tr>
 			</table>
 
-			<!-- <small class="note2">
+			<small class="note2">
 				Please submit bugs or feature requests on <a
 					href="https://github.com/william-vw/n3-editor-js">GitHub</a>.
-			</small> -->
+			</small>
 			<br style="clear: both" />
 			
 			<div id="error_out" class="output">
@@ -354,7 +341,7 @@
 			</div>
 
 			<div id="deriv_out" class="output">
-				<div id="info"></div>
+				<div id="num_constructs"></div>
 				<h3>Results:</h3>
 				<div id="links">
 					<a class="link" id="spin_link">View SPIN</a>

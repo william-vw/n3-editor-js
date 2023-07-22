@@ -33,6 +33,25 @@
 
 	<script src="https://eyereasoner.github.io/eye-js/latest/index.js"></script>
 
+	<!--	Syntaxica Code Editor -->
+	<script defer="defer" src="/n3/editor/lib/syntaxica/editor.js"></script>
+
+	<style>
+		div.CodeMirror {
+			height: 225px;
+		}
+
+		@font-face {
+			font-family: 'jetbrains-mono';
+			src: url('/n3/editor/lib/syntaxica/fonts/jetbrains-mono.ttf');
+		}
+
+		@font-face {
+			font-family: 'roboto';
+			src: url('/n3/editor/lib/syntaxica/fonts/roboto.ttf');
+		}
+	</style>
+
 	<script>
 		const systems = ["eye", "cwm", "jen3", "eyejs"]
 		const formats = {
@@ -46,7 +65,7 @@
 			if (editor != null)
 				return editor.getDoc().getValue()
 			else
-				return $('textarea#input').val()
+				return $('textarea#code-textarea--input').val()
 		}
 
 		function setFormula(formula) {
@@ -359,7 +378,7 @@
 				resolve_link(id);
 
 			} else if (url.includes("?")) {
-				// url-encode hash symbol so we can work with url search params	
+				// url-encode hash symbol so we can work with url search params
 				url = url.replace(/#/g, "%23")
 				console.log("url", url)
 				var params = new URLSearchParams(url.substring(url.indexOf("?")))
@@ -432,7 +451,7 @@
 			<small>Experimental auto-suggestion of namespaces. A specific namespace will only be suggested once (so just
 				remove it if it's wrong!).</small>
 
-			<textarea rows=10 cols=50 id="input"></textarea>
+			<div id="syntaxica"></div>
 
 			<small class="note1">
 				<a href="#" id="link">Create link to formula</a>
