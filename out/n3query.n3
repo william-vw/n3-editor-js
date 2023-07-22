@@ -15,7 +15,7 @@
 @prefix crypto: <http://www.w3.org/2000/10/swap/crypto#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix var: <http://eyereasoner.github.io/.well-known/genid/d1013cc2-04be-472a-81ac-280ba0521676#>.
+@prefix var: <http://eyereasoner.github.io/.well-known/genid/56f8f844-f79e-4926-8a13-85c1318fa2db#>.
 
 {
     ?t_45 a <http://hl7.org/fhir/Patient>.
@@ -157,6 +157,6 @@
 } => {
     ?t_46 <http://example.org/utils#timeSinceCondOnset> ?t_51.
 }.
-# 2023-07-22T18:23:31.294Z in=755 out=17 ent=17 step=17 brake=2 inf=953315 sec=0.071 inf/sec=13426972
+# 2023-07-22T18:47:21.472Z in=755 out=17 ent=17 step=17 brake=2 inf=953314 sec=0.069 inf/sec=13816145
 # ENDS
 
