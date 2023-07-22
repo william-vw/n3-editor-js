@@ -26,7 +26,22 @@
 	<script src="/n3/config.js"></script>
 	<script src="/n3/editor/lib/utils.js" type="text/javascript"></script>
 
-	<link rel="stylesheet" href="/n3/editor/lib/spin3.css">
+	<link rel="stylesheet" href="/n3/editor/lib/sspin3.css">
+
+	<!--	Syntaxica Code Editor -->
+	<script defer="defer" src="/n3/editor/lib/syntaxica/editor.js"></script>
+
+	<style>
+		@font-face {
+			font-family: 'jetbrains-mono';
+			src: url('/n3/editor/lib/syntaxica/fonts/jetbrains-mono.ttf');
+		}
+
+		@font-face {
+			font-family: 'roboto';
+			src: url('/n3/editor/lib/syntaxica/fonts/roboto.ttf');
+		}
+	</style>
 
 	<script>
 		const formats = {
@@ -59,7 +74,7 @@
 		// }
 
 		function exec() {
-			var sparql = $('#sparql').val()
+			var sparql = $('textarea#code-textarea--input').val()
 			if (sparql.length == 0) {
 				console.log("empty SPARQL - ignoring");
 				showError("Please enter some SPARQL CONSTRUCT queries.")
@@ -78,7 +93,7 @@
 			// var taskEl = $("select[name=reason_task] :selected");
 			// var taskId = taskEl.attr('id');
 			var taskId = 'deriv'
-			
+
 			// var subTask = taskEl.val();
 			var subTask = 'derivations'
 			if (!subTask)
@@ -123,15 +138,16 @@
 		function generate_link() {
 			$("#error").hide()
 
-			var sparql = $('#sparql').val()
+			var sparql = $('textarea#code-textarea--input').val()
 			if (sparql.length == 0) {
 				console.log("empty SPARQL - ignoring");
+				showError("Please enter some SPARQL CONSTRUCT queries.")
 				return;
 			}
 
 			var data = getFormula()
 			if (data.length == 0) {
-				console.log("empty data - ignoring");
+				showError("Please enter some N3 data.")
 				return;
 			}
 
@@ -176,7 +192,7 @@
 
 					console.log("initializing formula from link")
 
-					$('#sparql').val(sparql);
+					$('textarea#code-textarea--input').val(sparql);
 					editor.getDoc().setValue(n3)
 
 					validate(defaultFormat, true)
@@ -287,10 +303,11 @@
 		}
 
 		function showError(error) {
+			$(".output").hide()
+
 			$("#error_out").show()
 			$("#error_out > div.box").html(error)
 		}
-
 	</script>
 </head>
 
@@ -327,12 +344,12 @@
 		</div>
 
 		<div class="content">
-			<div class="hint"><b>Hint</b>: each CONSTRUCT query should end with a period (".") followed by at least 1 newline.</div>
+			<div class="hint"><b>Hint</b>: each CONSTRUCT query should be separated with a period (".") followed by at least 1 newline.</div>
 			<div class="hint"><b>Hint</b>: indicate a query filter by preceding it with "# @filter" and a newline.</div>
 			<table>
 				<tr>
 					<td>
-						<textarea rows=20 cols=100 id="sparql" placeholder="SPARQL"></textarea>
+						<div id="syntaxica"></div>
 					</td>
 					<td>
 						<textarea rows=10 cols=50 id="data" placeholder="Data"></textarea>
@@ -345,7 +362,7 @@
 					href="https://github.com/william-vw/n3-editor-js">GitHub</a>.
 			</small>
 			<br style="clear: both" />
-			
+
 			<div id="error_out" class="output">
 				<h3>Error:</h3>
 				<div class="box"></div>
