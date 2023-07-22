@@ -1,7 +1,7 @@
 // heroku
 if (typeof process === 'object') {
 	let name;
-	if (process.HOME && process.HOME == '/app') {
+	if (process.env.HOME && process.env.HOME == '/app') {
 		name = "heroku.js";
 	} else {
 		name = "local.js";
