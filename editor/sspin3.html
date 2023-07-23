@@ -190,9 +190,12 @@
 					var sparql = matches[1];
 					var n3 = matches[2];
 
-					console.log("initializing formula from link")
+					console.log("initializing from link:");
 
+					console.log("sparql:", sparql);
 					$('textarea#code-textarea--input').val(sparql);
+					
+					console.log("n3:", n3);
 					editor.getDoc().setValue(n3)
 
 					validate(defaultFormat, true)
