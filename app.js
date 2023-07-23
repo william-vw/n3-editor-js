@@ -32,6 +32,9 @@ app.use('/n3/out', express.static("out"));
 app.use('/n3/spin3*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/spin3.html"));
 });
+app.use('/n3/sspin3*', (req, res) => {
+	res.sendFile(path.join(__dirname, "editor/sspin3.html"));
+});
 app.use('/n3/sparql*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/sparql.html"));
 });
