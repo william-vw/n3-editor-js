@@ -101,6 +101,11 @@
 				// $(`#spin_link`).html(code_link("View SPIN", success.spin));
 				// $(`#n3_link`).html(code_link("View N3", success.n3));
 				$(`#spin_link`).attr('href', `/n3/${success.spin}`);
+				if (success.filter) {
+					$('#filter_link').show();
+					$(`#filter_link`).attr('href', `/n3/${success.filter}`);
+				} else
+					$('#filter_link').hide();
 				$(`#n3_link`).attr('href', `/n3/${success.n3}`);
 
 				const info = success.info;
@@ -361,8 +366,9 @@
 				<div id="info"></div>
 				<h3>Results:</h3>
 				<div id="links">
-					<a class="link" id="spin_link">View SPIN</a>
-					<a class="link" id="n3_link">View N3</a>
+					<a class="link" id="filter_link">View filter (SPIN)</a>
+					<a class="link" id="spin_link">View queries (SPIN)</a>
+					<a class="link" id="n3_link">View rules (N3)</a>
 				</div>
 				<div id="times">
 				</div>

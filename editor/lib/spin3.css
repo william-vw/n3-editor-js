@@ -126,6 +126,10 @@ h1::before {
     display: none;
 }
 
+#filter_link {
+    display: none
+}
+
 #times {
     margin-top: 15px;
     display: none;
