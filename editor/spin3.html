@@ -369,29 +369,26 @@
 			</div>
 		</div>
 	</main>
-
+	<script src="lib/yasqe/yasqe.min.js"></script>
 	<script>var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
 		if (isIE11) {
 			var polyfills = document.createElement("script");
 			polyfills.setAttribute("src", "//yasgui.triply.cc/yasgui.polyfill.min.js");
 			document.head.appendChild(polyfills);
 		}
-		window.onpageshow = function () {
-			window.yasqe = new Yasqe(document.getElementById("yasqe"), {
-				value: "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
-					"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\n" +
-					"CONSTRUCT { ?x ?y ?z } WHERE { ?z ?y ?x } .",
-				requestConfig: false
-			});
+		window.yasqe = new Yasqe(document.getElementById("yasqe"), {
+			value: "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+				"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\n" +
+				"CONSTRUCT { ?x ?y ?z } WHERE { ?z ?y ?x } .",
+			requestConfig: false
+		});
 			// window.yasqe.on("queryResponse", function () {
 			// 	console.log("response event", arguments);
 			// });
 			// window.yasqe.on("query", function () {
 			// 	console.log("query event", arguments);
 			// });
-
-		};</script>
-	<script src="lib/yasqe/yasqe.min.js"></script>
+	</script>
 
 	<script src="/n3/editor/lib/service.js" type="module"></script>
 </body>
