@@ -26,6 +26,7 @@ main {
 div.CodeMirror {
     border: 1px solid #ddd;
     width: 800px;
+    height: 600px;
 }
 
 .header table td {
