@@ -15,8 +15,6 @@
 	<script src="/n3/editor/codemirror-5.54.0/addon/edit/matchbrackets.js"></script>
 	<script src="/n3/editor/codemirror-5.54.0/addon/display/placeholder.js"></script>
 
-	<link href="lib/yasqe/yasqe.min.css" rel="stylesheet">
-
 	<!-- introduces n3 namespace -->
 	<script src="/n3/editor/dist/n3Main.js"></script>
 
@@ -28,7 +26,7 @@
 	<script src="/n3/config/main.js"></script>
 	<script src="/n3/editor/lib/utils.js" type="text/javascript"></script>
 
-	<link rel="stylesheet" href="/n3/editor/lib/yspin3.css">
+	<link rel="stylesheet" href="/n3/editor/lib/spin3.css">
 
 	<script>
 		const formats = {
@@ -61,7 +59,7 @@
 		// }
 
 		function exec() {
-			var sparql = window.yasqe.getValue();
+			var sparql = $('#sparql').val()
 			if (sparql.length == 0) {
 				console.log("empty SPARQL - ignoring");
 				showError("Please enter some SPARQL CONSTRUCT queries.")
@@ -80,7 +78,7 @@
 			// var taskEl = $("select[name=reason_task] :selected");
 			// var taskId = taskEl.attr('id');
 			var taskId = 'deriv'
-
+			
 			// var subTask = taskEl.val();
 			var subTask = 'derivations'
 			if (!subTask)
@@ -108,7 +106,7 @@
 				const numFilters = info.numFilters
 				const numConstructs = info.numConstructs
 				$('#info').html(
-					`Found ${numConstructs} CONSTRUCT quer${numConstructs > 1 ? "ies" : "y"}` +
+					`Found ${numConstructs} CONSTRUCT quer${numConstructs > 1 ? "ies" : "y"}` + 
 					(numFilters == 0 ? "" : ` and ${numFilters} filter${numFilters > 1 ? "s" : ""}`) + ".");
 
 				$('#times').show();
@@ -178,7 +176,7 @@
 
 					console.log("initializing formula from link")
 
-					window.yasqe.setValue(sparql);
+					$('#sparql').val(sparql);
 					editor.getDoc().setValue(n3)
 
 					validate(defaultFormat, true)
@@ -303,8 +301,7 @@
 				<tr>
 					<td>
 						<a href="https://github.com/w3c/N3">
-							<img class="logo" alt="Notation3 Editor" title="Notation3 Editor"
-								src="/n3/editor/logo-small.png" />
+							<img class="logo" alt="Notation3 Editor" title="Notation3 Editor" src="/n3/editor/logo-small.png" />
 						</a>
 					</td>
 					<td>
@@ -330,14 +327,12 @@
 		</div>
 
 		<div class="content">
-			<div class="hint"><b>Hint</b>: each CONSTRUCT query should end with a period (".") followed by at least 1
-				newline.</div>
+			<div class="hint"><b>Hint</b>: each CONSTRUCT query should end with a period (".") followed by at least 1 newline.</div>
 			<div class="hint"><b>Hint</b>: indicate a query filter by preceding it with "# @filter" and a newline.</div>
 			<table>
 				<tr>
 					<td>
-						<!-- <textarea rows=20 cols=100 id="sparql" placeholder="SPARQL"></textarea> -->
-						<div id="yasqe"></div>
+						<textarea rows=20 cols=100 id="sparql" placeholder="SPARQL"></textarea>
 					</td>
 					<td>
 						<textarea rows=10 cols=50 id="data" placeholder="Data"></textarea>
@@ -345,12 +340,12 @@
 				</tr>
 			</table>
 
-			<!-- <small class="note2">
+			<small class="note2">
 				Please submit bugs or feature requests on <a
 					href="https://github.com/william-vw/n3-editor-js">GitHub</a>.
-			</small> -->
+			</small>
 			<br style="clear: both" />
-
+			
 			<div id="error_out" class="output">
 				<h3>Error:</h3>
 				<div class="box"></div>
@@ -371,29 +366,6 @@
 	</main>
 
 	<script src="/n3/editor/lib/service.js" type="module"></script>
-
-	<script>var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
-		if (isIE11) {
-			var polyfills = document.createElement("script");
-			polyfills.setAttribute("src", "//yasgui.triply.cc/yasgui.polyfill.min.js");
-			document.head.appendChild(polyfills);
-		}
-		window.onpageshow = function () {
-			window.yasqe = new Yasqe(document.getElementById("yasqe"), {
-				value: "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
-					"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\n" +
-					"CONSTRUCT { ?x ?y ?z } WHERE { ?z ?y ?x } .",
-				requestConfig: false
-			});
-			// window.yasqe.on("queryResponse", function () {
-			// 	console.log("response event", arguments);
-			// });
-			// window.yasqe.on("query", function () {
-			// 	console.log("query event", arguments);
-			// });
-
-		};</script>
-	<script src="lib/yasqe/yasqe.min.js"></script>
 </body>
 
 </html>

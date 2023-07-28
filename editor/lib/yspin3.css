@@ -1,0 +1,271 @@
+body {
+    font-family: sans-serif;
+    padding-left: 15px;
+    margin-top: 15px;
+}
+
+main {
+    padding-top: 15px;
+    width: 1600px;
+    margin: 0 auto;
+}
+
+.content table {
+    width: 100%;
+}
+
+.content table td {
+    max-width: 800px;
+    vertical-align: top;
+}
+
+.yasqe_buttons {
+    display: none;
+}
+
+div.CodeMirror {
+    border: 1px solid #ddd;
+    width: 800px;
+}
+
+.header table td {
+    vertical-align: middle;
+}
+
+.logo {
+    display: block;
+}
+
+button , .link {
+    border-radius: 5px;
+    color: #fff;
+    border: 0;
+    background-color: rgb(177, 177, 177);
+}
+
+button:hover , .link:hover {
+    cursor: pointer;
+    background-color: rgb(139, 139, 139);
+}
+
+button {
+    padding: 8px 25px;
+    font-size: 17px;
+    margin-left: 15px;
+}
+
+.link {
+    padding: 8px 8px 6px 8px;
+    font-size: 16px;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+button#execute {
+    background-color: #e68103;
+}
+
+button#execute:hover {
+    background-color: #8a25b1;
+}
+
+.content h1+p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.content input[type=radio] {
+    margin-bottom: 10px
+}
+
+.content textarea#input {
+    overflow: scroll !important;
+    width: 100%;
+    height: 200px;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h1::before {
+    content: '';
+    display: block;
+    background-color: #8a25b1;
+    width: 60px;
+    height: 5px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+}
+
+.functions {
+}
+
+.function {
+    float: left;
+}
+
+.function button {
+}
+
+.loading {
+    float: left;
+    display: none;
+    margin-left: 15px;
+    padding-top: 10px;
+}
+
+.output {
+    display: none;
+    position: relative;
+}
+
+#links {
+    margin-top: 15px;
+    display: none;
+}
+
+#times {
+    margin-top: 15px;
+    display: none;
+}
+
+#num_constructs {
+    display: none;
+    font-size: 14px;
+}
+
+.hint {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+#links div {
+    display: inline
+}
+
+.box {
+    white-space: pre-wrap;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 15px;
+    padding-left: 25px;
+    width: auto;
+    background: #fcfaee;
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e68103;
+    width: 75%;
+    margin-top: 20px;
+}
+
+#error>.box {
+    border-color: #e00000;
+    background: #ffa8a8;
+}
+
+.system {
+    display: inline
+}
+
+td.separator {
+    padding: 25px;
+}
+
+td.separator div {
+    width: 1px;
+    height: 50px;
+    background: black;
+}
+
+h3 {
+    margin-bottom: 5px
+}
+
+.note1 {
+    float: left;
+    margin-bottom: 15px
+}
+
+.note2 {
+    float: right;
+    margin-bottom: 15px
+}
+
+/* tooltips */
+/* https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip_arrow_bottom */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    margin-left: -150px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.CodeMirror {
+    resize: vertical;
+}
+
+.copy {
+    position: absolute;
+    top: 55px;
+    right: 215px;
+    width: 25px;
+    height: 25px;
+    background-image: url("../img/copy.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border-bottom: none;
+}
+
+.copy .tooltiptext {
+    width: 140px;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+  }
+  
+  .copy .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+
+.CodeMirror pre.CodeMirror-placeholder { color: grey ; }
