@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="nordicspa">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/nordicspa/nordicspa.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

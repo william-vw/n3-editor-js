@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sparql">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jena/sparql.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -106,3 +106,4 @@ typings/
 tmp/
 .DS_Store
 .metadata
+.idea

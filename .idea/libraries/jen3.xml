@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jen3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jen3/jen3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jen3/codegen.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

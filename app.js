@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const path = require('path')
 
-const { config } = require('./config.js')
+const { config } = require('./config/main.js')
 const tmp = require('./lib/tmp.js')
 const eye = require('./lib/eye/eye.js')
 // const cwm = require('./lib/cwm/cwm.js')
@@ -14,6 +14,9 @@ const spin3 = require('./lib/spin3/spin3.js')
 const { generateLink, resolveLink } = require('./lib/gen_link.js')
 const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 
+// console.log(process);
+// console.log(config);
+
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
@@ -22,17 +25,23 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/n3/editor/s/*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/index.html"));
 });
-app.use('/n3/out', express.static("out"));
 app.use('/n3/editor/out', express.static("out"));
+app.use('/n3/editor', express.static(path.join(__dirname, "editor")));
+app.use('/n3/config', express.static("config"));
+app.use('/n3/out', express.static("out"));
 app.use('/n3/spin3*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/spin3.html"));
 });
+app.use('/n3/sspin3*', (req, res) => {
+	res.sendFile(path.join(__dirname, "editor/sspin3.html"));
+});
+// app.use('/n3/yspin3*', (req, res) => {
+// 	res.sendFile(path.join(__dirname, "editor/yspin3.html"));
+// });
 app.use('/n3/sparql*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/sparql.html"));
 });
-app.use('/n3/editor', express.static(path.join(__dirname, "editor")));
 app.use('/n3/lib/eyebrow', express.static(path.join(__dirname, "lib/eyebrow")));
-app.use('/n3/config.js', express.static(path.join(__dirname, 'config.js')));
 
 app.get('/n3', (request, response) => {
 	console.log('GET /')

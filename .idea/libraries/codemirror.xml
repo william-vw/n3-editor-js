@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="codemirror">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/editor/codemirror.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sparql2spin">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/triplify/sparql2spin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
