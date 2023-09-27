@@ -11,8 +11,11 @@ const jen3 = require('./lib/jen3/jen3.js')
 const jena = require('./lib/jena/jena.js')
 const triplify = require('./lib/triplify/triplify.js')
 const spin3 = require('./lib/spin3/spin3.js')
+const xes_conv = require('./lib/xes/convert.js')
 const { generateLink, resolveLink } = require('./lib/gen_link.js')
 const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
+const formidable = require('formidable');
+const fs = require('fs');
 
 // console.log(process);
 // console.log(config);
@@ -60,8 +63,32 @@ app.get('/n3', (request, response) => {
 	response.end(html)
 })
 
+app.post('/xes/convert', (request, response) => {
+	console.log("POST /xes/convert")
+	
+	const form = new formidable.IncomingForm();
+    form.parse(request, async function (err, fields, files) {
+		let xes_path = files.log[0].filepath;
+		let n3_path = await tmp.name()
+
+		try {
+			const ret = await xes_conv.exec(xes_path, n3_path)
+			console.log("ret?", ret)
+			
+			response.write(ret);
+		
+		} catch (error) {
+			console.error("error:", error);
+			response.write(error.message)
+		
+		} finally {
+			response.end();
+		}
+    });
+});
+
 app.post('/n3', (request, response) => {
-	console.log("POST /")
+	console.log("POST /n3/")
 
 	const data = request.body
 	// console.log("data:", data);

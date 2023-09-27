@@ -16,8 +16,9 @@ if (typeof process === 'object') {
 		};
 
 } else {	
+	let hostname = window.location.hostname
 	let name;
-	if (window.location.hostname === 'localhost') {
+	if (hostname === 'localhost' || hostname === '127.0.0.1') {
 		name = "local.js";
 	} else {
 		name = "heroku.js";

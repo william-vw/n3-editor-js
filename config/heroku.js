@@ -30,6 +30,9 @@ config = {
 		spin3: {
 			folder: "/app/lib/spin3"
 		},
+		xes: {
+			folder: "/app/lib/xes"
+		}
 	},
 
 	link: {

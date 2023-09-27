@@ -30,6 +30,9 @@ config = {
 		spin3: {
 			folder: "/Users/wvw/git/n3/n3-editor-js/lib/spin3"
 		},
+		xes: {
+			folder: "/Users/wvw/git/n3/n3-editor-js/lib/xes"
+		}
 	},
 
 	link: {
