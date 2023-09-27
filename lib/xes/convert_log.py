@@ -8,7 +8,7 @@ import time
 def convert_xes_n3(xes_path, n3_path):
     log = pm4py.read_xes(xes_path)
 
-    start = time.time_ns()
+    # start = time.time_ns()
 
     start_conv = time.time_ns()
 
@@ -57,12 +57,12 @@ def convert_xes_n3(xes_path, n3_path):
 
             g.add((evt, tr_terms['in'], trace))
 
-            if (row['lifecycle:transition']):
+            if ('lifecycle:transition' in row):
                 value = urllib.parse.quote_plus(row['lifecycle:transition'])
                 value = Sepsis[value]
                 g.add((evt, tr_terms['lifecycle'], value))
 
-            if (row['org:group']):
+            if ('org:group' in row):
                 value = urllib.parse.quote_plus(row['org:group'])
                 value = Sepsis[value]
                 g.add((evt, tr_terms['group'], value))
@@ -92,19 +92,19 @@ def convert_xes_n3(xes_path, n3_path):
 
     end_conv = time.time_ns()
 
-    print("# total number of traces:", total_num)
+    print("# traces:", total_num)
 
-    print("# conversion time (ms):", (end_conv-start_conv)/1000000)
+    print("time (ms):", (end_conv-start_conv)/1000000)
 
-    start_save = time.time_ns()
+    # start_save = time.time_ns()
 
     g.serialize(destination=n3_path)
 
-    end_save = time.time_ns()
-    print("save time (ms):", (end_save-start_save)/1000000)
+    # end_save = time.time_ns()
+    # print("save time (ms):", (end_save-start_save)/1000000)
 
     end = time.time_ns()
-    print("# total time (ms):", (end-start)/1000000)
+    # print("total time (ms):", (end-start)/1000000)
 
 if __name__ == "__main__":
     convert_xes_n3(sys.argv[1], sys.argv[2])

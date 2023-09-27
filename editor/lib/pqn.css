@@ -11,7 +11,7 @@ main {
 }
 
 .content table {
-    /* width: 100%; */
+    width: 100%;
 }
 
 .content table td {
@@ -22,13 +22,17 @@ main {
 div.CodeMirror {
     border: 1px solid #ddd;
     width: 800px;
-    height: 600px;
+    height: 300px;
 }
 
 #log {
     width: 800px;
     height: 600px;
     margin-left: 15px;
+}
+
+.header table {
+    width: 800px
 }
 
 .header table td {
@@ -45,6 +49,10 @@ button , .button-label, .link {
     color: #fff;
     border: 0;
     background-color: rgb(177, 177, 177);
+}
+
+.button-label {
+    height: 20px;
 }
 
 button:hover , .button-label:hover , .link:hover {
@@ -103,25 +111,19 @@ h1::before {
 }
 
 .functions {
-    margin-top: 15px;
+    padding-top: 15px;
+    width: 800px;
 }
 
 .function {
     float: left;
 }
 
-.function .button-label {
-    display: table-cell;
-    vertical-align: middle;
-    position: relative;
-    left: 15px;
-}
-
 .loading {
     float: left;
     display: none;
     margin-left: 15px;
-    padding-top: 10px;
+    padding-top: 12px;
 }
 
 .output {
@@ -135,6 +137,10 @@ h1::before {
 }
 
 #filter_link {
+    display: none
+}
+
+#info {
     display: none
 }
 

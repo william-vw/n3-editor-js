@@ -12,6 +12,7 @@ const jena = require('./lib/jena/jena.js')
 const triplify = require('./lib/triplify/triplify.js')
 const spin3 = require('./lib/spin3/spin3.js')
 const xes_conv = require('./lib/xes/convert.js')
+const pqn = require('./lib/pqn/pqn.js')
 const { generateLink, resolveLink } = require('./lib/gen_link.js')
 const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 const formidable = require('formidable');
@@ -32,6 +33,7 @@ app.use('/n3/editor/out', express.static("out"));
 app.use('/n3/editor', express.static(path.join(__dirname, "editor")));
 app.use('/n3/config', express.static("config"));
 app.use('/n3/out', express.static("out"));
+app.use('/n3/tmp', express.static("tmp"));
 app.use('/n3/spin3*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/spin3.html"));
 });
@@ -41,6 +43,9 @@ app.use('/n3/sspin3*', (req, res) => {
 // app.use('/n3/yspin3*', (req, res) => {
 // 	res.sendFile(path.join(__dirname, "editor/yspin3.html"));
 // });
+app.use('/n3/pqn*', (req, res) => {
+	res.sendFile(path.join(__dirname, "editor/pqn.html"));
+});
 app.use('/n3/sparql*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/sparql.html"));
 });
@@ -73,13 +78,13 @@ app.post('/xes/convert', (request, response) => {
 
 		try {
 			const ret = await xes_conv.exec(xes_path, n3_path)
-			console.log("ret?", ret)
+			// console.log("xes_conv ret:", ret)
 			
-			response.write(ret);
+			response.send({ success: { n3_path: n3_path, info: ret } });
 		
 		} catch (error) {
 			console.error("error:", error);
-			response.write(error.message)
+			response.send({ error: error.message })
 		
 		} finally {
 			response.end();
@@ -131,6 +136,10 @@ app.post('/n3', (request, response) => {
 
 		case 'spin3':
 			doSpin3(data, ctu);
+			break
+
+		case 'pqn':
+			doPqn(data, ctu);
 			break
 	
 		case 'check_builtin_input':
@@ -295,6 +304,24 @@ async function doSpin3(options, ctu) {
 
 	} finally {
 		await tmp.del(data)
+		await tmp.del(query)
+	}
+}
+
+async function doPqn(options, ctu) {
+	let query, log
+	try {
+		query = await tmp.save(options.query)
+		log = options.log
+
+		const output = await pqn.exec(options, query, log);
+		ctu({ success: output })
+		
+	} catch (e) {
+		console.log(e)
+		ctu({ error: e + "" })
+
+	} finally {
 		await tmp.del(query)
 	}
 }

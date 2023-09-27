@@ -42,30 +42,18 @@
 		}
 
 		function exec() {
-			var pqn = $('textarea#pqn').val()
+			var pqn = editor.getDoc().getValue()
 			if (pqn.length == 0) {
 				console.log("empty PQN - ignoring");
 				showError("Please enter some PQN code.")
 				return;
 			}
 
-			var log = $('textarea#log').val()
-			if (log.length == 0) {
-				console.log("empty log - ignoring");
-				showError("Please enter some log data.")
-				return;
-			}
+			var log = $(`#n3_link`).attr('href').substring(4)
 
 			var task = 'pqn';
-
-			// var taskEl = $("select[name=reason_task] :selected");
-			// var taskId = taskEl.attr('id');
 			var taskId = 'deriv'
-
-			// var subTask = taskEl.val();
 			var subTask = 'derivations'
-			if (!subTask)
-				return;
 
 			$(".output").hide()
 
@@ -73,13 +61,10 @@
 				task: task,
 				subTask: subTask,
 				query: pqn,
-				data: log
+				log: log
 
 			}, (success) => {
-				// console.log(success);
-
-				$('#times').show();
-				$('#times').text("(" + success.times.map(t => t + "ms").join(" | ") + ")");
+				console.log(success);
 
 				$(`#${taskId}_out`).show()
 				$(`#${taskId}_out > div.box`).text(success.data)
@@ -92,19 +77,21 @@
 		function generate_link() {
 			$("#error").hide()
 
-			var pqn = $('textarea#pqn').val()
+			var pqn = editor.getDoc().getValue()
 			if (pqn.length == 0) {
 				console.log("empty PQN - ignoring");
+				showError("Please enter some PQN code.")
 				return;
 			}
 
-			// var data = $('textarea#data').val()
-			// if (data.length == 0) {
-			// 	console.log("empty data - ignoring");
-			// 	return;
-			// }
+			var log = $(`#n3_link`).attr('href');
+			if (log.length == 0) {
+				console.log("empty log - ignoring");
+				showError("Please upload an XES log.")
+				return;
+			}
 
-			formula = "pqn=" + pqn// + "\n\nlog=" + data
+			formula = "pqn=" + pqn + "\n\nlog=" + log
 
 			if (formula.length > config.link.max_len) {
 				$("#linkPlaceholder").html(`Formula too long (max. length: ${config.link.max_len})`)
@@ -145,8 +132,11 @@
 
 					console.log("initializing formula from link")
 
-					$('textarea#pqn').val(pqn)
-					$('textarea#log').val(log)
+					editor.getDoc().setValue(pqn)
+
+					$('#use_log').show()
+					$('#n3_link').show()
+					$(`#n3_link`).attr('href', log);
 
 					validate(defaultFormat, true)
 
@@ -160,11 +150,26 @@
 			const formData = new FormData();
 			formData.append("log", file.files[0]);
 
+			$('#use_log').hide()
+			$('#n3_link').hide()
+			$('#info').hide()
 			$(".output").hide()
 			
 			try {
-				const success = await fetch('/xes/convert', { method: "POST", body: formData });
-				console.log(success)
+				startLoading()
+				const ret = await fetch('/xes/convert', { method: "POST", body: formData });
+				doneLoading()
+
+				const res = await ret.json()
+				if (res.success) {
+					$('#use_log').show()
+					$('#n3_link').show()
+					$(`#n3_link`).attr('href', `/n3/${res.success.n3_path}`);
+
+					let info = res.success.info.replace("\n", "<br>")
+					$('#info').show();
+					$('#info > div').html(info);
+				}
 
 			} catch (error) {
 				showError(error)
@@ -287,52 +292,41 @@
 <body>
 	<main>
 		<div class="header">
-			<table>
-				
-			</table>
+			<a href="https://github.com/w3c/N3">
+				<img class="logo" alt="Notation3 Editor" title="Notation3 Editor"
+					src="/n3/editor/logo-small.png" />
+			</a>
+			<div class="functions">
+				<div class="function" style="margin: 10px 0 0 15px">
+					<input type="file" id="upload" accept=".xes" hidden />
+					<label class="button-label" for="upload"><u>u</u>pload XES</label>
+					<a class="link" id="n3_link" style="display: none">View N3 log</a>
+				</div>
+				<div id="use_log" style="float: right">
+					<div class="function">
+						<button id="execute">e<u>x</u>ecute</button>
+						<!-- <select name="reason_task">
+							<option value="deductive_closure" id="clos">closure</option>
+							<option value="derivations" id="deriv" selected>derivations</option>
+						</select> -->
+					</div>
+
+					<div class="function">
+						<button id="share">s<u>h</u>are</button>
+						<span id="linkPlaceholder"></span>
+					</div>
+				</div>
+			</div>
+			<div class="loading">
+				<img src="/n3/editor/img/ajax-loader.gif" alt="loader">
+			</div>
 		</div>
 
 		<div class="content">
 			<table>
 				<tr>
 					<td>
-						<a href="https://github.com/w3c/N3">
-							<img class="logo" alt="Notation3 Editor" title="Notation3 Editor"
-								src="/n3/editor/logo-small.png" />
-						</a>
-						<div class="functions">
-							<div class="function">
-								<button id="execute">e<u>x</u>ecute</button>
-								<!-- <select name="reason_task">
-									<option value="deductive_closure" id="clos">closure</option>
-									<option value="derivations" id="deriv" selected>derivations</option>
-								</select> -->
-							</div>
-							<div class="function">
-								<button id="share">s<u>h</u>are</button>
-								<span id="linkPlaceholder"></span>
-							</div>
-							<div class="loading">
-								<img src="/n3/editor/img/ajax-loader.gif" alt="loader">
-							</div>
-						</div>
-					</td>
-					<td>
-						<div class="functions">
-							<div class="function">
-								<input type="file" id="upload" hidden />
-								<label class="button-label" for="upload"><u>u</u>pload XES</button>
-							</div>
-						</div>
-					</td>
-				</tr>
-
-				<tr>
-					<td>
 						<textarea rows=20 cols=100 id="pqn" placeholder="Code"></textarea>
-					</td>
-					<td>
-						<textarea rows=10 cols=50 id="log" placeholder="Log" readonly>abc</textarea>
 					</td>
 				</tr>
 			</table>
@@ -348,10 +342,13 @@
 				<div class="box"></div>
 			</div>
 
+			<div id="info">
+			<h3>Conversion:</h3>
+			<div></div>
+			</div>
+
 			<div id="deriv_out" class="output">
 				<h3>Results:</h3>
-				<div id="times">
-				</div>
 				<div class="box"></div>
 			</div>
 		</div>

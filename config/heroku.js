@@ -32,6 +32,9 @@ config = {
 		},
 		xes: {
 			folder: "/app/lib/xes"
+		},
+		pqn: {
+			folder: "/app/lib/pqn"
 		}
 	},
 

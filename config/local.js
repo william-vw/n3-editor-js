@@ -32,6 +32,9 @@ config = {
 		},
 		xes: {
 			folder: "/Users/wvw/git/n3/n3-editor-js/lib/xes"
+		},
+		pqn: {
+			folder: "/Users/wvw/git/n3/n3-editor-js/lib/pqn"
 		}
 	},
 
@@ -42,7 +45,8 @@ config = {
 			host: 'localhost',
 			db: "n3_links",
 			user: 'root',
-			pwd: ''
+			// pwd: '' // big macbook
+			pwd: 'changeit' // small macbook
 		}
 	},
 
