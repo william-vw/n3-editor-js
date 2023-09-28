@@ -8,7 +8,8 @@ config = {
 
 	tools: {
 		eye: {
-			exec: "/app/opt/eye/bin/eye", 
+			exec: "eye", 
+			// exec: "/app/opt/eye/bin/eye", 
 			// exec: "swipl -x /app/opt/eye/lib/eye.pvm -- ",
 		    folder: "/app/lib/eye"
 		},
