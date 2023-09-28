@@ -8,7 +8,7 @@ config = {
 
 	tools: {
 		eye: {
-			exec: "./opt/eye/bin/eye", 
+			exec: "/app/opt/eye/bin/eye", 
 		    folder: "/app/lib/eye"
 		},
 		cwm: {

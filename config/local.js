@@ -8,7 +8,7 @@ config = {
 
 	tools: {
 		eye: {
-			exec: "eye",
+			exec: "/Users/wvw/git/n3/n3-editor-js/opt/eye/bin/eye",
 			folder: "/Users/wvw/git/n3/n3-editor-js/lib/eye"
 		},
 		cwm: {
