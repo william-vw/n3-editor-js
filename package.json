@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "dateformat": "^4.3.1",
     "express": "^4.17.1",
+    "eyereasoner": "^6.8.6",
     "formidable": "^3.5.1",
     "fuse.js": "^6.6.2",
     "html-react-parser": "^3.0.16",
