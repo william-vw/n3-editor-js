@@ -98,7 +98,7 @@ def convert_xes_n3(xes_path, n3_path):
 
     # start_save = time.time_ns()
 
-    g.serialize(destination="/app/" + n3_path)
+    g.serialize(destination=n3_path)
 
     # end_save = time.time_ns()
     # print("save time (ms):", (end_save-start_save)/1000000)
