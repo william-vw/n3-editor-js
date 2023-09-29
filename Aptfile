@@ -1,1 +1,1 @@
-:repo:deb https://ppa.launchpadcontent.net/swi-prolog/stable/ubuntu/ jammy main
+:repo:deb [trusted=yes] https://ppa.launchpadcontent.net/swi-prolog/stable/ubuntu/ jammy main
