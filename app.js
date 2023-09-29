@@ -143,9 +143,9 @@ app.post('/n3', (request, response) => {
 			doPqn(data, ctu);
 			break
 	
-		case 'check_builtin_input':
-			doCheckBuiltinInput(data, ctu)
-			break
+		// case 'check_builtin_input':
+		// 	doCheckBuiltinInput(data, ctu)
+		// 	break
 
 		case 'generate_link':
 			doGenerateLink(data, ctu)
@@ -342,21 +342,21 @@ function doResolveLink(options, ctu) {
 		.catch((error) => { ctu({ error: error }) })
 }
 
-async function doCheckBuiltinInput(options, ctu) {
-	let defFile, testFile
-	try {
-		defFile = await tmp.save(options.definitions)
-		testFile = await tmp.save(options.test)
+// async function doCheckBuiltinInput(options, ctu) {
+// 	let defFile, testFile
+// 	try {
+// 		defFile = await tmp.save(options.definitions)
+// 		testFile = await tmp.save(options.test)
 
-		const output = await checkBuiltinInput(defFile, testFile)
-		ctu({ success: output })
+// 		const output = await checkBuiltinInput(defFile, testFile)
+// 		ctu({ success: output })
 
-	} catch (e) {
-		console.log(e)
-		ctu({ error: e + "" })
+// 	} catch (e) {
+// 		console.log(e)
+// 		ctu({ error: e + "" })
 
-	} finally {
-		await tmp.del(defFile)
-		await tmp.del(testFile)
-	}
-}
+// 	} finally {
+// 		await tmp.del(defFile)
+// 		await tmp.del(testFile)
+// 	}
+// }
