@@ -42,7 +42,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "/app/dep/eye-4.17.6/install.sh"
+    "heroku-postbuild": "./dep/eye-4.17.6/install.sh"
   },
   "repository": {
     "type": "git",
