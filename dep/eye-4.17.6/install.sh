@@ -3,7 +3,7 @@
 # installing EYE in /opt/eye
 # --------------------------
 
-prefix=/opt/eye
+prefix=/app/opt/eye
 
 usage()
 { cat << _EOM_
