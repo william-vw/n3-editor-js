@@ -15,7 +15,7 @@ const spin3 = require('./lib/spin3/spin3.js')
 const xes_conv = require('./lib/xes/convert.js')
 const pqn = require('./lib/pqn/pqn.js')
 const { generateLink, resolveLink } = require('./lib/gen_link.js')
-const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
+// const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 const formidable = require('formidable');
 const fs = require('fs');
 
