@@ -1,0 +1,28 @@
+@prefix logic: <http://example.org/logic#>.
+@prefix allen: <http://example.org/allen#>.
+@prefix token: <http://example.org/token#>.
+
+(_:sk_0 _:sk_1) logic:strongest (allen:precedes).
+(_:sk_1 _:sk_0) logic:strongest (allen:precededBy).
+(token:interval1 token:interval3) logic:strongest (allen:meets).
+(token:interval3 token:interval1) logic:strongest (allen:metBy).
+(token:interval2 token:interval3) logic:strongest (allen:meets).
+(token:interval3 token:interval2) logic:strongest (allen:metBy).
+(token:interval1 token:interval4) logic:strongest (allen:meets).
+(token:interval4 token:interval1) logic:strongest (allen:metBy).
+(token:interval2 token:interval4) logic:strongest (allen:meets).
+(token:interval4 token:interval2) logic:strongest (allen:metBy).
+(token:interval4 token:interval6) logic:strongest (allen:meets).
+(token:interval6 token:interval4) logic:strongest (allen:metBy).
+(token:interval4 token:interval3) logic:strongest (allen:starts).
+(token:interval3 token:interval4) logic:strongest (allen:startedBy).
+(token:interval6 token:interval3) logic:strongest (allen:finishes).
+(token:interval3 token:interval6) logic:strongest (allen:finishedBy).
+(token:interval5 token:interval3) logic:strongest (allen:during).
+(token:interval3 token:interval5) logic:strongest (allen:contains).
+(token:interval4 token:interval5) logic:strongest (allen:overlaps).
+(token:interval5 token:interval4) logic:strongest (allen:overlappedBy).
+(token:interval5 token:interval6) logic:strongest (allen:overlaps).
+(token:interval6 token:interval5) logic:strongest (allen:overlappedBy).
+(token:interval1 token:interval2) logic:strongest (allen:equals).
+(token:interval2 token:interval1) logic:strongest (allen:equals).

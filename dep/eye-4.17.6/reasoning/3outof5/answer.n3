@@ -1,0 +1,3 @@
+@prefix : <http://eyereasoner.github.io/eye/reasoning#>.
+
+:s a :3outof5.
