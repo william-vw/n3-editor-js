@@ -1,4 +1,0 @@
-@prefix : <http://example.org/#>.
-
-:alice :canCountTo 1 .
-:TEST :PASS 1 .

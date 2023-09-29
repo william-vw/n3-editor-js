@@ -1,3 +1,0 @@
-@prefix : <http://example.org/socrates#>.
-
-{?I a ?C} => {{?WHO a ?WHAT} => {?WHO a ?WHAT}}.

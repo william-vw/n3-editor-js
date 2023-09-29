@@ -1,8 +1,0 @@
-@prefix : <http://example.com/>.
-
-:workflowA a :Workflow.
-:taskA a :Completed.
-:taskB a :Completed.
-:workflowA :includes :taskA.
-:workflowA :includes :taskB.
-:workflowA :completed (:taskA :taskB).

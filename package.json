@@ -41,8 +41,7 @@
     "webpack-cli": "^4.10.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "./dep/eye-4.17.6/install.sh"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

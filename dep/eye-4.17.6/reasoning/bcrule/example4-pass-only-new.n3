@@ -1,3 +1,0 @@
-@prefix : <http://example.org/#>.
-
-:TEST :PASS 1 .

@@ -1,8 +1,0 @@
-@prefix : <http://example.org/>.
-
-{
-    ?U_1 :b1 :c1.
-} <= {
-    ?U_1 :b :c.
-}.
-:yay :a :result.

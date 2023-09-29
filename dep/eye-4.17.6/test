@@ -1,4 +1,0 @@
-#!/bin/bash
-pushd ~/github.com/eyereasoner/eye/reasoning
-./test
-popd

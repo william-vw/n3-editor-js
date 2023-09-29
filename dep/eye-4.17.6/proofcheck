@@ -1,3 +1,0 @@
-#!/bin/bash
-export PYTHONPATH=~/github.com/linkeddata
-python2 ~/github.com/linkeddata/swap/check.py "$@"

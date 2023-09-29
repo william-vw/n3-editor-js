@@ -1,5 +1,0 @@
-@prefix : <http://example.org/>.
-
-:Alice :loves :Bob.
-:Bob a :Person.
-:Alice :hates :Nobody.

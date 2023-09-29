@@ -1,3 +1,0 @@
-@prefix : <http://eyereasoner.github.io/eye/reasoning#>.
-
-{?S :saying :C} => {?S :saying :C}.

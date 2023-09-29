@@ -1,2 +1,0 @@
-#!/bin/bash -x
-eye "$@" --wcache http://eyereasoner.github.io/eye/reasoning .. --nope http://eyereasoner.github.io/eye/reasoning/n3patch/sample-data.ttl http://eyereasoner.github.io/eye/reasoning/n3patch/patch-rule.n3 --pass --output patched-data.ttl
