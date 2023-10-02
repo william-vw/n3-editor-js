@@ -3,8 +3,8 @@ FROM ubuntu:22.04
 
 
 RUN apt-get -yq update && apt-get -yq install curl
-# RUN source ~/.bashrc # cannot find command "source" (and cannot find package to install)
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+RUN . ~/.bashrc
 
 # deprecated warning + 60sec wait
 # RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
