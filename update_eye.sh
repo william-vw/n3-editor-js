@@ -1,1 +1,1 @@
-cp /opt/eye/lib/eye.pvm opt/eye/lib
+cp /opt/eye/lib/eye.pvm opt/eye/lib/eye.pvm
