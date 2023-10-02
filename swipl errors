@@ -1,7 +1,7 @@
 - when installing swipl from ubuntu package manager
 (SWI-Prolog version 8.4.2 for x86_64-linux)
 
-no problem with installing eye, but when running:
+when running:
 swipl -x (/app)/opt/eye/lib/eye.pvm 
 
 error:
