@@ -13,6 +13,8 @@ RUN apt-get -yq update && apt-get -yq install software-properties-common && add-
 # RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
 
 #  E: The repository 'https://deb.nodesource.com/node_.x nodistro Release' does not have a Release file.
+RUN rm /etc/apt/keyrings/nodesource.gpg
+RUN rm /etc/apt/sources.list.d/nodesource.list
 RUN apt-get update
 RUN apt-get install -y ca-certificates curl gnupg
 RUN mkdir -p /etc/apt/keyrings
