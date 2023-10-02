@@ -23,7 +23,8 @@ Warning:    '/app/opt/eye/lib/eye.pvm':1681:173: Illegal multibyte Sequence
 
 and running: (/app/.apt)/usr/bin/swipl --version
 
-getting the following error: /bin/bash: line 1: /app/.apt/usr/bin/swipl: No such file or directory
+getting the rather confusing error: /bin/bash: line 1: /app/.apt/usr/bin/swipl: No such file or directory
+(confusing, since the swipl binary is most definitely in that folder)
 
 
 
