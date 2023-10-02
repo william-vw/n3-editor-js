@@ -1,4 +1,4 @@
-- when installing swipl from ubuntu package manager
+- when using swipl from ubuntu package manager
 (SWI-Prolog version 8.4.2 for x86_64-linux)
 
 when running: swipl -x (/app)/opt/eye/lib/eye.pvm 
@@ -22,7 +22,7 @@ error:
 
 
 
-- when installing the debian package using "dpkg -x":
+- when installing the debian package using "dpkg -x" (manually update apt buildpack):
 (https://ppa.launchpadcontent.net/swi-prolog/stable/ubuntu/pool/main/s/swi-prolog/swi-prolog-nox_9.0.4-0-bionicppa2_i386.deb)
 
 and running: (/app/.apt)/usr/bin/swipl --version

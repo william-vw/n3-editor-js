@@ -1,12 +1,13 @@
 # syntax=docker/dockerfile:1
 FROM ubuntu:22.04
 
+RUN apt-get -yq update && apt-get -yq install software-properties-common && add-apt-repository ppa:swi-prolog/stable && apt-get -yq install swi-prolog
 
 # RUN apt-get -yq update && apt-get -yq install curl
 # # command not found: nvm
 # RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 # # file does not exist
-# RUN . ~/.bashrc 
+# RUN . ~/.profile
 
 # deprecated warning + 60sec wait
 # RUN curl -sL https://deb.nodesource.com/setup_18.x | bash

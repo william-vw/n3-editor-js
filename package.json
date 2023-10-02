@@ -55,6 +55,6 @@
   },
   "homepage": "https://github.com/william-vw/serve-reason#readme",
   "engines": {
-    "node": "16.17.0"
+    "node": "18.x"
   }
 }
