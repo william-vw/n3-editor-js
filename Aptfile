@@ -1,5 +1,5 @@
-#https://ppa.launchpadcontent.net/swi-prolog/stable/ubuntu/pool/main/s/swi-prolog/swi-prolog-nox_9.0.4-0-bionicppa2_i386.deb
-#https://ppa.launchpadcontent.net/swi-prolog/stable/ubuntu/pool/main/s/swi-prolog/swi-prolog-x_9.0.4-0-bionicppa2_i386.deb
+https://ppa.launchpadcontent.net/swi-prolog/stable/ubuntu/pool/main/s/swi-prolog/swi-prolog-nox_9.0.4-0-bionicppa2_i386.deb
+https://ppa.launchpadcontent.net/swi-prolog/stable/ubuntu/pool/main/s/swi-prolog/swi-prolog-x_9.0.4-0-bionicppa2_i386.deb
 
-:repo:deb https://ppa.launchpadcontent.net/swi-prolog/stable/ubuntu/ jammy main
-swi-prolog
+#:repo:deb https://ppa.launchpadcontent.net/swi-prolog/stable/ubuntu/ jammy main
+#swi-prolog
