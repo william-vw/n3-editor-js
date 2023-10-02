@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "eyereasoner": "^6.8.6",
     "formidable": "^3.5.1",
+    "fs.promises": "^0.1.2",
     "fuse.js": "^6.6.2",
     "html-react-parser": "^3.0.16",
     "keycharm": "^0.4.0",
