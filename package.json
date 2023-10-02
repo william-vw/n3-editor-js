@@ -53,5 +53,8 @@
   "bugs": {
     "url": "https://github.com/william-vw/serve-reason/issues"
   },
-  "homepage": "https://github.com/william-vw/serve-reason#readme"
+  "homepage": "https://github.com/william-vw/serve-reason#readme",
+  "engines": {
+    "node": "16.17.0"
+  }
 }
