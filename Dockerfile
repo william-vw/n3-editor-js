@@ -2,6 +2,7 @@
 FROM ubuntu:22.04
 
 
+RUN apt-get -yq update && apt-get -yq install curl
 # RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
 
