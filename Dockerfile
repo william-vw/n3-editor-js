@@ -14,8 +14,8 @@ RUN apt-get -yq update && apt-get -yq install curl
 
 # The command '/bin/sh -c export NVM_DIR="$HOME/.nvm" && "$NVM_DIR/nvm.sh" -v && "$NVM_DIR/nvm.sh" install --lts' returned a non-zero code: 126
 # (same result on heroku, render)
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-RUN export NVM_DIR="$HOME/.nvm" && "$NVM_DIR/nvm.sh" -v && "$NVM_DIR/nvm.sh" install --lts
+# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+# RUN export NVM_DIR="$HOME/.nvm" && "$NVM_DIR/nvm.sh" -v && "$NVM_DIR/nvm.sh" install --lts
 
 # /bin/sh: 1: /root/.nvm/nvm.sh: Permission denied
 # ENV NODE_VERSION 18.18.0
@@ -31,15 +31,11 @@ RUN chmod +x ~/.nvm/nvm.sh
 # RUN ~/.nvm/nvm.sh install 18
 RUN ~/.nvm/nvm.sh use default
 
-# make sure apt is up to date
 # RUN apt-get update --fix-missing
 # RUN apt-get install -y curl
 # RUN apt-get install -y build-essential libssl-dev
-
-# actually /root/..
-# ENV NVM_DIR ~
+# ENV NVM_DIR ~ # actually /root/..
 # ENV NODE_VERSION 18.18.0
-
 # Install nvm with node and npm
 # RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
 # RUN . $NVM_DIR/nvm.sh && nvm install $NODE_VERSION
