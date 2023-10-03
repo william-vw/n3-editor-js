@@ -33,12 +33,12 @@ RUN apt-get -yq update && apt-get -yq install curl
 
 # /bin/sh: 1: /root/.nvm/nvm.sh: Permission denied
 ENV NODE_VERSION 18.18.0
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash \
-    && chmod +x ~/.nvm/nvm.sh \
-    && . ~/.nvm/nvm.sh \
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+RUN chmod +x ~/.nvm/nvm.sh
+RUN . ~/.nvm/nvm.sh \
     && nvm install 18 \
-   && nvm alias default $NODE_VERSION \
-   && nvm use default
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
 
 # % "node -v" gives error "node: not found"
 # (first two lines already install nodejs with $NODE_VERSION)
