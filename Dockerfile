@@ -17,6 +17,8 @@ RUN apt-get -yq update && apt-get -yq install software-properties-common && add-
 
 RUN curl -sL https://raw.githubusercontent.com/william-vw/eye-buildpack/master/docker.sh | bash
 
+RUN apt-get install -y openjdk-17-jdk
+
 CMD node app.js
 
 
