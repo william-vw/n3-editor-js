@@ -26,7 +26,7 @@ RUN apt-get -yq update && apt-get -yq install curl
 #    && nvm use default
 
 ENV NODE_VERSION 18.18.0
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash \
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 RUN chmod +x ~/.nvm/nvm.sh
 # RUN ~/.nvm/nvm.sh install 18
 RUN ~/.nvm/nvm.sh use default
