@@ -44,7 +44,7 @@ ENV PATH ~/.nvm/versions/node/v18.18.0/bin:$PATH
 
 WORKDIR /usr/app
 COPY ./ ./
-RUN ~/.nvm/versions/node/v18.18.0/lib/node_modules/npm/bin/npm install
+RUN npm install
 
 #RUN apt-get update && apt-get install -y python3 python3-pip
 #RUN pip install -r requirements.txt
