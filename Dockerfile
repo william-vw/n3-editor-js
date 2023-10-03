@@ -41,7 +41,7 @@ RUN ~/.nvm/nvm.sh use default
 
 WORKDIR /usr/app
 COPY ./ ./
-RUN ~/.nvm/v18.18.0/bin/npm install
+RUN ~/.nvm/versions/node/v18.18.0/lib/node_modules/npm/bin/npm install
 
 #RUN apt-get update && apt-get install -y python3 python3-pip
 #RUN pip install -r requirements.txt
