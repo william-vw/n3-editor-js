@@ -7,7 +7,7 @@ FROM ubuntu:22.04
 RUN apt-get -yq update && apt-get -yq install curl
 # # command not found: nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-RUN . /root/.bashrc
+RUN . ~/.bashrc
 RUN nvm -v
 RUN nvm install --lts
 
