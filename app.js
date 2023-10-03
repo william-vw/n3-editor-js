@@ -160,8 +160,9 @@ app.post('/n3', (request, response) => {
 	}
 })
 
-app.listen(config.http.port)
-console.log(`Listening at ${config.http.hostname}:${config.http.port}`)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT)
+console.log(`Listening at ${config.http.hostname}:${PORT}`)
 
 async function doReasoning(options, ctu) {
 	let file;
