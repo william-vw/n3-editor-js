@@ -9,16 +9,34 @@ FROM ubuntu:22.04
 # RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 # RUN export NVM_DIR="$HOME/.nvm" && "$NVM_DIR/nvm.sh" -v && "$NVM_DIR/nvm.sh" install --lts
 
-RUN apt-get -yq update && apt-get -yq install curl
+# RUN apt-get -yq update && apt-get -yq install curl
+# ENV NODE_VERSION 18.18.0
+# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+# #     && . ~/.nvm/nvm.sh \
+# #     && nvm install 18 \
+# #    && nvm alias default $NODE_VERSION \
+# #    && nvm use default
+# RUN chmod +x ~/.nvm/nvm.sh
+# RUN ~/.nvm/nvm.sh install 18
+# RUN ~/.nvm/nvm.sh use default
+
+# make sure apt is up to date
+RUN apt-get update --fix-missing
+RUN apt-get install -y curl
+RUN apt-get install -y build-essential libssl-dev
+
+ENV NVM_DIR ~
 ENV NODE_VERSION 18.18.0
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-#     && . ~/.nvm/nvm.sh \
-#     && nvm install 18 \
-#    && nvm alias default $NODE_VERSION \
-#    && nvm use default
-RUN chmod +x ~/.nvm/nvm.sh
-RUN ~/.nvm/nvm.sh install 18
-RUN ~/.nvm/nvm.sh use default
+
+# Install nvm with node and npm
+RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash \
+    && source $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 # deprecated warning + 60sec wait
 # RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
@@ -39,8 +57,8 @@ RUN ~/.nvm/nvm.sh use default
 # RUN apt-get -yq update && apt-get -yq install nodejs
 # RUN apt-get -yq update && apt-get -yq install npm
 
-ENV NODE_PATH ~/.nvm/versions/node/v18.18.0
-ENV PATH ~/.nvm/versions/node/v18.18.0/lib/modules/npm/bin:$PATH
+# ENV NODE_PATH ~/.nvm/versions/node/v18.18.0
+# ENV PATH ~/.nvm/versions/node/v18.18.0/lib/modules/npm/bin:$PATH
 
 WORKDIR /usr/app
 COPY ./ ./
