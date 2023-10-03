@@ -65,7 +65,7 @@ RUN apt-get -yq update && apt-get -yq install curl
 # not found XD
 # RUN /root/.nvm/versions/node/v18.18.0/bin/npm install
 
-RUN curl -sL https://deb.nodesource.com/setup_18.x | -E bash -  
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -  
 RUN apt-get install -y nodejs
 
 #RUN apt-get update && apt-get install -y python3 python3-pip
