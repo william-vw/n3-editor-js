@@ -22,6 +22,7 @@ RUN echo ~/.nvm/nvm.sh ls
 RUN node -v
 
 
+
 # deprecated warning + 60sec wait
 # RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
 
