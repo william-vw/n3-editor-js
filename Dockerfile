@@ -35,13 +35,13 @@ RUN apt-get install -y nodejs
 # RUN export NVM_DIR="$HOME/.nvm" && "$NVM_DIR/nvm.sh" -v && "$NVM_DIR/nvm.sh" install --lts
 
 #  The command '/bin/sh -c . ~/.nvm/nvm.sh     && nvm install 18     && nvm alias default $NODE_VERSION     && nvm use default' returned a non-zero code: 11
-ENV NODE_VERSION 18.18.0
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-RUN chmod +x ~/.nvm/nvm.sh
-RUN . ~/.nvm/nvm.sh \
-    && nvm install 18 \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
+# ENV NODE_VERSION 18.18.0
+# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+# RUN chmod +x ~/.nvm/nvm.sh
+# RUN . ~/.nvm/nvm.sh \
+#     && nvm install 18 \
+#     && nvm alias default $NODE_VERSION \
+#     && nvm use default
 
 # works but then "% node -v" gives error "node: not found"
 # (first two lines already install nodejs with $NODE_VERSION)
