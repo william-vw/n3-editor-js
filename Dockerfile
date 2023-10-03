@@ -9,7 +9,8 @@ FROM ubuntu:22.04
 # RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 # RUN export NVM_DIR="$HOME/.nvm" && "$NVM_DIR/nvm.sh" -v && "$NVM_DIR/nvm.sh" install --lts
 
-# RUN apt-get -yq update && apt-get -yq install curl
+RUN apt-get -yq update && apt-get -yq install curl
+
 # ENV NODE_VERSION 18.18.0
 # RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 # #     && . ~/.nvm/nvm.sh \
@@ -21,27 +22,26 @@ FROM ubuntu:22.04
 # RUN ~/.nvm/nvm.sh use default
 
 # make sure apt is up to date
-RUN apt-get update --fix-missing
-RUN apt-get install -y curl
-RUN apt-get install -y build-essential libssl-dev
+# RUN apt-get update --fix-missing
+# RUN apt-get install -y curl
+# RUN apt-get install -y build-essential libssl-dev
 
 # actually /root/..
-ENV NVM_DIR ~
-ENV NODE_VERSION 18.18.0
+# ENV NVM_DIR ~
+# ENV NODE_VERSION 18.18.0
 
 # Install nvm with node and npm
-RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
-RUN . $NVM_DIR/nvm.sh && nvm install $NODE_VERSION
-RUN . $NVM_DIR/nvm.sh && nvm alias default $NODE_VERSION
+# RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
+# RUN . $NVM_DIR/nvm.sh && nvm install $NODE_VERSION
+# RUN . $NVM_DIR/nvm.sh && nvm alias default $NODE_VERSION
 # RUN . $NVM_DIR/nvm.sh && nvm use default
 
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+# ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+# ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 # deprecated warning + 60sec wait
 # RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
 
-# TODO post an issue about this
 #  E: The repository 'https://deb.nodesource.com/node_.x nodistro Release' does not have a Release file. (on render & heroku)
 # RUN rm /etc/apt/keyrings/nodesource.gpg # (does not exist)
 # RUN rm /etc/apt/sources.list.d/nodesource.list # (does not exist)
@@ -62,7 +62,11 @@ ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 # WORKDIR /usr/app
 # COPY ./ ./
-RUN /root/.nvm/versions/node/v18.18.0/bin/npm install
+# not found XD
+# RUN /root/.nvm/versions/node/v18.18.0/bin/npm install
+
+RUN curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -  
+RUN sudo apt-get install -y nodejs
 
 #RUN apt-get update && apt-get install -y python3 python3-pip
 #RUN pip install -r requirements.txt
