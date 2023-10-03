@@ -6,9 +6,9 @@ RUN apt-get -yq update && apt-get -yq install curl
 RUN curl -sL https://raw.githubusercontent.com/william-vw/n3-editor-js/docker/lib/node_install-18.sh | bash
 RUN apt-get install -y nodejs
 
-# WORKDIR /usr/app
-# COPY ./ ./
-# RUN npm install
+WORKDIR /usr/app
+COPY ./ ./
+RUN npm install
 
 #RUN apt-get update && apt-get install -y python3 python3-pip
 #RUN pip install -r requirements.txt
@@ -25,7 +25,7 @@ RUN apt-get install -y nodejs
 # RUN apt-get -yq update && apt-get -yq install nodejs
 # RUN apt-get -yq update && apt-get -yq install npm
 
-# deprecated :-(
+# deprecated w/ 60sec delay :-(
 # RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -  
 # RUN apt-get install -y nodejs
 
