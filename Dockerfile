@@ -10,6 +10,7 @@ FROM ubuntu:22.04
 # RUN export NVM_DIR="$HOME/.nvm" && "$NVM_DIR/nvm.sh" -v && "$NVM_DIR/nvm.sh" install --lts
 
 RUN apt-get -yq update && apt-get -yq install curl
+RUN mkdir ~/.nvm
 ENV NVM_DIR ~/.nvm
 ENV NODE_VERSION 18.18.0
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash \
