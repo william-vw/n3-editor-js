@@ -11,6 +11,7 @@ RUN export NVM_DIR="$HOME/.nvm"
 RUN "$NVM_DIR/nvm.sh" -v
 RUN "$NVM_DIR/nvm.sh" install --lts
 
+
 # deprecated warning + 60sec wait
 # RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
 
