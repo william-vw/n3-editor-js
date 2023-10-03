@@ -25,25 +25,27 @@ RUN apt-get -yq update && apt-get -yq install curl
 #    && nvm alias default $NODE_VERSION \
 #    && nvm use default
 
-ENV NODE_VERSION 18.18.0
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-RUN chmod +x ~/.nvm/nvm.sh
-# RUN ~/.nvm/nvm.sh install 18
-RUN ~/.nvm/nvm.sh use default
-
-# RUN apt-get update --fix-missing
-# RUN apt-get install -y curl
-# RUN apt-get install -y build-essential libssl-dev
-# ENV NVM_DIR ~ # actually /root/..
+# % "node -v" gives error "node: not found"
+# (first two lines already install nodejs with $NODE_VERSION)
 # ENV NODE_VERSION 18.18.0
-# Install nvm with node and npm
-# RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
-# RUN . $NVM_DIR/nvm.sh && nvm install $NODE_VERSION
-# RUN . $NVM_DIR/nvm.sh && nvm alias default $NODE_VERSION
-# RUN . $NVM_DIR/nvm.sh && nvm use default
+# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+# RUN chmod +x ~/.nvm/nvm.sh
+# # RUN ~/.nvm/nvm.sh install 18
+# RUN ~/.nvm/nvm.sh use default
 
-# ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-# ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+RUN apt-get update --fix-missing
+RUN apt-get install -y curl
+RUN apt-get install -y build-essential libssl-dev
+# actually /root/..
+ENV NVM_DIR ~ 
+ENV NODE_VERSION 18.18.0
+RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
+RUN . $NVM_DIR/nvm.sh && nvm install $NODE_VERSION
+RUN . $NVM_DIR/nvm.sh && nvm alias default $NODE_VERSION
+RUN . $NVM_DIR/nvm.sh && nvm use default
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
 
 #  E: The repository 'https://deb.nodesource.com/node_.x nodistro Release' does not have a Release file. (on render & heroku)
 # RUN rm /etc/apt/keyrings/nodesource.gpg # (does not exist)
