@@ -3,14 +3,13 @@ FROM ubuntu:22.04
 
 RUN apt-get -yq update && apt-get -yq install curl
 
-# RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -  
-# RUN apt-get install -y nodejs
+RUN cat lib/setup_18.x | bash
+RUN apt-get install -y nodejs
 
 # WORKDIR /usr/app
 # COPY ./ ./
 # RUN npm install
 
-# deprecated :-(
 #RUN apt-get update && apt-get install -y python3 python3-pip
 #RUN pip install -r requirements.txt
 
@@ -26,12 +25,16 @@ RUN apt-get -yq update && apt-get -yq install curl
 # RUN apt-get -yq update && apt-get -yq install nodejs
 # RUN apt-get -yq update && apt-get -yq install npm
 
+# deprecated :-(
+# RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -  
+# RUN apt-get install -y nodejs
+
 # The command '/bin/sh -c export NVM_DIR="$HOME/.nvm" && "$NVM_DIR/nvm.sh" -v && "$NVM_DIR/nvm.sh" install --lts' returned a non-zero code: 126
 # (same result on heroku, render)
 # RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 # RUN export NVM_DIR="$HOME/.nvm" && "$NVM_DIR/nvm.sh" -v && "$NVM_DIR/nvm.sh" install --lts
 
-# /bin/sh: 1: /root/.nvm/nvm.sh: Permission denied
+#  The command '/bin/sh -c . ~/.nvm/nvm.sh     && nvm install 18     && nvm alias default $NODE_VERSION     && nvm use default' returned a non-zero code: 11
 ENV NODE_VERSION 18.18.0
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 RUN chmod +x ~/.nvm/nvm.sh
@@ -40,7 +43,7 @@ RUN . ~/.nvm/nvm.sh \
     && nvm alias default $NODE_VERSION \
     && nvm use default
 
-# % "node -v" gives error "node: not found"
+# works but then "% node -v" gives error "node: not found"
 # (first two lines already install nodejs with $NODE_VERSION)
 # ENV NODE_VERSION 18.18.0
 # RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
