@@ -19,8 +19,6 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | b
 RUN chmod +x ~/.nvm/nvm.sh
 RUN ~/.nvm/nvm.sh install 18
 RUN ~/.nvm/nvm.sh use default
-RUN ~/.nvm/nvm.sh run 18.18.0 --version
-RUN ~/.nvm/nvm.sh which 18.18.0
 
 # deprecated warning + 60sec wait
 # RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
@@ -43,7 +41,7 @@ RUN ~/.nvm/nvm.sh which 18.18.0
 
 WORKDIR /usr/app
 COPY ./ ./
-RUN ~/.nvm/nvm.sh use default && npm install
+RUN ~/.nvm/v18.18.0/bin/npm install
 
 #RUN apt-get update && apt-get install -y python3 python3-pip
 #RUN pip install -r requirements.txt
