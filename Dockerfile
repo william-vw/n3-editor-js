@@ -17,16 +17,19 @@ RUN apt-get -yq update && apt-get -yq install curl
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 RUN export NVM_DIR="$HOME/.nvm" && "$NVM_DIR/nvm.sh" -v && "$NVM_DIR/nvm.sh" install --lts
 
-# error: failed to solve: process "..." did not complete successfully: exit code: 11
+# /bin/sh: 1: /root/.nvm/nvm.sh: Permission denied
+# ENV NODE_VERSION 18.18.0
+# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash \
+#     && . ~/.nvm/nvm.sh \
+#     && nvm install 18 \
+#    && nvm alias default $NODE_VERSION \
+#    && nvm use default
+
 ENV NODE_VERSION 18.18.0
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash \
-    && . ~/.nvm/nvm.sh \
-    && nvm install 18 \
-   && nvm alias default $NODE_VERSION \
-   && nvm use default
-# RUN chmod +x ~/.nvm/nvm.sh
+RUN chmod +x ~/.nvm/nvm.sh
 # RUN ~/.nvm/nvm.sh install 18
-# RUN ~/.nvm/nvm.sh use default
+RUN ~/.nvm/nvm.sh use default
 
 # make sure apt is up to date
 # RUN apt-get update --fix-missing
