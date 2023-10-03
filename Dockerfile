@@ -17,7 +17,7 @@ RUN apt-get -yq update && apt-get -yq install software-properties-common && add-
 
 RUN curl -sL https://raw.githubusercontent.com/william-vw/eye-buildpack/master/docker.sh | bash
 
-# CMD node app.js
+CMD node app.js
 
 
 
