@@ -7,9 +7,10 @@ FROM ubuntu:22.04
 RUN apt-get -yq update && apt-get -yq install curl
 # # command not found: nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-RUN export NVM_DIR="$HOME/.nvm"
-RUN "$NVM_DIR/nvm.sh" -v
-RUN "$NVM_DIR/nvm.sh" install --lts
+RUN ls -al
+#RUN export NVM_DIR="$HOME/.nvm"
+#RUN "$NVM_DIR/nvm.sh" -v
+#RUN "$NVM_DIR/nvm.sh" install --lts
 
 # deprecated warning + 60sec wait
 # RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
