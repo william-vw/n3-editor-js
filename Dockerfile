@@ -39,8 +39,8 @@ RUN ~/.nvm/nvm.sh use default
 # RUN apt-get -yq update && apt-get -yq install nodejs
 # RUN apt-get -yq update && apt-get -yq install npm
 
-ENV NODE_PATH ~/.nvm/versions/node/v18.18.0/lib/node_modules
-ENV PATH ~/.nvm/versions/node/v18.18.0/bin:$PATH
+ENV NODE_PATH ~/.nvm/versions/node/v18.18.0
+ENV PATH ~/.nvm/versions/node/v18.18.0/lib/modules/npm/bin:$PATH
 
 WORKDIR /usr/app
 COPY ./ ./
