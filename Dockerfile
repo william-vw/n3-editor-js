@@ -15,7 +15,7 @@ RUN npm install
 
 # RUN apt-get -yq update && apt-get -yq install software-properties-common && add-apt-repository ppa:swi-prolog/stable && apt-get -yq install swi-prolog
 
-# CMD node app.js
+CMD node app.js
 
 
 
