@@ -1,7 +1,7 @@
 config = {
 	http: {
-		hostname: 'https://n3-editor.herokuapp.com',
-	    port: ((typeof process) != "undefined" ? process.env.PORT : undefined)
+		hostname: 'https://n3-editor.onrender.com',
+	    port: 3002
 	},
 
 	out: "/app/out",
