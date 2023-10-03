@@ -11,11 +11,11 @@ FROM ubuntu:22.04
 
 RUN apt-get -yq update && apt-get -yq install curl
 ENV NODE_VERSION 18.18.0
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash \
-    && . ~/.nvm/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+RUN . ~/.nvm/nvm.sh
+RUN nvm install $NODE_VERSION
+RUN nvm alias default $NODE_VERSION
+RUN nvm use default
 
 
 # deprecated warning + 60sec wait
