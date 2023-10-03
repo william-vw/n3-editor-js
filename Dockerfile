@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 
 RUN apt-get -yq update && apt-get -yq install curl
 
-RUN cat setup_18.x | bash
+RUN cat lib/setup_18.x | bash
 RUN apt-get install -y nodejs
 
 # WORKDIR /usr/app
