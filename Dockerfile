@@ -18,6 +18,8 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | b
 #    && nvm use default
 RUN chmod +x ~/.nvm/nvm.sh
 RUN ~/.nvm/nvm.sh install 18
+RUN ~/.nvm/nvm.sh ls
+RUN node -v
 
 
 # deprecated warning + 60sec wait
