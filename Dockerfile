@@ -20,6 +20,7 @@ RUN chmod +x ~/.nvm/nvm.sh
 RUN ~/.nvm/nvm.sh install 18
 RUN ~/.nvm/nvm.sh use default
 RUN ~/.nvm/nvm.sh run 18.18.0 --version
+RUN ~/.nvm/nvm.sh which 18.18.0
 
 # deprecated warning + 60sec wait
 # RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
