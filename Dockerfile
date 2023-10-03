@@ -16,6 +16,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | b
     # && nvm install 18 \
 #    && nvm alias default $NODE_VERSION \
 #    && nvm use default
+RUN chmod +x ~/.nvm/nvm.sh
 RUN ~/.nvm/nvm.sh install 18
 
 
