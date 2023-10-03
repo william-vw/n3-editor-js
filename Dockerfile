@@ -3,7 +3,9 @@ FROM ubuntu:22.04
 
 RUN apt-get -yq update && apt-get -yq install curl
 
-RUN curl -sL https://raw.githubusercontent.com/william-vw/n3-editor-js/docker/lib/node_install-18.sh | bash
+RUN curl -sL https://raw.githubusercontent.com/william-vw/n3-editor-js/docker/lib/node_install-18.sh > node_install-18.sh
+RUN chmod +x node_install-18.sh
+RUN ./node_install-18.sh
 RUN apt-get install -y nodejs
 
 WORKDIR /usr/app
