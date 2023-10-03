@@ -23,10 +23,7 @@ if (typeof process === 'object') {
 		name = "local.js";
 	} else if (hostname == 'n3-editor.herokuapp.com') {
 		name = "heroku.js";
-	} else if (hostname == 'n3-editor.onrender.com') {
-		name = "render.js"
-	} else
-		console.error("where the poop are we??")
+	}
 
 	const location = `/n3/config/${name}`;
 	$.ajax({ async: false, url: location, dataType: 'script' })

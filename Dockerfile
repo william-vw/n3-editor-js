@@ -6,7 +6,7 @@ RUN apt-get -yq update && apt-get -yq install curl
 RUN curl -sL https://raw.githubusercontent.com/william-vw/n3-editor-js/docker/lib/node_install-18.sh | bash
 RUN apt-get install -y nodejs
 
-WORKDIR /usr/app
+WORKDIR /app
 COPY ./ ./
 RUN npm install
 
