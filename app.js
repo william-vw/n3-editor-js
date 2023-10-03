@@ -160,7 +160,7 @@ app.post('/n3', (request, response) => {
 	}
 })
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || config.http.port;
 app.listen(PORT)
 console.log(`Listening at ${config.http.hostname}:${PORT}`)
 

@@ -1,21 +1,21 @@
 // heroku
-if (typeof process === 'object') {
-	let name;
-	if (process.env.HOME && process.env.HOME == '/app') {
-		name = "heroku.js";
-	} else {
-		name = "local.js";
-	}
+// if (typeof process === 'object') {
+// 	let name;
+// 	if (process.env.HOME && process.env.HOME == '/app') {
+// 		name = "heroku.js";
+// 	} else {
+// 		name = "local.js";
+// 	}
 
-	const location = `./${name}`;
-	require(location);
+// 	const location = `./${name}`;
+// 	require(location);
 
-	if (typeof exports === 'object' && typeof module === 'object')
-		module.exports = {
-			config
-		};
+// 	if (typeof exports === 'object' && typeof module === 'object')
+// 		module.exports = {
+// 			config
+// 		};
 
-} else {	
+// } else {
 	let hostname = window.location.hostname
 	let name;
 	if (hostname === 'localhost' || hostname === '127.0.0.1') {
@@ -33,4 +33,4 @@ if (typeof process === 'object') {
 		.fail(function (jqxhr, settings, exception) {
 			console.error(`Error getting config at "${location}": ${exception}`);
 		});
-}
+// }
