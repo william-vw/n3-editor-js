@@ -12,17 +12,18 @@ RUN apt-get -yq update && apt-get -yq install curl
 # COPY ./ ./
 # RUN npm install
 
-# same result on heroku, render
-# command not found: nvm
+# The command '/bin/sh -c export NVM_DIR="$HOME/.nvm" && "$NVM_DIR/nvm.sh" -v && "$NVM_DIR/nvm.sh" install --lts' returned a non-zero code: 126
+# (same result on heroku, render)
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 RUN export NVM_DIR="$HOME/.nvm" && "$NVM_DIR/nvm.sh" -v && "$NVM_DIR/nvm.sh" install --lts
 
-# ENV NODE_VERSION 18.18.0
-# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-# #     && . ~/.nvm/nvm.sh \
-# #     && nvm install 18 \
-# #    && nvm alias default $NODE_VERSION \
-# #    && nvm use default
+# error: failed to solve: process "..." did not complete successfully: exit code: 11
+ENV NODE_VERSION 18.18.0
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash \
+    && . ~/.nvm/nvm.sh \
+    && nvm install 18 \
+   && nvm alias default $NODE_VERSION \
+   && nvm use default
 # RUN chmod +x ~/.nvm/nvm.sh
 # RUN ~/.nvm/nvm.sh install 18
 # RUN ~/.nvm/nvm.sh use default
