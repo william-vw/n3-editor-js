@@ -25,6 +25,7 @@ RUN apt-get update --fix-missing
 RUN apt-get install -y curl
 RUN apt-get install -y build-essential libssl-dev
 
+# actually /root/..
 ENV NVM_DIR ~
 ENV NODE_VERSION 18.18.0
 
@@ -61,7 +62,7 @@ ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 WORKDIR /usr/app
 COPY ./ ./
-RUN npm install
+RUN /root/.nvm/versions/node/v18.18.0/bin/npm install
 
 #RUN apt-get update && apt-get install -y python3 python3-pip
 #RUN pip install -r requirements.txt
