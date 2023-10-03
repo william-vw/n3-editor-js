@@ -60,8 +60,8 @@ ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 # ENV NODE_PATH ~/.nvm/versions/node/v18.18.0
 # ENV PATH ~/.nvm/versions/node/v18.18.0/lib/modules/npm/bin:$PATH
 
-WORKDIR /usr/app
-COPY ./ ./
+# WORKDIR /usr/app
+# COPY ./ ./
 RUN /root/.nvm/versions/node/v18.18.0/bin/npm install
 
 #RUN apt-get update && apt-get install -y python3 python3-pip
