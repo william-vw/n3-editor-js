@@ -1,0 +1,4 @@
+to install python dependencies in requirements.txt:
+
+heroku buildpacks:add heroku/python
+also need heroku/node, heroku-community/apt, eye-buildpack

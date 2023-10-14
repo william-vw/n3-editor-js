@@ -5,7 +5,7 @@ if (typeof process === 'object') {
 	if (process.env.HOME) {
 		if (process.env.HOME == '/app')
 			name = "heroku.js";
-		else if (process.env.HOME = '/home/nodeapp')
+		else if (process.env.HOME == '/home/nodeapp')
 			name = "gcloud.js"
 	} else {
 		name = "local.js";

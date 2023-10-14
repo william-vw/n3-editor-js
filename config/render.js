@@ -1,17 +1,17 @@
 config = {
 	http: {
-		hostname: 'https://n3-editor.herokuapp.com',
+		hostname: 'https://n3-editor.onrender.com',
 	    port: ((typeof process) != "undefined" ? process.env.PORT : undefined)
 	},
 
-	out: "/app/out",
+	out: "out",
 
 	tools: {
 		eye: {
 			// exec: "eye", 
-			// exec: "/app/opt/eye/bin/eye", 
-			exec: "swipl -x /app/opt/eye/lib/eye.pvm -- ",
-		    folder: "/app/lib/eye"
+			// exec: "opt/eye/bin/eye", 
+			exec: "swipl -x opt/eye/lib/eye.pvm -- ",
+		    folder: "lib/eye"
 		},
 		cwm: {
 			// (use python2 for cwm)
@@ -19,24 +19,24 @@ config = {
             exec: ""
 		},
 		jen3: {
-            exec: "/app/lib/jen3/jen3.jar",
-            codegen: "/app/lib/jen3/codegen.jar",
-		    folder: "/app/lib/jen3"
+            exec: "lib/jen3/jen3.jar",
+            codegen: "lib/jen3/codegen.jar",
+		    folder: "lib/jen3"
 		},
 		jena: {
-			exec: "/app/lib/jena/sparql.jar",
+			exec: "lib/jena/sparql.jar",
 		},
 		triplify: {
-			exec: "/app/lib/triplify/sparql2spin.jar"
+			exec: "lib/triplify/sparql2spin.jar"
 		},
 		spin3: {
-			folder: "/app/lib/spin3"
+			folder: "lib/spin3"
 		},
 		xes: {
-			folder: "/app/lib/xes"
+			folder: "lib/xes"
 		},
 		pqn: {
-			folder: "/app/lib/pqn"
+			folder: "lib/pqn"
 		}
 	},
 
