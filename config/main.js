@@ -1,8 +1,12 @@
 // heroku
 if (typeof process === 'object') {
 	let name;
-	if (process.env.HOME && process.env.HOME == '/app') {
-		name = "heroku.js";
+	console.log("where is home?", process.env.HOME)
+	if (process.env.HOME) {
+		if (process.env.HOME == '/app')
+			name = "heroku.js";
+		else if (process.env.HOME = '/home/nodeapp')
+			name = "gcloud.js"
 	} else {
 		name = "local.js";
 	}
@@ -20,9 +24,10 @@ if (typeof process === 'object') {
 	let name;
 	if (hostname === 'localhost' || hostname === '127.0.0.1') {
 		name = "local.js";
-	} else {
+	} else if (hostname == 'n3-editor.herokuapp.com') {
 		name = "heroku.js";
-	}
+	} else
+		name = "gcloud.js";
 
 	const location = `/n3/config/${name}`;
 	$.ajax({ async: false, url: location, dataType: 'script' })
