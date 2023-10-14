@@ -5,8 +5,8 @@ const path = require('path')
 
 const { config } = require('./config/main.js')
 const tmp = require('./lib/tmp.js')
-// const eye = require('./lib/eye/eye.js')
-const eye = require('./lib/eye/eyejs.js') 
+const eye = require('./lib/eye/eye.js')
+// const eye = require('./lib/eye/eyejs.js') 
 // const cwm = require('./lib/cwm/cwm.js')
 const jen3 = require('./lib/jen3/jen3.js')
 const jena = require('./lib/jena/jena.js')
@@ -160,8 +160,9 @@ app.post('/n3', (request, response) => {
 	}
 })
 
-app.listen(config.http.port)
-console.log(`Listening at ${config.http.hostname}:${config.http.port}`)
+const PORT = process.env.PORT || config.http.port;
+app.listen(PORT)
+console.log(`Listening at ${config.http.hostname}:${PORT}`)
 
 async function doReasoning(options, ctu) {
 	let file;
