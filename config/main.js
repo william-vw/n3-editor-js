@@ -1,4 +1,3 @@
-// heroku
 if (typeof process === 'object') {
 	let name;
 	console.log("where is home?", process.env.HOME)

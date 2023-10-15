@@ -14,7 +14,8 @@ const triplify = require('./lib/triplify/triplify.js')
 const spin3 = require('./lib/spin3/spin3.js')
 const xes_conv = require('./lib/xes/convert.js')
 const pqn = require('./lib/pqn/pqn.js')
-const { generateLink, resolveLink } = require('./lib/gen_link.js')
+console.log("eh?", config.http, config.uses_sqlite3)
+const { generateLink, resolveLink } = require(config.link.db.uses_sqlite3 ? './lib/gen_link_sqlite3.js' : './lib/gen_link_mysql.js')
 // const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 const formidable = require('formidable');
 const fs = require('fs');
