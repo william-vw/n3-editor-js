@@ -72,7 +72,7 @@ function resolve_link(id, onSuccess, onError) {
 		id: id
 
 	}, (output, status) => {
-		// console.log(status, output)
+		//console.log(status, output)
 
 		if (output.success !== undefined)
 			onSuccess(output.success)
