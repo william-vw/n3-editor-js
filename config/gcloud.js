@@ -42,15 +42,6 @@ config = {
 
 	link: {
 		max_len: 50000,
-		db: {
-            // mysql://b4837d17c012f1:e023e78d@us-cdbr-east-06.cleardb.net/heroku_e750abd160bbcaf?reconnect=true
-			port: '33060',
-            host: "us-cdbr-east-06.cleardb.net",
-            db: "heroku_e750abd160bbcaf",
-            user: "b4837d17c012f1",
-            pwd: "e023e78d"
-		}
-	},
-
-	path: "/Users/wvw/git/n3/n3-editor-js" // ??
+		db : { uses_sqlite3: true }	
+	}
 }
