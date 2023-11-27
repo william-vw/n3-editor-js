@@ -1,6 +1,6 @@
 config = {  
 	http: {
-		hostname: 'http://editor.notation3.org',
+		hostname: 'https://editor.notation3.org',
 		port: 8080 
 	},
 
