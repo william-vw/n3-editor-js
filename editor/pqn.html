@@ -126,6 +126,8 @@
 						return
 					}
 
+					formula = formula.replace(/\\n/g, "\n")
+					formula = formula.replace(/\\"/g, "\"")
 					var matches = formula.match(/pqn=([^]*)\n\nlog=([^]*)/)
 					var pqn = matches[1];
 					var log = matches[2];

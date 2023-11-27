@@ -1,81 +1,100 @@
-# Processed by EYE v4.6.0 (2023-07-14)
-# eye --n3 tmp/tmp_1689435880215.n3 --query target_out.ttl
+# Processed by EYE v5.0.7 (2023-10-09)
+# eye --n3 tmp/tmp_1700833857625.n3 --query target_out.ttl
 
+@prefix skolem: <http://eyereasoner.github.io/.well-known/genid/5daf564e-bd13-4898-b33e-25b59deb653e#>.
 @prefix r: <http://www.w3.org/2000/10/swap/reason#>.
-@prefix var: <http://eyereasoner.github.io/var#>.
-@prefix skolem: <http://eyereasoner.github.io/.well-known/genid/b18a52ea-3a4f-4bd9-9174-7f28c044490c#>.
 @prefix n3: <http://www.w3.org/2004/06/rei#>.
+@prefix var: <http://eyereasoner.github.io/var#>.
 
 skolem:proof a r:Proof, r:Conjunction;
     r:component skolem:lemma1;
     r:component skolem:lemma2;
+    r:component skolem:lemma3;
     r:gives {
-        <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#a> <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#b> <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#c>.
-        <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#c> <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#b> <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#a>.
+        <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#A> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#B>.
+        <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#B> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#C>.
+        <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#A> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#C>.
     }.
 
 skolem:lemma1 a r:Inference;
     r:gives {
-        <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#a> <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#b> <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#c>.
+        <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#A> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#B>.
     };
     r:evidence (
-        skolem:lemma3
+        skolem:lemma4
     );
-    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_0"]; r:boundTo [ n3:uri "file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#b"]];
-    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_1"]; r:boundTo [ n3:uri "file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#a"]];
-    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_2"]; r:boundTo [ n3:uri "file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#c"]];
-    r:rule skolem:lemma4.
+    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_0"]; r:boundTo [ n3:uri "file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#A"]];
+    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_1"]; r:boundTo [ n3:uri "file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#B"]];
+    r:rule skolem:lemma5.
 
 skolem:lemma2 a r:Inference;
     r:gives {
-        <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#c> <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#b> <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#a>.
+        <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#B> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#C>.
     };
     r:evidence (
-        skolem:lemma5
+        skolem:lemma6
     );
-    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_0"]; r:boundTo [ n3:uri "file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#b"]];
-    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_1"]; r:boundTo [ n3:uri "file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#c"]];
-    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_2"]; r:boundTo [ n3:uri "file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#a"]];
-    r:rule skolem:lemma4.
+    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_0"]; r:boundTo [ n3:uri "file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#B"]];
+    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_1"]; r:boundTo [ n3:uri "file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#C"]];
+    r:rule skolem:lemma5.
 
-skolem:lemma3 a r:Extraction;
+skolem:lemma3 a r:Inference;
     r:gives {
-        <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#a> <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#b> <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#c>.
+        <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#A> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#C>.
     };
-    r:because [ a r:Parsing; r:source <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3>].
+    r:evidence (
+        skolem:lemma7
+    );
+    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_0"]; r:boundTo [ n3:uri "file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#A"]];
+    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_1"]; r:boundTo [ n3:uri "file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#C"]];
+    r:rule skolem:lemma5.
 
 skolem:lemma4 a r:Extraction;
     r:gives {
-        @forAll var:x_0, var:x_1, var:x_2. {
-            var:x_1 var:x_0 var:x_2.
+        <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#A> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#B>.
+    };
+    r:because [ a r:Parsing; r:source <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3>].
+
+skolem:lemma5 a r:Extraction;
+    r:gives {
+        @forAll var:x_0, var:x_1. {
+            var:x_0 <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> var:x_1.
         } => {
-            var:x_1 var:x_0 var:x_2.
+            var:x_0 <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> var:x_1.
         }.
     };
-    r:because [ a r:Parsing; r:source <file:///Users/wvw/git/n3/n3-editor-js/target_out.ttl>].
-
-skolem:lemma5 a r:Inference;
-    r:gives {
-        <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#c> <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#b> <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#a>.
-    };
-    r:evidence (
-        skolem:lemma3
-    );
-    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_0"]; r:boundTo [ n3:uri "file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#b"]];
-    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_1"]; r:boundTo [ n3:uri "file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#a"]];
-    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_2"]; r:boundTo [ n3:uri "file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3#c"]];
-    r:rule skolem:lemma6.
+    r:because [ a r:Parsing; r:source <file:///opt/app/n3-editor/target_out.ttl>].
 
 skolem:lemma6 a r:Extraction;
     r:gives {
+        <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#B> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#C>.
+    };
+    r:because [ a r:Parsing; r:source <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3>].
+
+skolem:lemma7 a r:Inference;
+    r:gives {
+        <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#A> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#C>.
+    };
+    r:evidence (
+        skolem:lemma4
+        skolem:lemma6
+    );
+    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_0"]; r:boundTo [ n3:uri "file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#A"]];
+    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_1"]; r:boundTo [ n3:uri "file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#B"]];
+    r:binding [ r:variable [ n3:uri "http://eyereasoner.github.io/var#x_2"]; r:boundTo [ n3:uri "file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#C"]];
+    r:rule skolem:lemma8.
+
+skolem:lemma8 a r:Extraction;
+    r:gives {
         @forAll var:x_0, var:x_1, var:x_2. {
-            var:x_1 var:x_0 var:x_2.
+            var:x_0 <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> var:x_1.
+            var:x_1 <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> var:x_2.
         } => {
-            var:x_2 var:x_0 var:x_1.
+            var:x_0 <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> var:x_2.
         }.
     };
-    r:because [ a r:Parsing; r:source <file:///Users/wvw/git/n3/n3-editor-js/tmp/tmp_1689435880215.n3>].
+    r:because [ a r:Parsing; r:source <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3>].
 
-# 2023-07-15T15:44:40.324Z in=3 out=2 ent=3 step=7 brake=2 inf=24810 sec=0.024 inf/sec=1033750
+# 2023-11-24T13:50:57.768Z in=4 out=3 ent=4 step=8 brake=2 inf=38650 sec=0.059 inf/sec=655085
 # ENDS
 

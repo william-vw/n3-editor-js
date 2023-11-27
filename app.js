@@ -1,4 +1,6 @@
 const express = require('express')
+//const http = require('http');
+const https = require('https');
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const path = require('path')
@@ -14,7 +16,6 @@ const triplify = require('./lib/triplify/triplify.js')
 const spin3 = require('./lib/spin3/spin3.js')
 const xes_conv = require('./lib/xes/convert.js')
 const pqn = require('./lib/pqn/pqn.js')
-console.log("eh?", config.http, config.uses_sqlite3)
 const { generateLink, resolveLink } = require(config.link.db.uses_sqlite3 ? './lib/gen_link_sqlite3.js' : './lib/gen_link_mysql.js')
 // const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 const formidable = require('formidable');
@@ -163,6 +164,14 @@ app.post('/n3', (request, response) => {
 
 const PORT = process.env.PORT || config.http.port;
 app.listen(PORT)
+// const private_key = fs.readFileSync("/etc/letsencrypt/live/editor.notation3.org/privkey.pem", 'utf8');
+// const certificate = fs.readFileSync("/etc/letsencrypt/live/editor.notation3.org/fullchain.pem", 'utf8');
+// const credentials = { key: private_key, cert: certificate };
+// const http_server = http.createServer(app);
+// http_server.listen(PORT);
+// const https_server = https.createServer(credentials, app);
+// https_server.listen(PORT);
+
 console.log(`Listening at ${config.http.hostname}:${PORT}`)
 
 async function doReasoning(options, ctu) {

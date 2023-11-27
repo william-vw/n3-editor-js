@@ -217,6 +217,10 @@
 			service.resolve_link(id,
 				(data) => {
 					// console.log("resolved:", data);
+					
+					var formula = data.formula
+					formula = formula.replace(/\\n/g, "\n")
+					formula = formula.replace(/\\"/g, "\"")
 
 					console.log("initializing formula from link")
 					editor.getDoc().setValue(data.formula)

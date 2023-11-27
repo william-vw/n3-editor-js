@@ -169,7 +169,7 @@
 		function resolve_link(id) {
 			service.resolve_link(id,
 				(data) => {
-					// console.log("resolved:", data);
+					console.log("resolved:", data);
 
 					var formula = data.formula
 					if (!formula.startsWith("sparql=")) {
@@ -177,6 +177,8 @@
 						return
 					}
 
+					formula = formula.replace(/\\n/g, "\n")
+					formula = formula.replace(/\\"/g, "\"")
 					var matches = formula.match(/sparql=([^]*)\n\nn3=([^]*)/)
 					var sparql = matches[1];
 					var n3 = matches[2];

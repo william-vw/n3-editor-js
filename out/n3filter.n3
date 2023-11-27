@@ -1,21 +1,10 @@
-# Processed by EYE v4.6.0 (2023-07-14)
-# eye /Users/wvw/git/n3/n3-editor-js/out/filter.spin /Users/wvw/git/n3/n3-editor-js/lib/spin3/auxiliary-files/aux.n3 --query /Users/wvw/git/n3/n3-editor-js/lib/spin3/queries/query_general.n3 --nope --quantify http://eyereasoner.github.io/.well-known/genid/
+# Processed by EYE v5.0.7 (2023-10-09)
+# eye /opt/app/n3-editor/out/filter.spin /opt/app/n3-editor/lib/spin3/auxiliary-files/aux.n3 --query /opt/app/n3-editor/lib/spin3/queries/query_general.n3 --nope --quantify http://eyereasoner.github.io/.well-known/genid/
 
-@prefix string: <http://www.w3.org/2000/10/swap/string#>.
-@prefix list: <http://www.w3.org/2000/10/swap/list#>.
-@prefix log: <http://www.w3.org/2000/10/swap/log#>.
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix spin: <http://spinrdf.org/spin#>.
-@prefix sp: <http://spinrdf.org/sp#>.
-@prefix ex: <http://example.org/spin#>.
-@prefix aux: <http://example.org/aux#>.
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
-@prefix time: <http://www.w3.org/2000/10/swap/time#>.
-@prefix crypto: <http://www.w3.org/2000/10/swap/crypto#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix var: <http://eyereasoner.github.io/.well-known/genid/385e5e5a-6ad7-43e1-8ac1-1d06303d5977#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix skolem: <http://eyereasoner.github.io/.well-known/genid/00cca3ce-2eab-4466-81c9-708c2b16c39d#>.
 
 {
     ?t_4 <http://example.org/zika#isPregnant> true.
@@ -37,6 +26,6 @@
     _:e_b3_1 <http://hl7.org/fhir/text> _:e_b8_1.
     _:e_b8_1 <http://hl7.org/fhir/v> "Zika virus NAAT on serum".
 }.
-# 2023-07-28T14:08:05.720Z in=187 out=1 ent=1 step=1 brake=2 inf=413044 sec=0.043 inf/sec=9605674
+# 2023-11-09T13:19:56.873Z in=187 out=1 ent=1 step=1 brake=2 inf=782884 sec=0.151 inf/sec=5184662
 # ENDS
 
