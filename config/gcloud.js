@@ -1,7 +1,7 @@
 config = {  
 	http: {
-		hostname: 'http://35.203.103.208',
-	    	port: 8080 
+		hostname: 'http://editor.notation3.org',
+		port: 8080 
 	},
 
 	out: "/opt/app/n3-editor/out",
