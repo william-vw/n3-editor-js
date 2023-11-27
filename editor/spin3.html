@@ -6,6 +6,7 @@
 	<title>SiN3: SPARQL in N3</title>
 
 	<script src="/n3/editor/lib/jquery-3.5.1.min.js"></script>
+	<script src="/n3/editor/lib/jquery-ui-1.13.2.custom/jquery-ui.min.js"></script>
 	<script src="/n3/editor/lib/shortcut.js"></script>
 
 	<script src="/n3/editor/codemirror-5.54.0/lib/codemirror.js"></script>
@@ -31,6 +32,13 @@
 	<link rel="stylesheet" href="/n3/editor/lib/spin3.css">
 
 	<script>
+		// to support dynamic resizing
+		// $('.CodeMirror').resizable({
+		// 	resize: function() {
+		// 		editor.setSize($(this).width(), $(this).height());
+		// 	}
+		// });
+
 		const formats = {
 			n3: { type: 'n3', label: "<u>N</u>3", lib: n3, mode: 'n3' },
 			none: { type: 'none', label: "N<u>o</u>ne" }
