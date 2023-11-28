@@ -353,6 +353,8 @@ function doGenerateLink(options, ctu) {
 		generateLink(options.formula, options.format)
 			.then((id) => { console.log("generated link:", id); ctu({ success: id }) })
 			.catch((error) => { ctu({ error: error }) })
+	else
+		ctu({ error: "no db supported on this platform" })
 }
 
 function doResolveLink(options, ctu) {
@@ -363,6 +365,8 @@ function doResolveLink(options, ctu) {
 				ctu({ success: data })
 			})
 			.catch((error) => { ctu({ error: error }) })
+	else
+		ctu({ error: "no db supported on this platform" })
 }
 
 // async function doCheckBuiltinInput(options, ctu) {
