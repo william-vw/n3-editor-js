@@ -19,7 +19,8 @@ let generateLink = null; let resolveLink = null;
 if (config.link.db.supported) {
 	let { generateLinkFn, resolveLinkFn } = require(config.link.db.uses_sqlite3 ? './lib/gen_link_sqlite3.js' : './lib/gen_link_mysql.js');
 	generateLink = generateLinkFn; 
-	resolveLink = resolveLinkFn; 
+	resolveLink = resolveLinkFn;
+	console.log("??", generateLink, resolveLink)
 }
 // const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 const formidable = require('formidable');
