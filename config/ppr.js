@@ -27,6 +27,8 @@ config = {
 	link: {
 		max_len: 50000,
 		db: {
+			supported: true,
+			uses_sqlite3: false,
 			port: '33060',
 			host: 'localhost',
 			db: "n3_links",

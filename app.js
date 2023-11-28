@@ -16,7 +16,13 @@ const triplify = require('./lib/triplify/triplify.js')
 const spin3 = require('./lib/spin3/spin3.js')
 const xes_conv = require('./lib/xes/convert.js')
 const pqn = require('./lib/pqn/pqn.js')
-const { generateLink, resolveLink } = require(config.link.db.uses_sqlite3 ? './lib/gen_link_sqlite3.js' : './lib/gen_link_mysql.js')
+
+let generateLink = null; let resolveLink = null; 
+if (config.link.db.supported) {
+	let { generateLinkFn, resolveLinkFn } = require(config.link.db.uses_sqlite3 ? './lib/gen_link_sqlite3.js' : './lib/gen_link_mysql.js');
+	generateLink = generateLinkFn; 
+	resolveLink = resolveLinkFn; 
+}
 // const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
 const formidable = require('formidable');
 const fs = require('fs');
@@ -339,18 +345,20 @@ async function doPqn(options, ctu) {
 }
 
 function doGenerateLink(options, ctu) {
-	generateLink(options.formula, options.format)
-		.then((id) => { console.log("generated link:", id); ctu({ success: id }) })
-		.catch((error) => { ctu({ error: error }) })
+	if (generateLink != null)
+		generateLink(options.formula, options.format)
+			.then((id) => { console.log("generated link:", id); ctu({ success: id }) })
+			.catch((error) => { ctu({ error: error }) })
 }
 
 function doResolveLink(options, ctu) {
-	resolveLink(options.id)
-		.then((data) => {
-			// console.log("resolved link:", data);
-			ctu({ success: data })
-		})
-		.catch((error) => { ctu({ error: error }) })
+	if (resolveLink != null)
+		resolveLink(options.id)
+			.then((data) => {
+				// console.log("resolved link:", data);
+				ctu({ success: data })
+			})
+			.catch((error) => { ctu({ error: error }) })
 }
 
 // async function doCheckBuiltinInput(options, ctu) {

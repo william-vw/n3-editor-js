@@ -42,6 +42,6 @@ config = {
 
 	link: {
 		max_len: 50000,
-		db : { uses_sqlite3: true }	
+		db : { supported: true, uses_sqlite3: true }	
 	}
 }
