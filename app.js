@@ -1,6 +1,4 @@
 const express = require('express')
-//const http = require('http');
-const https = require('https');
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const path = require('path')
@@ -169,14 +167,20 @@ app.post('/n3', (request, response) => {
 })
 
 const PORT = process.env.PORT || config.http.port;
-//app.listen(PORT)
-const private_key = fs.readFileSync("/etc/letsencrypt/archive/notation3.org/privkey1.pem", 'utf8');
-const certificate = fs.readFileSync("/etc/letsencrypt/archive/notation3.org/fullchain1.pem", 'utf8');
-const credentials = { key: private_key, cert: certificate };
-//const http_server = http.createServer(app);
-//http_server.listen(PORT);
-const https_server = https.createServer(credentials, app);
-https_server.listen(PORT);
+if (config.http.use_https) {
+	//const http = require('http');
+	//const http_server = http.createServer(app);
+	//http_server.listen(PORT);
+
+	const https = require('https');
+	const private_key = fs.readFileSync("/etc/letsencrypt/archive/notation3.org/privkey1.pem", 'utf8');
+	const certificate = fs.readFileSync("/etc/letsencrypt/archive/notation3.org/fullchain1.pem", 'utf8');
+	const credentials = { key: private_key, cert: certificate };
+	const https_server = https.createServer(credentials, app);
+	https_server.listen(PORT);
+	
+} else 
+	app.listen(PORT)
 
 console.log(`Listening at ${config.http.hostname}:${PORT}`)
 

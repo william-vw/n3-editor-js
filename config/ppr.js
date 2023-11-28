@@ -1,7 +1,8 @@
 config = {
 	http: {
 		hostname: 'http://ppr.cs.dal.ca',
-		port: 3002
+		port: 3002,
+		use_https: false
 	},
 
 	tools: {

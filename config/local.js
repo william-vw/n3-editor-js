@@ -1,7 +1,8 @@
 config = {
 	http: {
 		hostname: 'http://127.0.0.1',
-		port: 3002
+		port: 3002,
+		use_https: false
 	},
 
 	out: "/Users/wvw/git/n3/n3-editor-js/out",

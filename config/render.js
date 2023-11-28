@@ -1,7 +1,8 @@
 config = {
 	http: {
 		hostname: 'https://n3-editor.onrender.com',
-	    port: ((typeof process) != "undefined" ? process.env.PORT : undefined)
+	    port: ((typeof process) != "undefined" ? process.env.PORT : undefined),
+		use_https: false
 	},
 
 	out: "out",
