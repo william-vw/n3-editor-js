@@ -163,14 +163,14 @@ app.post('/n3', (request, response) => {
 })
 
 const PORT = process.env.PORT || config.http.port;
-app.listen(PORT)
-// const private_key = fs.readFileSync("/etc/letsencrypt/live/editor.notation3.org/privkey.pem", 'utf8');
-// const certificate = fs.readFileSync("/etc/letsencrypt/live/editor.notation3.org/fullchain.pem", 'utf8');
-// const credentials = { key: private_key, cert: certificate };
-// const http_server = http.createServer(app);
-// http_server.listen(PORT);
-// const https_server = https.createServer(credentials, app);
-// https_server.listen(PORT);
+//app.listen(PORT)
+const private_key = fs.readFileSync("/etc/letsencrypt/archive/notation3.org/privkey1.pem", 'utf8');
+const certificate = fs.readFileSync("/etc/letsencrypt/archive/notation3.org/fullchain1.pem", 'utf8');
+const credentials = { key: private_key, cert: certificate };
+//const http_server = http.createServer(app);
+//http_server.listen(PORT);
+const https_server = https.createServer(credentials, app);
+https_server.listen(PORT);
 
 console.log(`Listening at ${config.http.hostname}:${PORT}`)
 
