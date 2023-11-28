@@ -1,11 +1,6 @@
 # Processed by EYE v5.0.7 (2023-10-09)
-# eye --nope --n3 tmp/tmp_1700833857625.n3 --query /opt/app/n3-editor/lib/eye/explain/query_heads.n3
+# eye --nope --n3 tmp/tmp_1701178811679.n3 --query /opt/app/n3-editor/lib/eye/explain/query_heads.n3
 
-{
-    ?U_0 <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> ?U_1.
-} <= {
-    ?U_0 <file:///opt/app/n3-editor/tmp/tmp_1700833857625.n3#connectedTo> ?U_1.
-}.
-# 2023-11-24T13:50:57.695Z in=4 out=1 ent=2 step=4 brake=2 inf=24666 sec=0.051 inf/sec=483647
+# 2023-11-28T13:40:11.741Z in=1 out=0 ent=0 step=0 brake=1 inf=19640 sec=0.046 inf/sec=426957
 # ENDS
 
