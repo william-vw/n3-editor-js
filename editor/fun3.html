@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Notation3 Editor</title>
+
+	<script src="/n3/editor/lib/jquery-3.5.1.min.js"></script>
+	<script src="/n3/editor/lib/jquery-ui-1.13.2.custom/jquery-ui.min.js"></script>
+	<script src="/n3/editor/lib/shortcut.js"></script>
+
+	<script src="/n3/editor/codemirror-5.54.0/lib/codemirror.js"></script>
+	<link rel="stylesheet" href="/n3/editor/codemirror-5.54.0/lib/codemirror.css">
+	<link rel="stylesheet" href="/n3/editor/codemirror-5.54.0/addon/lint/lint.css">
+	<script src="/n3/editor/codemirror-5.54.0/addon/lint/lint.js"></script>
+	<script src="/n3/editor/codemirror-5.54.0/addon/edit/matchbrackets.js"></script>
+
+	<!-- introduces n3 namespace -->
+	<!-- <script src="/n3/editor/dist/n3Main.js"></script> -->
+	<script src="/n3/editor/dist/n3_nodropMain.js"></script>
+
+	<script src="/n3/editor/lib/codemirror-5.54.0/namespaces.js"></script>
+	<script src="/n3/editor/lib/codemirror-5.54.0/lint.js"></script>
+	<script src="/n3/editor/lib/codemirror-5.54.0/n3-mode.js"></script>
+	<link rel="stylesheet" href="/n3/editor/lib/codemirror-5.54.0/rdf.css">
+
+	<script src="/n3/config/main.js"></script>
+	<script src="/n3/editor/lib/ast.js" type="text/javascript"></script>
+	<script src="/n3/editor/lib/utils.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" href="/n3/editor/lib/default.css">
+	<style>
+		#inputs b {
+			position: relative;
+			top: 10px;
+		}
+
+		div.CodeMirror:nth-of-type(1) {
+			width: 50%;
+			height: 70px;
+		}
+		
+		div.CodeMirror:nth-of-type(2) {
+			height: 200px;
+		}
+
+		div.CodeMirror:nth-of-type(3) {
+			height: 200px;
+		}
+	</style>
+
+	<script src="https://eyereasoner.github.io/eye-js/latest/index.js"></script>
+
+	<script>
+		const formats = {
+			n3: { type: 'n3', label: "<u>N</u>3", lib: n3, mode: 'n3' },
+			none: { type: 'none', label: "N<u>o</u>ne" }
+		}
+		const defaultFormat = formats.n3
+
+		var query = null, data = null, rules = null
+		function getQuery() {
+			return query.getDoc().getValue()
+		}
+
+		function setQuery(query) {
+			query.getDoc().setValue(query);
+		}
+		
+		function getRules() {
+			return rules.getDoc().getValue()
+		}
+
+		function setRules(rules) {
+			rules.getDoc().setValue(rules);
+		}
+		
+		function getData() {
+			return data.getDoc().getValue()
+		}
+
+		function setData(data) {
+			data.getDoc().setValue(data);
+		}
+
+		function exec() {
+			var query = getQuery()
+			var rules = getRules()
+			var data = getData()
+
+			if (data.length == 0 || rules.length == 0 || query.length == 0) {
+				console.log("empty - ignoring");
+				showError("Please enter values in all fields.")
+				return
+			}
+
+			var task = 'genpy'
+			var system = 'fun3'
+
+			$(".output").hide()
+
+			// console.log(system, task);
+			service.exec({
+				task: task,
+				system: system,
+				data: data,
+				rules: rules,
+				query: query
+
+			}, (success) => {
+				// console.log(success)
+				for (let prp of [ 'results', 'code' ]) {
+					$(`#${prp}_out`).show()
+					$(`#${prp}_out > div`).text(success[prp])
+				}
+
+			}, showError)
+		}
+
+		function generate_link() {
+			$("#error_out").hide()
+
+			var data = getData()
+			var rules = getRules()
+			var query = getQuery()
+			if (data.length == 0 || rules.length == 0 || query.length == 0) {
+				$("#linkPlaceholder").html("Please enter values in all fields.")
+				return false
+			}
+
+			total_len = data.length + rules.length + query.length
+			if (total_len > config.link.max_len) {
+				$("#linkPlaceholder").html(`Total string length too long (max. length: ${config.link.max_len})`)
+				return false
+			}
+
+			var base = "";
+
+			all = "query=" + query + "\n\nrules=" + rules + "\n\ndata=" + data
+			service.generate_link(all, "n3",
+				(id) => {
+					let turl = base + "/s/" + id;
+					console.log("turl:", turl)
+
+					$("#linkPlaceholder").html(": <a href='" + turl + "'>Link</a>")
+
+				}, showError)
+
+			return false
+		}
+
+		function resolve_link(id) {
+			service.resolve_link(id,
+				(data) => {
+					// console.log("resolved:", data);
+					
+					var all = data.formula
+					if (!all.startsWith("query=")) {
+						console.error("wrong formula link for fun3")
+						return
+					}
+
+					all = all.replace(/\\n/g, "\n")
+					all = all.replace(/\\"/g, "\"")
+					var matches = all.match(/query=([^]*)\n\nrules=([^]*)\n\ndata=([^]*)/)
+					var query = matches[1];
+					var rules = matches[2];
+					var data = matches[3];
+
+					console.log("initializing from link")
+					setQuery(query)
+					setRules(rules)
+					setData(data)
+
+					console.log("format:", defaultFormat.type)
+					validate(defaultFormat)
+
+				}, showError)
+		}
+
+		// - formats
+
+		// https://stackoverflow.com/questions/19979741/codemirror-delete-a-editor-instance
+
+		function validate(format) {
+			query = startValidating(format, "#query")
+			rules = startValidating(format, "#rules")
+			data = startValidating(format, "#data")
+		}
+
+		const onSuggestion = {
+			namespace: function (prefix, ns) {
+				return true
+			}
+		}
+
+		function startValidating(format, element_select) {
+			// console.log("format", format);
+			return CodeMirror.fromTextArea($(`${element_select}`).get(0), {
+				gutters: ["CodeMirror-lint-markers"],
+				mode: format.mode,
+				theme: "default rdf",
+				// TODO this should follow code-mirrors idiom
+				// (registering a helper) but not getting that to work
+				lint: format.lib.lint(onSuggestion),
+				matchBrackets: true
+			})
+		}
+
+		window.loaded = function () {
+			validate(defaultFormat, true)
+
+			$(document).ajaxStart(startLoading).ajaxStop(doneLoading);
+
+			$("#execute").click(exec)
+			// shortcut.add("Alt+F", exec)
+
+			$("#link").click(generate_link)
+
+			let url = window.location.toString()
+			let path = window.location.pathname
+
+			let match = /.*\/s\/([^/]*)/.exec(path)
+			if (match) {
+				let id = match[1]
+				console.log("resolving id:", id);
+
+				resolve_link(id);
+			}
+		}
+
+		// loaded() needs to be called from service.js (see bottom of document)
+		// (modules aren't yet loaded when onload event is fired)
+
+		function startLoading() {
+			$('#loading').css("display", "inline-block")
+		}
+
+		function doneLoading() {
+			$('#loading').hide()
+		}
+
+		function showError(error) {
+			$("#error_out").show()
+			$("#error_out > div.box").html(error)
+		}
+
+	</script>
+</head>
+
+<body>
+	<main>
+		<a href="https://github.com/w3c/N3">
+			<img class="logo" alt="Notation3 Editor" title="Notation3 Editor" src="/n3/editor/logo.png" />
+		</a>
+
+		<div class="content">
+			<h1>fun3 editor</h1>
+
+			<div id="inputs">
+				<b>query:</b>
+				<textarea rows=1 cols=25 id="query"></textarea>
+				<b>rules:</b>
+				<textarea rows=10 cols=50 id="rules"></textarea>
+				<b>data:</b>
+				<textarea rows=10 cols=50 id="data"></textarea>
+				(<u>note</u>: universal variables (e.g., <code>?x</code>) are not supported in data for now)
+			</div>
+
+			<br />
+			<small class="note1">
+				<a href="#" id="link">Create link to input</a>
+				<span id="linkPlaceholder"></span>
+			</small>
+
+			<small class="note2">
+				Please submit bugs or feature requests on <a
+					href="https://github.com/william-vw/n3-editor-js">GitHub</a>.
+			</small>
+
+			<br style="clear: both" />
+
+			<div class="functions">
+				<div class="function">
+					<button id="execute">FUN</button>
+				</div>
+				<div id="loading">
+					<img src="/n3/editor/img/ajax-loader.gif" alt="loader">
+				</div>
+			</div>
+
+			<div id="error_out" class="output">
+				<h3>Error:</h3>
+				<div class="box"></div>
+			</div>
+
+			<div id="results_out" class="output">
+				<h3>Results:</h3>
+				<div class="box"></div>
+			</div>
+
+			<div id="code_out" class="output">
+				<h3>Python code:</h3>
+				<div class="box"></div>
+			</div>
+		</div>
+	</main>
+
+	<script src="/n3/editor/lib/service.js" type="module"></script>
+</body>
+
+</html>

@@ -36,6 +36,9 @@ config = {
 		},
 		pqn: {
 			folder: "/Users/wvw/git/n3/n3-editor-js/lib/pqn"
+		},
+		fun3: {
+			folder: "/Users/wvw/git/n3/n3-editor-js/lib/fun3"
 		}
 	},
 

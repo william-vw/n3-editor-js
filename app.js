@@ -14,6 +14,7 @@ const triplify = require('./lib/triplify/triplify.js')
 const spin3 = require('./lib/spin3/spin3.js')
 const xes_conv = require('./lib/xes/convert.js')
 const pqn = require('./lib/pqn/pqn.js')
+const fun3 = require('./lib/fun3/fun3.js')
 
 let { generateLink, resolveLink } = require(config.link.db.uses_sqlite3 ? './lib/gen_link_sqlite3.js' : './lib/gen_link_mysql.js');
 // const { checkBuiltinInput } = require('./lib/check_builtin_input.js')
@@ -142,6 +143,10 @@ app.post('/n3', (request, response) => {
 
 		case 'pqn':
 			doPqn(data, ctu);
+			break
+
+		case 'genpy':
+			doGenPy(data, ctu)
 			break
 	
 		// case 'check_builtin_input':
@@ -340,6 +345,27 @@ async function doPqn(options, ctu) {
 
 	} finally {
 		await tmp.del(query)
+	}
+}
+
+async function doGenPy(options, ctu) {
+	let query, rules, data
+	try {
+		query = await tmp.save(options.query)
+		rules = await tmp.save(options.rules)
+		data = await tmp.save(options.data)
+
+		const output = await fun3.exec(options, query, rules, data);
+		ctu({ success: output })
+		
+	} catch (e) {
+		console.log(e)
+		ctu({ error: e + "" })
+	
+	} finally {
+		await tmp.del(query)
+		await tmp.del(rules)
+		await tmp.del(data)
 	}
 }
 

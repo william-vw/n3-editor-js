@@ -38,6 +38,9 @@ config = {
 		},
 		pqn: {
 			folder: "/opt/app/n3-editor/lib/pqn"
+		},
+		fun3: {
+			folder: "/opt/app/n3-editor/lib/fun3"
 		}
 	},
 
