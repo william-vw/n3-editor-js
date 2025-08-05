@@ -1,1 +1,0 @@
-% java -jar antlr-4.13.1-complete.jar -Dlanguage=Python3 n3.g4 -o ./parser -visitor
