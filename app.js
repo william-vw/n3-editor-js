@@ -168,13 +168,13 @@ app.post('/n3', (request, response) => {
 
 const PORT = process.env.PORT || config.http.port;
 if (config.http.use_https) {
-	//const http = require('http');
-	//const http_server = http.createServer(app);
-	//http_server.listen(PORT);
+	/*const http = require('http');
+	const http_server = http.createServer(app);
+	http_server.listen(PORT);*/
 
 	const https = require('https');
-	const private_key = fs.readFileSync("/etc/letsencrypt/archive/notation3.org/privkey1.pem", 'utf8');
-	const certificate = fs.readFileSync("/etc/letsencrypt/archive/notation3.org/fullchain1.pem", 'utf8');
+	const private_key = fs.readFileSync("/etc/letsencrypt/live/notation3.org/privkey.pem", 'utf8');
+	const certificate = fs.readFileSync("/etc/letsencrypt/live/notation3.org/fullchain.pem", 'utf8');
 	const credentials = { key: private_key, cert: certificate };
 	const https_server = https.createServer(credentials, app);
 	https_server.listen(PORT);

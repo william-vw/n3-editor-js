@@ -58,29 +58,29 @@
 		}
 		const defaultFormat = formats.n3
 
-		var query = null, data = null, rules = null
+		var queryField = null, dataField = null, rulesField = null
 		function getQuery() {
-			return query.getDoc().getValue()
+			return queryField.getDoc().getValue()
 		}
 
 		function setQuery(query) {
-			query.getDoc().setValue(query);
+			queryField.getDoc().setValue(query);
 		}
 		
 		function getRules() {
-			return rules.getDoc().getValue()
+			return rulesField.getDoc().getValue()
 		}
 
 		function setRules(rules) {
-			rules.getDoc().setValue(rules);
+			rulesField.getDoc().setValue(rules);
 		}
 		
 		function getData() {
-			return data.getDoc().getValue()
+			return dataField.getDoc().getValue()
 		}
 
 		function setData(data) {
-			data.getDoc().setValue(data);
+			dataField.getDoc().setValue(data);
 		}
 
 		function exec() {
@@ -139,7 +139,7 @@
 			all = "query=" + query + "\n\nrules=" + rules + "\n\ndata=" + data
 			service.generate_link(all, "n3",
 				(id) => {
-					let turl = base + "/s/" + id;
+					let turl = base + "?link=" + id;
 					console.log("turl:", turl)
 
 					$("#linkPlaceholder").html(": <a href='" + turl + "'>Link</a>")
@@ -172,9 +172,6 @@
 					setRules(rules)
 					setData(data)
 
-					console.log("format:", defaultFormat.type)
-					validate(defaultFormat)
-
 				}, showError)
 		}
 
@@ -183,9 +180,9 @@
 		// https://stackoverflow.com/questions/19979741/codemirror-delete-a-editor-instance
 
 		function validate(format) {
-			query = startValidating(format, "#query")
-			rules = startValidating(format, "#rules")
-			data = startValidating(format, "#data")
+			queryField = startValidating(format, "#query")
+			rulesField = startValidating(format, "#rules")
+			dataField = startValidating(format, "#data")
 		}
 
 		const onSuggestion = {
@@ -216,13 +213,12 @@
 			// shortcut.add("Alt+F", exec)
 
 			$("#link").click(generate_link)
+			
+			const urlParams = new URLSearchParams(window.location.search);
+			const link = urlParams.get('link');
 
-			let url = window.location.toString()
-			let path = window.location.pathname
-
-			let match = /.*\/s\/([^/]*)/.exec(path)
-			if (match) {
-				let id = match[1]
+			if (link) {
+				let id = link
 				console.log("resolving id:", id);
 
 				resolve_link(id);
