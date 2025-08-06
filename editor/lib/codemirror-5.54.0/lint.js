@@ -104,7 +104,6 @@ n3.lint = function(onSuggestion) {
 	}
 }
 
-
 // doesn't seem to work for me
 // tried adding it to codemirror addon folder (copying setup from other
 // lints); re-installing codemirror (npm install), ..

@@ -26,12 +26,11 @@ This system requires [NodeJS](https://nodejs.org/en/).
 
 Clone the repository and run `npm install` in the main folder to install the NodeJs packages.
 
-Update the `./config.js` file with your hostname, port number and locations of Eye and Cwm executables.
-If you simply want to try the editor locally, you can keep the localhost http config (as long as the port number isn't in use). 
+Add a config file under `./config/main.js` similar to the ones already there (.e.g, `./config/local.js`)
 
 Update the `./editor/index.html` file with the URL of the NodeJs server. If you're following the regular usage, this should simply be the editor's URL minus the `editor` part (e.g., `http://127.0.0.1:3002/n3` for `http://127.0.0.1:3002/n3/editor`.
 
-If you want to use the server's "link-shortening" service (to more easily share code samples; see usage), you'll need to have a mysql v.8+ database running, with the credentials filled into `config.js`. Also, you'll have to import the `db.sql` file. If you don't want to use this service, you can simply comment out the call to `n3.link` (see `editor/index.html`) and use the full url (`link` variable) for the generated link.
+If you want to use the server's "link-shortening" service (to more easily share code samples; see usage), you'll need to have a mysql v.8+ database running, with the credentials filled into `./config/[file].js`. Also, you'll have to import the `db.sql` file. If you don't want to use this service, you can simply comment out the call to `n3.link` (see `editor/index.html`) and use the full url (`link` variable) for the generated link.
 
 Run `./node app.js` to start the server. 
 The server will be accessible at `http://<hostname>:<port>/n3`, and the editor at `http://<hostname>:<port>/n3/editor`. 

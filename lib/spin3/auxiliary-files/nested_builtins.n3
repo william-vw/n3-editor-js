@@ -1,0 +1,73 @@
+@prefix list: <http://www.w3.org/2000/10/swap/list#> . 
+@prefix log: <http://www.w3.org/2000/10/swap/log#> . 
+@prefix string: <http://www.w3.org/2000/10/swap/string#> . 
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix target: <http://target.org/target#> .
+@prefix source: <http://source.org/source#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix s2n: <http://example.org/> .
+@prefix aux: <http://example.org/aux#>.
+
+[]  a spin:Construct ;
+spin:where 
+    [ a spin:Bind ;
+        spin:expression [ a spin:uri ;
+            spin:arg1 [ a spin:concat ;
+                spin:arg1 "http://example.org/" ;
+                spin:arg2 [ spin:varName "moduleID" ] ;
+                spin:arg3 "_" ;
+                spin:arg4 [ a spin:replace ;
+                            spin:arg1 [ spin:varName "moduleName" ] ;
+                            spin:arg2 " " ;
+                            spin:arg3 "" ]]] ;
+        spin:variable [ spin:varName "subject"]
+    ] .
+
+# create variable if needed
+{?s aux:gets ?s1}<={?s log:uri ?suri.
+ ?suri string:startsWith "http://spinrdf.org/".
+ ?s log:skolem ?s1.
+#true log:callWithCut true
+}.
+{?s aux:gets ?s1}<={?s  spin:varName ?name . ?name log:skolem ?s1. 
+#true log:callWithCut true
+}.
+{?s aux:gets ?var}<={?s s2n:n3Var ?var}.
+{?s aux:gets ?s}<={?s log:rawType log:Literal}.
+#{?s aux:gets ?s}<={}.
+
+spin:replace a s2n:SparqlBuiltin ;
+    s2n:equivalent string:replace .
+
+spin:concat a s2n:SparqlBuiltin ;
+    s2n:equivalent string:concatenation .
+ 
+{
+    ?sparqlBuiltin a ?builtinType .
+    ?builtinType a s2n:SparqlBuiltin .
+    ?builtinType s2n:equivalent ?n3Builtin .
+
+    ?sparqlBuiltin log:skolem ?id .
+
+    (?pred
+    {
+        ?sparqlBuiltin ?pred ?arg .
+        ?pred!log:uri string:startsWith "http://spinrdf.org/spin#arg" .
+    }
+    ?preds) log:collectAllIn _:t .
+
+    (?n3Arg
+    {
+        ?sparqlBuiltin ?preds!list:member ?arg .
+        ?arg aux:gets ?n3Arg .
+    }
+    ?n3Args) log:collectAllIn _:t .
+     
+    ?preds list:length ?l .
+    ?n3Args list:length ?l .
+
+} => {
+    ?sparqlBuiltin 
+        s2n:n3 { ?n3Args ?n3Builtin ?id } ;
+        s2n:n3Var ?id .
+} .

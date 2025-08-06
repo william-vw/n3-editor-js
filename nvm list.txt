@@ -1,0 +1,3975 @@
+/root/.nvm/versions/node/v18.18.0/:
+CHANGELOG.md  LICENSE  README.md  bin  include	lib  share
+
+/root/.nvm/versions/node/v18.18.0/bin:
+corepack  node	npm  npx
+
+/root/.nvm/versions/node/v18.18.0/include:
+node
+
+/root/.nvm/versions/node/v18.18.0/include/node:
+common.gypi	       v8-embedder-heap.h	  v8-primitive-object.h
+config.gypi	       v8-embedder-state-scope.h  v8-primitive.h
+cppgc		       v8-exception.h		  v8-profiler.h
+js_native_api.h        v8-extension.h		  v8-promise.h
+js_native_api_types.h  v8-external.h		  v8-proxy.h
+libplatform	       v8-forward.h		  v8-regexp.h
+node.h		       v8-function-callback.h	  v8-script.h
+node_api.h	       v8-function.h		  v8-snapshot.h
+node_api_types.h       v8-initialization.h	  v8-statistics.h
+node_buffer.h	       v8-internal.h		  v8-template.h
+node_object_wrap.h     v8-isolate.h		  v8-traced-handle.h
+node_version.h	       v8-json.h		  v8-typed-array.h
+openssl		       v8-local-handle.h	  v8-unwinder.h
+uv		       v8-locker.h		  v8-value-serializer.h
+uv.h		       v8-maybe.h		  v8-value.h
+v8-array-buffer.h      v8-memory-span.h		  v8-version.h
+v8-callbacks.h	       v8-message.h		  v8-wasm.h
+v8-container.h	       v8-microtask-queue.h	  v8-weak-callback-info.h
+v8-context.h	       v8-microtask.h		  v8.h
+v8-data.h	       v8-object.h		  v8config.h
+v8-date.h	       v8-persistent-handle.h	  zconf.h
+v8-debug.h	       v8-platform.h		  zlib.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/cppgc:
+common.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/libplatform:
+libplatform-export.h  libplatform.h  v8-tracing.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl:
+aes.h			decodererr.h	   pemerr.h
+archs			des.h		   pkcs12.h
+asn1.h			dh.h		   pkcs12_asm.h
+asn1_asm.h		dherr.h		   pkcs12_no-asm.h
+asn1_mac.h		dsa.h		   pkcs12err.h
+asn1_no-asm.h		dsaerr.h	   pkcs7.h
+asn1err.h		dso_conf.h	   pkcs7_asm.h
+asn1t.h			dso_conf_asm.h	   pkcs7_no-asm.h
+asn1t_asm.h		dso_conf_no-asm.h  pkcs7err.h
+asn1t_no-asm.h		dtls1.h		   prov_ssl.h
+async.h			e_os2.h		   proverr.h
+asyncerr.h		ebcdic.h	   provider.h
+bio.h			ec.h		   quic.h
+bio_asm.h		ecdh.h		   rand.h
+bio_no-asm.h		ecdsa.h		   randerr.h
+bioerr.h		ecerr.h		   rc2.h
+blowfish.h		encoder.h	   rc4.h
+bn.h			encodererr.h	   rc5.h
+bn_conf.h		engine.h	   ripemd.h
+bn_conf_asm.h		engineerr.h	   rsa.h
+bn_conf_no-asm.h	err.h		   rsaerr.h
+bnerr.h			err_asm.h	   safestack.h
+buffer.h		err_no-asm.h	   safestack_asm.h
+buffererr.h		ess.h		   safestack_no-asm.h
+camellia.h		ess_asm.h	   seed.h
+cast.h			ess_no-asm.h	   self_test.h
+cmac.h			esserr.h	   sha.h
+cmp.h			evp.h		   srp.h
+cmp_asm.h		evperr.h	   srp_asm.h
+cmp_no-asm.h		fips_names.h	   srp_no-asm.h
+cmp_util.h		fipskey.h	   srtp.h
+cmperr.h		fipskey_asm.h	   ssl.h
+cms.h			fipskey_no-asm.h   ssl2.h
+cms_asm.h		hmac.h		   ssl3.h
+cms_no-asm.h		http.h		   ssl_asm.h
+cmserr.h		httperr.h	   ssl_no-asm.h
+comp.h			idea.h		   sslerr.h
+comperr.h		kdf.h		   sslerr_legacy.h
+conf.h			kdferr.h	   stack.h
+conf_api.h		lhash.h		   store.h
+conf_asm.h		lhash_asm.h	   storeerr.h
+conf_no-asm.h		lhash_no-asm.h	   symhacks.h
+conferr.h		macros.h	   tls1.h
+configuration.h		md2.h		   trace.h
+configuration_asm.h	md4.h		   ts.h
+configuration_no-asm.h	md5.h		   tserr.h
+conftypes.h		mdc2.h		   txt_db.h
+core.h			modes.h		   types.h
+core_dispatch.h		obj_mac.h	   ui.h
+core_names.h		objects.h	   ui_asm.h
+core_object.h		objectserr.h	   ui_no-asm.h
+crmf.h			ocsp.h		   uierr.h
+crmf_asm.h		ocsp_asm.h	   whrlpool.h
+crmf_no-asm.h		ocsp_no-asm.h	   x509.h
+crmferr.h		ocsperr.h	   x509_asm.h
+crypto.h		opensslconf.h	   x509_no-asm.h
+crypto_asm.h		opensslconf_asm.h  x509_vfy.h
+crypto_no-asm.h		opensslv.h	   x509_vfy_asm.h
+cryptoerr.h		opensslv_asm.h	   x509_vfy_no-asm.h
+cryptoerr_legacy.h	opensslv_no-asm.h  x509err.h
+ct.h			ossl_typ.h	   x509v3.h
+ct_asm.h		param_build.h	   x509v3_asm.h
+ct_no-asm.h		params.h	   x509v3_no-asm.h
+cterr.h			pem.h		   x509v3err.h
+decoder.h		pem2.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs:
+BSD-x86       darwin-i386-cc	  linux-ppc64le        linux64-s390x
+BSD-x86_64    darwin64-arm64-cc   linux-x86_64	       solaris-x86-gcc
+VC-WIN32      darwin64-x86_64-cc  linux32-s390x        solaris64-x86_64-gcc
+VC-WIN64-ARM  linux-aarch64	  linux64-loongarch64
+VC-WIN64A     linux-armv4	  linux64-mips64
+aix64-gcc-as  linux-elf		  linux64-riscv64
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/BSD-x86_64/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN32/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64-ARM:
+no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64-ARM/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64-ARM/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64-ARM/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64-ARM/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64-ARM/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64-ARM/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64-ARM/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64-ARM/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64-ARM/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/VC-WIN64A/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/aix64-gcc-as/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin-i386-cc/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-arm64-cc/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/darwin64-x86_64-cc/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-aarch64/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-armv4/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-elf/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-ppc64le/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux-x86_64/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux32-s390x/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-loongarch64:
+no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-loongarch64/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-loongarch64/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-loongarch64/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-loongarch64/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-loongarch64/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-loongarch64/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-loongarch64/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-loongarch64/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-loongarch64/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-mips64/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-riscv64:
+no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-riscv64/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-riscv64/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-riscv64/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-riscv64/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-riscv64/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-riscv64/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-riscv64/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-riscv64/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-riscv64/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/linux64-s390x/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris-x86-gcc/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc:
+asm  asm_avx2  no-asm
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm_avx2:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm_avx2/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm_avx2/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm_avx2/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm_avx2/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm_avx2/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm_avx2/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm_avx2/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/asm_avx2/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/no-asm:
+crypto	include  providers
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/no-asm/crypto:
+buildinf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/no-asm/include:
+crypto	openssl  progs.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/no-asm/include/crypto:
+bn_conf.h  dso_conf.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/no-asm/include/openssl:
+asn1.h	 conf.h		  err.h      opensslv.h   ssl.h
+asn1t.h  configuration.h  ess.h      pkcs12.h	  ui.h
+bio.h	 crmf.h		  fipskey.h  pkcs7.h	  x509.h
+cmp.h	 crypto.h	  lhash.h    safestack.h  x509_vfy.h
+cms.h	 ct.h		  ocsp.h     srp.h	  x509v3.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/no-asm/providers:
+common
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/no-asm/providers/common:
+include
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/no-asm/providers/common/include:
+prov
+
+/root/.nvm/versions/node/v18.18.0/include/node/openssl/archs/solaris64-x86_64-gcc/no-asm/providers/common/include/prov:
+der_digests.h  der_dsa.h  der_ec.h  der_ecx.h  der_rsa.h  der_sm2.h  der_wrap.h
+
+/root/.nvm/versions/node/v18.18.0/include/node/uv:
+aix.h  darwin.h  linux.h  posix.h  threadpool.h  unix.h     win.h
+bsd.h  errno.h	 os390.h  sunos.h  tree.h	 version.h
+
+/root/.nvm/versions/node/v18.18.0/lib:
+node_modules
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules:
+corepack  npm
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/corepack:
+CHANGELOG.md  LICENSE.md  README.md  dist  package.json  shims
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/corepack/dist:
+corepack.js  lib  npm.js  npx.js  pnpm.js  pnpx.js  yarn.js  yarnpkg.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/corepack/dist/lib:
+corepack.cjs
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/corepack/shims:
+corepack      npm      npx.cmd	 pnpm.ps1  yarn      yarnpkg.cmd
+corepack.cmd  npm.cmd  npx.ps1	 pnpx	   yarn.cmd  yarnpkg.ps1
+corepack.ps1  npm.ps1  pnpm	 pnpx.cmd  yarn.ps1
+nodewin       npx      pnpm.cmd  pnpx.ps1  yarnpkg
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/corepack/shims/nodewin:
+corepack      npm      npx	pnpm	  pnpx	    yarn      yarnpkg
+corepack.cmd  npm.cmd  npx.cmd	pnpm.cmd  pnpx.cmd  yarn.cmd  yarnpkg.cmd
+corepack.ps1  npm.ps1  npx.ps1	pnpm.ps1  pnpx.ps1  yarn.ps1  yarnpkg.ps1
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm:
+LICENSE  README.md  bin  docs  index.js  lib  man  node_modules  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/bin:
+npm  npm-cli.js  npm.cmd  npm.ps1  npx	npx-cli.js  npx.cmd  npx.ps1
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/docs:
+README.md  content  output
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/docs/content:
+commands  configuring-npm  using-npm
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/docs/content/commands:
+npm-access.md	   npm-explore.md	   npm-pack.md	      npm-start.md
+npm-adduser.md	   npm-find-dupes.md	   npm-ping.md	      npm-stop.md
+npm-audit.md	   npm-fund.md		   npm-pkg.md	      npm-team.md
+npm-bugs.md	   npm-help-search.md	   npm-prefix.md      npm-test.md
+npm-cache.md	   npm-help.md		   npm-profile.md     npm-token.md
+npm-ci.md	   npm-hook.md		   npm-prune.md       npm-uninstall.md
+npm-completion.md  npm-init.md		   npm-publish.md     npm-unpublish.md
+npm-config.md	   npm-install-ci-test.md  npm-query.md       npm-unstar.md
+npm-dedupe.md	   npm-install-test.md	   npm-rebuild.md     npm-update.md
+npm-deprecate.md   npm-install.md	   npm-repo.md	      npm-version.md
+npm-diff.md	   npm-link.md		   npm-restart.md     npm-view.md
+npm-dist-tag.md    npm-login.md		   npm-root.md	      npm-whoami.md
+npm-docs.md	   npm-logout.md	   npm-run-script.md  npm.md
+npm-doctor.md	   npm-ls.md		   npm-search.md      npx.md
+npm-edit.md	   npm-org.md		   npm-shrinkwrap.md
+npm-exec.md	   npm-outdated.md	   npm-star.md
+npm-explain.md	   npm-owner.md		   npm-stars.md
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/docs/content/configuring-npm:
+folders.md  npm-shrinkwrap-json.md  package-json.md
+install.md  npmrc.md		    package-lock-json.md
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/docs/content/using-npm:
+config.md		 logging.md	  registry.md  scripts.md
+dependency-selectors.md  orgs.md	  removal.md   workspaces.md
+developers.md		 package-spec.md  scope.md
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/docs/output:
+commands  configuring-npm  using-npm
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/docs/output/commands:
+npm-access.html       npm-hook.html		npm-restart.html
+npm-adduser.html      npm-init.html		npm-root.html
+npm-audit.html	      npm-install-ci-test.html	npm-run-script.html
+npm-bugs.html	      npm-install-test.html	npm-search.html
+npm-cache.html	      npm-install.html		npm-shrinkwrap.html
+npm-ci.html	      npm-link.html		npm-star.html
+npm-completion.html   npm-login.html		npm-stars.html
+npm-config.html       npm-logout.html		npm-start.html
+npm-dedupe.html       npm-ls.html		npm-stop.html
+npm-deprecate.html    npm-org.html		npm-team.html
+npm-diff.html	      npm-outdated.html		npm-test.html
+npm-dist-tag.html     npm-owner.html		npm-token.html
+npm-docs.html	      npm-pack.html		npm-uninstall.html
+npm-doctor.html       npm-ping.html		npm-unpublish.html
+npm-edit.html	      npm-pkg.html		npm-unstar.html
+npm-exec.html	      npm-prefix.html		npm-update.html
+npm-explain.html      npm-profile.html		npm-version.html
+npm-explore.html      npm-prune.html		npm-view.html
+npm-find-dupes.html   npm-publish.html		npm-whoami.html
+npm-fund.html	      npm-query.html		npm.html
+npm-help-search.html  npm-rebuild.html		npx.html
+npm-help.html	      npm-repo.html
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/docs/output/configuring-npm:
+folders.html  npm-shrinkwrap-json.html	package-json.html
+install.html  npmrc.html		package-lock-json.html
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/docs/output/using-npm:
+config.html		   logging.html       registry.html  scripts.html
+dependency-selectors.html  orgs.html	      removal.html   workspaces.html
+developers.html		   package-spec.html  scope.html
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/lib:
+arborist-cmd.js  cli.js    lifecycle-cmd.js    utils
+base-command.js  commands  npm.js	       workspaces
+cli-entry.js	 es6	   package-url-cmd.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/lib/commands:
+access.js      edit.js		   link.js	publish.js     team.js
+adduser.js     exec.js		   ll.js	query.js       test.js
+audit.js       explain.js	   login.js	rebuild.js     token.js
+bugs.js        explore.js	   logout.js	repo.js        uninstall.js
+cache.js       find-dupes.js	   ls.js	restart.js     unpublish.js
+ci.js	       fund.js		   org.js	root.js        unstar.js
+completion.js  get.js		   outdated.js	run-script.js  update.js
+config.js      help-search.js	   owner.js	search.js      version.js
+dedupe.js      help.js		   pack.js	set.js	       view.js
+deprecate.js   hook.js		   ping.js	shrinkwrap.js  whoami.js
+diff.js        init.js		   pkg.js	star.js
+dist-tag.js    install-ci-test.js  prefix.js	stars.js
+docs.js        install-test.js	   profile.js	start.js
+doctor.js      install.js	   prune.js	stop.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/lib/es6:
+validate-engines.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/lib/utils:
+ansi-trim.js	  explain-eresolve.js	   pulse-till-done.js
+audit-error.js	  format-bytes.js	   queryable.js
+auth.js		  format-search-stream.js  read-user-info.js
+cmd-list.js	  get-identity.js	   reify-finish.js
+completion	  is-windows.js		   reify-output.js
+completion.fish   log-file.js		   replace-info.js
+completion.sh	  log-shim.js		   tar.js
+did-you-mean.js   npm-usage.js		   timers.js
+display.js	  open-url-prompt.js	   update-notifier.js
+error-message.js  open-url.js		   validate-lockfile.js
+exit-handler.js   otplease.js		   web-auth.js
+explain-dep.js	  ping.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/lib/utils/completion:
+installed-deep.js  installed-shallow.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/lib/workspaces:
+get-workspaces.js  update-workspaces.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/man:
+man1  man5  man7
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/man/man1:
+npm-access.1	  npm-explore.1		 npm-pack.1	   npm-start.1
+npm-adduser.1	  npm-find-dupes.1	 npm-ping.1	   npm-stop.1
+npm-audit.1	  npm-fund.1		 npm-pkg.1	   npm-team.1
+npm-bugs.1	  npm-help-search.1	 npm-prefix.1	   npm-test.1
+npm-cache.1	  npm-help.1		 npm-profile.1	   npm-token.1
+npm-ci.1	  npm-hook.1		 npm-prune.1	   npm-uninstall.1
+npm-completion.1  npm-init.1		 npm-publish.1	   npm-unpublish.1
+npm-config.1	  npm-install-ci-test.1  npm-query.1	   npm-unstar.1
+npm-dedupe.1	  npm-install-test.1	 npm-rebuild.1	   npm-update.1
+npm-deprecate.1   npm-install.1		 npm-repo.1	   npm-version.1
+npm-diff.1	  npm-link.1		 npm-restart.1	   npm-view.1
+npm-dist-tag.1	  npm-login.1		 npm-root.1	   npm-whoami.1
+npm-docs.1	  npm-logout.1		 npm-run-script.1  npm.1
+npm-doctor.1	  npm-ls.1		 npm-search.1	   npx.1
+npm-edit.1	  npm-org.1		 npm-shrinkwrap.1
+npm-exec.1	  npm-outdated.1	 npm-star.1
+npm-explain.1	  npm-owner.1		 npm-stars.1
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/man/man5:
+folders.5  npm-global.5  npm-shrinkwrap-json.5	package-json.5
+install.5  npm-json.5	 npmrc.5		package-lock-json.5
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/man/man7:
+config.7		logging.7	registry.7  scripts.7
+dependency-selectors.7	orgs.7		removal.7   workspaces.7
+developers.7		package-spec.7	scope.7
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules:
+@colors			       libnpmpack
+@isaacs			       libnpmpublish
+@npmcli			       libnpmsearch
+@pkgjs			       libnpmteam
+@sigstore		       libnpmversion
+@tootallnate		       lru-cache
+@tufjs			       make-fetch-happen
+abbrev			       minimatch
+abort-controller	       minipass
+agent-base		       minipass-collect
+agentkeepalive		       minipass-fetch
+aggregate-error		       minipass-flush
+ansi-regex		       minipass-json-stream
+ansi-styles		       minipass-pipeline
+aproba			       minipass-sized
+archy			       minizlib
+are-we-there-yet	       mkdirp
+balanced-match		       ms
+base64-js		       mute-stream
+bin-links		       negotiator
+binary-extensions	       node-gyp
+brace-expansion		       nopt
+buffer			       normalize-package-data
+builtins		       npm-audit-report
+cacache			       npm-bundled
+chalk			       npm-install-checks
+chownr			       npm-normalize-package-bin
+ci-info			       npm-package-arg
+cidr-regex		       npm-packlist
+clean-stack		       npm-pick-manifest
+cli-columns		       npm-profile
+cli-table3		       npm-registry-fetch
+clone			       npm-user-validate
+cmd-shim		       npmlog
+color-convert		       once
+color-name		       p-map
+color-support		       pacote
+columnify		       parse-conflict-json
+common-ancestor-path	       path-is-absolute
+concat-map		       path-key
+console-control-strings        path-scurry
+cross-spawn		       postcss-selector-parser
+cssesc			       proc-log
+debug			       process
+defaults		       promise-all-reject-late
+delegates		       promise-call-limit
+depd			       promise-inflight
+diff			       promise-retry
+eastasianwidth		       promzard
+emoji-regex		       qrcode-terminal
+encoding		       read
+env-paths		       read-cmd-shim
+err-code		       read-package-json
+event-target-shim	       read-package-json-fast
+events			       readable-stream
+exponential-backoff	       retry
+fastest-levenshtein	       rimraf
+foreground-child	       safe-buffer
+fs-minipass		       safer-buffer
+fs.realpath		       semver
+function-bind		       set-blocking
+gauge			       shebang-command
+glob			       shebang-regex
+graceful-fs		       signal-exit
+has			       sigstore
+has-unicode		       smart-buffer
+hosted-git-info		       socks
+http-cache-semantics	       socks-proxy-agent
+http-proxy-agent	       spdx-correct
+https-proxy-agent	       spdx-exceptions
+humanize-ms		       spdx-expression-parse
+iconv-lite		       spdx-license-ids
+ieee754			       ssri
+ignore-walk		       string-width
+imurmurhash		       string-width-cjs
+indent-string		       string_decoder
+inflight		       strip-ansi
+inherits		       strip-ansi-cjs
+ini			       supports-color
+init-package-json	       tar
+ip			       text-table
+ip-regex		       tiny-relative-date
+is-cidr			       treeverse
+is-core-module		       tuf-js
+is-fullwidth-code-point        unique-filename
+is-lambda		       unique-slug
+isexe			       util-deprecate
+jackspeak		       validate-npm-package-license
+json-parse-even-better-errors  validate-npm-package-name
+json-stringify-nice	       walk-up-path
+jsonparse		       wcwidth
+just-diff		       which
+just-diff-apply		       wide-align
+libnpmaccess		       wrap-ansi
+libnpmdiff		       wrap-ansi-cjs
+libnpmexec		       wrappy
+libnpmfund		       write-file-atomic
+libnpmhook		       yallist
+libnpmorg
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@colors:
+colors
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@colors/colors:
+LICENSE  examples  lib	package.json  safe.js  themes
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@colors/colors/examples:
+normal-usage.js  safe-string.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@colors/colors/lib:
+colors.js  custom  extendStringPrototype.js  index.js  maps  styles.js	system
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@colors/colors/lib/custom:
+trap.js  zalgo.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@colors/colors/lib/maps:
+america.js  rainbow.js	random.js  zebra.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@colors/colors/lib/system:
+has-flag.js  supports-colors.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@colors/colors/themes:
+generic-logging.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@isaacs:
+cliui  string-locale-compare
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@isaacs/cliui:
+LICENSE.txt  build  index.mjs  node_modules  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@isaacs/cliui/build:
+index.cjs  index.d.cts	lib
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@isaacs/cliui/build/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@isaacs/cliui/node_modules:
+ansi-regex  emoji-regex  string-width  strip-ansi
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@isaacs/cliui/node_modules/ansi-regex:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@isaacs/cliui/node_modules/emoji-regex:
+LICENSE-MIT.txt  RGI_Emoji.js  es2015  index.js  package.json  text.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@isaacs/cliui/node_modules/emoji-regex/es2015:
+RGI_Emoji.js  index.js	text.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@isaacs/cliui/node_modules/string-width:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@isaacs/cliui/node_modules/strip-ansi:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@isaacs/string-locale-compare:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli:
+arborist	  git			      name-from-folder	query
+config		  installed-package-contents  node-gyp		run-script
+disparity-colors  map-workspaces	      package-json
+fs		  metavuln-calculator	      promise-spawn
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/arborist:
+LICENSE.md  README.md  bin  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/arborist/bin:
+actual.js  funding.js  index.js  license.js  reify.js	    virtual.js
+audit.js   ideal.js    lib	 prune.js    shrinkwrap.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/arborist/bin/lib:
+logging.js  options.js	print-tree.js  timers.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib:
+add-rm-pkg-deps.js	   gather-dep-set.js	   realpath.js
+arborist		   get-workspace-nodes.js  relpath.js
+audit-report.js		   index.js		   reset-dep-flags.js
+calc-dep-flags.js	   inventory.js		   retire-path.js
+can-place-dep.js	   link.js		   shrinkwrap.js
+case-insensitive-map.js    node.js		   signal-handling.js
+consistent-resolve.js	   optional-set.js	   signals.js
+debug.js		   override-resolves.js    spec-from-lock.js
+deepest-nesting-target.js  override-set.js	   tracker.js
+dep-valid.js		   peer-entry-sets.js	   tree-check.js
+diff.js			   place-dep.js		   version-from-tgz.js
+edge.js			   printable.js		   vuln.js
+from-path.js		   query-selector-all.js   yarn-lock.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist:
+audit.js	     index.js		  load-virtual.js  reify.js
+build-ideal-tree.js  isolated-reifier.js  pruner.js	   set-workspaces.js
+deduper.js	     load-actual.js	  rebuild.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/config:
+LICENSE  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/config/lib:
+definitions	errors.js  nerf-dart.js    set-envs.js	 type-description.js
+env-replace.js	index.js   parse-field.js  type-defs.js  umask.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/config/lib/definitions:
+definition.js  definitions.js  index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/disparity-colors:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/disparity-colors/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/fs:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/fs/lib:
+common	cp  index.js  move-file.js  readdir-scoped.js  with-temp-dir.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/fs/lib/common:
+get-options.js	node.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/fs/lib/cp:
+LICENSE  errors.js  index.js  polyfill.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/git:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/git/lib:
+clone.js   find.js   is-clean.js  lines-to-revs.js  opts.js  spawn.js  which.js
+errors.js  index.js  is.js	  make-error.js     revs.js  utils.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/installed-package-contents:
+LICENSE  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/installed-package-contents/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/map-workspaces:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/map-workspaces/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/metavuln-calculator:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/metavuln-calculator/lib:
+advisory.js  get-dep-spec.js  hash.js  index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/name-from-folder:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/name-from-folder/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/node-gyp:
+lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/node-gyp/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/package-json:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/package-json/lib:
+index.js      update-dependencies.js  update-workspaces.js
+normalize.js  update-scripts.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/promise-spawn:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/lib:
+escape.js  index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/query:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/query/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/run-script:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/run-script/lib:
+is-server-package.js  node-gyp-bin	 run-script.js	    validate-options.js
+is-windows.js	      package-envs.js	 set-path.js
+make-spawn-args.js    run-script-pkg.js  signal-manager.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:
+node-gyp  node-gyp.cmd
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@pkgjs:
+parseargs
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@pkgjs/parseargs:
+LICENSE  examples  index.js  internal  package.json  utils.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@pkgjs/parseargs/examples:
+is-default-value.js   negate.js		      ordered-options.mjs
+limit-long-syntax.js  no-repeated-options.js  simple-hard-coded.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@pkgjs/parseargs/internal:
+errors.js  primordials.js  util.js  validators.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@sigstore:
+protobuf-specs	tuf
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@sigstore/protobuf-specs:
+LICENSE  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@sigstore/protobuf-specs/dist:
+__generated__  index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@sigstore/protobuf-specs/dist/__generated__:
+envelope.js	    sigstore_common.js	   sigstore_verification.js
+google		    sigstore_rekor.js
+sigstore_bundle.js  sigstore_trustroot.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@sigstore/protobuf-specs/dist/__generated__/google:
+api  protobuf
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@sigstore/protobuf-specs/dist/__generated__/google/api:
+field_behavior.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@sigstore/protobuf-specs/dist/__generated__/google/protobuf:
+descriptor.js  timestamp.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@sigstore/tuf:
+LICENSE  dist  package.json  store
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@sigstore/tuf/dist:
+appdata.js  client.js  error.js  index.js  target.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@sigstore/tuf/store:
+public-good-instance-root.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@tootallnate:
+once
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@tootallnate/once:
+LICENSE  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@tootallnate/once/dist:
+index.js  overloaded-parameters.js  types.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@tufjs:
+canonical-json	models
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@tufjs/canonical-json:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@tufjs/canonical-json/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@tufjs/models:
+LICENSE  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@tufjs/models/dist:
+base.js		file.js   metadata.js  signature.js  timestamp.js
+delegations.js	index.js  role.js      snapshot.js   utils
+error.js	key.js	  root.js      targets.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/@tufjs/models/dist/utils:
+guard.js  index.js  key.js  oid.js  types.js  verify.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/abbrev:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/abbrev/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/abort-controller:
+LICENSE  browser.js  browser.mjs  dist	package.json  polyfill.js  polyfill.mjs
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/abort-controller/dist:
+abort-controller.js  abort-controller.mjs  abort-controller.umd.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/agent-base:
+dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/agent-base/dist:
+src
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/agent-base/dist/src:
+index.js  promisify.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/agentkeepalive:
+LICENSE  browser.js  index.js  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/agentkeepalive/lib:
+agent.js  constants.js	https_agent.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/aggregate-error:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ansi-regex:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ansi-styles:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/aproba:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/archy:
+LICENSE  examples  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/archy/examples:
+beep.js  multi_line.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/are-we-there-yet:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/are-we-there-yet/lib:
+index.js  tracker-base.js  tracker-group.js  tracker-stream.js	tracker.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/balanced-match:
+LICENSE.md  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/base64-js:
+LICENSE  base64js.min.js  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/bin-links:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/bin-links/lib:
+bin-target.js  get-node-modules.js  is-windows.js   link-mans.js
+check-bin.js   get-paths.js	    link-bin.js     man-target.js
+check-bins.js  get-prefix.js	    link-bins.js    shim-bin.js
+fix-bin.js     index.js		    link-gently.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/binary-extensions:
+binary-extensions.json	index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/brace-expansion:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/buffer:
+AUTHORS.md  LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/builtins:
+License  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cacache:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cacache/lib:
+content		get.js	  memoization.js  rm.js  verify.js
+entry-index.js	index.js  put.js	  util
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cacache/lib/content:
+path.js  read.js  rm.js  write.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cacache/lib/util:
+glob.js  hash-to-segments.js  tmp.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/chalk:
+license  package.json  source
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/chalk/source:
+index.js  utilities.js	vendor
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/chalk/source/vendor:
+ansi-styles  supports-color
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/chalk/source/vendor/ansi-styles:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/chalk/source/vendor/supports-color:
+browser.js  index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/chownr:
+LICENSE  chownr.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ci-info:
+LICENSE  index.js  package.json  vendors.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cidr-regex:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/clean-stack:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cli-columns:
+color.js  index.js  license  package.json  test.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cli-table3:
+LICENSE  index.js  package.json  src
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cli-table3/src:
+cell.js  debug.js  layout-manager.js  table.js	utils.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/clone:
+LICENSE  clone.iml  clone.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cmd-shim:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cmd-shim/lib:
+index.js  to-batch-syntax.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/color-convert:
+LICENSE  conversions.js  index.js  package.json  route.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/color-name:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/color-support:
+LICENSE  README.md  bin.js  browser.js	index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/columnify:
+LICENSE  Makefile  columnify.js  index.js  package.json  utils.js  width.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/common-ancestor-path:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/concat-map:
+LICENSE  example  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/concat-map/example:
+map.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/console-control-strings:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cross-spawn:
+LICENSE  index.js  lib	node_modules  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cross-spawn/lib:
+enoent.js  parse.js  util
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cross-spawn/lib/util:
+escape.js  readShebang.js  resolveCommand.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cross-spawn/node_modules:
+which
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cross-spawn/node_modules/which:
+LICENSE  README.md  bin  package.json  which.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cross-spawn/node_modules/which/bin:
+node-which
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cssesc:
+LICENSE-MIT.txt  README.md  bin  cssesc.js  man  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cssesc/bin:
+cssesc
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/cssesc/man:
+cssesc.1
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/debug:
+LICENSE  node_modules  package.json  src
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/debug/node_modules:
+ms
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/debug/node_modules/ms:
+index.js  license.md  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/debug/src:
+browser.js  common.js  index.js  node.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/defaults:
+LICENSE  index.js  package.json  test.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/delegates:
+History.md  License  Makefile  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/depd:
+History.md  LICENSE  index.js  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/depd/lib:
+browser
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/depd/lib/browser:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/diff:
+CONTRIBUTING.md  LICENSE  dist	lib  package.json  release-notes.md  runtime.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/diff/dist:
+diff.js  diff.min.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/diff/lib:
+convert  diff  index.es6.js  index.js  index.mjs  patch  util
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/diff/lib/convert:
+dmp.js	xml.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/diff/lib/diff:
+array.js  base.js  character.js  css.js  json.js  line.js  sentence.js	word.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/diff/lib/patch:
+apply.js  create.js  merge.js  parse.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/diff/lib/util:
+array.js  distance-iterator.js	params.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/eastasianwidth:
+eastasianwidth.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/emoji-regex:
+LICENSE-MIT.txt  es2015  index.js  package.json  text.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/emoji-regex/es2015:
+index.js  text.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/encoding:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/encoding/lib:
+encoding.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/env-paths:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/err-code:
+bower.json  index.js  index.umd.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/event-target-shim:
+LICENSE  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/event-target-shim/dist:
+event-target-shim.js  event-target-shim.mjs  event-target-shim.umd.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/events:
+History.md  LICENSE  events.js	package.json  security.md  tests
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/events/tests:
+add-listeners.js	   method-names.js
+check-listener-leaks.js    modify-in-emit.js
+common.js		   num-args.js
+errors.js		   once.js
+events-list.js		   prepend.js
+events-once.js		   remove-all-listeners.js
+index.js		   remove-listeners.js
+legacy-compat.js	   set-max-listeners-side-effects.js
+listener-count.js	   special-event-names.js
+listeners-side-effects.js  subclass.js
+listeners.js		   symbols.js
+max-listeners.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/exponential-backoff:
+LICENSE  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/exponential-backoff/dist:
+backoff.js  delay  jitter  options.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/exponential-backoff/dist/delay:
+always	delay.base.js  delay.factory.js  delay.interface.js  skip-first
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/exponential-backoff/dist/delay/always:
+always.delay.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/exponential-backoff/dist/delay/skip-first:
+skip-first.delay.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/exponential-backoff/dist/jitter:
+full  jitter.factory.js  no
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/exponential-backoff/dist/jitter/full:
+full.jitter.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/exponential-backoff/dist/jitter/no:
+no.jitter.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/fastest-levenshtein:
+LICENSE.md  bench.js  esm  mod.js  package.json  test.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/fastest-levenshtein/esm:
+mod.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/foreground-child:
+LICENSE  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/foreground-child/dist:
+cjs  mjs
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/foreground-child/dist/cjs:
+all-signals.js	index.js  package.json	watchdog.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/foreground-child/dist/mjs:
+all-signals.js	index.js  package.json	watchdog.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/fs-minipass:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/fs-minipass/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/fs.realpath:
+LICENSE  index.js  old.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/function-bind:
+LICENSE  implementation.js  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/gauge:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/gauge/lib:
+base-theme.js  plumbing.js	   set-immediate.js  theme-set.js
+error.js       process.js	   set-interval.js   themes.js
+has-color.js   progress-bar.js	   spin.js	     wide-truncate.js
+index.js       render-template.js  template-item.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/glob:
+LICENSE  README.md  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/glob/dist:
+cjs  mjs
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/glob/dist/cjs:
+package.json  src
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/glob/dist/cjs/src:
+bin.d.ts       has-magic.d.ts	   index.d.ts	     processor.d.ts
+bin.d.ts.map   has-magic.d.ts.map  index.d.ts.map    processor.d.ts.map
+bin.js	       has-magic.js	   index.js	     processor.js
+bin.js.map     has-magic.js.map    index.js.map      processor.js.map
+glob.d.ts      ignore.d.ts	   pattern.d.ts      walker.d.ts
+glob.d.ts.map  ignore.d.ts.map	   pattern.d.ts.map  walker.d.ts.map
+glob.js        ignore.js	   pattern.js	     walker.js
+glob.js.map    ignore.js.map	   pattern.js.map    walker.js.map
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/glob/dist/mjs:
+glob.d.ts	    ignore.d.ts      package.json	 processor.js.map
+glob.d.ts.map	    ignore.d.ts.map  pattern.d.ts	 walker.d.ts
+glob.js		    ignore.js	     pattern.d.ts.map	 walker.d.ts.map
+glob.js.map	    ignore.js.map    pattern.js		 walker.js
+has-magic.d.ts	    index.d.ts	     pattern.js.map	 walker.js.map
+has-magic.d.ts.map  index.d.ts.map   processor.d.ts
+has-magic.js	    index.js	     processor.d.ts.map
+has-magic.js.map    index.js.map     processor.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/graceful-fs:
+LICENSE   graceful-fs.js     package.json
+clone.js  legacy-streams.js  polyfills.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/has:
+LICENSE-MIT  package.json  src
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/has/src:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/has-unicode:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/hosted-git-info:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/hosted-git-info/lib:
+from-url.js  hosts.js  index.js  parse-url.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/http-cache-semantics:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/http-proxy-agent:
+dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/http-proxy-agent/dist:
+agent.js  index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/https-proxy-agent:
+dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/https-proxy-agent/dist:
+agent.js  index.js  parse-proxy-response.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/humanize-ms:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/iconv-lite:
+LICENSE  encodings  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/iconv-lite/encodings:
+dbcs-codec.js  internal.js	       sbcs-data.js  utf32.js
+dbcs-data.js   sbcs-codec.js	       tables	     utf7.js
+index.js       sbcs-data-generated.js  utf16.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/iconv-lite/encodings/tables:
+big5-added.json  cp949.json  eucjp.json		  gbk-added.json
+cp936.json	 cp950.json  gb18030-ranges.json  shiftjis.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/iconv-lite/lib:
+bom-handling.js  index.js  streams.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ieee754:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ignore-walk:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ignore-walk/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/imurmurhash:
+imurmurhash.js	imurmurhash.min.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/indent-string:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/inflight:
+LICENSE  inflight.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/inherits:
+LICENSE  inherits.js  inherits_browser.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ini:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ini/lib:
+ini.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/init-package-json:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/init-package-json/lib:
+default-input.js  init-package-json.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ip:
+lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ip/lib:
+ip.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ip-regex:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/is-cidr:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/is-core-module:
+LICENSE  core.json  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/is-fullwidth-code-point:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/is-lambda:
+LICENSE  index.js  package.json  test.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/isexe:
+LICENSE  index.js  mode.js  package.json  windows.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/jackspeak:
+LICENSE.md  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/jackspeak/dist:
+cjs  mjs
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/jackspeak/dist/cjs:
+index.js  package.json	parse-args.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/jackspeak/dist/mjs:
+index.js  package.json	parse-args.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/json-parse-even-better-errors:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/json-parse-even-better-errors/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/json-stringify-nice:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/jsonparse:
+LICENSE  bench.js  examples  jsonparse.js  package.json  samplejson
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/jsonparse/examples:
+twitterfeed.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/jsonparse/samplejson:
+basic.json  basic2.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/just-diff:
+LICENSE  index.cjs  index.mjs  package.json  rollup.config.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/just-diff-apply:
+LICENSE  index.cjs  index.mjs  package.json  rollup.config.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmaccess:
+LICENSE  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmaccess/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmdiff:
+LICENSE  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmdiff/lib:
+format-diff.js	index.js  should-print-patch.js  tarball.js  untar.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmexec:
+LICENSE  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmexec/lib:
+file-exists.js		  index.js	 no-tty.js
+get-bin-from-manifest.js  is-windows.js  run-script.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmfund:
+LICENSE  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmfund/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmhook:
+LICENSE.md  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmhook/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmorg:
+LICENSE  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmorg/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmpack:
+LICENSE  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmpack/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmpublish:
+LICENSE  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmpublish/lib:
+index.js  provenance.js  publish.js  unpublish.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmsearch:
+LICENSE  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmsearch/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmteam:
+LICENSE  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmteam/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmversion:
+LICENSE  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/libnpmversion/lib:
+commit.js	  index.js	retrieve-tag.js  version.js
+enforce-clean.js  read-json.js	tag.js		 write-json.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/lru-cache:
+LICENSE  index.js  index.mjs  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/make-fetch-happen:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/make-fetch-happen/lib:
+agent.js  cache  dns.js  fetch.js  index.js  options.js  pipeline.js  remote.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/make-fetch-happen/lib/cache:
+entry.js  errors.js  index.js  key.js  policy.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minimatch:
+LICENSE  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minimatch/dist:
+cjs  mjs
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minimatch/dist/cjs:
+assert-valid-pattern.js  brace-expressions.js  index.js      unescape.js
+ast.js			 escape.js	       package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minimatch/dist/mjs:
+assert-valid-pattern.js  brace-expressions.js  index.js      unescape.js
+ast.js			 escape.js	       package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass:
+LICENSE  index.js  index.mjs  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-collect:
+LICENSE  index.js  node_modules  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-collect/node_modules:
+minipass
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-collect/node_modules/minipass:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-fetch:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-fetch/lib:
+abort-error.js	body.js		headers.js  request.js
+blob.js		fetch-error.js	index.js    response.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-flush:
+LICENSE  index.js  node_modules  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-flush/node_modules:
+minipass
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-flush/node_modules/minipass:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-json-stream:
+LICENSE  index.js  node_modules  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-json-stream/node_modules:
+minipass
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-json-stream/node_modules/minipass:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-pipeline:
+LICENSE  index.js  node_modules  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-pipeline/node_modules:
+minipass
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-pipeline/node_modules/minipass:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-sized:
+LICENSE  index.js  node_modules  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-sized/node_modules:
+minipass
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minipass-sized/node_modules/minipass:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minizlib:
+LICENSE  constants.js  index.js  node_modules  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minizlib/node_modules:
+minipass
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/minizlib/node_modules/minipass:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/mkdirp:
+LICENSE  bin  index.js	lib  package.json  readme.markdown
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/mkdirp/bin:
+cmd.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/mkdirp/lib:
+find-made.js	  mkdirp-native.js  path-arg.js
+mkdirp-manual.js  opts-arg.js	    use-native.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ms:
+index.js  license.md  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/mute-stream:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/mute-stream/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/negotiator:
+HISTORY.md  LICENSE  index.js  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/negotiator/lib:
+charset.js  encoding.js  language.js  mediaType.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp:
+CHANGELOG.md	 SECURITY.md  gyp			   node_modules
+CONTRIBUTING.md  addon.gypi   lib			   package.json
+LICENSE		 bin	      macOS_Catalina.md		   src
+README.md	 docs	      macOS_Catalina_acid_test.sh  update-gyp.py
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/bin:
+node-gyp.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/docs:
+Error-pre-versions-of-node-cannot-be-installed.md
+Force-npm-to-use-global-node-gyp.md
+Home.md
+Linking-to-OpenSSL.md
+README.md
+Updating-npm-bundled-node-gyp.md
+binding.gyp-files-in-the-wild.md
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/gyp:
+AUTHORS		    CONTRIBUTING.md  data     gyp_main.py     test_gyp.py
+CHANGELOG.md	    LICENSE	     gyp      pylib	      tools
+CODE_OF_CONDUCT.md  README.md	     gyp.bat  pyproject.toml
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/gyp/data:
+win
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/gyp/data/win:
+large-pdb-shim.cc
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/gyp/pylib:
+gyp
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/gyp/pylib/gyp:
+MSVSNew.py	      MSVSVersion.py	generator	   win_tool.py
+MSVSProject.py	      __init__.py	input.py	   xcode_emulation.py
+MSVSSettings.py       common.py		input_test.py	   xcode_ninja.py
+MSVSSettings_test.py  common_test.py	mac_tool.py	   xcodeproj_file.py
+MSVSToolFile.py       easy_xml.py	msvs_emulation.py  xml_fix.py
+MSVSUserFile.py       easy_xml_test.py	ninja_syntax.py
+MSVSUtil.py	      flock_tool.py	simple_copy.py
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/gyp/pylib/gyp/generator:
+__init__.py  compile_commands_json.py  gypsh.py      ninja.py
+analyzer.py  dump_dependency_json.py   make.py	     ninja_test.py
+android.py   eclipse.py		       msvs.py	     xcode.py
+cmake.py     gypd.py		       msvs_test.py  xcode_test.py
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/gyp/tools:
+README	emacs	     pretty_gyp.py  pretty_vcproj.py
+Xcode	graphviz.py  pretty_sln.py
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/gyp/tools/Xcode:
+README	Specifications
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/gyp/tools/Xcode/Specifications:
+gyp.pbfilespec	gyp.xclangspec
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/gyp/tools/emacs:
+README	gyp-tests.el  gyp.el  run-unit-tests.sh  testdata
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/gyp/tools/emacs/testdata:
+media.gyp  media.gyp.fontified
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/lib:
+Find-VisualStudio.cs  create-config-gypi.js   install.js	  rebuild.js
+build.js	      find-node-directory.js  list.js		  remove.js
+clean.js	      find-python.js	      node-gyp.js	  util.js
+configure.js	      find-visualstudio.js    process-release.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules:
+abbrev		  brace-expansion  glob       nopt    readable-stream  which
+are-we-there-yet  gauge		   minimatch  npmlog  signal-exit
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/abbrev:
+LICENSE  abbrev.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/are-we-there-yet:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/are-we-there-yet/lib:
+index.js  tracker-base.js  tracker-group.js  tracker-stream.js	tracker.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/brace-expansion:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/gauge:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/gauge/lib:
+base-theme.js  plumbing.js	   set-immediate.js  theme-set.js
+error.js       process.js	   set-interval.js   themes.js
+has-color.js   progress-bar.js	   spin.js	     wide-truncate.js
+index.js       render-template.js  template-item.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/glob:
+LICENSE  common.js  glob.js  package.json  sync.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/minimatch:
+LICENSE  minimatch.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/nopt:
+LICENSE  README.md  bin  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/nopt/bin:
+nopt.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/nopt/lib:
+nopt.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/npmlog:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/npmlog/lib:
+log.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/readable-stream:
+CONTRIBUTING.md  errors-browser.js	 lib		      readable.js
+GOVERNANCE.md	 errors.js		 package.json
+LICENSE		 experimentalWarning.js  readable-browser.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/readable-stream/lib:
+_stream_duplex.js	_stream_readable.js   _stream_writable.js
+_stream_passthrough.js	_stream_transform.js  internal
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/readable-stream/lib/internal:
+streams
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/readable-stream/lib/internal/streams:
+async_iterator.js  end-of-stream.js  pipeline.js	stream.js
+buffer_list.js	   from-browser.js   state.js
+destroy.js	   from.js	     stream-browser.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/signal-exit:
+LICENSE.txt  index.js  package.json  signals.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/which:
+LICENSE  README.md  bin  package.json  which.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/node_modules/which/bin:
+node-which
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/node-gyp/src:
+win_delay_load_hook.cc
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/nopt:
+LICENSE  README.md  bin  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/nopt/bin:
+nopt.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/nopt/lib:
+debug.js  nopt-lib.js  nopt.js	type-defs.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/normalize-package-data:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/normalize-package-data/lib:
+extract_description.js	make_warning.js  safe_format.js  warning_messages.json
+fixer.js		normalize.js	 typos.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-audit-report:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-audit-report/lib:
+colors.js  exit-code.js  index.js  reporters
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-audit-report/lib/reporters:
+detail.js  install.js  json.js	quiet.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-bundled:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-bundled/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-install-checks:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-install-checks/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-normalize-package-bin:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-normalize-package-bin/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-package-arg:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-package-arg/lib:
+npa.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-packlist:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-packlist/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-pick-manifest:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-pick-manifest/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-profile:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-profile/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-registry-fetch:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-registry-fetch/lib:
+auth.js  check-response.js  clean-url.js  default-opts.js  errors.js  index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-user-validate:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npm-user-validate/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npmlog:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/npmlog/lib:
+log.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/once:
+LICENSE  once.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/p-map:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/pacote:
+LICENSE  README.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/pacote/lib:
+bin.js	fetcher.js  git.js    registry.js  util
+dir.js	file.js     index.js  remote.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/pacote/lib/util:
+add-git-sha.js	is-package-bin.js  tar-create-options.js
+cache-dir.js	npm.js		   trailing-slashes.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/parse-conflict-json:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/parse-conflict-json/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/path-is-absolute:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/path-key:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/path-scurry:
+LICENSE.md  dist  node_modules	package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/path-scurry/dist:
+cjs  mjs
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/path-scurry/dist/cjs:
+index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/path-scurry/dist/mjs:
+index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/path-scurry/node_modules:
+lru-cache
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/path-scurry/node_modules/lru-cache:
+LICENSE  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/path-scurry/node_modules/lru-cache/dist:
+cjs  mjs
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/path-scurry/node_modules/lru-cache/dist/cjs:
+index.js  index.min.js	package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/path-scurry/node_modules/lru-cache/dist/mjs:
+index.js  index.min.js	package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/postcss-selector-parser:
+API.md	LICENSE-MIT  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/postcss-selector-parser/dist:
+index.js   processor.js  sortAscending.js  tokenize.js
+parser.js  selectors	 tokenTypes.js	   util
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/postcss-selector-parser/dist/selectors:
+attribute.js   constructors.js	index.js      pseudo.js    tag.js
+className.js   container.js	namespace.js  root.js	   types.js
+combinator.js  guards.js	nesting.js    selector.js  universal.js
+comment.js     id.js		node.js       string.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/postcss-selector-parser/dist/util:
+ensureObject.js  getProp.js  index.js  stripComments.js  unesc.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/proc-log:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/proc-log/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/process:
+LICENSE  browser.js  index.js  package.json  test.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/promise-all-reject-late:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/promise-call-limit:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/promise-inflight:
+LICENSE  inflight.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/promise-retry:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/promzard:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/promzard/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/qrcode-terminal:
+LICENSE  README.md  bin  example  lib  package.json  vendor
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/qrcode-terminal/bin:
+qrcode-terminal.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/qrcode-terminal/example:
+basic.js  basic.png  callback.js  small-qrcode.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/qrcode-terminal/lib:
+main.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/qrcode-terminal/vendor:
+QRCode
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/qrcode-terminal/vendor/QRCode:
+QR8bitByte.js	QRErrorCorrectLevel.js	QRMath.js  QRPolynomial.js  QRUtil.js
+QRBitBuffer.js	QRMaskPattern.js	QRMode.js  QRRSBlock.js     index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/read:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/read/lib:
+read.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/read-cmd-shim:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/read-cmd-shim/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/read-package-json:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/read-package-json/lib:
+read-json.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/read-package-json-fast:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/read-package-json-fast/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/readable-stream:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/readable-stream/lib:
+_stream_duplex.js	_stream_transform.js  ours
+_stream_passthrough.js	_stream_writable.js   stream
+_stream_readable.js	internal	      stream.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/readable-stream/lib/internal:
+streams  validators.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/readable-stream/lib/internal/streams:
+add-abort-signal.js  duplexify.js	operators.js	transform.js
+buffer_list.js	     end-of-stream.js	passthrough.js	utils.js
+compose.js	     from.js		pipeline.js	writable.js
+destroy.js	     lazy_transform.js	readable.js
+duplex.js	     legacy.js		state.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/readable-stream/lib/ours:
+browser.js  errors.js  index.js  primordials.js  util.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/readable-stream/lib/stream:
+promises.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/retry:
+License  Makefile  equation.gif  example  index.js  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/retry/example:
+dns.js	stop.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/retry/lib:
+retry.js  retry_operation.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/rimraf:
+LICENSE  README.md  bin.js  node_modules  package.json	rimraf.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/rimraf/node_modules:
+brace-expansion  glob  minimatch
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/rimraf/node_modules/brace-expansion:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/rimraf/node_modules/glob:
+LICENSE  common.js  glob.js  package.json  sync.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/rimraf/node_modules/minimatch:
+LICENSE  minimatch.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/safe-buffer:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/safer-buffer:
+LICENSE  Porting-Buffer.md  dangerous.js  package.json	safer.js  tests.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/semver:
+LICENSE    bin	    functions  internal      package.json  range.bnf
+README.md  classes  index.js   node_modules  preload.js    ranges
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/semver/bin:
+semver.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/semver/classes:
+comparator.js  index.js  range.js  semver.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/semver/functions:
+clean.js	  compare.js  inc.js	neq.js	       rsort.js
+cmp.js		  diff.js     lt.js	parse.js       satisfies.js
+coerce.js	  eq.js       lte.js	patch.js       sort.js
+compare-build.js  gt.js       major.js	prerelease.js  valid.js
+compare-loose.js  gte.js      minor.js	rcompare.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/semver/internal:
+constants.js  debug.js	identifiers.js	parse-options.js  re.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/semver/node_modules:
+lru-cache
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/semver/node_modules/lru-cache:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/semver/ranges:
+gtr.js	       max-satisfying.js  outside.js   to-comparators.js
+intersects.js  min-satisfying.js  simplify.js  valid.js
+ltr.js	       min-version.js	  subset.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/set-blocking:
+LICENSE.txt  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/shebang-command:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/shebang-regex:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/signal-exit:
+LICENSE.txt  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/signal-exit/dist:
+cjs  mjs
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/signal-exit/dist/cjs:
+browser.js  index.js  package.json  signals.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/signal-exit/dist/mjs:
+browser.js  index.js  package.json  signals.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore:
+LICENSE  README.md  bin  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/bin:
+sigstore.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist:
+ca	     error.d.ts  index.d.ts  sigstore-utils.d.ts  tlog	 verify.d.ts
+cli	     error.js	 index.js    sigstore-utils.js	  tsa	 verify.js
+config.d.ts  external	 sign.d.ts   sigstore.d.ts	  types  x509
+config.js    identity	 sign.js     sigstore.js	  util
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist/ca:
+format.d.ts  format.js	index.d.ts  index.js  verify
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist/ca/verify:
+chain.d.ts  index.d.ts	sct.d.ts  signer.d.ts
+chain.js    index.js	sct.js	  signer.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist/cli:
+index.d.ts  index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist/external:
+error.d.ts  fulcio.d.ts  index.d.ts  rekor.d.ts  tsa.d.ts
+error.js    fulcio.js	 index.js    rekor.js	 tsa.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist/identity:
+ci.d.ts  index.d.ts  issuer.d.ts  oauth.d.ts  provider.d.ts
+ci.js	 index.js    issuer.js	  oauth.js    provider.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist/tlog:
+format.d.ts  format.js	index.d.ts  index.js  verify
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist/tlog/verify:
+body.d.ts  index.d.ts  merkle.d.ts  set.d.ts
+body.js    index.js    merkle.js    set.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist/tsa:
+index.d.ts  index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist/types:
+fetch.d.ts  signature.d.ts  sigstore	  utility.js
+fetch.js    signature.js    utility.d.ts
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist/types/sigstore:
+index.d.ts  serialized.d.ts  validate.d.ts
+index.js    serialized.js    validate.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist/util:
+asn1	     dsse.js	    index.js   oidc.js	     promise.js   ua.js
+crypto.d.ts  encoding.d.ts  json.d.ts  pem.d.ts      stream.d.ts
+crypto.js    encoding.js    json.js    pem.js	     stream.js
+dsse.d.ts    index.d.ts     oidc.d.ts  promise.d.ts  ua.d.ts
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist/util/asn1:
+dump.d.ts  error.d.ts  index.d.ts  length.d.ts	obj.d.ts  parse.d.ts  tag.d.ts
+dump.js    error.js    index.js    length.js	obj.js	  parse.js    tag.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/sigstore/dist/x509:
+cert.d.ts  cert.js  ext.d.ts  ext.js  sct.d.ts	sct.js	verify.d.ts  verify.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/smart-buffer:
+LICENSE  build	docs  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/smart-buffer/build:
+smartbuffer.js	utils.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/smart-buffer/docs:
+ROADMAP.md
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/socks:
+LICENSE  build	docs  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/socks/build:
+client	common	index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/socks/build/client:
+socksclient.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/socks/build/common:
+constants.js  helpers.js  receivebuffer.js  util.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/socks/docs:
+examples  index.md  migratingFromV1.md
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/socks/docs/examples:
+index.md  javascript  typescript
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/socks/docs/examples/javascript:
+associateExample.md  bindExample.md  connectExample.md
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/socks/docs/examples/typescript:
+associateExample.md  bindExample.md  connectExample.md
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/socks-proxy-agent:
+dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/socks-proxy-agent/dist:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/spdx-correct:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/spdx-exceptions:
+index.json  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/spdx-expression-parse:
+AUTHORS  LICENSE  index.js  package.json  parse.js  scan.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/spdx-license-ids:
+deprecated.json  index.json  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ssri:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/ssri/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/string-width:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/string-width-cjs:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/string_decoder:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/string_decoder/lib:
+string_decoder.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/strip-ansi:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/strip-ansi-cjs:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/supports-color:
+browser.js  index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/tar:
+LICENSE  index.js  lib	node_modules  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/tar/lib:
+create.js	   normalize-unicode.js       strip-trailing-slashes.js
+extract.js	   normalize-windows-path.js  types.js
+get-write-flag.js  pack.js		      unpack.js
+header.js	   parse.js		      update.js
+high-level-opt.js  path-reservations.js       warn-mixin.js
+large-numbers.js   pax.js		      winchars.js
+list.js		   read-entry.js	      write-entry.js
+mkdir.js	   replace.js
+mode-fix.js	   strip-absolute-path.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/tar/node_modules:
+fs-minipass
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/tar/node_modules/fs-minipass:
+LICENSE  index.js  node_modules  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/tar/node_modules/fs-minipass/node_modules:
+minipass
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/tar/node_modules/fs-minipass/node_modules/minipass:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/text-table:
+LICENSE  example  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/text-table/example:
+align.js  center.js  dotalign.js  doubledot.js	table.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/tiny-relative-date:
+LICENSE.md  lib  package.json  src  translations
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/tiny-relative-date/lib:
+factory.js  index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/tiny-relative-date/src:
+factory.js  index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/tiny-relative-date/translations:
+da.js  de.js  en-short.js  en.js  es.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/treeverse:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/treeverse/lib:
+breadth.js  depth-descent.js  depth.js	index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/tuf-js:
+LICENSE  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/tuf-js/dist:
+config.js  error.js  fetcher.js  index.js  store.js  updater.js  utils
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/tuf-js/dist/utils:
+tmpfile.js  url.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/unique-filename:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/unique-filename/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/unique-slug:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/unique-slug/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/util-deprecate:
+History.md  LICENSE  browser.js  node.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/validate-npm-package-license:
+LICENSE  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/validate-npm-package-name:
+LICENSE  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/validate-npm-package-name/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/walk-up-path:
+LICENSE  dist  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/walk-up-path/dist:
+cjs  mjs
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/walk-up-path/dist/cjs:
+index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/walk-up-path/dist/mjs:
+index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/wcwidth:
+LICENSE  combining.js  docs  index.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/wcwidth/docs:
+index.md
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/which:
+LICENSE  README.md  bin  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/which/bin:
+which.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/which/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/wide-align:
+LICENSE  align.js  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/wrap-ansi:
+index.js  license  node_modules  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/wrap-ansi/node_modules:
+ansi-regex  ansi-styles  emoji-regex  string-width  strip-ansi
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/wrap-ansi/node_modules/ansi-regex:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/wrap-ansi/node_modules/ansi-styles:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/wrap-ansi/node_modules/emoji-regex:
+LICENSE-MIT.txt  RGI_Emoji.js  es2015  index.js  package.json  text.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/wrap-ansi/node_modules/emoji-regex/es2015:
+RGI_Emoji.js  index.js	text.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/wrap-ansi/node_modules/string-width:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/wrap-ansi/node_modules/strip-ansi:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/wrap-ansi-cjs:
+index.js  license  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/wrappy:
+LICENSE  package.json  wrappy.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/write-file-atomic:
+LICENSE.md  lib  package.json
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/write-file-atomic/lib:
+index.js
+
+/root/.nvm/versions/node/v18.18.0/lib/node_modules/npm/node_modules/yallist:
+LICENSE  iterator.js  package.json  yallist.js
+
+/root/.nvm/versions/node/v18.18.0/share:
+doc  man  systemtap
+
+/root/.nvm/versions/node/v18.18.0/share/doc:
+node
+
+/root/.nvm/versions/node/v18.18.0/share/doc/node:
+gdbinit  lldb_commands.py
+
+/root/.nvm/versions/node/v18.18.0/share/man:
+man1
+
+/root/.nvm/versions/node/v18.18.0/share/man/man1:
+node.1
+
+/root/.nvm/versions/node/v18.18.0/share/systemtap:
+tapset
+
+/root/.nvm/versions/node/v18.18.0/share/systemtap/tapset:
+node.stp

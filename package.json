@@ -7,17 +7,41 @@
     "lib": "lib"
   },
   "dependencies": {
+    "@egjs/hammerjs": "^2.0.0",
     "@mysql/xdevapi": "8.0.22",
+    "@syntaxica/lib": "^0.0.13",
     "antlr4": "^4.10.1",
+    "base64-js": "^1.5.1",
     "body-parser": "^1.19.0",
+    "component-emitter": "^1.3.0",
     "cors": "^2.8.5",
     "dateformat": "^4.3.1",
     "express": "^4.17.1",
+    "eyereasoner": "^6.8.6",
+    "formidable": "^3.5.1",
+    "fs.promises": "^0.1.2",
+    "fuse.js": "^6.6.2",
+    "html-react-parser": "^3.0.16",
+    "keycharm": "^0.4.0",
+    "mariadb": "^3.4.5",
     "mysql": "^2.18.1",
-    "randomstring": "^1.1.5"
+    "pako": "^2.1.0",
+    "prismjs": "^1.29.0",
+    "promised-sqlite3": "^2.1.0",
+    "randomstring": "^1.1.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-simple-code-editor": "^0.13.1",
+    "sqlite3": "^5.1.6",
+    "text-encoding-utf-8": "^1.0.2",
+    "timsort": "^0.3.0",
+    "uuid": "^9.0.0",
+    "vis-data": "^7.0.0",
+    "vis-network": "9.1.6",
+    "vis-util": "^5.0.1"
   },
   "devDependencies": {
-    "webpack": "^5.73.0",
+    "webpack": "^5.75.0",
     "webpack-cli": "^4.10.0"
   },
   "scripts": {
@@ -32,5 +56,8 @@
   "bugs": {
     "url": "https://github.com/william-vw/serve-reason/issues"
   },
-  "homepage": "https://github.com/william-vw/serve-reason#readme"
+  "homepage": "https://github.com/william-vw/serve-reason#readme",
+  "engines": {
+    "node": "18.x"
+  }
 }

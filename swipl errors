@@ -1,0 +1,51 @@
+- when using swipl from ubuntu package manager
+(SWI-Prolog version 8.4.2 for x86_64-linux)
+
+when running: swipl -x (/app)/opt/eye/lib/eye.pvm 
+
+error:
+ERROR: /app/opt/eye/lib/eye.pvm:2:2: Syntax error: Operator expected
+ERROR: /app/opt/eye/lib/eye.pvm:16:43: Syntax error: Illegal start of term
+ERROR: /app/opt/eye/lib/eye.pvm:269:143: Syntax error: Operator expected
+ERROR: /app/opt/eye/lib/eye.pvm:275:3: Syntax error: Operator expected
+ERROR: /app/opt/eye/lib/eye.pvm:478:6: Syntax error: illegal_character
+ERROR: /app/opt/eye/lib/eye.pvm:788:21: Syntax error: Operator expected
+ERROR: /app/opt/eye/lib/eye.pvm:831:3: Syntax error: Operator expected
+ERROR: /app/opt/eye/lib/eye.pvm:1010:25: Syntax error: End of file in /* ... */ comment
+Warning: /app/opt/eye/lib/eye.pvm:1681:
+Warning:    '/app/opt/eye/lib/eye.pvm':1681:173: Illegal multibyte Sequence
+
+when running: /opt/eye/lib/eye.pvm -- --version
+
+error:
+/app/opt/eye/lib/eye.pvm: 3: exec: /Applications/SWI-Prolog.app/Contents/MacOS/swipl: not found
+
+
+
+- when installing the debian package using "dpkg -x" (manually update apt buildpack):
+(https://ppa.launchpadcontent.net/swi-prolog/stable/ubuntu/pool/main/s/swi-prolog/swi-prolog-nox_9.0.4-0-bionicppa2_i386.deb)
+
+and running: (/app/.apt)/usr/bin/swipl --version
+
+getting the rather confusing error: /bin/bash: line 1: /app/.apt/usr/bin/swipl: No such file or directory
+(confusing, since the swipl binary is most definitely in that folder)
+
+
+
+- when adding Launchpad PPA to sourcelist:
+GPG error: https://ppa.launchpadcontent.net/swi-prolog/stable/ubuntu jammy InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY EF8406856DBFCA18
+remote: E: The repository 'https://ppa.launchpadcontent.net/swi-prolog/stable/ubuntu jammy InRelease' is not signed.
+
+
+
+- when registering public key:
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EF8406856DBFCA18
+
+remote: Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+remote: Executing: /tmp/apt-key-gpghome.DEt7dNWaJC/gpg.1.sh --keyserver keyserver.ubuntu.com --recv-keys EF8406856DBFCA18
+remote: gpg: key EF8406856DBFCA18: public key "Launchpad PPA for SWI Prolog" imported
+remote: gpg: Total number processed: 1
+remote: gpg:               imported: 1
+remote: gpg: no writable keyring found: Not found
+remote: gpg: error reading '[stdin]': General error
+remote: gpg: import from '[stdin]' failed: General error

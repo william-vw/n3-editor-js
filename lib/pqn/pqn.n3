@@ -1,0 +1,697 @@
+# @alsoload log-bnodes-exp.n3
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix tr: <http://notation3.org/trace#> .
+@prefix pq: <http://notation3.org/pqn#> .
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+
+# NOTE in the associated queries, variable ?t can also be restricted to get results pertaining only to a particular trace
+# NOTE technically the anyActivityX rules can simply call anyActivityXAtLeastNTimes with atLeastN = 1, 
+# and the activityX rules can simply call activityXAtLeastNTimes with atLeastN = 1,
+# but, the former rules may be more efficient for large event logs
+
+# >> EVENT OCCURRENCE
+
+# pq:activityOccurs
+# cfr. A isContained (Schuster 2022)
+
+# for a (given) trace, check whether activity is present
+# (backward rule)
+{
+    ?t pq:activityOccurs ( ?a ?e )
+}
+<= 
+{
+    ?l tr:in ?t ; tr:from ?e .
+    ?e tr:activity ?a .
+} .
+
+# for all traces, get all their activities
+# (forward rule)
+
+# {
+#     [ tr:from [ tr:activity ?a ] ] tr:in ?t 
+# }
+# =>
+# {
+#     ?t pq:activityOccurs ?a
+# } .
+
+
+# > pq:activityOccursAtLeastNTimes
+# cfr. isContained >= N (Schuster 2022)
+
+{
+    ?t pq:activityOccursAtLeastNTimes ( ?a ?atLeastN ?actualN )
+}
+<= 
+{
+    ?t a tr:Trace .
+    (
+        ?e
+        {
+            ?t pq:activityOccurs ( ?a ?e )
+        }
+        ?coll
+    ) log:collectAllIn _:t .
+    
+    ?coll e:sort ?collu .
+    ?collu list:length ?actualN .
+    ?actualN math:notLessThan ?atLeastN .
+} .
+
+
+# pq:allActivitiesOccur
+# cfr. ALL keyword (without other constraints) (Schuster 2022))
+
+{
+    ?t pq:allActivitiesOccur ?activities
+}
+<=
+{
+    ?t a tr:Trace .
+    ( 
+        { ?a list:in ?activities } 
+        { 
+            ?t pq:activityOccurs ( ?a ?e ) 
+        } 
+
+    ) log:forAllIn _:t 
+} .
+
+
+# pq:anyActivitiesOccur
+# cfr. ANY keyword (without other constraints) (Schuster 2022))
+
+{
+    ?t pq:anyActivitiesOccur ?activities
+}
+<=
+{
+    ?activities list:member ?a .
+    ?t pq:activityOccurs ( ?a ?e ) .
+} .
+
+
+# pq:allActivitiesOccurAtLeastNTimes
+# cfr. ALL{ A, B } isContained >= N (Schuster 2022)
+
+{
+    ?t pq:allActivitiesOccurAtLeastNTimes ( ?activities ?atLeastN )
+}
+<=
+{
+    ?t a tr:Trace .
+    ( 
+        { ?a list:in ?activities } 
+        { ?t pq:activityOccursAtLeastNTimes ( ?a ?atLeastN ?x ) } 
+
+    ) log:forAllIn _:t 
+} .
+
+
+# pq:anyActivityOccursAtLeastNTimes
+# cfr. ANY{ A, B } isContained >= N (Schuster 2022)
+
+{
+    ?t pq:anyActivityOccursAtLeastNTimes ( ?activities ?atLeastN )
+}
+<=
+{
+    ?a list:in ?activities .
+    ?t pq:activityOccursAtLeastNTimes ( ?a ?atLeastN ?x ) .
+} .
+
+
+
+# >> START EVENT
+
+# pq:activityOccursAsStart
+# cfr. A isStart (Schuster 2022)
+
+{
+    ?t pq:activityOccursAsStart ( ?a ?e )
+}
+<=
+{
+    ?t a tr:Trace .
+    ?l1 tr:in ?t ; # link in trace t starts from event e
+        tr:from ?e .
+    ?e tr:activity ?a . # event e involves activity a
+    _:t log:notIncludes { ?l2 tr:in ?t ; tr:to ?e  } # no other link in trace t ends at event e
+} .
+
+
+# pq:activityOccursAsStartAtLeastNTimes
+# cfr. A isStart >= N (Schuster 2022)
+
+{
+    ?t pq:activityOccursAsStartAtLeastNTimes ( ?a ?atLeastN ?actualN )
+}
+<=
+{
+    ?t a tr:Trace .
+    (
+        ?e
+        {
+            ?t pq:activityOccursAsStart ( ?a ?e ) .
+        }
+        ?coll
+    ) log:collectAllIn _:t .
+    
+    ?coll e:sort ?collu .
+    ?collu list:length ?actualN .
+    ?actualN math:notLessThan ?atLeastN .
+} .
+
+
+# pq:anyActivityOccursAsStart
+# cfr. ANY{A,B} isStart (Schuster 2022)
+
+{
+    ?t pq:anyActivityOccursAsStart ?activities
+}
+<=
+{
+    ?a list:in ?activities .
+    ?t pq:activityOccursAsStart ( ?a ?x )
+} .
+
+
+# pq:allActivitiesOccurAsStart
+# cfr. ALL{A,B} isStart (Schuster 2022)
+
+{
+    ?t pq:allActivitiesOccurAsStart ?activities
+}
+<= 
+{
+    ?t a tr:Trace .
+    (
+        { ?a list:in ?activities }
+        { ?t pq:activityOccursAsStart ( ?a ?e ) }
+    ) log:forAllIn _:t 
+} .
+
+
+# pq:anyActivityOccursAsStartAtLeastNTimes
+# cfr. ANY{A,B} isStart >= N (Schuster 2022)
+
+{
+    ?t pq:anyActivityOccursAsStartAtLeastNTimes ( ?activities ?atLeastN )
+}
+<=
+{
+    ?a list:in ?activities .
+    ?t pq:activityOccursAsStartAtLeastNTimes ( ?a ?atLeastN ?x )
+} .
+
+
+# pq:allActivitiesOccurAsStartAtLeastNTimes
+# cfr. ALL{A,B} isStart >= N (Schuster 2022)
+
+{
+    ?t pq:allActivitiesOccurAsStartAtLeastNTimes ( ?activities ?atLeastN )
+}
+<= 
+{
+    ?t a tr:Trace .
+    (
+        { ?a list:in ?activities }
+        { ?t pq:activityOccursAsStartAtLeastNTimes ( ?a ?atLeastN ?x ) }
+    ) log:forAllIn _:t 
+} .
+
+
+
+# >> END EVENT
+
+# pq:activityOccursAsEnd
+# cfr. A isEnd (Schuster 2022)
+
+{
+    ?t pq:activityOccursAsEnd ( ?a ?e )
+}
+<=
+{
+    ?t a tr:Trace .
+    ?l  tr:in ?t ;
+        tr:from ?e ;
+        tr:to tr:nil . # no further events (ends) 
+    ?e tr:activity ?a . # event e involves activity a
+} .
+
+
+# pq:activityOccursAsEndAtLeastNTimes
+# cfr. A isEnd >= N (Schuster 2022)
+
+{
+    ?t pq:activityOccursAsEndAtLeastNTimes ( ?a ?atLeastN ?actualN )
+}
+<=
+{
+    ?t a tr:Trace .
+    (
+        ?e
+        {
+            ?t pq:activityOccursAsEnd ( ?a ?e ) .
+        }
+        ?coll
+    ) log:collectAllIn _:t .
+    
+    ?coll e:sort ?collu .
+    ?collu list:length ?actualN .
+    ?actualN math:notLessThan ?atLeastN .
+} .
+
+
+# pq:anyActivityOccursAsEnd
+# cfr. ANY{A,B} isEnd (Schuster 2022)
+
+{
+    ?t pq:anyActivityOccursAsEnd ?activities
+}
+<=
+{
+    ?a list:in ?activities .
+    ?t pq:activityOccursAsEnd ( ?a ?x )
+} .
+
+
+# pq:allActivitiesOccurAsEnd
+# cfr. ALL{A,B} isEnd (Schuster 2022)
+
+{
+    ?t pq:allActivitiesOccurAsEnd ?activities
+}
+<= 
+{
+    ?t a tr:Trace .
+    (
+        { ?a list:in ?activities }
+        { ?t pq:activityOccursAsEnd ( ?a ?e ) }
+    ) log:forAllIn _:t 
+} .
+
+
+# pq:anyActivityOccursAsEndAtLeastNTimes
+# cfr. ANY{A,B} isEnd >= N (Schuster 2022)
+
+{
+    ?t pq:anyActivityOccursAsEndAtLeastNTimes ( ?activities ?atLeastN )
+}
+<=
+{
+    ?a list:in ?activities .
+    ?t pq:activityOccursAsEndAtLeastNTimes ( ?a ?atLeastN ?x )
+} .
+
+
+# pq:allActivitiesOccurAsEndAtLeastNTimes
+# cfr. ALL{A,B} isEnd >= N (Schuster 2022)
+
+{
+    ?t pq:allActivitiesOccurAsEndAtLeastNTimes ( ?activities ?atLeastN )
+}
+<= 
+{
+    ?t a tr:Trace .
+    (
+        { ?a list:in ?activities }
+        { ?t pq:activityOccursAsEndAtLeastNTimes ( ?a ?atLeastN ?x ) }
+    ) log:forAllIn _:t 
+} .
+
+
+
+# >> DIRECTLY-FOLLOWS
+
+# pq:activitiesDirectlyFollow
+# cfr. A isDirectlyFollowed B (Schuster 2022)
+
+{
+    ?t pq:activitiesDirectlyFollow ( ?a ?b ?l )
+}
+<=
+{
+    ?l  tr:in ?t ;
+        tr:from [ tr:activity ?a ] ;
+        tr:to [ tr:activity ?b ] .
+} .
+
+
+# pq:activitiesDirectlyFollowAtLeastNTimes
+# cfr. A isDirectlyFollowed B >= N (Schuster 2022)
+
+{
+    ?t pq:activitiesDirectlyFollowAtLeastNTimes ( ?a ?b ?atLeastN ?actualN )
+}
+<= 
+{
+    ?t a tr:Trace .
+    (
+        ?l
+        {
+            ?t pq:activitiesDirectlyFollow ( ?a ?b ?l )
+        }
+        ?coll
+    ) log:collectAllIn _:t .
+    
+    ?coll e:sort ?collu .
+    ?collu list:length ?actualN .
+    ?actualN math:notLessThan ?atLeastN .
+} .
+
+
+# pq:activityIsDirectlyFollowedByAllActivities
+# cfr. A isDirectlyFollowed ALL{B, C} (Schuster 2022)
+
+{
+    ?t pq:activityIsDirectlyFollowedByAllActivities ( ?a ?allBs )
+}
+<=
+{
+    ?t a tr:Trace .
+    ( 
+        { ?b list:in ?allBs } 
+        { ?t pq:activitiesDirectlyFollow ( ?a ?b ?l ) } 
+
+    ) log:forAllIn _:t 
+} .
+
+
+# pq:activityIsDirectlyFollowedByAnyActivity
+# cfr. A isDirectlyFollowed ANY{B, C} (Schuster 2022)
+
+{
+    ?t pq:activityIsDirectlyFollowedByAnyActivity ( ?a ?anyBs )
+}
+<=
+{
+    ?anyBs list:member ?b .
+    ?t pq:activitiesDirectlyFollow ( ?a ?b ?l )
+} .
+
+
+# pq:activityIsDirectlyFollowedByAllActivitiesAtLeastNTimes
+# cfr. A isDirectlyFollowed ALL{B, C} >= N (Schuster 2022)
+
+{
+    ?t pq:activityIsDirectlyFollowedByAllActivitiesAtLeastNTimes ( ?a ?allBs ?atLeastN )
+}
+<=
+{
+    ?t a tr:Trace .
+    ( 
+        { ?b list:in ?allBs } 
+        { ?t pq:activitiesDirectlyFollowAtLeastNTimes ( ?a ?b ?atLeastN ?x ) } 
+
+    ) log:forAllIn _:t 
+} .
+
+
+# pq:activityIsDirectlyFollowedByAnyActivityAtLeastNTimes
+# cfr. A isDirectlyFollowed ANY{B, C} >= N (Schuster 2022)
+
+{
+    ?t pq:activityIsDirectlyFollowedByAnyActivityAtLeastNTimes ( ?a ?anyBs ?atLeastN )
+}
+<=
+{
+    ?b list:in ?anyBs .
+    ?t pq:activitiesDirectlyFollowAtLeastNTimes ( ?a ?b ?atLeastN ?x ) .
+} .
+
+
+
+# >> pq:activitiesEventuallyFollow
+# cfr. A IsEventuallyFollowed B (Schuster 2022)
+
+{
+    ?t pq:activitiesEventuallyFollow ( ?a ?b )
+}
+<=
+{
+    ?l tr:in ?t ; tr:from ?e1 . # find link starting from event
+    ?e1 tr:activity ?a . # event is about a
+    ?l tr:to ?ei .
+    ?ei log:notEqualTo tr:nil .
+    ?t pq:precedesActivity ( ?ei ?b ) # from this event onward, look for b
+} .
+
+
+# pq:activitiesEventuallyFollowAtMostNTimes
+# cfr. A IsEventuallyFollowed B <= N (Schuster 2022)
+
+{
+    ?t pq:activitiesEventuallyFollowAtMostNTimes ( ?a ?b ?atMostN ?actualN )
+}
+<=
+{
+    ?t a tr:Trace .
+    (
+        1
+        {
+            ?t pq:activitiesEventuallyFollow ( ?a ?b )
+        }
+        ?coll
+    ) log:collectAllIn _:t .
+    
+    ?coll list:length ?actualN .
+    ?actualN math:notGreaterThan ?atMostN .
+} .
+
+
+# pq:activityEventuallyFollowedByAllActivities
+# cfr. A IsEventuallyFollowed ALL{B,C} (Schuster 2022)
+
+{
+    ?t pq:activityEventuallyFollowedByAllActivities ( ?a ?allBs )
+}
+<=
+{
+    ?t a tr:Trace .
+    ( 
+        { ?b list:in ?allBs } 
+        { ?t pq:activitiesEventuallyFollow ( ?a ?b ) } 
+
+    ) log:forAllIn _:t 
+} .
+
+
+# pq:activityEventuallyFollowedByAnyActivity
+# cfr. A IsEventuallyFollowed ANY{B,C} (Schuster 2022)
+
+{
+    ?t pq:activityEventuallyFollowedByAnyActivity ( ?a ?anyBs )
+}
+<=
+{
+    ?anyBs list:member ?b .
+    ?t pq:activitiesEventuallyFollow ( ?a ?b )
+} .
+
+
+# pq:activityEventuallyFollowedByAllActivitiesAtMostNTimes
+# cfr. A IsEventuallyFollowed ALL{B,C} <= N (Schuster 2022)
+
+{
+    ?t pq:activityEventuallyFollowedByAllActivitiesAtMostNTimes ( ?a ?allBs ?atMostN )
+}
+<=
+{
+    ?t a tr:Trace .
+    ( 
+        { ?b list:in ?allBs } 
+        { ?t pq:activitiesEventuallyFollowAtMostNTimes ( ?a ?b ?atMostN ?x ) } 
+
+    ) log:forAllIn _:t 
+} .
+
+
+# pq:activityEventuallyFollowedByAnyActivityAtMostNTimes
+# cfr. A IsEventuallyFollowed ANY{B,C} <= N (Schuster 2022)
+
+{
+    ?t pq:activityEventuallyFollowedByAnyActivityAtMostNTimes ( ?a ?anyBs ?atMostN )
+}
+<=
+{
+    ?b list:in ?anyBs .
+    ?t pq:activitiesEventuallyFollowAtMostNTimes ( ?a ?b ?atMostN ?x ) .
+} .
+
+
+# pq:activityDoesNotOccur
+
+{
+    ?t pq:activityDoesNotOccur ?a 
+}
+<= 
+{
+    ?t a tr:Trace .
+    _:t log:notIncludes { [ tr:activity ?a ] tr:in ?t } .
+} .
+
+
+# pq:activitiesCoOccurOrNoneOccurs
+# either all activities occur, or none occur
+# cfr. "Cooccur" (Polyvyanyy et al., 2019)
+
+{
+    ?t pq:activitiesCoOccurOrNoneOccurs ?activities
+}
+<=
+{
+    ?t a tr:Trace .
+    (
+        ?e
+        {
+            ?t pq:activityOccurs ( ?a ?e ) .
+            ?a list:in ?activities
+        }
+        ()
+    ) log:collectAllIn _:t .
+} .
+
+{
+    ?t pq:activitiesCoOccurOrNoneOccurs ?activities
+}
+<=
+{
+    ?t pq:allActivitiesOccur ?activities
+} .
+
+
+# pq:activitiesDoNotCoOccur
+# activities cannot all co-occur together (some may co-occur)
+# cfr. "Conflict" (Polyvyanyy et al., 2019)
+
+{
+    ?t pq:activitiesDoNotCoOccur ?activities
+}
+<=
+{
+    ?t a tr:Trace .
+    (
+        ?a
+        {
+            ?a list:in ?activities .
+            ?t pq:activityOccurs ( ?a ?e )
+        }
+        ?coll
+    ) log:collectAllIn _:t .
+
+    ?coll e:sort ?collu .
+    ?collu list:length ?len .
+    ?len math:lessThan ?activities!list:length .
+} .
+
+
+# pq:activitiesAlwaysPrecedeActivities
+# all occurrences of first set of activities precede all occurrences of second set of activities,
+# in case the activities occur (cfr. logical implication)
+# cfr. "TotalCausal" (Polyvyanyy et al., 2019)
+
+{
+    ?t pq:activitiesAlwaysPrecedeActivities ( ?activities1 ?activities2 )
+}
+<=
+{
+    ?t a tr:Trace .
+    (
+        {
+            ?a1 list:in ?activities1 .
+            # event e1 from trace with activity a1
+            ?l1 tr:in ?t ; tr:from ?e1 . 
+            ?e1 tr:activity ?a1 .
+        }
+        {
+            (
+                {
+                    ?a2 list:in ?activities2 .
+                    # event e2 from trace with activity a2
+                    ?l2 tr:in ?t ; tr:from ?e2 . 
+                    ?e2 tr:activity ?a2 .
+                }
+                {
+                    ?t pq:precedesEvent ( ?e1 ?e2 )
+                }
+            ) log:forAllIn _:t .
+        }
+    ) log:forAllIn _:t .
+} .
+
+
+# helper rules
+
+# check precedence
+
+{
+    ?t pq:precedesActivity ( ?ei ?b )
+}
+<= 
+{
+    ?ei!tr:activity log:notEqualTo ?b . # mutex with rule below
+    [ tr:from ?ei ; tr:to ?ej ] tr:in ?t .
+    ?ej log:notEqualTo tr:nil .
+    # "T1" log:trace ( ?t ?ei ?ej ) .
+    ?t pq:precedesActivity ( ?ej ?b ) . # search from ej onward
+} .
+
+{
+    # stop when next event was about b
+    ?t pq:precedesActivity ( ?ei ?b )
+} 
+<= 
+{
+    ?ei tr:activity ?b .
+    # "T2" log:trace ( ?t ?ei ) .
+} .
+
+{
+    ?t pq:precedesEvent ( ?ei ?e2 )
+}
+<= 
+{
+    ?ei log:notEqualTo ?e2 . # mutex with rule below
+    [ tr:from ?ei ; tr:to ?ej ] tr:in ?t .
+    ?ej log:notEqualTo tr:nil .
+    # "T1" log:trace ( ?t ?ei ?ej ) .
+    ?t pq:precedesEvent ( ?ej ?e2 ) . # search from ej onward
+} .
+
+{
+    # stop when next event is the target event
+    ?t pq:precedesEvent ( ?e2 ?e2 )
+} 
+<= 
+{
+    # "T2" log:trace ( ?t ?e2 ) .
+} .
+
+
+# count activities that occur at least once in trace
+# (currently not used)
+
+{
+    ?t pq:uniqueActivityCount ( ?activities ?count )
+}
+<=
+{
+    ?t a tr:Trace .
+    (
+        ?a
+        {
+            ?a list:in ?activities .
+            ?t pq:activityOccurs ( ?a ?e )
+        }
+        ?coll
+    ) log:collectAllIn _:t .
+
+    ?coll e:sort ?collu .
+    ?collu list:length ?count .
+} .

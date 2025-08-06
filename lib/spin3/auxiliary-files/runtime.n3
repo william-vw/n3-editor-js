@@ -1,0 +1,204 @@
+@prefix : <http://example.org/aux#> .
+@prefix aux: <http://example.org/aux#> .
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+
+
+# - sequenceOfSteps
+
+#
+{
+   ( ?start ?end ) aux:stepThroughPath ?steps 
+}
+<= 
+{
+   ?steps list:firstRest ( ?step ?rest ) .
+
+   # steps = list with steps (again lists) as elements
+   # (individual steps would have numbers as last elements)
+   ?steps!list:last log:rawType rdf:List .
+   # "sequenceOfSteps" log:trace ?step .
+   ( ?start ?interm ) aux:stepThroughPath ?step .
+   (?start ?interm) aux:fullyIntsantiated true.
+   #
+   ( ?interm ?end ) aux:stepThroughPath ?rest 
+} .
+
+# rest is empty: unify "start" with "end"
+{
+   ( ?start ?start ) aux:stepThroughPath ( ) 
+}
+<= {} .
+
+
+# - predicatePath
+{
+   ( ?s ?o ) aux:stepThroughPath ( ?pred 1 1 ) 
+}
+<= 
+{
+   #"singleStep" log:trace ( ?s ?o ?pred ) .
+   ?s ?pred ?o 
+} .
+
+
+# - reversePath
+{
+   ( ?s ?o ) aux:stepThroughPath ( ?nested "rev" ) 
+}
+<= 
+{
+   ( ?o ?s ) aux:stepThroughPath ?nested 
+} .
+
+
+# - oneOrMorePath
+{
+   ( ?start ?end ) aux:stepThroughPath ( ?nested 1 -2 ) 
+}
+<= 
+{
+   #"oneOrMorePath" log:trace ( ?start ?end ?nested ) .
+   ( ?start ?end ) aux:stepThroughPath ?nested .
+} .
+
+#
+{
+   ( ?start ?end ) aux:stepThroughPath ( ?nested 1 -2 ) 
+}
+<= 
+{
+   ( ?start ?o ) aux:stepThroughPath ?nested .
+   #make sure that the last step is really "done"
+   (?start ?o) aux:fullyIntsantiated true.
+   ( ?o ?end ) aux:stepThroughPath ( ?nested 1 -2 ) .
+} .
+
+
+# - zeroOrMorePath
+{
+   ( ?start ?start ) aux:stepThroughPath ( ?nested 0 -2 ) 
+}
+<= {} .
+
+#
+{
+   ( ?start ?end ) aux:stepThroughPath ( ?nested 0 -2 ) 
+}
+<= 
+{
+   ( ?start ?end ) aux:stepThroughPath ( ?nested 1 -2 ) 
+} .
+
+
+# - zeroOrOnePath
+{
+   ( ?start ?start ) aux:stepThroughPath ( ?nested 0 -1 ) 
+}
+<= {} .
+
+#
+{
+   ( ?start ?end ) aux:stepThroughPath ( ?nested 0 -1 ) 
+}
+<= 
+{
+   ( ?start ?end ) aux:stepThroughPath ?nested .
+} .
+
+# - altPath
+{
+   ( ?start ?end ) aux:stepThroughPath ( ?options "alt" ) 
+}
+<= 
+{
+   # "altPath" log:trace ?options .
+   ( ?start ?end ) aux:tryAlts ?options .
+} .
+
+#
+{
+   ( ?start ?end ) aux:tryAlts ?options 
+}
+<= 
+{
+   ?options rdf:first ?first .
+   ( ?start ?end ) aux:stepThroughPath ?first 
+} .
+
+#
+{
+   ( ?start ?end ) aux:tryAlts ?options 
+}
+<= 
+{
+   ?options rdf:rest ?rest .
+   ( ?start ?end ) aux:tryAlts ?rest 
+} .
+
+
+# negatedPath
+{
+   ( ?start ?end ) aux:stepThroughPath ( ?options "neg" ) 
+}
+<= 
+{
+   ( ?start ?end ) aux:tryNeg ?options 
+} .
+
+
+#
+{
+   ( ?start ?end ) aux:tryNeg ?options .
+} 
+<= 
+{
+   ( ?options sp:LinkPath ) aux:collectLinkRegex ?regex .
+   #
+   "tryNeg (1)" log:trace ( ?start ?end ?regex ) .
+   ?start ?pred ?end .
+   ?pred!log:uri string:notMatches ?regex 
+} .
+
+
+#
+{
+   ( ?start ?end ) aux:tryNeg ?options .
+} 
+<= 
+{
+   ( ?options sp:ReverseLinkPath ) aux:collectLinkRegex ?regex .
+   #
+   "tryNeg (2)" log:trace ( ?start ?end ?regex ) .
+   ?end ?pred ?start .
+   ?pred!log:uri string:notMatches ?regex 
+} .
+
+
+#
+{
+   ( ?options ?type ) aux:collectLinkRegex ?regex 
+}
+<= 
+{
+   (
+       ?uriStr
+       {
+           ( ?option ?type ) list:in ?options .
+           ?option log:uri ?uriStr 
+       }
+       ?uriStrs
+   ) log:collectAllIn _:t .
+   #
+   ?uriStrs!list:length math:greaterThan 0 .
+   ( ?uriStrs "|" ) string:join ?regex .
+} .
+
+
+{(?a ?b) aux:fullyIntsantiated true}<={?a log:rawType ?t1. ?t1 log:notEqualTo log:ForAll. ?b log:rawType ?t2. ?t2 log:notEqualTo log:ForAll.}.

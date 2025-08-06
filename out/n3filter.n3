@@ -1,0 +1,31 @@
+# Processed by EYE v5.0.7 (2023-10-09)
+# eye /opt/app/n3-editor/out/filter.spin /opt/app/n3-editor/lib/spin3/auxiliary-files/aux.n3 --query /opt/app/n3-editor/lib/spin3/queries/query_general.n3 --nope --quantify http://eyereasoner.github.io/.well-known/genid/
+
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix skolem: <http://eyereasoner.github.io/.well-known/genid/00cca3ce-2eab-4466-81c9-708c2b16c39d#>.
+
+{
+    ?t_4 <http://example.org/zika#isPregnant> true.
+    ?t_4 <http://example.org/zika#hasZikaSymptom> ?t_5.
+    ?t_4 <http://example.org/zika#possibleZikaExposure> true.
+    ?t_4 <http://example.org/zika#avgTimeSinceZikaSymptomsOnset> ?t_6.
+    ?t_6 math:lessThan 7257600000.
+} => {
+    _:e_b1_1 a <http://hl7.org/fhir/ServiceRequest>.
+    _:e_b1_1 <http://hl7.org/fhir/code> _:e_b2_1.
+    _:e_b2_1 <http://hl7.org/fhir/concept> _:e_b3_1.
+    _:e_b3_1 <http://hl7.org/fhir/coding> _:e_b4_1.
+    _:e_b4_1 rdf:first _:e_b5_1.
+    _:e_b5_1 <http://hl7.org/fhir/system> _:e_b6_1.
+    _:e_b6_1 <http://hl7.org/fhir/v> "http://snomed.org/sct"^^xsd:anyURI.
+    _:e_b5_1 <http://hl7.org/fhir/code> _:e_b7_1.
+    _:e_b7_1 <http://hl7.org/fhir/v> "69363007".
+    _:e_b4_1 rdf:rest ().
+    _:e_b3_1 <http://hl7.org/fhir/text> _:e_b8_1.
+    _:e_b8_1 <http://hl7.org/fhir/v> "Zika virus NAAT on serum".
+}.
+# 2023-11-09T13:19:56.873Z in=187 out=1 ent=1 step=1 brake=2 inf=782884 sec=0.151 inf/sec=5184662
+# ENDS
+

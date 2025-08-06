@@ -1,8 +1,32 @@
-const serviceUrl = `${config.http.hostname}:${config.http.port}/n3`;
+const serviceUrl = (config.http.port !== undefined ?
+	`${config.http.hostname}:${config.http.port}/n3` :
+	`${config.http.hostname}/n3`);
 
 function exec(options, onSuccess, onError) {
 	switch (options.system) {
+
+		case 'eyejs':
+			let task = options.task;
+			switch (options.task) {
+
+ 				case 'derivations':
+					break;
+
+				case 'deductive_closure':
+					task = "deductive_closure_plus_rules";
+					break;
+			}
+
+			eyereasoner.n3reasoner(
+				options.formula,
+				undefined,
+				{ output: task }
+			).then(onSuccess).catch(onError);
+
+			break;
+
 		default:
+			// console.log("serviceUrl? ", serviceUrl);
 			$.post(serviceUrl, options, (output, status) => {
 				// console.log(status, output)
 
@@ -16,11 +40,11 @@ function exec(options, onSuccess, onError) {
 						break
 
 					default:
-						onError("Error reaching N3 service.")
+						onError("Error reaching N3 service (check developer console for details)")
 						break
 				}
 			}).fail((response) => {
-				onError("Error reaching N3 service.")
+				onError("Error reaching N3 service:", response)
 			})
 			break;
 	}
@@ -48,7 +72,7 @@ function resolve_link(id, onSuccess, onError) {
 		id: id
 
 	}, (output, status) => {
-		// console.log(status, output)
+		//console.log(status, output)
 
 		if (output.success !== undefined)
 			onSuccess(output.success)

@@ -1,0 +1,6 @@
+# Processed by EYE v5.0.7 (2023-10-09)
+# eye /opt/app/n3-editor/out/query.spin /opt/app/n3-editor/lib/spin3/auxiliary-files/aux.n3 --query /opt/app/n3-editor/lib/spin3/queries/query_general.n3 --nope --quantify http://eyereasoner.github.io/.well-known/genid/
+
+# 2023-11-17T16:00:48.356Z in=123 out=0 ent=0 step=0 brake=1 inf=648771 sec=0.140 inf/sec=4634079
+# ENDS
+

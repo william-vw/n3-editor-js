@@ -1,0 +1,67 @@
+@prefix aux: <http://example.org/aux#> .
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#> .
+@prefix ex: <http://books.example/> .
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix ns1: <http://example.org/spin#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix string: <http://www.w3.org/2000/10/swap/string#> .
+@prefix var: <http://eyereasoner.github.io/.well-known/genid/553580029058558441#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+#
+{
+   : :header ?header .
+   (
+       ?row
+       {
+           ?x ns1:result ?results .
+           (
+               ?valStr
+               {
+                   ?results list:member ( ?name ?val ) .
+                   ?val  aux:getString ?valStr.
+               }
+               ?vals
+           ) log:collectAllIn _:t .
+           #
+           ( ?vals "," ) string:join ?row 
+       }
+       ?rows
+   ) log:collectAllIn _:t .
+  #
+   ( ?rows "\n" ) string:join ?body .
+   ( ?header "\n" ?body ) string:concatenation ?table
+}
+=> 
+{
+   0 log:outputString ?table
+} .
+
+#
+{
+   : :header ?header 
+}
+<= 
+{
+   ?x ns1:result ?results .
+   (
+       ?nameStr
+       {
+           ?results list:member ( ?name ?val ) .
+
+           (  ?name  ) string:concatenation ?nameStr
+       }
+       ?names
+   ) log:collectAllIn _:t .
+   #
+   ( ?names "," ) string:join ?header 
+} .
+
+{?x aux:getString ?u}<={?x log:uri ?u. true log:callWithCut true}.
+{?x aux:getString ?x}<={}.
