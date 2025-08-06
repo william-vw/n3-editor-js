@@ -26,7 +26,7 @@
 	<script src="/n3/config/main.js"></script>
 	<script src="/n3/editor/lib/utils.js" type="text/javascript"></script>
 
-	<link rel="stylesheet" href="/n3/editor/lib/sspin3.css">
+	<link rel="stylesheet" href="/n3/editor/lib/sin3.css">
 
 	<!--	Syntaxica Code Editor -->
 	<script defer="defer" src="/n3/editor/lib/syntaxica/editor.js"></script>
@@ -159,7 +159,7 @@
 			}
 
 			var format = getCurrentFormat().type
-			var base = "/n3/sspin3"
+			var base = "/n3/sin3"
 
 			service.generate_link(formula, format,
 				(id) => {
@@ -287,7 +287,9 @@
 				let id = match[1]
 				console.log("resolving id:", id);
 
-				resolve_link(id);
+				setTimeout(() => {
+				    resolve_link(id);
+				}, 1000);
 
 			} else if (url.includes("?")) {
 				console.error("not supporting formula as URL parameter for spin3");

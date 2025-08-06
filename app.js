@@ -40,8 +40,8 @@ app.use('/n3/tmp', express.static("tmp"));
 app.use('/n3/spin3*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/spin3.html"));
 });
-app.use('/n3/sspin3*', (req, res) => {
-	res.sendFile(path.join(__dirname, "editor/sspin3.html"));
+app.use('/n3/sin3*', (req, res) => {
+	res.sendFile(path.join(__dirname, "editor/sin3.html"));
 });
 // app.use('/n3/yspin3*', (req, res) => {
 // 	res.sendFile(path.join(__dirname, "editor/yspin3.html"));
