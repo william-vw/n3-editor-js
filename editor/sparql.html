@@ -129,7 +129,7 @@
 				return false
 			}
 
-			var sparql = $('#sparql').val()
+			var sparql = $('textarea#code-textarea--input').val()
 			if (sparql.length == 0) {
 				$("#linkPlaceholder").html("(need SPARQL code to share)")
 				return false
@@ -177,7 +177,7 @@
 					console.log("initializing formula from link")
 
 					editor.getDoc().setValue(data)
-					$('#sparql').val(sparql);
+					$('#code-textarea--input').val(sparql)
 
 					validate(defaultFormat, true)
 
@@ -267,7 +267,9 @@
 				let id = match[1]
 				console.log("resolving id:", id);
 
-				resolve_link(id);
+				setTimeout(() => {
+				    resolve_link(id);
+				}, 1000); // yes
 
 			} else if (url.includes("?")) {
 				console.error("not supporting formula as URL parameter for sparql-exec");
