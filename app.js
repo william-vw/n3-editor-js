@@ -6,7 +6,7 @@ const path = require('path')
 const { config } = require('./config/main.js')
 const tmp = require('./lib/tmp.js')
 const eye = require('./lib/eye/eye.js')
-// const eye = require('./lib/eye/eyejs.js') 
+const eyejs = require('./lib/eye/eyejs.js') 
 // const cwm = require('./lib/cwm/cwm.js')
 const jen3 = require('./lib/jen3/jen3.js')
 const jena = require('./lib/jena/jena.js')
@@ -52,7 +52,6 @@ app.use('/n3/pqn*', (req, res) => {
 app.use('/n3/sparql*', (req, res) => {
 	res.sendFile(path.join(__dirname, "editor/sparql.html"));
 });
-app.use('/n3/lib/eyebrow', express.static(path.join(__dirname, "lib/eyebrow")));
 
 app.get('/n3', (request, response) => {
 	console.log('GET /')
@@ -192,7 +191,7 @@ async function doReasoning(options, ctu) {
 		let reasoner = null;
 		switch (options.system) {
 			case "eye":
-				reasoner = eye
+				reasoner = eyejs // eyejs for reasoning
 				break
 
 			case "cwm":
@@ -227,7 +226,7 @@ async function doExplaining(options, ctu) {
 		let reasoner = null;
 		switch (options.system) {
 			case "eye":
-				reasoner = eye
+				reasoner = eye // regular eye for explaining
 				break
 
 			default:

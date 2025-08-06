@@ -1,3 +1,59 @@
-# Processed by EYE v5.0.7 (2023-10-09)
-# eye --n3 tmp/tmp_1701178811679.n3 --query target_out.ttl
+# Processed by EYE v11.20.4 (2025-07-27)
+# eye --quiet --n3 tmp/tmp_1754501718369.n3 --query target_out.ttl
+
+@prefix skolem: <https://eyereasoner.github.io/.well-known/genid/48ff3ca5-3713-4c9d-b26d-1e9de97649ab#>.
+@prefix r: <http://www.w3.org/2000/10/swap/reason#>.
+
+skolem:proof a r:Proof, r:Conjunction;
+    r:component skolem:lemma1;
+    r:gives {
+        4 5 6 .
+    }.
+
+skolem:lemma1 a r:Inference;
+    r:gives {
+        4 5 6 .
+    };
+    r:evidence (
+        skolem:lemma2
+    );
+    r:rule skolem:lemma3.
+
+skolem:lemma2 a r:Inference;
+    r:gives {
+        4 5 6 .
+    };
+    r:evidence (
+        skolem:lemma4
+    );
+    r:rule skolem:lemma5.
+
+skolem:lemma3 a r:Extraction;
+    r:gives {
+        {
+            4 5 6.
+        } => {
+            4 5 6.
+        }.
+    };
+    r:because [ a r:Parsing; r:source <file:///opt/app/n3-editor-js/target_out.ttl>].
+
+skolem:lemma4 a r:Extraction;
+    r:gives {
+        1 2 3 .
+    };
+    r:because [ a r:Parsing; r:source <file:///opt/app/n3-editor-js/tmp/tmp_1754501718369.n3>].
+
+skolem:lemma5 a r:Extraction;
+    r:gives {
+        {
+            1 2 3.
+        } => {
+            4 5 6.
+        }.
+    };
+    r:because [ a r:Parsing; r:source <file:///opt/app/n3-editor-js/tmp/tmp_1754501718369.n3>].
+
+# 2025-08-06T17:35:18.524Z in=3 out=1 ent=2 step=4 brake=2 inf=32508 sec=0.067 inf/sec=485194
+# ENDS
 
