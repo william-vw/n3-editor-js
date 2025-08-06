@@ -161,8 +161,10 @@
 				startLoading()
 				const ret = await fetch('/xes/convert', { method: "POST", body: formData });
 				doneLoading()
-
+				
+				// console.log(ret)
 				const res = await ret.json()
+				console.log(res)
 				if (res.success) {
 					$('#use_log').show()
 					$('#n3_link').show()
@@ -171,6 +173,8 @@
 					let info = res.success.info.replace("\n", "<br>")
 					$('#info').show();
 					$('#info > div').html(info);
+				} else {
+					showError(res.error)
 				}
 
 			} catch (error) {
@@ -302,7 +306,7 @@
 				<div class="function" style="margin: 10px 0 0 15px">
 					<input type="file" id="upload" accept=".xes" hidden />
 					<label class="button-label" for="upload"><u>u</u>pload XES</label>
-					<a class="link" id="n3_link" style="display: none">View N3 log</a>
+					<a class="link" id="n3_link" style="display: none" target="_blank">View N3 log</a>
 				</div>
 				<div id="use_log" style="float: right; display: none">
 					<div class="function">
