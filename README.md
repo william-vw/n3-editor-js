@@ -1,6 +1,6 @@
 # Notation3 Editor in JavaScript
 
-You can find an online demo here: [http://ppr.cs.dal.ca:3002/n3/editor](http://ppr.cs.dal.ca:3002/n3/editor)
+You can find an online demo here: [https://editor.notation3.org](https://editor.notation3.org)
 
 ## Description
 
